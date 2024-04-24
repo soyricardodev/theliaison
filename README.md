@@ -1,29 +1,21 @@
-# Create T3 App
-
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
-
-## What's next? How do I make an app with this?
-
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
-
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
-
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
-
-## Learn More
-
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
-
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
-
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
-
-## How do I deploy this?
-
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+# TODO
+- [ ] Setup Auth Correctly (w/ supabase auth) 
+- [ ] Setup Databases Schema (w/ drizzle)
+- [ ] Add basic ui for create a poll
+- [ ] Add basic ui for view polls
+- [ ] Add basic ui for vote on polls
+- [ ] Add basic ui for delete polls
+- [ ] Add basic ui for edit polls
+- [ ] Add functionality to create poll
+- [ ] Add functionality to view polls
+- [ ] Add functionality to vote on polls
+- [ ] Add functionality to delete polls
+- [ ] Add functionality to edit polls
+- [ ] Add ui for comment on polls
+- [ ] Add ui for delete comment
+- [ ] Add ui for edit comment
+- [ ] Add functionality to comment on polls
+- [ ] Add functionality to delete comment
+- [ ] Add functionality to edit comment
+- [ ] Add reply to comment
+- [ ] Build to production
