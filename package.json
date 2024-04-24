@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"build": "next build",
-		"dev": "next dev",
+		"dev": "next dev --turbo",
 		"start": "next start",
 		"lint": "biome check ./src",
 		"lint:fix": "biome check --apply ./src",

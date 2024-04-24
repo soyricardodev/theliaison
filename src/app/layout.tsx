@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 
 import { ThemeProvider } from "~/components/providers";
 import { TRPCReactProvider } from "~/trpc/react";
+import { cn } from "~/lib/utils";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -23,7 +24,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`font-sans ${inter.variable}`}>
+			<body className={cn("font-sans antialiased min-h-dvh", inter.variable)}>
 				<TRPCReactProvider>
 					<ThemeProvider
 						attribute="class"
