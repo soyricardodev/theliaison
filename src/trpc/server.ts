@@ -1,11 +1,11 @@
 import "server-only";
 
-import { headers, cookies } from "next/headers";
-import { cache } from "react";
 import { createServerClient } from "@supabase/ssr";
+import { cookies, headers } from "next/headers";
+import { cache } from "react";
+import { env } from "~/env";
 import { createCaller } from "~/server/api/root";
 import { createTRPCContext } from "~/server/api/trpc";
-import { env } from "~/env";
 
 /**
  * This wraps the `createTRPCContext` helper and provides the required context for the tRPC API when
