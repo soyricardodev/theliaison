@@ -1,14 +1,21 @@
 import "~/styles/globals.css";
 
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 
 import { ThemeProvider } from "~/components/providers";
 import { TRPCReactProvider } from "~/trpc/react";
 import { cn } from "~/lib/utils";
 
-const inter = Inter({
-	subsets: ["latin"],
+const minervaRegular = localFont({
+	src: "../assets/fonts/MINERVAMODERNRegular.otf",
 	variable: "--font-sans",
+	display: "swap",
+});
+
+const minervaBold = localFont({
+	src: "../assets/fonts/MINERVAMODERNBold.otf",
+	variable: "--font-sans",
+	display: "swap",
 });
 
 export const metadata = {
@@ -24,7 +31,13 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={cn("font-sans antialiased min-h-dvh", inter.variable)}>
+			<body
+				className={cn(
+					"font-sans antialiased min-h-dvh",
+					minervaRegular.variable,
+					minervaBold.variable,
+				)}
+			>
 				<TRPCReactProvider>
 					<ThemeProvider
 						attribute="class"
