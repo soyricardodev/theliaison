@@ -2,7 +2,6 @@ import "~/styles/globals.css";
 
 import localFont from "next/font/local";
 
-import { ThemeProvider } from "~/components/providers";
 import { TRPCReactProvider } from "~/trpc/react";
 import { cn } from "~/lib/utils";
 
@@ -38,16 +37,7 @@ export default function RootLayout({
 					minervaBold.variable,
 				)}
 			>
-				<TRPCReactProvider>
-					<ThemeProvider
-						attribute="class"
-						defaultTheme="dark"
-						enableSystem
-						disableTransitionOnChange
-					>
-						{children}
-					</ThemeProvider>
-				</TRPCReactProvider>
+				<TRPCReactProvider>{children}</TRPCReactProvider>
 			</body>
 		</html>
 	);
