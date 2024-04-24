@@ -1,4 +1,6 @@
+import { createServerClient } from "@supabase/ssr";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+import { cookies } from "next/headers";
 import { type NextRequest } from "next/server";
 
 import { env } from "~/env";
@@ -10,8 +12,23 @@ import { createTRPCContext } from "~/server/api/trpc";
  * handling a HTTP request (e.g. when you make requests from Client Components).
  */
 const createContext = async (req: NextRequest) => {
+	const cookieStore = cookies();
+
+	const supabase = createServerClient(
+		env.NEXT_PUBLIC_SUPABASE_URL,
+		env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+		{
+			cookies: {
+				get(name: string) {
+					return cookieStore.get(name)?.value;
+				},
+			},
+		},
+	);
+
 	return createTRPCContext({
 		headers: req.headers,
+		supabase,
 	});
 };
 
