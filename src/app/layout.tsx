@@ -1,18 +1,25 @@
 import "~/styles/globals.css";
 
 import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import { cn } from "~/lib/utils";
 
 const minervaRegular = localFont({
 	src: "../assets/fonts/MINERVAMODERNRegular.otf",
-	variable: "--font-sans",
+	variable: "--font-heading",
 	display: "swap",
 });
 
 const minervaBold = localFont({
 	src: "../assets/fonts/MINERVAMODERNBold.otf",
+	variable: "--font-heading",
+	display: "swap",
+});
+
+const inter = Inter({
+	subsets: ["latin"],
 	variable: "--font-sans",
 	display: "swap",
 });
@@ -35,6 +42,7 @@ export default function RootLayout({
 					"font-sans antialiased min-h-dvh",
 					minervaRegular.variable,
 					minervaBold.variable,
+					inter.variable,
 				)}
 			>
 				<TRPCReactProvider>{children}</TRPCReactProvider>
