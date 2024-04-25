@@ -10,6 +10,7 @@ export default async function PrivatePage() {
 		data: { user },
 		error,
 	} = await supabase.auth.getUser();
+
 	if (error || !user) {
 		redirect("/auth/signin");
 	}

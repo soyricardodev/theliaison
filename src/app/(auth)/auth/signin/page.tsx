@@ -1,4 +1,5 @@
-import { login, signup } from "../_actions/actions";
+import { Github } from "lucide-react";
+import { login, signOauth } from "../_actions/actions";
 import Image from "next/image";
 import Link from "next/link";
 import { logoBlack } from "~/assets/images";
@@ -8,8 +9,24 @@ import { Button, buttonVariants } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { cn } from "~/lib/utils";
+import { Provider } from "@supabase/supabase-js";
+
+interface OAuthProviders {
+	name: Provider;
+	displayName: string;
+	icon: JSX.Element;
+}
 
 export default function Signin() {
+	const oAuthProviders: OAuthProviders[] = [
+		{
+			name: "github",
+			displayName: "GitHub",
+			icon: <Github className="h-5 w-5" />,
+		},
+		/* Add desired OAuth providers here */
+	];
+
 	return (
 		<div className="container flex h-screen w-screen flex-col items-center justify-center">
 			<Link
@@ -67,6 +84,15 @@ export default function Signin() {
 						Signin
 					</Button>
 				</form>
+				{/* {oAuthProviders.map((provider) => (
+					<form key={provider.name} className="pb-2">
+						<input type="hidden" name="provider" value={provider.name} />
+						<Button type="submit" className="w-full" formAction={signOauth}>
+							<span className="mr-2">{provider.icon}</span>
+							<span>{provider.displayName}</span>
+						</Button>
+					</form>
+				))} */}
 				<p className="px-8 text-center text-sm text-muted-foreground">
 					<Link
 						href="/register"
