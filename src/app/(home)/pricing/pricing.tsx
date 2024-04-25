@@ -125,7 +125,6 @@ export default function Pricing({ user, products, subscription }: Props) {
 
 					<div className="mx-auto grid w-full justify-center gap-8 sm:grid-cols-2 place-items-center">
 						{products.map((product, idx) => {
-							console.log(product);
 							const price = product.prices[0]!;
 							// const price = product?.prices?.find(
 							// 	(price) => price.interval === billingInterval,
