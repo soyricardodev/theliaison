@@ -1,6 +1,11 @@
 # TODO
-- [ ] Setup Auth Correctly (w/ supabase auth) 
-- [ ] Setup Databases Schema (w/ drizzle)
+- [x] Setup Auth Correctly (w/ supabase auth)
+- [x] Setup Stripe
+- [x] Add test subscription
+- [x] Setup Stripe webhooks
+- [x] Setup Schemas for stripe products
+- [x] Build to production
+- [ ] Setup Databases Schema for polling (w/ drizzle)
 - [ ] Add basic ui for create a poll
 - [ ] Add basic ui for view polls
 - [ ] Add basic ui for vote on polls
@@ -18,4 +23,3 @@
 - [ ] Add functionality to delete comment
 - [ ] Add functionality to edit comment
 - [ ] Add reply to comment
-- [ ] Build to production
