@@ -20,6 +20,8 @@ const relevantEvents = new Set([
 	"customer.subscription.created",
 	"customer.subscription.updated",
 	"customer.subscription.deleted",
+	"customer.updated",
+	"payment_intent.succeeded",
 ]);
 
 export async function POST(req: Request) {
@@ -35,7 +37,7 @@ export async function POST(req: Request) {
 		console.log(`🔔  Webhook received: ${event.type}`);
 		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	} catch (err: any) {
-		console.log(`❌ Error message: ${err.message}`);
+		console.log(`❌ Error message: ${err.message}`, err);
 		return new Response(`Webhook Error: ${err.message}`, { status: 400 });
 	}
 
@@ -59,14 +61,17 @@ export async function POST(req: Request) {
 				case "customer.subscription.created":
 				case "customer.subscription.updated":
 				case "customer.subscription.deleted":
+				case "customer.updated":
 					const subscription = event.data.object as Stripe.Subscription;
 					await manageSubscriptionStatusChange(
 						subscription.id,
 						subscription.customer as string,
-						event.type === "customer.subscription.created",
+						event.type === "customer.subscription.created" ||
+							event.type === "customer.updated",
 					);
 					break;
 				case "checkout.session.completed":
+				case "payment_intent.succeeded":
 					const checkoutSession = event.data.object as Stripe.Checkout.Session;
 					if (checkoutSession.mode === "subscription") {
 						const subscriptionId = checkoutSession.subscription;
