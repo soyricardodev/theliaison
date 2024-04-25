@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import { logoBlack } from "~/assets/images";
 import { buttonVariants } from "~/components/ui/button";
 import { siteConfig } from "~/config/site";
 import { cn } from "~/lib/utils";
