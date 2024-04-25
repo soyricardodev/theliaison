@@ -20,7 +20,7 @@ export async function login(formData: FormData) {
 	}
 
 	revalidatePath("/", "layout");
-	redirect("/auth/profile");
+	redirect("/profile");
 }
 
 export async function signOauth(formData: FormData) {
@@ -29,7 +29,7 @@ export async function signOauth(formData: FormData) {
 	const { error, data } = await supabase.auth.signInWithOAuth({
 		provider: formData.get("provider") as Provider,
 		options: {
-			redirectTo: "/auth/profile",
+			redirectTo: "/profile",
 		},
 	});
 
@@ -41,7 +41,7 @@ export async function signOauth(formData: FormData) {
 	}
 
 	revalidatePath("/", "layout");
-	redirect("/auth/profile");
+	redirect("/profile");
 }
 
 export async function signup(formData: FormData) {
@@ -61,5 +61,5 @@ export async function signup(formData: FormData) {
 	}
 
 	revalidatePath("/", "layout");
-	redirect("/auth/profile");
+	redirect("/profile");
 }

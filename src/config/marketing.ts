@@ -1,4 +1,4 @@
-import { MainNavItem } from "~/app/(home)/_components/nav-types";
+import type { MainNavItem } from "~/components/nav-types";
 
 type MarketingConfig = {
 	mainNav: MainNavItem[];
