@@ -77,7 +77,7 @@ export default function CustomerPortalForm({ subscription }: Props) {
 						{subscription?.prices?.interval}
 					</p>
 				) : (
-					<Link href="/pricing/real">Choose your plan</Link>
+					<Link href="/pricing">Choose your plan</Link>
 				)}
 				<div className="flex flex-col items-start justify-between sm:flex-row sm:items-center">
 					<Button onClick={handleStripePortalRequest} className="text-lg mt-2">
