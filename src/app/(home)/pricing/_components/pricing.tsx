@@ -106,9 +106,9 @@ export default function Pricing({ user, products, subscription }: Props) {
 	} else {
 		return (
 			<section id="pricing">
-				<div className="mx-auto flex max-w-screen-xl flex-col gap-8 px-4 py-14 md:px-8">
+				<div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 py-14 md:px-8 my-14">
 					<div className="mx-auto max-w-5xl text-center">
-						<h4 className="text-xl font-heading font-bold tracking-tight text-black dark:text-white">
+						<h4 className="text-xl font-bold tracking-tight text-black dark:text-white">
 							Pricing
 						</h4>
 
@@ -116,20 +116,17 @@ export default function Pricing({ user, products, subscription }: Props) {
 							Simple pricing for everyone.
 						</h2>
 
-						<p className="mt-6 text-xl leading-8 text-black/80 dark:text-white text-pretty">
+						<p className="mt-6 max-w-[600px] mx-auto text-xl leading-8 text-black/80 dark:text-white text-pretty">
 							Choose an <strong>affordable plan</strong> that&apos;s packed with
 							the best features for engaging your audience, creating customer
 							loyalty, and driving sales.
 						</p>
 					</div>
 
-					<div className="mx-auto grid w-full justify-center gap-8 sm:grid-cols-2 place-items-center">
+					<div className="mx-auto flex justify-center flex-col items-center lg:flex-row w-full gap-8 mt-16">
 						{products.map((product, idx) => {
 							const price = product.prices[0]!;
-							// const price = product?.prices?.find(
-							// 	(price) => price.interval === billingInterval,
-							// );
-							// if (!price) return null;
+
 							const priceString = new Intl.NumberFormat("en-US", {
 								style: "currency",
 								currency: price.currency!,
@@ -139,8 +136,9 @@ export default function Pricing({ user, products, subscription }: Props) {
 								<div
 									key={product.id}
 									className={cn(
-										"relative flex w-full max-w-[400px] flex-col gap-4 overflow-hidden rounded-2xl border p-4 text-black dark:text-white",
-										"border-2 border-neutral-700 shadow-lg shadow-neutral-500 dark:border-neutral-400 dark:shadow-neutral-600",
+										"relative flex w-full max-w-[400px] flex-col gap-4 overflow-hidden rounded-2xl border p-4 text-black",
+										idx === 1 &&
+											"border-2 border-neutral-700 shadow-lg shadow-neutral-500 [transform:scale(1.1)]",
 									)}
 								>
 									<div className="flex items-center">
