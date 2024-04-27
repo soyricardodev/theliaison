@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
-import AnimatedListHero from "./_components/animated-list-hero";
-import { HeroMarquee } from "./_components/hero-marquee";
 import { HeroYoutube } from "./_components/hero-youtube";
 import FAQ from "./_components/faq";
 import PricingPage from "./pricing/page";
