@@ -1,10 +1,10 @@
 import "~/styles/globals.css";
 
-import localFont from "next/font/local";
 import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 
-import { TRPCReactProvider } from "~/trpc/react";
 import { cn } from "~/lib/utils";
+import { TRPCReactProvider } from "~/trpc/react";
 
 const minervaRegular = localFont({
 	src: "../assets/fonts/MINERVAMODERNRegular.otf",

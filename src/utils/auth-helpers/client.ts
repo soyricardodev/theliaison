@@ -1,7 +1,7 @@
 import { Provider } from "@supabase/supabase-js";
-import { createClient } from "../supabase/client";
-import { getURL } from "../helpers";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { getURL } from "../helpers";
+import { createClient } from "../supabase/client";
 import { redirectToPath } from "./server";
 
 export async function handleRequest(

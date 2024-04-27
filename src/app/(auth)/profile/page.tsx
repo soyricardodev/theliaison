@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation";
 
+import { DashboardHeader } from "~/components/dashboard-header";
+import { DashboardShell } from "~/components/shell";
 import { createClient } from "~/utils/supabase/server";
 import { ProfileForm } from "./_components/profile-form";
-import { DashboardShell } from "~/components/shell";
-import { DashboardHeader } from "~/components/dashboard-header";
 
 export default async function PrivatePage() {
 	const supabase = createClient();

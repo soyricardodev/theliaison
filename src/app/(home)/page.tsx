@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
-import { HeroYoutube } from "./_components/hero-youtube";
-import FAQ from "./_components/faq";
-import PricingPage from "./pricing/page";
-import { Services } from "./_components/services";
 import { About } from "./_components/about";
-import { Work } from "./_components/work";
-import { Testimonial } from "./_components/testimonial";
 import CallToAction from "./_components/cta";
+import FAQ from "./_components/faq";
+import { HeroYoutube } from "./_components/hero-youtube";
+import { Services } from "./_components/services";
+import { Testimonial } from "./_components/testimonial";
+import { Work } from "./_components/work";
+import PricingPage from "./pricing/page";
 
 export default function Home() {
 	return (

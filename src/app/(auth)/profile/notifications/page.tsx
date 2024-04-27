@@ -1,7 +1,7 @@
+import { DashboardHeader } from "~/components/dashboard-header";
+import { DashboardShell } from "~/components/shell";
 import { Separator } from "~/components/ui/separator";
 import { NotificationsForm } from "./_components/notifications-form";
-import { DashboardShell } from "~/components/shell";
-import { DashboardHeader } from "~/components/dashboard-header";
 
 export default function SettingsNotificationsPage() {
 	return (

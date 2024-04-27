@@ -1,6 +1,6 @@
-import { cn } from "~/lib/utils";
-import Marquee from "~/components/magicui/marquee";
 import { StarFilledIcon } from "@radix-ui/react-icons";
+import Marquee from "~/components/magicui/marquee";
+import { cn } from "~/lib/utils";
 
 export const Highlight = ({
 	children,

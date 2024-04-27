@@ -1,8 +1,8 @@
-import CustomerPortalForm from "./_components/customer-portal-form";
-import { createClient } from "~/utils/supabase/server";
 import { redirect } from "next/navigation";
-import { DashboardShell } from "~/components/shell";
 import { DashboardHeader } from "~/components/dashboard-header";
+import { DashboardShell } from "~/components/shell";
+import { createClient } from "~/utils/supabase/server";
+import CustomerPortalForm from "./_components/customer-portal-form";
 
 export default async function Account() {
 	const supabase = createClient();

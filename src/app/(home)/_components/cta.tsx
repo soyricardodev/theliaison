@@ -1,8 +1,5 @@
 "use client";
 
-import { buttonVariants } from "~/components/ui/button";
-import { cn } from "~/lib/utils";
-import Marquee from "~/components/magicui/marquee";
 import { motion, useAnimation, useInView } from "framer-motion";
 import {
 	BarChart,
@@ -14,6 +11,9 @@ import {
 	Shield,
 } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
+import Marquee from "~/components/magicui/marquee";
+import { buttonVariants } from "~/components/ui/button";
+import { cn } from "~/lib/utils";
 
 const tiles = [
 	{

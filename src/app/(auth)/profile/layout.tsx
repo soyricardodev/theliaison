@@ -1,9 +1,9 @@
 "use client";
 
-import { profileConfig } from "~/config/profile";
+import { DashboardNav } from "~/components/dashboard-nav";
 import { MainNav } from "~/components/main-nav";
 import { SiteFooter } from "~/components/site-footer";
-import { DashboardNav } from "~/components/dashboard-nav";
+import { profileConfig } from "~/config/profile";
 
 interface SettingsLayoutProps {
 	children: React.ReactNode;

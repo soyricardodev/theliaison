@@ -1,9 +1,9 @@
 "use server";
 
-import { createClient } from "~/utils/supabase/server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { getURL, getErrorRedirect, getStatusRedirect } from "~/utils/helpers";
+import { getErrorRedirect, getStatusRedirect, getURL } from "~/utils/helpers";
+import { createClient } from "~/utils/supabase/server";
 import { getAuthTypes } from "./settings";
 
 function isValidEmail(email: string) {

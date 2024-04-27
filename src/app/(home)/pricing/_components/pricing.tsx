@@ -1,16 +1,16 @@
 "use client";
 
-import { Button } from "~/components/ui/button";
-import type { Tables } from "~/types/database-types";
-import { getStripe } from "~/utils/stripe/client";
-import { checkoutWithStripe } from "~/utils/stripe/server";
-import { getErrorRedirect } from "~/utils/helpers";
 import { User } from "@supabase/supabase-js";
-import { cn } from "~/lib/utils";
-import { useRouter, usePathname } from "next/navigation";
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckIcon } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import { Button } from "~/components/ui/button";
+import { cn } from "~/lib/utils";
+import type { Tables } from "~/types/database-types";
+import { getErrorRedirect } from "~/utils/helpers";
+import { getStripe } from "~/utils/stripe/client";
+import { checkoutWithStripe } from "~/utils/stripe/server";
 
 type Subscription = Tables<"subscriptions">;
 type Product = Tables<"products">;

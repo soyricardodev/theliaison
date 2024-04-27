@@ -1,11 +1,11 @@
-import * as React from "react";
 import Link from "next/link";
+import * as React from "react";
 
-import type { MainNavItem } from "./nav-types";
-import { siteConfig } from "~/config/site";
-import { cn } from "~/lib/utils";
-import { useLockBody } from "~/hooks/use-lock-body";
 import { Icons } from "~/components/icons";
+import { siteConfig } from "~/config/site";
+import { useLockBody } from "~/hooks/use-lock-body";
+import { cn } from "~/lib/utils";
+import type { MainNavItem } from "./nav-types";
 
 interface MobileNavProps {
 	items: MainNavItem[];

@@ -1,16 +1,16 @@
 "use client";
 
-import * as React from "react";
 import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
+import * as React from "react";
 
-import { MainNavItem } from "./nav-types";
-import { siteConfig } from "~/config/site";
-import { cn } from "~/lib/utils";
-import { Icons } from "~/components/icons";
-import { MobileNav } from "./mobile-nav";
 import Image from "next/image";
 import { logoBlack } from "~/assets/images";
+import { Icons } from "~/components/icons";
+import { siteConfig } from "~/config/site";
+import { cn } from "~/lib/utils";
+import { MobileNav } from "./mobile-nav";
+import { MainNavItem } from "./nav-types";
 
 interface MainNavProps {
 	items?: MainNavItem[];

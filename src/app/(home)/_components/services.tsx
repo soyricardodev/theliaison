@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { HandHeart, Handshake, type LucideIcon, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 export function ServicesHeader() {
 	return (

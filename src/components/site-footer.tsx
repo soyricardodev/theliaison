@@ -1,6 +1,6 @@
-import { cn } from "~/lib/utils";
 import Image from "next/image";
 import { logoBlack } from "~/assets/images";
+import { cn } from "~/lib/utils";
 
 export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
 	return (

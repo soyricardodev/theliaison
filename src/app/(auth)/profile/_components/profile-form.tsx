@@ -1,12 +1,11 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useFieldArray, useForm } from "react-hook-form";
-import { z } from "zod";
-import { useCallback, useEffect, useState } from "react";
-import { createClient } from "~/utils/supabase/client";
 import { type User } from "@supabase/supabase-js";
-import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
+import { useCallback, useEffect, useState } from "react";
+import { useFieldArray, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
+import { Button } from "~/components/ui/button";
 import {
 	Form,
 	FormControl,
@@ -16,9 +15,10 @@ import {
 	FormLabel,
 	FormMessage,
 } from "~/components/ui/form";
-import { Button } from "~/components/ui/button";
+import { Input } from "~/components/ui/input";
+import { Label } from "~/components/ui/label";
+import { createClient } from "~/utils/supabase/client";
 import { Avatar } from "./avatar";
-import { toast } from "sonner";
 
 const profileFormSchema = z.object({
 	fullName: z

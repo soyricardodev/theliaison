@@ -1,15 +1,15 @@
 import { Github } from "lucide-react";
-import { login, signOauth } from "../_actions/actions";
 import Image from "next/image";
 import Link from "next/link";
 import { logoBlack } from "~/assets/images";
 import { Icons } from "~/components/icons";
+import { login, signOauth } from "../_actions/actions";
 
+import { Provider } from "@supabase/supabase-js";
 import { Button, buttonVariants } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { cn } from "~/lib/utils";
-import { Provider } from "@supabase/supabase-js";
 
 interface OAuthProviders {
 	name: Provider;
