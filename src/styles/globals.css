@@ -41,6 +41,11 @@
     @apply border-border;
   }
   body {
+    scroll-behavior: smooth
     @apply bg-background text-foreground;
   }
+}
+
+.yt-lite {
+  @apply rounded-2xl;
 }
