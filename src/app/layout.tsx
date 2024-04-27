@@ -39,7 +39,7 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning>
 			<body
 				className={cn(
-					"font-sans antialiased min-h-dvh",
+					"font-sans antialiased min-h-dvh scroll-smooth",
 					minervaRegular.variable,
 					minervaBold.variable,
 					inter.variable,
