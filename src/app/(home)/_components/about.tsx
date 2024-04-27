@@ -4,7 +4,7 @@ export function About() {
 	return (
 		<>
 			<AboutHeader />
-			<section className="max-w-screen-2xl px-6 lg:px-8">
+			<section className="max-w-screen-2xl px-6 lg:px-8 mx-auto">
 				<div className="mx-auto max-w-2xl lg:max-w-none">
 					<div className="grid grid-cols-1 items-center place-items-center justify-center lg:grid-cols-2 w-full gap-8 mt-16">
 						<figure className="w-full max-w-[600px] flex-none lg:w-[45rem]">
@@ -18,12 +18,12 @@ export function About() {
 						</figure>
 
 						<div className="flex flex-col gap-2 text-pretty">
-							<p className="text-lg text-neutral-800">
+							<p className="text-xl text-neutral-800">
 								From taboo topics to deep vulnerability, I’ve made it my mission
 								to share the collective's insight to better understand our
 								relationships and experiences.
 							</p>
-							<p className="text-lg text-neutral-800 ">
+							<p className="text-xl text-neutral-800 ">
 								The wealth of honest feedback, insights, and experiences shared
 								by my female audience has helped me relay real and data-driven
 								advice to men. In turn, this insight has helped thousands of men
