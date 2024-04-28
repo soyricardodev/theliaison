@@ -119,6 +119,9 @@ export function HeaderWrapper({
 									<Link href="/#features">Features</Link>
 								</li>
 								<li className="hidden items-center justify-center px-2 py-0.5 lg:flex">
+									<Link href="/social-polling">Social Polling</Link>
+								</li>
+								<li className="hidden items-center justify-center px-2 py-0.5 lg:flex">
 									<Link href="/pricing">Pricing</Link>
 								</li>
 								<li className="hidden items-center justify-center px-2 py-0.5 lg:flex">
