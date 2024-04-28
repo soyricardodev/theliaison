@@ -1,5 +1,4 @@
 import { TailwindIndicator } from "~/components/tailwind-indicator";
-import { marketingConfig } from "~/config/marketing";
 import Footer from "./_components/footer";
 import { HeaderWrapper } from "./_components/header-wrapper";
 
