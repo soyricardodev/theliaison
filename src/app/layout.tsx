@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 
 import { cn } from "~/lib/utils";
-import { TRPCReactProvider } from "~/trpc/react";
 
 const minervaRegular = localFont({
 	src: "../assets/fonts/MINERVAMODERNRegular.otf",
@@ -45,7 +44,7 @@ export default function RootLayout({
 					inter.variable,
 				)}
 			>
-				<TRPCReactProvider>{children}</TRPCReactProvider>
+				{children}
 			</body>
 		</html>
 	);
