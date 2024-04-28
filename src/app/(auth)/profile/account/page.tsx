@@ -14,7 +14,7 @@ export default async function Account() {
 	const { data: subscription, error } = await supabase
 		.from("subscriptions")
 		.select("*, prices(*, products(*))")
-		.in("status", ["trialing", "active"])
+		.in("status", ["active"])
 		.maybeSingle();
 
 	if (error) {
