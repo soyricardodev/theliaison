@@ -7,6 +7,8 @@ import { useEffect, useRef, useState } from "react";
 import { logoBlack } from "~/assets/images";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
+import { UserButtonNavbarMobile } from "./user-button-navbar-mobile";
+import { UserButtonNavbar } from "./user-button-navbar";
 
 const SCROLL_BOUNDARY = 100;
 
@@ -140,20 +142,7 @@ export function HeaderWrapper({
 										}}
 									>
 										<AnimatePresence>
-											{active && (
-												<motion.a
-													initial={{ x: "125%" }}
-													animate={{ x: "0" }}
-													exit={{
-														x: "125%",
-														transition: { ease: "easeOut", duration: 2.2 },
-													}}
-													transition={{ ease: "easeOut", duration: 0.5 }}
-													className={cn(buttonVariants())}
-												>
-													Get Started
-												</motion.a>
-											)}
+											{active && <UserButtonNavbarMobile />}
 										</AnimatePresence>
 									</motion.div>
 								</AnimatePresence>
@@ -161,16 +150,7 @@ export function HeaderWrapper({
 						</motion.div>
 					</div>
 
-					<Link
-						href="/auth/signin"
-						className={cn(
-							buttonVariants(),
-							"transition-all",
-							active && "!hidden",
-						)}
-					>
-						Get Started
-					</Link>
+					<UserButtonNavbar />
 				</header>
 				{children}
 			</div>
