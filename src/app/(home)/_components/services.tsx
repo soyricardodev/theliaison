@@ -79,7 +79,7 @@ export function Services() {
 											</g>
 											<use
 												href="#:S1:-shape"
-												stroke-width="2"
+												strokeWidth="2"
 												className="stroke-neutral-950/10"
 											></use>
 										</g>
