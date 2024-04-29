@@ -5,13 +5,17 @@
 await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
-const config = {
-  typescript: {
-    ignoreBuildErrors: true
-  },
-  eslint: {
-    ignoreDuringBuilds: true
-  }
+const nextConfig = {
+	typescript: {
+		ignoreBuildErrors: true,
+	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
 };
 
-export default config;
+import withBundleAnalyzer from "@next/bundle-analyzer";
+
+export default process.env.ANALYZE === "true"
+	? withBundleAnalyzer()(nextConfig)
+	: nextConfig;
