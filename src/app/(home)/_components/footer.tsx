@@ -75,12 +75,12 @@ const footerSocials = [
 export default function Footer() {
 	return (
 		<footer className="border-t">
-			<div className="mx-auto w-full max-w-screen-xl px-4">
+			<div className="mx-auto w-full max-w-screen-2xl px-6 lg:px-8 mt-16">
 				<div className="gap-4 p-4 py-16 sm:pb-16 md:flex md:justify-between">
 					<div className="mb-12 flex flex-col gap-4">
 						<a href="/" className="flex items-center gap-2">
 							<Image src={logoBlack} alt="logo" width={40} height={40} />
-							<span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white">
+							<span className="self-center whitespace-nowrap text-2xl font-semibold font-heading">
 								The Liaison
 							</span>
 						</a>
