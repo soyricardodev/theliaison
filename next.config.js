@@ -12,6 +12,17 @@ const nextConfig = {
 	eslint: {
 		ignoreDuringBuilds: true,
 	},
+	images: {
+		dangerouslyAllowSVG: true,
+		contentDispositionType: "attachment",
+		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "vercel.com",
+			},
+		],
+	},
 };
 
 import withBundleAnalyzer from "@next/bundle-analyzer";
