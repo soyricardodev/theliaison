@@ -9,24 +9,39 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      categories: {
+        Row: {
+          id: number
+          name: string
+        }
+        Insert: {
+          id?: never
+          name: string
+        }
+        Update: {
+          id?: never
+          name?: string
+        }
+        Relationships: []
+      }
       comments: {
         Row: {
           content: string
-          date_comment: string
+          created_at: string
           id: number
           poll_id: number
           user_id: string
         }
         Insert: {
           content: string
-          date_comment?: string
+          created_at?: string
           id?: number
           poll_id: number
           user_id: string
         }
         Update: {
           content?: string
-          date_comment?: string
+          created_at?: string
           id?: number
           poll_id?: number
           user_id?: string
@@ -102,18 +117,21 @@ export type Database = {
       }
       polls: {
         Row: {
+          categorie_id: number | null
           created_at: string
           id: number
           question: string
           user_id: string
         }
         Insert: {
+          categorie_id?: number | null
           created_at?: string
           id?: number
           question: string
           user_id: string
         }
         Update: {
+          categorie_id?: number | null
           created_at?: string
           id?: number
           question?: string
@@ -121,10 +139,47 @@ export type Database = {
         }
         Relationships: [
           {
+            foreignKeyName: "polls_categorie_id_fkey"
+            columns: ["categorie_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "polls_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      polls_categories: {
+        Row: {
+          categorie_id: number
+          poll_id: number
+        }
+        Insert: {
+          categorie_id: number
+          poll_id: number
+        }
+        Update: {
+          categorie_id?: number
+          poll_id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "polls_categories_categorie_id_fkey"
+            columns: ["categorie_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "polls_categories_poll_id_fkey"
+            columns: ["poll_id"]
+            isOneToOne: false
+            referencedRelation: "polls"
             referencedColumns: ["id"]
           },
         ]
@@ -347,18 +402,21 @@ export type Database = {
           data_vote: string
           id: number
           option_id: number
+          poll_id: number | null
           user_id: string
         }
         Insert: {
           data_vote?: string
           id?: number
           option_id: number
+          poll_id?: number | null
           user_id: string
         }
         Update: {
           data_vote?: string
           id?: number
           option_id?: number
+          poll_id?: number | null
           user_id?: string
         }
         Relationships: [
@@ -367,6 +425,13 @@ export type Database = {
             columns: ["option_id"]
             isOneToOne: false
             referencedRelation: "options"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "votes_poll_id_fkey"
+            columns: ["poll_id"]
+            isOneToOne: false
+            referencedRelation: "polls"
             referencedColumns: ["id"]
           },
           {

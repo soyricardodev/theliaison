@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { logoBlack } from "~/assets/images";
-import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 import { UserButtonNavbarMobile } from "./user-button-navbar-mobile";
 import { UserButtonNavbar } from "./user-button-navbar";
@@ -65,7 +64,7 @@ export function HeaderWrapper({
 	return (
 		<div ref={headerParentRef}>
 			<div className="h-[100vh]">
-				<header className="mx-auto flex max-w-[84rem] items-center justify-between bg-transparent px-10 py-7 w-full">
+				<header className="mx-auto flex max-w-screen-2xl items-center justify-between bg-transparent px-6 lg:px-8 py-7 w-full">
 					<div
 						className={cn(
 							"hidden flex-row items-center justify-center gap-2 lg:flex transition-all",
