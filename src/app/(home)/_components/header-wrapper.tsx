@@ -6,8 +6,8 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { logoBlack } from "~/assets/images";
 import { cn } from "~/lib/utils";
-import { UserButtonNavbarMobile } from "./user-button-navbar-mobile";
 import { UserButtonNavbar } from "./user-button-navbar";
+import { UserButtonNavbarMobile } from "./user-button-navbar-mobile";
 
 const SCROLL_BOUNDARY = 100;
 

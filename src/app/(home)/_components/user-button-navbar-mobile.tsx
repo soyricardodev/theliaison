@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 
+import { User } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { createClient } from "~/utils/supabase/client";
-import { User } from "@supabase/supabase-js";
 
 export function UserButtonNavbarMobile() {
 	const [user, setUser] = useState<User | null>(null);

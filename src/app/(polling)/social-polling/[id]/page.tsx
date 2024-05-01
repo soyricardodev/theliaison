@@ -1,3 +1,4 @@
+import { profile } from "console";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Container } from "~/components/container";
@@ -11,8 +12,8 @@ import {
 	CardTitle,
 } from "~/components/ui/card";
 import { createClient } from "~/utils/supabase/server";
-import { Votes } from "./votes";
 import { Comments } from "./comments";
+import { Votes } from "./votes";
 
 export default async function Poll({
 	params: { id },
@@ -78,11 +79,7 @@ export default async function Poll({
 					<div className="text-base text-black">
 						<div className="flex items-center justify-center gap-2 w-full mx-auto">
 							<Image
-								src={
-									userData.avatar_url != null
-										? userData.avatar_url
-										: "https://vercel.com/api/www/avatar/1?s=64"
-								}
+								src={"https://vercel.com/api/www/avatar/1?s=64"}
 								alt="avatar"
 								width={30}
 								height={30}

@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { User } from "@supabase/supabase-js";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { buttonVariants } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
 import { createClient } from "~/utils/supabase/client";
-import { User } from "@supabase/supabase-js";
 
 export function UserButtonNavbar() {
 	const [user, setUser] = useState<User | null>(null);

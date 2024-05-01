@@ -1,8 +1,8 @@
 "use client";
 
-import { insertPollVote } from "~/server/db/queries";
-import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { insertPollVote } from "~/server/db/queries";
 
 export function Votes({
 	options,
