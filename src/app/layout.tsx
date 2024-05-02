@@ -1,31 +1,11 @@
 import "~/styles/globals.css";
-
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
-
+import { interFont, minervaBoldFont, minervaRegularFont } from "~/lib/fonts";
 import { cn } from "~/lib/utils";
 
-const minervaRegular = localFont({
-	src: "../assets/fonts/MINERVAMODERNRegular.otf",
-	variable: "--font-heading",
-	display: "swap",
-});
-
-const minervaBold = localFont({
-	src: "../assets/fonts/MINERVAMODERNBold.otf",
-	variable: "--font-heading",
-	display: "swap",
-});
-
-const inter = Inter({
-	subsets: ["latin"],
-	variable: "--font-sans",
-	display: "swap",
-});
-
 export const metadata = {
-	title: "Polling WebApp",
-	description: "Nextjs WebApp Liaison Polling Web",
+	title: "Ask The Liaison - Social Polling",
+	description:
+		"Social Polling is a web application that allows users to create polls and vote on them.",
 	icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
@@ -39,9 +19,9 @@ export default function RootLayout({
 			<body
 				className={cn(
 					"font-sans antialiased min-h-dvh scroll-smooth",
-					minervaRegular.variable,
-					minervaBold.variable,
-					inter.variable,
+					interFont.variable,
+					minervaRegularFont.variable,
+					minervaBoldFont.variable,
 				)}
 			>
 				{children}
