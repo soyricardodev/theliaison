@@ -84,7 +84,7 @@ const config = {
 			},
 			fontFamily: {
 				heading: ["var(--font-heading)", ...fontFamily.serif],
-				sans: ["var(--font-sans)", ...fontFamily.sans],
+				sans: ["var(--font-geist-sans)", ...fontFamily.sans],
 			},
 		},
 	},
