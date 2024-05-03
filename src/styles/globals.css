@@ -42,10 +42,15 @@
 
 @layer base {
   * {
+    font-feature-settings: "zero";
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .\@container {
+    container-type: inline-size;
   }
 }
 
