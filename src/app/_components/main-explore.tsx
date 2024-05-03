@@ -1,7 +1,7 @@
-import { createClient } from "~/utils/supabase/server";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { PollCard, PollsContainer } from "./polls";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
+import { createClient } from "~/utils/supabase/server";
+import { PollCard, PollsContainer } from "./polls";
 
 export async function MainExplore() {
 	const supabase = createClient();

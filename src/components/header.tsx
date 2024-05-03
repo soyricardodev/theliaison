@@ -1,8 +1,18 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
-import { createClient } from "~/utils/supabase/server";
-import { cn } from "~/lib/utils";
+import {
+	ExitIcon,
+	PersonIcon,
+	QuestionMarkCircledIcon,
+} from "@radix-ui/react-icons";
+import {
+	CircleDollarSignIcon,
+	CommandIcon,
+	CreditCardIcon,
+	LayoutDashboardIcon,
+	MenuIcon,
+} from "lucide-react";
 import {
 	Menubar,
 	MenubarContent,
@@ -11,19 +21,9 @@ import {
 	MenubarSeparator,
 	MenubarTrigger,
 } from "~/components/ui/menubar";
+import { cn } from "~/lib/utils";
+import { createClient } from "~/utils/supabase/server";
 import { Logo } from "./logo";
-import {
-	LayoutDashboardIcon,
-	CreditCardIcon,
-	CircleDollarSignIcon,
-	CommandIcon,
-	MenuIcon,
-} from "lucide-react";
-import {
-	ExitIcon,
-	PersonIcon,
-	QuestionMarkCircledIcon,
-} from "@radix-ui/react-icons";
 import { Button, buttonVariants } from "./ui/button";
 
 export function Header() {

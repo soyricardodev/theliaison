@@ -1,9 +1,9 @@
 "use client";
-import { createClient } from "~/utils/supabase/client";
-import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { getTimeAgo } from "~/lib/utils";
+import { createClient } from "~/utils/supabase/client";
 
 type Comment = {
 	content: string;

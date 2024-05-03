@@ -1,7 +1,7 @@
 import { MoveUpRightIcon } from "lucide-react";
+import { DotPattern } from "~/components/magicui/dot-pattern";
 import { cn } from "~/lib/utils";
 import { SearchForm } from "./search-form";
-import { DotPattern } from "~/components/magicui/dot-pattern";
 
 export function Hero() {
 	const suggestions = [

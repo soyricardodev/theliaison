@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { Progress } from "~/components/ui/progress";
 import { cn } from "~/lib/utils";
 import { PollWithOptionsAndVotes } from "~/types/poll";

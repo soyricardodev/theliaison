@@ -1,11 +1,11 @@
 import "~/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
 
+import { Footer } from "~/components/footer";
+import { Header } from "~/components/header";
+import { TailwindIndicator } from "~/components/tailwind-indicator";
 import { minervaBoldFont, minervaRegularFont } from "~/lib/fonts";
 import { cn } from "~/lib/utils";
-import { Header } from "~/components/header";
-import { Footer } from "~/components/footer";
-import { TailwindIndicator } from "~/components/tailwind-indicator";
 
 export const metadata = {
 	title: "Ask The Liaison - Social Polling",

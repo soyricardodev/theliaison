@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Progress } from "~/components/ui/progress";
+import { ScrollArea } from "~/components/ui/scroll-area";
+import { Toaster } from "~/components/ui/sonner";
 import { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
 import { Comments } from "./comments";
-import { ScrollArea } from "~/components/ui/scroll-area";
 import { FormComment } from "./form-comment";
 import { OptionToVote } from "./option-to-vote";
-import { Toaster } from "~/components/ui/sonner";
 
 export default async function PollPage({
 	params: { id },

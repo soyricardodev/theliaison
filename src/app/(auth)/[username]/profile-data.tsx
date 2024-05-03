@@ -1,9 +1,9 @@
 "use client";
-import { useState } from "react";
+import { InstagramLogoIcon, PersonIcon } from "@radix-ui/react-icons";
 import { PencilIcon } from "lucide-react";
-import { PersonIcon, InstagramLogoIcon } from "@radix-ui/react-icons";
-import { Input } from "~/components/ui/input";
+import { useState } from "react";
 import { Button } from "~/components/ui/button";
+import { Input } from "~/components/ui/input";
 
 export function ProfileData({
 	fullName,
