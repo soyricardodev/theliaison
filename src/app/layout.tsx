@@ -1,6 +1,11 @@
 import "~/styles/globals.css";
-import { interFont, minervaBoldFont, minervaRegularFont } from "~/lib/fonts";
+import { GeistSans } from "geist/font/sans";
+
+import { minervaBoldFont, minervaRegularFont } from "~/lib/fonts";
 import { cn } from "~/lib/utils";
+import { Header } from "~/components/header";
+import { Footer } from "~/components/footer";
+import { TailwindIndicator } from "~/components/tailwind-indicator";
 
 export const metadata = {
 	title: "Ask The Liaison - Social Polling",
@@ -18,13 +23,18 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning>
 			<body
 				className={cn(
-					"font-sans antialiased min-h-dvh scroll-smooth",
-					interFont.variable,
+					"font-sans antialiased",
+					GeistSans.variable,
 					minervaRegularFont.variable,
 					minervaBoldFont.variable,
 				)}
 			>
-				{children}
+				<div className="flex flex-col min-h-svh">
+					<Header />
+					{children}
+					<Footer />
+				</div>
+				<TailwindIndicator />
 			</body>
 		</html>
 	);
