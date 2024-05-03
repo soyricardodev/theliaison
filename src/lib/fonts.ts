@@ -1,4 +1,3 @@
-import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 
 const minervaRegularFont = localFont({
@@ -13,10 +12,4 @@ const minervaBoldFont = localFont({
 	display: "swap",
 });
 
-const interFont = Inter({
-	subsets: ["latin"],
-	variable: "--font-sans",
-	display: "swap",
-});
-
-export { minervaRegularFont, minervaBoldFont, interFont };
+export { minervaRegularFont, minervaBoldFont };
