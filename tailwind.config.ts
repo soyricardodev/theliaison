@@ -89,6 +89,7 @@ const config = {
 		},
 	},
 	plugins: [
+		require("@tailwindcss/typography"),
 		require("tailwindcss-animate"),
 		addVariablesForColors,
 		// biome-ignore lint/suspicious/noExplicitAny: missing types
