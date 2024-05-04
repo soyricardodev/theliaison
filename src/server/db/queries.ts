@@ -49,7 +49,6 @@ export async function createPollWithOptions(values: PollFormValues) {
 		.insert(categoriesToInsert);
 
 	if (createPollCategoriesError) {
-		console.log(createPollCategoriesError);
 		throw new Error("Unable to create poll categories");
 	}
 
