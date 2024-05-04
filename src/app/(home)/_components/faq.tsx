@@ -135,7 +135,7 @@ const faqs = [
 
 export default function FAQ() {
 	return (
-		<section id="faq my-8">
+		<section id="faq">
 			<div className="py-14">
 				<div className="container mx-auto px-4 md:px-8">
 					<div className="mx-auto max-w-5xl text-center">
