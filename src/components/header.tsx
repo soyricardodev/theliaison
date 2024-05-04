@@ -119,7 +119,9 @@ async function Menu() {
 									className="mr-2 grid truncate text-sm"
 									href={`/${username}`}
 								>
-									<span className="font-medium" id="user-name"></span>
+									<span className="font-medium" id="user-name">
+										{username}
+									</span>
 									<span className="text-zinc-500">{user.email}</span>
 								</Link>
 							</div>
