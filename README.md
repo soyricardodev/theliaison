@@ -5,21 +5,18 @@
 - [x] Setup Stripe webhooks
 - [x] Setup Schemas for stripe products
 - [x] Build to production
-- [ ] Setup Databases Schema for polling (w/ drizzle)
-- [ ] Add basic ui for create a poll
-- [ ] Add basic ui for view polls
-- [ ] Add basic ui for vote on polls
-- [ ] Add basic ui for delete polls
-- [ ] Add basic ui for edit polls
-- [ ] Add functionality to create poll
-- [ ] Add functionality to view polls
-- [ ] Add functionality to vote on polls
-- [ ] Add functionality to delete polls
-- [ ] Add functionality to edit polls
-- [ ] Add ui for comment on polls
-- [ ] Add ui for delete comment
-- [ ] Add ui for edit comment
-- [ ] Add functionality to comment on polls
+- [x] Setup Databases Schema for polling (w/ drizzle)
+- [x] Add basic ui for create a poll
+- [x] Add basic ui for view polls
+- [x] Add basic ui for vote on polls
+- [x] Add basic ui for delete polls
+- [x] Add basic ui for edit polls
+- [x] Add functionality to create poll
+- [x] Add functionality to view polls
+- [x] Add functionality to vote on polls
+- [x] Add functionality to delete polls
+- [x] Add functionality to edit polls
+- [x] Add functionality to comment on polls
 - [ ] Add functionality to delete comment
 - [ ] Add functionality to edit comment
 - [ ] Add reply to comment
