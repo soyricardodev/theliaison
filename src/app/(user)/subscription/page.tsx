@@ -17,7 +17,7 @@ export default async function SubscriptionPage() {
 		return redirect("/");
 	}
 
-	const { data: subscription, error } = await supabase
+	const { data: subscription } = await supabase
 		.from("subscriptions")
 		.select("*, prices(*, products(*))")
 		.in("status", ["active"])
