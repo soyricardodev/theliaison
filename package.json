@@ -69,7 +69,7 @@
 		"tailwindcss": "3.4.3",
 		"typescript": "5.4.5"
 	},
-	"packageManager": "bun@1.1.6",
+	"packageManager": "bun@1.1.7",
 	"trustedDependencies": [
 		"@biomejs/biome",
 		"@vercel/speed-insights",
