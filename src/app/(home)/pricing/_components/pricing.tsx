@@ -31,11 +31,8 @@ interface Props {
 	subscription: SubscriptionWithProduct | null;
 }
 
-type BillingInterval = "lifetime" | "year" | "month";
-
 export default function Pricing({ user, products, subscription }: Props) {
 	const router = useRouter();
-	useState<BillingInterval>("month");
 	const [priceIdLoading, setPriceIdLoading] = useState<string>();
 	const currentPath = usePathname();
 
