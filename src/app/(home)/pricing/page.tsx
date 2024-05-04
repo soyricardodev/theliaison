@@ -1,22 +1,22 @@
 import { createClient } from "~/utils/supabase/server";
-import Pricing from "./_components/pricing";
+import { PricingSelect } from "./_components/pricing-select";
 
 export default async function PricingPage() {
 	const supabase = createClient();
 
-	const {
-		data: { user },
-	} = await supabase.auth.getUser();
+	// const {
+	// 	data: { user },
+	// } = await supabase.auth.getUser();
 
-	const { data: subscription, error } = await supabase
-		.from("subscriptions")
-		.select("*, prices(*, products(*))")
-		.in("status", ["trialing", "active"])
-		.maybeSingle();
+	// const { data: subscription, error } = await supabase
+	// 	.from("subscriptions")
+	// 	.select("*, prices(*, products(*))")
+	// 	.in("status", ["trialing", "active"])
+	// 	.maybeSingle();
 
-	if (error) {
-		console.log(error);
-	}
+	// if (error) {
+	// 	console.log(error);
+	// }
 
 	const { data: products } = await supabase
 		.from("products")
@@ -31,6 +31,7 @@ export default async function PricingPage() {
 	// 	products={products ?? []}
 	// 	subscription={subscription}
 	// />
+
 	return (
 		<main className="flex-1 overflow-auto">
 			<div className="w-full">
@@ -44,6 +45,11 @@ export default async function PricingPage() {
 							interfaces; from individuals to big enterprises, we have a plan
 							that fits just what you need.
 						</p>
+					</div>
+
+					{/* Pricing Mobile */}
+					<div className="w-full">
+						<PricingSelect products={products} />
 					</div>
 				</div>
 			</div>
