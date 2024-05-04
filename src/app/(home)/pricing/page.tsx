@@ -1,12 +1,12 @@
-import { createClient } from "~/utils/supabase/server";
-import { PricingSelect } from "./_components/pricing-select";
+import Link from "next/link";
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
 } from "~/components/ui/accordion";
-import Link from "next/link";
+import { createClient } from "~/utils/supabase/server";
+import { PricingSelect } from "./_components/pricing-select";
 
 const faqs = [
 	{

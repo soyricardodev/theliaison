@@ -2,11 +2,11 @@ import Stripe from "stripe";
 import { env } from "~/env";
 import { stripe } from "~/utils/stripe/config";
 import {
-	upsertProductRecord,
-	upsertPriceRecord,
-	manageSubscriptionStatusChange,
-	deleteProductRecord,
 	deletePriceRecord,
+	deleteProductRecord,
+	manageSubscriptionStatusChange,
+	upsertPriceRecord,
+	upsertProductRecord,
 } from "~/utils/supabase/admin";
 
 const relevantEvents = new Set([

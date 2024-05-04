@@ -2,7 +2,10 @@
 
 import * as React from "react";
 
-import { cn } from "~/lib/utils";
+import { User } from "@supabase/supabase-js";
+import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { Button } from "~/components/ui/button";
 import {
 	Select,
 	SelectContent,
@@ -11,14 +14,11 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "~/components/ui/select";
-import { Button } from "~/components/ui/button";
-import { checkoutWithStripe } from "~/utils/stripe/server";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { cn } from "~/lib/utils";
 import { Tables } from "~/types/database-types";
-import { User } from "@supabase/supabase-js";
 import { getErrorRedirect } from "~/utils/helpers";
 import { getStripe } from "~/utils/stripe/client";
+import { checkoutWithStripe } from "~/utils/stripe/server";
 
 type Price = Tables<"prices">;
 
