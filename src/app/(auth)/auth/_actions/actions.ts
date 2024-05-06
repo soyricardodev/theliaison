@@ -1,5 +1,4 @@
 "use server";
-import { Provider } from "@supabase/supabase-js";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -16,33 +15,29 @@ export async function login(formData: FormData) {
 	const { error } = await supabase.auth.signInWithPassword(data);
 
 	if (error) {
-		console.log(error);
-		return redirect("/auth/signup");
+		return redirect("/signup");
 	}
 
 	revalidatePath("/", "layout");
-	redirect("/profile");
+	redirect("/explore");
 }
 
 export async function signOauth(formData: FormData) {
 	const supabase = createClient();
 
 	const { error, data } = await supabase.auth.signInWithOAuth({
-		provider: formData.get("provider") as Provider,
+		provider: "google",
 		options: {
-			redirectTo: "/profile",
+			redirectTo: "/explore",
 		},
 	});
-
-	console.log(error);
-	console.log(data);
 
 	if (error) {
 		return redirect("/auth/error");
 	}
 
 	revalidatePath("/", "layout");
-	redirect("/profile");
+	redirect("/explore");
 }
 
 export async function signup(formData: FormData) {
@@ -62,5 +57,5 @@ export async function signup(formData: FormData) {
 	}
 
 	revalidatePath("/", "layout");
-	redirect(`/auth/signup/confirm/${email}`);
+	redirect(`/signup/confirm/${email}`);
 }
