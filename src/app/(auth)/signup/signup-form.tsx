@@ -1,9 +1,11 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
 import { useRef } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
 import { Button } from "~/components/ui/button";
+import { Calendar } from "~/components/ui/calendar";
 import {
 	Command,
 	CommandEmpty,
@@ -21,7 +23,6 @@ import {
 	FormMessage,
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
 import {
 	Popover,
 	PopoverContent,
@@ -37,7 +38,7 @@ import {
 import { type SignUp, signUpSchema } from "~/utils/validators/auth";
 import { signup } from "../actions";
 
-import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
+import { CalendarIcon, CheckIcon, ChevronsUpDownIcon } from "lucide-react";
 import { ScrollArea } from "~/components/ui/scroll-area";
 import { cn } from "~/lib/utils";
 import { countries } from "~/utils/countries";
@@ -55,7 +56,7 @@ export function SignupForm() {
 			name: "",
 			username: "",
 			gender: "female",
-			age: 0,
+			dob: new Date("1/1/2000"),
 			maritalStatus: "single",
 			country: "",
 			city: "",
@@ -127,13 +128,44 @@ export function SignupForm() {
 
 				<FormField
 					control={form.control}
-					name="age"
+					name="dob"
 					render={({ field }) => (
 						<FormItem className="w-full">
-							<FormLabel>Age</FormLabel>
-							<FormControl>
-								<Input placeholder="18" {...field} />
-							</FormControl>
+							<FormLabel>Date of birth</FormLabel>
+							<Popover>
+								<PopoverTrigger asChild>
+									<FormControl>
+										<Button
+											variant="outline"
+											className={cn(
+												"w-[240px] pl-3 text-left font-normal",
+												!field.value && "text-muted-foreground",
+											)}
+										>
+											{field.value ? (
+												format(field.value, "PPP")
+											) : (
+												<span>Pick a date</span>
+											)}
+											<CalendarIcon className="ml-auto size-4 opacity-50" />
+										</Button>
+									</FormControl>
+								</PopoverTrigger>
+								<PopoverContent className="w-auto p-0" align="start">
+									<Calendar
+										mode="single"
+										selected={field.value}
+										onSelect={field.onChange}
+										disabled={(date) =>
+											date > new Date() || date < new Date("1900-01-01")
+										}
+										fromYear={1900}
+										toYear={2005}
+										initialFocus
+										captionLayout="dropdown-buttons"
+									/>
+								</PopoverContent>
+							</Popover>
 							<FormDescription>
 								You must be at least 18 years old.
 							</FormDescription>
