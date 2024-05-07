@@ -1,13 +1,16 @@
 "use client";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
 import { useFormState, useFormStatus } from "react-dom";
-import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
-import { Label } from "~/components/ui/label";
-import { signup } from "../actions";
-import { signUpSchema, type SignUp } from "~/utils/validators/auth";
 import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Button } from "~/components/ui/button";
+import {
+	Command,
+	CommandEmpty,
+	CommandGroup,
+	CommandInput,
+	CommandItem,
+} from "~/components/ui/command";
 import {
 	Form,
 	FormControl,
@@ -17,6 +20,13 @@ import {
 	FormLabel,
 	FormMessage,
 } from "~/components/ui/form";
+import { Input } from "~/components/ui/input";
+import { Label } from "~/components/ui/label";
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "~/components/ui/popover";
 import {
 	Select,
 	SelectContent,
@@ -24,23 +34,13 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "~/components/ui/select";
-import {
-	Command,
-	CommandEmpty,
-	CommandGroup,
-	CommandInput,
-	CommandItem,
-} from "~/components/ui/command";
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from "~/components/ui/popover";
+import { type SignUp, signUpSchema } from "~/utils/validators/auth";
+import { signup } from "../actions";
 
-import { countries } from "~/utils/countries";
 import { CheckIcon, ChevronsUpDownIcon } from "lucide-react";
-import { cn } from "~/lib/utils";
 import { ScrollArea } from "~/components/ui/scroll-area";
+import { cn } from "~/lib/utils";
+import { countries } from "~/utils/countries";
 
 export function SignupForm() {
 	const [state, formAction] = useFormState(signup, {
@@ -219,6 +219,19 @@ export function SignupForm() {
 									</Command>
 								</PopoverContent>
 							</Popover>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name="city"
+					render={({ field }) => (
+						<FormItem className="w-full">
+							<FormLabel>City</FormLabel>
+							<FormControl>
+								<Input {...field} />
+							</FormControl>
 							<FormMessage />
 						</FormItem>
 					)}

@@ -1,6 +1,6 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { logoBlack } from "~/assets/images";
 import { SignupForm } from "./signup-form";
 

@@ -172,7 +172,7 @@ async function Menu() {
 						<>
 							<div className="p-2">
 								<MenubarItem asChild className="rounded-md py-2.5 gap-2.5">
-									<Link href="/">
+									<Link href="/login">
 										<PersonIcon className="text-zinc-800 size-4" />
 										<span>Login</span>
 									</Link>
