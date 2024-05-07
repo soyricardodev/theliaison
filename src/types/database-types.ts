@@ -254,9 +254,9 @@ export type Database = {
 			};
 			profiles: {
 				Row: {
-					age: number | null;
 					avatar_url: string | null;
 					billing_address: Json | null;
+					birthday_date: string | null;
 					city: string | null;
 					country: string | null;
 					full_name: string | null;
@@ -268,9 +268,9 @@ export type Database = {
 					username: string | null;
 				};
 				Insert: {
-					age?: number | null;
 					avatar_url?: string | null;
 					billing_address?: Json | null;
+					birthday_date?: string | null;
 					city?: string | null;
 					country?: string | null;
 					full_name?: string | null;
@@ -282,9 +282,9 @@ export type Database = {
 					username?: string | null;
 				};
 				Update: {
-					age?: number | null;
 					avatar_url?: string | null;
 					billing_address?: Json | null;
+					birthday_date?: string | null;
 					city?: string | null;
 					country?: string | null;
 					full_name?: string | null;
@@ -460,7 +460,8 @@ export type Database = {
 				| "married"
 				| "divorced"
 				| "widowed"
-				| "separated";
+				| "separated"
+				| "loving relationship";
 			pricing_plan_interval: "day" | "week" | "month" | "year";
 			pricing_type: "one_time" | "recurring";
 			subscription_status:
