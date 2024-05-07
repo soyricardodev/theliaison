@@ -25,22 +25,16 @@ export const signUpSchema = z.object({
 			message: "Username must be at least 3 characters.",
 		}),
 	gender: z.enum(["male", "female", "other"]),
-	age: z
-		.number({
-			required_error: "Please enter your age",
-			invalid_type_error: "Age must be a number.",
-		})
-		.min(18, { message: "You must be at least 18 years old." })
-		.max(120, {
-			message: "You must be at most 120 years old.",
-		})
-		.nonnegative({ message: "You must be at least 18 years old." }),
+	dob: z.date({
+		required_error: "A date of birth is required.",
+	}),
 	maritalStatus: z.enum([
 		"single",
 		"married",
 		"divorced",
 		"widowed",
 		"separated",
+		"in relationship",
 	]),
 	country: z.string().regex(/^[a-zA-Z]{2}$/, {
 		message: "Country must be a valid ISO 3166-1 alpha-2 code.",
