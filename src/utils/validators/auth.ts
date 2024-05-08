@@ -1,4 +1,3 @@
-import { count } from "console";
 import { z } from "zod";
 
 export const signInWithEmailSchema = z.object({
@@ -15,7 +14,9 @@ export const signUpSchema = z.object({
 	password: z.string().min(8, {
 		message: "Password must be at least 8 characters.",
 	}),
-	name: z.string({ required_error: "Please enter your full name" }),
+	name: z
+		.string({ required_error: "Please enter your full name" })
+		.min(2, { message: "Your name should be at least 2 characters" }),
 	username: z
 		.string()
 		.regex(/^[a-zA-Z0-9_]+$/, {
@@ -24,7 +25,7 @@ export const signUpSchema = z.object({
 		.min(3, {
 			message: "Username must be at least 3 characters.",
 		}),
-	gender: z.enum(["male", "female", "other"]),
+	gender: z.enum(["female", "male", "other"]),
 	dob: z.date({
 		required_error: "A date of birth is required.",
 	}),
@@ -34,7 +35,7 @@ export const signUpSchema = z.object({
 		"divorced",
 		"widowed",
 		"separated",
-		"in relationship",
+		"loving relationship",
 	]),
 	country: z.string().regex(/^[a-zA-Z]{2}$/, {
 		message: "Country must be a valid ISO 3166-1 alpha-2 code.",
