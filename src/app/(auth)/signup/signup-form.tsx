@@ -1,6 +1,7 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
+import { CalendarIcon, CheckIcon, ChevronsUpDownIcon } from "lucide-react";
 import { useRef } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
@@ -28,6 +29,7 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "~/components/ui/popover";
+import { ScrollArea } from "~/components/ui/scroll-area";
 import {
 	Select,
 	SelectContent,
@@ -35,18 +37,18 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "~/components/ui/select";
-import { type SignUp, signUpSchema } from "~/utils/validators/auth";
-import { signup } from "../actions";
-
-import { CalendarIcon, CheckIcon, ChevronsUpDownIcon } from "lucide-react";
-import { ScrollArea } from "~/components/ui/scroll-area";
 import { cn } from "~/lib/utils";
 import { countries } from "~/utils/countries";
+import { type SignUp, signUpSchema } from "~/utils/validators/auth";
+import { signup, signupLean } from "../actions";
+import { useRouter } from "next/navigation";
 
 export function SignupForm() {
 	const [state, formAction] = useFormState(signup, {
 		message: "",
 	});
+
+	const router = useRouter();
 
 	const form = useForm<SignUp>({
 		resolver: zodResolver(signUpSchema),
@@ -69,18 +71,20 @@ export function SignupForm() {
 
 	const { pending } = useFormStatus();
 
+	async function onSubmit(data: SignUp) {
+    const profileData = await signupLean({ ...data })
+
+    if (profileData) {
+      router.push(`/${data.username}`)
+    }
+
+  }
+
 	return (
 		<Form {...form}>
 			<form
-				ref={formRef}
 				className="grid gap-4"
-				action={formAction}
-				onSubmit={(evt) => {
-					evt.preventDefault();
-					form.handleSubmit(() => {
-						formAction(new FormData(formRef.current!));
-					})(evt);
-				}}
+				onSubmit={form.handleSubmit(onSubmit)}
 			>
 				<FormField
 					control={form.control}
@@ -98,12 +102,33 @@ export function SignupForm() {
 				/>
 				<FormField
 					control={form.control}
+					name="username"
+					render={({ field }) => (
+						<FormItem className="w-full">
+							<FormLabel>Username</FormLabel>
+							<FormControl>
+								<Input placeholder="john2doe" {...field} />
+							</FormControl>
+							<FormDescription>
+								Your username just can contain numbers and letters and
+								underscores.
+							</FormDescription>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
 					name="email"
 					render={({ field }) => (
 						<FormItem className="w-full">
 							<FormLabel>Email</FormLabel>
 							<FormControl>
-								<Input placeholder="johndoe@example.com" {...field} />
+								<Input
+									type="email"
+									placeholder="johndoe@example.com"
+									{...field}
+								/>
 							</FormControl>
 							<FormMessage />
 						</FormItem>
@@ -116,7 +141,7 @@ export function SignupForm() {
 						<FormItem className="w-full">
 							<FormLabel>Password</FormLabel>
 							<FormControl>
-								<Input placeholder="********" {...field} />
+								<Input type="password" placeholder="********" {...field} />
 							</FormControl>
 							<FormDescription>
 								Set a password for your account.
@@ -130,7 +155,7 @@ export function SignupForm() {
 					control={form.control}
 					name="dob"
 					render={({ field }) => (
-						<FormItem className="w-full">
+						<FormItem className="w-full flex flex-col gap-2">
 							<FormLabel>Date of birth</FormLabel>
 							<Popover>
 								<PopoverTrigger asChild>
@@ -138,7 +163,7 @@ export function SignupForm() {
 										<Button
 											variant="outline"
 											className={cn(
-												"w-[240px] pl-3 text-left font-normal",
+												"pl-3 text-left font-normal rounded-none",
 												!field.value && "text-muted-foreground",
 											)}
 										>
@@ -193,6 +218,35 @@ export function SignupForm() {
 								</SelectContent>
 							</Select>
 							<FormDescription>Select your gender.</FormDescription>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+
+				<FormField
+					control={form.control}
+					name="maritalStatus"
+					render={({ field }) => (
+						<FormItem className="w-full">
+							<FormLabel>Marital Status</FormLabel>
+							<Select onValueChange={field.onChange} defaultValue={field.value}>
+								<FormControl>
+									<SelectTrigger>
+										<SelectValue placeholder="Select your marital status" />
+									</SelectTrigger>
+								</FormControl>
+								<SelectContent>
+									<SelectItem value="single">Single</SelectItem>
+									<SelectItem value="married">Married</SelectItem>
+									<SelectItem value="divorced">Divorced</SelectItem>
+									<SelectItem value="widowed">Widowed</SelectItem>
+									<SelectItem value="separated">Separated</SelectItem>
+									<SelectItem value="in relationship">
+										In Relationship
+									</SelectItem>
+								</SelectContent>
+							</Select>
+							<FormDescription>Select your Marital Status.</FormDescription>
 							<FormMessage />
 						</FormItem>
 					)}
@@ -262,8 +316,9 @@ export function SignupForm() {
 						<FormItem className="w-full">
 							<FormLabel>City</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input placeholder="Nothing hill" {...field} />
 							</FormControl>
+							<FormDescription>Write your city</FormDescription>
 							<FormMessage />
 						</FormItem>
 					)}
