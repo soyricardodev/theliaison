@@ -1,6 +1,27 @@
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { createClient } from "~/utils/supabase/server";
 import { CreatePollForm } from "./_components/create-poll-form";
 
-export default function Component() {
+export default async function Component() {
+	const supabase = createClient();
+
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
+
+	if (!user) {
+		return redirect("/login");
+	}
+
+	const { data: subscription } = await supabase
+		.from("subscriptions")
+		.select("*, prices(*, products(*))")
+		.in("status", ["active"])
+		.maybeSingle();
+
+	const isPollCreator = subscription?.prices?.products?.name === "Poll Creator";
+
 	return (
 		<div className="container mx-auto max-w-screen-md py-12 lg:py-28">
 			<div className="space-y-8">
@@ -11,7 +32,24 @@ export default function Component() {
 							Get feedback from your audience by creating a new poll.
 						</p>
 					</div>
-					<CreatePollForm className="space-y-4" />
+					{!subscription ? (
+						<div>
+							<h3>You don't have an active subscription</h3>
+							<Link href="/pricing" className="text-blue-500 hover:underline">
+								Go to pricing page
+							</Link>
+						</div>
+					) : null}
+					{isPollCreator ? (
+						<CreatePollForm />
+					) : (
+						<div>
+							<h3>You don't have an active subscription</h3>
+							<Link href="/pricing" className="text-blue-500 hover:underline">
+								Go to pricing page
+							</Link>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>

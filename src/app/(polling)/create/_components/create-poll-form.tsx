@@ -101,14 +101,16 @@ export function CreatePollForm({ className }: React.ComponentProps<"form">) {
 	});
 
 	async function onSubmit(data: PollFormValues) {
-		toast.promise(createPollWithOptions(data), {
+    const poll = await createPollWithOptions(data)
+    toast.success("Poll created successfully")
+    router.push(`/poll/${poll.id}`)
+		/*toast.promise(createPollWithOptions(data), {
 			loading: "Creating poll",
 			success: () => {
-				router.refresh();
 				return "Poll created successfully";
 			},
 			error: "Error creating poll",
-		});
+		});*/
 	}
 
 	return (

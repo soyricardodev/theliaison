@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Button } from "~/components/ui/button";
 import { Progress } from "~/components/ui/progress";
@@ -24,14 +25,32 @@ export default async function SubscriptionPage() {
 		.maybeSingle();
 
 	const { percentage, remainingDays } = getSubscriptionProgress(
-		String(subscription?.current_period_start),
+		String(subscription?.current_period_end),
 	);
+
+	const periodEnd = new Date(
+		String(subscription?.current_period_end),
+	).getTime();
+	const today = new Date().getTime();
+	const diffInMilliseconds = Math.abs(periodEnd - today);
+	const diffInDays = diffInMilliseconds / (1000 * 60 * 60 * 24);
 
 	const suscriptionPrice = Intl.NumberFormat("en-US", {
 		style: "currency",
-		currency: subscription?.prices?.currency!,
+		currency: subscription?.prices?.currency! || "usd",
 		minimumFractionDigits: 0,
 	}).format((subscription?.prices?.unit_amount || 0) / 100);
+
+	const renewalDate = new Date(
+		String(subscription?.current_period_end),
+	).toLocaleDateString("en-US", {
+		month: "long",
+		day: "numeric",
+		year: "numeric",
+	});
+
+	const renewalDateToDisplay =
+		renewalDate === "Invalid Date" ? "" : renewalDate;
 
 	return (
 		<main className="flex-1 overflow-auto">
@@ -62,13 +81,18 @@ export default async function SubscriptionPage() {
 										<h3 className="pb-4 text-base font-semibold flex flex-wrap items-center gap-x-2">
 											<span>Plan Summary</span>
 											<div className="w-fit rounded-full px-2 py-0.5 text-xs bg-zinc-200 text-black">
-												{subscription?.prices?.products?.name} Plan
+												{subscription?.prices?.products?.name || "No"} Plan
 											</div>
 										</h3>
 										<div className="grid grid-cols-3 gap-4 md:grid-cols-6">
 											<div className="col-span-3 flex flex-col pr-12">
 												<div className="-mt-0.5 flex-1 pb-2  text-xs font-normal text-geist-gray-900 md:pb-0">
-													<span>{remainingDays}</span> days left
+													<span>
+														{Number.isNaN(diffInDays)
+															? 0
+															: Math.round(diffInDays)}
+													</span>{" "}
+													days left
 												</div>
 												<div className="mb-1 flex items-end">
 													<Progress value={percentage} className="h-[10px]" />
@@ -87,7 +111,7 @@ export default async function SubscriptionPage() {
 													Status
 												</div>
 												<div className="flex-1 pt-1 text-sm font-medium text-[#171717] capitalize">
-													{subscription?.status}
+													{subscription?.status || "Active"}
 												</div>
 											</div>
 											<div className="col-span-1 flex flex-col">
@@ -95,21 +119,19 @@ export default async function SubscriptionPage() {
 													Renewal Date
 												</div>
 												<div className="flex-1 pt-1 text-sm font-medium text-[#171717]">
-													{new Date(
-														String(subscription?.current_period_end),
-													).toLocaleDateString("en-US", {
-														month: "long",
-														day: "numeric",
-														year: "numeric",
-													})}
+													{renewalDateToDisplay}
 												</div>
 											</div>
 										</div>
 									</div>
 									<footer className="rounded-b-lg border-t border-border px-4 flex flex-col justify-between gap-4 bg-[#fafafa] py-3 sm:flex-row sm:items-center">
 										<div className="flex flex-col gap-2 sm:ml-auto sm:flex-row">
-											<Button variant="outline" className="w-full rounded-md">
-												Upgrade
+											<Button
+												variant="outline"
+												className="w-full rounded-md"
+												asChild
+											>
+												<Link href="/pricing">Upgrade</Link>
 											</Button>
 										</div>
 									</footer>

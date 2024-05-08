@@ -2,6 +2,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
 import { CalendarIcon, CheckIcon, ChevronsUpDownIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useRef } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
@@ -41,7 +42,6 @@ import { cn } from "~/lib/utils";
 import { countries } from "~/utils/countries";
 import { type SignUp, signUpSchema } from "~/utils/validators/auth";
 import { signup, signupLean } from "../actions";
-import { useRouter } from "next/navigation";
 
 export function SignupForm() {
 	const [state, formAction] = useFormState(signup, {
@@ -72,20 +72,16 @@ export function SignupForm() {
 	const { pending } = useFormStatus();
 
 	async function onSubmit(data: SignUp) {
-    const profileData = await signupLean({ ...data })
+		const profileData = await signupLean({ ...data });
 
-    if (profileData) {
-      router.push(`/${data.username}`)
-    }
-
-  }
+		if (profileData) {
+			router.push(`/${data.username}`);
+		}
+	}
 
 	return (
 		<Form {...form}>
-			<form
-				className="grid gap-4"
-				onSubmit={form.handleSubmit(onSubmit)}
-			>
+			<form className="grid gap-4" onSubmit={form.handleSubmit(onSubmit)}>
 				<FormField
 					control={form.control}
 					name="name"
