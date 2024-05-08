@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { logoBlack } from "~/assets/images";
+import { Toaster } from "~/components/ui/sonner";
 import { SignupForm } from "./signup-form";
 
 export const metadata: Metadata = {
@@ -13,6 +14,7 @@ export default function RegisterPage() {
 	return (
 		<div className="container grid h-[calc(100vh-8px)] w-screen flex-col items-center justify-center lg:max-w-none mx-auto lg:px-0">
 			<div className="lg:p-8">
+				<Toaster />
 				<div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
 					<div className="flex flex-col gap-1.5 text-center">
 						<Image
