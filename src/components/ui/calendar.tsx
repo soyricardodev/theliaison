@@ -18,16 +18,17 @@ function Calendar({
 	return (
 		<DayPicker
 			showOutsideDays={showOutsideDays}
+			fixedWeeks
 			className={cn("p-3", className)}
 			classNames={{
 				months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
 				month: "space-y-4",
 				caption: "flex justify-center pt-1 relative items-center",
-				caption_label: "text-sm font-medium",
+				caption_label: "text-sm font-medium text-blue-600 hidden",
 				nav: "space-x-1 flex items-center",
 				nav_button: cn(
 					buttonVariants({ variant: "outline" }),
-					"h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
+					"h-7 w-7 bg-transparent p-0 opacity-50 mx-2 hover:opacity-100",
 				),
 				nav_button_previous: "absolute left-1",
 				nav_button_next: "absolute right-1",
@@ -51,6 +52,8 @@ function Calendar({
 				day_range_middle:
 					"aria-selected:bg-accent aria-selected:text-accent-foreground",
 				day_hidden: "invisible",
+				caption_dropdowns: "p-1 text-sm",
+				dropdown: "bg-secondary ml-2 border rounded-md text-sm p-1 mb-2",
 				...classNames,
 			}}
 			components={{
