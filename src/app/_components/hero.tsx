@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { MoveUpRightIcon } from "lucide-react";
 import { DotPattern } from "~/components/magicui/dot-pattern";
 import { cn } from "~/lib/utils";
@@ -28,6 +29,33 @@ export function Hero() {
 		},
 	];
 
+  const categories = [
+    {
+      id: 1,
+      name: "Trending"
+    },
+    {
+      id: 2,
+      name: "Relationship"
+    },
+    {
+      id: 3,
+      name: "Dating"
+    },
+    {
+      id: 4,
+      name: "Sex"
+    },
+    {
+      id: 5,
+      name: "Self Care"
+    },
+    {
+      id: 6,
+      name: "Entertainment"
+    },
+  ]
+
 	return (
 		<div className="relative mb-4 flex items-center justify-center py-[26vh] pt-[18vh] text-gray-900 sm:pt-[26vh]">
 			<DotPattern
@@ -47,8 +75,8 @@ export function Hero() {
 				</div>
 
 				<div className="absolute top-full mx-auto mt-6 flex max-w-full flex-wrap items-center justify-center gap-2 whitespace-nowrap px-4 text-sm">
-					{suggestions.map((suggestion, idx) => (
-						<SuggestionButton key={idx} name={suggestion.label} />
+					{categories.map((categorie, idx) => (
+						<SuggestionButton key={idx} name={categorie.name} />
 					))}
 				</div>
 			</div>
@@ -58,9 +86,10 @@ export function Hero() {
 
 function SuggestionButton({ name }: { name: string }) {
 	return (
-		<button className="inline-flex select-none items-center gap-1 whitespace-nowrap rounded-full border border-zinc-200 bg-white px-2 py-0.5 transition-colors hover:border-zinc-800">
+		<Link href="#" className="inline-flex select-none items-center gap-1 whitespace-nowrap rounded-full border border-zinc-200 bg-white px-2 py-0.5 transition-colors hover:border-zinc-800">
 			{name}
 			<MoveUpRightIcon width={15} height={15} />
-		</button>
+		</Link>
 	);
 }
+

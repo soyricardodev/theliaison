@@ -68,8 +68,6 @@ export function SearchForm() {
 					</div>
 				</form>
 			</div>
-			<pre className="text-white">{JSON.stringify(searchResults, null, 2)}</pre>
-			<pre className="text-white">{JSON.stringify(searchError, null, 2)}</pre>
 		</>
 	);
 }
