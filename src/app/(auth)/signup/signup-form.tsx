@@ -60,7 +60,7 @@ export function SignupForm() {
 			gender: "female",
 			dob: new Date("1/1/2000"),
 			maritalStatus: "single",
-			country: "",
+			country: "US",
 			city: "",
 			...(state?.fields ?? {}),
 		},
@@ -224,7 +224,7 @@ export function SignupForm() {
 					name="maritalStatus"
 					render={({ field }) => (
 						<FormItem className="w-full">
-							<FormLabel>Marital Status</FormLabel>
+							<FormLabel>Relationship Status</FormLabel>
 							<Select onValueChange={field.onChange} defaultValue={field.value}>
 								<FormControl>
 									<SelectTrigger>
