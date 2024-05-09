@@ -1,24 +1,24 @@
 "use client";
 
-import { useState } from "react"
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { logoBlack } from "~/assets/images";
-import { login } from "../actions"
-import { signInWithOAuth } from "~/utils/auth-helpers/client"
+import { signInWithOAuth } from "~/utils/auth-helpers/client";
+import { login } from "../actions";
 
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 
 export default function Signin() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmitOauth = async (e: React.FormEvent<HTMLFormElement>) => {
-    setIsSubmitting(true);
-    await signInWithOAuth(e);
-    setIsSubmitting(false);
-  }
+	const handleSubmitOauth = async (e: React.FormEvent<HTMLFormElement>) => {
+		setIsSubmitting(true);
+		await signInWithOAuth(e);
+		setIsSubmitting(false);
+	};
 
 	return (
 		<div className="container flex flex-col items-center justify-center h-[calc(100vh-120px)]">
@@ -65,9 +65,14 @@ export default function Signin() {
 						Log in
 					</Button>
 				</form>
-				<form className="pb-2" onSubmit={e => handleSubmitOauth(e)}>
+				<form className="pb-2" onSubmit={(e) => handleSubmitOauth(e)}>
 					<input type="hidden" name="provider" value="google" />
-					<Button disabled={isSubmitting} type="submit" className="w-full h-10" variant="outline">
+					<Button
+						disabled={isSubmitting}
+						type="submit"
+						className="w-full h-10"
+						variant="outline"
+					>
 						<span className="mr-2">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"

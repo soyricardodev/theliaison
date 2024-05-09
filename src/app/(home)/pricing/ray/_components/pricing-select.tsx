@@ -6,14 +6,6 @@ import { User } from "@supabase/supabase-js";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Button } from "~/components/ui/button";
-import {
-	Select,
-	SelectContent,
-	SelectGroup,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "~/components/ui/select";
 import { cn } from "~/lib/utils";
 import { Tables } from "~/types/database-types";
 import { getErrorRedirect } from "~/utils/helpers";
@@ -28,7 +20,6 @@ export function PricingSelect({
 	user,
 	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 }: { products: any; userSubscriptionId?: string | null; user: User | null }) {
-	const [value, setValue] = React.useState(products[2].name);
 	const router = useRouter();
 	const [priceIdLoading, setPriceIdLoading] = React.useState<string>();
 	const currentPath = usePathname();
@@ -68,96 +59,45 @@ export function PricingSelect({
 		setPriceIdLoading(undefined);
 	};
 
-	const productData = products.find(
-		(product: { name: string }) => product.name === value,
-	);
-
-	const productPrice = Intl.NumberFormat("en-US", {
-		style: "currency",
-		currency: "usd",
-		minimumFractionDigits: 0,
-	}).format((productData?.prices[0]?.unit_amount || 0) / 100);
-
-	const productDescription = productData?.description;
-
 	const featuredProductId = "prod_Q2WdnU3LdaDjnn";
 
 	const productsToRender = [products[2], products[1], products[0]];
 
 	return (
 		<>
-			<div className="mx-auto w-full max-w-[450px] md:hidden">
-				<div className="mb-4">
-					<Select value={value} onValueChange={setValue}>
-						<SelectTrigger>
-							<SelectValue placeholder="Select a plan" />
-						</SelectTrigger>
-						<SelectContent>
-							<SelectGroup>
-								{products.map((product: { id: string; name: string }) => (
-									<SelectItem key={product.id} value={product.name}>
-										{product.name}
-									</SelectItem>
-								))}
-							</SelectGroup>
-						</SelectContent>
-					</Select>
-				</div>
-				<div className="overflow-hidden rounded-xl border border-black border-opacity-[0.08]">
-					<div
-						className={cn(
-							"flex flex-col gap-2 p-4",
-							productData?.id === featuredProductId && "bg-[#5effe2]",
-						)}
-					>
-						<p className="mb-2 inline-block whitespace-nowrap leading-none">
-							<span className="text-[32px] font-semibold tracking-tight">
-								{productPrice}
-							</span>
-							<span className="text-[14px] text-[#666666]">/month</span>
-						</p>
-						<p className="min-h-[40px] text-sm text-[#666666]">
-							{productDescription}
-						</p>
-						<Button
-							onClick={() => handleStripeCheckout(productData.prices[0])}
-							disabled={productData.prices[0]?.id === userSubscriptionId}
-							className="h-10 disabled:bg-[#f2f2f2] disabled:text-[#8f8f8f] disabled:opacity-100"
-						>
-							{productData.prices[0]?.id === userSubscriptionId
-								? "Current Plan"
-								: "Upgrade"}
-						</Button>
-					</div>
-					{/* Features */}
-					<div className="grid gap-6 px-4 py-5 text-sm">
-						{productData.name === "Community Member"
-							? featuresFree.map((feature, idx) => (
-									<Feature
-										key={`${productData.name}-${feature}-mobile-${idx}`}
-										text={feature}
-									/>
-								))
-							: productData.name === "Community Insider"
-								? featuresInsider.map((feature, idx) => (
-										<Feature
-											key={`${productData.name}-${feature}-mobile-${idx}`}
-											text={feature}
-										/>
-									))
-								: productData.name === "Poll Creator"
-									? featuresCreator.map((feature, idx) => (
-											<Feature
-												key={`${productData.name}-${feature}-mobile-${idx}`}
-												text={feature}
-											/>
-										))
-									: null}
-					</div>
-				</div>
+			<div className="mx-auto w-full max-w-[450px] md:hidden flex flex-col gap-6">
+				{productsToRender.map((product, idx) => {
+					const features =
+						idx === 0
+							? featuresFree
+							: idx === 1
+								? featuresInsider
+								: featuresCreator;
+
+					const isDisabled = product.prices[0]?.id === userSubscriptionId;
+
+					const price = Intl.NumberFormat("en-US", {
+						style: "currency",
+						currency: "usd",
+						minimumFractionDigits: 0,
+					}).format((product.prices[0]?.unit_amount || 0) / 100);
+
+					return (
+						<ProductMobileCard
+							key={`${product.id}-${product.name}-desktop`}
+							isFeatured={product.id === featuredProductId}
+							name={product.name}
+							description={product.description}
+							price={price}
+							isDisabled={isDisabled}
+							features={features}
+							onClick={() => handleStripeCheckout(product.prices[0])}
+						/>
+					);
+				})}
 			</div>
 			<div className="hidden md:block">
-				<div className="grid grid-cols-3 gap-4 lg:gap-6">
+				<div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
 					{productsToRender.map((product, idx) => {
 						const features =
 							idx === 0
@@ -190,6 +130,55 @@ export function PricingSelect({
 				</div>
 			</div>
 		</>
+	);
+}
+
+function ProductMobileCard({
+	isFeatured = false,
+	price,
+	isDisabled = false,
+	description,
+	onClick,
+	features,
+	name,
+}: {
+	isFeatured: boolean;
+	price: string;
+	isDisabled: boolean;
+	description: string;
+	onClick: () => void;
+	name: string;
+	features: Array<string>;
+}) {
+	return (
+		<div className="overflow-hidden rounded-xl border border-black border-opacity-[0.08] my-8">
+			<div
+				className={cn("flex flex-col gap-2 p-4", isFeatured && "bg-[#5effe2]")}
+			>
+				<h3 className="w-fit text-left font-semibold leading-none tracking-tight text-[30px] mb-2">
+					{name}
+				</h3>
+				<p className="mb-2 inline-block whitespace-nowrap leading-none">
+					<span className="text-[32px] font-semibold tracking-tight">
+						{price}
+					</span>
+					<span className="text-[14px] text-[#666666]">/month</span>
+				</p>
+				<p className="min-h-[40px] text-sm text-[#666666]">{description}</p>
+				<Button
+					onClick={onClick}
+					disabled={isDisabled}
+					className="h-10 disabled:bg-[#f2f2f2] disabled:text-[#8f8f8f] disabled:opacity-100"
+				>
+					{isDisabled ? "Current Plan" : "Upgrade"}
+				</Button>
+			</div>
+			<div className="grid gap-6 px-4 py-5 text-sm">
+				{features.map((feature, idx) => (
+					<Feature key={`${name}-${feature}-mobile-${idx}`} text={feature} />
+				))}
+			</div>
+		</div>
 	);
 }
 

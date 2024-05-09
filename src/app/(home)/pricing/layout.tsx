@@ -132,7 +132,9 @@ const faqs = [
 	},
 ];
 
-export default function PricingLayout({ children }: { children: React.ReactNode }) {
+export default function PricingLayout({
+	children,
+}: { children: React.ReactNode }) {
 	return (
 		<main className="flex-1 overflow-auto">
 			<div className="w-full">
@@ -149,9 +151,7 @@ export default function PricingLayout({ children }: { children: React.ReactNode 
 					</div>
 
 					{/* Pricing Mobile */}
-					<div className="w-full">
-            {children}
-					</div>
+					<div className="w-full">{children}</div>
 				</div>
 
 				{/* FAQ */}

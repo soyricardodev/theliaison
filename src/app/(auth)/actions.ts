@@ -51,14 +51,14 @@ export async function signInWithOAuth() {
 		provider: "google",
 	});
 
-  console.log(error, data)
+	console.log(error, data);
 
 	if (error) {
 		return { message: "Failed t" };
 	}
 
 	revalidatePath("/", "layout");
-  redirect(data.url)
+	redirect(data.url);
 
 	//redirect("/explore");
 }

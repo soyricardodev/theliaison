@@ -44,7 +44,7 @@ export default async function Component() {
 						<CreatePollForm />
 					) : (
 						<div>
-							<h3>You don't have an active subscription</h3>
+							<h3>In order to create a poll you need to be a poll creator</h3>
 							<Link href="/pricing" className="text-blue-500 hover:underline">
 								Go to pricing page
 							</Link>

@@ -51,7 +51,7 @@ export default async function PollPage({
 		const votes = votesByOption[optionId];
 		const percentage =
 			totalVotes > 0 ? ((votes ?? 0) / (totalVotes ?? 0)) * 100 : 0;
-		votesPercentage[optionId] = percentage;
+		votesPercentage[optionId] = Math.round(percentage);
 	}
 
 	const optionSelectedForUserLoggedIn = data.votes.find(

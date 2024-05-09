@@ -28,7 +28,7 @@ export function PricingSelect({
 	user,
 	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 }: { products: any; userSubscriptionId?: string | null; user: User | null }) {
-	const [value, setValue] = React.useState(products[2].name);
+	const [value, setValue] = React.useState(products[0].name);
 	const router = useRouter();
 	const [priceIdLoading, setPriceIdLoading] = React.useState<string>();
 	const currentPath = usePathname();
