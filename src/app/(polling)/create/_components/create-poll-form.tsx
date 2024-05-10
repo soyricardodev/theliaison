@@ -1,6 +1,7 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import * as React from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -17,8 +18,10 @@ import {
 	FormMessage,
 } from "~/components/ui/form";
 import { Input } from "~/components/ui/input";
+import { Label } from "~/components/ui/label";
 import { cn } from "~/lib/utils";
 import { createPollWithOptions } from "~/server/db/queries";
+import { createClient } from "~/utils/supabase/client";
 
 const categories = [
 	{
@@ -88,12 +91,14 @@ const defaultValues: Partial<PollFormValues> = {
 };
 
 export function CreatePollForm({ className }: React.ComponentProps<"form">) {
+	const supabase = createClient();
 	const router = useRouter();
 	const form = useForm<PollFormValues>({
 		resolver: zodResolver(pollFormSchema),
 		defaultValues,
 		mode: "onChange",
 	});
+	const [imageUrl, setImageUrl] = useState<null | string>();
 
 	const { fields } = useFieldArray({
 		control: form.control,
@@ -104,13 +109,26 @@ export function CreatePollForm({ className }: React.ComponentProps<"form">) {
 		const poll = await createPollWithOptions(data);
 		toast.success("Poll created successfully");
 		router.push(`/poll/${poll.id}`);
-		/*toast.promise(createPollWithOptions(data), {
-			loading: "Creating poll",
-			success: () => {
-				return "Poll created successfully";
-			},
-			error: "Error creating poll",
-		});*/
+	}
+
+	async function onUploadImage(event) {
+		if (!event.target.files || event.target.files.length === 0) {
+			throw new Error("You must select an image to upload.");
+		}
+
+		const file = event.target.files[0];
+		const fileExt = file?.name.split(".").pop();
+		const filePath = `${uid}-${Math.random()}.${fileExt}`;
+
+		const { error: uploadError } = await supabase.storage
+			.from("avatars")
+			.upload(filePath, file!);
+
+		if (uploadError) {
+			throw uploadError;
+		}
+
+		setImageUrl(filePath);
 	}
 
 	return (
@@ -205,6 +223,15 @@ export function CreatePollForm({ className }: React.ComponentProps<"form">) {
 							)}
 						/>
 					))}
+				</div>
+
+				<div className="w-full my-2 flex gap-2 flex-col">
+					<Label className="text-base">Upload an image (optional)</Label>
+					<Input
+						type="file"
+						onChange={onUploadImage}
+						placeholder="Upload an optional image"
+					/>
 				</div>
 				<Button type="submit">Save changes</Button>
 			</form>
