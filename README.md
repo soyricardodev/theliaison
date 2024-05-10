@@ -1,22 +1,5 @@
 # TODO
-- [x] Setup Auth Correctly (w/ supabase auth)
-- [x] Setup Stripe
-- [x] Add test subscription
-- [x] Setup Stripe webhooks
-- [x] Setup Schemas for stripe products
-- [x] Build to production
-- [x] Setup Databases Schema for polling (w/ drizzle)
-- [x] Add basic ui for create a poll
-- [x] Add basic ui for view polls
-- [x] Add basic ui for vote on polls
-- [x] Add basic ui for delete polls
-- [x] Add basic ui for edit polls
-- [x] Add functionality to create poll
-- [x] Add functionality to view polls
-- [x] Add functionality to vote on polls
-- [x] Add functionality to delete polls
-- [x] Add functionality to edit polls
-- [x] Add functionality to comment on polls
-- [ ] Add functionality to delete comment
-- [ ] Add functionality to edit comment
-- [ ] Add reply to comment
+
+- [ ] Better Poll UI
+- [ ] Better Poll Creation UI
+- [ ] Tabs for polls (AI, Community, The Liaison)
