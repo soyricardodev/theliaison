@@ -18,17 +18,19 @@ export async function MainExplore() {
 	function calculateVotes() {
 		const votesDetailsArray: PollWithOptionsAndVotes[] = [];
 
-		data?.forEach((pollData) => {
+		if (!data) return votesDetailsArray;
+
+		for (const pollData of data) {
 			const votesByOption: Record<number, number> = {};
 			const totalVotes = pollData.votes.length;
 
-			pollData.options.forEach((option) => {
+			for (const option of pollData.options) {
 				votesByOption[option.id] = 0;
-			});
+			}
 
-			pollData.votes.forEach((vote) => {
+			for (const vote of pollData.votes) {
 				votesByOption[vote.option_id]++;
-			});
+			}
 
 			const votesPercentage: Record<number, number> = {};
 			for (const optionId in votesByOption) {
@@ -54,7 +56,7 @@ export async function MainExplore() {
 			};
 
 			votesDetailsArray.push(dataToPush);
-		});
+		}
 
 		return votesDetailsArray;
 	}
