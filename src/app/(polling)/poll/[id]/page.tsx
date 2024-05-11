@@ -38,13 +38,13 @@ export default async function PollPage({
 	const votesByOption: Record<number, number> = {};
 	const totalVotes = data.votes.length;
 
-	data.options.forEach((option) => {
+	for (const option of data.options) {
 		votesByOption[option.id] = 0;
-	});
+	}
 
-	data.votes.forEach((vote) => {
+	for (const vote of data.votes) {
 		votesByOption[vote.option_id]++;
-	});
+	}
 
 	const votesPercentage: Record<number, number> = {};
 	for (const optionId in votesByOption) {
