@@ -3,7 +3,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { PollCard } from "~/app/_components/polls";
 import { Separator } from "~/components/ui/separator";
-import { PollWithOptionsAndVotes } from "~/types/poll";
+import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
 import { ProfileData } from "./profile-data";
 

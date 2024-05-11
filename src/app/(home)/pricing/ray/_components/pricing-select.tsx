@@ -2,12 +2,12 @@
 
 import * as React from "react";
 
-import { User } from "@supabase/supabase-js";
+import type { User } from "@supabase/supabase-js";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Button } from "~/components/ui/button";
 import { cn } from "~/lib/utils";
-import { Tables } from "~/types/database-types";
+import type { Tables } from "~/types/database-types";
 import { getErrorRedirect } from "~/utils/helpers";
 import { getStripe } from "~/utils/stripe/client";
 import { checkoutWithStripe } from "~/utils/stripe/server";

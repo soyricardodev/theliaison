@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 import { getErrorRedirect, getStatusRedirect } from "~/utils/helpers";
 import { createClient } from "~/utils/supabase/server";
 

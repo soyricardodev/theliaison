@@ -1,4 +1,4 @@
-import { PollFormValues } from "~/app/(polling)/social-polling/create/_components/create-poll";
+import type { PollFormValues } from "~/app/(polling)/social-polling/create/_components/create-poll";
 import { createClient } from "~/utils/supabase/client";
 
 export async function createPollWithOptions(values: PollFormValues) {

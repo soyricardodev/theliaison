@@ -1,6 +1,6 @@
 "use client";
 
-import { User } from "@supabase/supabase-js";
+import type { User } from "@supabase/supabase-js";
 import { motion } from "framer-motion";
 import { CheckIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";

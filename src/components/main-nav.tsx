@@ -10,7 +10,7 @@ import { Icons } from "~/components/icons";
 import { siteConfig } from "~/config/site";
 import { cn } from "~/lib/utils";
 import { MobileNav } from "./mobile-nav";
-import { MainNavItem } from "./nav-types";
+import type { MainNavItem } from "./nav-types";
 
 interface MainNavProps {
 	items?: MainNavItem[];

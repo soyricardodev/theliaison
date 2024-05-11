@@ -24,6 +24,7 @@ export function Footer() {
 					className="hover:text-gray-700"
 					href="/privacy-policy"
 					target="_blank"
+					rel="noreferrer"
 				>
 					Privacy
 				</a>
@@ -31,6 +32,7 @@ export function Footer() {
 					className="flex h-6 w-6 items-center justify-center mix-blend-normal"
 					href="/"
 					target="_blank"
+					rel="noreferrer"
 				>
 					<span className="sr-only">The Liaison</span>
 					<Logo className="mix-blend-darken" />

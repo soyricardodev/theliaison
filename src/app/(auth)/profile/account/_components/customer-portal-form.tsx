@@ -11,7 +11,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from "~/components/ui/card";
-import { Tables } from "~/types/database-types";
+import type { Tables } from "~/types/database-types";
 import { createStripePortal } from "~/utils/stripe/server";
 
 type Subscription = Tables<"subscriptions">;

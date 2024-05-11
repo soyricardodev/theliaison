@@ -1,7 +1,7 @@
 "use server";
 
-import Stripe from "stripe";
-import { Tables } from "~/types/database-types";
+import type Stripe from "stripe";
+import type { Tables } from "~/types/database-types";
 import {
 	calculateTrialEndUnixTimestamp,
 	getErrorRedirect,

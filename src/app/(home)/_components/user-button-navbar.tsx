@@ -1,6 +1,6 @@
 "use client";
 
-import { User } from "@supabase/supabase-js";
+import type { User } from "@supabase/supabase-js";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { buttonVariants } from "~/components/ui/button";

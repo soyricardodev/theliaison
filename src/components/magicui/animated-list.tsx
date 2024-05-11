@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import React, { ReactElement, useEffect, useMemo, useState } from "react";
+import React, { type ReactElement, useEffect, useMemo, useState } from "react";
 
 export const AnimatedList = React.memo(
 	({

@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { PollCard } from "~/app/_components/polls";
-import { PollWithOptionsAndVotes } from "~/types/poll";
+import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
 
 export default async function ExplorePage() {

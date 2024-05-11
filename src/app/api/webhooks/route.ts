@@ -1,4 +1,4 @@
-import Stripe from "stripe";
+import type Stripe from "stripe";
 import { env } from "~/env";
 import { stripe } from "~/utils/stripe/config";
 import {

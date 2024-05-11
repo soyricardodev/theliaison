@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import React, { useEffect, useRef, useState, memo } from "react";
+import type React from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { cn } from "~/lib/utils";
 
@@ -164,7 +165,7 @@ const Stars = () => {
 					}}
 					transition={{
 						duration: random() * 10 + 20,
-						repeat: Infinity,
+						repeat: Number.POSITIVE_INFINITY,
 						ease: "linear",
 					}}
 					style={{

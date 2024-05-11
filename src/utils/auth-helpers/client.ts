@@ -1,5 +1,5 @@
-import { Provider } from "@supabase/supabase-js";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import type { Provider } from "@supabase/supabase-js";
+import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { getURL } from "../helpers";
 import { createClient } from "../supabase/client";
 import { redirectToPath } from "./server";

@@ -1,4 +1,4 @@
-import { Stripe, loadStripe } from "@stripe/stripe-js";
+import { type Stripe, loadStripe } from "@stripe/stripe-js";
 import { env } from "~/env";
 
 let stripePromise: Promise<Stripe | null>;
