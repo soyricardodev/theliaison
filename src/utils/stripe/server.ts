@@ -30,7 +30,7 @@ export async function checkoutWithStripe(
 			data: { user },
 		} = await supabase.auth.getUser();
 
-		if (error || !user) {
+		if (error || !user || !user.email) {
 			console.error(error);
 			throw new Error("Could not get user session.");
 		}
@@ -40,7 +40,7 @@ export async function checkoutWithStripe(
 		try {
 			customer = await createOrRetrieveCustomer({
 				uuid: user.id,
-				email: user.email!,
+				email: user.email,
 			});
 		} catch (err) {
 			console.error(err);
@@ -84,7 +84,7 @@ export async function checkoutWithStripe(
 		}
 
 		// Create a checkout session in Stripe
-		let session;
+		let session: Stripe.Checkout.Session;
 		try {
 			session = await stripe.checkout.sessions.create(params);
 		} catch (err) {
@@ -95,9 +95,8 @@ export async function checkoutWithStripe(
 		// Instead of returning a Response, just return the data or error.
 		if (session) {
 			return { sessionId: session.id };
-		} else {
-			throw new Error("Unable to create checkout session.");
 		}
+		throw new Error("Unable to create checkout session.");
 	} catch (error) {
 		if (error instanceof Error) {
 			return {
@@ -107,15 +106,14 @@ export async function checkoutWithStripe(
 					"Please try again later or contact a system administrator.",
 				),
 			};
-		} else {
-			return {
-				errorRedirect: getErrorRedirect(
-					redirectPath,
-					"An unknown error occurred.",
-					"Please try again later or contact a system administrator.",
-				),
-			};
 		}
+		return {
+			errorRedirect: getErrorRedirect(
+				redirectPath,
+				"An unknown error occurred.",
+				"Please try again later or contact a system administrator.",
+			),
+		};
 	}
 }
 
@@ -127,7 +125,7 @@ export async function createStripePortal(currentPath: string) {
 			data: { user },
 		} = await supabase.auth.getUser();
 
-		if (!user) {
+		if (!user || !user.email) {
 			if (error) {
 				console.error(error);
 			}
@@ -144,11 +142,11 @@ export async function createStripePortal(currentPath: string) {
 			throw new Error("Could not get user profile.");
 		}
 
-		let customer;
+		let customer: string | undefined;
 		try {
 			customer = await createOrRetrieveCustomer({
 				uuid: user.id,
-				email: user.email!,
+				email: user.email,
 			});
 		} catch (err) {
 			console.error(err);
@@ -180,12 +178,11 @@ export async function createStripePortal(currentPath: string) {
 				error.message,
 				"Please try again later or contact a system administrator.",
 			);
-		} else {
-			return getErrorRedirect(
-				currentPath,
-				"An unknown error occurred.",
-				"Please try again later or contact a system administrator.",
-			);
 		}
+		return getErrorRedirect(
+			currentPath,
+			"An unknown error occurred.",
+			"Please try again later or contact a system administrator.",
+		);
 	}
 }
