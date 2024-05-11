@@ -195,7 +195,7 @@ export async function signUp(formData: FormData) {
 		);
 	} else if (data.session) {
 		redirectPath = getStatusRedirect("/", "Success!", "You are now signed in.");
-	} else if (data.user?.identities && data.user.identities.length == 0) {
+	} else if (data.user?.identities && data.user.identities.length === 0) {
 		redirectPath = getErrorRedirect(
 			"/signin/signup",
 			"Sign up failed.",
@@ -276,7 +276,7 @@ export async function updateEmail(formData: FormData) {
 	const supabase = createClient();
 
 	const callbackUrl = getURL(
-		getStatusRedirect("/account", "Success!", `Your email has been updated.`),
+		getStatusRedirect("/account", "Success!", "Your email has been updated."),
 	);
 
 	const { error } = await supabase.auth.updateUser(
@@ -292,13 +292,12 @@ export async function updateEmail(formData: FormData) {
 			"Your email could not be updated.",
 			error.message,
 		);
-	} else {
-		return getStatusRedirect(
-			"/account",
-			"Confirmation emails sent.",
-			`You will need to confirm the update by clicking the links sent to both the old and new email addresses.`,
-		);
 	}
+	return getStatusRedirect(
+		"/account",
+		"Confirmation emails sent.",
+		"You will need to confirm the update by clicking the links sent to both the old and new email addresses.",
+	);
 }
 
 export async function updateName(formData: FormData) {
@@ -316,17 +315,17 @@ export async function updateName(formData: FormData) {
 			"Your name could not be updated.",
 			error.message,
 		);
-	} else if (data.user) {
+	}
+	if (data.user) {
 		return getStatusRedirect(
 			"/account",
 			"Success!",
 			"Your name has been updated.",
 		);
-	} else {
-		return getErrorRedirect(
-			"/account",
-			"Hmm... Something went wrong.",
-			"Your name could not be updated.",
-		);
 	}
+	return getErrorRedirect(
+		"/account",
+		"Hmm... Something went wrong.",
+		"Your name could not be updated.",
+	);
 }

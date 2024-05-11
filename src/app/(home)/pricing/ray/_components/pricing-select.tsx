@@ -199,7 +199,7 @@ function Feature({ text }: { text: string }) {
 						fill="currentColor"
 						fillRule="evenodd"
 						clipRule="evenodd"
-					></path>
+					/>
 				</svg>
 			</span>
 			<span className="text-left underline decoration-dotted underline-offset-4 hover:decoration-solid">
@@ -312,7 +312,7 @@ function ProductDesktopCard({
 										fill="currentColor"
 										fillRule="evenodd"
 										clipRule="evenodd"
-									></path>
+									/>
 								</svg>
 							</div>
 							<span className="underline decoration-dotted underline-offset-4 hover:decoration-solid">

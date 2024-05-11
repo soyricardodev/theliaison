@@ -93,7 +93,7 @@ const getToastRedirect = (
 	}
 
 	if (disableButton) {
-		redirectPath += `&disable_button=true`;
+		redirectPath += "&disable_button=true";
 	}
 
 	if (arbitraryParams) {

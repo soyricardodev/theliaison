@@ -18,10 +18,9 @@ export async function handleRequest(
 	if (router) {
 		// If client-side router is provided, use it to redirect
 		return router.push(redirectUrl);
-	} else {
-		// Otherwise, redirect server-side
-		return await redirectToPath(redirectUrl);
 	}
+	// Otherwise, redirect server-side
+	return await redirectToPath(redirectUrl);
 }
 
 export async function signInWithOAuth(e: React.FormEvent<HTMLFormElement>) {

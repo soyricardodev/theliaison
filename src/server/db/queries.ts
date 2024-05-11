@@ -27,7 +27,7 @@ export async function createPollWithOptions(values: PollFormValues) {
 
 	const optionsToInsert = values.options.map((option) => ({
 		text: option.value,
-		poll_id: poll[0]!.id,
+		poll_id: poll[0]?.id,
 	}));
 
 	const { data: pollOptions, error: createPollOptionsError } = await supabase
@@ -41,7 +41,7 @@ export async function createPollWithOptions(values: PollFormValues) {
 
 	const categoriesToInsert = values.categories.map((category) => ({
 		categorie_id: Number(category),
-		poll_id: poll[0]!.id,
+		poll_id: poll[0]?.id,
 	}));
 
 	const { error: createPollCategoriesError } = await supabase

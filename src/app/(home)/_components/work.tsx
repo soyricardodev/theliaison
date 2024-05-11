@@ -110,10 +110,10 @@ function ProcessWork1() {
 								/>
 							</div>
 							<div className="grid grid-cols-2 gap-2">
-								<div className="h-2 w-10 rounded-full bg-neutral-700/50"></div>
-								<div className="h-2 w-10 rounded-full bg-neutral-400/80"></div>
-								<div className="h-2 w-10 rounded-full bg-neutral-300/80"></div>
-								<div className="h-2 w-10 rounded-full bg-neutral-600/80"></div>
+								<div className="h-2 w-10 rounded-full bg-neutral-700/50" />
+								<div className="h-2 w-10 rounded-full bg-neutral-400/80" />
+								<div className="h-2 w-10 rounded-full bg-neutral-300/80" />
+								<div className="h-2 w-10 rounded-full bg-neutral-600/80" />
 							</div>
 						</motion.div>
 						<motion.div
@@ -128,10 +128,10 @@ function ProcessWork1() {
 								/>
 							</div>
 							<div className="grid grid-cols-2 gap-2">
-								<div className="h-2 w-10 rounded-full bg-neutral-700/50"></div>
-								<div className="h-2 w-10 rounded-full bg-neutral-400/80"></div>
-								<div className="h-2 w-10 rounded-full bg-neutral-300/80"></div>
-								<div className="h-2 w-10 rounded-full bg-neutral-600/80"></div>
+								<div className="h-2 w-10 rounded-full bg-neutral-700/50" />
+								<div className="h-2 w-10 rounded-full bg-neutral-400/80" />
+								<div className="h-2 w-10 rounded-full bg-neutral-300/80" />
+								<div className="h-2 w-10 rounded-full bg-neutral-600/80" />
 							</div>
 						</motion.div>
 						<motion.div
@@ -146,10 +146,10 @@ function ProcessWork1() {
 								/>
 							</div>
 							<div className="grid grid-cols-2 gap-2">
-								<div className="h-2 w-10 rounded-full bg-neutral-700/50"></div>
-								<div className="h-2 w-10 rounded-full bg-neutral-400/80"></div>
-								<div className="h-2 w-10 rounded-full bg-neutral-300/80"></div>
-								<div className="h-2 w-10 rounded-full bg-neutral-600/80"></div>
+								<div className="h-2 w-10 rounded-full bg-neutral-700/50" />
+								<div className="h-2 w-10 rounded-full bg-neutral-400/80" />
+								<div className="h-2 w-10 rounded-full bg-neutral-300/80" />
+								<div className="h-2 w-10 rounded-full bg-neutral-600/80" />
 							</div>
 						</motion.div>
 					</motion.div>
