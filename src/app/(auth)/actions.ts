@@ -74,7 +74,10 @@ export async function signup(
 	if (!parsed.success) {
 		const fields: Record<string, string> = {};
 		for (const key of Object.keys(formDataEntries)) {
-			fields[key] = formDataEntries[key]!.toString();
+			const value = formDataEntries[key];
+			if (value != null) {
+				fields[key] = value.toString();
+			}
 		}
 		return {
 			message: "Invalid form data",
