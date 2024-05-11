@@ -170,26 +170,25 @@ const createOrRetrieveCustomer = async ({
 					`Supabase customer record update failed: ${updateError.message}`,
 				);
 			console.warn(
-				`Supabase customer record mismatched Stripe ID. Supabase record updated.`,
+				"Supabase customer record mismatched Stripe ID. Supabase record updated.",
 			);
 		}
 		// If Supabase has a record and matches Stripe, return Stripe customer ID
 		return stripeCustomerId;
-	} else {
-		console.warn(
-			`Supabase customer record was missing. A new record was created.`,
-		);
-
-		// If Supabase has no record, create a new record and return Stripe customer ID
-		const upsertedStripeCustomer = await upsertCustomerToSupabase(
-			uuid,
-			stripeIdToInsert,
-		);
-		if (!upsertedStripeCustomer)
-			throw new Error("Supabase customer record creation failed.");
-
-		return upsertedStripeCustomer;
 	}
+	console.warn(
+		"Supabase customer record was missing. A new record was created.",
+	);
+
+	// If Supabase has no record, create a new record and return Stripe customer ID
+	const upsertedStripeCustomer = await upsertCustomerToSupabase(
+		uuid,
+		stripeIdToInsert,
+	);
+	if (!upsertedStripeCustomer)
+		throw new Error("Supabase customer record creation failed.");
+
+	return upsertedStripeCustomer;
 };
 
 /**
@@ -228,10 +227,10 @@ const manageSubscriptionStatusChange = async (
 		.eq("stripe_customer_id", customerId)
 		.single();
 
-	if (noCustomerError)
+	if (noCustomerError || !customerData)
 		throw new Error(`Customer lookup failed: ${noCustomerError.message}`);
 
-	const { id: uuid } = customerData!;
+	const { id: uuid } = customerData;
 
 	const subscription = await stripe.subscriptions.retrieve(subscriptionId, {
 		expand: ["default_payment_method"],
