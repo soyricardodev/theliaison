@@ -80,6 +80,7 @@ export function PollCard({
 									<strong className="font-medium">@{poll.user.username}</strong>
 								</span>
 								<svg
+									aria-hidden="true"
 									className="absolute"
 									fill="none"
 									height={14}
@@ -89,7 +90,7 @@ export function PollCard({
 									<path
 										className="fill-[#ebebeb]"
 										d="M6 .246c-.175 5.992-1.539 8.89-5.5 13.5 6.117.073 9.128-.306 12.5-3L6 .246Z"
-									></path>
+									/>
 								</svg>
 							</div>
 						</div>
