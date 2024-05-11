@@ -26,7 +26,7 @@ export default function Component() {
 									What's your favorite feature?
 								</h2>
 								<img
-									alt="Poll Image"
+									alt="Poll"
 									className="rounded-lg mt-4 object-cover"
 									height={400}
 									src="/placeholder.svg"
@@ -105,7 +105,7 @@ export default function Component() {
 									What's your favorite feature?
 								</h2>
 								<img
-									alt="Poll Image"
+									alt="Poll"
 									className="rounded-lg mt-4 object-cover"
 									height={400}
 									src="/placeholder.svg"
@@ -184,7 +184,7 @@ export default function Component() {
 									What's your favorite feature?
 								</h2>
 								<img
-									alt="Poll Image"
+									alt="Poll"
 									className="rounded-lg mt-4 object-cover"
 									height={400}
 									src="/placeholder.svg"
@@ -272,10 +272,10 @@ export default function Component() {
 										<div className="font-medium">John Doe</div>
 										<div className="flex items-center gap-2">
 											<Button size="icon" variant="ghost">
-												<ArrowUpIcon className="w-4 h-4" />
+												<ArrowUpIcon />
 											</Button>
 											<Button size="icon" variant="ghost">
-												<ArrowDownIcon className="w-4 h-4" />
+												<ArrowDownIcon />
 											</Button>
 											<time className="text-sm text-gray-500 dark:text-gray-400">
 												2 days ago
@@ -299,10 +299,10 @@ export default function Component() {
 										<div className="font-medium">Sarah Anderson</div>
 										<div className="flex items-center gap-2">
 											<Button size="icon" variant="ghost">
-												<ArrowUpIcon className="w-4 h-4" />
+												<ArrowUpIcon />
 											</Button>
 											<Button size="icon" variant="ghost">
-												<ArrowDownIcon className="w-4 h-4" />
+												<ArrowDownIcon />
 											</Button>
 											<time className="text-sm text-gray-500 dark:text-gray-400">
 												1 week ago
@@ -326,10 +326,10 @@ export default function Component() {
 										<div className="font-medium">Michael Johnson</div>
 										<div className="flex items-center gap-2">
 											<Button size="icon" variant="ghost">
-												<ArrowUpIcon className="w-4 h-4" />
+												<ArrowUpIcon />
 											</Button>
 											<Button size="icon" variant="ghost">
-												<ArrowDownIcon className="w-4 h-4" />
+												<ArrowDownIcon />
 											</Button>
 											<time className="text-sm text-gray-500 dark:text-gray-400">
 												3 days ago
@@ -352,10 +352,10 @@ export default function Component() {
 										<div className="font-medium">Emily Wilson</div>
 										<div className="flex items-center gap-2">
 											<Button size="icon" variant="ghost">
-												<ArrowUpIcon className="w-4 h-4" />
+												<ArrowUpIcon />
 											</Button>
 											<Button size="icon" variant="ghost">
-												<ArrowDownIcon className="w-4 h-4" />
+												<ArrowDownIcon />
 											</Button>
 											<time className="text-sm text-gray-500 dark:text-gray-400">
 												1 day ago
@@ -378,10 +378,10 @@ export default function Component() {
 										<div className="font-medium">James Brown</div>
 										<div className="flex items-center gap-2">
 											<Button size="icon" variant="ghost">
-												<ArrowUpIcon className="w-4 h-4" />
+												<ArrowUpIcon />
 											</Button>
 											<Button size="icon" variant="ghost">
-												<ArrowDownIcon className="w-4 h-4" />
+												<ArrowDownIcon />
 											</Button>
 											<time className="text-sm text-gray-500 dark:text-gray-400">
 												4 days ago
@@ -445,10 +445,10 @@ export default function Component() {
 	);
 }
 
-function ArrowDownIcon(props) {
+function ArrowDownIcon() {
 	return (
 		<svg
-			{...props}
+			className="size-4"
 			xmlns="http://www.w3.org/2000/svg"
 			width="24"
 			height="24"
@@ -458,6 +458,7 @@ function ArrowDownIcon(props) {
 			strokeWidth="2"
 			strokeLinecap="round"
 			strokeLinejoin="round"
+			aria-hidden="true"
 		>
 			<path d="M12 5v14" />
 			<path d="m19 12-7 7-7-7" />
@@ -465,10 +466,11 @@ function ArrowDownIcon(props) {
 	);
 }
 
-function ArrowUpIcon(props) {
+function ArrowUpIcon() {
 	return (
 		<svg
-			{...props}
+			className="size-4"
+			aria-hidden="true"
 			xmlns="http://www.w3.org/2000/svg"
 			width="24"
 			height="24"
