@@ -24,7 +24,7 @@ export default async function SubscriptionPage() {
 		.in("status", ["active"])
 		.maybeSingle();
 
-	const { percentage, remainingDays } = getSubscriptionProgress(
+	const { percentage } = getSubscriptionProgress(
 		String(subscription?.current_period_end),
 	);
 
@@ -37,7 +37,7 @@ export default async function SubscriptionPage() {
 
 	const suscriptionPrice = Intl.NumberFormat("en-US", {
 		style: "currency",
-		currency: subscription?.prices?.currency! || "usd",
+		currency: subscription?.prices?.currency || "usd",
 		minimumFractionDigits: 0,
 	}).format((subscription?.prices?.unit_amount || 0) / 100);
 
