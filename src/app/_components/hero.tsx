@@ -76,7 +76,10 @@ export function Hero() {
 
 				<div className="absolute top-full mx-auto mt-6 flex max-w-full flex-wrap items-center justify-center gap-2 whitespace-nowrap px-4 text-sm">
 					{categories.map((categorie, idx) => (
-						<SuggestionButton key={idx} name={categorie.name} />
+						<SuggestionButton
+							key={`${categorie.name}-${idx}`}
+							name={categorie.name}
+						/>
 					))}
 				</div>
 			</div>
