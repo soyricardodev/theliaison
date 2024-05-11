@@ -1,13 +1,13 @@
+import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar";
+import { Button } from "~/components/ui/button";
+import { Card, CardContent } from "~/components/ui/card";
+import { Separator } from "~/components/ui/separator";
 /**
  * v0 by Vercel.
  * @see https://v0.dev/t/gdSudCP9E7W
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
-import { TabsTrigger, TabsList, TabsContent, Tabs } from "~/components/ui/tabs";
-import { CardContent, Card } from "~/components/ui/card";
-import { Separator } from "~/components/ui/separator";
-import { AvatarImage, AvatarFallback, Avatar } from "~/components/ui/avatar";
-import { Button } from "~/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 
 export default function Component() {
 	return (
