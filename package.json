@@ -20,7 +20,8 @@
 		"supabase:link": "supabase link",
 		"supabase:generate-migration": "supabase db diff | supabase migration new",
 		"supabase:push": "supabase db push",
-		"supabase:pull": "supabase db pull"
+		"supabase:pull": "supabase db pull",
+		"supabase:gen-types": "supabase gen types typescript --local --schema public > src/types/database-types.ts"
 	},
 	"dependencies": {
 		"@ai-sdk/openai": "^0.0.10",
