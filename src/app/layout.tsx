@@ -3,8 +3,6 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
 
-import { Footer } from "~/components/footer";
-import { Header } from "~/components/header";
 import { TailwindIndicator } from "~/components/tailwind-indicator";
 import { minervaBoldFont, minervaRegularFont } from "~/lib/fonts";
 import { cn } from "~/lib/utils";
@@ -31,11 +29,7 @@ export default function RootLayout({
 					minervaBoldFont.variable,
 				)}
 			>
-				<div className="flex flex-col min-h-svh">
-					<Header />
-					{children}
-					<Footer />
-				</div>
+				{children}
 				<TailwindIndicator />
 				<Analytics />
 				<SpeedInsights />
