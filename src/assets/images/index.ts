@@ -1,3 +1,3 @@
 import logoBlack from "./logo-black.png";
-
-export { logoBlack };
+import logoWhite from "./logo-white.webp";
+export { logoBlack, logoWhite };

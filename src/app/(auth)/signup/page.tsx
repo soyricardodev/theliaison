@@ -1,56 +1,25 @@
-import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
-import { logoBlack } from "~/assets/images";
-import { Toaster } from "~/components/ui/sonner";
-import { SignupForm } from "./signup-form";
+import { SignupForm } from "./_components/signup-form";
 
-export const metadata: Metadata = {
-	title: "Create an account",
-	description: "Create an account to get started.",
-};
-
-export default function RegisterPage() {
+export default function SignupPage() {
 	return (
-		<div className="container grid h-[calc(100vh-8px)] w-screen flex-col items-center justify-center lg:max-w-none mx-auto lg:px-0">
-			<div className="lg:p-8">
-				<Toaster />
-				<div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-					<div className="flex flex-col gap-1.5 text-center">
-						<Image
-							src={logoBlack}
-							className="mx-auto"
-							height={40}
-							width={40}
-							alt="logo"
-						/>
-						<h1 className="text-2xl font-semibold tracking-tight">
-							Create an account
-						</h1>
-						<p className="text-sm text-muted-foreground">
-							Enter your data below to create your account
-						</p>
-					</div>
-					<SignupForm />
-					<p className="px-8 text-center text-sm text-muted-foreground">
-						By clicking signup, you agree to our{" "}
-						<Link
-							href="/agreement"
-							className="hover:text-brand underline underline-offset-4"
-						>
-							Terms of Service
-						</Link>{" "}
-						and{" "}
-						<Link
-							href="/privacy-policy"
-							className="hover:text-brand underline underline-offset-4"
-						>
-							Privacy Policy
-						</Link>
-						.
-					</p>
-				</div>
+		<div className="flex w-full max-w-sm flex-col items-center gap-4 p-4">
+			<div className="w-full text-left">
+				<p className="pb-2 text-xl font-medium">Create an account</p>
+				<p className="text-sm text-gray-500">
+					Sign up for a new account to get started.
+				</p>
 			</div>
+			<SignupForm />
+			<p className="text-center text-sm">
+				Already have an account?{" "}
+				<Link
+					className="relative inline-flex items-center tap-highlight-transparent outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 underline  hover:opacity-80 active:opacity-disabled transition-opacity"
+					href="/login"
+				>
+					Login
+				</Link>
+			</p>
 		</div>
 	);
 }

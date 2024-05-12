@@ -6,6 +6,7 @@ import { createClient } from "~/utils/supabase/server";
 import {
 	type SignUp,
 	type SimpleSignUp,
+	type SignInWithEmail,
 	signInWithEmailSchema,
 	signUpSchema,
 	simpleSignUpSchema,
@@ -17,17 +18,8 @@ export type FormState = {
 	issues?: string[];
 };
 
-export async function login(formData: FormData) {
-	const formDataEntries = Object.fromEntries(formData);
-	const parsed = signInWithEmailSchema.safeParse(formDataEntries);
-
-	if (!parsed.success) {
-		return { message: "Invalid types" };
-	}
-
+export async function login(data: SignInWithEmail) {
 	const supabase = createClient();
-
-	const data = parsed.data;
 
 	try {
 		const {
