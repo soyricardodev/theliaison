@@ -93,7 +93,7 @@ const config = {
 		require("tailwindcss-animate"),
 		addVariablesForColors,
 		// biome-ignore lint/suspicious/noExplicitAny: missing types
-		function ({ matchUtilities, theme }: any) {
+		({ matchUtilities, theme }: any) => {
 			matchUtilities(
 				{
 					"bg-grid": (value: string) => ({
