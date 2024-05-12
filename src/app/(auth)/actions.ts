@@ -141,7 +141,7 @@ export async function signupLean({
 		.padStart(2, "0")}-${userDay.toString().padStart(2, "0")}`;
 
 	const { data: profileUpdated, error: profileError } = await supabase
-		.from("profiles")
+		.from("users")
 		.insert({
 			id: user.id,
 			full_name: name,

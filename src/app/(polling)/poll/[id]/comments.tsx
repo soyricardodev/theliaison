@@ -39,7 +39,7 @@ export function Comments({
 				},
 				async (payload) => {
 					const { data: profileData, error } = await supabase
-						.from("profiles")
+						.from("users")
 						.select("*")
 						.eq("id", payload.new.user_id)
 						.single();

@@ -133,7 +133,7 @@ export async function createStripePortal(currentPath: string) {
 		}
 
 		const { data: profile } = await supabase
-			.from("profiles")
+			.from("users")
 			.select("*")
 			.eq("id", user.id)
 			.single();

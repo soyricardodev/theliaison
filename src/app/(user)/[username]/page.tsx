@@ -12,7 +12,7 @@ export default async function ProfilePage({
 }: { params: { username: string } }) {
 	const supabase = createClient();
 	const { data: profileData, error: profileError } = await supabase
-		.from("profiles")
+		.from("users")
 		.select("*")
 		.eq("username", username)
 		.single();

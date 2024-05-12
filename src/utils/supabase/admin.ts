@@ -205,7 +205,7 @@ const copyBillingDetailsToCustomer = async (
 	//@ts-expect-error
 	await stripe.customers.update(customer, { name, phone, address });
 	const { error: updateError } = await supabaseAdmin
-		.from("profiles")
+		.from("users")
 		.update({
 			billing_address: { ...address },
 			payment_method: { ...payment_method[payment_method.type] },

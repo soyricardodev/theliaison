@@ -62,7 +62,7 @@ export function ProfileForm({ user }: { user: User | null }) {
 			setLoading(true);
 
 			const { data, error, status } = await supabase
-				.from("profiles")
+				.from("users")
 				.select("full_name, username, avatar_url")
 				.eq("id", user?.id)
 				.single();
@@ -96,7 +96,7 @@ export function ProfileForm({ user }: { user: User | null }) {
 		avatar_url?: string | null;
 	}) {
 		try {
-			const { error } = await supabase.from("profiles").upsert({
+			const { error } = await supabase.from("users").upsert({
 				id: user?.id as string,
 				full_name: fullname,
 				username,
@@ -115,7 +115,7 @@ export function ProfileForm({ user }: { user: User | null }) {
 
 	async function updateAvatar(url: string | null) {
 		toast.loading("Updating your avatar");
-		const { error } = await supabase.from("profiles").upsert({
+		const { error } = await supabase.from("users").upsert({
 			id: user?.id as string,
 			avatar_url: url,
 			updated_at: new Date().toISOString(),

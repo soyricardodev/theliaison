@@ -80,7 +80,7 @@ async function Menu() {
 	} = await supabase.auth.getUser();
 
 	const { data: profileData } = await supabase
-		.from("profiles")
+		.from("users")
 		.select("*")
 		.eq("id", user != null ? user.id : "")
 		.single();
