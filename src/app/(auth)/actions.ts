@@ -5,8 +5,10 @@ import { redirect } from "next/navigation";
 import { createClient } from "~/utils/supabase/server";
 import {
 	type SignUp,
+	type SimpleSignUp,
 	signInWithEmailSchema,
 	signUpSchema,
+	simpleSignUpSchema,
 } from "~/utils/validators/auth";
 
 export type FormState = {
@@ -151,6 +153,43 @@ export async function signupLean({
 			gender,
 			marital_status: maritalStatus,
 			birthday_date: String(dateToInsert),
+		})
+		.select();
+
+	if (!profileUpdated || profileError) {
+		throw new Error("Cannot create profile");
+	}
+
+	revalidatePath("/", "layout");
+	return profileUpdated;
+}
+
+export async function simpleSignupAction({
+	name,
+	email,
+	username,
+	password,
+}: SimpleSignUp) {
+	const supabase = createClient();
+
+	const {
+		data: { user },
+		error,
+	} = await supabase.auth.signUp({
+		email,
+		password,
+	});
+
+	if (error || !user) {
+		throw new Error("Failed to sign up");
+	}
+
+	const { data: profileUpdated, error: profileError } = await supabase
+		.from("users")
+		.insert({
+			id: user.id,
+			full_name: name,
+			username,
 		})
 		.select();
 
