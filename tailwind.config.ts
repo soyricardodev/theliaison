@@ -4,10 +4,14 @@ import svgToDataUri from "mini-svg-data-uri";
 
 // @ts-expect-error missing types
 import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
+import { nextui } from "@nextui-org/react";
 
 const config = {
 	darkMode: ["class"],
-	content: ["./src/**/*.{ts,tsx}"],
+	content: [
+		"./src/**/*.{ts,tsx}",
+		"./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+	],
 	prefix: "",
 	theme: {
 		container: {
@@ -118,6 +122,7 @@ const config = {
 				},
 			);
 		},
+		nextui(),
 	],
 } satisfies Config;
 
