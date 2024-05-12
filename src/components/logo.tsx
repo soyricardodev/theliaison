@@ -1,11 +1,14 @@
 import Image from "next/image";
-import { logoBlack } from "~/assets/images";
+import { logoBlack, logoWhite } from "~/assets/images";
 import { cn } from "~/lib/utils";
 
-export function Logo({ className }: { className?: string }) {
+export function Logo({
+	className,
+	isWhite,
+}: { className?: string; isWhite?: boolean }) {
 	return (
 		<Image
-			src={logoBlack}
+			src={isWhite ? logoWhite : logoBlack}
 			alt="The Liaison Logo"
 			width={40}
 			height={40}
