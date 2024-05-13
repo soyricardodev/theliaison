@@ -62,6 +62,7 @@ export async function checkoutWithStripe(
 			],
 			cancel_url: getURL(),
 			success_url: getURL(redirectPath),
+			payment_method_collection: "if_required",
 		};
 
 		console.log(
