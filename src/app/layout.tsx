@@ -6,6 +6,7 @@ import { GeistSans } from "geist/font/sans";
 import { TailwindIndicator } from "~/components/tailwind-indicator";
 import { minervaBoldFont, minervaRegularFont } from "~/lib/fonts";
 import { cn } from "~/lib/utils";
+import { NextUIProvider } from "@nextui-org/react";
 
 export const metadata = {
 	title: "Ask The Liaison - Social Polling",
@@ -29,7 +30,7 @@ export default function RootLayout({
 					minervaBoldFont.variable,
 				)}
 			>
-				{children}
+				<NextUIProvider>{children}</NextUIProvider>
 				<TailwindIndicator />
 				<Analytics />
 				<SpeedInsights />
