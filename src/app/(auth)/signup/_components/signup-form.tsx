@@ -2,8 +2,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useFormStatus } from "react-dom";
+import { Button, Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
-import { Button } from "~/components/ui/button";
 import {
 	Form,
 	FormControl,
@@ -13,7 +13,6 @@ import {
 	FormLabel,
 	FormMessage,
 } from "~/components/ui/form";
-import { Input } from "~/components/ui/input";
 import { type SimpleSignUp, simpleSignUpSchema } from "~/utils/validators/auth";
 import { simpleSignupAction } from "../../actions";
 
@@ -37,14 +36,14 @@ export function SignupForm() {
 		const profileData = await simpleSignupAction({ ...data });
 
 		if (profileData) {
-			router.push(`/${data.username}`);
+			router.push("/signup/select-plan");
 		}
 	}
 
 	return (
 		<Form {...form}>
 			<form
-				className="flex w-full flex-col gap-3"
+				className="flex w-full flex-col gap-3 dark"
 				onSubmit={form.handleSubmit(onSubmit)}
 			>
 				<FormField
@@ -52,11 +51,16 @@ export function SignupForm() {
 					name="name"
 					render={({ field }) => (
 						<FormItem className="w-full">
-							<FormLabel>Name</FormLabel>
 							<FormControl>
-								<Input placeholder="John Doe" {...field} />
+								<Input
+									isRequired
+									variant="bordered"
+									label="Name"
+									placeholder="John Doe"
+									className="text-white border-white/40"
+									{...field}
+								/>
 							</FormControl>
-							<FormDescription>Your full name.</FormDescription>
 							<FormMessage />
 						</FormItem>
 					)}
@@ -66,9 +70,15 @@ export function SignupForm() {
 					name="username"
 					render={({ field }) => (
 						<FormItem className="w-full">
-							<FormLabel>Username</FormLabel>
 							<FormControl>
-								<Input placeholder="john2doe" {...field} />
+								<Input
+									isRequired
+									variant="bordered"
+									label="Username"
+									placeholder="john2doe"
+									className="text-white border-white/40"
+									{...field}
+								/>
 							</FormControl>
 							<FormDescription>
 								Your username just can contain numbers and letters and
@@ -83,11 +93,14 @@ export function SignupForm() {
 					name="email"
 					render={({ field }) => (
 						<FormItem className="w-full">
-							<FormLabel>Email</FormLabel>
 							<FormControl>
 								<Input
+									isRequired
+									variant="bordered"
+									label="Email"
 									type="email"
 									placeholder="johndoe@example.com"
+									className="text-white border-white/40"
 									{...field}
 								/>
 							</FormControl>
@@ -100,13 +113,17 @@ export function SignupForm() {
 					name="password"
 					render={({ field }) => (
 						<FormItem className="w-full">
-							<FormLabel>Password</FormLabel>
 							<FormControl>
-								<Input type="password" placeholder="********" {...field} />
+								<Input
+									isRequired
+									variant="bordered"
+									label="Password"
+									type="password"
+									placeholder="Enter your password"
+									className="text-white border-white/40"
+									{...field}
+								/>
 							</FormControl>
-							<FormDescription>
-								Set a password for your account.
-							</FormDescription>
 							<FormMessage />
 						</FormItem>
 					)}
