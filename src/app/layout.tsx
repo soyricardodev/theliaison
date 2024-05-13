@@ -3,10 +3,10 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
 
+import { NextUIProvider } from "@nextui-org/react";
 import { TailwindIndicator } from "~/components/tailwind-indicator";
 import { minervaBoldFont, minervaRegularFont } from "~/lib/fonts";
 import { cn } from "~/lib/utils";
-import { NextUIProvider } from "@nextui-org/react";
 
 export const metadata = {
 	title: "Ask The Liaison - Social Polling",

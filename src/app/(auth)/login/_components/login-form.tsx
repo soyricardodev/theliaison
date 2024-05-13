@@ -1,10 +1,10 @@
 "use client";
-import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, Input } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
-import { Button, Input } from "@nextui-org/react";
 import {
 	Form,
 	FormControl,
@@ -14,8 +14,8 @@ import {
 	FormMessage,
 } from "~/components/ui/form";
 import {
-	signInWithEmailSchema,
 	type SignInWithEmail,
+	signInWithEmailSchema,
 } from "~/utils/validators/auth";
 import { login } from "../../actions";
 

@@ -1,17 +1,17 @@
 "use client";
-import { createClient } from "~/utils/supabase/client";
+import { parseDate } from "@internationalized/date";
 import {
-	Button,
-	Select,
-	SelectItem,
 	Autocomplete,
 	AutocompleteItem,
+	Button,
 	DateInput,
+	Select,
+	SelectItem,
 } from "@nextui-org/react";
-import { parseDate } from "@internationalized/date";
-import { countries } from "~/utils/countries";
-import { useState } from "react";
 import { redirect } from "next/navigation";
+import { useState } from "react";
+import { countries } from "~/utils/countries";
+import { createClient } from "~/utils/supabase/client";
 
 const relationshipStatuses = [
 	{

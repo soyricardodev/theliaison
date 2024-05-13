@@ -1,10 +1,10 @@
 "use client";
+import { Radio, RadioGroup } from "@nextui-org/react";
 import type React from "react";
-import { RadioGroup, Radio } from "@nextui-org/react";
-import { cn } from "~/lib/utils";
 import { useState } from "react";
-import { ModalUserData } from "./_components/modal-user-data";
+import { cn } from "~/lib/utils";
 import { CommunityMember } from "./_components/community-member";
+import { ModalUserData } from "./_components/modal-user-data";
 
 function CustomRadio({
 	children,

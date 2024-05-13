@@ -1,19 +1,19 @@
 "use client";
 
 import {
+	Button,
 	Modal,
+	ModalBody,
 	ModalContent,
 	ModalHeader,
-	ModalBody,
-	Button,
 	useDisclosure,
 } from "@nextui-org/react";
-import { UserDataForm } from "./user-data-form";
 import { usePathname, useRouter } from "next/navigation";
-import { createClient } from "~/utils/supabase/client";
-import { checkoutWithStripe } from "~/utils/stripe/server";
 import { getErrorRedirect } from "~/utils/helpers";
 import { getStripe } from "~/utils/stripe/client";
+import { checkoutWithStripe } from "~/utils/stripe/server";
+import { createClient } from "~/utils/supabase/client";
+import { UserDataForm } from "./user-data-form";
 
 export function ModalUserData({
 	priceId,

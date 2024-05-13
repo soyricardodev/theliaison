@@ -4,9 +4,9 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "~/utils/supabase/server";
 import {
+	type SignInWithEmail,
 	type SignUp,
 	type SimpleSignUp,
-	type SignInWithEmail,
 	signInWithEmailSchema,
 	signUpSchema,
 	simpleSignUpSchema,
