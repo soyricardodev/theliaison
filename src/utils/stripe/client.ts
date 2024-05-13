@@ -1,7 +1,7 @@
-import { type Stripe, loadStripe } from "@stripe/stripe-js";
+import { type Stripe as StripeType, loadStripe } from "@stripe/stripe-js";
 import { env } from "~/env";
-
-let stripePromise: Promise<Stripe | null>;
+import Stripe from "stripe";
+let stripePromise: Promise<StripeType | null>;
 
 export const getStripe = () => {
 	if (!stripePromise) {
@@ -10,3 +10,5 @@ export const getStripe = () => {
 
 	return stripePromise;
 };
+
+export const stripe = new Stripe(env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
