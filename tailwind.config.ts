@@ -32,10 +32,10 @@ const config = {
 					DEFAULT: "hsl(var(--primary))",
 					foreground: "hsl(var(--primary-foreground))",
 				},
-				secondary: {
-					DEFAULT: "hsl(var(--secondary))",
-					foreground: "hsl(var(--secondary-foreground))",
-				},
+				// secondary: {
+				// 	DEFAULT: "hsl(var(--secondary))",
+				// 	foreground: "hsl(var(--secondary-foreground))",
+				// },
 				destructive: {
 					DEFAULT: "hsl(var(--destructive))",
 					foreground: "hsl(var(--destructive-foreground))",
@@ -95,6 +95,7 @@ const config = {
 	plugins: [
 		require("@tailwindcss/typography"),
 		require("tailwindcss-animate"),
+		nextui(),
 		addVariablesForColors,
 		// biome-ignore lint/suspicious/noExplicitAny: missing types
 		({ matchUtilities, theme }: any) => {
@@ -122,7 +123,6 @@ const config = {
 				},
 			);
 		},
-		nextui(),
 	],
 } satisfies Config;
 
