@@ -1,8 +1,11 @@
-import Image from "next/image";
+"use client";
+import { Card, CardBody, CardHeader, Progress, Image } from "@nextui-org/react";
 import Link from "next/link";
-import { Progress } from "~/components/ui/progress";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { cn } from "~/lib/utils";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
+import { createClient } from "~/utils/supabase/client";
 
 export function PollsContainer({
 	children,
@@ -98,5 +101,86 @@ export function PollCard({
 				</div>
 			</div>
 		</li>
+	);
+}
+
+function PollImage({ url }: { url: string | undefined }) {
+	const [imageUrl, setImageUrl] = useState<string | null>(null);
+	const supabase = createClient();
+
+	useEffect(() => {
+		async function downloadImage(path: string) {
+			try {
+				const { data, error } = await supabase.storage
+					.from("polls")
+					.download(path);
+				if (error) throw error;
+
+				const url = URL.createObjectURL(data);
+				setImageUrl(url);
+			} catch (error) {
+				console.log("Error downloading image: ", error);
+			}
+		}
+
+		if (url != null) downloadImage(url);
+	}, [url, supabase]);
+	// "https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/4.jpeg"
+	return (
+		<div className="w-full">
+			<Image
+				src={imageUrl ?? undefined}
+				className="shadow-black/5 object-contain rounded-large aspect-square w-full"
+				isZoomed
+			/>
+		</div>
+	);
+}
+
+export function NewPollsAproach({
+	polls,
+}: { polls: PollWithOptionsAndVotes[] }) {
+	const router = useRouter();
+	return (
+		<div className="my-auto grid max-w-7xl grid-cols-1 gap-5 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+			{polls.map((poll, idx) => (
+				<Card
+					key={`${poll.id}-${idx}`}
+					isBlurred
+					isPressable
+					onPress={() => router.push(`/poll/${poll.id}`)}
+					shadow="sm"
+					className="border-none dark bg-default-100 h-auto"
+				>
+					<div className="relative shadow-black/5 shadow-none rounded-large">
+						<PollImage url={poll.image} />
+					</div>
+					<CardHeader>
+						<h3 className="text-lg font-semibold text-pretty text-white">
+							{poll.question}
+						</h3>
+					</CardHeader>
+
+					<CardBody>
+						<div className="flex flex-col gap-4 py-2">
+							{poll.options.map((option, idx) => (
+								<div key={`${option.id}-${idx}`} className="flex gap-2">
+									<div className="flex flex-col gap-y-0.5 w-full text-white">
+										<Progress
+											color="secondary"
+											className=""
+											showValueLabel
+											label={option.text}
+											value={option.percentage}
+											size="sm"
+										/>
+									</div>
+								</div>
+							))}
+						</div>
+					</CardBody>
+				</Card>
+			))}
+		</div>
 	);
 }

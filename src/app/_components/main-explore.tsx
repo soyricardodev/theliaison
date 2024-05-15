@@ -1,7 +1,7 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
-import { PollCard, PollsContainer } from "./polls";
+import { PollCard, PollsContainer, NewPollsAproach } from "./polls";
 
 export async function MainExplore() {
 	const supabase = createClient();
@@ -10,7 +10,8 @@ export async function MainExplore() {
     question,
     options (id, text),
 		votes (id, poll_id, option_id, user_id),
-		profiles (id, username, avatar_url)
+		users (id, username, avatar_url),
+		image
   `);
 
 	const { data } = await pollsWithOptionsQuery;
@@ -43,15 +44,16 @@ export async function MainExplore() {
 			const dataToPush: PollWithOptionsAndVotes = {
 				id: pollData.id,
 				question: pollData.question,
+				image: pollData.image ?? undefined,
 				options: pollData.options.map((option) => ({
 					...option,
 					votes: votesByOption[option.id],
 					percentage: votesPercentage[option.id],
 				})),
 				user: {
-					id: pollData.profiles?.id ?? "",
-					username: pollData.profiles?.username ?? "",
-					avatar_url: pollData.profiles?.avatar_url ?? null,
+					id: pollData.users?.id ?? "",
+					username: pollData.users?.username ?? "",
+					avatar_url: pollData.users?.avatar_url ?? null,
 				},
 			};
 
@@ -87,7 +89,7 @@ export function ExplorePolls({
 				<TabsTrigger value="featured">Featured</TabsTrigger>
 			</TabsList>
 			<TabsContent value="new" className="mt-0">
-				{newPolls != null ? <Polls polls={newPolls} /> : null}
+				{newPolls != null ? <NewPollsAproach polls={newPolls} /> : null}
 			</TabsContent>
 			<TabsContent value="featured" className="mt-0">
 				{featuredPolls != null ? <Polls polls={featuredPolls} /> : null}

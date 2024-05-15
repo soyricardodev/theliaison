@@ -59,7 +59,7 @@ export function Avatar({
 
 			const { error: uploadError } = await supabase.storage
 				.from("avatars")
-				.upload(filePath, file!);
+				.upload(filePath, file);
 
 			if (uploadError) {
 				throw uploadError;

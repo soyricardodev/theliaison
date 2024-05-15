@@ -1,5 +1,6 @@
 import { Footer } from "~/components/footer";
 import { Header } from "~/components/header";
+import { Toaster } from "~/components/ui/sonner";
 
 export default function Layout({
 	children,
@@ -10,6 +11,7 @@ export default function Layout({
 		<div className="flex flex-col min-h-svh">
 			<Header />
 			{children}
+			<Toaster />
 			<Footer />
 		</div>
 	);

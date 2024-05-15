@@ -20,7 +20,7 @@ export default async function PollPage({
     question,
     options (id, text),
 		votes (id, poll_id, option_id, user_id),
-		profiles (id, username, avatar_url)
+		users (id, username, avatar_url)
   `)
 		.eq("id", id)
 		.single();
@@ -69,9 +69,9 @@ export default async function PollPage({
 			percentage: votesPercentage[option.id],
 		})),
 		user: {
-			id: data.profiles?.id ?? "",
-			username: data.profiles?.username ?? "",
-			avatar_url: data.profiles?.avatar_url ?? null,
+			id: data.users?.id ?? "",
+			username: data.users?.username ?? "",
+			avatar_url: data.users?.avatar_url ?? null,
 		},
 	};
 

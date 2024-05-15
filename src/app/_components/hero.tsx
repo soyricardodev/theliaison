@@ -3,6 +3,7 @@ import Link from "next/link";
 import { DotPattern } from "~/components/magicui/dot-pattern";
 import { cn } from "~/lib/utils";
 import { SearchForm } from "./search-form";
+import { SearchPlaceholder } from "~/components/search-placeholder";
 
 export function Hero() {
 	const suggestions = [
@@ -70,7 +71,7 @@ export function Hero() {
 					</h2>
 					<p>Sharing collective insights and perspectives.</p>
 				</div>
-				<div className="z-10 m-auto flex w-full flex-col divide-zinc-600 overflow-hidden rounded-xl bg-gray-900 shadow-lg shadow-black/40 sm:max-w-xl">
+				<div className="z-10 m-auto flex w-full flex-col divide-zinc-600 overflow-hidden rounded-full bg-gray-900 shadow-lg shadow-black/40 sm:max-w-xl">
 					<SearchForm />
 				</div>
 

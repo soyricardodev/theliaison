@@ -427,9 +427,6 @@ CREATE OR REPLACE TRIGGER "on_insert_vote_prevent_duplicated" BEFORE INSERT ON "
 ALTER TABLE ONLY "public"."comments"
     ADD CONSTRAINT "comments_poll_id_fkey" FOREIGN KEY ("poll_id") REFERENCES "public"."polls"("id");
 
-ALTER TABLE ONLY "public"."comments"
-    ADD CONSTRAINT "comments_user_id_fkey1" FOREIGN KEY ("user_id") REFERENCES "public"."profiles"("id");
-
 ALTER TABLE ONLY "public"."customers"
     ADD CONSTRAINT "customers_id_fkey" FOREIGN KEY ("id") REFERENCES "auth"."users"("id");
 

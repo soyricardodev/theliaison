@@ -1,7 +1,10 @@
-import type { PollFormValues } from "~/app/(polling)/social-polling/create/_components/create-poll";
+import type { PollFormValues } from "~/app/(polling)/create/_components/create-poll-scratch";
 import { createClient } from "~/utils/supabase/client";
 
-export async function createPollWithOptions(values: PollFormValues) {
+export async function createPollWithOptions(
+	values: PollFormValues,
+	image?: string | null,
+) {
 	const supabase = createClient();
 
 	const {
@@ -18,8 +21,10 @@ export async function createPollWithOptions(values: PollFormValues) {
 		.insert({
 			question: values.question,
 			user_id: user.id,
+			image,
 		})
-		.select("*");
+		.select("*")
+		.single();
 
 	if (createPollError || !poll) {
 		throw new Error("Unable to create poll");
@@ -27,7 +32,7 @@ export async function createPollWithOptions(values: PollFormValues) {
 
 	const optionsToInsert = values.options.map((option) => ({
 		text: option.value,
-		poll_id: poll[0]?.id,
+		poll_id: poll.id,
 	}));
 
 	const { data: pollOptions, error: createPollOptionsError } = await supabase
@@ -41,7 +46,7 @@ export async function createPollWithOptions(values: PollFormValues) {
 
 	const categoriesToInsert = values.categories.map((category) => ({
 		categorie_id: Number(category),
-		poll_id: poll[0]?.id,
+		poll_id: poll.id,
 	}));
 
 	const { error: createPollCategoriesError } = await supabase
@@ -52,7 +57,7 @@ export async function createPollWithOptions(values: PollFormValues) {
 		throw new Error("Unable to create poll categories");
 	}
 
-	return poll[0]!;
+	return poll;
 }
 
 export async function getUserPolls() {

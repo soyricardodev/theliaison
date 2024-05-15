@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "~/utils/supabase/server";
 import { CreatePollForm } from "./_components/create-poll-form";
+import { PollCreatorTrigger } from "./_components/poll-creator-trigger";
 
 export default async function Component() {
 	const supabase = createClient();
@@ -28,11 +29,11 @@ export default async function Component() {
 				<div className="space-y-6">
 					<div className="space-y-2">
 						<h1 className="text-3xl font-bold">Create a New Poll</h1>
-						<p className="text-gray-500">
+						<p className="text-default-600 text-lg">
 							Get feedback from your audience by creating a new poll.
 						</p>
 					</div>
-					{!subscription ? (
+					{!subscription || !isPollCreator ? (
 						<div>
 							<h3>You don't have an active subscription</h3>
 							<Link href="/pricing" className="text-blue-500 hover:underline">
@@ -40,16 +41,8 @@ export default async function Component() {
 							</Link>
 						</div>
 					) : null}
-					{isPollCreator ? (
-						<CreatePollForm />
-					) : (
-						<div>
-							<h3>In order to create a poll you need to be a poll creator</h3>
-							<Link href="/pricing" className="text-blue-500 hover:underline">
-								Go to pricing page
-							</Link>
-						</div>
-					)}
+					{/* {isPollCreator ? <CreatePollForm /> : null} */}
+					<PollCreatorTrigger />
 				</div>
 			</div>
 		</div>
