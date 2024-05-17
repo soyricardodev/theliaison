@@ -3,10 +3,9 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
 
-import { NextUIProvider } from "@nextui-org/react";
 import { TailwindIndicator } from "~/components/tailwind-indicator";
-import { minervaBoldFont, minervaRegularFont } from "~/lib/fonts";
 import { cn } from "~/lib/utils";
+import { Providers } from "~/components/providers";
 
 export const metadata = {
 	title: "Ask The Liaison - Social Polling",
@@ -22,18 +21,17 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body
-				className={cn(
-					"font-sans antialiased",
-					GeistSans.variable,
-					minervaRegularFont.variable,
-					minervaBoldFont.variable,
-				)}
-			>
-				<NextUIProvider>{children}</NextUIProvider>
+			<body className={cn("font-sans antialiased", GeistSans.variable)}>
+				<Providers>
+					<div className="dark text-foreground bg-background">{children}</div>
+				</Providers>
 				<TailwindIndicator />
-				<Analytics />
-				<SpeedInsights />
+				{process.env.NODE_ENV === "production" ? (
+					<>
+						<Analytics />
+						<SpeedInsights />
+					</>
+				) : null}
 			</body>
 		</html>
 	);
