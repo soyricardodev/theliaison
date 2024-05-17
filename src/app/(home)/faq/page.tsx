@@ -55,7 +55,8 @@ export default function FAQPage() {
 			answer: (
 				<div>
 					<p>
-						We will have <strong className="font-semibold text-gray-50">two</strong>{" "}
+						We will have{" "}
+						<strong className="font-semibold text-gray-50">two</strong>{" "}
 						30-minute phone consultations. The first 30-minute phone
 						consultation is for me to get to know you, your personality and your
 						dating goals. Based on this information, I will review your current
@@ -139,7 +140,9 @@ export default function FAQPage() {
 									href={`#${faq.id}`}
 									className="no-underline hover:underline"
 								>
-									<h2 id={faq.id} className="text-default-700">{faq.question}</h2>
+									<h2 id={faq.id} className="text-default-700">
+										{faq.question}
+									</h2>
 								</Link>
 								{faq.answer}
 							</React.Fragment>

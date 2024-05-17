@@ -3,9 +3,9 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
 
+import { Providers } from "~/components/providers";
 import { TailwindIndicator } from "~/components/tailwind-indicator";
 import { cn } from "~/lib/utils";
-import { Providers } from "~/components/providers";
 
 export const metadata = {
 	title: "Ask The Liaison - Social Polling",

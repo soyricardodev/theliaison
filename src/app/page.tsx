@@ -1,7 +1,7 @@
+import { Footer } from "~/components/footer";
 import { Header } from "~/components/header";
 import { Hero } from "./_components/hero";
 import { MainExplore } from "./_components/main-explore";
-import { Footer } from "~/components/footer";
 
 export default function HomePage() {
 	return (

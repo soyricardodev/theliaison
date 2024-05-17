@@ -1,7 +1,18 @@
 "use client";
 
-import React from "react";
+import { Icon } from "@iconify/react";
 import {
+	Avatar,
+	Badge,
+	BreadcrumbItem,
+	Breadcrumbs,
+	Button,
+	Dropdown,
+	DropdownItem,
+	DropdownMenu,
+	DropdownTrigger,
+	Input,
+	Link,
 	Navbar,
 	NavbarBrand,
 	NavbarContent,
@@ -9,27 +20,16 @@ import {
 	NavbarMenu,
 	NavbarMenuItem,
 	NavbarMenuToggle,
-	Link,
-	Button,
-	Dropdown,
-	DropdownTrigger,
-	DropdownMenu,
-	DropdownItem,
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
-	Avatar,
-	Breadcrumbs,
-	BreadcrumbItem,
-	Input,
-	Badge,
 } from "@nextui-org/react";
-import { Icon } from "@iconify/react";
+import React from "react";
 
 import { Logo } from "./logo";
 
-import NotificationsCard from "./notifications-card";
 import type { User } from "@supabase/supabase-js";
+import NotificationsCard from "./notifications-card";
 
 interface HeaderProps {
 	breadcrumbs?: Array<{

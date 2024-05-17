@@ -2,19 +2,19 @@
 
 import type { CardProps } from "@nextui-org/react";
 
-import React from "react";
+import { Icon } from "@iconify/react";
 import {
 	Button,
 	Card,
 	CardBody,
+	CardFooter,
 	CardHeader,
 	Chip,
-	Tabs,
-	Tab,
 	ScrollShadow,
-	CardFooter,
+	Tab,
+	Tabs,
 } from "@nextui-org/react";
-import { Icon } from "@iconify/react";
+import React from "react";
 
 import NotificationItem from "./notification-item";
 

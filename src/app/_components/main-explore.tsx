@@ -1,7 +1,7 @@
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
-import { PollCard, PollsContainer, NewPollsAproach } from "./polls";
 import { ExplorePollsTabs } from "./explore-polls-tabs";
+import { NewPollsAproach, PollCard, PollsContainer } from "./polls";
 
 export async function MainExplore() {
 	const supabase = createClient();

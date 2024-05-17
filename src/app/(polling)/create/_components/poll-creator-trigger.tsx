@@ -1,13 +1,13 @@
 "use client";
 import {
-	Modal,
-	ModalContent,
-	ModalHeader,
-	ModalBody,
-	ModalFooter,
 	Button,
-	useDisclosure,
 	Input,
+	Modal,
+	ModalBody,
+	ModalContent,
+	ModalFooter,
+	ModalHeader,
+	useDisclosure,
 } from "@nextui-org/react";
 import { ArrowRightIcon, BotIcon, ZapIcon } from "lucide-react";
 import { useState } from "react";

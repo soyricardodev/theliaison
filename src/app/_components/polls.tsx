@@ -1,5 +1,5 @@
 "use client";
-import { Progress, Image } from "@nextui-org/react";
+import { Image, Progress } from "@nextui-org/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";

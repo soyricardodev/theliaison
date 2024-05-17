@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
-import { Avatar, Badge, Button } from "@nextui-org/react";
 import { Icon } from "@iconify/react";
+import { Avatar, Badge, Button } from "@nextui-org/react";
+import React from "react";
 
 import { cn } from "~/lib/utils";
 

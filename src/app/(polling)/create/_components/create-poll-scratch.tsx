@@ -1,9 +1,13 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input, Select, SelectItem } from "@nextui-org/react";
-import { z } from "zod";
+import { FileImageIcon, PlusCircleIcon, TrashIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 import {
 	Form,
 	FormControl,
@@ -11,13 +15,9 @@ import {
 	FormItem,
 	FormMessage,
 } from "~/components/ui/form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useRouter } from "next/navigation";
-import { createClient } from "~/utils/supabase/client";
 import { categories } from "~/lib/categories";
-import { PlusCircleIcon, TrashIcon, FileImageIcon } from "lucide-react";
-import { toast } from "sonner";
 import { createPollWithOptions } from "~/server/db/queries";
+import { createClient } from "~/utils/supabase/client";
 
 const pollFormSchema = z.object({
 	question: z.string({ required_error: "Please enter a question" }).min(3, {

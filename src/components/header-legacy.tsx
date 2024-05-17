@@ -1,6 +1,15 @@
-import Image from "next/image";
-import Link from "next/link";
 import { Icon } from "@iconify/react";
+import {
+	Button,
+	Dropdown,
+	DropdownItem,
+	DropdownMenu,
+	DropdownTrigger,
+	Navbar,
+	NavbarBrand,
+	NavbarContent,
+	NavbarItem,
+} from "@nextui-org/react";
 import {
 	ExitIcon,
 	PersonIcon,
@@ -13,6 +22,8 @@ import {
 	LayoutDashboardIcon,
 	MenuIcon,
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import {
 	Menubar,
 	MenubarContent,
@@ -25,17 +36,6 @@ import { cn } from "~/lib/utils";
 import { createClient } from "~/utils/supabase/server";
 import { Logo } from "./logo";
 import { buttonVariants } from "./ui/button";
-import {
-	Navbar,
-	NavbarBrand,
-	NavbarContent,
-	Dropdown,
-	DropdownTrigger,
-	Button,
-	NavbarItem,
-	DropdownMenu,
-	DropdownItem,
-} from "@nextui-org/react";
 
 export function Header() {
 	const icons = {
