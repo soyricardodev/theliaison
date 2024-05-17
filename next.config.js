@@ -22,6 +22,8 @@ const nextConfig = {
 				hostname: "vercel.com",
 			},
 		],
+		loader: "custom",
+		loaderFile: "./src/utils/supabase/image-loader.js",
 	},
 };
 
