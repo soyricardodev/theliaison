@@ -13,6 +13,7 @@ export default function HomePage() {
 				<MainExplore />
 			</main>
 			<Footer />
+			<div className="pointer-events-none absolute inset-0 h-screen bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(120,119,198,0.5),rgba(255,255,255,0))]" />
 		</>
 	);
 }
