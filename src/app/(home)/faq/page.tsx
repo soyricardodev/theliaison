@@ -55,7 +55,7 @@ export default function FAQPage() {
 			answer: (
 				<div>
 					<p>
-						We will have <strong className="font-semibold">two</strong>{" "}
+						We will have <strong className="font-semibold text-gray-50">two</strong>{" "}
 						30-minute phone consultations. The first 30-minute phone
 						consultation is for me to get to know you, your personality and your
 						dating goals. Based on this information, I will review your current
@@ -119,34 +119,34 @@ export default function FAQPage() {
 
 	return (
 		<main className="flex-1">
-			<div className="bg-zinc-50">
-				<div className="bg-white py-16">
+			<div>
+				<div className="py-16">
 					<div className="mx-auto max-w-screen-md px-4 sm:px-6">
-						<h1 className="font-heading text-center text-3xl font-extrabold leading-[1.15] text-black sm:text-5xl sm:leading-[1.15]">
+						<h1 className="font-heading text-center text-3xl font-extrabold leading-[1.15] sm:text-5xl sm:leading-[1.15]">
 							Frequently Asked Questions
 						</h1>
-						<p className="mt-5 text-center text-lg text-zinc-600 text-pretty">
+						<p className="mt-5 text-center text-lg text-default-800 text-pretty">
 							Get answers to common questions about The Liaison Web Platform
 						</p>
 					</div>
 				</div>
 
 				<div className="mx-auto flex max-w-screen-md flex-col items-center px-4 py-10 sm:px-6 sm:pt-20 lg:px-8">
-					<article className="prose-headings:font-heading prose prose-gray max-w-none transition-all prose-headings:relative prose-headings:scroll-mt-20 prose-headings:font-semibold">
-						{faqs.map((faq, idx) => (
-							<React.Fragment key={idx}>
+					<article className="prose-headings:font-heading prose max-w-none transition-all prose-headings:relative prose-headings:scroll-mt-20 prose-headings:font-semibold text-default-900">
+						{faqs.map((faq) => (
+							<React.Fragment key={faq.question}>
 								<Link
 									href={`#${faq.id}`}
 									className="no-underline hover:underline"
 								>
-									<h2 id={faq.id}>{faq.question}</h2>
+									<h2 id={faq.id} className="text-default-700">{faq.question}</h2>
 								</Link>
 								{faq.answer}
 							</React.Fragment>
 						))}
 					</article>
-					<div className="mt-10 w-full border-t border-zinc-200 pt-10 text-center">
-						<p className="text-zinc-500">Last updated: May 3, 2024</p>
+					<div className="mt-10 w-full border-t border-zinc-400 pt-10 text-center">
+						<p className="text-zinc-400">Last updated: May 3, 2024</p>
 					</div>
 				</div>
 			</div>
