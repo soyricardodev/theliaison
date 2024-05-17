@@ -112,7 +112,6 @@ export function Header({ breadcrumbs, user }: HeaderProps) {
 				height="64px"
 			>
 				<NavbarBrand>
-					<NavbarMenuToggle className="mr-2 h-6 sm:hidden" />
 					<Logo />
 				</NavbarBrand>
 				{/* Breadcrumbs */}
@@ -208,40 +207,6 @@ export function Header({ breadcrumbs, user }: HeaderProps) {
 						</Dropdown>
 					</NavbarItem>
 				</NavbarContent>
-
-				{/* Mobile Menu */}
-				<NavbarMenu>
-					<NavbarMenuItem>
-						<Link className="w-full" color="foreground" href="#">
-							Dashboard
-						</Link>
-					</NavbarMenuItem>
-					<NavbarMenuItem isActive>
-						<Link
-							aria-current="page"
-							className="w-full"
-							color="primary"
-							href="#"
-						>
-							Deployments
-						</Link>
-					</NavbarMenuItem>
-					<NavbarMenuItem>
-						<Link className="w-full" color="foreground" href="#">
-							Analytics
-						</Link>
-					</NavbarMenuItem>
-					<NavbarMenuItem>
-						<Link className="w-full" color="foreground" href="#">
-							Team
-						</Link>
-					</NavbarMenuItem>
-					<NavbarMenuItem>
-						<Link className="w-full" color="foreground" href="#">
-							Settings
-						</Link>
-					</NavbarMenuItem>
-				</NavbarMenu>
 			</Navbar>
 			<hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-200/30 to-neutral-200/0" />
 		</div>
