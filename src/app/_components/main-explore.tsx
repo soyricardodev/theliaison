@@ -1,7 +1,7 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
 import { PollCard, PollsContainer, NewPollsAproach } from "./polls";
+import { ExplorePollsTabs } from "./explore-polls-tabs";
 
 export async function MainExplore() {
 	const supabase = createClient();
@@ -83,18 +83,12 @@ export function ExplorePolls({
 	featuredPolls: PollWithOptionsAndVotes[];
 }) {
 	return (
-		<Tabs defaultValue="new" className="grid gap-6">
-			<TabsList className="flex items-center gap-2 justify-start bg-transparent">
-				<TabsTrigger value="new">New Polls</TabsTrigger>
-				<TabsTrigger value="featured">Featured</TabsTrigger>
-			</TabsList>
-			<TabsContent value="new" className="mt-0">
-				{newPolls != null ? <NewPollsAproach polls={newPolls} /> : null}
-			</TabsContent>
-			<TabsContent value="featured" className="mt-0">
-				{featuredPolls != null ? <Polls polls={featuredPolls} /> : null}
-			</TabsContent>
-		</Tabs>
+		<ExplorePollsTabs
+			allPolls={newPolls != null ? <NewPollsAproach polls={newPolls} /> : null}
+			featuredPolls={
+				featuredPolls != null ? <Polls polls={featuredPolls} /> : null
+			}
+		/>
 	);
 }
 
