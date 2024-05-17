@@ -1,8 +1,9 @@
 "use client";
-import { Card, CardBody, CardHeader, Progress, Image } from "@nextui-org/react";
+import { Progress, Image } from "@nextui-org/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { MagicCard, MagicContainer } from "~/components/magicui/magic-card";
 import { cn } from "~/lib/utils";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/client";
@@ -127,13 +128,13 @@ function PollImage({ url }: { url: string | undefined }) {
 	}, [url, supabase]);
 	// "https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/4.jpeg"
 	return (
-		<div className="w-full">
+		<figure className="w-full max-h-48 overflow-hidden rounded-large">
 			<Image
 				src={imageUrl ?? undefined}
-				className="shadow-black/5 object-contain rounded-large aspect-square w-full"
+				className="shadow-black/5 object-cover rounded-large size-full"
 				isZoomed
 			/>
-		</div>
+		</figure>
 	);
 }
 
@@ -142,45 +143,39 @@ export function NewPollsAproach({
 }: { polls: PollWithOptionsAndVotes[] }) {
 	const router = useRouter();
 	return (
-		<div className="my-auto grid max-w-7xl grid-cols-1 gap-5 p-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+		<MagicContainer
+			className={"gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"}
+		>
 			{polls.map((poll, idx) => (
-				<Card
+				<MagicCard
 					key={`${poll.id}-${idx}`}
-					isBlurred
-					isPressable
-					onPress={() => router.push(`/poll/${poll.id}`)}
-					shadow="sm"
-					className="border-none dark bg-default-100 h-auto"
+					onClick={() => router.push(`/poll/${poll.id}`)}
+					className="flex w-full cursor-pointer flex-col items-center overflow-hidden bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),#ffaa40_0,#9c40ff_50%,transparent_100%)] shadow-2xl gap-4"
 				>
 					<div className="relative shadow-black/5 shadow-none rounded-large">
 						<PollImage url={poll.image} />
 					</div>
-					<CardHeader>
-						<h3 className="text-lg font-semibold text-pretty text-white">
-							{poll.question}
-						</h3>
-					</CardHeader>
-
-					<CardBody>
-						<div className="flex flex-col gap-4 py-2">
-							{poll.options.map((option, idx) => (
-								<div key={`${option.id}-${idx}`} className="flex gap-2">
-									<div className="flex flex-col gap-y-0.5 w-full text-white">
-										<Progress
-											color="secondary"
-											className=""
-											showValueLabel
-											label={option.text}
-											value={option.percentage}
-											size="sm"
-										/>
-									</div>
+					<h3 className="text-lg font-semibold text-pretty text-white">
+						{poll.question}
+					</h3>
+					<div className="flex flex-col gap-4 py-2 w-full">
+						{poll.options.map((option, idx) => (
+							<div key={`${option.id}-${idx}`} className="flex gap-2">
+								<div className="flex flex-col gap-y-0.5 w-full text-white">
+									<Progress
+										color="secondary"
+										className=""
+										showValueLabel
+										label={option.text}
+										value={option.percentage}
+									/>
 								</div>
-							))}
-						</div>
-					</CardBody>
-				</Card>
+							</div>
+						))}
+					</div>
+					<div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
+				</MagicCard>
 			))}
-		</div>
+		</MagicContainer>
 	);
 }
