@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { Progress } from "~/components/ui/progress";
+import { Progress } from "@nextui-org/react";
 import { ScrollArea } from "~/components/ui/scroll-area";
 import { Toaster } from "~/components/ui/sonner";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
@@ -103,79 +103,38 @@ export default async function PollPage({
 		<main className="flex-1 overflow-auto">
 			<div className="flex flex-col max-w-screen-2xl mx-auto">
 				<div className="flex flex-1 flex-col gap-3 p-4 pb-2 pt-3 md:pt-16 lg:pt-24">
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 						<div>
+							<h2 className="text-2xl font-semibold">
+								{dataToRender.question}
+							</h2>
 							<Image
-								src={`/polls/${dataToRender.image}`}
-								alt="poll"
-								width={400}
+								alt={`Poll ${dataToRender.question}`}
+								className="rounded-lg mt-4 object-cover"
 								height={400}
-								className="rounded-lg"
+								src={`/polls/${dataToRender.image}`}
+								style={{
+									aspectRatio: "600/400",
+									objectFit: "cover",
+								}}
+								width={600}
 							/>
 						</div>
 
 						{/* Poll Data */}
-						<div className="relative flex h-full w-full flex-1 flex-col gap-3 rounded-xl sm:order-2 lg:p-3">
-							<h3 className="text-2xl font-semibold">
-								{dataToRender.question}
-							</h3>
-
-							<ul className="w-full grid gap-2">
-								{dataToRender.options.map((option) => {
-									if (
-										userAlreadyVoted &&
-										option.id === optionSelectedForUserLoggedIn?.option_id
-									) {
-										return (
-											<li
-												key={option.id}
-												className="hover:bg-gray-300 px-3 py-2 rounded-lg transition-colors cursor-crosshair"
-											>
-												<div className="flex items-center gap-2">
-													<div className="flex items-center justify-center mr-4">
-														<span className="text-sm md:text-base">
-															{option.votes}
-														</span>
-													</div>
-													<div className="flex flex-col w-full gap-3">
-														<div className="flex justify-between items-center">
-															<p className="text-sm md:text-lg font-medium">
-																{option.text}
-															</p>
-															<Image
-																alt={`${option.text}'s Avatar`}
-																className="shrink-0 select-none rounded-full"
-																loading="eager"
-																src={`https://vercel.com/api/www/avatar/${option.text}?s=64`}
-																width={32}
-																height={32}
-															/>
-														</div>
-														<Progress
-															value={option.percentage}
-															className="h-[10px]"
-														/>
-														<p className="text-base text-right text-gray-500">
-															{option.percentage}%
-														</p>
-													</div>
-												</div>
-											</li>
-										);
-									}
-
-									return (
-										<OptionToVote
-											option={option}
-											key={option.id}
-											pollId={Number(id)}
-											alreadyVoted={userAlreadyVoted}
-											userId={user?.id}
-											optionVotedId={optionSelectedForUserLoggedIn?.option_id}
-											canVote={userCanVote}
-										/>
-									);
-								})}
+						<div className="relative flex h-full w-full flex-col gap-3 lg:p-3">
+							<ul className="w-full grid gap-6">
+								{dataToRender.options.map((option) => (
+									<OptionToVote
+										option={option}
+										key={option.id}
+										pollId={Number(id)}
+										alreadyVoted={userAlreadyVoted}
+										userId={user?.id}
+										optionVotedId={optionSelectedForUserLoggedIn?.option_id}
+										canVote={userCanVote}
+									/>
+								))}
 							</ul>
 							<div>
 								<p className="text-sm text-gray-500">
