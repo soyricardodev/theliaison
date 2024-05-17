@@ -17,7 +17,7 @@ export default function SignupLayout({
 				>
 					<div className="absolute left-10 top-10">
 						<div className="flex items-center">
-							<Logo isWhite />
+							<Logo />
 						</div>
 					</div>
 
