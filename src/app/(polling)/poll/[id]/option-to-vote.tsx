@@ -51,12 +51,13 @@ export function OptionToVote({
 	return (
 		<li
 			className={cn(
-				"hover:bg-gray-300 bg-gray-200 px-3 py-2 rounded-lg transition-colors cursor-crosshair",
+				" px-3 py-2 rounded-lg transition-colors cursor-crosshair",
 				alreadyVoted && "hover:bg-gray-200 cursor-not-allowed",
 				optionVotedId === option.id &&
 					"bg-gray-300 hover:bg-gray-200 cursor-crosshair",
 			)}
 			onClick={vote}
+			onKeyDown={vote}
 		>
 			<div className="flex items-center gap-2">
 				<div className="flex items-center justify-center mr-4">
