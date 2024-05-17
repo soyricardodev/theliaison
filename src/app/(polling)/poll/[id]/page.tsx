@@ -20,7 +20,8 @@ export default async function PollPage({
     question,
     options (id, text),
 		votes (id, poll_id, option_id, user_id),
-		users (id, username, avatar_url)
+		users (id, username, avatar_url),
+		image
   `)
 		.eq("id", id)
 		.single();
@@ -73,6 +74,7 @@ export default async function PollPage({
 			username: data.users?.username ?? "",
 			avatar_url: data.users?.avatar_url ?? null,
 		},
+		image: data.image ?? undefined,
 	};
 
 	console.log({ optionSelectedForUserLoggedIn, userAlreadyVoted });
@@ -102,10 +104,10 @@ export default async function PollPage({
 	return (
 		<main className="flex-1 overflow-auto">
 			<div className="flex flex-col max-w-screen-2xl mx-auto">
-				<div className="flex flex-1 flex-col gap-3 border-t bg-gray-50 p-4 pb-2 pt-3 lg:border-t-0 lg:bg-white lg:pt-0">
-					<div className="flex flex-1 flex-col items-start gap-4 md:flex-row">
+				<div className="flex flex-1 flex-col gap-3 p-4 pb-2 pt-3 md:pt-16 lg:pt-24">
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 						{/* Poll Data */}
-						<div className="relative flex h-full w-full flex-1 flex-col gap-3 rounded-xl bg-[#fafafa] sm:order-2 lg:p-3">
+						<div className="relative flex h-full w-full flex-1 flex-col gap-3 rounded-xl sm:order-2 lg:p-3">
 							<h3 className="text-2xl font-semibold">
 								{dataToRender.question}
 							</h3>
@@ -119,7 +121,7 @@ export default async function PollPage({
 										return (
 											<li
 												key={option.id}
-												className="hover:bg-gray-300 bg-gray-300 px-3 py-2 rounded-lg transition-colors cursor-crosshair"
+												className="hover:bg-gray-300 px-3 py-2 rounded-lg transition-colors cursor-crosshair"
 											>
 												<div className="flex items-center gap-2">
 													<div className="flex items-center justify-center mr-4">
@@ -175,7 +177,7 @@ export default async function PollPage({
 						</div>
 
 						{/* Poll Comments */}
-						<div className="order-2 shrink-0 origin-left overflow-scroll flex-col rounded-lg bg-gray-100 py-2 transition-all duration-300 ease-out @container lg:flex w-full md:w-[300px] lg:w-[350px] md:max-h-[calc(100vh-190px)]">
+						<div className="order-2 shrink-0 origin-left overflow-scroll flex-col rounded-lg py-2 transition-all duration-300 ease-out @container lg:flex w-full md:w-[300px] lg:w-[350px] md:max-h-[calc(100vh-190px)]">
 							<ScrollArea className="w-full flex flex-col gap-2 p-2">
 								<h5 className="text-lg font-medium py-3 md:border-t-2 md:border-gray-200">
 									Comments
