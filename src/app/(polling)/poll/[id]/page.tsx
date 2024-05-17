@@ -77,8 +77,6 @@ export default async function PollPage({
 		image: data.image ?? undefined,
 	};
 
-	console.log({ optionSelectedForUserLoggedIn, userAlreadyVoted });
-
 	// * User Subscription
 	const { data: subscription } = await supabase
 		.from("subscriptions")
@@ -106,6 +104,16 @@ export default async function PollPage({
 			<div className="flex flex-col max-w-screen-2xl mx-auto">
 				<div className="flex flex-1 flex-col gap-3 p-4 pb-2 pt-3 md:pt-16 lg:pt-24">
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+						<div>
+							<Image
+								src={`/polls/${dataToRender.image}`}
+								alt="poll"
+								width={400}
+								height={400}
+								className="rounded-lg"
+							/>
+						</div>
+
 						{/* Poll Data */}
 						<div className="relative flex h-full w-full flex-1 flex-col gap-3 rounded-xl sm:order-2 lg:p-3">
 							<h3 className="text-2xl font-semibold">
@@ -189,6 +197,8 @@ export default async function PollPage({
 								</ul>
 							</ScrollArea>
 						</div>
+
+						<div>stats</div>
 					</div>
 				</div>
 			</div>
