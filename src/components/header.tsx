@@ -1,214 +1,249 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
 
+import React from "react";
 import {
-	ExitIcon,
-	PersonIcon,
-	QuestionMarkCircledIcon,
-} from "@radix-ui/react-icons";
-import {
-	CircleDollarSignIcon,
-	CommandIcon,
-	CreditCardIcon,
-	LayoutDashboardIcon,
-	MenuIcon,
-} from "lucide-react";
-import {
-	Menubar,
-	MenubarContent,
-	MenubarItem,
-	MenubarMenu,
-	MenubarSeparator,
-	MenubarTrigger,
-} from "~/components/ui/menubar";
-import { cn } from "~/lib/utils";
-import { createClient } from "~/utils/supabase/server";
+	Navbar,
+	NavbarBrand,
+	NavbarContent,
+	NavbarItem,
+	NavbarMenu,
+	NavbarMenuItem,
+	NavbarMenuToggle,
+	Link,
+	Button,
+	Dropdown,
+	DropdownTrigger,
+	DropdownMenu,
+	DropdownItem,
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+	Avatar,
+	Breadcrumbs,
+	BreadcrumbItem,
+	Input,
+	Badge,
+} from "@nextui-org/react";
+import { Icon } from "@iconify/react";
+
 import { Logo } from "./logo";
-import { Button, buttonVariants } from "./ui/button";
 
-export function Header() {
-	return (
-		<div className="sticky top-0 z-20">
-			<header className="flex w-full flex-col gap-3 bg-white/95 p-3 backdrop-blur supports-[backdrop-filter]:bg-white/60 md:h-16 md:flex-row md:items-center lg:px-4">
-				<div className="flex w-full items-center gap-8">
-					<div className="flex items-center gap-2">
-						<Link
-							className="rounded focus:outline-0 focus:ring-0 focus-visible:bg-zinc-200"
-							href="/"
-						>
-							<span className="sr-only">Home</span>
-							<Logo />
-						</Link>
-					</div>
-					<div className="ml-auto flex items-center gap-2 sm:gap-4">
-						<CreatePollButton />
-						<Menu />
-					</div>
-				</div>
-			</header>
-		</div>
-	);
+import NotificationsCard from "./notifications-card";
+import type { User } from "@supabase/supabase-js";
+
+interface HeaderProps {
+	breadcrumbs?: Array<{
+		name: string;
+		href: string;
+	}>;
+	user?: User | null;
 }
 
-async function CreatePollButton() {
-	const supabase = createClient();
-	const {
-		data: { user },
-		error,
-	} = await supabase.auth.getUser();
+const menuItemsLogout = [
+	{
+		key: "login",
+		label: "Login",
+		href: "/login",
+		Icon: <Icon icon="solar:user-rounded-bold-duotone" width={24} />,
+	},
+	{
+		key: "services",
+		label: "Services",
+		href: "/services",
+		Icon: <Icon icon="solar:three-squares-bold-duotone" width={24} />,
+	},
+	{
+		key: "faq",
+		label: "FAQs",
+		href: "/faq",
+		Icon: <Icon icon="solar:question-circle-bold-duotone" width={24} />,
+	},
+	{
+		key: "pricing",
+		label: "Pricing",
+		href: "/pricing",
+		Icon: <Icon icon="solar:dollar-bold-duotone" width={24} />,
+	},
+];
 
-	if (!user || error) {
-		return null;
-	}
+const menuItemsLoggedIn = (username: string) => [
+	{
+		key: "explore",
+		label: "Explore",
+		href: "/explore",
+		Icon: <Icon icon="solar:three-squares-bold-duotone" width={24} />,
+	},
+	{
+		key: "profile",
+		label: "Profile",
+		href: `/${username}`,
+		Icon: <Icon icon="solar:user-rounded-bold-duotone" width={24} />,
+	},
+	{
+		key: "faq",
+		label: "FAQs",
+		href: "/faq",
+		Icon: <Icon icon="solar:question-circle-bold-duotone" width={24} />,
+	},
+	{
+		key: "subscription",
+		label: "Subscription & Billing",
+		href: "/subscription",
+		Icon: <Icon icon="solar:card-bold-duotone" width={24} />,
+	},
+	{
+		key: "pricing",
+		label: "Pricing",
+		href: "/pricing",
+		Icon: <Icon icon="solar:dollar-bold-duotone" width={24} />,
+	},
+];
 
+export function Header({ breadcrumbs, user }: HeaderProps) {
+	const menuLinks = user ? menuItemsLoggedIn("Ricardo") : menuItemsLogout;
 	return (
-		<Link
-			className={cn(buttonVariants({ size: "sm" }), "text-xs h-8")}
-			href="/create"
-		>
-			<span className="hidden sm:inline">Create Poll</span>
-			<span className="sm:hidden">Create</span>
-		</Link>
-	);
-}
+		<div className="w-full">
+			<Navbar
+				isBlurred
+				classNames={{
+					item: "data-[active=true]:text-primary",
+					wrapper: "px-4 sm:px-6",
+				}}
+				height="64px"
+			>
+				<NavbarBrand>
+					<NavbarMenuToggle className="mr-2 h-6 sm:hidden" />
+					<Logo />
+				</NavbarBrand>
+				{/* Breadcrumbs */}
+				{breadcrumbs != null && (
+					<Breadcrumbs className="hidden sm:flex" radius="full">
+						{breadcrumbs.map((breadcrumb) => (
+							<BreadcrumbItem key={breadcrumb.name} href={breadcrumb.href}>
+								{breadcrumb.name}
+							</BreadcrumbItem>
+						))}
+					</Breadcrumbs>
+				)}
 
-async function Menu() {
-	const supabase = createClient();
-	const {
-		data: { user },
-		error,
-	} = await supabase.auth.getUser();
-
-	const { data: profileData } = await supabase
-		.from("users")
-		.select("*")
-		.eq("id", user != null ? user.id : "")
-		.single();
-
-	const username = profileData?.username ?? "default";
-
-	return (
-		<Menubar>
-			<MenubarMenu>
-				<MenubarTrigger
-					className={cn(
-						user != null &&
-							"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 size shrink-0 rounded-full border",
-						user == null &&
-							"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 h-8 w-8 shrink-0 rounded-full border border-gray-200",
-					)}
+				{/* Right Menu */}
+				<NavbarContent
+					className="ml-auto h-12 max-w-fit items-center gap-0"
+					justify="end"
 				>
-					{user != null && !error ? (
-						<Image
-							alt="soyricardodev"
-							className="shrink-0 select-none rounded-full"
-							src={`https://vercel.com/api/www/avatar/${username}?s=64`}
-							width={32}
-							height={32}
-						/>
-					) : (
-						<MenuIcon className="text-gray-500 size-4" />
+					{/* Notifications */}
+					{user != null && (
+						<NavbarItem className="flex">
+							<Popover offset={12} placement="bottom-end">
+								<PopoverTrigger>
+									<Button
+										disableRipple
+										isIconOnly
+										className="overflow-visible"
+										radius="full"
+										variant="light"
+									>
+										<Badge
+											color="danger"
+											content="5"
+											showOutline={false}
+											size="md"
+										>
+											<Icon
+												className="text-default-500"
+												icon="solar:bell-linear"
+												width={22}
+											/>
+										</Badge>
+									</Button>
+								</PopoverTrigger>
+								<PopoverContent className="max-w-[90vw] p-0 sm:max-w-[380px] dark">
+									<NotificationsCard className="w-full shadow-none" />
+								</PopoverContent>
+							</Popover>
+						</NavbarItem>
 					)}
-					<span className="sr-only">Toggle Menu</span>
-				</MenubarTrigger>
-				<MenubarContent className="min-w-[16rem]  bg-white rounded-xl max-h-[80vh] w-[360px] origin-top-right overflow-y-auto md:max-h-[calc(100vh-64px)]">
-					{user != null && !error ? (
-						<>
-							<div className="p-4">
-								<Link
-									className="mr-2 grid truncate text-sm"
-									href={`/${username}`}
-								>
-									<span className="font-medium" id="user-name">
-										{username}
-									</span>
-									<span className="text-zinc-500">{user.email}</span>
-								</Link>
-							</div>
-							<MenubarSeparator />
-							<div className="p-2" role="group">
-								<MenubarItem asChild className="rounded-md py-2.5 gap-2.5">
-									<Link href="/explore">
-										<LayoutDashboardIcon className="text-zinc-800 size-4" />
-										<span>Explore</span>
-									</Link>
-								</MenubarItem>
-								<MenubarItem asChild className="rounded-md py-2.5 gap-2.5">
-									<Link href={`/${username}`}>
-										<PersonIcon className="text-zinc-800 size-4" />
-										<span>Profile</span>
-									</Link>
-								</MenubarItem>
-								<MenubarItem asChild className="rounded-md py-2.5 gap-2.5">
-									<Link href="/faq">
-										<QuestionMarkCircledIcon className="text-zinc-800 size-4" />
-										<span>FAQs</span>
-									</Link>
-								</MenubarItem>
-								<MenubarItem asChild className="rounded-md py-2.5 gap-2.5">
-									<Link href="/subscription">
-										<CreditCardIcon className="text-zinc-800 size-4" />
-										<span>Subscription & Billing</span>
-									</Link>
-								</MenubarItem>
-								<MenubarItem asChild className="rounded-md py-2.5 gap-2.5">
-									<Link href="/pricing">
-										<CircleDollarSignIcon className="text-zinc-800 size-4" />
-										<span>Pricing</span>
-									</Link>
-								</MenubarItem>
-							</div>
-							<MenubarSeparator />
-							<div className="p-2" role="group">
-								<MenubarItem asChild className="rounded-md py-2.5 gap-2.5">
-									<Link href="/">
-										<ExitIcon className="text-zinc-800 size-4" />
-										<span>Logout</span>
-									</Link>
-								</MenubarItem>
-							</div>
-						</>
-					) : (
-						<>
-							<div className="p-2">
-								<MenubarItem asChild className="rounded-md py-2.5 gap-2.5">
-									<Link href="/login">
-										<PersonIcon className="text-zinc-800 size-4" />
-										<span>Login</span>
-									</Link>
-								</MenubarItem>
-							</div>
-							<MenubarSeparator />
-							<div className="p-2" role="group">
-								<MenubarItem asChild className="rounded-md py-2.5 gap-2.5">
-									<Link href="/explore">
-										<LayoutDashboardIcon className="text-zinc-800 size-4" />
-										<span>Explore</span>
-									</Link>
-								</MenubarItem>
-								<MenubarItem asChild className="rounded-md py-2.5 gap-2.5">
-									<Link href="/services">
-										<CommandIcon className="text-zinc-800 size-4" />
-										<span>Services</span>
-									</Link>
-								</MenubarItem>
-								<MenubarItem asChild className="rounded-md py-2.5 gap-2.5">
-									<Link href="/faq">
-										<QuestionMarkCircledIcon className="text-zinc-800 size-4" />
-										<span>FAQs</span>
-									</Link>
-								</MenubarItem>
-								<MenubarItem asChild className="rounded-md py-2.5 gap-2.5">
-									<Link href="/pricing">
-										<CircleDollarSignIcon className="text-zinc-800 size-4" />
-										<span>Pricing</span>
-									</Link>
-								</MenubarItem>
-							</div>
-						</>
-					)}
-				</MenubarContent>
-			</MenubarMenu>
-		</Menubar>
+					{/* User Menu */}
+					<NavbarItem className="px-2">
+						<Dropdown placement="bottom-end" className="dark text-default-900">
+							<DropdownTrigger>
+								{user != null ? (
+									<button
+										className="mt-1 h-8 w-8 transition-transform"
+										type="button"
+									>
+										<Badge
+											color="success"
+											content=""
+											placement="bottom-right"
+											shape="circle"
+										>
+											<Avatar
+												size="sm"
+												src="https://i.pravatar.cc/150?u=a04258114e29526708c"
+											/>
+										</Badge>
+									</button>
+								) : (
+									<Button isIconOnly variant="flat">
+										<Icon
+											icon="solar:hamburger-menu-linear"
+											width={22}
+											className="text-default-900"
+										/>
+									</Button>
+								)}
+							</DropdownTrigger>
+							<DropdownMenu variant="flat" className="dark" items={menuLinks}>
+								{(menuLinks) => (
+									<DropdownItem
+										key={menuLinks.key}
+										startContent={menuLinks.Icon}
+										href={menuLinks.href}
+									>
+										{menuLinks.label}
+									</DropdownItem>
+								)}
+							</DropdownMenu>
+						</Dropdown>
+					</NavbarItem>
+				</NavbarContent>
+
+				{/* Mobile Menu */}
+				<NavbarMenu>
+					<NavbarMenuItem>
+						<Link className="w-full" color="foreground" href="#">
+							Dashboard
+						</Link>
+					</NavbarMenuItem>
+					<NavbarMenuItem isActive>
+						<Link
+							aria-current="page"
+							className="w-full"
+							color="primary"
+							href="#"
+						>
+							Deployments
+						</Link>
+					</NavbarMenuItem>
+					<NavbarMenuItem>
+						<Link className="w-full" color="foreground" href="#">
+							Analytics
+						</Link>
+					</NavbarMenuItem>
+					<NavbarMenuItem>
+						<Link className="w-full" color="foreground" href="#">
+							Team
+						</Link>
+					</NavbarMenuItem>
+					<NavbarMenuItem>
+						<Link className="w-full" color="foreground" href="#">
+							Settings
+						</Link>
+					</NavbarMenuItem>
+				</NavbarMenu>
+			</Navbar>
+			<hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-200/30 to-neutral-200/0" />
+		</div>
 	);
 }
