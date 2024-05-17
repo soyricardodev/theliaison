@@ -17,7 +17,7 @@ export default function LoginLayout({
 				>
 					<div className="absolute right-10 top-10">
 						<div className="flex items-center">
-							<Logo isWhite />
+							<Logo />
 						</div>
 					</div>
 
