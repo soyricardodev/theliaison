@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getTimeAgo } from "~/lib/utils";
 import { createClient } from "~/utils/supabase/client";
@@ -9,13 +8,11 @@ type Comment = {
 	content: string;
 	created_at: string;
 	id: number;
-	poll_id: number;
-	user_id: string;
 	users: {
 		id: string;
-		username: string | null;
+		username: string;
 		avatar_url: string | null;
-	};
+	} | null;
 }[];
 
 export function Comments({
@@ -99,10 +96,10 @@ export function Comments({
 						rating={3}
 						title="Title"
 						user={{
-							avatar: comment.users.avatar_url ?? "",
-							name: comment.users.username ?? "",
+							avatar: comment.users?.avatar_url ?? "",
+							name: comment.users?.username ?? "",
 						}}
-						createdAt="2021-08-01T12:00:00.000Z"
+						createdAt={getTimeAgo(comment.created_at)}
 					/>
 				);
 			})
