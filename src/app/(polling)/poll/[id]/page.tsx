@@ -1,6 +1,6 @@
+import { Progress } from "@nextui-org/react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { Progress } from "@nextui-org/react";
 import { ScrollArea } from "~/components/ui/scroll-area";
 import { Toaster } from "~/components/ui/sonner";
 import type { PollWithOptionsAndVotes } from "~/types/poll";

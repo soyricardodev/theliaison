@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
-import { Tooltip, User } from "@nextui-org/react";
 import { Icon } from "@iconify/react";
+import { Tooltip, User } from "@nextui-org/react";
+import React from "react";
 
 export type ReviewType = {
 	user: {
