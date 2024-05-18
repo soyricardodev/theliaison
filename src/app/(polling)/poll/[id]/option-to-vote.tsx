@@ -95,7 +95,8 @@ export function OptionToVote({
 						label={<p>{option.text}</p>}
 						classNames={{
 							track: "drop-shadow-md border border-default",
-							label: "tracking-wider font-medium text-default-600",
+							label:
+								"tracking-wider font-medium text-default-700 text-left text-pretty",
 							value: "text-foreground/60",
 						}}
 						color="secondary"
