@@ -94,10 +94,12 @@ export default async function PollPage({
 		.from("comments")
 		.select(`
 			*,
-			profiles (id, username, avatar_url)
+			users (*)
 		`)
 		.eq("poll_id", id)
 		.order("created_at", { ascending: false });
+
+	console.log(comments);
 
 	return (
 		<main className="flex-1 overflow-auto">
