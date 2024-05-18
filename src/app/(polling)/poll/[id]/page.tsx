@@ -93,8 +93,10 @@ export default async function PollPage({
 	const { data: comments } = await supabase
 		.from("comments")
 		.select(`
-			*,
-			users (*)
+			id,
+			content,
+			created_at,
+			users (id, username, avatar_url)
 		`)
 		.eq("poll_id", id)
 		.order("created_at", { ascending: false });
@@ -146,11 +148,9 @@ export default async function PollPage({
 						</div>
 
 						{/* Poll Comments */}
-						<div className="order-2 shrink-0 origin-left overflow-scroll flex-col rounded-lg py-2 transition-all duration-300 ease-out @container lg:flex w-full md:w-[300px] lg:w-[350px] md:max-h-[calc(100vh-190px)]">
+						<div className="order-2 shrink-0 origin-left overflow-scroll flex-col rounded-lg py-2 transition-all duration-300 ease-out @container lg:flex  md:max-h-[calc(100vh-190px)] w-full">
 							<ScrollArea className="w-full flex flex-col gap-2 p-2">
-								<h5 className="text-lg font-medium py-3 md:border-t-2 md:border-gray-200">
-									Comments
-								</h5>
+								<h5 className="text-lg font-medium py-3">Comments</h5>
 								{user != null && <FormComment pollId={Number(id)} />}
 
 								<ul className="w-full flex flex-col gap-2">
