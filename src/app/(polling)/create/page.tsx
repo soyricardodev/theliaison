@@ -41,7 +41,6 @@ export default async function Component() {
 							</Link>
 						</div>
 					) : null}
-					{/* {isPollCreator ? <CreatePollForm /> : null} */}
 					<PollCreatorTrigger />
 				</div>
 			</div>
