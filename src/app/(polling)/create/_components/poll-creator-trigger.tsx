@@ -1,11 +1,8 @@
 "use client";
 import {
-	Button,
-	Input,
 	Modal,
 	ModalBody,
 	ModalContent,
-	ModalFooter,
 	ModalHeader,
 	useDisclosure,
 } from "@nextui-org/react";
