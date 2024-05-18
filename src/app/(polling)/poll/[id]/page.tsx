@@ -84,12 +84,18 @@ export default async function PollPage({
 		.eq("user_id", user?.id ?? "")
 		.single();
 
+	const subscriptionActive = subscription?.status === "active";
+	const isPollCreator = subscription?.prices?.products?.name === "Poll Creator";
+	const isCommunityInsider =
+		subscription?.prices?.products?.name === "Community Insider";
+
 	const userCanVote =
-		(subscription?.status === "active" &&
-			subscription?.prices?.products?.name === "Poll Creator") ||
+		subscriptionActive &&
+		(isPollCreator || isCommunityInsider) &&
 		!userAlreadyVoted;
 
-	// * Comments
+	const commentsLimit = userCanVote ? 30 : 2;
+
 	const { data: comments } = await supabase
 		.from("comments")
 		.select(`
@@ -98,10 +104,9 @@ export default async function PollPage({
 			created_at,
 			users (id, username, avatar_url)
 		`)
+		.limit(commentsLimit)
 		.eq("poll_id", id)
 		.order("created_at", { ascending: false });
-
-	console.log(comments);
 
 	return (
 		<main className="flex-1 overflow-auto">
