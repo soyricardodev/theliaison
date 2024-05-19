@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import { Button } from "~/components/ui/button";
 import {
 	Form,
 	FormControl,
@@ -11,7 +10,7 @@ import {
 	FormItem,
 	FormMessage,
 } from "~/components/ui/form";
-import { Input } from "~/components/ui/input";
+import { Input, Button } from "@nextui-org/react";
 import { createClient } from "~/utils/supabase/client";
 
 const submitComment = z.object({
@@ -67,14 +66,14 @@ export function FormComment({ pollId }: { pollId: number }) {
 					render={({ field }) => (
 						<FormItem>
 							<FormControl>
-								<Input placeholder="Comment" {...field} />
+								<Input placeholder="Write your comment" {...field} />
 							</FormControl>
 
 							<FormMessage />
 						</FormItem>
 					)}
 				/>
-				<Button type="submit" size={"sm"} className="h-8">
+				<Button type="submit" fullWidth>
 					Submit
 				</Button>
 			</form>
