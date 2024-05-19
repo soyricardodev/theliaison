@@ -20,9 +20,9 @@ export function PollCreatorTrigger() {
 
 	return (
 		<>
-			<div className="grid gap-2">
+			<div className="grid gap-2 max-w-screen-xl px-20">
 				<div
-					className="cursor-pointer hover:bg-default-700 transition-colors group bg-default-900 px-6 py-8 rounded-md flex justify-between items-center text-white"
+					className="cursor-pointer transition-colors group bg-content1 hover:bg-content2 px-6 py-8 rounded-md flex justify-between items-center text-white"
 					onClick={() => handleOpenModal("scratch")}
 					onKeyDown={() => handleOpenModal("scratch")}
 					tabIndex={0}
@@ -44,7 +44,7 @@ export function PollCreatorTrigger() {
 				</div>
 
 				<div
-					className="cursor-pointer hover:bg-default-700 transition-colors group bg-default-900 px-6 py-8 rounded-md flex justify-between items-center text-white"
+					className="cursor-pointer hover:bg-content2 transition-colors group bg-content1 px-6 py-8 rounded-md flex justify-between items-center text-white"
 					onClick={() => handleOpenModal("scratch")}
 					onKeyDown={() => handleOpenModal("scratch")}
 				>
