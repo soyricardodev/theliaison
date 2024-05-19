@@ -51,16 +51,6 @@ export default function Home() {
 						</div>
 						<div className="hidden xl:block w-full h-full relative xl:mt-14">
 							<HeroYoutube />
-							{/* <div className="grid grid-cols-1 xl:grid-cols-2 gap-x-6 mt-4">
-								<div className="w-80 overflow-hidden h-60">
-									<div className="overflow-hidden rounded-xl w-full h-full z-50 relative border bg-background p-2 flex flex-col">
-										<HeroMarquee />
-									</div>
-								</div>
-								<div className="flex h-full w-full items-center justify-center antialiased">
-									<AnimatedListHero />
-								</div>
-							</div> */}
 						</div>
 					</div>
 				</div>
