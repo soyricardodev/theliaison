@@ -27,7 +27,7 @@ export default async function Component() {
 		<div className="container mx-auto max-w-screen-md py-12 lg:py-28">
 			<div className="space-y-8">
 				<div className="space-y-6">
-					<div className="space-y-2">
+					<div className="space-y-2 px-20">
 						<h1 className="text-3xl font-bold">Create a New Poll</h1>
 						<p className="text-default-600 text-lg">
 							Get feedback from your audience by creating a new poll.

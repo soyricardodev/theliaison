@@ -110,7 +110,7 @@ export function PricingSelect({
 							productData?.id === featuredProductId && "bg-[#5effe2]",
 						)}
 					>
-						<p className="mb-2 inline-block whitespace-nowrap leading-none">
+						<p className="mb-2 inline-block whitespace-nowrap leading-none text-black">
 							<span className="text-[32px] font-semibold tracking-tight">
 								{productPrice}
 							</span>
@@ -198,6 +198,7 @@ function Feature({ text }: { text: string }) {
 		<div className="flex items-center justify-start gap-3 tabular-nums">
 			<span className="w-full max-w-[12px]">
 				<svg
+					aria-hidden="true"
 					width="15"
 					height="15"
 					viewBox="0 0 15 15"
@@ -311,6 +312,7 @@ function ProductDesktopCard({
 						<div className="flex items-center justify-start gap-3 tabular-nums">
 							<div className="w-full max-w-[12px]">
 								<svg
+									aria-hidden="true"
 									width="15"
 									height="15"
 									viewBox="0 0 15 15"

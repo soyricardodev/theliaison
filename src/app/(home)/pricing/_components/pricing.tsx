@@ -113,7 +113,7 @@ export default function Pricing({ user, products, subscription }: Props) {
 						Simple pricing for everyone.
 					</h2>
 
-					<p className="mt-6 max-w-[600px] mx-auto text-xl leading-8 text-black/80 dark:text-white text-pretty">
+					<p className="mt-6 max-w-[600px] mx-auto text-xl leading-8 text-default-800 text-pretty">
 						Choose an <strong>affordable plan</strong> that&apos;s packed with
 						the best features for engaging your audience, creating customer
 						loyalty, and driving sales.
@@ -122,18 +122,18 @@ export default function Pricing({ user, products, subscription }: Props) {
 
 				<div className="mx-auto flex justify-center flex-col items-center lg:flex-row w-full gap-8 mt-16">
 					{products.map((product, idx) => {
-						const price = product.prices[0]!;
+						const price = product.prices[0];
 
 						const priceString = new Intl.NumberFormat("en-US", {
 							style: "currency",
-							currency: price.currency!,
+							currency: "usd",
 							minimumFractionDigits: 0,
 						}).format((price?.unit_amount || 0) / 100);
 						return (
 							<div
 								key={product.id}
 								className={cn(
-									"relative flex w-full max-w-[400px] flex-col gap-4 overflow-hidden rounded-2xl border p-4 text-black",
+									"relative flex w-full max-w-[400px] flex-col gap-4 overflow-hidden rounded-2xl border p-4 text-white",
 									idx === 1 &&
 										"border-2 border-neutral-700 shadow-lg shadow-neutral-500 [transform:scale(1.1)]",
 								)}
@@ -143,7 +143,7 @@ export default function Pricing({ user, products, subscription }: Props) {
 										<h2 className="text-base font-semibold leading-7">
 											{product.name}
 										</h2>
-										<p className="h-16 text-sm leading-5 text-black/70 dark:text-white">
+										<p className="h-16 text-sm leading-5 text-white">
 											{product.description ??
 												"lorem ipsum sit amet consectetur adipisicing elit. Quis minima quas quibusdam natus at enim eum, illo libero porro ullam?. L"}
 										</p>
@@ -175,7 +175,7 @@ export default function Pricing({ user, products, subscription }: Props) {
 										{priceString}
 										<span className="text-xs">
 											{" "}
-											/ {price.interval ?? "One-time"}
+											/ {price?.interval ?? "One-time"}
 										</span>
 									</span>
 								</motion.div>
@@ -185,7 +185,7 @@ export default function Pricing({ user, products, subscription }: Props) {
 										"group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter",
 										"transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
 									)}
-									onClick={() => handleStripeCheckout(price)}
+									onClick={() => handleStripeCheckout(price as Price)}
 								>
 									<span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 transform-gpu bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-96 dark:bg-black" />
 									<p>{subscription ? "Manage" : "Subscribe"}</p>
@@ -195,7 +195,7 @@ export default function Pricing({ user, products, subscription }: Props) {
 								<ul className="flex flex-col gap-2 font-normal">
 									{features.map((feature: string, idx: number) => (
 										<li
-											key={idx}
+											key={`${product.id}-${idx}`}
 											className="flex items-center gap-3 text-xs font-medium text-black dark:text-white"
 										>
 											<CheckIcon className="h-5 w-5 shrink-0 rounded-full bg-green-400 p-[2px] text-black dark:text-white" />
