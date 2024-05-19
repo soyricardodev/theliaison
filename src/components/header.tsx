@@ -11,25 +11,17 @@ import {
 	DropdownItem,
 	DropdownMenu,
 	DropdownTrigger,
-	Input,
 	Link,
 	Navbar,
 	NavbarBrand,
 	NavbarContent,
 	NavbarItem,
-	NavbarMenu,
-	NavbarMenuItem,
-	NavbarMenuToggle,
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
 } from "@nextui-org/react";
 import React from "react";
 
 import { Logo } from "./logo";
 
 import type { User } from "@supabase/supabase-js";
-import NotificationsCard from "./notifications-card";
 
 interface HeaderProps {
 	breadcrumbs?: Array<{
@@ -132,38 +124,6 @@ export function Header({ breadcrumbs, user }: HeaderProps) {
 					className="ml-auto h-12 max-w-fit items-center gap-0"
 					justify="end"
 				>
-					{/* Notifications */}
-					{user != null && (
-						<NavbarItem className="flex">
-							<Popover offset={12} placement="bottom-end">
-								<PopoverTrigger>
-									<Button
-										disableRipple
-										isIconOnly
-										className="overflow-visible"
-										radius="full"
-										variant="light"
-									>
-										<Badge
-											color="danger"
-											content="5"
-											showOutline={false}
-											size="md"
-										>
-											<Icon
-												className="text-default-500"
-												icon="solar:bell-linear"
-												width={22}
-											/>
-										</Badge>
-									</Button>
-								</PopoverTrigger>
-								<PopoverContent className="max-w-[90vw] p-0 sm:max-w-[380px] dark">
-									<NotificationsCard className="w-full shadow-none" />
-								</PopoverContent>
-							</Popover>
-						</NavbarItem>
-					)}
 					{/* User Menu */}
 					<NavbarItem className="px-2">
 						<Dropdown placement="bottom-end" className="dark text-default-900">
