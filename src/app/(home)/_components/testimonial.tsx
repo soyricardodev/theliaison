@@ -63,6 +63,7 @@ export const TestimonialCard = ({
 
 		<div className="flex w-full select-none items-center justify-start gap-5">
 			<img
+				alt={name}
 				src={img}
 				className="h-10 w-10 rounded-full  ring-1 ring-border ring-offset-4"
 			/>
@@ -279,7 +280,7 @@ export function Testimonial() {
 								.map((_, i) => (
 									<Marquee
 										vertical
-										key={i}
+										key={`testimonial-${i + 1}`}
 										className={cn({
 											"[--duration:60s]": i === 1,
 											"[--duration:30s]": i === 2,
@@ -287,7 +288,10 @@ export function Testimonial() {
 										})}
 									>
 										{testimonials.slice(i * 3, (i + 1) * 3).map((card, idx) => (
-											<TestimonialCard {...card} key={idx} />
+											<TestimonialCard
+												key={`testimonial-${card.name}-${idx}`}
+												{...card}
+											/>
 										))}
 									</Marquee>
 								))}
