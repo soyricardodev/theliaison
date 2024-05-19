@@ -1,10 +1,7 @@
 import Image from "next/image";
 import { cn } from "~/lib/utils";
 
-export function Logo({
-	className,
-	isWhite,
-}: { className?: string; isWhite?: boolean }) {
+export function Logo({ className }: { className?: string }) {
 	return (
 		<Image
 			src="/project/logo-black.png"
