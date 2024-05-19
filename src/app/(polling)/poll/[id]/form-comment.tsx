@@ -1,5 +1,6 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Button, Input } from "@nextui-org/react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -10,7 +11,6 @@ import {
 	FormItem,
 	FormMessage,
 } from "~/components/ui/form";
-import { Input, Button } from "@nextui-org/react";
 import { createClient } from "~/utils/supabase/client";
 
 const submitComment = z.object({
