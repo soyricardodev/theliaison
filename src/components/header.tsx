@@ -112,7 +112,9 @@ export function Header({ breadcrumbs, user }: HeaderProps) {
 				height="64px"
 			>
 				<NavbarBrand>
-					<Logo />
+					<Link href="/">
+						<Logo />
+					</Link>
 				</NavbarBrand>
 				{/* Breadcrumbs */}
 				{breadcrumbs != null && (
