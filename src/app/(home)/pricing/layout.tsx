@@ -164,14 +164,14 @@ export default function PricingLayout({
 					<div className="mx-auto w-full max-w-[448px] md:max-w-[920px]">
 						{faqs.map((faq, idx) => (
 							<Accordion
-								key={idx}
+								key={`${faq.section}-${idx}`}
 								type="single"
 								collapsible
 								className="flex w-full flex-col items-center justify-center my-4"
 							>
 								{faq.qa.map((faq, idx) => (
 									<AccordionItem
-										key={idx}
+										key={`${faq.question}-${idx}`}
 										value={faq.question}
 										className="w-full max-w-[600px]"
 									>
