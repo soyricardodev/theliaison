@@ -24,7 +24,7 @@ export function UserButtonNavbar() {
 
 	useEffect(() => {
 		getUserData();
-	}, []);
+	}, [getUserData]);
 
 	if (!user)
 		return (
