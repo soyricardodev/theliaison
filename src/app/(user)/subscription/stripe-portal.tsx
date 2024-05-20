@@ -15,6 +15,7 @@ export function StripePortal() {
 	}
 	return (
 		<button
+			type="button"
 			className="inline-flex flex-1 justify-center gap-1 leading-4 hover:underline text-blue-500 text-sm"
 			onClick={handleCreatePortal}
 		>
@@ -45,6 +46,7 @@ export function StripePortalButton() {
 	}
 	return (
 		<button
+			type="button"
 			onClick={handleCreatePortal}
 			className={cn(buttonVariants({ variant: "outline" }), "rounded-md")}
 		>
