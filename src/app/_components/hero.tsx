@@ -85,7 +85,7 @@ export function Hero() {
 							<ChevronRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
 						</AnimatedGradientText>
 					</Link>
-					<h1 className="text-balance bg-gradient-to-br from-black from-30% to-black/60 bg-clip-text py-6 text-5xl font-semibold leading-none tracking-tighter text-transparent dark:from-white dark:to-white/40 sm:text-6xl md:text-7xl lg:text-7xl">
+					<h1 className="bg-gradient-to-br bg-clip-text py-6 text-5xl font-semibold leading-none tracking-tighter text-transparent from-white from-40% to-white/40 sm:text-6xl md:text-7xl lg:text-7xl text-balance">
 						Get the Inside Scoop on Everything!
 					</h1>
 					<p className="max-w-[60rem] text-pretty text-lg tracking-tight text-gray-500 md:text-xl">
