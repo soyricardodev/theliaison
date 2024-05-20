@@ -60,7 +60,12 @@ export function Services() {
 						<div className="flex justify-center lg:w-1/2 lg:justify-end lg:pr-12">
 							<div className="w-[33.75rem] flex-none lg:w-[45rem]">
 								<div className="justify-center lg:justify-end relative flex aspect-[719/680] w-full">
-									<svg viewBox="0 0 655 680" fill="none" className="h-full">
+									<svg
+										aria-hidden="true"
+										viewBox="0 0 655 680"
+										fill="none"
+										className="h-full"
+									>
 										<g clipPath="url(#:S1:-clip)" className="group">
 											<g className="origin-center scale-100 transition duration-500 motion-safe:group-hover:scale-105">
 												<foreignObject width={655} height={680}>
