@@ -33,7 +33,7 @@ export function Header({ breadcrumbs }: HeaderProps) {
 			>
 				<NavbarBrand>
 					<Link href="/">
-						<Logo />
+						<Logo className="size-12" />
 					</Link>
 				</NavbarBrand>
 				{/* Breadcrumbs */}
