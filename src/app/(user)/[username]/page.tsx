@@ -28,7 +28,8 @@ export default async function ProfilePage({
     question,
     options (id, text),
 		votes (id, poll_id, option_id, user_id),
-		users (id, username, avatar_url)
+		users (id, username, avatar_url),
+		image
   `)
 		.eq("user_id", profileData.id);
 
@@ -74,6 +75,7 @@ export default async function ProfilePage({
 					username: pollData.profiles?.username ?? "",
 					avatar_url: pollData.profiles?.avatar_url ?? null,
 				},
+				image: pollData.image ?? undefined,
 			};
 
 			votesDetailsArray.push(dataToPush);
