@@ -10,7 +10,8 @@ export default async function ExplorePage() {
     question,
     options (id, text),
 		votes (id, poll_id, option_id, user_id),
-		profiles (id, username, avatar_url)
+		users (id, username, avatar_url),
+		image
   `);
 
 	const { data, error } = await pollsWithOptionsQuery;
@@ -22,17 +23,21 @@ export default async function ExplorePage() {
 	function calculateVotes() {
 		const votesDetailsArray: PollWithOptionsAndVotes[] = [];
 
-		data?.forEach((pollData) => {
+		if (!data || error) {
+			return votesDetailsArray;
+		}
+
+		for (const pollData of data) {
 			const votesByOption: Record<number, number> = {};
 			const totalVotes = pollData.votes.length;
 
-			pollData.options.forEach((option) => {
+			for (const option of pollData.options) {
 				votesByOption[option.id] = 0;
-			});
+			}
 
-			pollData.votes.forEach((vote) => {
+			for (const vote of pollData.votes) {
 				votesByOption[vote.option_id]++;
-			});
+			}
 
 			const votesPercentage: Record<number, number> = {};
 			for (const optionId in votesByOption) {
@@ -51,14 +56,15 @@ export default async function ExplorePage() {
 					percentage: votesPercentage[option.id],
 				})),
 				user: {
-					id: pollData.profiles?.id ?? "",
-					username: pollData.profiles?.username ?? "",
-					avatar_url: pollData.profiles?.avatar_url ?? null,
+					id: pollData.users?.id ?? "",
+					username: pollData.users?.username ?? "",
+					avatar_url: pollData.users?.avatar_url ?? null,
 				},
+				image: pollData.image ?? undefined,
 			};
 
 			votesDetailsArray.push(dataToPush);
-		});
+		}
 
 		return votesDetailsArray;
 	}
