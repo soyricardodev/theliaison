@@ -37,17 +37,17 @@ export default async function ProfilePage({
 	function calculateVotes() {
 		const votesDetailsArray: PollWithOptionsAndVotes[] = [];
 
-		polls?.forEach((pollData) => {
+		for (const pollData of polls) {
 			const votesByOption: Record<number, number> = {};
 			const totalVotes = pollData.votes.length;
 
-			pollData.options.forEach((option) => {
+			for (const option of pollData.options) {
 				votesByOption[option.id] = 0;
-			});
+			}
 
-			pollData.votes.forEach((vote) => {
+			for (const vote of pollData.votes) {
 				votesByOption[vote.option_id]++;
-			});
+			}
 
 			const votesPercentage: Record<number, number> = {};
 			for (const optionId in votesByOption) {
@@ -73,7 +73,7 @@ export default async function ProfilePage({
 			};
 
 			votesDetailsArray.push(dataToPush);
-		});
+		}
 
 		return votesDetailsArray;
 	}
