@@ -42,7 +42,7 @@ export function Hero() {
 		<div className="relative mb-4 flex items-center justify-center py-[26vh] pt-[18vh] sm:pt-[26vh]">
 			<div className="relative flex w-full flex-col items-center gap-6 px-6 text-center">
 				<div className="flex w-full flex-col items-center gap-6 pb-8">
-					<div className="z-10 flex items-center justify-center">
+					<Link href="/ai" className="z-10 flex items-center justify-center">
 						<AnimatedGradientText>
 							🎉 <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
 							<span
@@ -54,7 +54,7 @@ export function Hero() {
 							</span>
 							<ChevronRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
 						</AnimatedGradientText>
-					</div>
+					</Link>
 					<h1 className="text-balance bg-gradient-to-br from-black from-30% to-black/60 bg-clip-text py-6 text-5xl font-semibold leading-none tracking-tighter text-transparent dark:from-white dark:to-white/40 sm:text-6xl md:text-7xl lg:text-7xl">
 						Ask The Liaison
 					</h1>
