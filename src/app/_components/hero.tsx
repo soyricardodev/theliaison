@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/react";
+import { Button, Image } from "@nextui-org/react";
 import { ChevronRightIcon, MoveUpRightIcon } from "lucide-react";
 import Link from "next/link";
 import AnimatedGradientText from "~/components/magicui/animated-gradient-text";
@@ -11,6 +11,8 @@ import {
 	RabbitIcon,
 	CircleUserRoundIcon,
 } from "lucide-react";
+import { Icons } from "~/components/icons";
+import { logoWhite } from "~/assets/images";
 
 interface Category {
 	id: number;
@@ -67,12 +69,12 @@ export function Hero() {
 	];
 
 	return (
-		<div className="relative mb-4 flex items-center justify-center py-[24vh] -mt-20 sm:pt-[26vh]">
+		<div className="relative mb-4 flex items-center justify-center py-[24vh] -mt-28 sm:pt-[26vh]">
 			<div className="relative flex w-full flex-col items-center gap-6 px-6 text-center">
 				<div className="flex w-full flex-col items-center gap-6 pb-8">
 					<Link href="/ai" className="z-10 flex items-center justify-center">
 						<AnimatedGradientText>
-							🎉 <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{" "}
+							🎉 <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-400/80" />{" "}
 							<span
 								className={
 									"inline animate-gradient bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent"
@@ -87,21 +89,36 @@ export function Hero() {
 						Get the Inside Scoop on Everything!
 					</h1>
 					<p className="max-w-[60rem] text-pretty text-lg tracking-tight text-gray-500 md:text-xl">
-						The Liaison connects you to the <strong>world's opinions.</strong>{" "}
-						Dive into polls on trending topics, dating dilemmas, life's
-						mysteries, and everything under the sun.{" "}
-						<strong>Share your voice</strong>, discover what others think, and
-						spark conversations that <strong>matter</strong>.
+						<span className="hidden md:block">
+							The Liaison: <strong>Speak Your Mind. Find Your People.</strong>{" "}
+							Unfiltered opinions on life, love, and everything in between. Dive
+							deep, <strong>share your voice</strong>, and connect with a{" "}
+							<strong>global community.</strong>
+						</span>
+						<span className="block md:hidden">
+							Unleash your voice. <strong>Engage with the world.</strong> The
+							Liaison: <strong>Your opinion hub.</strong> Share, explore,
+							connect.
+						</span>
 					</p>
 				</div>
 				<div className="z-10 m-auto flex w-full flex-col divide-zinc-600 overflow-hidden rounded-full bg-gray-900 shadow-lg shadow-black/40 sm:max-w-xl">
 					<SearchForm />
 				</div>
 
-				<div className="absolute top-full mx-auto mt-6 flex flex-wrap items-center justify-center gap-2 whitespace-nowrap px-4 text-sm max-w-sm md:max-w-xl lg:max-w-2xl">
+				<div className="mx-auto flex flex-wrap items-center justify-center gap-2 whitespace-nowrap px-4 text-sm max-w-sm md:max-w-xl lg:max-w-2xl">
 					{categories.map((categorie, idx) => (
 						<CategoryCTA key={`${categorie.name}-${idx}`} {...categorie} />
 					))}
+				</div>
+
+				<div className="max-w-sm  w-full mx-auto flex items-center justify-center gap-2 mt-2">
+					<Icons.openai className="text-white fill-white size-10" />
+					<Image
+						alt="The Liaison Logo"
+						src={logoWhite.src}
+						className="size-10"
+					/>
 				</div>
 			</div>
 		</div>
