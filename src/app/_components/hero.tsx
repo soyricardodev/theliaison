@@ -1,5 +1,4 @@
-import { Button, Image } from "@nextui-org/react";
-import { ChevronRightIcon, MoveUpRightIcon } from "lucide-react";
+import { Button } from "@nextui-org/react";
 import {
 	CircleUserRoundIcon,
 	HandHeartIcon,
@@ -7,10 +6,10 @@ import {
 	RabbitIcon,
 	TreePalmIcon,
 	VideoIcon,
+	ChevronRightIcon,
+	MoveUpRightIcon,
 } from "lucide-react";
 import Link from "next/link";
-import { logoWhite } from "~/assets/images";
-import { Icons } from "~/components/icons";
 import AnimatedGradientText from "~/components/magicui/animated-gradient-text";
 import { SearchForm } from "./search-form";
 
