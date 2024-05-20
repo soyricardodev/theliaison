@@ -19,7 +19,7 @@ export function SearchPlaceholder({
 		const startAnimation = () => {
 			const interval = setInterval(() => {
 				setCurrentPlaceholder((prev) => (prev + 1) % placeholders.length);
-			}, 2000);
+			}, 1500);
 			return () => clearInterval(interval);
 		};
 
@@ -27,7 +27,7 @@ export function SearchPlaceholder({
 	}, [placeholders.length]);
 
 	const canvasRef = useRef<HTMLCanvasElement>(null);
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	// biome-ignore lint/suspicious/noExplicitAny: missing types
 	const newDataRef = useRef<any[]>([]);
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [value, setValue] = useState("");
@@ -54,8 +54,11 @@ export function SearchPlaceholder({
 
 		const imageData = ctx.getImageData(0, 0, 800, 800);
 		const pixelData = imageData.data;
-		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-		const newData: any[] = [];
+		const newData: Array<{
+			x: number;
+			y: number;
+			color: Array<number | undefined>;
+		}> = [];
 
 		for (let t = 0; t < 800; t++) {
 			const i = 4 * t * 800;
@@ -88,9 +91,10 @@ export function SearchPlaceholder({
 		}));
 	}, [value]);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: this useEffect need all this dependencies
 	useEffect(() => {
 		draw();
-	}, [draw]);
+	}, [value, draw]);
 
 	const animate = (start: number) => {
 		const animateFrame = (pos = 0) => {
@@ -165,13 +169,14 @@ export function SearchPlaceholder({
 	return (
 		<form
 			className={cn(
-				"dark w-full relative max-w-xl mx-auto bg-default-100 h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
+				"w-full relative max-w-xl mx-auto bg-white dark:bg-zinc-800 h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200",
+				value && "bg-gray-50",
 			)}
 			onSubmit={handleSubmit}
 		>
 			<canvas
 				className={cn(
-					"absolute pointer-events-none text-base transform scale-50 top-[20%] left-2 sm:left-8 origin-top-left filter invert-0 pr-20",
+					"absolute pointer-events-none  text-base transform scale-50 top-[20%] left-2 sm:left-8 origin-top-left filter invert dark:invert-0 pr-20",
 					!animating ? "opacity-0" : "opacity-100",
 				)}
 				ref={canvasRef}
@@ -188,8 +193,8 @@ export function SearchPlaceholder({
 				value={value}
 				type="text"
 				className={cn(
-					"w-full relative text-sm sm:text-base z-50 border-none text-white bg-transparent h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-20 placeholder:text-white",
-					animating && "text-transparent",
+					"w-full relative text-sm sm:text-base z-50 border-none dark:text-white bg-transparent text-black h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-20",
+					animating && "text-transparent dark:text-transparent",
 				)}
 			/>
 
@@ -252,7 +257,7 @@ export function SearchPlaceholder({
 								duration: 0.3,
 								ease: "linear",
 							}}
-							className="text-zinc-500 text-sm sm:text-base font-normal pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
+							className="dark:text-zinc-500 text-sm sm:text-base font-normal text-neutral-500 pl-4 sm:pl-12 text-left w-[calc(100%-2rem)] truncate"
 						>
 							{placeholders[currentPlaceholder]}
 						</motion.p>
