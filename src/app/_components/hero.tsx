@@ -1,13 +1,13 @@
 import { Button } from "@nextui-org/react";
 import {
+	ChevronRightIcon,
 	CircleUserRoundIcon,
 	HandHeartIcon,
 	HeartIcon,
+	MoveUpRightIcon,
 	RabbitIcon,
 	TreePalmIcon,
 	VideoIcon,
-	ChevronRightIcon,
-	MoveUpRightIcon,
 } from "lucide-react";
 import Link from "next/link";
 import AnimatedGradientText from "~/components/magicui/animated-gradient-text";
