@@ -11,8 +11,8 @@ import React from "react";
 
 import { Logo } from "./logo";
 
-import { HeaderUser } from "./header-user";
 import { HeaderCTA } from "./header-cta";
+import { HeaderUser } from "./header-user";
 
 interface HeaderProps {
 	breadcrumbs?: Array<{
