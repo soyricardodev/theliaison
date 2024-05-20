@@ -8,7 +8,7 @@ export async function handleRequest(
 	e: React.FormEvent<HTMLFormElement>,
 	requestFunc: (formData: FormData) => Promise<string>,
 	router: AppRouterInstance | null = null,
-): Promise<boolean | void> {
+): Promise<boolean> {
 	// Prevent default form submission refresh
 	e.preventDefault();
 
@@ -17,7 +17,7 @@ export async function handleRequest(
 
 	if (router) {
 		// If client-side router is provided, use it to redirect
-		return router.push(redirectUrl);
+		router.push(redirectUrl);
 	}
 	// Otherwise, redirect server-side
 	return await redirectToPath(redirectUrl);
