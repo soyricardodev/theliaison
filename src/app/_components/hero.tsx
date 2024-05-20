@@ -39,7 +39,7 @@ export function Hero() {
 	];
 
 	return (
-		<div className="relative mb-4 flex items-center justify-center py-[26vh] pt-[18vh] sm:pt-[26vh]">
+		<div className="relative mb-4 flex items-center justify-center py-[24vh] -mt-20 sm:pt-[26vh]">
 			<div className="relative flex w-full flex-col items-center gap-6 px-6 text-center">
 				<div className="flex w-full flex-col items-center gap-6 pb-8">
 					<Link href="/ai" className="z-10 flex items-center justify-center">
@@ -56,11 +56,14 @@ export function Hero() {
 						</AnimatedGradientText>
 					</Link>
 					<h1 className="text-balance bg-gradient-to-br from-black from-30% to-black/60 bg-clip-text py-6 text-5xl font-semibold leading-none tracking-tighter text-transparent dark:from-white dark:to-white/40 sm:text-6xl md:text-7xl lg:text-7xl">
-						Ask The Liaison
+						Get the Inside Scoop on Everything!
 					</h1>
-					<p className="max-w-[64rem] text-balance text-lg tracking-tight text-gray-500 md:text-xl">
-						Sharing collective insights and <strong>perspectives</strong>.
-						Sharing collective insights and <strong>perspectives</strong>.
+					<p className="max-w-[60rem] text-pretty text-lg tracking-tight text-gray-500 md:text-xl">
+						The Liaison connects you to the <strong>world's opinions.</strong>{" "}
+						Dive into polls on trending topics, dating dilemmas, life's
+						mysteries, and everything under the sun.{" "}
+						<strong>Share your voice</strong>, discover what others think, and
+						spark conversations that <strong>matter</strong>.
 					</p>
 				</div>
 				<div className="z-10 m-auto flex w-full flex-col divide-zinc-600 overflow-hidden rounded-full bg-gray-900 shadow-lg shadow-black/40 sm:max-w-xl">
