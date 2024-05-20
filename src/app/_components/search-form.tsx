@@ -42,6 +42,8 @@ export function SearchForm() {
 				"How important is humor in a potential partner?",
 				"What is the biggest obstacle to a fulfilling sex life?",
 				"How do you feel about splitting the bill on a date?",
+				"What's your preferred first date activity?",
+				"What's the best way to end a relationship?",
 			]}
 			onChange={() => {}}
 			onSubmit={() => {}}
