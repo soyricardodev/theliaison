@@ -152,7 +152,7 @@ export default function FAQ() {
 					</div>
 					<div className="container mx-auto my-12 max-w-[600px] space-y-12">
 						{faqs.map((faq, idx) => (
-							<section key={idx} id={`faq-${faq.section}`}>
+							<section key={`${faq.section}-${idx}`} id={`faq-${faq.section}`}>
 								<h2 className="mb-4 text-left text-base font-semibold tracking-tight text-foreground/60">
 									{faq.section}
 								</h2>
@@ -163,7 +163,7 @@ export default function FAQ() {
 								>
 									{faq.qa.map((faq, idx) => (
 										<AccordionItem
-											key={idx}
+											key={`${faq.question}-${idx}`}
 											value={faq.question}
 											className="w-full max-w-[600px]"
 										>

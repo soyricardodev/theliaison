@@ -57,7 +57,7 @@ const tiles = [
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 const shuffleArray = (array: any[]) => {
 	let currentIndex = array.length;
-	let randomIndex;
+	let randomIndex: number;
 	// While there remain elements to shuffle.
 	while (currentIndex !== 0) {
 		// Pick a remaining element.
@@ -134,12 +134,12 @@ export default function CallToAction() {
 							repeat={4}
 						>
 							{randomTiles1.map((review, idx) => (
-								<Card key={idx} {...review} />
+								<Card key={`${review.bg.key}-${idx}`} {...review} />
 							))}
 						</Marquee>
 						<Marquee reverse className="[--duration:30s]" repeat={4}>
 							{randomTiles2.map((review, idx) => (
-								<Card key={idx} {...review} />
+								<Card key={`${review.bg.key}-${idx}`} {...review} />
 							))}
 						</Marquee>
 						<Marquee
@@ -148,12 +148,12 @@ export default function CallToAction() {
 							repeat={4}
 						>
 							{randomTiles3.map((review, idx) => (
-								<Card key={idx} {...review} />
+								<Card key={`${review.bg.key}-${idx}`} {...review} />
 							))}
 						</Marquee>
 						<Marquee reverse className="[--duration:30s]" repeat={4}>
 							{randomTiles4.map((review, idx) => (
-								<Card key={idx} {...review} />
+								<Card key={`${review.bg.key}-${idx}`} {...review} />
 							))}
 						</Marquee>
 						<div className="absolute z-10">
