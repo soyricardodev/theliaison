@@ -1,18 +1,18 @@
 import { Button, Image } from "@nextui-org/react";
 import { ChevronRightIcon, MoveUpRightIcon } from "lucide-react";
+import {
+	CircleUserRoundIcon,
+	HandHeartIcon,
+	HeartIcon,
+	RabbitIcon,
+	TreePalmIcon,
+	VideoIcon,
+} from "lucide-react";
 import Link from "next/link";
+import { logoWhite } from "~/assets/images";
+import { Icons } from "~/components/icons";
 import AnimatedGradientText from "~/components/magicui/animated-gradient-text";
 import { SearchForm } from "./search-form";
-import {
-	TreePalmIcon,
-	HeartIcon,
-	HandHeartIcon,
-	VideoIcon,
-	RabbitIcon,
-	CircleUserRoundIcon,
-} from "lucide-react";
-import { Icons } from "~/components/icons";
-import { logoWhite } from "~/assets/images";
 
 interface Category {
 	id: number;

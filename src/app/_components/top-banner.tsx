@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
-import { Button, Link } from "@nextui-org/react";
 import { Icon } from "@iconify/react";
+import { Button, Link } from "@nextui-org/react";
+import React from "react";
 import { cn } from "~/lib/utils";
 
 export default function TopBanner({
