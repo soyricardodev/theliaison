@@ -71,9 +71,9 @@ export default async function ProfilePage({
 					percentage: votesPercentage[option.id],
 				})),
 				user: {
-					id: pollData.profiles?.id ?? "",
-					username: pollData.profiles?.username ?? "",
-					avatar_url: pollData.profiles?.avatar_url ?? null,
+					id: pollData.users?.id ?? "",
+					username: pollData.users?.username ?? "",
+					avatar_url: pollData.users?.avatar_url ?? null,
 				},
 				image: pollData.image ?? undefined,
 			};
