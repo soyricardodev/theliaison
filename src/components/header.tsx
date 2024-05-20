@@ -12,6 +12,7 @@ import React from "react";
 import { Logo } from "./logo";
 
 import { HeaderUser } from "./header-user";
+import { HeaderCTA } from "./header-cta";
 
 interface HeaderProps {
 	breadcrumbs?: Array<{
@@ -52,6 +53,7 @@ export function Header({ breadcrumbs }: HeaderProps) {
 					className="ml-auto h-12 max-w-fit items-center gap-0"
 					justify="end"
 				>
+					<HeaderCTA />
 					{/* User Menu */}
 					<NavbarItem className="px-2">
 						<HeaderUser />
