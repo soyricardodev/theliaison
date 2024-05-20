@@ -1,7 +1,26 @@
-import { Button, Link } from "@nextui-org/react";
+import Link from "next/link";
+import { Button } from "@nextui-org/react";
 import { createClient } from "~/utils/supabase/server";
 
-export async function HeaderCTA() {
+type HeaderCTAProps =
+	| {
+			href: string;
+			ctaText: string | JSX.Element;
+	  }
+	| {
+			href?: never;
+			ctaText?: never;
+	  };
+
+export async function HeaderCTA({
+	href = "/create",
+	ctaText = (
+		<>
+			<span className="hidden md:block">Create poll</span>
+			<span className="block md:hidden">Create</span>
+		</>
+	),
+}: HeaderCTAProps) {
 	const supabase = createClient();
 
 	const {
@@ -14,15 +33,15 @@ export async function HeaderCTA() {
 	}
 
 	return (
-		<Button as={Link} href="/create">
-			Create Poll
+		<Button href={href} as={Link} variant="ghost" size="sm" radius="full">
+			{ctaText}
 		</Button>
 	);
 }
 
 function LoginCTA() {
 	return (
-		<Button as={Link} href="/login">
+		<Button href="/login" as={Link} variant="ghost" size="sm" radius="full">
 			Get Started
 		</Button>
 	);
