@@ -124,7 +124,7 @@ export default async function ProfilePage({
 					{polls != null && polls.length > 0 ? (
 						<UserPollsContainer>
 							{dataToRender.map((poll, idx) => (
-								<PollCard key={idx} poll={poll} />
+								<PollCard key={`${poll.id}-${idx}`} poll={poll} />
 							))}
 						</UserPollsContainer>
 					) : (
