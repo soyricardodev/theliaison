@@ -108,8 +108,8 @@ export default async function ProfilePage({
 							</p>
 						</div>
 						<ProfileData
-							fullName={profileData.full_name!}
-							instagram={profileData.username!}
+							fullName={profileData.full_name}
+							instagram={profileData.username}
 						/>
 					</div>
 				</div>
