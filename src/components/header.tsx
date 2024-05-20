@@ -22,9 +22,9 @@ interface HeaderProps {
 
 export function Header({ breadcrumbs }: HeaderProps) {
 	return (
-		<div className="w-full">
+		<div className="w-full sticky top-0 z-50">
 			<Navbar
-				isBlurred
+				position="sticky"
 				classNames={{
 					item: "data-[active=true]:text-primary",
 					wrapper: "px-4 sm:px-6",
