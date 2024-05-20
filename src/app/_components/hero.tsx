@@ -111,15 +111,6 @@ export function Hero() {
 						<CategoryCTA key={`${categorie.name}-${idx}`} {...categorie} />
 					))}
 				</div>
-
-				<div className="max-w-sm  w-full mx-auto flex items-center justify-center gap-2 mt-2">
-					<Icons.openai className="text-white fill-white size-10" />
-					<Image
-						alt="The Liaison Logo"
-						src={logoWhite.src}
-						className="size-10"
-					/>
-				</div>
 			</div>
 		</div>
 	);
