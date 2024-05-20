@@ -28,7 +28,7 @@ export default async function ProfilePage({
     question,
     options (id, text),
 		votes (id, poll_id, option_id, user_id),
-		profiles (id, username, avatar_url)
+		users (id, username, avatar_url)
   `)
 		.eq("user_id", profileData.id);
 
