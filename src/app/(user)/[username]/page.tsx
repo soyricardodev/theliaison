@@ -32,10 +32,14 @@ export default async function ProfilePage({
   `)
 		.eq("user_id", profileData.id);
 
-	const { data: polls } = await pollsWithOptionsQuery;
+	const { data: polls, error: pollsError } = await pollsWithOptionsQuery;
 
 	function calculateVotes() {
 		const votesDetailsArray: PollWithOptionsAndVotes[] = [];
+
+		if (!polls || pollsError) {
+			return votesDetailsArray;
+		}
 
 		for (const pollData of polls) {
 			const votesByOption: Record<number, number> = {};
