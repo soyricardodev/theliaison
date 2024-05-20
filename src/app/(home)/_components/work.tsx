@@ -234,6 +234,7 @@ function ProcessWork2() {
 							+245%
 						</motion.p>
 						<motion.svg
+							aria-hidden="true"
 							variants={variant1}
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"
