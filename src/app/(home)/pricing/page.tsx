@@ -1,5 +1,6 @@
 import { createClient } from "~/utils/supabase/server";
 import { PricingSelect } from "./_components/pricing-select";
+import { ModernPricing } from "./_components/modern-pricing";
 
 export default async function PricingPage() {
 	const supabase = createClient();
@@ -22,14 +23,21 @@ export default async function PricingPage() {
 		.order("metadata->index")
 		.order("unit_amount", { referencedTable: "prices" });
 
+	console.log(products);
+
 	const userSubscriptionId =
 		subscription != null ? subscription.prices?.id : null;
 
+	if (!products) return;
+
 	return (
-		<PricingSelect
-			user={user}
-			products={products}
-			userSubscriptionId={userSubscriptionId}
-		/>
+		<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+			<ModernPricing products={[products[1], products[2], products[0]]} />
+		</div>
+		// <PricingSelect
+		// 	user={user}
+		// 	products={products}
+		// 	userSubscriptionId={userSubscriptionId}
+		// />
 	);
 }
