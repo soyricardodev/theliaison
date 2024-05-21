@@ -34,11 +34,6 @@ export function PromptInputWithBottomActions() {
 		api: "/api/ai/chat",
 	});
 
-	console.log("messages", messages);
-	console.log("isLoading", isLoading);
-
-	const [prompt, setPrompt] = React.useState<string>("");
-
 	return (
 		<div className="flex w-full flex-col gap-4">
 			<ScrollShadow
