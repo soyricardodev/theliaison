@@ -125,7 +125,7 @@ function HeaderNavigationLoggedOut() {
 	return (
 		<Dropdown placement="bottom-end" className="dark text-default-900">
 			<DropdownTrigger>
-				<Button isIconOnly variant="flat">
+				<Button isIconOnly variant="flat" size="sm">
 					<Icon
 						icon="solar:hamburger-menu-linear"
 						width={22}
