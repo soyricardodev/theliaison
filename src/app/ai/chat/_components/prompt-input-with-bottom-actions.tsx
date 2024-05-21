@@ -30,9 +30,10 @@ export function PromptInputWithBottomActions() {
 		},
 	];
 
-	const { handleInputChange, handleSubmit, messages, isLoading } = useChat({
-		api: "/api/ai/chat",
-	});
+	const { handleInputChange, handleSubmit, messages, isLoading, input } =
+		useChat({
+			api: "/api/ai/chat",
+		});
 
 	return (
 		<div className="flex w-full flex-col gap-4">
@@ -89,6 +90,9 @@ export function PromptInputWithBottomActions() {
 									radius="lg"
 									size="sm"
 									variant="solid"
+									isLoading={isLoading}
+									isDisabled={isLoading}
+									disabled={isLoading}
 								>
 									<Icon
 										className={cn(
@@ -108,6 +112,8 @@ export function PromptInputWithBottomActions() {
 					// value={prompt}
 					variant="flat"
 					onChange={handleInputChange}
+					isDisabled={isLoading}
+					disabled={isLoading}
 				/>
 				<div className="flex w-full items-center justify-between  gap-2 overflow-scroll px-4 pb-4">
 					<div className="flex w-full gap-1 md:gap-3">
@@ -151,9 +157,7 @@ export function PromptInputWithBottomActions() {
 							Templates
 						</Button>
 					</div>
-					<p className="py-1 text-tiny text-default-400">
-						{prompt.length}/2000
-					</p>
+					<p className="py-1 text-tiny text-default-400">{input.length}/2000</p>
 				</div>
 			</form>
 		</div>
