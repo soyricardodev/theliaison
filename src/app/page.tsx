@@ -9,7 +9,7 @@ export default function HomePage() {
 		<>
 			<TopBanner
 				text="Lost in love? The Liaison AI guides you. Beta dating advice."
-				href="/ai"
+				href="/ai/chat"
 				linkText="Try it."
 				hideCloseButton
 			/>
