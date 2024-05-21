@@ -1,142 +1,24 @@
 import Link from "next/link";
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from "~/components/ui/accordion";
-
-const faqs = [
-	{
-		section: "General",
-		qa: [
-			{
-				question: "How do I get started?",
-				answer: (
-					<span>
-						Select and purchase a package. You will emailed relevant details and
-						an intake form. I will personally reach out shortly after :{")"}.
-					</span>
-				),
-			},
-			{
-				question: "What's this service all about?",
-				answer: (
-					<span>
-						Whether it's for romance, networking or professional reasons, I
-						provide personal and detailed feedback/ suggestions on your dating
-						profile, Instagram, and LinkedIn profile to attractively position
-						yourself so that you naturally align with your ideal partner and
-						business opportunities.
-					</span>
-				),
-			},
-			{
-				question: "Why should I give it a try?",
-				answer: (
-					<span>
-						Investing in your personal brand isn't vanity; it's about taking
-						control of your narrative and positioning yourself for success.
-						Whether you're aiming for career growth or hoping to find that
-						special someone, a strong personal brand/ dating profile can make or
-						break these opportunities in life and love.
-					</span>
-				),
-			},
-			{
-				question: "How long does the review take?",
-				answer: (
-					<span>
-						It depends on which package you choose, the profile review(s) take
-						3-4 days.
-					</span>
-				),
-			},
-			{
-				question: "How does the dating profile review work?",
-				answer: (
-					<div>
-						<p>
-							We will have <strong className="font-semibold">two</strong>{" "}
-							30-minute phone consultations. The first 30-minute phone
-							consultation is for me to get to know you, your personality and
-							your dating goals. Based on this information, I will review your
-							current dating profile and deliver a completely custom profile
-							that includes:
-						</p>
-						<ul className="list-disc my-2">
-							<li>
-								- Selecting and strategically placing the most attractive
-								pictures of you
-							</li>
-							<li>
-								- Writing a witty bio that will attract in your ideal match
-							</li>
-							<li>
-								- Choose written prompts that will have women messaging you
-								first
-							</li>
-						</ul>
-
-						<p>
-							The second 30-minute phone consult is a 1-month follow up to
-							discuss the results your new profile edits. We can also tweak a
-							few things if needed. Ultimately, this is YOUR time and you'll be
-							able to ask and discuss relevant topics.
-						</p>
-					</div>
-				),
-			},
-			{
-				question: "Are messaging tips part of the deal?",
-				answer: (
-					<span>
-						Yes! I will send you a message with a few tips and tricks to help
-						you get started. I'll also send you a follow up message after the
-						review to let you know if I've made any changes to your profile.
-					</span>
-				),
-			},
-		],
-	},
-	{
-		section: "Support",
-		qa: [
-			{
-				question: "What if I'm not thrilled with the results?",
-				answer: (
-					<span>
-						If you're not satisfied, we'll dig into the results and see what
-						other tweaks we can make. I will also add on another 1 month follow
-						up if you've purchased The Algorithm Hacker or the Ménage à trois.
-					</span>
-				),
-			},
-		],
-	},
-	{
-		section: "Security",
-		qa: [
-			{
-				question: "Is my information safe with you?",
-				answer: (
-					<span>
-						Yes. EVERYTHING you share with me is kept confidential and will
-						never be shared or used for marketing purposes. If you're extremely
-						happy with your results, I may ask for a testimonial at some point!
-						😉
-					</span>
-				),
-			},
-		],
-	},
-];
+import { Accordion, AccordionItem } from "@nextui-org/react";
+import { FAQ } from "./_components/faq";
 
 export default function PricingLayout({
 	children,
 }: { children: React.ReactNode }) {
 	return (
 		<main className="flex-1 overflow-auto">
+			<div
+				aria-hidden="true"
+				className="px:5 absolute inset-x-0 top-3 z-0 h-full w-full transform-gpu overflow-hidden blur-3xl md:right-20 md:h-auto md:w-auto md:px-36"
+			>
+				<div
+					className="mx-auto aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#FF71D7] to-[#C9A9E9] opacity-30"
+					style={{
+						clipPath:
+							"polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+					}}
+				/>
+			</div>
 			<div className="w-full">
 				<div className="mx-auto flex max-w-[1160px] flex-col gap-8 px-5 pt-10 md:gap-12 md:pt-16">
 					<div className="grid justify-items-center gap-2 md:gap-4">
@@ -150,37 +32,18 @@ export default function PricingLayout({
 						</p>
 					</div>
 
-					{/* Pricing Mobile */}
 					<div className="w-full">{children}</div>
 				</div>
 
 				{/* FAQ */}
-				<div className="flex flex-col bg-[#FAFAFA] p-5 md:gap-4 md:px-6 md:py-[60px] my-16">
+				<div className="flex flex-col p-5 md:gap-4 md:px-6 md:py-[60px] my-16">
 					<h2 className="hidden text-center text-2xl font-semibold tracking-tighter md:block md:text-[40px]">
 						Frequently Asked Questions
 					</h2>
 					<h2 className="text-center text-2xl font-semibold md:hidden">FAQs</h2>
 
-					<div className="mx-auto w-full max-w-[448px] md:max-w-[920px]">
-						{faqs.map((faq, idx) => (
-							<Accordion
-								key={`${faq.section}-${idx}`}
-								type="single"
-								collapsible
-								className="flex w-full flex-col items-center justify-center my-4"
-							>
-								{faq.qa.map((faq, idx) => (
-									<AccordionItem
-										key={`${faq.question}-${idx}`}
-										value={faq.question}
-										className="w-full max-w-[600px]"
-									>
-										<AccordionTrigger>{faq.question}</AccordionTrigger>
-										<AccordionContent>{faq.answer}</AccordionContent>
-									</AccordionItem>
-								))}
-							</Accordion>
-						))}
+					<div className="mx-auto w-full max-w-[448px] md:max-w-[920px] mt-20">
+						<FAQ />
 					</div>
 				</div>
 
