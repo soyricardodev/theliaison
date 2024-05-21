@@ -41,6 +41,6 @@ const millionNextConfig = million.next(nextConfig, millionConfig);
 
 export default process.env.ANALYZE === "true"
 	? withBundleAnalyzer()(nextConfig)
-	: process.env.NODE_ENV === "production"
+	: process.env.MILLION_BUILD === "true"
 		? millionNextConfig
 		: nextConfig;
