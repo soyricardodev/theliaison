@@ -28,13 +28,13 @@ export async function login(data: SignInWithEmail) {
 		} = await supabase.auth.signInWithPassword(data);
 
 		if (error || !user) {
-			return { message: "Failed to login" };
+			throw new Error("Failed to login. Check your credentials.");
 		}
 
 		revalidatePath("/", "layout");
 		redirect("/explore");
 	} catch (error) {
-		return { message: "Failed to login" };
+		throw new Error("Failed to login. Check your credentials.");
 	}
 }
 
