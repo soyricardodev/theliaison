@@ -9,6 +9,7 @@ import {
 	DropdownMenu,
 	DropdownTrigger,
 } from "@nextui-org/react";
+import { MenuIcon } from "lucide-react";
 
 const menuItemsLoggedOut = [
 	{
@@ -95,9 +96,9 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 	const menuLinks = menuItemsLoggedIn(username);
 
 	return (
-		<Dropdown placement="bottom-end" className="dark text-default-900">
+		<Dropdown placement="bottom-end">
 			<DropdownTrigger>
-				<button className="mt-1 h-8 w-8 transition-transform" type="button">
+				<button className="mt-1 size-8 transition-transform" type="button">
 					<Avatar
 						size="sm"
 						src={avatar_url ?? ""}
@@ -106,7 +107,7 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 					/>
 				</button>
 			</DropdownTrigger>
-			<DropdownMenu variant="flat" className="dark" items={menuLinks}>
+			<DropdownMenu variant="flat" items={menuLinks}>
 				{(menuLinks) => (
 					<DropdownItem
 						key={menuLinks.key}
@@ -123,17 +124,13 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 
 function HeaderNavigationLoggedOut() {
 	return (
-		<Dropdown placement="bottom-end" className="dark text-default-900">
+		<Dropdown placement="bottom-end">
 			<DropdownTrigger>
-				<Button isIconOnly variant="flat" size="sm">
-					<Icon
-						icon="solar:hamburger-menu-linear"
-						width={22}
-						className="text-default-900"
-					/>
+				<Button isIconOnly variant="flat" size="sm" radius="full">
+					<MenuIcon width={20} className="text-default-700/80" />
 				</Button>
 			</DropdownTrigger>
-			<DropdownMenu variant="flat" className="dark" items={menuItemsLoggedOut}>
+			<DropdownMenu variant="flat" items={menuItemsLoggedOut}>
 				{(menuLinks) => (
 					<DropdownItem
 						key={menuLinks.key}
