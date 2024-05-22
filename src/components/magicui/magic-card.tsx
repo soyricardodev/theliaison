@@ -187,6 +187,8 @@ interface MagicCardProps {
 	[key: string]: any;
 
 	onClick?: () => void;
+
+	borderColor?: string;
 }
 
 const MagicCard: React.FC<MagicCardProps> = ({
