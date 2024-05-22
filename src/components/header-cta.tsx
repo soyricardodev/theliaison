@@ -33,7 +33,7 @@ export async function HeaderCTA({
 	}
 
 	return (
-		<Button href={href} as={Link} variant="ghost" size="sm" radius="full">
+		<Button href={href} as={Link} variant="flat" size="sm" radius="full">
 			{ctaText}
 		</Button>
 	);
@@ -41,7 +41,7 @@ export async function HeaderCTA({
 
 function LoginCTA() {
 	return (
-		<Button href="/login" as={Link} variant="ghost" size="sm" radius="full">
+		<Button href="/login" as={Link} variant="flat" size="sm" radius="full">
 			Get Started
 		</Button>
 	);
