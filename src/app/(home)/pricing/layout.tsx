@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { Accordion, AccordionItem } from "@nextui-org/react";
+import Link from "next/link";
 import { FAQ } from "./_components/faq";
 
 export default function PricingLayout({
