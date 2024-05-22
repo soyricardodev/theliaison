@@ -34,7 +34,7 @@ export function Header({ breadcrumbs }: HeaderProps) {
 			>
 				<NavbarBrand>
 					<Link href="/">
-						<Logo className="size-12" />
+						<Logo className="size-10" />
 					</Link>
 				</NavbarBrand>
 				{/* Breadcrumbs */}
@@ -60,7 +60,7 @@ export function Header({ breadcrumbs }: HeaderProps) {
 					</NavbarItem>
 				</NavbarContent>
 			</Navbar>
-			<hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-200/30 to-neutral-200/0" />
+			<hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-400/40 to-neutral-200/0" />
 		</div>
 	);
 }
