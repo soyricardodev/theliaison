@@ -38,7 +38,7 @@ export function LoginForm() {
 	return (
 		<Form {...form}>
 			<form
-				className="flex w-full flex-col gap-3 dark"
+				className="flex w-full flex-col gap-3"
 				onSubmit={form.handleSubmit(onSubmit)}
 			>
 				<FormField
@@ -51,7 +51,7 @@ export function LoginForm() {
 									required
 									isRequired
 									type="email"
-									variant="bordered"
+									variant="underlined"
 									label="Email"
 									placeholder="johndoe@example.com"
 									className="text-white border-white/40"
@@ -71,7 +71,7 @@ export function LoginForm() {
 								<Input
 									required
 									isRequired
-									variant="bordered"
+									variant="underlined"
 									label="Password"
 									endContent={
 										<button
@@ -97,7 +97,7 @@ export function LoginForm() {
 					)}
 				/>
 
-				<Button type="submit" disabled={pending}>
+				<Button type="submit" disabled={pending} color="primary">
 					Log in
 				</Button>
 			</form>
