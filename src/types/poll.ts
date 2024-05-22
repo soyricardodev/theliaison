@@ -13,4 +13,8 @@ export interface PollWithOptionsAndVotes {
 		username: string;
 		avatar_url: string | null;
 	};
+	categories?: Array<{
+		id: number;
+		name: string;
+	}>;
 }
