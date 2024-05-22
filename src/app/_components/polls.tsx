@@ -1,5 +1,5 @@
 "use client";
-import { Image, Progress } from "@nextui-org/react";
+import { Image, Progress, Chip } from "@nextui-org/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -142,29 +142,38 @@ export function NewPollsAproach({
 	polls,
 }: { polls: PollWithOptionsAndVotes[] }) {
 	const router = useRouter();
+
 	return (
-		<MagicContainer
-			className={"gap-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"}
-		>
+		<MagicContainer className="justify-center columns-1 md:columns-2 lg:columns-3">
 			{polls.map((poll, idx) => (
 				<MagicCard
 					key={`${poll.id}-${idx}`}
 					onClick={() => router.push(`/poll/${poll.id}`)}
-					className="flex w-full cursor-pointer flex-col items-center overflow-hidden bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),#ffaa40_0,#9c40ff_50%,transparent_100%)] shadow-2xl gap-4"
+					borderColor="rgb(255,0,0)"
+					className="w-full h-fit cursor-pointer flex flex-col gap-2 items-center overflow-hidden mb-6 hover:opacity-90 transition-opacity"
 				>
-					<div className="relative shadow-black/5 shadow-none rounded-large">
+					<div className="relative shadow-black/5 shadow-none rounded-large mb-2">
 						<PollImage url={poll.image} />
 					</div>
-					<h3 className="text-lg font-semibold text-pretty text-white">
-						{poll.question}
-					</h3>
+					<h3 className="text-lg font-semibold text-pretty">{poll.question}</h3>
+					<div className="flex w-full items-start gap-2">
+						{poll.categories?.map((category) => (
+							<Chip
+								key={category.id}
+								color="secondary"
+								variant="bordered"
+								className="capitalize"
+							>
+								{category.name}
+							</Chip>
+						))}
+					</div>
 					<div className="flex flex-col gap-4 py-2 w-full">
 						{poll.options.map((option, idx) => (
 							<div key={`${option.id}-${idx}`} className="flex gap-2">
-								<div className="flex flex-col gap-y-0.5 w-full text-white">
+								<div className="flex flex-col gap-y-0.5 w-full">
 									<Progress
 										color="secondary"
-										className=""
 										showValueLabel
 										label={option.text}
 										value={option.percentage}
