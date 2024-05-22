@@ -1,7 +1,6 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
@@ -10,7 +9,6 @@ import {
 	FormControl,
 	FormField,
 	FormItem,
-	FormLabel,
 	FormMessage,
 } from "~/components/ui/form";
 import {
@@ -21,7 +19,6 @@ import { login } from "../../actions";
 
 export function LoginForm() {
 	const [passwordVisible, setPasswordVisible] = useState(false);
-	const router = useRouter();
 
 	const form = useForm<SignInWithEmail>({
 		resolver: zodResolver(signInWithEmailSchema),
