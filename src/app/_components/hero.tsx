@@ -1,72 +1,11 @@
 import { Button } from "@nextui-org/react";
-import {
-	ChevronRightIcon,
-	CircleUserRoundIcon,
-	HandHeartIcon,
-	HeartIcon,
-	MoveUpRightIcon,
-	RabbitIcon,
-	TreePalmIcon,
-	VideoIcon,
-} from "lucide-react";
+import { ChevronRightIcon, MoveUpRightIcon } from "lucide-react";
 import Link from "next/link";
 import AnimatedGradientText from "~/components/magicui/animated-gradient-text";
 import { SearchForm } from "./search-form";
-
-interface Category {
-	id: number;
-	name: string;
-	href: string;
-	icon: JSX.Element;
-	color: "default" | "primary" | "danger" | "success" | "secondary" | "warning";
-}
+import { type Category, categories } from "~/lib/categories";
 
 export function Hero() {
-	const categories: Array<Category> = [
-		{
-			id: 1,
-			name: "Trending",
-			href: "/c/trending",
-			icon: <TreePalmIcon className="size-5" />,
-			color: "default",
-		},
-		{
-			id: 2,
-			name: "Relationship",
-			href: "/c/relationship",
-			icon: <HeartIcon className="size-5" />,
-			color: "secondary",
-		},
-		{
-			id: 3,
-			name: "Dating",
-			href: "/c/dating",
-			icon: <HandHeartIcon className="size-5" />,
-			color: "primary",
-		},
-		{
-			id: 6,
-			name: "Entertainment",
-			href: "/c/entertainment",
-			icon: <VideoIcon className="size-5" />,
-			color: "warning",
-		},
-		{
-			id: 4,
-			name: "Sex",
-			href: "/c/sex",
-			icon: <RabbitIcon className="size-5" />,
-			color: "danger",
-		},
-		{
-			id: 5,
-			name: "Self Care",
-			href: "/c/selfcare",
-			icon: <CircleUserRoundIcon className="size-5" />,
-			color: "success",
-		},
-	];
-
 	return (
 		<div className="relative mb-4 flex items-center justify-center py-[24vh] -mt-28 sm:pt-[26vh]">
 			<div className="relative flex w-full flex-col items-center gap-6 px-6 text-center">
