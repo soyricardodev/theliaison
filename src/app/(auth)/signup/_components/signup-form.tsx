@@ -10,7 +10,6 @@ import {
 	FormDescription,
 	FormField,
 	FormItem,
-	FormLabel,
 	FormMessage,
 } from "~/components/ui/form";
 import { type SimpleSignUp, simpleSignUpSchema } from "~/utils/validators/auth";
@@ -57,7 +56,6 @@ export function SignupForm() {
 									variant="underlined"
 									label="Name"
 									placeholder="John Doe"
-									className="text-white border-white/40"
 									{...field}
 								/>
 							</FormControl>
@@ -76,7 +74,6 @@ export function SignupForm() {
 									variant="underlined"
 									label="Username"
 									placeholder="john2doe"
-									className="text-white border-white/40"
 									{...field}
 								/>
 							</FormControl>
@@ -100,7 +97,6 @@ export function SignupForm() {
 									label="Email"
 									type="email"
 									placeholder="johndoe@example.com"
-									className="text-white border-white/40"
 									{...field}
 								/>
 							</FormControl>
@@ -120,7 +116,6 @@ export function SignupForm() {
 									label="Password"
 									type="password"
 									placeholder="Enter your password"
-									className="text-white border-white/40"
 									{...field}
 								/>
 							</FormControl>
