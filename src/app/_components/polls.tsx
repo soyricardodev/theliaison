@@ -1,12 +1,13 @@
 "use client";
-import { Image, Progress, Chip } from "@nextui-org/react";
+
+import Image from "next/image";
+import { Progress, Chip } from "@nextui-org/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { MagicCard, MagicContainer } from "~/components/magicui/magic-card";
 import { cn } from "~/lib/utils";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
-import { createClient } from "~/utils/supabase/client";
+import { categories } from "~/lib/categories";
 
 export function PollsContainer({
 	children,
@@ -105,39 +106,6 @@ export function PollCard({
 	);
 }
 
-function PollImage({ url }: { url: string | undefined }) {
-	const [imageUrl, setImageUrl] = useState<string | null>(null);
-	const supabase = createClient();
-
-	useEffect(() => {
-		async function downloadImage(path: string) {
-			try {
-				const { data, error } = await supabase.storage
-					.from("polls")
-					.download(path);
-				if (error) throw error;
-
-				const url = URL.createObjectURL(data);
-				setImageUrl(url);
-			} catch (error) {
-				console.log("Error downloading image: ", error);
-			}
-		}
-
-		if (url != null) downloadImage(url);
-	}, [url, supabase]);
-	// "https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/places/4.jpeg"
-	return (
-		<figure className="w-full max-h-48 overflow-hidden rounded-large">
-			<Image
-				src={imageUrl ?? undefined}
-				className="shadow-black/5 object-cover rounded-large size-full"
-				isZoomed
-			/>
-		</figure>
-	);
-}
-
 export function NewPollsAproach({
 	polls,
 }: { polls: PollWithOptionsAndVotes[] }) {
@@ -145,46 +113,67 @@ export function NewPollsAproach({
 
 	return (
 		<MagicContainer className="justify-center columns-1 md:columns-2 lg:columns-3">
-			{polls.map((poll, idx) => (
-				<MagicCard
-					key={`${poll.id}-${idx}`}
-					onClick={() => router.push(`/poll/${poll.id}`)}
-					borderColor="rgb(255,0,0)"
-					className="w-full h-fit cursor-pointer flex flex-col gap-2 items-center overflow-hidden mb-6 hover:opacity-90 transition-opacity"
-				>
-					<div className="relative shadow-black/5 shadow-none rounded-large mb-2">
-						<PollImage url={poll.image} />
-					</div>
-					<h3 className="text-lg font-semibold text-pretty">{poll.question}</h3>
-					<div className="flex w-full items-start gap-2">
-						{poll.categories?.map((category) => (
-							<Chip
-								key={category.id}
-								color="secondary"
-								variant="bordered"
-								className="capitalize"
-							>
-								{category.name}
-							</Chip>
-						))}
-					</div>
-					<div className="flex flex-col gap-4 py-2 w-full">
-						{poll.options.map((option, idx) => (
-							<div key={`${option.id}-${idx}`} className="flex gap-2">
-								<div className="flex flex-col gap-y-0.5 w-full">
-									<Progress
-										color="secondary"
-										showValueLabel
-										label={option.text}
-										value={option.percentage}
-									/>
+			{polls.map((poll, idx) => {
+				const firstCategory = poll.categories?.[0];
+				const categoryId = firstCategory?.id ?? 1;
+				const category = categories.find(
+					(category) => category.id === categoryId,
+				);
+				const hex = category?.hex;
+				const color = category?.color;
+
+				return (
+					<MagicCard
+						key={`${poll.id}-${idx}`}
+						onClick={() => router.push(`/poll/${poll.id}`)}
+						borderColor={hex}
+						className="w-full h-fit cursor-pointer flex flex-col gap-2 items-center overflow-hidden mb-6 hover:opacity-90 transition-opacity"
+					>
+						<div className="relative shadow-black/5 shadow-none rounded-large mb-2">
+							<figure className="w-full max-h-48 overflow-hidden rounded-large">
+								<Image
+									alt={poll.question}
+									src={`/polls/${poll.image}`}
+									className="shadow-black/5 object-cover rounded-large size-full"
+									height={192}
+									width={300}
+									// isZoomed
+								/>
+							</figure>
+						</div>
+						<h3 className="text-lg font-semibold text-pretty">
+							{poll.question}
+						</h3>
+						<div className="flex w-full items-start gap-2">
+							{poll.categories?.map((category) => (
+								<Chip
+									key={category.id}
+									color={color}
+									variant="bordered"
+									className="capitalize"
+								>
+									{category.name}
+								</Chip>
+							))}
+						</div>
+						<div className="flex flex-col gap-4 py-2 w-full">
+							{poll.options.map((option, idx) => (
+								<div key={`${option.id}-${idx}`} className="flex gap-2">
+									<div className="flex flex-col gap-y-0.5 w-full">
+										<Progress
+											color="secondary"
+											showValueLabel
+											label={option.text}
+											value={option.percentage}
+										/>
+									</div>
 								</div>
-							</div>
-						))}
-					</div>
-					<div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_120%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
-				</MagicCard>
-			))}
+							))}
+						</div>
+						<div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_120%,rgba(200,200,200,0.3),rgba(255,255,255,0))]" />
+					</MagicCard>
+				);
+			})}
 		</MagicContainer>
 	);
 }
