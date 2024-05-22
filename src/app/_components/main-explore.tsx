@@ -11,7 +11,8 @@ export async function MainExplore() {
     options (id, text),
 		votes (id, poll_id, option_id, user_id),
 		users (id, username, avatar_url),
-		image
+		image,
+		categories (*)
   `);
 
 	const { data } = await pollsWithOptionsQuery;
@@ -55,6 +56,7 @@ export async function MainExplore() {
 					username: pollData.users?.username ?? "",
 					avatar_url: pollData.users?.avatar_url ?? null,
 				},
+				categories: pollData.categories,
 			};
 
 			votesDetailsArray.push(dataToPush);
@@ -64,6 +66,10 @@ export async function MainExplore() {
 	}
 
 	const dataToRender = calculateVotes();
+
+	const categories = dataToRender.map((poll) => poll.categories);
+
+	console.log(categories);
 
 	return (
 		<div className="mx-auto flex max-w-7xl flex-col px-6 pb-20">
