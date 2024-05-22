@@ -23,7 +23,7 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning>
 			<body className={cn("font-sans antialiased", GeistSans.variable)}>
 				<Providers>
-					<div className="dark text-foreground bg-background">{children}</div>
+					<div className="text-foreground bg-background">{children}</div>
 				</Providers>
 				<TailwindIndicator />
 				{process.env.NODE_ENV === "production" ? (
