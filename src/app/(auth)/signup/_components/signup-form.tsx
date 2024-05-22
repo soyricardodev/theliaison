@@ -35,7 +35,7 @@ export function SignupForm() {
 		const profileData = await simpleSignupAction({ ...data });
 
 		if (profileData) {
-			router.push("/signup/select-plan");
+			router.push("/select-plan");
 		}
 	}
 
