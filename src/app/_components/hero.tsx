@@ -70,7 +70,7 @@ export function Hero() {
 	return (
 		<div className="relative mb-4 flex items-center justify-center py-[24vh] -mt-28 sm:pt-[26vh]">
 			<div className="relative flex w-full flex-col items-center gap-6 px-6 text-center">
-				<div className="flex w-full flex-col items-center gap-6 pb-8">
+				<div className="flex w-full flex-col items-center gap-2 pb-8">
 					<Link href="/ai" className="z-10 flex items-center justify-center">
 						<AnimatedGradientText>
 							🎉 <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-400/80" />{" "}
@@ -84,24 +84,15 @@ export function Hero() {
 							<ChevronRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
 						</AnimatedGradientText>
 					</Link>
-					<h1 className="bg-gradient-to-br bg-clip-text py-6 text-5xl font-semibold leading-none tracking-tighter text-transparent from-white from-40% to-white/40 sm:text-6xl md:text-7xl lg:text-7xl text-balance">
-						Get the Inside Scoop on Everything!
+					<h1 className="bg-gradient-to-br bg-clip-text py-6 text-5xl font-semibold leading-none tracking-tighter text-transparent from-black from-40% to-black/40 sm:text-6xl md:text-7xl lg:text-7xl text-balance">
+						Ask The Liaison
 					</h1>
 					<p className="max-w-[60rem] text-pretty text-lg tracking-tight text-gray-500 md:text-xl">
-						<span className="hidden md:block">
-							The Liaison: <strong>Speak Your Mind. Find Your People.</strong>{" "}
-							Unfiltered opinions on life, love, and everything in between. Dive
-							deep, <strong>share your voice</strong>, and connect with a{" "}
-							<strong>global community.</strong>
-						</span>
-						<span className="block md:hidden">
-							Unleash your voice. <strong>Engage with the world.</strong> The
-							Liaison: <strong>Your opinion hub.</strong> Share, explore,
-							connect.
-						</span>
+						<strong>Speak Your Mind. Find Your People.</strong> <br />
+						Unfiltered opinions on life, love, and everything in between.
 					</p>
 				</div>
-				<div className="z-10 m-auto flex w-full flex-col divide-zinc-600 overflow-hidden rounded-full bg-gray-900 shadow-lg shadow-black/40 sm:max-w-xl">
+				<div className="z-10 m-auto flex w-full flex-col overflow-hidden rounded-full sm:max-w-xl">
 					<SearchForm />
 				</div>
 
