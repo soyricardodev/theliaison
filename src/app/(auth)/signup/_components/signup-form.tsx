@@ -43,7 +43,7 @@ export function SignupForm() {
 	return (
 		<Form {...form}>
 			<form
-				className="flex w-full flex-col gap-3 dark"
+				className="flex w-full flex-col gap-3"
 				onSubmit={form.handleSubmit(onSubmit)}
 			>
 				<FormField
@@ -54,7 +54,7 @@ export function SignupForm() {
 							<FormControl>
 								<Input
 									isRequired
-									variant="bordered"
+									variant="underlined"
 									label="Name"
 									placeholder="John Doe"
 									className="text-white border-white/40"
@@ -73,7 +73,7 @@ export function SignupForm() {
 							<FormControl>
 								<Input
 									isRequired
-									variant="bordered"
+									variant="underlined"
 									label="Username"
 									placeholder="john2doe"
 									className="text-white border-white/40"
@@ -96,7 +96,7 @@ export function SignupForm() {
 							<FormControl>
 								<Input
 									isRequired
-									variant="bordered"
+									variant="underlined"
 									label="Email"
 									type="email"
 									placeholder="johndoe@example.com"
@@ -116,7 +116,7 @@ export function SignupForm() {
 							<FormControl>
 								<Input
 									isRequired
-									variant="bordered"
+									variant="underlined"
 									label="Password"
 									type="password"
 									placeholder="Enter your password"
@@ -129,7 +129,7 @@ export function SignupForm() {
 					)}
 				/>
 
-				<Button type="submit" className="w-full" disabled={pending}>
+				<Button type="submit" disabled={pending} color="primary">
 					Signup
 				</Button>
 			</form>
