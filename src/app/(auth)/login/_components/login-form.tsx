@@ -19,6 +19,8 @@ import { login } from "../../actions";
 
 export function LoginForm() {
 	const [passwordVisible, setPasswordVisible] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [errorMessage, setErrorMessage] = useState<string>("");
 
 	const form = useForm<SignInWithEmail>({
 		resolver: zodResolver(signInWithEmailSchema),
@@ -32,7 +34,15 @@ export function LoginForm() {
 	const { pending } = useFormStatus();
 
 	async function onSubmit(data: SignInWithEmail) {
-		await login({ ...data });
+		try {
+			setIsSubmitting(true);
+			await login({ ...data });
+		} catch (error) {
+			console.log(error);
+			// @ts-expect-error missing types
+			setErrorMessage(error.message as string);
+			setIsSubmitting(false);
+		}
 	}
 
 	return (
@@ -97,7 +107,15 @@ export function LoginForm() {
 					)}
 				/>
 
-				<Button type="submit" disabled={pending} color="primary">
+				<p className="text-sm text-danger">{errorMessage}</p>
+
+				<Button
+					type="submit"
+					disabled={pending || isSubmitting}
+					isDisabled={isSubmitting || pending}
+					isLoading={isSubmitting || pending}
+					color="primary"
+				>
 					Log in
 				</Button>
 			</form>
