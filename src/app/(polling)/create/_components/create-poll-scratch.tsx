@@ -58,12 +58,6 @@ export function CreatePollScratch() {
 				{
 					value: "",
 				},
-				{
-					value: "",
-				},
-				{
-					value: "",
-				},
 			],
 		},
 	});
@@ -82,9 +76,7 @@ export function CreatePollScratch() {
 
 	const onSubmit = async (data: PollFormValues) => {
 		try {
-			toast.loading("Creating poll...", {
-				duration: 2000,
-			});
+			toast.loading("Creating poll...");
 			const pollToCreate = await createPollWithOptions(data, pollImage);
 			toast.success("Poll created successfully");
 			router.push(`/poll/${pollToCreate.id}`);
@@ -148,7 +140,6 @@ export function CreatePollScratch() {
 						return;
 					}
 
-					console.log({ data: parsed.data });
 					onSubmit(parsed.data);
 				}}
 			>
@@ -164,6 +155,7 @@ export function CreatePollScratch() {
 									type="text"
 									isRequired
 									required
+									variant="bordered"
 									{...field}
 								/>
 							</FormControl>
@@ -181,18 +173,18 @@ export function CreatePollScratch() {
 								label="Categories"
 								placeholder="Select your categories"
 								selectionMode="multiple"
-								className="dark"
 								isRequired
 								required
+								variant="bordered"
 								{...field}
 							>
 								{categories.map((categorie) => (
 									<SelectItem
 										key={categorie.id}
 										value={categorie.id}
-										className="dark capitalize"
+										className="capitalize"
 									>
-										{categorie.value}
+										{categorie.name}
 									</SelectItem>
 								))}
 							</Select>
@@ -220,6 +212,7 @@ export function CreatePollScratch() {
 												</Button>
 											) : null
 										}
+										variant="bordered"
 										{...field}
 									/>
 								</FormControl>
@@ -233,7 +226,7 @@ export function CreatePollScratch() {
 					<Button
 						type="button"
 						startContent={<PlusCircleIcon className="size-4" />}
-						className="text-white w-full"
+						className="text-black w-full"
 						onClick={() => {
 							if (fields.length < 6) {
 								append({ value: "" });
@@ -258,7 +251,7 @@ export function CreatePollScratch() {
 					<Button
 						type="button"
 						startContent={<FileImageIcon className="size-4" />}
-						className="text-white w-full"
+						className="text-black w-full"
 						onClick={() => {
 							inputImageRef.current?.click();
 						}}
