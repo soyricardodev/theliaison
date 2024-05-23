@@ -2,8 +2,9 @@
 
 import type { NavbarProps } from "@nextui-org/react";
 
-import React from "react";
 import {
+	Button,
+	Link,
 	Navbar,
 	NavbarBrand,
 	NavbarContent,
@@ -11,9 +12,8 @@ import {
 	NavbarMenu,
 	NavbarMenuItem,
 	NavbarMenuToggle,
-	Link,
-	Button,
 } from "@nextui-org/react";
+import React from "react";
 
 import { Logo } from "~/components/logo";
 import { cn } from "~/lib/utils";

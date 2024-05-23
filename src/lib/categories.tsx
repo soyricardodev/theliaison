@@ -1,10 +1,10 @@
 import {
-	TreePalmIcon,
-	HeartIcon,
-	HandHeartIcon,
-	VideoIcon,
 	CircleUserRoundIcon,
+	HandHeartIcon,
+	HeartIcon,
 	RabbitIcon,
+	TreePalmIcon,
+	VideoIcon,
 } from "lucide-react";
 
 export interface Category {

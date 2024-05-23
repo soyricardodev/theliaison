@@ -2,9 +2,9 @@
 
 import type { IconProps } from "@iconify/react";
 
-import React from "react";
-import { Button, Input, Link } from "@nextui-org/react";
 import { Icon } from "@iconify/react";
+import { Button, Input, Link } from "@nextui-org/react";
+import React from "react";
 
 import { Logo } from "~/components/logo";
 

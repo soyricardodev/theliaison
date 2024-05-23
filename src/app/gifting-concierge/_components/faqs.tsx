@@ -1,8 +1,8 @@
 "use client";
 
-import React from "react";
-import { Accordion, AccordionItem } from "@nextui-org/react";
 import { Icon } from "@iconify/react";
+import { Accordion, AccordionItem } from "@nextui-org/react";
+import React from "react";
 
 const faqs = [
 	{

@@ -2,8 +2,8 @@ import { Button } from "@nextui-org/react";
 import { ChevronRightIcon, MoveUpRightIcon } from "lucide-react";
 import Link from "next/link";
 import AnimatedGradientText from "~/components/magicui/animated-gradient-text";
-import { SearchForm } from "./search-form";
 import { type Category, categories } from "~/lib/categories";
+import { SearchForm } from "./search-form";
 
 export function Hero() {
 	return (

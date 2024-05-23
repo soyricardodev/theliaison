@@ -2,15 +2,15 @@
 
 import type { CardProps } from "@nextui-org/react";
 
-import React from "react";
 import { Icon } from "@iconify/react";
 import {
-	Card,
-	CardHeader,
-	CardBody,
-	RadioGroup,
 	Badge,
+	Card,
+	CardBody,
+	CardHeader,
+	RadioGroup,
 } from "@nextui-org/react";
+import React from "react";
 
 import { PlanRadio } from "./plan-radio";
 

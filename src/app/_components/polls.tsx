@@ -1,13 +1,13 @@
 "use client";
 
+import { Chip, Progress } from "@nextui-org/react";
 import Image from "next/image";
-import { Progress, Chip } from "@nextui-org/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { MagicCard, MagicContainer } from "~/components/magicui/magic-card";
+import { categories } from "~/lib/categories";
 import { cn } from "~/lib/utils";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
-import { categories } from "~/lib/categories";
 
 export function PollsContainer({
 	children,
