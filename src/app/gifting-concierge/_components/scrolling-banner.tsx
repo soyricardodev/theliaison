@@ -74,7 +74,7 @@ export const ScrollingBanner = React.forwardRef<
 					})}
 				>
 					{React.Children.map(children, (child) =>
-						React.cloneElement(child as any),
+						React.cloneElement(child as React.ReactElement),
 					)}
 				</div>
 			</ScrollShadow>
