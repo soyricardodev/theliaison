@@ -19,9 +19,17 @@ interface HeaderProps {
 		name: string;
 		href: string;
 	}>;
+	showCta?: boolean;
+	ctaText?: string | JSX.Element;
+	ctaHref?: string;
 }
 
-export function Header({ breadcrumbs }: HeaderProps) {
+export function Header({
+	breadcrumbs,
+	showCta = true,
+	ctaText,
+	ctaHref,
+}: HeaderProps) {
 	return (
 		<div className="w-full sticky top-0 z-50">
 			<Navbar
@@ -53,7 +61,7 @@ export function Header({ breadcrumbs }: HeaderProps) {
 					className="ml-auto h-12 max-w-fit items-center gap-0"
 					justify="end"
 				>
-					<HeaderCTA />
+					{showCta && <HeaderCTA />}
 					{/* User Menu */}
 					<NavbarItem className="px-2">
 						<HeaderUser />
