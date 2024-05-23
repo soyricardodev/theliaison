@@ -33,7 +33,6 @@ export function Navigation(props: NavbarProps) {
 
 	return (
 		<Navbar
-			{...props}
 			isBordered
 			classNames={{
 				base: cn("border-default-100", {
@@ -45,6 +44,7 @@ export function Navigation(props: NavbarProps) {
 			height="60px"
 			isMenuOpen={isMenuOpen}
 			onMenuOpenChange={setIsMenuOpen}
+			{...props}
 		>
 			<NavbarMenuToggle className="text-default-400 md:hidden" />
 
