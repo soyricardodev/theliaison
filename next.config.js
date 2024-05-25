@@ -15,15 +15,6 @@ const nextConfig = {
 		ignoreDuringBuilds: true,
 	},
 	images: {
-		dangerouslyAllowSVG: true,
-		contentDispositionType: "attachment",
-		contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-		remotePatterns: [
-			{
-				protocol: "https",
-				hostname: "vercel.com",
-			},
-		],
 		loader: "custom",
 		loaderFile: "./src/utils/supabase/image-loader.js",
 	},
