@@ -6,7 +6,9 @@ import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
 import { Comments } from "./comments";
 import { FormComment } from "./form-comment";
+import { Chip } from "@nextui-org/react";
 import { OptionToVote } from "./option-to-vote";
+import { categories } from "~/lib/categories";
 
 export default async function PollPage({
 	params: { id },
@@ -20,8 +22,10 @@ export default async function PollPage({
     options (id, text),
 		votes (id, poll_id, option_id, user_id),
 		users (id, username, avatar_url),
-		image
-  `)
+		image,
+		comments (id, content, created_at, users (id, username, avatar_url)),
+		categories (id, name)
+    `)
 		.eq("id", id)
 		.single();
 
@@ -93,27 +97,13 @@ export default async function PollPage({
 		(isPollCreator || isCommunityInsider) &&
 		!userAlreadyVoted;
 
-	const commentsLimit = userCanVote ? 30 : 2;
-
-	const { data: comments } = await supabase
-		.from("comments")
-		.select(`
-			id,
-			content,
-			created_at,
-			users (id, username, avatar_url)
-		`)
-		.limit(commentsLimit)
-		.eq("poll_id", id)
-		.order("created_at", { ascending: false });
-
 	return (
 		<main className="flex-1 overflow-auto">
 			<div className="flex flex-col max-w-screen-2xl mx-auto">
-				<div className="flex flex-1 flex-col gap-3 p-4 pb-2 pt-3 md:pt-16 lg:pt-24">
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-						<div>
-							<h2 className="text-2xl font-semibold">
+				<div className="flex flex-1 flex-col gap-3 my-4 px-8 pb-2 pt-10 md:pt-16 lg:pt-24 bg-default-200 max-w-3xl mx-auto rounded-lg">
+					<div className="flex flex-col gap-6 max-w-2xl mx-auto items-center justify-start">
+						<div className="flex flex-col gap-2">
+							<h2 className="text-2xl md:text-3xl text-center text-pretty font-bold">
 								{dataToRender.question}
 							</h2>
 							<Image
@@ -127,6 +117,24 @@ export default async function PollPage({
 								}}
 								width={600}
 							/>
+							<div className="mt-2.5 flex items-center gap-2">
+								{data.categories.map((category) => {
+									const cat = categories.find(
+										(cat) => cat.id === Number(category.id),
+									);
+									const color = cat?.color;
+
+									return (
+										<Chip
+											key={category.id}
+											className="flex items-center gap-2 capitalize"
+											color={color}
+										>
+											{category.name}
+										</Chip>
+									);
+								})}
+							</div>
 						</div>
 
 						{/* Poll Data */}
@@ -136,7 +144,7 @@ export default async function PollPage({
 									<OptionToVote
 										option={option}
 										key={option.id}
-										pollId={Number(id)}
+										pollId={id}
 										alreadyVoted={userAlreadyVoted}
 										userId={user?.id}
 										optionVotedId={optionSelectedForUserLoggedIn?.option_id}
@@ -145,7 +153,7 @@ export default async function PollPage({
 								))}
 							</ul>
 							<div>
-								<p className="text-sm text-gray-500">
+								<p className="text-sm text-gray-800">
 									Total Votes: {totalVotes}
 								</p>
 							</div>
@@ -155,10 +163,10 @@ export default async function PollPage({
 						<div className="order-2 shrink-0 origin-left overflow-scroll flex-col rounded-lg py-2 transition-all duration-300 ease-out @container lg:flex  md:max-h-[calc(100vh-190px)] w-full">
 							<ScrollArea className="w-full flex flex-col gap-2 p-2">
 								<h5 className="text-lg font-medium py-3">Comments</h5>
-								{user != null && <FormComment pollId={Number(id)} />}
+								{user != null && <FormComment pollId={id} />}
 
 								<ul className="w-full flex flex-col gap-2">
-									<Comments serverComments={comments ?? []} />
+									<Comments serverComments={data.comments} />
 								</ul>
 							</ScrollArea>
 						</div>
