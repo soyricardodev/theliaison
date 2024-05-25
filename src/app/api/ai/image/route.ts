@@ -1,4 +1,4 @@
-import { randomUUID } from "crypto";
+import { nanoid } from "nanoid";
 import { type NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import sharp from "sharp";
@@ -93,7 +93,7 @@ export async function POST(req: NextRequest) {
 		const pollQuestionFormatted = parsed.data.question
 			.replace(/[^a-zA-Z0-9]/g, "-")
 			.toLowerCase();
-		const randomImageOf6Characters = randomUUID().substring(0, 6);
+		const randomImageOf6Characters = nanoid().substring(0, 6);
 		const imageName = `${pollQuestionFormatted}-${randomImageOf6Characters}`;
 
 		const { data: pollImageUploaded, error } = await supabase.storage

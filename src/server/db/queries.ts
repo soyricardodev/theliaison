@@ -1,4 +1,4 @@
-import { randomUUID } from "crypto";
+import { nanoid } from "nanoid";
 import type { PollFormValues } from "~/app/(polling)/create/_components/create-poll-scratch";
 import { createClient } from "~/utils/supabase/client";
 
@@ -20,7 +20,7 @@ export async function createPollWithOptions(
 	const pollQuestionFormatted = values.question
 		.replace(/[^a-zA-Z0-9]/g, "-")
 		.toLowerCase();
-	const pollRandomId = randomUUID().substring(0, 6);
+	const pollRandomId = nanoid().substring(0, 6);
 	const pollQuestionId = `${pollQuestionFormatted}-${pollRandomId}`;
 
 	const { error: createPollError } = await supabase.from("polls").insert({
@@ -31,7 +31,8 @@ export async function createPollWithOptions(
 	});
 
 	if (createPollError) {
-		throw new Error("Unable to create poll");
+		console.log(createPollError, "createPollError");
+		throw new Error(`Unable to create poll: ${createPollError.message}`);
 	}
 
 	const optionsToInsert = [];
@@ -50,6 +51,7 @@ export async function createPollWithOptions(
 		.insert(optionsToInsert);
 
 	if (createPollOptionsError) {
+		console.log(createPollOptionsError, "createPollOptionsError");
 		throw new Error("Unable to create poll options");
 	}
 

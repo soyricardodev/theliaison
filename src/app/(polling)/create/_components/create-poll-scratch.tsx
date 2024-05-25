@@ -2,6 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input, Select, SelectItem } from "@nextui-org/react";
+import { nanoid } from "nanoid";
 import { FileImageIcon, PlusCircleIcon, TrashIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
@@ -142,6 +143,13 @@ export function CreatePollScratch() {
 
 	async function onUploadImage(event: React.ChangeEvent<HTMLInputElement>) {
 		try {
+			const pollquestion = form.getValues().question;
+
+			if (pollquestion.trim() === "") {
+				toast.error("Please first enter a question");
+				return;
+			}
+
 			setUploading(true);
 			if (!event.target.files || event.target.files.length === 0) {
 				toast.error("You must select an image to upload.");
@@ -155,12 +163,14 @@ export function CreatePollScratch() {
 				throw new Error("You must select an image to upload.");
 			}
 
-			const fileExt = file.name.split(".").pop();
-			const filePath = `${Math.random()}.${fileExt}`;
+			const fileName = pollquestion.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase();
+			const filePath = `${fileName}-${nanoid().substring(0, 6)}`;
 
 			const { error: uploadError } = await supabase.storage
 				.from("polls")
-				.upload(filePath, file);
+				.upload(filePath, file, {
+					contentType: file.type,
+				});
 
 			if (uploadError) {
 				toast.error("Error uploading image");
