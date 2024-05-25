@@ -3,7 +3,6 @@
  * for Docker builds.
  */
 await import("./src/env.js");
-import million from "million/compiler";
 import withBundleAnalyzer from "@next/bundle-analyzer";
 
 /** @type {import("next").NextConfig} */
@@ -30,17 +29,6 @@ const nextConfig = {
 	},
 };
 
-const millionConfig = {
-	auto: {
-		rsc: true,
-	},
-	rsc: true,
-};
-
-const millionNextConfig = million.next(nextConfig, millionConfig);
-
 export default process.env.ANALYZE === "true"
 	? withBundleAnalyzer()(nextConfig)
-	: process.env.MILLION_BUILD === "true"
-		? millionNextConfig
-		: nextConfig;
+	: nextConfig;
