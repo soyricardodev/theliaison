@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "~/utils/supabase/server";
-import { CreatePollForm } from "./_components/create-poll-form";
 import { PollCreatorTrigger } from "./_components/poll-creator-trigger";
 
 export default async function Component() {
