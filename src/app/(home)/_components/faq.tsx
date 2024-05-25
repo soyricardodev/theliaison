@@ -1,11 +1,6 @@
 "use client";
 
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
-} from "~/components/ui/accordion";
+import { Accordion, AccordionItem } from "@nextui-org/react";
 
 const faqs = [
 	{
@@ -156,19 +151,14 @@ export default function FAQ() {
 								<h2 className="mb-4 text-left text-base font-semibold tracking-tight text-foreground/60">
 									{faq.section}
 								</h2>
-								<Accordion
-									type="single"
-									collapsible
-									className="flex w-full flex-col items-center justify-center"
-								>
+								<Accordion className="flex w-full flex-col items-center justify-center">
 									{faq.qa.map((faq, idx) => (
 										<AccordionItem
 											key={`${faq.question}-${idx}`}
 											value={faq.question}
 											className="w-full max-w-[600px]"
 										>
-											<AccordionTrigger>{faq.question}</AccordionTrigger>
-											<AccordionContent>{faq.answer}</AccordionContent>
+											{faq.answer}
 										</AccordionItem>
 									))}
 								</Accordion>
