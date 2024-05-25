@@ -29,21 +29,21 @@ export type Database = {
 					content: string;
 					created_at: string;
 					id: number;
-					poll_id: number;
+					poll_id: string;
 					user_id: string;
 				};
 				Insert: {
 					content: string;
 					created_at?: string;
 					id?: number;
-					poll_id: number;
+					poll_id: string;
 					user_id: string;
 				};
 				Update: {
 					content?: string;
 					created_at?: string;
 					id?: number;
-					poll_id?: number;
+					poll_id?: string;
 					user_id?: string;
 				};
 				Relationships: [
@@ -89,17 +89,17 @@ export type Database = {
 			options: {
 				Row: {
 					id: number;
-					poll_id: number;
+					poll_id: string;
 					text: string;
 				};
 				Insert: {
 					id?: number;
-					poll_id: number;
+					poll_id: string;
 					text: string;
 				};
 				Update: {
 					id?: number;
-					poll_id?: number;
+					poll_id?: string;
 					text?: string;
 				};
 				Relationships: [
@@ -115,22 +115,22 @@ export type Database = {
 			polls: {
 				Row: {
 					created_at: string;
-					id: number;
-					image: string | null;
+					id: string;
+					image: string;
 					question: string;
 					user_id: string;
 				};
 				Insert: {
 					created_at?: string;
-					id?: number;
-					image?: string | null;
+					id: string;
+					image: string;
 					question: string;
 					user_id: string;
 				};
 				Update: {
 					created_at?: string;
-					id?: number;
-					image?: string | null;
+					id?: string;
+					image?: string;
 					question?: string;
 					user_id?: string;
 				};
@@ -147,15 +147,15 @@ export type Database = {
 			polls_categories: {
 				Row: {
 					categorie_id: number;
-					poll_id: number;
+					poll_id: string;
 				};
 				Insert: {
 					categorie_id: number;
-					poll_id: number;
+					poll_id: string;
 				};
 				Update: {
 					categorie_id?: number;
-					poll_id?: number;
+					poll_id?: string;
 				};
 				Relationships: [
 					{
@@ -422,19 +422,19 @@ export type Database = {
 				Row: {
 					id: number;
 					option_id: number;
-					poll_id: number;
+					poll_id: string;
 					user_id: string;
 				};
 				Insert: {
 					id?: number;
 					option_id: number;
-					poll_id: number;
+					poll_id: string;
 					user_id: string;
 				};
 				Update: {
 					id?: number;
 					option_id?: number;
-					poll_id?: number;
+					poll_id?: string;
 					user_id?: string;
 				};
 				Relationships: [
