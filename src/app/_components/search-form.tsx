@@ -33,9 +33,6 @@ export function SearchForm() {
 		return { data, error };
 	}
 
-	useEffect(() => {
-		getSearchData();
-	}, [getSearchData]);
 	return (
 		<SearchPlaceholder
 			placeholders={[
