@@ -92,7 +92,7 @@
 		"typescript": "5.4.5",
 		"vercel": "34.2.0"
 	},
-	"packageManager": "bun@1.1.8",
+	"packageManager": "bun@1.1.10",
 	"trustedDependencies": [
 		"@biomejs/biome",
 		"@vercel/speed-insights",
