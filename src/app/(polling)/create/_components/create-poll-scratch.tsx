@@ -2,8 +2,8 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input, Select, SelectItem } from "@nextui-org/react";
-import { nanoid } from "nanoid";
 import { FileImageIcon, PlusCircleIcon, TrashIcon } from "lucide-react";
+import { nanoid } from "nanoid";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
