@@ -21,7 +21,7 @@ const submitComment = z.object({
 
 type FormValues = z.infer<typeof submitComment>;
 
-export function FormComment({ pollId }: { pollId: number }) {
+export function FormComment({ pollId }: { pollId: string }) {
 	const supabase = createClient();
 	const form = useForm({
 		resolver: zodResolver(submitComment),
