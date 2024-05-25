@@ -22,7 +22,7 @@ import { createClient } from "~/utils/supabase/client";
 
 type OptionToVote = {
 	canVote: boolean;
-	pollId: number;
+	pollId: string;
 	option: {
 		votes: number | undefined;
 		percentage: number | undefined;
@@ -80,12 +80,13 @@ export function OptionToVote({
 				content={
 					<p>{optionVotedByUser ? "This is your vote" : "Click to vote"}</p>
 				}
+				offset={-7}
 			>
 				<button
 					type="button"
 					className={cn(
-						"py-4 px-5 rounded-lg transition-colors bg-content1 hover:bg-content2 shadow-large",
-						optionVotedByUser && "bg-content2 cursor-not-allowed",
+						"py-8 px-5 rounded-lg transition-colors bg-content2 hover:bg-content3 border border-default-400",
+						optionVotedByUser && "bg-content3 cursor-not-allowed",
 					)}
 					onClick={vote}
 				>
@@ -94,10 +95,10 @@ export function OptionToVote({
 						showValueLabel
 						label={<p>{option.text}</p>}
 						classNames={{
-							track: "drop-shadow-md border border-default",
+							track: "drop-shadow-md border border-default-400",
 							label:
-								"tracking-wider font-medium text-default-700 text-left text-pretty",
-							value: "text-foreground/60",
+								"text-lg font-medium text-default-700 text-left text-pretty",
+							value: "text-foreground/60 text-lg",
 						}}
 						color="secondary"
 					/>
