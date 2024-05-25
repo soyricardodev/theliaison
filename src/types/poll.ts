@@ -1,5 +1,5 @@
 export interface PollWithOptionsAndVotes {
-	id: number;
+	id: string;
 	question: string;
 	image: string | undefined;
 	options: {
