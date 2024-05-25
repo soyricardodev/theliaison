@@ -1,8 +1,8 @@
+import { randomUUID } from "node:crypto";
 import { type NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import sharp from "sharp";
 import { z } from "zod";
-import { randomUUID } from "node:crypto";
 import { env } from "~/env";
 import { categories } from "~/lib/categories";
 import { createClient } from "~/utils/supabase/server";
