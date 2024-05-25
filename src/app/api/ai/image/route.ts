@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto";
+import { randomUUID } from "crypto";
 import { type NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import sharp from "sharp";

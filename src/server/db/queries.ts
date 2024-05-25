@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto";
+import { randomUUID } from "crypto";
 import type { PollFormValues } from "~/app/(polling)/create/_components/create-poll-scratch";
 import { createClient } from "~/utils/supabase/client";
 
