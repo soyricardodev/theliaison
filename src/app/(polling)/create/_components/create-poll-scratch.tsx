@@ -76,10 +76,64 @@ export function CreatePollScratch() {
 
 	const onSubmit = async (data: PollFormValues) => {
 		try {
-			toast.loading("Creating poll...");
-			const pollToCreate = await createPollWithOptions(data, pollImage);
-			toast.success("Poll created successfully");
-			router.push(`/poll/${pollToCreate.id}`);
+			if (pollImage == null) {
+				let generatedAIImage = "";
+				setCreatingPoll(true);
+
+				toast.promise(
+					fetch("/api/ai/image", {
+						method: "POST",
+						body: JSON.stringify({
+							question: data.question,
+							categories: data.categories,
+						}),
+						headers: {
+							"Content-Type": "application/json",
+						},
+					}),
+					{
+						loading: "Generating AI image...",
+						success: async (res) => {
+							const response: { data: string } = await res.json();
+							generatedAIImage = response.data;
+
+							toast.promise(createPollWithOptions(data, generatedAIImage), {
+								loading: "Creating poll...",
+								success: (url) => {
+									setCreatingPoll(false);
+									router.push(`/poll/${url}`);
+									return "Poll created successfully";
+								},
+								error: () => {
+									setCreatingPoll(false);
+									return "Error creating poll";
+								},
+							});
+
+							return "AI image generated successfully";
+						},
+						error: () => {
+							setCreatingPoll(false);
+							return "Error generating AI image";
+						},
+					},
+				);
+
+				return;
+			}
+
+			toast.promise(createPollWithOptions(data, pollImage), {
+				loading: "Creating poll...",
+				success: (url) => {
+					setCreatingPoll(false);
+					router.push(`/poll/${url}`);
+					return "Poll created successfully";
+				},
+				error: () => {
+					setCreatingPoll(false);
+					return "Error creating poll";
+				},
+			});
 		} catch (error) {
 			console.log(error);
 			toast.error("Error creating poll");
@@ -245,7 +299,7 @@ export function CreatePollScratch() {
 						type="file"
 						accept="image/*"
 						onChange={onUploadImage}
-						disabled={uploading}
+						disabled={uploading || creatingPoll}
 					/>
 
 					<Button
@@ -256,14 +310,21 @@ export function CreatePollScratch() {
 							inputImageRef.current?.click();
 						}}
 						variant="bordered"
-						isDisabled={uploading}
-						disabled={uploading}
-						isLoading={uploading}
+						isDisabled={uploading || creatingPoll}
+						disabled={uploading || creatingPoll}
+						isLoading={uploading || creatingPoll}
 					>
 						{uploading ? "Uploading ..." : "Upload image"}
 					</Button>
 				</div>
-				<Button type="submit" className="w-full" color="secondary">
+				<Button
+					type="submit"
+					className="w-full"
+					color="secondary"
+					isDisabled={creatingPoll}
+					isLoading={creatingPoll}
+					disabled={creatingPoll}
+				>
 					Create poll
 				</Button>
 			</form>
