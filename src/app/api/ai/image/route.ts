@@ -1,6 +1,8 @@
 import { type NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
+import sharp from "sharp";
 import { z } from "zod";
+import { randomUUID } from "node:crypto";
 import { env } from "~/env";
 import { categories } from "~/lib/categories";
 import { createClient } from "~/utils/supabase/server";
@@ -10,7 +12,6 @@ const openai = new OpenAI({
 });
 
 const generateImageSchema = z.object({
-	pollId: z.string(),
 	question: z.string(),
 	categories: z.array(z.string()),
 });
@@ -21,7 +22,7 @@ const createPrompt = (question: string, categoryIds: string[]) => {
 			const category = categories.find(
 				(cat) => cat.id === Number.parseInt(id, 10),
 			);
-			return category ? category.value : null;
+			return category ? category.name : null;
 		})
 		.filter((value) => value !== null);
 
@@ -55,61 +56,12 @@ const generateImage = async (prompt: string) => {
 			model: "dall-e-3",
 			prompt: prompt,
 			n: 1,
-		});
-		// @ts-expect-error missing types
-		return response.data[0].url as string;
-	} catch (error) {
-		if (
-			// @ts-expect-error missing types
-			error.message.includes(
-				"Your request was rejected as a result of our safety system",
-			)
-		) {
-			throw new Error("Safety system rejection");
-		}
-		throw error;
-	}
-};
-
-const downloadImage = async (url: string) => {
-	try {
-		const response = await fetch(url);
-		const buffer = await response.arrayBuffer();
-		return buffer;
-	} catch (error) {
-		console.log("Error downloading image: ", error);
-	}
-};
-
-const uploadToSupabase = async (buffer: ArrayBuffer, fileName: string) => {
-	const supabase = createClient();
-	const { data, error } = await supabase.storage
-		.from("polls")
-		.upload(fileName, buffer, {
-			contentType: "image/png",
-			upsert: true,
+			response_format: "b64_json",
 		});
 
-	if (error) {
-		console.log("Error uploading image: ", error);
-		throw new Error("Error uploading image");
-	}
-
-	return data.path;
-};
-
-const updatePollImage = async (pollId: string, imagePath: string) => {
-	const supabase = createClient();
-	const { error } = await supabase
-		.from("polls")
-		.update({
-			image: imagePath,
-		})
-		.eq("id", pollId);
-
-	if (error) {
-		console.log("Error updating poll image: ", error);
-		throw new Error("Error updating poll image");
+		return response.data[0]?.b64_json;
+	} catch (error) {
+		return null;
 	}
 };
 
@@ -119,25 +71,42 @@ export async function POST(req: NextRequest) {
 		const parsed = generateImageSchema.safeParse(body);
 
 		if (parsed.error || !parsed.success) {
-			console.log(parsed.error);
 			throw new Error("Invalid data");
 		}
 
 		const prompt = createPrompt(parsed.data.question, parsed.data.categories);
-		const imageUrl = await generateImage(prompt);
+		const imageBase64 = await generateImage(prompt);
 
-		// const imageBuffer = await downloadImage(imageUrl);
-		// const fileName = `${Math.random()}.png`;
+		if (imageBase64 == null) {
+			throw new Error("Error generating image");
+		}
 
-		// if (!imageBuffer) {
-		// 	console.log("Error downloading image", imageBuffer);
-		// 	throw new Error("Error downloading image");
-		// }
+		const imageBuffer = Buffer.from(imageBase64, "base64");
 
-		// const supabaseImagePath = await uploadToSupabase(imageBuffer, fileName);
-		// await updatePollImage(parsed.data.pollId, supabaseImagePath);
+		const imageResized = await sharp(imageBuffer)
+			.resize(512, 512)
+			.toFormat("webp")
+			.toBuffer();
 
-		return NextResponse.json({ image_url: imageUrl });
+		const supabase = createClient();
+
+		const pollQuestionFormatted = parsed.data.question
+			.replace(/[^a-zA-Z0-9]/g, "-")
+			.toLowerCase();
+		const randomImageOf6Characters = randomUUID().substring(0, 6);
+		const imageName = `${pollQuestionFormatted}-${randomImageOf6Characters}`;
+
+		const { data: pollImageUploaded, error } = await supabase.storage
+			.from("polls")
+			.upload(imageName, imageResized, {
+				contentType: "image/webp",
+			});
+
+		if (!pollImageUploaded || error) {
+			return NextResponse.json({ data: "Error uploading image", error });
+		}
+
+		return NextResponse.json({ data: pollImageUploaded.path, error: null });
 	} catch (error) {
 		console.log(error);
 		return new NextResponse("Error generating image", {
