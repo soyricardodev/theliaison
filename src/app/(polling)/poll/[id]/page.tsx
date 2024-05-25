@@ -1,4 +1,3 @@
-import { Progress } from "@nextui-org/react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { ScrollArea } from "~/components/ui/scroll-area";
