@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Button } from "~/components/ui/button";
-import { Progress } from "~/components/ui/progress";
+import { Progress } from "@nextui-org/react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
 import { getSubscriptionProgress } from "~/lib/utils";
 import { createClient } from "~/utils/supabase/server";
