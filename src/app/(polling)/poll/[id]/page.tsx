@@ -103,17 +103,17 @@ export default async function PollPage({
 			<div className="flex flex-col max-w-screen-2xl mx-auto">
 				<div className="flex flex-1 flex-col gap-3 my-4 px-8 pb-2 pt-10 md:pt-16 lg:pt-24 bg-default-200 max-w-3xl mx-auto rounded-lg">
 					<div className="flex flex-col gap-6 max-w-2xl mx-auto items-center justify-start">
-						<div className="flex flex-col gap-2">
+						<div className="flex flex-col items-center justify-center gap-2">
 							<h2 className="text-2xl md:text-3xl text-center text-pretty font-bold">
 								{dataToRender.question}
 							</h2>
 							<Image
 								alt={`Poll ${dataToRender.question}`}
 								className="rounded-lg mt-4 object-cover"
-								height={400}
+								height={600}
 								src={`/polls/${dataToRender.image}`}
 								style={{
-									aspectRatio: "600/400",
+									aspectRatio: "600/600",
 									objectFit: "cover",
 								}}
 								width={600}
