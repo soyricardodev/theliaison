@@ -270,7 +270,7 @@ export function CreatePollScratch() {
 										isRequired
 										required
 										endContent={
-											index === 4 || index === 5 ? (
+											index >= 2 && index <= 5 ? (
 												<Button isIconOnly onPress={() => remove(index)}>
 													<TrashIcon className="size-4 text-red-500" />
 												</Button>
@@ -299,6 +299,8 @@ export function CreatePollScratch() {
 							}
 						}}
 						variant="bordered"
+						disabled={fields.length >= 6 || creatingPoll || uploading}
+						isDisabled={fields.length >= 6 || creatingPoll || uploading}
 					>
 						Add option
 					</Button>
