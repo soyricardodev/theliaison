@@ -130,14 +130,13 @@ export function NewPollsAproach({
 						className="w-full h-fit cursor-pointer flex flex-col gap-2 items-center overflow-hidden mb-6 hover:opacity-90 transition-opacity"
 					>
 						<div className="relative shadow-black/5 shadow-none rounded-large mb-2">
-							<figure className="w-full max-h-48 overflow-hidden rounded-large">
+							<figure className="w-full max-h-64 overflow-hidden rounded-large">
 								<Image
 									alt={poll.question}
 									src={`/polls/${poll.image}`}
 									className="shadow-black/5 object-cover rounded-large size-full"
-									height={192}
+									height={256}
 									width={300}
-									// isZoomed
 								/>
 							</figure>
 						</div>
