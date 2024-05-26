@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
 		const imageBuffer = Buffer.from(imageBase64, "base64");
 
 		const imageResized = await sharp(imageBuffer)
-			.resize(412, 412)
+			.resize(612, 612)
 			.toFormat("webp")
 			.toBuffer();
 
