@@ -9,6 +9,7 @@ import { FormComment } from "./form-comment";
 import { Chip } from "@nextui-org/react";
 import { OptionToVote } from "./option-to-vote";
 import { categories } from "~/lib/categories";
+import { ShareSocial } from "./_components/share-social";
 
 export default async function PollPage({
 	params: { id },
@@ -157,6 +158,7 @@ export default async function PollPage({
 									Total Votes: {totalVotes}
 								</p>
 							</div>
+							<ShareSocial />
 						</div>
 
 						{/* Poll Comments */}
