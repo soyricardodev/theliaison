@@ -162,15 +162,17 @@ export function CreatePollScratch() {
 				return;
 			}
 
+			const dataToInsert = {
+				question: data.question,
+				options: data.options.map((option) => option.value),
+				categories: data.categories,
+				image: pollImage,
+			};
+
 			toast.promise(
 				fetch("/api/polls/create", {
 					method: "POST",
-					body: JSON.stringify({
-						question: data.question,
-						options: data.options.map((option) => option.value),
-						categories: data.categories,
-						image: pollImage,
-					}),
+					body: JSON.stringify(dataToInsert),
 					headers: {
 						"Content-Type": "application/json",
 					},
@@ -255,6 +257,8 @@ export function CreatePollScratch() {
 			}
 
 			setPollImage(filePath);
+			setCreatingPoll(false);
+			setUploading(false);
 		} catch (error) {
 			console.log(error);
 		} finally {
