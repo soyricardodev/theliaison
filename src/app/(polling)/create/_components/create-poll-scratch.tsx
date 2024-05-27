@@ -20,7 +20,7 @@ import { categories } from "~/lib/categories";
 import { createPollWithOptions } from "~/server/db/queries";
 import { createClient } from "~/utils/supabase/client";
 
-const pollFormSchema = z.object({
+export const pollFormSchema = z.object({
 	question: z.string({ required_error: "Please enter a question" }).min(3, {
 		message: "Question must be at least 3 characters.",
 	}),
