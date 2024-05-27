@@ -221,7 +221,9 @@ export default async function PollPage({
 							</ScrollArea>
 						</div>
 
-						<Statistics votes={statistics} />
+						{isPollCreator || isCommunityInsider ? (
+							<Statistics votes={statistics} />
+						) : null}
 					</div>
 				</div>
 			</div>
