@@ -2,8 +2,14 @@
 
 export async function searchPolls(query: string) {
 	console.log(query);
-	const res = await fetch(new URL(`/api/polls/search?query=${query}`), {
+	const res = await fetch(new URL("/api/polls/search"), {
 		method: "POST",
+		body: JSON.stringify({
+			query,
+		}),
+		headers: {
+			"Content-Type": "application/json",
+		},
 	});
 
 	const data = (await res.json()) as Array<{
