@@ -1,15 +1,15 @@
+import { Chip } from "@nextui-org/react";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { ScrollArea } from "~/components/ui/scroll-area";
 import { Toaster } from "~/components/ui/sonner";
+import { categories } from "~/lib/categories";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
+import { ShareSocial } from "./_components/share-social";
 import { Comments } from "./comments";
 import { FormComment } from "./form-comment";
-import { Chip } from "@nextui-org/react";
 import { OptionToVote } from "./option-to-vote";
-import { categories } from "~/lib/categories";
-import { ShareSocial } from "./_components/share-social";
 
 export default async function PollPage({
 	params: { id },

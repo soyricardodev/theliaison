@@ -1,14 +1,14 @@
 "use client";
 
 import {
-	FacebookShareButton,
-	WhatsappShareButton,
-	TelegramShareButton,
-	TwitterShareButton,
 	FacebookIcon,
-	TwitterIcon,
-	WhatsappIcon,
+	FacebookShareButton,
 	TelegramIcon,
+	TelegramShareButton,
+	TwitterIcon,
+	TwitterShareButton,
+	WhatsappIcon,
+	WhatsappShareButton,
 } from "react-share";
 
 export function ShareSocial() {
