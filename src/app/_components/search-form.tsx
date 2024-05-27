@@ -1,9 +1,9 @@
 "use client";
-import { useState } from "react";
 import { SearchIcon } from "lucide-react";
-import { searchPolls } from "~/actions/search";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { searchPolls } from "~/actions/search";
 
 export function SearchForm() {
 	const [searchText, setSearchText] = useState("");
