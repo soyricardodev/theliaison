@@ -10,6 +10,7 @@ import { ShareSocial } from "./_components/share-social";
 import { Comments } from "./comments";
 import { FormComment } from "./form-comment";
 import { OptionToVote } from "./option-to-vote";
+import { Statistics } from "./_components/statistics";
 
 export default async function PollPage({
 	params: { id },
@@ -21,7 +22,7 @@ export default async function PollPage({
     id,
     question,
     options (id, text),
-		votes (id, poll_id, option_id, user_id),
+		votes (id, poll_id, option_id, user_id, users(country, gender, relationship_status, birthday_date)),
 		users (id, username, avatar_url),
 		image,
 		comments (id, content, created_at, users (id, username, avatar_url)),
@@ -35,6 +36,53 @@ export default async function PollPage({
 	} = await supabase.auth.getUser();
 
 	const { data, error } = await pollsWithOptionsQuery;
+
+	const userDataVotes = data?.votes?.map((vote) => {
+		return {
+			option_id: vote.option_id,
+			country: vote.users?.country,
+			gender: vote.users?.gender,
+			relationship_status: vote.users?.relationship_status,
+			birthday_date: vote.users?.birthday_date,
+		};
+	});
+
+	const gendersVotesCount = userDataVotes?.reduce(
+		(acc, vote) => {
+			if (vote.gender) {
+				acc[vote.gender] = (acc[vote.gender] || 0) + 1;
+			}
+			return acc;
+		},
+		{} as Record<string, number>,
+	);
+
+	const countryVotesCount = userDataVotes?.reduce(
+		(acc, vote) => {
+			if (vote.country) {
+				acc[vote.country] = (acc[vote.country] || 0) + 1;
+			}
+			return acc;
+		},
+		{} as Record<string, number>,
+	);
+
+	const relationshiptStatusVotesCount = userDataVotes?.reduce(
+		(acc, vote) => {
+			if (vote.relationship_status) {
+				acc[vote.relationship_status] =
+					(acc[vote.relationship_status] || 0) + 1;
+			}
+			return acc;
+		},
+		{} as Record<string, number>,
+	);
+
+	const statistics = {
+		genders: gendersVotesCount,
+		countries: countryVotesCount,
+		relationships: relationshiptStatusVotesCount,
+	};
 
 	if (!data || error) {
 		return redirect("/");
@@ -173,7 +221,7 @@ export default async function PollPage({
 							</ScrollArea>
 						</div>
 
-						<div>stats</div>
+						<Statistics votes={statistics} />
 					</div>
 				</div>
 			</div>
