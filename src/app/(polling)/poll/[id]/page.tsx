@@ -206,7 +206,7 @@ export default async function PollPage({
 									Total Votes: {totalVotes}
 								</p>
 							</div>
-							<ShareSocial />
+							<ShareSocial id={dataToRender.id} />
 						</div>
 
 						{/* Poll Comments */}
