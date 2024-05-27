@@ -1,8 +1,6 @@
-"use server";
-
 export async function searchPolls(query: string) {
 	console.log(query);
-	const res = await fetch(new URL("/api/polls/search"), {
+	const res = await fetch("/api/polls/search", {
 		method: "POST",
 		body: JSON.stringify({
 			query,
@@ -12,12 +10,14 @@ export async function searchPolls(query: string) {
 		},
 	});
 
-	const data = (await res.json()) as Array<{
-		id: string;
-		question: string;
-		image: string;
-		similarity: number;
-	}>;
+	const data = (await res.json()) as {
+		data: Array<{
+			id: string;
+			question: string;
+			image: string;
+			similarity: number;
+		}>;
+	};
 
 	console.log(data);
 	console.log("from action");
