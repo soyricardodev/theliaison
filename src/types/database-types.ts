@@ -86,6 +86,24 @@ export type Database = {
 					},
 				];
 			};
+			documents: {
+				Row: {
+					content: string;
+					embedding: string;
+					id: number;
+				};
+				Insert: {
+					content: string;
+					embedding: string;
+					id?: never;
+				};
+				Update: {
+					content?: string;
+					embedding?: string;
+					id?: never;
+				};
+				Relationships: [];
+			};
 			options: {
 				Row: {
 					id: number;
@@ -115,6 +133,7 @@ export type Database = {
 			polls: {
 				Row: {
 					created_at: string;
+					embedding: string;
 					id: string;
 					image: string;
 					question: string;
@@ -122,6 +141,7 @@ export type Database = {
 				};
 				Insert: {
 					created_at?: string;
+					embedding: string;
 					id: string;
 					image: string;
 					question: string;
@@ -129,6 +149,7 @@ export type Database = {
 				};
 				Update: {
 					created_at?: string;
+					embedding?: string;
 					id?: string;
 					image?: string;
 					question?: string;
@@ -466,7 +487,54 @@ export type Database = {
 			[_ in never]: never;
 		};
 		Functions: {
-			[_ in never]: never;
+			hnswhandler: {
+				Args: {
+					"": unknown;
+				};
+				Returns: unknown;
+			};
+			ivfflathandler: {
+				Args: {
+					"": unknown;
+				};
+				Returns: unknown;
+			};
+			vector_avg: {
+				Args: {
+					"": number[];
+				};
+				Returns: string;
+			};
+			vector_dims: {
+				Args: {
+					"": string;
+				};
+				Returns: number;
+			};
+			vector_norm: {
+				Args: {
+					"": string;
+				};
+				Returns: number;
+			};
+			vector_out: {
+				Args: {
+					"": string;
+				};
+				Returns: unknown;
+			};
+			vector_send: {
+				Args: {
+					"": string;
+				};
+				Returns: string;
+			};
+			vector_typmod_in: {
+				Args: {
+					"": unknown[];
+				};
+				Returns: number;
+			};
 		};
 		Enums: {
 			gender: "female" | "male" | "other";
