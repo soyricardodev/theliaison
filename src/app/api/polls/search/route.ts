@@ -11,7 +11,7 @@ const openai = new OpenAI({
 const redis = Redis.fromEnv();
 
 export async function POST(request: NextRequest) {
-	const { searchParams } = new URL(request.url);
+	const searchParams = request.nextUrl.searchParams;
 	const query = searchParams.get("query");
 
 	if (!query) {
