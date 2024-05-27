@@ -77,6 +77,30 @@ export function CreatePollScratch() {
 
 	const onSubmit = async (data: PollFormValues) => {
 		try {
+			toast.info("Checking for profanity...");
+			setCreatingPoll(true);
+
+			const res = await fetch("/api/profanity/poll", {
+				method: "POST",
+				body: JSON.stringify({
+					question: data.question,
+					options: data.options.map((option) => option.value),
+				}),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+
+			const checkProfanity = await res.json();
+
+			console.log(checkProfanity);
+
+			if (checkProfanity.isProfanity) {
+				toast.error(checkProfanity.message);
+				setCreatingPoll(false);
+				return;
+			}
+
 			if (pollImage == null) {
 				let generatedAIImage = "";
 				setCreatingPoll(true);
@@ -150,7 +174,31 @@ export function CreatePollScratch() {
 				return;
 			}
 
+			toast.info("Checking for profanity...");
 			setUploading(true);
+			setCreatingPoll(true);
+			const res = await fetch("/api/profanity/poll", {
+				method: "POST",
+				body: JSON.stringify({
+					question: pollquestion,
+					options: fields.map((field) => field.value),
+				}),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+
+			const checkProfanity = await res.json();
+
+			if (checkProfanity.isProfanity) {
+				toast.error(
+					"This poll contains profanity. Please remove it before uploading.",
+				);
+				setUploading(false);
+				setCreatingPoll(false);
+				return;
+			}
+
 			if (!event.target.files || event.target.files.length === 0) {
 				toast.error("You must select an image to upload.");
 				throw new Error("You must select an image to upload.");
