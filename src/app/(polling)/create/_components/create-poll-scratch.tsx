@@ -122,18 +122,33 @@ export function CreatePollScratch() {
 							const response: { data: string } = await res.json();
 							generatedAIImage = response.data;
 
-							toast.promise(createPollWithOptions(data, generatedAIImage), {
-								loading: "Creating poll...",
-								success: (url) => {
-									setCreatingPoll(false);
-									router.push(`/poll/${url}`);
-									return "Poll created successfully";
+							toast.promise(
+								fetch("/api/polls/create", {
+									method: "POST",
+									body: JSON.stringify({
+										question: data.question,
+										options: data.options.map((option) => option.value),
+										categories: data.categories,
+										image: generatedAIImage,
+									}),
+									headers: {
+										"Content-Type": "application/json",
+									},
+								}),
+								{
+									loading: "Creating poll...",
+									success: async (data) => {
+										const res = await data.json();
+										setCreatingPoll(false);
+										router.push(`/poll/${res.id}`);
+										return "Poll created successfully";
+									},
+									error: () => {
+										setCreatingPoll(false);
+										return "Error creating poll";
+									},
 								},
-								error: () => {
-									setCreatingPoll(false);
-									return "Error creating poll";
-								},
-							});
+							);
 
 							return "AI image generated successfully";
 						},
@@ -147,18 +162,32 @@ export function CreatePollScratch() {
 				return;
 			}
 
-			toast.promise(createPollWithOptions(data, pollImage), {
-				loading: "Creating poll...",
-				success: (url) => {
-					setCreatingPoll(false);
-					router.push(`/poll/${url}`);
-					return "Poll created successfully";
+			toast.promise(
+				fetch("/api/polls/create", {
+					method: "POST",
+					body: JSON.stringify({
+						question: data.question,
+						options: data.options.map((option) => option.value),
+						categories: data.categories,
+						image: pollImage,
+					}),
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}),
+				{
+					loading: "Creating poll...",
+					success: (url) => {
+						setCreatingPoll(false);
+						router.push(`/poll/${url}`);
+						return "Poll created successfully";
+					},
+					error: () => {
+						setCreatingPoll(false);
+						return "Error creating poll";
+					},
 				},
-				error: () => {
-					setCreatingPoll(false);
-					return "Error creating poll";
-				},
-			});
+			);
 		} catch (error) {
 			console.log(error);
 			toast.error("Error creating poll");
