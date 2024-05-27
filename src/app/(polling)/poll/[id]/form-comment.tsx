@@ -51,13 +51,15 @@ export function FormComment({ pollId }: { pollId: string }) {
 			return toast.error("Error commenting");
 		}
 
+		form.reset();
+
 		toast.success("Comment added successfully!");
 	}
 
 	return (
 		<Form {...form}>
 			<form
-				className="mb-2 mx-2 grid gap-1"
+				className="mb-2 mx-2 grid gap-2 p-2 w-full rounded-lg"
 				onSubmit={form.handleSubmit(onSubmit)}
 			>
 				<FormField
@@ -66,14 +68,24 @@ export function FormComment({ pollId }: { pollId: string }) {
 					render={({ field }) => (
 						<FormItem>
 							<FormControl>
-								<Input placeholder="Write your comment" {...field} />
+								<Input
+									variant="faded"
+									classNames={{
+										input:
+											"!outline-none outline-none! border-transparent focus:border-transparent [type='text']:border-transparent",
+										mainWrapper: "w-full",
+									}}
+									className="w-full"
+									label="Write your comment"
+									{...field}
+								/>
 							</FormControl>
 
 							<FormMessage />
 						</FormItem>
 					)}
 				/>
-				<Button type="submit" fullWidth>
+				<Button type="submit" fullWidth color="primary">
 					Submit
 				</Button>
 			</form>
