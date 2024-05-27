@@ -11,19 +11,20 @@ import {
 	WhatsappShareButton,
 } from "react-share";
 
-export function ShareSocial() {
+export function ShareSocial({ id }: { id: string }) {
+	const pageUrl = `https://theliaison.vercel.app/poll/${id}`;
 	return (
 		<div className="flex justify-center items-center gap-2 p-4 text-center">
-			<FacebookShareButton url="https://theliaison.com">
+			<FacebookShareButton url={pageUrl}>
 				<FacebookIcon size={32} />
 			</FacebookShareButton>
-			<TwitterShareButton url="https://theliaison.com">
+			<TwitterShareButton url={pageUrl}>
 				<TwitterIcon size={32} />
 			</TwitterShareButton>
-			<WhatsappShareButton url="https://theliaison.com">
+			<WhatsappShareButton url={pageUrl}>
 				<WhatsappIcon size={32} />
 			</WhatsappShareButton>
-			<TelegramShareButton url="https://theliaison.com">
+			<TelegramShareButton url={pageUrl}>
 				<TelegramIcon size={32} />
 			</TelegramShareButton>
 		</div>
