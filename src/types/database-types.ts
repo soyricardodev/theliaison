@@ -133,7 +133,7 @@ export type Database = {
 			polls: {
 				Row: {
 					created_at: string;
-					embedding: string;
+					embedding: string | null;
 					id: string;
 					image: string;
 					question: string;
@@ -141,7 +141,7 @@ export type Database = {
 				};
 				Insert: {
 					created_at?: string;
-					embedding: string;
+					embedding?: string | null;
 					id: string;
 					image: string;
 					question: string;
@@ -149,7 +149,7 @@ export type Database = {
 				};
 				Update: {
 					created_at?: string;
-					embedding?: string;
+					embedding?: string | null;
 					id?: string;
 					image?: string;
 					question?: string;
@@ -498,6 +498,19 @@ export type Database = {
 					"": unknown;
 				};
 				Returns: unknown;
+			};
+			search_polls: {
+				Args: {
+					query_embedding: string;
+					similarity_threshold: number;
+					match_count: number;
+				};
+				Returns: {
+					id: string;
+					question: string;
+					image: string;
+					similarity: number;
+				}[];
 			};
 			vector_avg: {
 				Args: {
