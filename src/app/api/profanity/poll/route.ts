@@ -29,30 +29,57 @@ export async function POST(req: NextRequest) {
 
 		const { question, options } = parsed.data;
 
-		const questionAndOptionInAWordWithSpaces = `${question} ${options.join(
-			" ",
-		)}`;
-
-		const res = await fetch("https://vector.profanity.dev", {
+		const questionResponse = await fetch("https://vector.profanity.dev", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({ message: questionAndOptionInAWordWithSpaces }),
+			body: JSON.stringify({ message: question }),
 		});
 
-		const data = (await res.json()) as ProfanityResponse;
-		const message = data.isProfanity ? "This poll contains profanity" : "";
+		const questionData = (await questionResponse.json()) as ProfanityResponse;
+
+		if (questionData.isProfanity) {
+			return NextResponse.json({
+				isProfanity: true,
+				score: questionData.score,
+				flaggedFor: questionData.flaggedFor,
+				message: "Your poll question contains profanity",
+			});
+		}
+
+		for (const option of options) {
+			const optionResponse = await fetch("https://vector.profanity.dev", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ message: option }),
+			});
+
+			const optionData = (await optionResponse.json()) as ProfanityResponse;
+
+			if (optionData.isProfanity) {
+				return NextResponse.json({
+					isProfanity: optionData.isProfanity,
+					score: optionData.score,
+					flaggedFor: optionData.flaggedFor,
+					message: "Your poll contains profanity",
+				});
+			}
+		}
 
 		return NextResponse.json({
-			isProfanity: data.isProfanity,
-			message,
+			isProfanity: false,
+			score: 0,
+			flaggedFor: "",
+			message: "Your poll does not contain profanity",
 		});
 	} catch (error) {
 		console.error(error);
 		return NextResponse.json({
 			isProfanity: true,
-			score: 1,
+			score: 0,
 			flaggedFor: "",
 			message: "We couldn't check the poll for profanity",
 		});
