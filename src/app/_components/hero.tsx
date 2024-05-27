@@ -31,7 +31,7 @@ export function Hero() {
 						Unfiltered opinions on life, love, and everything in between.
 					</p>
 				</div>
-				<div className="z-10 m-auto flex w-full flex-col overflow-hidden rounded-full sm:max-w-xl">
+				<div className="z-10 m-auto flex w-full flex-col rounded-full sm:max-w-xl relative">
 					<SearchForm />
 				</div>
 
