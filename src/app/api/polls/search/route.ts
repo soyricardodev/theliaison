@@ -1,8 +1,8 @@
+import { Redis } from "@upstash/redis";
+import { type NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import { env } from "~/env";
 import { createClient } from "~/utils/supabase/server";
-import { type NextRequest, NextResponse } from "next/server";
-import { Redis } from "@upstash/redis";
 
 const openai = new OpenAI({
 	apiKey: env.OPENAI_API_KEY,
