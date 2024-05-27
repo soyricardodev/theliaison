@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from "clsx";
+import { nanoid } from "nanoid";
 
 import { extendTailwindMerge } from "tailwind-merge";
 
@@ -64,4 +65,11 @@ export function getTimeAgo(date: string) {
 	}
 
 	return `${value} ${unit}${value === 1 ? "" : "s"} ago`;
+}
+
+export function createIdFromString(text: string) {
+	const textFormatted = text.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase();
+	const randomId = nanoid().substring(0, 6);
+
+	return textFormatted + randomId;
 }
