@@ -11,8 +11,8 @@ const openai = new OpenAI({
 const redis = Redis.fromEnv();
 
 export async function POST(request: NextRequest) {
-	const searchParams = request.nextUrl.searchParams;
-	const query = searchParams.get("query");
+	const json = await request.json();
+	const query = json.query;
 
 	if (!query) {
 		return NextResponse.json({ error: "No query provided" });
