@@ -7,9 +7,7 @@ import {
 	type SignInWithEmail,
 	type SignUp,
 	type SimpleSignUp,
-	signInWithEmailSchema,
 	signUpSchema,
-	simpleSignUpSchema,
 } from "~/utils/validators/auth";
 
 export type FormState = {
@@ -18,7 +16,7 @@ export type FormState = {
 	issues?: string[];
 };
 
-export async function login(data: SignInWithEmail) {
+export async function login(data: SignInWithEmail, redirectUrl?: string) {
 	const supabase = createClient();
 
 	try {
@@ -32,7 +30,7 @@ export async function login(data: SignInWithEmail) {
 		}
 
 		revalidatePath("/", "layout");
-		redirect("/explore");
+		redirect(redirectUrl ?? "/explore");
 	} catch (error) {
 		throw new Error("Failed to login. Check your credentials.");
 	}
@@ -156,12 +154,17 @@ export async function signupLean({
 	return profileUpdated;
 }
 
+interface SimpleSignupActionProps extends Omit<SimpleSignUp, ""> {
+	redirectUrl?: string;
+}
+
 export async function simpleSignupAction({
 	name,
 	email,
 	username,
 	password,
-}: SimpleSignUp) {
+	redirectUrl,
+}: SimpleSignupActionProps) {
 	const supabase = createClient();
 
 	const {
@@ -183,12 +186,12 @@ export async function simpleSignupAction({
 			full_name: name,
 			username,
 		})
-		.select();
+		.select("username");
 
 	if (!profileUpdated || profileError) {
 		throw new Error("Cannot create profile");
 	}
 
 	revalidatePath("/", "layout");
-	return profileUpdated;
+	redirect(redirectUrl ?? username);
 }
