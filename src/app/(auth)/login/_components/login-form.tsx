@@ -65,6 +65,8 @@ export function LoginForm() {
 									label="Email"
 									placeholder="johndoe@example.com"
 									className="text-white border-white/40"
+									disabled={pending || isSubmitting}
+									isDisabled={isSubmitting || pending}
 									{...field}
 								/>
 							</FormControl>
@@ -99,6 +101,8 @@ export function LoginForm() {
 									type={passwordVisible ? "text" : "password"}
 									placeholder="Enter your password"
 									className="text-white border-white/40"
+									disabled={pending || isSubmitting}
+									isDisabled={isSubmitting || pending}
 									{...field}
 								/>
 							</FormControl>
