@@ -32,13 +32,8 @@ export function SignupForm() {
 	const { pending } = useFormStatus();
 
 	async function onSubmit(data: SimpleSignUp) {
-		try {
-			setIsSubmitting(true);
-			await simpleSignupAction({ ...data });
-		} catch (error) {
-			console.log(error);
-			setIsSubmitting(false);
-		}
+		setIsSubmitting(true);
+		await simpleSignupAction({ ...data });
 	}
 
 	return (
@@ -58,6 +53,27 @@ export function SignupForm() {
 									variant="underlined"
 									label="Name"
 									placeholder="John Doe"
+									disabled={pending || isSubmitting}
+									isDisabled={pending || isSubmitting}
+									{...field}
+								/>
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name="email"
+					render={({ field }) => (
+						<FormItem className="w-full">
+							<FormControl>
+								<Input
+									isRequired
+									variant="underlined"
+									label="Email"
+									type="email"
+									placeholder="johndoe@example.com"
 									disabled={pending || isSubmitting}
 									isDisabled={pending || isSubmitting}
 									{...field}
@@ -91,27 +107,7 @@ export function SignupForm() {
 						</FormItem>
 					)}
 				/>
-				<FormField
-					control={form.control}
-					name="email"
-					render={({ field }) => (
-						<FormItem className="w-full">
-							<FormControl>
-								<Input
-									isRequired
-									variant="underlined"
-									label="Email"
-									type="email"
-									placeholder="johndoe@example.com"
-									disabled={pending || isSubmitting}
-									isDisabled={pending || isSubmitting}
-									{...field}
-								/>
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
-				/>
+
 				<FormField
 					control={form.control}
 					name="password"
