@@ -19,21 +19,20 @@ export type FormState = {
 export async function login(data: SignInWithEmail, redirectUrl?: string) {
 	const supabase = createClient();
 
-	try {
-		const {
-			data: { user },
-			error,
-		} = await supabase.auth.signInWithPassword(data);
+	const {
+		data: { user },
+		error,
+	} = await supabase.auth.signInWithPassword({
+		email: data.email,
+		password: data.password,
+	});
 
-		if (error || !user) {
-			throw new Error("Failed to login. Check your credentials.");
-		}
-
-		revalidatePath("/", "layout");
-		redirect(redirectUrl ?? "/explore");
-	} catch (error) {
-		throw new Error("Failed to login. Check your credentials.");
+	if (error || !user) {
+		return error;
 	}
+
+	revalidatePath("/", "layout");
+	redirect(redirectUrl ?? "/explore");
 }
 
 export async function signInWithOAuth() {
