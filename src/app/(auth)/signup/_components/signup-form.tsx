@@ -1,8 +1,8 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button, Input } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
 import { useFormStatus } from "react-dom";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
 	Form,
@@ -16,7 +16,7 @@ import { type SimpleSignUp, simpleSignUpSchema } from "~/utils/validators/auth";
 import { simpleSignupAction } from "../../actions";
 
 export function SignupForm() {
-	const router = useRouter();
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const form = useForm<SimpleSignUp>({
 		resolver: zodResolver(simpleSignUpSchema),
@@ -32,10 +32,12 @@ export function SignupForm() {
 	const { pending } = useFormStatus();
 
 	async function onSubmit(data: SimpleSignUp) {
-		const profileData = await simpleSignupAction({ ...data });
-
-		if (profileData) {
-			router.push("/select-plan");
+		try {
+			setIsSubmitting(true);
+			await simpleSignupAction({ ...data });
+		} catch (error) {
+			console.log(error);
+			setIsSubmitting(false);
 		}
 	}
 
@@ -56,6 +58,8 @@ export function SignupForm() {
 									variant="underlined"
 									label="Name"
 									placeholder="John Doe"
+									disabled={pending || isSubmitting}
+									isDisabled={pending || isSubmitting}
 									{...field}
 								/>
 							</FormControl>
@@ -74,6 +78,8 @@ export function SignupForm() {
 									variant="underlined"
 									label="Username"
 									placeholder="john2doe"
+									disabled={pending || isSubmitting}
+									isDisabled={pending || isSubmitting}
 									{...field}
 								/>
 							</FormControl>
@@ -97,6 +103,8 @@ export function SignupForm() {
 									label="Email"
 									type="email"
 									placeholder="johndoe@example.com"
+									disabled={pending || isSubmitting}
+									isDisabled={pending || isSubmitting}
 									{...field}
 								/>
 							</FormControl>
@@ -116,6 +124,8 @@ export function SignupForm() {
 									label="Password"
 									type="password"
 									placeholder="Enter your password"
+									disabled={pending || isSubmitting}
+									isDisabled={pending || isSubmitting}
 									{...field}
 								/>
 							</FormControl>
@@ -124,7 +134,13 @@ export function SignupForm() {
 					)}
 				/>
 
-				<Button type="submit" disabled={pending} color="primary">
+				<Button
+					type="submit"
+					disabled={pending || isSubmitting}
+					isDisabled={pending || isSubmitting}
+					isLoading={pending || isSubmitting}
+					color="primary"
+				>
 					Signup
 				</Button>
 			</form>
