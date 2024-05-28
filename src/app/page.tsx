@@ -4,6 +4,8 @@ import { Hero } from "./_components/hero";
 import { MainExplore } from "./_components/main-explore";
 import TopBanner from "./_components/top-banner";
 
+export const experimental_ppr = true;
+
 export default function HomePage() {
 	return (
 		<>
