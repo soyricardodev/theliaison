@@ -1,73 +1,69 @@
 "use client";
 
-import { Icon } from "@iconify/react";
+import { Avatar } from "@nextui-org/react";
 import {
-	Avatar,
-	Button,
-	Dropdown,
-	DropdownItem,
 	DropdownMenu,
-	DropdownTrigger,
-} from "@nextui-org/react";
-import { MenuIcon } from "lucide-react";
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from "~/components/ui/dropdown-menu";
+import { Button } from "~/components/ui/button";
+import {
+	MenuIcon,
+	UserRoundIcon,
+	CircleUserRound,
+	CircleDollarSignIcon,
+	CircleHelp,
+	CreditCardIcon,
+	LogOutIcon,
+} from "lucide-react";
+import Link from "next/link";
 
 const menuItemsLoggedOut = [
 	{
 		key: "login",
 		label: "Login",
 		href: "/login",
-		Icon: <Icon icon="solar:user-rounded-bold-duotone" width={24} />,
+		Icon: <UserRoundIcon className="text-foreground size-4 mr-2" />,
 	},
 	{
-		key: "services",
-		label: "Services",
-		href: "/services",
-		Icon: <Icon icon="solar:three-squares-bold-duotone" width={24} />,
+		key: "signup",
+		label: "Sign Up",
+		href: "/signup",
+		Icon: <CircleUserRound className="text-foreground size-4 mr-2" />,
 	},
 	{
 		key: "faq",
 		label: "FAQs",
 		href: "/faq",
-		Icon: <Icon icon="solar:question-circle-bold-duotone" width={24} />,
+		Icon: <CircleHelp className="text-foreground size-4 mr-2" />,
 	},
 	{
 		key: "pricing",
 		label: "Pricing",
 		href: "/pricing",
-		Icon: <Icon icon="solar:dollar-bold-duotone" width={24} />,
+		Icon: <CircleDollarSignIcon className="text-foreground size-4 mr-2" />,
 	},
 ];
 
 const menuItemsLoggedIn = (username: string) => [
 	{
-		key: "explore",
-		label: "Explore",
-		href: "/explore",
-		Icon: <Icon icon="solar:three-squares-bold-duotone" width={24} />,
-	},
-	{
 		key: "profile",
 		label: "Profile",
 		href: `/${username}`,
-		Icon: <Icon icon="solar:user-rounded-bold-duotone" width={24} />,
-	},
-	{
-		key: "faq",
-		label: "FAQs",
-		href: "/faq",
-		Icon: <Icon icon="solar:question-circle-bold-duotone" width={24} />,
+		Icon: <UserRoundIcon className="text-foreground size-4 mr-2" />,
 	},
 	{
 		key: "subscription",
 		label: "Subscription & Billing",
 		href: "/subscription",
-		Icon: <Icon icon="solar:card-bold-duotone" width={24} />,
+		Icon: <CreditCardIcon className="text-foreground size-4 mr-2" />,
 	},
 	{
-		key: "pricing",
-		label: "Pricing",
-		href: "/pricing",
-		Icon: <Icon icon="solar:dollar-bold-duotone" width={24} />,
+		key: "logout",
+		label: "Logout",
+		href: "/auth/logout",
+		Icon: <LogOutIcon className="text-foreground size-4 mr-2" />,
 	},
 ];
 
@@ -96,51 +92,48 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 	const menuLinks = menuItemsLoggedIn(username);
 
 	return (
-		<Dropdown placement="bottom-end">
-			<DropdownTrigger>
-				<button className="mt-1 size-8 transition-transform" type="button">
-					<Avatar
-						size="sm"
-						src={avatar_url ?? ""}
-						name={full_name}
-						showFallback
-					/>
-				</button>
-			</DropdownTrigger>
-			<DropdownMenu variant="flat" items={menuLinks}>
-				{(menuLinks) => (
-					<DropdownItem
-						key={menuLinks.key}
-						startContent={menuLinks.Icon}
-						href={menuLinks.href}
-					>
-						{menuLinks.label}
-					</DropdownItem>
-				)}
-			</DropdownMenu>
-		</Dropdown>
+		<DropdownMenu>
+			<DropdownMenuTrigger>
+				<Avatar size="sm" src={avatar_url ?? ""} name={full_name} />
+			</DropdownMenuTrigger>
+			<DropdownMenuContent className="w-56">
+				{menuLinks.map((menuLink) => (
+					<DropdownMenuItem asChild key={menuLink.key}>
+						<Link
+							href={menuLink.href}
+							className="hover:cursor-pointer hover:bg-content2"
+						>
+							{menuLink.Icon}
+							{menuLink.label}
+						</Link>
+					</DropdownMenuItem>
+				))}
+			</DropdownMenuContent>
+		</DropdownMenu>
 	);
 }
 
 function HeaderNavigationLoggedOut() {
 	return (
-		<Dropdown placement="bottom-end">
-			<DropdownTrigger>
-				<Button isIconOnly variant="flat" size="sm" radius="full">
+		<DropdownMenu>
+			<DropdownMenuTrigger asChild>
+				<Button variant="ghost" size="sm" className="rounded-full">
 					<MenuIcon width={20} className="text-default-700/80" />
 				</Button>
-			</DropdownTrigger>
-			<DropdownMenu variant="flat" items={menuItemsLoggedOut}>
-				{(menuLinks) => (
-					<DropdownItem
-						key={menuLinks.key}
-						startContent={menuLinks.Icon}
-						href={menuLinks.href}
-					>
-						{menuLinks.label}
-					</DropdownItem>
-				)}
-			</DropdownMenu>
-		</Dropdown>
+			</DropdownMenuTrigger>
+			<DropdownMenuContent className="w-56">
+				{menuItemsLoggedOut.map((menuLink) => (
+					<DropdownMenuItem asChild key={menuLink.key}>
+						<Link
+							href={menuLink.href}
+							className="hover:cursor-pointer hover:bg-content2"
+						>
+							{menuLink.Icon}
+							{menuLink.label}
+						</Link>
+					</DropdownMenuItem>
+				))}
+			</DropdownMenuContent>
+		</DropdownMenu>
 	);
 }
