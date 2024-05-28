@@ -1,7 +1,8 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React from "react";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -13,7 +14,6 @@ import {
 } from "~/components/ui/navigation-menu";
 import { cn } from "~/lib/utils";
 import { Logo } from "./logo";
-import React from "react";
 
 export function MainNav() {
 	const pathname = usePathname();

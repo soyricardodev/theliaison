@@ -7,10 +7,10 @@ import { categories } from "~/lib/categories";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
 import { ShareSocial } from "./_components/share-social";
+import { Statistics } from "./_components/statistics";
 import { Comments } from "./comments";
 import { FormComment } from "./form-comment";
 import { OptionToVote } from "./option-to-vote";
-import { Statistics } from "./_components/statistics";
 
 export default async function PollPage({
 	params: { id },
