@@ -3,7 +3,6 @@ import { SearchIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { searchPolls } from "~/actions/search";
 
 export function SearchForm() {
 	const [searchText, setSearchText] = useState("");
@@ -17,7 +16,24 @@ export function SearchForm() {
 	}>({ data: [] });
 
 	async function handleSubmit() {
-		const results = await searchPolls(searchText);
+		const res = await fetch("/api/polls/search", {
+			method: "POST",
+			body: JSON.stringify({
+				searchText,
+			}),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		const results = (await res.json()) as {
+			data: Array<{
+				id: string;
+				question: string;
+				image: string;
+				similarity: number;
+			}>;
+		};
 
 		setSearchResults(results);
 	}
