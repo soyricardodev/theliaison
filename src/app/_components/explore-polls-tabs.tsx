@@ -22,15 +22,12 @@ export function ExplorePollsTabs({
 				{allPolls}
 			</Tab>
 			<Tab
-				disabled={true}
-				isDisabled
 				title={
 					<div className="flex items-center justify-center space-x-2">
 						<SolarCrownStarBoldDuotone />
 						<span>Featured Polls</span>
 					</div>
 				}
-				className="mt-0"
 			>
 				{featuredPolls}
 			</Tab>
