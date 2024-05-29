@@ -1,7 +1,7 @@
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
 import { ExplorePollsTabs } from "./explore-polls-tabs";
-import { NewPollsAproach, PollCard, PollsContainer } from "./polls";
+import { NewPollsAproach } from "./polls";
 
 export async function MainExplore() {
 	const supabase = createClient();
@@ -66,12 +66,17 @@ export async function MainExplore() {
 	}
 
 	const dataToRender = calculateVotes();
+	const dataToRenderStructuredClone = structuredClone(dataToRender);
+	const dataToRenderReversed = dataToRenderStructuredClone.reverse();
 
 	return (
 		<div className="mx-auto flex max-w-7xl flex-col px-6 pb-20">
 			<div className="grid gap-4">
 				<h2 className="text-4xl font-semibold">Explore</h2>
-				<ExplorePolls featuredPolls={dataToRender} newPolls={dataToRender} />
+				<ExplorePolls
+					featuredPolls={dataToRenderReversed}
+					newPolls={dataToRender}
+				/>
 			</div>
 		</div>
 	);
@@ -88,18 +93,8 @@ export function ExplorePolls({
 		<ExplorePollsTabs
 			allPolls={newPolls != null ? <NewPollsAproach polls={newPolls} /> : null}
 			featuredPolls={
-				featuredPolls != null ? <Polls polls={featuredPolls} /> : null
+				featuredPolls != null ? <NewPollsAproach polls={featuredPolls} /> : null
 			}
 		/>
-	);
-}
-
-export function Polls({ polls }: { polls: PollWithOptionsAndVotes[] }) {
-	return (
-		<PollsContainer>
-			{polls.map((poll, idx) => (
-				<PollCard poll={poll} key={`${poll.id}-${idx}`} />
-			))}
-		</PollsContainer>
 	);
 }
