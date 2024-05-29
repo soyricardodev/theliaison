@@ -194,3 +194,12 @@ export async function simpleSignupAction({
 	revalidatePath("/", "layout");
 	redirect(redirectUrl ?? username);
 }
+
+export async function signOut(redirectTo?: string) {
+	const supabase = createClient();
+	const { error } = await supabase.auth.signOut();
+
+	if (error) return;
+
+	redirect(redirectTo ?? "/login");
+}
