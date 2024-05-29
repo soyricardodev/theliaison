@@ -2,22 +2,22 @@
 
 import { Avatar } from "@nextui-org/react";
 import {
+	CircleDollarSignIcon,
+	CircleHelp,
+	CircleUserRound,
+	CreditCardIcon,
+	LogOutIcon,
+	MenuIcon,
+	UserRoundIcon,
+} from "lucide-react";
+import Link from "next/link";
+import { Button } from "~/components/ui/button";
+import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
-import { Button } from "~/components/ui/button";
-import {
-	MenuIcon,
-	UserRoundIcon,
-	CircleUserRound,
-	CircleDollarSignIcon,
-	CircleHelp,
-	CreditCardIcon,
-	LogOutIcon,
-} from "lucide-react";
-import Link from "next/link";
 
 const menuItemsLoggedOut = [
 	{
