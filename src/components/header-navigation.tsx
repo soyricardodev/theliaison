@@ -63,7 +63,12 @@ const menuItemsLoggedIn = (username: string) => [
 		key: "logout",
 		label: "Logout",
 		href: "/auth/logout",
-		Icon: <LogOutIcon className="text-foreground size-4 mr-2" />,
+		Icon: (
+			<LogOutIcon
+				className="text-foreground size-4 mr-2"
+				onClick={() => fetch("/auth/signout", { method: "POST" })}
+			/>
+		),
 	},
 ];
 
