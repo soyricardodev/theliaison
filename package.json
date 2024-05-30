@@ -79,6 +79,7 @@
     "three": "0.164.1",
     "three-globe": "2.31.0",
     "usehooks-ts": "3.1.0",
+    "vaul": "^0.9.1",
     "zod": "3.23.8",
     "zod-to-json-schema": "3.23.0",
     "zustand": "4.5.2"
