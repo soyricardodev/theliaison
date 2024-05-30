@@ -9,6 +9,7 @@ import {
 	useState,
 } from "react";
 import { cn } from "~/lib/utils";
+import { motion } from "framer-motion";
 
 interface MousePosition {
 	x: number;
@@ -189,6 +190,8 @@ interface MagicCardProps {
 	onClick?: () => void;
 
 	borderColor?: string;
+
+	delay?: number;
 }
 
 const MagicCard: React.FC<MagicCardProps> = ({
@@ -199,11 +202,19 @@ const MagicCard: React.FC<MagicCardProps> = ({
 	borderColor,
 	isolated = false,
 	onClick,
+	delay = 0,
 	...props
 }) => {
 	return (
-		<div
+		<motion.div
 			onClick={onClick}
+			initial={{ opacity: 0, y: 20 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{
+				duration: 0.4,
+				ease: [0.25, 0.25, 0, 1],
+				delay,
+			}}
 			style={
 				{
 					"--mask-size": `${size}px`,
@@ -212,7 +223,6 @@ const MagicCard: React.FC<MagicCardProps> = ({
 			}
 			className={cn(
 				"relative z-0 h-full w-full rounded-2xl p-6",
-				"",
 				"bg-[radial-gradient(var(--mask-size)_circle_at_var(--mouse-x)_var(--mouse-y),var(--border-color),transparent_100%)]",
 				className,
 			)}
@@ -222,7 +232,7 @@ const MagicCard: React.FC<MagicCardProps> = ({
 
 			{/* Background */}
 			<div className={"absolute inset-[1px] -z-20 rounded-2xl bg-white"} />
-		</div>
+		</motion.div>
 	);
 };
 
