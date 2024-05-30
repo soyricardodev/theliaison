@@ -108,7 +108,8 @@ export function PollCard({
 
 export function NewPollsAproach({
 	polls,
-}: { polls: PollWithOptionsAndVotes[] }) {
+	delay = 0,
+}: { polls: PollWithOptionsAndVotes[]; delay?: number }) {
 	const router = useRouter();
 
 	return (
@@ -124,6 +125,7 @@ export function NewPollsAproach({
 
 				return (
 					<MagicCard
+						delay={delay}
 						key={`${poll.id}-${idx}`}
 						onClick={() => router.push(`/poll/${poll.id}`)}
 						borderColor={hex}
