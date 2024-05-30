@@ -1,9 +1,9 @@
+import { redirect } from "next/navigation";
 import { Container } from "~/components/container";
 import { categories } from "~/lib/categories";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
 import { Polls } from "./_components/polls";
-import { redirect } from "next/navigation";
 
 export default async function ExplorePage({
 	searchParams,
