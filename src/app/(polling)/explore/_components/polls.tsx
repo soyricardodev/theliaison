@@ -80,7 +80,7 @@ export function Polls({ polls }: { polls: Array<PollWithOptionsAndVotes> }) {
 		<div className="grid gap-4" ref={containerRef}>
 			{isLoading ? <p>Loading</p> : null}
 			<MagicContainer className="justify-center columns-1 md:columns-2 lg:columns-3">
-				{polls.map((poll, idx) => {
+				{loadedPolls.map((poll, idx) => {
 					const delay =
 						idx >= PAGE_COUNT * 2
 							? (idx - PAGE_COUNT * (offset - 1)) / 15
