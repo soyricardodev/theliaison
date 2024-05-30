@@ -5,7 +5,6 @@ import { Polls } from "./_components/polls";
 
 const fetchPolls = async () => {
 	const url = getURL("/api/polls/get");
-	console.log(url);
 	const res = await fetch(url, {
 		method: "GET",
 		next: { tags: ["polls"] },
@@ -16,10 +15,12 @@ const fetchPolls = async () => {
 	return data.data as PollWithOptionsAndVotes[];
 };
 
-export default async function ExplorePage() {
+export default async function ExplorePage({
+	searchParams,
+}: {
+	searchParams: string | undefined;
+}) {
 	const data = await fetchPolls();
-
-	console.log({ data });
 
 	return (
 		<Container>
