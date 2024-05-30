@@ -101,7 +101,7 @@ const DropdownMenuItem = ({
 	inset,
 	...props
 }: React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
-	inset: boolean;
+	inset?: boolean;
 } & {
 	ref?: React.RefObject<React.ElementRef<typeof DropdownMenuPrimitive.Item>>;
 }) => (
