@@ -42,7 +42,6 @@ export function Polls({ polls }: { polls: Array<PollWithOptionsAndVotes> }) {
 		const to = from + PAGE_COUNT - 1;
 
 		const url = `/api/polls/get?from=${from}&to=${to}`;
-		console.log(url);
 		const res = await fetch(url, {
 			method: "GET",
 			next: { tags: ["polls"] },
