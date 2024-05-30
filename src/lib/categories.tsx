@@ -20,7 +20,7 @@ export const categories: Array<Category> = [
 	{
 		id: 1,
 		name: "Trending",
-		href: "/c/trending",
+		href: "/explore?category=trending",
 		icon: <TreePalmIcon className="size-5" />,
 		color: "default",
 		hex: "#d4d4d8",
@@ -28,7 +28,7 @@ export const categories: Array<Category> = [
 	{
 		id: 2,
 		name: "Relationship",
-		href: "/c/relationship",
+		href: "/explore?category=relationship",
 		icon: <HeartIcon className="size-5" />,
 		color: "secondary",
 		hex: "#7828c8",
@@ -36,7 +36,7 @@ export const categories: Array<Category> = [
 	{
 		id: 3,
 		name: "Dating",
-		href: "/c/dating",
+		href: "/explore?category=dating",
 		icon: <HandHeartIcon className="size-5" />,
 		color: "primary",
 		hex: "#006fee",
@@ -44,7 +44,7 @@ export const categories: Array<Category> = [
 	{
 		id: 6,
 		name: "Entertainment",
-		href: "/c/entertainment",
+		href: "/explore?category=entertainment",
 		icon: <VideoIcon className="size-5" />,
 		color: "warning",
 		hex: "#f5a524",
@@ -52,7 +52,7 @@ export const categories: Array<Category> = [
 	{
 		id: 4,
 		name: "Sex",
-		href: "/c/sex",
+		href: "/explore?category=sex",
 		icon: <RabbitIcon className="size-5" />,
 		color: "danger",
 		hex: "#f31260",
@@ -60,7 +60,7 @@ export const categories: Array<Category> = [
 	{
 		id: 5,
 		name: "Self Care",
-		href: "/c/selfcare",
+		href: "/explore?category=selfcare",
 		icon: <CircleUserRoundIcon className="size-5" />,
 		color: "success",
 		hex: "#17c964",
