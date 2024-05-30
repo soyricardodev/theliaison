@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import type React from "react";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -113,10 +113,15 @@ export function MainNav() {
 	);
 }
 
-const ListItem = React.forwardRef<
-	React.ElementRef<"a">,
-	React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+const ListItem = ({
+	ref,
+	className,
+	title,
+	children,
+	...props
+}: React.ComponentPropsWithoutRef<"a"> & {
+	ref?: React.RefObject<React.ElementRef<"a">>;
+}) => {
 	return (
 		<li>
 			<NavigationMenuLink asChild>
@@ -136,5 +141,5 @@ const ListItem = React.forwardRef<
 			</NavigationMenuLink>
 		</li>
 	);
-});
+};
 ListItem.displayName = "ListItem";
