@@ -45,7 +45,7 @@ export function Hero() {
 	);
 }
 
-function CategoryCTA({ name, href, icon, color }: Category) {
+export function CategoryCTA({ name, href, icon, color }: Category) {
 	return (
 		<Button
 			as={Link}
