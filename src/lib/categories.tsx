@@ -60,7 +60,7 @@ export const categories: Array<Category> = [
 	{
 		id: 5,
 		name: "Self Care",
-		href: "/explore?category=selfcare",
+		href: "/explore?category=self care",
 		icon: <CircleUserRoundIcon className="size-5" />,
 		color: "success",
 		hex: "#17c964",
