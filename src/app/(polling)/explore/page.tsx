@@ -48,12 +48,8 @@ export default async function ExplorePage({
     `)
 		.eq("categorie_id", Number(categoryId));
 
-	console.log({ categoryId });
-
 	const { data, error } =
 		categoryId != null ? await queryPollsDataByCategory : await queryPollsData;
-
-	console.log({ data });
 
 	if (error) {
 		redirect("/");
@@ -112,7 +108,7 @@ export default async function ExplorePage({
 
 	return (
 		<Container>
-			<h2 className="text-4xl font-semibold">Explore</h2>
+			<h2 className="text-6xl font-semibold text-center">Explore polls</h2>
 
 			<Polls polls={pollWithVotesAndUser} />
 		</Container>
