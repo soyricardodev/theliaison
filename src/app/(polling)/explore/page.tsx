@@ -1,7 +1,7 @@
 import { Container } from "~/components/container";
-import { Polls } from "./_components/polls";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { getURL } from "~/utils/helpers";
+import { Polls } from "./_components/polls";
 
 const fetchPolls = async () => {
 	const url = getURL("/api/polls/get");

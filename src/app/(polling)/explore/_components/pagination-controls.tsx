@@ -1,7 +1,7 @@
 "use client";
 
-import type { FC } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import type { FC } from "react";
 
 interface PaginationControlsProps {
 	hasNextPage: boolean;

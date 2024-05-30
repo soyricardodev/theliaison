@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDebounceCallback } from "usehooks-ts";
 import { NewPollsAproach } from "~/app/_components/polls";
 import { useMounted } from "~/hooks/use-mounted";
