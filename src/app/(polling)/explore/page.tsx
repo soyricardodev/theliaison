@@ -4,6 +4,10 @@ import { categories } from "~/lib/categories";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
 import { Polls } from "./_components/polls";
+import { SearchForm } from "~/app/_components/search-form";
+import { CategoryCTA } from "~/app/_components/hero";
+import { cn } from "~/lib/utils";
+import { Suspense } from "react";
 
 export default async function ExplorePage({
 	searchParams,
@@ -15,6 +19,11 @@ export default async function ExplorePage({
 		(category) =>
 			category.name.toLowerCase() === searchParams.category?.toLowerCase(),
 	)?.id;
+
+	console.log(categoryId);
+
+	const categoryHEX =
+		categoryId != null ? categories[categoryId]?.hex : undefined;
 
 	const queryPollsData = await supabase
 		.from("polls_categories")
@@ -107,10 +116,33 @@ export default async function ExplorePage({
 	}
 
 	return (
-		<Container>
-			<h2 className="text-6xl font-semibold text-center">Explore polls</h2>
+		<Container className="flex flex-col gap-4">
+			<div className="flex flex-col gap-5 items-center justify-center my-10 py-20">
+				<h2 className="text-6xl font-bold text-center mb-6">
+					Explore polls{" "}
+					{categoryId != null ? (
+						<>
+							of:{" "}
+							<span
+								className={cn("italic [letter-spacing:.02px]")}
+								style={{ color: categoryHEX }}
+							>
+								{categories[categoryId]?.name}
+							</span>
+						</>
+					) : null}
+				</h2>
+				<SearchForm />
+				<div className="mx-auto flex flex-wrap items-center justify-center gap-2 whitespace-nowrap px-4 text-sm max-w-sm md:max-w-xl lg:max-w-2xl">
+					{categories.map((categorie, idx) => (
+						<CategoryCTA key={`${categorie.name}-${idx}`} {...categorie} />
+					))}
+				</div>
+			</div>
 
-			<Polls polls={pollWithVotesAndUser} />
+			<Suspense>
+				<Polls polls={pollWithVotesAndUser} />
+			</Suspense>
 		</Container>
 	);
 }
