@@ -18,7 +18,7 @@ export const FeatureCard = ({
 	icon,
 	...props
 }: FeatureCardProps & {
-	ref: React.RefObject<HTMLDivElement>;
+	ref?: React.RefObject<HTMLDivElement>;
 }) => {
 	return (
 		<Card ref={ref} className="bg-content2" shadow="none" {...props}>

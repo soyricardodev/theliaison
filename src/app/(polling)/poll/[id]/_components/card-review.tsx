@@ -13,7 +13,7 @@ const CardReview = ({
 	className,
 	...review
 }: CardReviewProps & {
-	ref: React.RefObject<HTMLDivElement>;
+	ref?: React.RefObject<HTMLDivElement>;
 }) => (
 	<div
 		ref={ref}

@@ -23,7 +23,7 @@ const SelectTrigger = ({
 	children,
 	...props
 }: React.ComponentPropsWithoutRef<typeof SelectPrimitive.Trigger> & {
-	ref: React.RefObject<React.ElementRef<typeof SelectPrimitive.Trigger>>;
+	ref?: React.RefObject<React.ElementRef<typeof SelectPrimitive.Trigger>>;
 }) => (
 	<SelectPrimitive.Trigger
 		ref={ref}
@@ -46,7 +46,9 @@ const SelectScrollUpButton = ({
 	className,
 	...props
 }: React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollUpButton> & {
-	ref: React.RefObject<React.ElementRef<typeof SelectPrimitive.ScrollUpButton>>;
+	ref?: React.RefObject<
+		React.ElementRef<typeof SelectPrimitive.ScrollUpButton>
+	>;
 }) => (
 	<SelectPrimitive.ScrollUpButton
 		ref={ref}
@@ -66,7 +68,7 @@ const SelectScrollDownButton = ({
 	className,
 	...props
 }: React.ComponentPropsWithoutRef<typeof SelectPrimitive.ScrollDownButton> & {
-	ref: React.RefObject<
+	ref?: React.RefObject<
 		React.ElementRef<typeof SelectPrimitive.ScrollDownButton>
 	>;
 }) => (
@@ -91,7 +93,7 @@ const SelectContent = ({
 	position = "popper",
 	...props
 }: React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> & {
-	ref: React.RefObject<React.ElementRef<typeof SelectPrimitive.Content>>;
+	ref?: React.RefObject<React.ElementRef<typeof SelectPrimitive.Content>>;
 }) => (
 	<SelectPrimitive.Portal>
 		<SelectPrimitive.Content
@@ -126,7 +128,7 @@ const SelectLabel = ({
 	className,
 	...props
 }: React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label> & {
-	ref: React.RefObject<React.ElementRef<typeof SelectPrimitive.Label>>;
+	ref?: React.RefObject<React.ElementRef<typeof SelectPrimitive.Label>>;
 }) => (
 	<SelectPrimitive.Label
 		ref={ref}
@@ -142,7 +144,7 @@ const SelectItem = ({
 	children,
 	...props
 }: React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> & {
-	ref: React.RefObject<React.ElementRef<typeof SelectPrimitive.Item>>;
+	ref?: React.RefObject<React.ElementRef<typeof SelectPrimitive.Item>>;
 }) => (
 	<SelectPrimitive.Item
 		ref={ref}
@@ -167,7 +169,7 @@ const SelectSeparator = ({
 	className,
 	...props
 }: React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator> & {
-	ref: React.RefObject<React.ElementRef<typeof SelectPrimitive.Separator>>;
+	ref?: React.RefObject<React.ElementRef<typeof SelectPrimitive.Separator>>;
 }) => (
 	<SelectPrimitive.Separator
 		ref={ref}

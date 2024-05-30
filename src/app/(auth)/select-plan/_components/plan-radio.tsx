@@ -23,7 +23,7 @@ export const PlanRadio = ({
 	classNames = {},
 	...props
 }: PlanRadioProps & {
-	ref: React.RefObject<HTMLInputElement>;
+	ref?: React.RefObject<HTMLInputElement>;
 }) => (
 	<Radio
 		ref={ref}

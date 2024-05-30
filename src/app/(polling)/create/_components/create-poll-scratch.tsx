@@ -17,7 +17,6 @@ import {
 	FormMessage,
 } from "~/components/ui/form";
 import { categories } from "~/lib/categories";
-import { createPollWithOptions } from "~/server/db/queries";
 import { createClient } from "~/utils/supabase/client";
 
 export const pollFormSchema = z.object({

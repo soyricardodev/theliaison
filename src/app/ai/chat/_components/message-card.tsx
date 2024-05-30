@@ -37,7 +37,7 @@ export const MessageCard = ({
 	messageClassName,
 	...props
 }: MessageCardProps & {
-	ref: React.RefObject<HTMLDivElement>;
+	ref?: React.RefObject<HTMLDivElement>;
 }) => {
 	const [feedback, setFeedback] = React.useState<"like" | "dislike">();
 	const [attemptFeedback, setAttemptFeedback] = React.useState<

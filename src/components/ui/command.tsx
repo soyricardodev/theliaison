@@ -13,7 +13,7 @@ const Command = ({
 	className,
 	...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive> & {
-	ref: React.RefObject<React.ElementRef<typeof CommandPrimitive>>;
+	ref?: React.RefObject<React.ElementRef<typeof CommandPrimitive>>;
 }) => (
 	<CommandPrimitive
 		ref={ref}
@@ -31,7 +31,7 @@ const CommandDialog = ({
 	ref,
 	...props
 }: React.ComponentPropsWithoutRef<typeof Dialog> & {
-	ref: React.RefObject<React.ElementRef<typeof Dialog>>;
+	ref?: React.RefObject<React.ElementRef<typeof Dialog>>;
 }) => {
 	return (
 		<Dialog {...props}>
@@ -52,7 +52,7 @@ const CommandInput = ({
 	className,
 	...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> & {
-	ref: React.RefObject<React.ElementRef<typeof CommandPrimitive.Input>>;
+	ref?: React.RefObject<React.ElementRef<typeof CommandPrimitive.Input>>;
 }) => (
 	<div className="flex items-center border-b px-3" cmdk-input-wrapper="">
 		<MagnifyingGlassIcon className="mr-2 h-4 w-4 shrink-0 opacity-50" />
@@ -74,7 +74,7 @@ const CommandList = ({
 	className,
 	...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.List> & {
-	ref: React.RefObject<React.ElementRef<typeof CommandPrimitive.List>>;
+	ref?: React.RefObject<React.ElementRef<typeof CommandPrimitive.List>>;
 }) => (
 	<CommandPrimitive.List
 		ref={ref}
@@ -89,7 +89,7 @@ const CommandEmpty = ({
 	ref,
 	...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty> & {
-	ref: React.RefObject<React.ElementRef<typeof CommandPrimitive.Empty>>;
+	ref?: React.RefObject<React.ElementRef<typeof CommandPrimitive.Empty>>;
 }) => (
 	<CommandPrimitive.Empty
 		ref={ref}
@@ -105,7 +105,7 @@ const CommandGroup = ({
 	className,
 	...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group> & {
-	ref: React.RefObject<React.ElementRef<typeof CommandPrimitive.Group>>;
+	ref?: React.RefObject<React.ElementRef<typeof CommandPrimitive.Group>>;
 }) => (
 	<CommandPrimitive.Group
 		ref={ref}
@@ -124,7 +124,7 @@ const CommandSeparator = ({
 	className,
 	...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator> & {
-	ref: React.RefObject<React.ElementRef<typeof CommandPrimitive.Separator>>;
+	ref?: React.RefObject<React.ElementRef<typeof CommandPrimitive.Separator>>;
 }) => (
 	<CommandPrimitive.Separator
 		ref={ref}
@@ -139,7 +139,7 @@ const CommandItem = ({
 	className,
 	...props
 }: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item> & {
-	ref: React.RefObject<React.ElementRef<typeof CommandPrimitive.Item>>;
+	ref?: React.RefObject<React.ElementRef<typeof CommandPrimitive.Item>>;
 }) => (
 	<CommandPrimitive.Item
 		ref={ref}

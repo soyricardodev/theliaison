@@ -21,7 +21,7 @@ export const UserReview = ({
 	className,
 	...props
 }: UserReviewProps & {
-	ref: React.RefObject<HTMLDivElement>;
+	ref?: React.RefObject<HTMLDivElement>;
 }) => (
 	<div
 		ref={ref}

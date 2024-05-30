@@ -15,7 +15,7 @@ const Label = ({
 	className,
 	...props
 }: React.HTMLAttributes<HTMLLabelElement> & {
-	ref: React.RefObject<HTMLLabelElement>;
+	ref?: React.RefObject<HTMLLabelElement>;
 }) => (
 	<LabelPrimitive.Root
 		ref={ref}
