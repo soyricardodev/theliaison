@@ -1,8 +1,8 @@
 import { Container } from "~/components/container";
-import type { PollWithOptionsAndVotes } from "~/types/poll";
-import { Polls } from "./_components/polls";
-import { createClient } from "~/utils/supabase/server";
 import { categories } from "~/lib/categories";
+import type { PollWithOptionsAndVotes } from "~/types/poll";
+import { createClient } from "~/utils/supabase/server";
+import { Polls } from "./_components/polls";
 
 export default async function ExplorePage({
 	searchParams,
