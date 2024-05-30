@@ -3,6 +3,7 @@ import { categories } from "~/lib/categories";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
 import { Polls } from "./_components/polls";
+import { redirect } from "next/navigation";
 
 export default async function ExplorePage({
 	searchParams,
@@ -54,9 +55,8 @@ export default async function ExplorePage({
 
 	console.log({ data });
 
-	if (error || !data) {
-		console.log({ error, data });
-		// redirect("/");
+	if (error) {
+		redirect("/");
 	}
 
 	const pollWithVotesAndUser: PollWithOptionsAndVotes[] = [];
