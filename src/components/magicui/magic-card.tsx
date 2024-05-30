@@ -202,7 +202,7 @@ const MagicCard: React.FC<MagicCardProps> = ({
 	borderColor,
 	isolated = false,
 	onClick,
-	delay = 0,
+	delay,
 	...props
 }) => {
 	return (
@@ -213,7 +213,7 @@ const MagicCard: React.FC<MagicCardProps> = ({
 			transition={{
 				duration: 0.4,
 				ease: [0.25, 0.25, 0, 1],
-				delay,
+				delay: delay ?? undefined,
 			}}
 			style={
 				{
