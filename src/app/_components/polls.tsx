@@ -108,9 +108,10 @@ export function PollCard({
 
 export function NewPollsAproach({
 	polls,
-	delay = 0,
+	// delay = 0,
 }: { polls: PollWithOptionsAndVotes[]; delay?: number }) {
 	const router = useRouter();
+	const POLLS_HOME_PAGE_COUNT = 15;
 
 	return (
 		<MagicContainer className="justify-center columns-1 md:columns-2 lg:columns-3">
@@ -123,13 +124,18 @@ export function NewPollsAproach({
 				const hex = category?.hex;
 				const color = category?.color;
 
+				const delay =
+					idx >= POLLS_HOME_PAGE_COUNT
+						? (idx - POLLS_HOME_PAGE_COUNT) / 15
+						: idx / 15;
+
 				return (
 					<MagicCard
 						delay={delay}
 						key={`${poll.id}-${idx}`}
 						onClick={() => router.push(`/poll/${poll.id}`)}
 						borderColor={hex}
-						className="w-full h-fit cursor-pointer flex flex-col gap-2 items-center overflow-hidden mb-6 hover:opacity-90 transition-opacity"
+						className="w-full h-fit cursor-pointer flex flex-col gap-2 items-center overflow-hidden mb-6"
 					>
 						<div className="relative shadow-black/5 shadow-none rounded-large mb-2">
 							<figure className="w-full max-h-64 overflow-hidden rounded-large">
