@@ -1,13 +1,13 @@
 import { redirect } from "next/navigation";
+import { Suspense } from "react";
+import { CategoryCTA } from "~/app/_components/hero";
+import { SearchForm } from "~/app/_components/search-form";
 import { Container } from "~/components/container";
 import { categories } from "~/lib/categories";
+import { cn } from "~/lib/utils";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
 import { Polls } from "./_components/polls";
-import { SearchForm } from "~/app/_components/search-form";
-import { CategoryCTA } from "~/app/_components/hero";
-import { cn } from "~/lib/utils";
-import { Suspense } from "react";
 
 export default async function ExplorePage({
 	searchParams,

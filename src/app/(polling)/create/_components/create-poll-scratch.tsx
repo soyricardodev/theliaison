@@ -18,11 +18,11 @@ import {
 } from "~/components/ui/form";
 import {
 	Select,
+	SelectContent,
+	SelectGroup,
 	SelectItem,
 	SelectTrigger,
-	SelectGroup,
 	SelectValue,
-	SelectContent,
 } from "~/components/ui/select";
 import { categories } from "~/lib/categories";
 import { createClient } from "~/utils/supabase/client";
