@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button, Input, Select, SelectItem } from "@nextui-org/react";
+import { Button, Input } from "@nextui-org/react";
 import { FileImageIcon, PlusCircleIcon, TrashIcon } from "lucide-react";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/navigation";
@@ -16,6 +16,14 @@ import {
 	FormItem,
 	FormMessage,
 } from "~/components/ui/form";
+import {
+	Select,
+	SelectItem,
+	SelectTrigger,
+	SelectGroup,
+	SelectValue,
+	SelectContent,
+} from "~/components/ui/select";
 import { categories } from "~/lib/categories";
 import { createClient } from "~/utils/supabase/client";
 
@@ -314,23 +322,25 @@ export function CreatePollScratch() {
 					render={({ field }) => (
 						<FormItem>
 							<Select
-								label="Categories"
-								placeholder="Select your categories"
-								selectionMode="multiple"
-								isRequired
-								required
-								variant="bordered"
-								{...field}
+								onValueChange={field.onChange}
+								// defaultValue={field.value[0]}
 							>
-								{categories.map((categorie) => (
-									<SelectItem
-										key={categorie.id}
-										value={categorie.id}
-										className="capitalize"
-									>
-										{categorie.name}
-									</SelectItem>
-								))}
+								<FormControl>
+									<SelectTrigger>
+										<SelectValue placeholder="Select a category" />
+									</SelectTrigger>
+								</FormControl>
+								<SelectContent>
+									{categories.map((categorie) => (
+										<SelectItem
+											key={categorie.id}
+											value={String(categorie.id)}
+											className="capitalize"
+										>
+											{categorie.name}
+										</SelectItem>
+									))}
+								</SelectContent>
 							</Select>
 						</FormItem>
 					)}
