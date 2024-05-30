@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { MagicCard, MagicContainer } from "~/components/magicui/magic-card";
 import { categories } from "~/lib/categories";
-import { getPolls, getPollsByCategory } from "../../actions/polls";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
+import { getPolls, getPollsByCategory } from "../../actions/polls";
 
 export async function Polls({
 	categoryId,
