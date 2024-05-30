@@ -47,6 +47,7 @@
     "@supabase/supabase-js": "2.43.4",
     "@t3-oss/env-nextjs": "0.10.1",
     "@tailwindcss/forms": "0.5.7",
+    "@tanstack/react-query": "^5.40.0",
     "@tremor/react": "3.17.2",
     "@upstash/redis": "1.31.3",
     "@vercel/analytics": "1.3.1",
