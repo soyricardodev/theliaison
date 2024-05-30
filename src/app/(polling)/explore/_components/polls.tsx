@@ -1,89 +1,37 @@
-"use client";
-
 import { Chip, Progress } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { useDebounceCallback } from "usehooks-ts";
 import { MagicCard, MagicContainer } from "~/components/magicui/magic-card";
-import { useMounted } from "~/hooks/use-mounted";
 import { categories } from "~/lib/categories";
+import { getPolls, getPollsByCategory } from "../../actions/polls";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 
-export function Polls({ polls }: { polls: Array<PollWithOptionsAndVotes> }) {
-	const PAGE_COUNT = 10;
-	const [loadedPolls, setLoadedPolls] =
-		useState<PollWithOptionsAndVotes[]>(polls);
-	const [offset, setOffset] = useState(1);
-	const [isInView, setIsInView] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
-	const [isLast, setIsLast] = useState(false);
+export async function Polls({
+	categoryId,
+}: { categoryId: number | undefined }) {
+	const PAGE_COUNT = 15;
+	let pollData: PollWithOptionsAndVotes[] = [];
 
-	const containerRef = useRef<HTMLDivElement | null>(null);
-	const mounted = useMounted();
+	if (categoryId != null) {
+		const { data, error } = await getPollsByCategory(categoryId);
 
-	function handleScroll() {
-		if (mounted && containerRef.current != null) {
-			const container = containerRef.current;
-			const { bottom } = container.getBoundingClientRect();
-			const { innerHeight } = window;
-			setIsInView(bottom <= innerHeight);
-		}
+		if (error) return;
+
+		pollData = data;
+	} else {
+		const { data, error } = await getPolls();
+
+		if (error) return;
+
+		pollData = data;
 	}
-	const handleDebouncedScroll = useDebounceCallback(() => {
-		if (!isLast) handleScroll();
-	}, 300);
-
-	async function loadMorePolls(offset: number) {
-		setIsLoading(true);
-		setOffset((prev) => prev + 1);
-
-		const from = offset * PAGE_COUNT;
-		const to = from + PAGE_COUNT - 1;
-
-		const url = `/api/polls/get?from=${from}&to=${to}`;
-		const res = await fetch(url, {
-			method: "GET",
-			next: { tags: ["polls"] },
-		});
-
-		const json = await res.json();
-
-		const data = json.data as PollWithOptionsAndVotes[];
-
-		if (data.length === 0) {
-			console.log("No more data");
-			setIsLast(true);
-		}
-
-		setLoadedPolls((prevPolls) => [...prevPolls, ...data]);
-		setIsLoading(false);
-	}
-
-	useEffect(() => {
-		if (!mounted) return;
-		window.addEventListener("scroll", handleDebouncedScroll);
-		return () => {
-			window.removeEventListener("scroll", handleDebouncedScroll);
-		};
-	}, [mounted, handleDebouncedScroll]);
-
-	// biome-ignore lint/correctness/useExhaustiveDependencies: Just need the isInView effect to run
-	useEffect(() => {
-		if (isInView) {
-			loadMorePolls(offset);
-		}
-	}, [isInView]);
 
 	return (
-		<div className="grid gap-4" ref={containerRef}>
-			{isLoading ? <p>Loading</p> : null}
+		<div className="grid gap-4">
 			<MagicContainer className="justify-center columns-1 md:columns-2 lg:columns-3">
-				{loadedPolls.map((poll, idx) => {
+				{pollData.map((poll, idx) => {
 					const delay =
-						idx >= PAGE_COUNT * 2
-							? (idx - PAGE_COUNT * (offset - 1)) / 15
-							: idx / 15;
+						idx >= PAGE_COUNT * 2 ? (idx - PAGE_COUNT) / 15 : idx / 15;
 
 					const firstCategory = poll.categories?.[0];
 					const categoryId = firstCategory?.id ?? 1;
@@ -98,7 +46,7 @@ export function Polls({ polls }: { polls: Array<PollWithOptionsAndVotes> }) {
 							delay={delay}
 							key={`${poll.id}-${idx}`}
 							borderColor={hex}
-							className="w-full h-fit cursor-pointer flex flex-col gap-2 items-center overflow-hidden mb-6"
+							className="w-full h-fit cursor-pointer flex flex-col gap-2 items-center overflow-hidden mb-6 !opacity-100"
 						>
 							<Link href={`/poll/${poll.id}`}>
 								<div className="relative shadow-black/5 shadow-none rounded-large mb-2">
