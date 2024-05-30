@@ -3,6 +3,10 @@ import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
 
 export async function GET(request: NextRequest) {
+	const { searchParams } = new URL(request.url);
+	const from = searchParams.get("from") ?? "1";
+	const to = searchParams.get("to") ?? "10";
+
 	const supabase = createClient();
 
 	const { data, error } = await supabase
@@ -16,8 +20,8 @@ export async function GET(request: NextRequest) {
       users (id, username, avatar_url),
       categories (id, name)
     `)
-		.order("created_at", { ascending: false })
-		.limit(20);
+		.range(Number(from), Number(to))
+		.order("created_at", { ascending: false });
 
 	if (error) {
 		return NextResponse.json({ data: [], error });
