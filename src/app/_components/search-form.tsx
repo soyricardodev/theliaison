@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { searchPolls } from "./search-action";
-import { cn } from "~/lib/utils";
 
 export function SearchForm() {
 	const [searchText, setSearchText] = useState("");
@@ -47,9 +46,7 @@ export function SearchForm() {
 	return (
 		<div className="w-full mx-auto flex flex-col gap-2 relative">
 			<form
-				className={cn(
-					"w-full relative max-w-xl mx-auto bg-white h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 border border-default-400",
-				)}
+				className="w-full relative max-w-xl mx-auto bg-white h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 border border-default-400"
 				onSubmit={(e) => {
 					e.preventDefault();
 					handleSubmit();
