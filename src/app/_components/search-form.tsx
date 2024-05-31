@@ -2,7 +2,9 @@
 import { SearchIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { searchPolls } from "./search-action";
+import { cn } from "~/lib/utils";
 
 export function SearchForm() {
 	const [searchText, setSearchText] = useState("");
@@ -14,28 +16,21 @@ export function SearchForm() {
 			similarity: number;
 		}>;
 	}>({ data: [] });
+	const [isFocused, setIsFocused] = useState(false);
+	const [isInputEmpty, setIsInputEmpty] = useState(true);
+
+	useEffect(() => {
+		if (searchText.trim() === "") {
+			setIsInputEmpty(true);
+		} else {
+			setIsInputEmpty(false);
+		}
+	}, [searchText]);
 
 	async function handleSubmit() {
-		const res = await fetch("/api/polls/search", {
-			method: "POST",
-			body: JSON.stringify({
-				searchText,
-			}),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
+		const res = await searchPolls(searchText);
 
-		const results = (await res.json()) as {
-			data: Array<{
-				id: string;
-				question: string;
-				image: string;
-				similarity: number;
-			}>;
-		};
-
-		setSearchResults(results);
+		setSearchResults(res);
 	}
 
 	function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -50,11 +45,11 @@ export function SearchForm() {
 	}
 
 	return (
-		<>
+		<div className="w-full mx-auto flex flex-col gap-2 relative">
 			<form
-				className={
-					"w-full relative max-w-xl mx-auto bg-white h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 border border-default-400"
-				}
+				className={cn(
+					"w-full relative max-w-xl mx-auto bg-white h-12 rounded-full overflow-hidden shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),_0px_1px_0px_0px_rgba(25,28,33,0.02),_0px_0px_0px_1px_rgba(25,28,33,0.08)] transition duration-200 border border-default-400",
+				)}
 				onSubmit={(e) => {
 					e.preventDefault();
 					handleSubmit();
@@ -64,6 +59,9 @@ export function SearchForm() {
 					onChange={(e) => setSearchText(e.target.value)}
 					onKeyDown={handleKeyDown}
 					value={searchText}
+					onFocus={() => setIsFocused(true)}
+					onBlur={() => setIsFocused(false)}
+					onClick={() => setIsFocused(true)}
 					type="text"
 					className={
 						"w-full relative text-sm sm:text-base z-50 border-none bg-transparent text-black h-full rounded-full focus:outline-none focus:ring-0 pl-4 sm:pl-10 pr-20"
@@ -79,8 +77,9 @@ export function SearchForm() {
 					<SearchIcon width={24} height={24} className="text-gray-300 size-4" />
 				</button>
 			</form>
-			{searchResults.data.length > 0 && (
-				<div className="flex flex-col gap-1 absolute max-w-xl h-auto bg-content2 rounded-lg shadow-lg top-[60px] inset-x-0 z-50 p-2.5">
+
+			{isFocused ? (
+				<div className="absolute left-0 right-0 top-[55px] rounded-lg h-auto fade-in mx-auto z-50 min-h-[100px] max-w-xl w-[576px] bg-content2 border-content3 border">
 					{searchResults.data.map((poll) => (
 						<Link
 							key={poll.id}
@@ -92,15 +91,22 @@ export function SearchForm() {
 								alt={poll.question}
 								width={150}
 								height={150}
-								className="rounded-lg object-cover h-[100px] w-[150px]"
+								className="rounded-lg object-cover h-[150px] w-[150px]"
 							/>
 							<p className="text-lg font-semibold text-left text-pretty leading-tight">
 								{poll.question}
 							</p>
 						</Link>
 					))}
+					{searchResults.data.length === 0 ? (
+						<p className="text-center text-sm text-content3-foreground">
+							{isInputEmpty
+								? "Write a question and press enter or the search icon"
+								: "No results found"}
+						</p>
+					) : null}
 				</div>
-			)}
-		</>
+			) : null}
+		</div>
 	);
 }
