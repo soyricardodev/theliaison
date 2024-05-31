@@ -135,7 +135,7 @@ export function NewPollsAproach({
 						key={`${poll.id}-${idx}`}
 						onClick={() => router.push(`/poll/${poll.id}`)}
 						borderColor={hex}
-						className="w-full h-fit cursor-pointer flex flex-col gap-2 items-center overflow-hidden mb-6"
+						className="w-full h-fit cursor-pointer flex flex-col gap-2 items-center overflow-hidden mb-6 !opacity-100"
 					>
 						<div className="relative shadow-black/5 shadow-none rounded-large mb-2">
 							<figure className="w-full max-h-64 overflow-hidden rounded-large">
