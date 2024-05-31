@@ -133,51 +133,52 @@ export function NewPollsAproach({
 					<MagicCard
 						delay={delay}
 						key={`${poll.id}-${idx}`}
-						onClick={() => router.push(`/poll/${poll.id}`)}
 						borderColor={hex}
 						className="w-full h-fit cursor-pointer flex flex-col gap-2 items-center overflow-hidden mb-6 !opacity-100"
 					>
-						<div className="relative shadow-black/5 shadow-none rounded-large mb-2">
-							<figure className="w-full max-h-64 overflow-hidden rounded-large">
-								<Image
-									alt={poll.question}
-									src={`/polls/${poll.image}`}
-									className="shadow-black/5 object-cover rounded-large size-full"
-									height={256}
-									width={300}
-								/>
-							</figure>
-						</div>
-						<h3 className="text-lg font-semibold text-pretty">
-							{poll.question}
-						</h3>
-						<div className="flex w-full items-start gap-2">
-							{poll.categories?.map((category) => (
-								<Chip
-									key={category.id}
-									color={color}
-									variant="bordered"
-									className="capitalize"
-								>
-									{category.name}
-								</Chip>
-							))}
-						</div>
-						<div className="flex flex-col gap-4 py-2 w-full">
-							{poll.options.map((option, idx) => (
-								<div key={`${option.id}-${idx}`} className="flex gap-2">
-									<div className="flex flex-col gap-y-0.5 w-full">
-										<Progress
-											color="secondary"
-											showValueLabel
-											label={option.text}
-											value={option.percentage}
-										/>
+						<Link href={`/poll/${poll.id}`}>
+							<div className="relative shadow-black/5 shadow-none rounded-large mb-2">
+								<figure className="w-full max-h-64 overflow-hidden rounded-large">
+									<Image
+										alt={poll.question}
+										src={`/polls/${poll.image}`}
+										className="shadow-black/5 object-cover rounded-large size-full"
+										height={256}
+										width={300}
+									/>
+								</figure>
+							</div>
+							<h3 className="text-lg font-semibold text-pretty">
+								{poll.question}
+							</h3>
+							<div className="flex w-full items-start gap-2">
+								{poll.categories?.map((category) => (
+									<Chip
+										key={category.id}
+										color={color}
+										variant="bordered"
+										className="capitalize"
+									>
+										{category.name}
+									</Chip>
+								))}
+							</div>
+							<div className="flex flex-col gap-4 py-2 w-full">
+								{poll.options.map((option, idx) => (
+									<div key={`${option.id}-${idx}`} className="flex gap-2">
+										<div className="flex flex-col gap-y-0.5 w-full">
+											<Progress
+												color="secondary"
+												showValueLabel
+												label={option.text}
+												value={option.percentage}
+											/>
+										</div>
 									</div>
-								</div>
-							))}
-						</div>
-						<div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_120%,rgba(200,200,200,0.3),rgba(255,255,255,0))]" />
+								))}
+							</div>
+							<div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_120%,rgba(200,200,200,0.3),rgba(255,255,255,0))]" />
+						</Link>
 					</MagicCard>
 				);
 			})}
