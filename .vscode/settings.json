@@ -6,5 +6,13 @@
 		["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
 		["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
 	],
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"cSpell.words": [
+		"hookform",
+		"iconify",
+		"magicui",
+		"nextui",
+		"Signup",
+		"supabase"
+	]
 }
