@@ -19,7 +19,7 @@ export function Hero() {
 							<ChevronRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
 						</AnimatedGradientText>
 					</Link>
-					<h1 className="bg-gradient-to-br bg-clip-text py-6 text-5xl font-semibold leading-none tracking-tighter text-transparent from-black from-40% to-black/40 sm:text-6xl md:text-7xl lg:text-7xl text-balance font-heading">
+					<h1 className="bg-gradient-to-br bg-clip-text py-6 text-5xl font-bold leading-none tracking-tighter text-transparent from-black from-40% to-black/40 sm:text-6xl md:text-7xl lg:text-7xl text-balance font-heading">
 						Ask The Liaison
 					</h1>
 					<p className="max-w-[60rem] text-pretty text-lg tracking-tight text-gray-500 md:text-xl">
