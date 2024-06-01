@@ -13,6 +13,7 @@
 		"magicui",
 		"nextui",
 		"Signup",
-		"supabase"
+		"supabase",
+		"tailwindcss"
 	]
 }
