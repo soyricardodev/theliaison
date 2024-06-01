@@ -66,6 +66,7 @@ const config = {
 			},
 			fontFamily: {
 				sans: ["var(--font-geist-sans)", ...fontFamily.sans],
+				heading: ["var(--font-heading)", ...fontFamily.serif],
 			},
 			animation: {
 				gradient: "gradient 8s linear infinite",
