@@ -11,7 +11,7 @@ import { Statistics } from "./_components/statistics";
 import { Comments } from "./comments";
 import { FormComment } from "./form-comment";
 import { OptionToVote } from "./option-to-vote";
-import { PollStats } from "./_components/pie-stats";
+import { PollStats } from "./_components/poll-stats";
 
 export default async function PollPage({
 	params: { id },
