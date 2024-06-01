@@ -14,6 +14,7 @@ import {
 } from "~/components/ui/form";
 import { type SimpleSignUp, simpleSignUpSchema } from "~/utils/validators/auth";
 import { simpleSignupAction } from "../../actions";
+import { AuthWithGoogle } from "../../google";
 
 export function SignupForm() {
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,6 +39,7 @@ export function SignupForm() {
 
 	return (
 		<Form {...form}>
+			<AuthWithGoogle />
 			<form
 				className="flex w-full flex-col gap-3"
 				onSubmit={form.handleSubmit(onSubmit)}

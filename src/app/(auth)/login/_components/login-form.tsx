@@ -16,6 +16,7 @@ import {
 	signInWithEmailSchema,
 } from "~/utils/validators/auth";
 import { login } from "../../actions";
+import { AuthWithGoogle } from "../../google";
 
 export function LoginForm() {
 	const [passwordVisible, setPasswordVisible] = useState(false);
@@ -40,6 +41,7 @@ export function LoginForm() {
 
 	return (
 		<Form {...form}>
+			<AuthWithGoogle />
 			<form
 				className="flex w-full flex-col gap-3"
 				onSubmit={form.handleSubmit(onSubmit)}
