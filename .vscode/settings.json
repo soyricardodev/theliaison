@@ -8,13 +8,26 @@
 	],
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"cSpell.words": [
+		"biomejs",
+		"clsx",
+		"cmdk",
+		"drei",
+		"headlessui",
 		"hookform",
 		"iconify",
 		"lucide",
 		"magicui",
+		"nextjs",
 		"nextui",
+		"openai",
 		"Signup",
+		"sonner",
 		"supabase",
-		"tailwindcss"
+		"tailwindcss",
+		"tanstack",
+		"upstash",
+		"usehooks",
+		"vaul",
+		"zustand"
 	]
 }
