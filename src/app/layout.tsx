@@ -2,6 +2,7 @@ import "~/styles/globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
+import { MinervaBoldFont } from "~/assets/fonts";
 
 import { Providers } from "~/components/providers";
 import { TailwindIndicator } from "~/components/tailwind-indicator";
@@ -21,7 +22,13 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={cn("font-sans antialiased", GeistSans.variable)}>
+			<body
+				className={cn(
+					"font-sans antialiased",
+					GeistSans.variable,
+					MinervaBoldFont.variable,
+				)}
+			>
 				<Providers>
 					<div className="text-foreground bg-background">{children}</div>
 				</Providers>
