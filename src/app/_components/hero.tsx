@@ -32,8 +32,8 @@ export function Hero() {
 				</div>
 
 				<div className="mx-auto flex flex-wrap items-center justify-center gap-2 whitespace-nowrap px-4 text-sm max-w-sm md:max-w-xl lg:max-w-2xl">
-					{categories.map((categorie, idx) => (
-						<CategoryCTA key={`${categorie.name}-${idx}`} {...categorie} />
+					{categories.map((category, idx) => (
+						<CategoryCTA key={`${category.name}-${idx}`} {...category} />
 					))}
 				</div>
 			</div>
