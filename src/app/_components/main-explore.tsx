@@ -72,7 +72,7 @@ export async function MainExplore() {
 	return (
 		<div className="mx-auto flex max-w-7xl flex-col px-6 pb-20">
 			<div className="grid gap-4">
-				<h2 className="text-4xl font-semibold">Explore</h2>
+				<h2 className="text-4xl font-bold font-heading">Explore</h2>
 				<ExplorePolls
 					featuredPolls={dataToRenderReversed}
 					newPolls={dataToRender}
