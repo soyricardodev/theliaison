@@ -11,6 +11,8 @@ const config = {
 		"./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
 	],
 	theme: {
+		transparent: "transparent",
+		current: "currentColor",
 		container: {
 			center: true,
 			padding: "2rem",
@@ -121,6 +123,7 @@ const config = {
 		},
 	],
 	plugins: [
+		require("@headlessui/tailwindcss"),
 		require("@tailwindcss/typography"),
 		require("tailwindcss-animate"),
 		nextui(),
