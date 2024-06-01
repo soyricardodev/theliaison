@@ -40,22 +40,25 @@ export function MainNav() {
 											<div className="mb-2 mt-4 text-lg font-medium">
 												Explore Polls
 											</div>
-											<p className="text-sm leading-tight text-muted-foreground">
-												Beautifully designed components that you can copy and
-												paste into your apps. Accessible. Customizable. Open
-												Source.
+											<p className="text-sm leading-tight text-content2-foreground">
+												<strong className="font-semibold">
+													Uncover the Buzz:
+												</strong>{" "}
+												Dive into what the world is thinking about. Explore
+												trending polls and discover new topics that spark your
+												curiosity.
 											</p>
 										</a>
 									</NavigationMenuLink>
 								</li>
 								<ListItem href="/create" title="Create your poll">
-									Re-usable components built using Radix UI and Tailwind CSS.
+									Craft your own poll and share it with the world.
 								</ListItem>
 								<ListItem href="/explore" title="Be part">
-									How to install dependencies and structure your app.
+									Join the vibrant community. Share your thoughts.
 								</ListItem>
 								<ListItem href="/pricing" title="Pricing">
-									Styles for headings, paragraphs, lists...etc
+									Elevate your polling game with premium features!
 								</ListItem>
 							</ul>
 						</NavigationMenuContent>
@@ -128,15 +131,13 @@ const ListItem = ({
 				<a
 					ref={ref}
 					className={cn(
-						"block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-content3 hover:text-foreground focus:bg-content3 focus:text-foreground",
+						"block select-none bg-content1 space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-content3 hover:text-content3-foreground text-content1-foreground focus:bg-content3 focus:text-content3-foreground",
 						className,
 					)}
 					{...props}
 				>
-					<div className="text-sm font-medium leading-none">{title}</div>
-					<p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-						{children}
-					</p>
+					<div className="text-sm font-semibold leading-none">{title}</div>
+					<p className="line-clamp-2 text-sm leading-snug">{children}</p>
 				</a>
 			</NavigationMenuLink>
 		</li>
