@@ -11,6 +11,7 @@ import { Statistics } from "./_components/statistics";
 import { Comments } from "./comments";
 import { FormComment } from "./form-comment";
 import { OptionToVote } from "./option-to-vote";
+import { PollStats } from "./_components/pie-stats";
 
 export default async function PollPage({
 	params: { id },
@@ -221,9 +222,11 @@ export default async function PollPage({
 							</ScrollArea>
 						</div>
 
-						{isPollCreator || isCommunityInsider ? (
-							<Statistics votes={statistics} />
-						) : null}
+						<PollStats />
+
+						{/* {isPollCreator || isCommunityInsider ? ( */}
+						<Statistics votes={statistics} />
+						{/* ) : null} */}
 					</div>
 				</div>
 			</div>
