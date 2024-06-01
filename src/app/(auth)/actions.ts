@@ -45,13 +45,11 @@ export async function signInWithOAuth() {
 	console.log(error, data);
 
 	if (error) {
-		return { message: "Failed t" };
+		return { message: "Failed login", error };
 	}
 
 	revalidatePath("/", "layout");
 	redirect(data.url);
-
-	//redirect("/explore");
 }
 
 export async function signup(
