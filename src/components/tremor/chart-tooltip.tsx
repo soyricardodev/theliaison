@@ -1,7 +1,7 @@
-import React from "react";
-import { colorPalette, getColorClassNames, tremorTwMerge } from "./utils";
-import type { Color, ValueFormatter } from "./base-chart-props";
+import type React from "react";
 import { BaseColors } from "./bar-chart";
+import type { Color, ValueFormatter } from "./base-chart-props";
+import { colorPalette, getColorClassNames, tremorTwMerge } from "./utils";
 // import {
 //   BaseColors,
 //   getColorClassNames,

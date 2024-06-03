@@ -2,19 +2,19 @@
 // import { colorPalette, getColorClassNames, tremorTwMerge } from "lib";
 import React, { useState } from "react";
 
-import type BaseChartProps from "./base-chart-props";
-import type { AxisDomain } from "recharts/types/util/types";
 import {
 	Bar,
-	BarChart as ReChartsBarChart,
 	CartesianGrid,
+	Label,
 	Legend,
+	BarChart as ReChartsBarChart,
 	ResponsiveContainer,
 	Tooltip,
 	XAxis,
 	YAxis,
-	Label,
 } from "recharts";
+import type { AxisDomain } from "recharts/types/util/types";
+import type BaseChartProps from "./base-chart-props";
 import type { Color, ValueFormatter } from "./base-chart-props";
 import { colorPalette, getColorClassNames, tremorTwMerge } from "./utils";
 

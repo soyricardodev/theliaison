@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { DonutChart, Legend } from "@tremor/react";
+import { useState } from "react";
 import { BarChart } from "~/components/tremor/bar-chart";
 
 type Gender =
