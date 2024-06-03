@@ -110,7 +110,7 @@
 	"overrides": {
 		"react-is": "^19.0.0-beta-26f2496093-20240514"
 	},
-	"packageManager": "bun@1.1.10",
+	"packageManager": "bun@1.1.12",
 	"trustedDependencies": [
 		"@biomejs/biome",
 		"@vercel/speed-insights",
