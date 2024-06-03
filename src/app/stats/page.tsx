@@ -2,31 +2,7 @@
 
 import { useState } from "react";
 import { DonutChart, Legend } from "@tremor/react";
-// import {
-// 	Bar,
-// 	BarChart,
-// 	CartesianGrid,
-// 	ResponsiveContainer,
-// 	Tooltip,
-// 	XAxis,
-// 	YAxis,
-// 	Label,
-// } from "recharts";
 import { BarChart } from "~/components/tremor/bar-chart";
-import { cn } from "~/lib/utils";
-// import { DonutChart, Legend } from "@tremor/react";
-// import {
-// 	PieChart,
-// 	Pie,
-// 	Cell,
-// 	Tooltip,
-// 	Legend,
-// 	BarChart,
-// 	Bar,
-// 	XAxis,
-// 	YAxis,
-// 	CartesianGrid,
-// } from "recharts";
 
 type Gender =
 	| "male"
@@ -44,17 +20,17 @@ type Gender =
 	| "transgenderFemale"
 	| "other";
 
-type SexualOrientation =
-	| "heterosexual"
-	| "homosexual"
-	| "bisexual"
-	| "asexual"
-	| "pansexual"
-	| "queer"
-	| "questioning"
-	| "lesbian"
-	| "gay"
-	| "other";
+// type SexualOrientation =
+// 	| "heterosexual"
+// 	| "homosexual"
+// 	| "bisexual"
+// 	| "asexual"
+// 	| "pansexual"
+// 	| "queer"
+// 	| "questioning"
+// 	| "lesbian"
+// 	| "gay"
+// 	| "other";
 
 interface Demographics {
 	gender: Record<Gender, number>;
@@ -677,7 +653,7 @@ type DemographicCategory = keyof Demographics;
 const getDemographicBreakdown = (
 	demographics: Demographics,
 	demographicKey: DemographicOption["value"],
-): number => {
+): number | Record<Gender, number> => {
 	const [category, key] = demographicKey.split("_") as [
 		DemographicCategory,
 		string,
@@ -685,45 +661,6 @@ const getDemographicBreakdown = (
 	// @ts-expect-error - TODO: Fix this type error
 	return demographics[category]?.[key] ?? 0;
 };
-
-const demo = [
-	{
-		name: "Topic 1",
-		"Group A": 890,
-		"Group B": 338,
-		"Group C": 538,
-		"Group D": 396,
-		"Group E": 138,
-		"Group F": 436,
-	},
-	{
-		name: "Topic 2",
-		"Group A": 289,
-		"Group B": 233,
-		"Group C": 253,
-		"Group D": 333,
-		"Group E": 133,
-		"Group F": 533,
-	},
-	{
-		name: "Topic 3",
-		"Group A": 380,
-		"Group B": 535,
-		"Group C": 352,
-		"Group D": 718,
-		"Group E": 539,
-		"Group F": 234,
-	},
-	{
-		name: "Topic 4",
-		"Group A": 90,
-		"Group B": 98,
-		"Group C": 28,
-		"Group D": 33,
-		"Group E": 61,
-		"Group F": 53,
-	},
-];
 
 export default function Page() {
 	const [selectedDemographic, setSelectedDemographic] =
@@ -742,12 +679,10 @@ export default function Page() {
 		);
 		if (typeof breakdown === "number") {
 			return { name: option.option, votes: breakdown };
-		} else {
-			return { name: option.option, ...breakdown };
 		}
-	});
 
-	console.log({ barData });
+		return { name: option.option, ...breakdown };
+	});
 
 	const isGenderSpecific =
 		selectedDemographic.startsWith("relationshipStatus") ||
@@ -792,51 +727,20 @@ export default function Page() {
 				/>
 			</div>
 
-			<div className="w-full h-80">
-				<BarChart
-					className="mt-6"
-					data={demo}
-					index="name"
-					categories={[
-						"Group A",
-						"Group B",
-						"Group C",
-						"Group D",
-						"Group E",
-						"Group F",
-					]}
-					colors={["blue", "teal", "amber", "rose", "indigo", "emerald"]}
-					valueFormatter={dataFormatter}
-					yAxisWidth={48}
-				/>
-			</div>
-
-			{/* <div className="barchart">
+			<div className="w-full max-w-screen-2xl mx-auto h-80">
 				<BarChart
 					data={barData}
 					index="name"
 					categories={
 						isGenderSpecific
-							? Object.keys(barData[0]).filter((key) => key !== "name")
+							? Object.keys(barData[0] ?? {}).filter((key) => key !== "name")
 							: ["votes"]
 					}
 					colors={COLORS}
 					valueFormatter={dataFormatter}
-					yAxisWidth={48}
+					yAxisWidth={20}
 				/>
 			</div>
-
-			<div className="demo">
-				<BarChart
-					data={demo}
-					index="name"
-					categories={["Number of threatened species"]}
-					colors={["blue"]}
-					valueFormatter={dataFormatter}
-					yAxisWidth={48}
-					// onValueChange={(v) => console.log(v)}
-				/>
-			</div> */}
 		</div>
 	);
 }
