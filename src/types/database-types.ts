@@ -104,6 +104,42 @@ export type Database = {
 				};
 				Relationships: [];
 			};
+			follows: {
+				Row: {
+					created_at: string;
+					follower_id: string;
+					following_id: string;
+					id: number;
+				};
+				Insert: {
+					created_at?: string;
+					follower_id: string;
+					following_id: string;
+					id?: number;
+				};
+				Update: {
+					created_at?: string;
+					follower_id?: string;
+					following_id?: string;
+					id?: number;
+				};
+				Relationships: [
+					{
+						foreignKeyName: "follows_follower_id_fkey";
+						columns: ["follower_id"];
+						isOneToOne: false;
+						referencedRelation: "users";
+						referencedColumns: ["id"];
+					},
+					{
+						foreignKeyName: "follows_following_id_fkey";
+						columns: ["following_id"];
+						isOneToOne: false;
+						referencedRelation: "users";
+						referencedColumns: ["id"];
+					},
+				];
+			};
 			options: {
 				Row: {
 					id: number;
@@ -136,6 +172,7 @@ export type Database = {
 					embedding: string | null;
 					id: string;
 					image: string;
+					is_featured: boolean;
 					question: string;
 					user_id: string;
 				};
@@ -144,6 +181,7 @@ export type Database = {
 					embedding?: string | null;
 					id: string;
 					image: string;
+					is_featured?: boolean;
 					question: string;
 					user_id: string;
 				};
@@ -152,6 +190,7 @@ export type Database = {
 					embedding?: string | null;
 					id?: string;
 					image?: string;
+					is_featured?: boolean;
 					question?: string;
 					user_id?: string;
 				};
@@ -442,18 +481,24 @@ export type Database = {
 			votes: {
 				Row: {
 					id: number;
+					is_ai: boolean;
+					is_theliaison: boolean;
 					option_id: number;
 					poll_id: string;
 					user_id: string;
 				};
 				Insert: {
 					id?: number;
+					is_ai?: boolean;
+					is_theliaison?: boolean;
 					option_id: number;
 					poll_id: string;
 					user_id: string;
 				};
 				Update: {
 					id?: number;
+					is_ai?: boolean;
+					is_theliaison?: boolean;
 					option_id?: number;
 					poll_id?: string;
 					user_id?: string;
