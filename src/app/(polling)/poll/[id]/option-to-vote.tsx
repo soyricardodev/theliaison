@@ -32,6 +32,8 @@ type OptionToVote = {
 	alreadyVoted: boolean;
 	optionVotedId?: number;
 	userId?: string;
+	isFeatured: boolean;
+	isFeaturedSelected?: boolean;
 };
 
 export function OptionToVote({
@@ -41,6 +43,8 @@ export function OptionToVote({
 	alreadyVoted,
 	optionVotedId,
 	userId,
+	isFeatured,
+	isFeaturedSelected,
 }: OptionToVote) {
 	const { isOpen, onOpen, onOpenChange } = useDisclosure();
 	const [isLoading, setIsLoading] = useState(false);
@@ -78,7 +82,10 @@ export function OptionToVote({
 		<>
 			<Tooltip
 				content={
-					<p>{optionVotedByUser ? "This is your vote" : "Click to vote"}</p>
+					<p>
+						{optionVotedByUser ? "This is your vote" : "Click to vote"}
+						{isFeatured && "The Liaison option"}
+					</p>
 				}
 				offset={-7}
 			>
@@ -91,7 +98,9 @@ export function OptionToVote({
 					onClick={vote}
 				>
 					<Progress
-						value={option.percentage}
+						value={
+							isFeaturedSelected ? 100 : isFeatured ? 0 : option.percentage
+						}
 						showValueLabel
 						label={<p>{option.text}</p>}
 						classNames={{
@@ -146,7 +155,7 @@ export function OptionToVote({
 								/>
 								<div className="flex py-2 px-1 justify-end">
 									<Link color="primary" href="/signup" size="sm">
-										Dont have an account? Sign Up
+										Don't have an account? Sign Up
 									</Link>
 								</div>
 							</ModalBody>

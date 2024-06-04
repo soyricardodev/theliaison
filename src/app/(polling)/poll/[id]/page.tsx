@@ -12,6 +12,7 @@ import { SuggestedPolls } from "./_components/suggested-polls";
 import { Comments } from "./comments";
 import { FormComment } from "./form-comment";
 import { OptionToVote } from "./option-to-vote";
+import OptionsTabs from "./_components/options-tabs";
 
 export default async function PollPage({
 	params: { id },
@@ -52,7 +53,6 @@ export default async function PollPage({
 			relationship_status: vote.users?.relationship_status as string,
 		};
 	});
-	console.log({ votesData });
 
 	const votesByOption: Record<number, number> = {};
 	const totalVotes = data.votes.length;
@@ -154,19 +154,43 @@ export default async function PollPage({
 
 						{/* Poll Data */}
 						<div className="relative max-w-screen-lg flex h-full w-full flex-col gap-3 lg:p-3">
-							<ul className="w-full grid gap-6">
-								{dataToRender.options.map((option) => (
-									<OptionToVote
-										option={option}
-										key={option.id}
-										pollId={id}
-										alreadyVoted={userAlreadyVoted}
-										userId={user?.id}
-										optionVotedId={optionSelectedForUserLoggedIn?.options?.id}
-										canVote={userCanVote}
-									/>
-								))}
-							</ul>
+							<OptionsTabs
+								communityOptions={
+									<ul className="w-full grid gap-6">
+										{dataToRender.options.map((option) => (
+											<OptionToVote
+												option={option}
+												key={option.id}
+												pollId={id}
+												alreadyVoted={userAlreadyVoted}
+												userId={user?.id}
+												optionVotedId={
+													optionSelectedForUserLoggedIn?.options?.id
+												}
+												canVote={userCanVote}
+												isFeatured={false}
+											/>
+										))}
+									</ul>
+								}
+								theliaisonOptions={
+									<ul className="w-full grid gap-6">
+										{dataToRender.options.map((option, idx) => (
+											<OptionToVote
+												option={option}
+												key={option.id}
+												pollId={id}
+												alreadyVoted={true}
+												userId={user?.id}
+												optionVotedId={idx === 1 ? option.id : undefined}
+												canVote={false}
+												isFeatured={true}
+												isFeaturedSelected={idx === 1}
+											/>
+										))}
+									</ul>
+								}
+							/>
 							<div>
 								<p className="text-sm text-gray-800">
 									Total Votes: {totalVotes}
