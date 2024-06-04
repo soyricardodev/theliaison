@@ -6,12 +6,13 @@ import { Toaster } from "~/components/ui/sonner";
 import { categories } from "~/lib/categories";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
+import { PollStats, type RawData } from "./_components/poll-stats";
 import { ShareSocial } from "./_components/share-social";
 import { Statistics } from "./_components/statistics";
 import { Comments } from "./comments";
 import { FormComment } from "./form-comment";
 import { OptionToVote } from "./option-to-vote";
-import { PollStats } from "./_components/poll-stats";
+import { SuggestedPolls } from "./_components/suggested-polls";
 
 export default async function PollPage({
 	params: { id },
@@ -23,11 +24,12 @@ export default async function PollPage({
     id,
     question,
     options (id, text),
-		votes (id, poll_id, option_id, user_id, users(country, gender, relationship_status, birthday_date)),
+		votes (id, poll_id, options(id, text), user_id, users(country, gender, relationship_status, birthday_date)),
 		users (id, username, avatar_url),
 		image,
 		comments (id, content, created_at, users (id, username, avatar_url)),
-		categories (id, name)
+		categories (id, name),
+		embedding
     `)
 		.eq("id", id)
 		.single();
@@ -38,56 +40,20 @@ export default async function PollPage({
 
 	const { data, error } = await pollsWithOptionsQuery;
 
-	const userDataVotes = data?.votes?.map((vote) => {
-		return {
-			option_id: vote.option_id,
-			country: vote.users?.country,
-			gender: vote.users?.gender,
-			relationship_status: vote.users?.relationship_status,
-			birthday_date: vote.users?.birthday_date,
-		};
-	});
-
-	const gendersVotesCount = userDataVotes?.reduce(
-		(acc, vote) => {
-			if (vote.gender) {
-				acc[vote.gender] = (acc[vote.gender] || 0) + 1;
-			}
-			return acc;
-		},
-		{} as Record<string, number>,
-	);
-
-	const countryVotesCount = userDataVotes?.reduce(
-		(acc, vote) => {
-			if (vote.country) {
-				acc[vote.country] = (acc[vote.country] || 0) + 1;
-			}
-			return acc;
-		},
-		{} as Record<string, number>,
-	);
-
-	const relationshiptStatusVotesCount = userDataVotes?.reduce(
-		(acc, vote) => {
-			if (vote.relationship_status) {
-				acc[vote.relationship_status] =
-					(acc[vote.relationship_status] || 0) + 1;
-			}
-			return acc;
-		},
-		{} as Record<string, number>,
-	);
-
-	const statistics = {
-		genders: gendersVotesCount,
-		countries: countryVotesCount,
-		relationships: relationshiptStatusVotesCount,
-	};
-
 	if (!data || error) {
 		return redirect("/");
 	}
+
+	const votesData: RawData[] = data?.votes?.map((vote) => {
+		return {
+			option_id: vote.options?.id as number,
+			name: vote.options?.text as string,
+			country: vote.users?.country as string,
+			gender: vote.users?.gender as string,
+			relationship_status: vote.users?.relationship_status as string,
+		};
+	});
+	console.log({ votesData });
 
 	const votesByOption: Record<number, number> = {};
 	const totalVotes = data.votes.length;
@@ -97,7 +63,7 @@ export default async function PollPage({
 	}
 
 	for (const vote of data.votes) {
-		votesByOption[vote.option_id]++;
+		votesByOption[vote.options?.id as number]++;
 	}
 
 	const votesPercentage: Record<number, number> = {};
@@ -150,8 +116,8 @@ export default async function PollPage({
 	return (
 		<main className="flex-1 overflow-auto">
 			<div className="flex flex-col max-w-screen-2xl mx-auto">
-				<div className="flex flex-1 flex-col gap-3 my-4 px-8 pb-2 pt-10 md:pt-16 lg:pt-24 bg-default-200 max-w-3xl mx-auto rounded-lg">
-					<div className="flex flex-col gap-6 max-w-2xl mx-auto items-center justify-start">
+				<div className="flex flex-1 flex-col gap-3 my-4 px-8 pb-2 pt-10 md:pt-16 lg:pt-24 max-w-screen-2xl mx-auto">
+					<div className="flex flex-col gap-6 max-w-screen-xl mx-auto items-center justify-start">
 						<div className="flex flex-col items-center justify-center gap-2">
 							<h2 className="text-2xl md:text-3xl text-center text-pretty font-bold">
 								{dataToRender.question}
@@ -188,7 +154,7 @@ export default async function PollPage({
 						</div>
 
 						{/* Poll Data */}
-						<div className="relative flex h-full w-full flex-col gap-3 lg:p-3">
+						<div className="relative max-w-screen-lg flex h-full w-full flex-col gap-3 lg:p-3">
 							<ul className="w-full grid gap-6">
 								{dataToRender.options.map((option) => (
 									<OptionToVote
@@ -197,7 +163,7 @@ export default async function PollPage({
 										pollId={id}
 										alreadyVoted={userAlreadyVoted}
 										userId={user?.id}
-										optionVotedId={optionSelectedForUserLoggedIn?.option_id}
+										optionVotedId={optionSelectedForUserLoggedIn?.options?.id}
 										canVote={userCanVote}
 									/>
 								))}
@@ -222,10 +188,15 @@ export default async function PollPage({
 							</ScrollArea>
 						</div>
 
-						<PollStats />
+						<PollStats stats={votesData} />
+
+						<SuggestedPolls
+							pollId={data.id}
+							pollEmbedding={data.embedding as unknown as number[]}
+						/>
 
 						{/* {isPollCreator || isCommunityInsider ? ( */}
-						<Statistics votes={statistics} />
+						{/* <Statistics votes={statistics} /> */}
 						{/* ) : null} */}
 					</div>
 				</div>
