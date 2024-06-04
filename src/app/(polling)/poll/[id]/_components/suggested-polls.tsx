@@ -1,8 +1,8 @@
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
 
-import { getSuggestedPolls } from "../../actions/polls";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { getSuggestedPolls } from "../../actions/polls";
 
 export async function SuggestedPolls({
 	pollId,

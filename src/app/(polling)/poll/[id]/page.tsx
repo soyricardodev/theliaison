@@ -8,11 +8,10 @@ import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { createClient } from "~/utils/supabase/server";
 import { PollStats, type RawData } from "./_components/poll-stats";
 import { ShareSocial } from "./_components/share-social";
-import { Statistics } from "./_components/statistics";
+import { SuggestedPolls } from "./_components/suggested-polls";
 import { Comments } from "./comments";
 import { FormComment } from "./form-comment";
 import { OptionToVote } from "./option-to-vote";
-import { SuggestedPolls } from "./_components/suggested-polls";
 
 export default async function PollPage({
 	params: { id },
