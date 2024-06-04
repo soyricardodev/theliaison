@@ -28,25 +28,41 @@ export type Database = {
 				Row: {
 					content: string;
 					created_at: string;
+					downvotes: number;
 					id: number;
+					parent_comment_id: number | null;
 					poll_id: string;
+					upvotes: number;
 					user_id: string;
 				};
 				Insert: {
 					content: string;
 					created_at?: string;
+					downvotes?: number;
 					id?: number;
+					parent_comment_id?: number | null;
 					poll_id: string;
+					upvotes?: number;
 					user_id: string;
 				};
 				Update: {
 					content?: string;
 					created_at?: string;
+					downvotes?: number;
 					id?: number;
+					parent_comment_id?: number | null;
 					poll_id?: string;
+					upvotes?: number;
 					user_id?: string;
 				};
 				Relationships: [
+					{
+						foreignKeyName: "comments_parent_comment_id_fkey";
+						columns: ["parent_comment_id"];
+						isOneToOne: false;
+						referencedRelation: "comments";
+						referencedColumns: ["id"];
+					},
 					{
 						foreignKeyName: "comments_poll_id_fkey";
 						columns: ["poll_id"];
