@@ -68,6 +68,7 @@ export function Comments({
 				return (
 					<CardReview
 						key={comment.id}
+						commentId={comment.id}
 						content={comment.content}
 						rating={3}
 						title="Title"
