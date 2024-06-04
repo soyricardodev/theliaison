@@ -8,6 +8,8 @@ type Comment = {
 	content: string;
 	created_at: string;
 	id: number;
+	upvotes: number;
+	downvotes: number;
 	users: {
 		id: string;
 		username: string;
@@ -67,6 +69,8 @@ export function Comments({
 		? comments.map((comment) => {
 				return (
 					<CardReview
+						upvotes={comment.upvotes}
+						downvotes={comment.downvotes}
 						key={comment.id}
 						commentId={comment.id}
 						content={comment.content}
