@@ -61,34 +61,6 @@ export function Comments({
 
 	return comments != null
 		? comments.map((comment) => {
-				// <li key={comment.id} className="px-3 py-2 bg-gray-100 rounded-lg">
-				// 	<div className="w-full flex flex-col gap-2">
-				// 		<p>{comment.content}</p>
-				// 		<div className="flex items-center gap-1 bg-gray-200 w-fit py-0.5 px-2 rounded-full">
-				// 			<Image
-				// 				alt={`${username}'s Avatar`}
-				// 				className="shrink-0 select-none rounded-full"
-				// 				loading="eager"
-				// 				src={`https://vercel.com/api/www/avatar/${username}?s=48`}
-				// 				width={24}
-				// 				height={24}
-				// 			/>
-				// 			<div className="flex items-center gap-1">
-				// 				<Link
-				// 					href={`/${username}`}
-				// 					className="font-medium hover:underline"
-				// 				>
-				// 					@{username}
-				// 				</Link>
-
-				// 				<span className="text-xs text-gray-600">
-				// 					{/* Date ago of the comment */}
-				// 					{getTimeAgo(comment.created_at)}
-				// 				</span>
-				// 			</div>
-				// 		</div>
-				// 	</div>
-				// </li>
 				return (
 					<CardReview
 						key={comment.id}
