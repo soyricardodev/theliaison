@@ -1,6 +1,6 @@
 "use client";
 
-import { Icon } from "@iconify/react";
+import { CircleArrowUpIcon, CircleArrowDownIcon } from "lucide-react";
 import { Tooltip, User } from "@nextui-org/react";
 import type React from "react";
 import { downvoteComment, upvoteComment } from "../../actions/comments";
@@ -55,16 +55,13 @@ const Review = ({
 			<div className="flex items-center gap-1">
 				<Tooltip content="Upvote">
 					<button type="button" onClick={() => upvoteComment(commentId)}>
-						<Icon icon="solar:round-arrow-up-bold-duotone" className="size-8" />
+						<CircleArrowUpIcon className="size-8" />
 						{upvotes}
 					</button>
 				</Tooltip>
 				<Tooltip content="Downvote">
 					<button type="button" onClick={() => downvoteComment(commentId)}>
-						<Icon
-							icon="solar:round-arrow-down-bold-duotone"
-							className="size-8"
-						/>
+						<CircleArrowDownIcon className="size-8" />
 						{downvotes}
 					</button>
 				</Tooltip>
