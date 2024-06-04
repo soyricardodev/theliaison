@@ -14,22 +14,22 @@ export function ExplorePollsTabs({
 			<Tab
 				title={
 					<div className="flex items-center justify-center space-x-2">
-						<SolarStarsMinimalisticBoldDuotone />
-						<span>All Polls</span>
-					</div>
-				}
-			>
-				{allPolls}
-			</Tab>
-			<Tab
-				title={
-					<div className="flex items-center justify-center space-x-2">
 						<SolarCrownStarBoldDuotone />
 						<span>Featured Polls</span>
 					</div>
 				}
 			>
 				{featuredPolls}
+			</Tab>
+			<Tab
+				title={
+					<div className="flex items-center justify-center space-x-2">
+						<SolarStarsMinimalisticBoldDuotone />
+						<span>All Polls</span>
+					</div>
+				}
+			>
+				{allPolls}
 			</Tab>
 		</Tabs>
 	);
