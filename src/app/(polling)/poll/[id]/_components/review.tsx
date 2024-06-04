@@ -10,6 +10,8 @@ export type ReviewType = {
 		name: string;
 		avatar: string;
 	};
+	downvotes: number;
+	upvotes: number;
 	createdAt: string;
 	rating: number;
 	title: string;
@@ -21,6 +23,8 @@ export type ReviewProps = React.HTMLAttributes<HTMLDivElement> & ReviewType;
 
 const Review = ({
 	id,
+	downvotes,
+	upvotes,
 	commentId,
 	ref,
 	children,
@@ -52,6 +56,7 @@ const Review = ({
 				<Tooltip content="Upvote">
 					<button type="button" onClick={() => upvoteComment(commentId)}>
 						<Icon icon="solar:round-arrow-up-bold-duotone" className="size-8" />
+						{upvotes}
 					</button>
 				</Tooltip>
 				<Tooltip content="Downvote">
@@ -60,6 +65,7 @@ const Review = ({
 							icon="solar:round-arrow-down-bold-duotone"
 							className="size-8"
 						/>
+						{downvotes}
 					</button>
 				</Tooltip>
 			</div>
