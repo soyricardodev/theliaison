@@ -3,6 +3,7 @@
 import { Icon } from "@iconify/react";
 import { Tooltip, User } from "@nextui-org/react";
 import type React from "react";
+import { downvoteComment, upvoteComment } from "../../actions/comments";
 
 export type ReviewType = {
 	user: {
@@ -13,11 +14,14 @@ export type ReviewType = {
 	rating: number;
 	title: string;
 	content: string;
+	commentId: number;
 };
 
 export type ReviewProps = React.HTMLAttributes<HTMLDivElement> & ReviewType;
 
 const Review = ({
+	id,
+	commentId,
 	ref,
 	children,
 	user,
@@ -46,10 +50,17 @@ const Review = ({
 			</div>
 			<div className="flex items-center gap-1">
 				<Tooltip content="Upvote">
-					<Icon icon="solar:round-arrow-up-bold-duotone" className="size-8" />
+					<button type="button" onClick={() => upvoteComment(commentId)}>
+						<Icon icon="solar:round-arrow-up-bold-duotone" className="size-8" />
+					</button>
 				</Tooltip>
 				<Tooltip content="Downvote">
-					<Icon icon="solar:round-arrow-down-bold-duotone" className="size-8" />
+					<button type="button" onClick={() => downvoteComment(commentId)}>
+						<Icon
+							icon="solar:round-arrow-down-bold-duotone"
+							className="size-8"
+						/>
+					</button>
 				</Tooltip>
 			</div>
 		</div>
