@@ -57,6 +57,10 @@ export function Comments({
 				},
 			)
 			.subscribe();
+
+		return () => {
+			channel.unsubscribe();
+		};
 	}, [supabase, comments]);
 
 	return comments != null
