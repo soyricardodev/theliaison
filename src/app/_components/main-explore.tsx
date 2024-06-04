@@ -5,7 +5,9 @@ import { NewPollsAproach } from "./polls";
 
 export async function MainExplore() {
 	const supabase = createClient();
-	const pollsWithOptionsQuery = supabase.from("polls").select(`
+	const featuredPollsWithOptionsQuery = supabase
+		.from("polls")
+		.select(`
     id,
     question,
     options (id, text),
@@ -13,11 +15,26 @@ export async function MainExplore() {
 		users (id, username, avatar_url),
 		image,
 		categories (*)
-  `);
+  `)
+		.eq("is_featured", true);
+	const pollsWithOptionsQuery = supabase
+		.from("polls")
+		.select(`
+    id,
+    question,
+    options (id, text),
+		votes (id, poll_id, option_id, user_id),
+		users (id, username, avatar_url),
+		image,
+		categories (*)
+  `)
+		.eq("is_featured", false);
 
-	const { data } = await pollsWithOptionsQuery;
+	const { data: featuredPollsQuery } = await featuredPollsWithOptionsQuery;
+	const { data: allPollsQuery } = await pollsWithOptionsQuery;
 
-	function calculateVotes() {
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+	function calculateVotes(data: any) {
 		const votesDetailsArray: PollWithOptionsAndVotes[] = [];
 
 		if (!data) return votesDetailsArray;
@@ -65,18 +82,14 @@ export async function MainExplore() {
 		return votesDetailsArray;
 	}
 
-	const dataToRender = calculateVotes();
-	const dataToRenderStructuredClone = structuredClone(dataToRender);
-	const dataToRenderReversed = dataToRenderStructuredClone.reverse();
+	const featuredPolls = calculateVotes(featuredPollsQuery);
+	const allPolls = calculateVotes(allPollsQuery);
 
 	return (
 		<div className="mx-auto flex max-w-7xl flex-col px-6 pb-20">
 			<div className="grid gap-4">
 				<h2 className="text-4xl font-bold font-heading">Explore</h2>
-				<ExplorePolls
-					featuredPolls={dataToRenderReversed}
-					newPolls={dataToRender}
-				/>
+				<ExplorePolls featuredPolls={featuredPolls} newPolls={allPolls} />
 			</div>
 		</div>
 	);
