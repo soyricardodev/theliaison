@@ -548,6 +548,14 @@ export type Database = {
 			[_ in never]: never;
 		};
 		Functions: {
+			downvote_comment: {
+				Args: {
+					p_comment_id: number;
+				};
+				Returns: {
+					downvotes: number;
+				}[];
+			};
 			hnswhandler: {
 				Args: {
 					"": unknown;
@@ -571,6 +579,14 @@ export type Database = {
 					question: string;
 					image: string;
 					similarity: number;
+				}[];
+			};
+			upvote_comment: {
+				Args: {
+					p_comment_id: number;
+				};
+				Returns: {
+					upvotes: number;
 				}[];
 			};
 			vector_avg: {
