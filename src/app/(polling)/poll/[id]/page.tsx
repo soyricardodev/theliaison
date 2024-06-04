@@ -26,7 +26,7 @@ export default async function PollPage({
 		votes (id, poll_id, options(id, text), user_id, users(country, gender, relationship_status, birthday_date)),
 		users (id, username, avatar_url),
 		image,
-		comments (id, content, created_at, users (id, username, avatar_url)),
+		comments (id, content, created_at, users (id, username, avatar_url), upvotes, downvotes),
 		categories (id, name),
 		embedding
     `)
