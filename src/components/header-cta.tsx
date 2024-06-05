@@ -29,20 +29,46 @@ export async function HeaderCTA({
 	} = await supabase.auth.getUser();
 
 	if (error || !user) {
-		return <LoginCTA />;
+		return <AuthCTA />;
 	}
 
 	return (
-		<Button href={href} as={Link} variant="flat" size="sm" radius="full">
+		<Button
+			href={href}
+			as={Link}
+			color="primary"
+			size="sm"
+			radius="full"
+			variant="bordered"
+		>
 			{ctaText}
 		</Button>
 	);
 }
 
-function LoginCTA() {
+function AuthCTA() {
 	return (
-		<Button href="/login" as={Link} variant="flat" size="sm" radius="full">
-			Get Started
-		</Button>
+		<>
+			<Button
+				href="/login"
+				as={Link}
+				color="primary"
+				size="sm"
+				radius="full"
+				variant="bordered"
+			>
+				Login
+			</Button>
+			<Button
+				href="/signup"
+				as={Link}
+				color="primary"
+				size="sm"
+				radius="full"
+				className="ml-2"
+			>
+				Signup
+			</Button>
+		</>
 	);
 }

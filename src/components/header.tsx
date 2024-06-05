@@ -18,7 +18,7 @@ export function Header({ showCta = true }: HeaderProps) {
 				<MainNav />
 				<MobileNav />
 
-				<div className="ml-auto h-12 max-w-fit items-center justify-center gap-0 flex self-end">
+				<div className="ml-auto max-w-fit flex">
 					{showCta && <HeaderCTA />}
 					<div className="px-2 flex items-center justify-center">
 						<HeaderUser />

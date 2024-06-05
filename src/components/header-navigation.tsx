@@ -99,9 +99,14 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger>
-				<Avatar size="sm" src={avatar_url ?? ""} name={full_name} />
+				<Avatar
+					size="sm"
+					src={avatar_url ?? ""}
+					name={full_name}
+					color="primary"
+				/>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent className="w-56">
+			<DropdownMenuContent className="w-56 bg-content1">
 				{menuLinks.map((menuLink) => (
 					<DropdownMenuItem asChild key={menuLink.key}>
 						<Link
@@ -123,10 +128,10 @@ function HeaderNavigationLoggedOut() {
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<Button variant="ghost" size="sm" className="rounded-full">
-					<MenuIcon width={20} className="text-default-700/80" />
+					<MenuIcon width={20} className="text-primary" />
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent className="w-56">
+			<DropdownMenuContent className="w-56 bg-content1">
 				{menuItemsLoggedOut.map((menuLink) => (
 					<DropdownMenuItem asChild key={menuLink.key}>
 						<Link
