@@ -119,7 +119,25 @@ const config = {
 		require("@headlessui/tailwindcss"),
 		require("@tailwindcss/typography"),
 		require("tailwindcss-animate"),
-		nextui(),
+		nextui({
+			defaultTheme: "light",
+			themes: {
+				light: {
+					colors: {
+						background: "#FBFBFE",
+						foreground: "#050315",
+						primary: {
+							DEFAULT: "#473F36",
+							foreground: "#FFF8F5",
+						},
+						secondary: {
+							DEFAULT: "#DBD0C5",
+							foreground: "#282626",
+						},
+					},
+				},
+			},
+		}),
 	],
 } satisfies Config;
 
