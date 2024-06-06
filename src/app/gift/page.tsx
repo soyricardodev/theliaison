@@ -5,6 +5,9 @@ import { FAQs } from "./_components/faqs";
 import { Hero } from "./_components/hero";
 import { HeroAnimation } from "./_components/hero-animation";
 import { Testimonials } from "./_components/testimonials";
+import { WavyText } from "~/components/magicui/wavy-text";
+import { Robot3D } from "./_components/robot3d";
+import { Steps } from "./_components/steps";
 
 export default function GiftingConciergePage() {
 	return (
@@ -14,11 +17,9 @@ export default function GiftingConciergePage() {
 				<Brands />
 				<div className="bg-content2 py-36 w-full items-center justify-center mx-auto flex flex-col gap-8">
 					<div className="flex flex-col gap-4">
-						<div className="flex flex-col my-4 py-6 max-w-xl mx-auto text-center gap-4">
-							<h3 className="text-4xl font-bold">
-								A marketplace of magical gifts.
-							</h3>
-							<p className="text-lg text-pretty">
+						<div className="flex flex-col my-4 py-6 mx-auto text-center gap-4">
+							<WavyText word="A marketplace of magical gifts." />
+							<p className="text-lg text-pretty max-w-xl mx-auto">
 								The Liaison is a platform that connects you with the best
 								gifting concierges in your area. With our platform, you can
 								easily find the perfect gifting concierge for your needs.
@@ -26,12 +27,20 @@ export default function GiftingConciergePage() {
 						</div>
 
 						<div className="flex flex-col items-center justify-center gap-4 lg:flex-row">
-							<CardIDK />
-							<CardIDK />
-							<CardIDK />
+							<CardIDK title="For Him" description="For Him">
+								<Robot3D />
+							</CardIDK>
+							<CardIDK title="For She" description="For She">
+								<Robot3D />
+							</CardIDK>
+							<CardIDK title="With AI" description="Very cool AI">
+								<Robot3D />
+							</CardIDK>
 						</div>
 					</div>
 				</div>
+
+				<Steps />
 
 				<div className="bg-content2 py-36 w-full items-center justify-center mx-auto flex flex-col gap-8">
 					<div className="flex flex-col my-4 py-6 max-w-xl mx-auto text-center gap-4">

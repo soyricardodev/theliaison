@@ -1,40 +1,23 @@
-"use client";
+import { Card, CardBody, CardFooter, Spacer } from "@nextui-org/react";
 
-import type { CardProps } from "@nextui-org/react";
+interface CardIDKProps {
+	title: string;
+	description: string;
+	children: React.ReactNode;
+}
 
-import React from "react";
-import {
-	Card,
-	Image,
-	CardBody,
-	CardFooter,
-	Button,
-	Spacer,
-} from "@nextui-org/react";
-
-export function CardIDK(props: CardProps) {
+export function CardIDK({ title, description, children }: CardIDKProps) {
 	return (
-		<Card className="w-[420px]" {...props}>
+		<Card className="w-[420px]">
 			<CardBody className="px-3 pb-1">
-				<Image
-					alt="Card image"
-					className="aspect-video w-full object-cover object-top"
-					src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/airpods.png"
-				/>
+				{children}
 				<Spacer y={2} />
 				<div className="flex flex-col gap-2 px-2">
-					<p className="text-large font-medium">Card with thumbnail</p>
-					<p className="text-small text-default-400">
-						This is a card with a thumbnail image on top.
-					</p>
+					<p className="text-large font-medium">{title}</p>
+					<p className="text-small text-default-400">{description}</p>
 				</div>
 			</CardBody>
-			<CardFooter className="justify-end gap-2">
-				<Button fullWidth variant="light">
-					Cancel
-				</Button>
-				<Button fullWidth>Continue</Button>
-			</CardFooter>
+			<CardFooter />
 		</Card>
 	);
 }
