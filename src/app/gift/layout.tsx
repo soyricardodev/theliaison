@@ -1,6 +1,5 @@
 import { Header } from "~/components/header";
 import { Footer } from "./_components/footer";
-// import { Navigation } from "./_components/navigation";
 
 export default function GiftingConciergeLayout({
 	children,
@@ -9,10 +8,9 @@ export default function GiftingConciergeLayout({
 }) {
 	return (
 		<>
-			{/* <Navigation /> */}
 			<Header />
 			{children}
-			{/* <Footer /> */}
+			<Footer />
 		</>
 	);
 }

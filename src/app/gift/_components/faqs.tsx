@@ -61,7 +61,7 @@ export function FAQs() {
 			<div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-6 lg:flex-row lg:items-start lg:gap-12">
 				<h2 className="px-2 text-3xl leading-7">
 					<span className="inline-block lg:hidden">FAQs</span>
-					<p className="hidden bg-gradient-to-br from-foreground-800 to-foreground-500 bg-clip-text pt-4 text-5xl font-semibold tracking-tight text-transparent dark:to-foreground-200 lg:inline-block">
+					<p className="hidden bg-gradient-to-br from-black via-primary to-primary/60 bg-clip-text pt-4 text-5xl font-semibold tracking-tight text-transparent dark:to-foreground-200 lg:inline-block">
 						Frequently
 						<br />
 						asked

@@ -164,10 +164,15 @@ export function Testimonials() {
 
 	return (
 		<section className="mx-auto w-full max-w-6xl px-6 py-20 sm:py-32 lg:px-8 lg:py-40">
+			<div className="w-full mx-auto my-12">
+				<h3 className="text-3xl font-bold text-center">
+					What the people say about the Gifting Concierge
+				</h3>
+			</div>
 			<div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
 				<ScrollingBanner
 					isVertical
-					duration={isMobile ? 200 : 120}
+					duration={isMobile ? 80 : 60}
 					shouldPauseOnHover={false}
 				>
 					{fistColumn.map((testimonial, index) => (
