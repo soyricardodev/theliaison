@@ -9,7 +9,7 @@ import { Testimonials } from "./_components/testimonials";
 export default function GiftingConciergePage() {
 	return (
 		<>
-			{/* <HeroAnimation /> */}
+			<HeroAnimation />
 			<main className="flex-1 overflow-auto mx-auto flex flex-col items-center justify-center">
 				<Brands />
 				<div className="bg-content2 py-36 w-full items-center justify-center mx-auto flex flex-col gap-8">
