@@ -5,10 +5,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GeistSans } from "geist/font/sans";
 
 import { cn } from "@theliaison/ui";
+import { TailwindIndicator } from "@theliaison/ui/tailwind-indicator";
 
 import { MinervaBoldFont } from "~/assets/fonts";
 import { Providers } from "~/components/providers";
-import { TailwindIndicator } from "~/components/tailwind-indicator";
+import { env } from "~/env";
 
 export const metadata = {
   title: "Ask The Liaison - Social Polling",
@@ -35,7 +36,7 @@ export default function RootLayout({
           <div className="bg-background text-foreground">{children}</div>
         </Providers>
         <TailwindIndicator />
-        {process.env.NODE_ENV === "production" ? (
+        {env.NODE_ENV === "production" ? (
           <>
             <Analytics />
             <SpeedInsights />
