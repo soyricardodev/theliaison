@@ -25,24 +25,24 @@ To get a local copy up and running follow these simple steps.
 
 1. **Clone the repository:**
 
-    ```bash
-    git clone https://github.com/soyricardodev/theliaison.git
-    cd theliaison
-    ```
+   ```bash
+   git clone https://github.com/soyricardodev/theliaison.git
+   cd theliaison
+   ```
 
 2. **Install dependencies:**
 
-    ```bash
-    bun install
-    ```
+   ```bash
+   bun install
+   ```
 
 3. **Run the development server:**
 
-    ```bash
-    bun run dev
-    ```
+   ```bash
+   bun run dev
+   ```
 
-    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+   Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Project Structure
 
@@ -75,48 +75,48 @@ To contribute, please follow these steps:
 
 2. **Clone your fork and create a new branch:**
 
-    ```bash
-    git clone https://github.com/your-username/theliaison.git
-    cd theliaison
-    git checkout -b feature/YourFeature
-    ```
+   ```bash
+   git clone https://github.com/your-username/theliaison.git
+   cd theliaison
+   git checkout -b feature/YourFeature
+   ```
 
 3. **Install dependencies using Bun:**
 
-    ```bash
-    bun install
-    ```
+   ```bash
+   bun install
+   ```
 
 4. **Make your changes.**
 
 5. **Commit your changes following the commit message conventions:**
 
-    - You can use `cz` command to make standardized commit messages:
+   - You can use `cz` command to make standardized commit messages:
 
-        ```bash
-        bun run cz
-        ```
+     ```bash
+     bun run cz
+     ```
 
 6. **Push to your fork and submit a pull request.**
 
-    ```bash
-    git push origin feature/YourFeature
-    ```
+   ```bash
+   git push origin feature/YourFeature
+   ```
 
 ### Coding Conventions
 
 - The project uses [Biome](https://biomejs.dev/) for linting and formatting.
 - To lint the codebase, run:
 
-    ```bash
-    bun run lint
-    ```
+  ```bash
+  bun run lint
+  ```
 
 - To lint and fix formatting issues, run:
 
-    ```bash
-    bun run lint:fix
-    ```
+  ```bash
+  bun run lint:fix
+  ```
 
 ## License
 
