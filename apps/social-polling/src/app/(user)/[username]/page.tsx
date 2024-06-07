@@ -2,9 +2,10 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { NotebookPenIcon } from "lucide-react";
 
+import { Separator } from "@theliaison/ui/separator";
+
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { PollCard } from "~/app/_components/polls";
-import { Separator } from "~/components/ui/separator";
 import { createClient } from "~/utils/supabase/server";
 import { ProfileData } from "./profile-data";
 

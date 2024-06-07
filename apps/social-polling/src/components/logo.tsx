@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
 
 export function Logo({ className }: { className?: string }) {
   return (

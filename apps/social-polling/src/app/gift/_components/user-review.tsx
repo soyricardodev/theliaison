@@ -3,7 +3,7 @@
 import type React from "react";
 import { Avatar } from "@nextui-org/react";
 
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
 
 export type UserReviewProps = React.HTMLAttributes<HTMLDivElement> & {
   avatar: string;

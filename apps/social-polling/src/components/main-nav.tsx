@@ -4,6 +4,7 @@ import type React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { cn } from "@theliaison/ui";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,8 +13,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "~/components/ui/navigation-menu";
-import { cn } from "~/lib/utils";
+} from "@theliaison/ui/navigation-menu";
+
 import { Logo } from "./logo";
 
 export function MainNav() {

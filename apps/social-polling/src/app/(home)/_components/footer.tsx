@@ -2,9 +2,10 @@ import Image from "next/image";
 import { InstagramLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
 import { ChevronRight, HeartHandshake } from "lucide-react";
 
+import { cn } from "@theliaison/ui";
+import { buttonVariants } from "@theliaison/ui/button";
+
 import { logoBlack } from "~/assets/images";
-import { buttonVariants } from "~/components/ui/button";
-import { cn } from "~/lib/utils";
 
 const footerNavs = [
   {

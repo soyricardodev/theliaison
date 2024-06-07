@@ -5,8 +5,8 @@ import type * as React from "react";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { Command as CommandPrimitive } from "cmdk";
 
-import { Dialog, DialogContent } from "~/components/ui/dialog";
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
+import { Dialog, DialogContent } from "@theliaison/ui/dialog";
 
 const Command = ({
   ref,

@@ -5,10 +5,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Chip, Progress } from "@nextui-org/react";
 
+import { cn } from "@theliaison/ui";
+
 import type { PollWithOptionsAndVotes } from "~/types/poll";
 import { MagicCard, MagicContainer } from "~/components/magicui/magic-card";
 import { categories } from "~/lib/categories";
-import { cn } from "~/lib/utils";
 
 export function PollsContainer({
   children,

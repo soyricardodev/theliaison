@@ -12,9 +12,10 @@ import {
   Shield,
 } from "lucide-react";
 
+import { cn } from "@theliaison/ui";
+import { buttonVariants } from "@theliaison/ui/button";
+
 import Marquee from "~/components/magicui/marquee";
-import { buttonVariants } from "~/components/ui/button";
-import { cn } from "~/lib/utils";
 
 const tiles = [
   {

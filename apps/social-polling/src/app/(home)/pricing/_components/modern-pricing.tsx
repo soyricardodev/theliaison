@@ -16,8 +16,9 @@ import {
   Tabs,
 } from "@nextui-org/react";
 
+import { cn } from "@theliaison/ui";
+
 import type { Tables } from "~/types/database-types";
-import { cn } from "~/lib/utils";
 
 type Prices = Tables<"prices">;
 

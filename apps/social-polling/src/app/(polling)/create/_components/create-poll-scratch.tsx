@@ -16,7 +16,7 @@ import {
   FormField,
   FormItem,
   FormMessage,
-} from "~/components/ui/form";
+} from "@theliaison/ui/form";
 import {
   Select,
   SelectContent,
@@ -24,7 +24,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "~/components/ui/select";
+} from "@theliaison/ui/select";
+
 import { categories } from "~/lib/categories";
 import { createClient } from "~/utils/supabase/client";
 

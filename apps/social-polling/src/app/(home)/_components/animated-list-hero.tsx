@@ -1,7 +1,8 @@
 "use client";
 
+import { cn } from "@theliaison/ui";
+
 import { AnimatedList } from "~/components/magicui/animated-list";
-import { cn } from "~/lib/utils";
 
 interface Item {
   name: string;

@@ -4,7 +4,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { Avatar, AvatarGroup, Button } from "@nextui-org/react";
 
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
 
 export type SupportCardProps = React.HTMLAttributes<HTMLDivElement>;
 

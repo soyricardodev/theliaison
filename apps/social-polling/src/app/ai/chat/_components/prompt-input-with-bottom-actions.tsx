@@ -5,7 +5,8 @@ import { Icon } from "@iconify/react";
 import { Button, ScrollShadow, Tooltip } from "@nextui-org/react";
 import { useChat } from "ai/react";
 
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
+
 import { MessageCard } from "./message-card";
 import { PromptInput } from "./prompt-input";
 

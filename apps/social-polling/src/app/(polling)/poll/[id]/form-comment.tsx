@@ -12,7 +12,8 @@ import {
   FormField,
   FormItem,
   FormMessage,
-} from "~/components/ui/form";
+} from "@theliaison/ui/form";
+
 import { createClient } from "~/utils/supabase/client";
 
 const submitComment = z.object({

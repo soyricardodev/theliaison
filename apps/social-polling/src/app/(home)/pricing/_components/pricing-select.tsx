@@ -4,8 +4,8 @@ import type { User } from "@supabase/supabase-js";
 import * as React from "react";
 import { usePathname, useRouter } from "next/navigation";
 
-import type { Tables } from "~/types/database-types";
-import { Button } from "~/components/ui/button";
+import { cn } from "@theliaison/ui";
+import { Button } from "@theliaison/ui/button";
 import {
   Select,
   SelectContent,
@@ -13,8 +13,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "~/components/ui/select";
-import { cn } from "~/lib/utils";
+} from "@theliaison/ui/select";
+
+import type { Tables } from "~/types/database-types";
 import { getErrorRedirect } from "~/utils/helpers";
 import { getStripe } from "~/utils/stripe/client";
 import { checkoutWithStripe } from "~/utils/stripe/server";

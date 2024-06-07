@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import { ArrowRightIcon } from "lucide-react";
 
-import { Button } from "~/components/ui/button";
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
+import { Button } from "@theliaison/ui/button";
 
 const BentoGrid = ({
   children,
@@ -35,7 +35,6 @@ const BentoCard = ({
   name: string;
   className: string;
   background: ReactNode;
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   Icon: any;
   description: string;
   href: string;

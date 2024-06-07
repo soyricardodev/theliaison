@@ -17,8 +17,9 @@ import {
 } from "@nextui-org/react";
 import { toast } from "sonner";
 
+import { cn } from "@theliaison/ui";
+
 import { login } from "~/app/(auth)/actions";
-import { cn } from "~/lib/utils";
 import { createClient } from "~/utils/supabase/client";
 
 type OptionToVote = {

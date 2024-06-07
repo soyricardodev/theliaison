@@ -2,10 +2,11 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { Chip } from "@nextui-org/react";
 
+import { ScrollArea } from "@theliaison/ui/scroll-area";
+import { Toaster } from "@theliaison/ui/sonner";
+
 import type { RawData } from "./_components/poll-stats";
 import type { PollWithOptionsAndVotes } from "~/types/poll";
-import { ScrollArea } from "~/components/ui/scroll-area";
-import { Toaster } from "~/components/ui/sonner";
 import { categories } from "~/lib/categories";
 import { createClient } from "~/utils/supabase/server";
 import OptionsTabs from "./_components/options-tabs";

@@ -4,7 +4,7 @@ import type { HTMLMotionProps } from "framer-motion";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
 
 interface WordRotateProps {
   words: string[];

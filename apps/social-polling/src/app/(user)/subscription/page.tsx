@@ -2,9 +2,10 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Progress } from "@nextui-org/react";
 
-import { Button } from "~/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "~/components/ui/tabs";
-import { getSubscriptionProgress } from "~/lib/utils";
+import { getSubscriptionProgress } from "@theliaison/ui";
+import { Button } from "@theliaison/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@theliaison/ui/tabs";
+
 import { createClient } from "~/utils/supabase/server";
 import { StripePortal } from "./stripe-portal";
 

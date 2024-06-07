@@ -4,7 +4,7 @@ import type { TextAreaProps } from "@nextui-org/react";
 import type React from "react";
 import { Textarea } from "@nextui-org/react";
 
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
 
 export const PromptInput = ({
   ref,

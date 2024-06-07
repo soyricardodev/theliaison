@@ -7,7 +7,7 @@ import { Spacer } from "@nextui-org/react";
 import { useControlledState } from "@react-stately/utils";
 import { domAnimation, LazyMotion, m } from "framer-motion";
 
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
 
 export type VerticalCollapsibleStepProps = {
   className?: string;

@@ -14,8 +14,9 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/react";
 
+import { cn } from "@theliaison/ui";
+
 import { Logo } from "~/components/logo";
-import { cn } from "~/lib/utils";
 
 const menuItems = [
   "About",

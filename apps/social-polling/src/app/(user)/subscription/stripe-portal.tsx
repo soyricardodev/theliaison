@@ -2,8 +2,9 @@
 
 import { usePathname, useRouter } from "next/navigation";
 
-import { buttonVariants } from "~/components/ui/button";
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
+import { buttonVariants } from "@theliaison/ui/button";
+
 import { createStripePortal } from "~/utils/stripe/server";
 
 export function StripePortal() {

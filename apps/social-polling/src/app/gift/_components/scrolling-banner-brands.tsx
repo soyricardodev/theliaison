@@ -3,7 +3,7 @@
 import React from "react";
 import { ScrollShadow } from "@nextui-org/react";
 
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
 
 interface ScrollingBannerProps extends React.HTMLAttributes<HTMLDivElement> {
   isReverse?: boolean;

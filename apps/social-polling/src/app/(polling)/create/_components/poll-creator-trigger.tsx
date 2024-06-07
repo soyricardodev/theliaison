@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { ArrowRightIcon, ZapIcon } from "lucide-react";
 
-import { Container } from "~/components/container";
 import {
   Dialog,
   DialogContent,
@@ -11,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "~/components/ui/dialog";
+} from "@theliaison/ui/dialog";
 import {
   Drawer,
   DrawerContent,
@@ -19,7 +18,9 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "~/components/ui/drawer";
+} from "@theliaison/ui/drawer";
+
+import { Container } from "~/components/container";
 import { useMediaQuery } from "~/hooks/use-media-query";
 import { CreatePollScratch } from "./create-poll-scratch";
 

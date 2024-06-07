@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 
-import { getTimeAgo } from "~/lib/utils";
+import { getTimeAgo } from "@theliaison/ui";
+
 import { createClient } from "~/utils/supabase/client";
 import CardReview from "./_components/card-review";
 

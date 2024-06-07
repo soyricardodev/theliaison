@@ -6,7 +6,6 @@ import { Button, Input } from "@nextui-org/react";
 import { useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
 
-import type { SimpleSignUp } from "~/utils/validators/auth";
 import {
   Form,
   FormControl,
@@ -14,7 +13,9 @@ import {
   FormField,
   FormItem,
   FormMessage,
-} from "~/components/ui/form";
+} from "@theliaison/ui/form";
+
+import type { SimpleSignUp } from "~/utils/validators/auth";
 import { simpleSignUpSchema } from "~/utils/validators/auth";
 import { simpleSignupAction } from "../../actions";
 import { AuthWithGoogle } from "../../google";

@@ -4,7 +4,7 @@ import type { CSSProperties, ReactElement, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
 
 interface MousePosition {
   x: number;
@@ -42,7 +42,7 @@ const MagicContainer = ({ children, className }: MagicContainerProps) => {
   const mousePosition = useMousePosition();
   const mouse = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const containerSize = useRef<{ w: number; h: number }>({ w: 0, h: 0 });
-  const [boxes, setBoxes] = useState<Array<HTMLElement>>([]);
+  const [boxes, setBoxes] = useState<HTMLElement[]>([]);
 
   useEffect(() => {
     if (containerRef.current) {

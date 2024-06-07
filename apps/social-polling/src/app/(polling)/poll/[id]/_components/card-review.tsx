@@ -1,7 +1,8 @@
 import type React from "react";
 
+import { cn } from "@theliaison/ui";
+
 import type { ReviewType } from "./review";
-import { cn } from "~/lib/utils";
 import Review from "./review";
 
 export type CardReviewProps = React.HTMLAttributes<HTMLDivElement> & ReviewType;

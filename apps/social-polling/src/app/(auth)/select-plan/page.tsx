@@ -4,7 +4,8 @@ import type React from "react";
 import { useState } from "react";
 import { Radio, RadioGroup } from "@nextui-org/react";
 
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
+
 import { CommunityMember } from "./_components/community-member";
 import { ModalUserData } from "./_components/modal-user-data";
 import { SelectCard } from "./_components/select-card";

@@ -6,14 +6,15 @@ import { Button, Input } from "@nextui-org/react";
 import { useFormStatus } from "react-dom";
 import { useForm } from "react-hook-form";
 
-import type { SignInWithEmail } from "~/utils/validators/auth";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from "~/components/ui/form";
+} from "@theliaison/ui/form";
+
+import type { SignInWithEmail } from "~/utils/validators/auth";
 import { signInWithEmailSchema } from "~/utils/validators/auth";
 import { login } from "../../actions";
 import { AuthWithGoogle } from "../../google";

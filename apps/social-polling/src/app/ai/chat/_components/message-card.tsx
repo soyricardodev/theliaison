@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import { Avatar, Badge, Button, Link, Tooltip } from "@nextui-org/react";
 import { useClipboard } from "@nextui-org/use-clipboard";
 
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
 
 export type MessageCardProps = React.HTMLAttributes<HTMLDivElement> & {
   avatar?: string;

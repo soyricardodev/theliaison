@@ -1,7 +1,8 @@
 import { StarFilledIcon } from "@radix-ui/react-icons";
 
+import { cn } from "@theliaison/ui";
+
 import Marquee from "~/components/magicui/marquee";
-import { cn } from "~/lib/utils";
 
 export const Highlight = ({
   children,

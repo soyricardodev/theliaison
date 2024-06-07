@@ -1,7 +1,8 @@
 import Link from "next/link";
 
-import { buttonVariants } from "~/components/ui/button";
-import { cn } from "~/lib/utils";
+import { cn } from "@theliaison/ui";
+import { buttonVariants } from "@theliaison/ui/button";
+
 import { About } from "../_components/about";
 import CallToAction from "../_components/cta";
 import FAQ from "../_components/faq";
