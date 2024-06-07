@@ -50,7 +50,7 @@ To get a local copy up and running follow these simple steps.
 - `public/`: Contains public assets like images and icons.
 - `app/`: Next.js pages.
 - `components/`: Reusable React components.
-- `components/ui/`: Shadcn components.
+- `@theliaison/ui/`: Shadcn components.
 - `components/magicui/`: Magic UI components.
 - `lib/`: Utility functions.
 - `styles/`: Global and component-specific styles.
