@@ -3,23 +3,17 @@ import { nextui } from "@nextui-org/react";
 import colors from "tailwindcss/colors";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
+import baseConfig from "@theliaison/tailwind-config/web";
+
 const config = {
-  darkMode: ["class"],
+  presets: [baseConfig],
   content: [
-    "./src/**/*.{ts,tsx}",
+    ...baseConfig.content,
+    "../../packages/ui/**/*.{ts,tsx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@tremor/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    transparent: "transparent",
-    current: "currentColor",
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       colors: {
         tremor: {
@@ -63,27 +57,6 @@ const config = {
         sans: ["var(--font-geist-sans)", ...fontFamily.sans],
         heading: ["var(--font-heading)", ...fontFamily.serif],
       },
-      animation: {
-        gradient: "gradient 8s linear infinite",
-        "scrolling-banner": "scrolling-banner var(--duration) linear infinite",
-        "scrolling-banner-vertical":
-          "scrolling-banner-vertical var(--duration) linear infinite",
-      },
-      keyframes: {
-        gradient: {
-          to: {
-            backgroundPosition: "var(--bg-size) 0",
-          },
-        },
-        "scrolling-banner": {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(calc(-50% - var(--gap)/2))" },
-        },
-        "scrolling-banner-vertical": {
-          from: { transform: "translateY(0)" },
-          to: { transform: "translateY(calc(-50% - var(--gap)/2))" },
-        },
-      },
     },
   },
   safelist: [
@@ -116,9 +89,7 @@ const config = {
     },
   ],
   plugins: [
-    require("@headlessui/tailwindcss"),
     require("@tailwindcss/typography"),
-    require("tailwindcss-animate"),
     nextui({
       defaultTheme: "light",
       themes: {
