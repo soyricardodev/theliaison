@@ -56,8 +56,8 @@ export const MessageCard = ({
 		<p>
 			Something went wrong, if the issue persists please contact us through our
 			help center at&nbsp;
-			<Link href="mailto:support@acmeai.com" size="sm">
-				support@acmeai.com
+			<Link href="mailto:support@theliaisonai.com" size="sm">
+				support@theliaisonai.com
 			</Link>
 		</p>
 	);

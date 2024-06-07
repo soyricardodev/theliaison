@@ -26,7 +26,7 @@ const testimonials: Testimonial[] = [
 		name: "Jane Smith",
 		role: "Marketing Director at Lorem",
 		content:
-			"I used to be a Incflow user. I relied on Incflow for all my freelance projects. However, when Acme was launched, I was amazed by its smooth performance. Typically, it took me around 5 days to complete websites, but with Acme, I did it in just 2 days. @Acme is impressive! 🔥",
+			"I used to be a Incflow user. I relied on Incflow for all my freelance projects. However, when Acme was launched, I was amazed by its smooth performance. Typically, it took me around 5 days to complete websites, but with Acme, I did it in just 2 days. @theliaison is impressive! 🔥",
 	},
 	{
 		avatar: "https://i.pravatar.cc/150?u=a042581f4e290260250",

@@ -13,7 +13,7 @@ const faqs = [
 	{
 		title: "How can I apply to the Open Source Discount?",
 		content:
-			"The Open Source Discount is available for everyone who is building an open source project. You can apply to the discount by sending an email to support@acme.com",
+			"The Open Source Discount is available for everyone who is building an open source project. You can apply to the discount by sending an email to support@theliaison.com",
 	},
 	{
 		title: "Can I use Acme for my freelance projects?",
@@ -42,12 +42,12 @@ const faqs = [
 	{
 		title: "Do you have discounts for students?",
 		content:
-			"Yes, we provide a 50% discount for students. You can apply to the discount by sending an email to support@acme.com",
+			"Yes, we provide a 50% discount for students. You can apply to the discount by sending an email to support@theliaison.com",
 	},
 	{
 		title: "Do you have discounts for startups?",
 		content:
-			"Yes, we provide a 50% discount for startups. You can apply to the discount by sending an email to support@acme.com",
+			"Yes, we provide a 50% discount for startups. You can apply to the discount by sending an email to support@theliaison.com",
 	},
 	{
 		title: "How often do you release updates?",
