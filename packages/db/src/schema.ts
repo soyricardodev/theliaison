@@ -1,7 +1,7 @@
 import { relations, sql } from "drizzle-orm";
 import {
   integer,
-  pgTable,
+  pgTableCreator,
   primaryKey,
   text,
   timestamp,
@@ -11,7 +11,11 @@ import {
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const Post = pgTable("post", {
+export const createTable = pgTableCreator(
+  (name) => `theliaison_gifting_concierge_${name}`,
+);
+
+export const Post = createTable("post", {
   id: uuid("id").notNull().primaryKey().defaultRandom(),
   title: varchar("name", { length: 256 }).notNull(),
   content: text("content").notNull(),
@@ -31,7 +35,7 @@ export const CreatePostSchema = createInsertSchema(Post, {
   updatedAt: true,
 });
 
-export const User = pgTable("user", {
+export const User = createTable("user", {
   id: uuid("id").notNull().primaryKey().defaultRandom(),
   name: varchar("name", { length: 255 }),
   email: varchar("email", { length: 255 }).notNull(),
@@ -46,7 +50,7 @@ export const UserRelations = relations(User, ({ many }) => ({
   accounts: many(Account),
 }));
 
-export const Account = pgTable(
+export const Account = createTable(
   "account",
   {
     userId: uuid("userId")
@@ -76,7 +80,7 @@ export const AccountRelations = relations(Account, ({ one }) => ({
   user: one(User, { fields: [Account.userId], references: [User.id] }),
 }));
 
-export const Session = pgTable("session", {
+export const Session = createTable("session", {
   sessionToken: varchar("sessionToken", { length: 255 }).notNull().primaryKey(),
   userId: uuid("userId")
     .notNull()
