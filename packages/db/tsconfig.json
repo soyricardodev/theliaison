@@ -1,0 +1,10 @@
+{
+  "extends": "@theliaison/tsconfig/internal-package.json",
+  "compilerOptions": {
+    "moduleResolution": "Bundler",
+    "outDir": "dist",
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
