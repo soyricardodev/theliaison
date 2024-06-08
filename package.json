@@ -1,6 +1,11 @@
 {
   "name": "theliaison",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tooling/*"
+  ],
   "engines": {
     "node": ">=20.12.0"
   },
