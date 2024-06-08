@@ -3,17 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "build": "pnpm with-env next build",
+    "clean": "git clean -xdf .next .turbo node_modules",
+    "dev": "pnpm with-env next dev",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "start": "pnpm with-env next start",
+    "typecheck": "tsc --noEmit",
+    "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@theliaison/ui": "workspace:*",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "next": "14.2.3"
   },
   "devDependencies": {
+    "@theliaison/eslint-config": "workspace:*",
+    "@theliaison/prettier-config": "workspace:*",
+    "@theliaison/tailwind-config": "workspace:*",
+    "@theliaison/tsconfig": "workspace:*",
+    "dotenv-cli": "7.4.2",
     "typescript": "^5.4.5",
     "@types/node": "20.12.14",
     "@types/react": "^18.3.2",
@@ -22,5 +32,6 @@
     "tailwindcss": "^3.4.3",
     "eslint": "^9.2.0",
     "eslint-config-next": "14.2.3"
-  }
+  },
+  "prettier": "@theliaison/prettier-config"
 }
