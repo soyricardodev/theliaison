@@ -1,11 +1,16 @@
 import type { Config } from "tailwindcss";
+import { nextui } from "@nextui-org/react";
 import { fontFamily } from "tailwindcss/defaultTheme";
 
 import baseConfig from "@theliaison/tailwind-config/web";
 
 const config = {
   presets: [baseConfig],
-  content: [...baseConfig.content, "../../packages/ui/**/*.{ts,tsx}"],
+  content: [
+    ...baseConfig.content,
+    "../../packages/ui/**/*.{ts,tsx}",
+    "../../node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -14,7 +19,27 @@ const config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    nextui({
+      defaultTheme: "light",
+      themes: {
+        light: {
+          colors: {
+            background: "#FBFBFE",
+            foreground: "#050315",
+            primary: {
+              DEFAULT: "#473F36",
+              foreground: "#FFF8F5",
+            },
+            secondary: {
+              DEFAULT: "#DBD0C5",
+              foreground: "#282626",
+            },
+          },
+        },
+      },
+    }),
+  ],
 } satisfies Config;
 
 export default config;
