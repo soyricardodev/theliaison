@@ -7,6 +7,7 @@ await import("./src/env.js");
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  transpilePackages: ["@theliaison/ui", "@theliaison/supabase"],
   typescript: {
     ignoreBuildErrors: true,
   },
