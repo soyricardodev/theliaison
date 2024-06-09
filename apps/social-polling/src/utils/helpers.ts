@@ -1,4 +1,5 @@
-import type { Tables } from "~/types/database-types";
+import type { Tables } from "@theliaison/supabase/database-types";
+
 import { env } from "~/env";
 
 type Price = Tables<"prices">;

@@ -1,7 +1,12 @@
 import type Stripe from "stripe";
 import { createClient } from "@supabase/supabase-js";
 
-import type { Database, Tables, TablesInsert } from "~/types/database-types";
+import type {
+  Database,
+  Tables,
+  TablesInsert,
+} from "@theliaison/supabase/database-types";
+
 import { env } from "~/env";
 import { toDateTime } from "~/utils/helpers";
 import { stripe } from "~/utils/stripe/config";
