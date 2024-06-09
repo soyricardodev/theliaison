@@ -25,7 +25,7 @@ const upsertProductRecord = async (product: Stripe.Product) => {
     active: product.active,
     name: product.name,
     description: product.description ?? null,
-    image: product.images?.[0] ?? null,
+    image: product.images[0] ?? null,
     metadata: product.metadata,
   };
 
@@ -113,7 +113,6 @@ const upsertCustomerToSupabase = async (uuid: string, customerId: string) => {
 const createCustomerInStripe = async (uuid: string, email: string) => {
   const customerData = { metadata: { supabaseUUID: uuid }, email: email };
   const newCustomer = await stripe.customers.create(customerData);
-  if (!newCustomer) throw new Error("Stripe customer creation failed.");
 
   return newCustomer.id;
 };
@@ -148,7 +147,6 @@ const createOrRetrieveCustomer = async ({
     // If Stripe ID is missing from Supabase, try to retrieve Stripe customer ID by email
     const stripeCustomers = await stripe.customers.list({ email: email });
     stripeCustomerId =
-      // @ts-expect-error
       stripeCustomers.data.length > 0 ? stripeCustomers.data[0].id : undefined;
   }
 
@@ -203,7 +201,6 @@ const copyBillingDetailsToCustomer = async (
   const customer = payment_method.customer as string;
   const { name, phone, address } = payment_method.billing_details;
   if (!name || !phone || !address) return;
-  //@ts-expect-error
   await stripe.customers.update(customer, { name, phone, address });
   const { error: updateError } = await supabaseAdmin
     .from("users")
@@ -228,7 +225,7 @@ const manageSubscriptionStatusChange = async (
     .eq("stripe_customer_id", customerId)
     .single();
 
-  if (noCustomerError || !customerData)
+  if (noCustomerError ?? !customerData)
     throw new Error(`Customer lookup failed: ${noCustomerError.message}`);
 
   const { id: uuid } = customerData;
@@ -242,10 +239,8 @@ const manageSubscriptionStatusChange = async (
     user_id: uuid,
     metadata: subscription.metadata,
     status: subscription.status,
-    // @ts-expect-error
     price_id: subscription.items.data[0].price.id,
     //TODO check quantity on subscription
-    // @ts-expect-error
     quantity: subscription.quantity,
     cancel_at_period_end: subscription.cancel_at_period_end,
     cancel_at: subscription.cancel_at
@@ -286,7 +281,6 @@ const manageSubscriptionStatusChange = async (
   // For a new subscription copy the billing details to the customer object.
   // NOTE: This is a costly operation and should happen at the very end.
   if (createAction && subscription.default_payment_method && uuid)
-    //@ts-ignore
     await copyBillingDetailsToCustomer(
       uuid,
       subscription.default_payment_method as Stripe.PaymentMethod,
