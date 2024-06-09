@@ -25,7 +25,7 @@ const relevantEvents = new Set([
 
 export async function POST(req: Request) {
   const body = await req.text();
-  const sig = req.headers.get("stripe-signature") as string;
+  const sig = req.headers.get("stripe-signature");
   const webhookSecret = env.STRIPE_WEBHOOK_SECRET;
   let event: Stripe.Event;
 
@@ -34,9 +34,11 @@ export async function POST(req: Request) {
       return new Response("Webhook secret not found.", { status: 400 });
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
     console.log(`🔔  Webhook received: ${event.type}`);
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     console.log(`❌ Error message: ${err.message}`);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     return new Response(`Webhook Error: ${err.message}`, { status: 400 });
   }
 
@@ -45,22 +47,22 @@ export async function POST(req: Request) {
       switch (event.type) {
         case "product.created":
         case "product.updated":
-          await upsertProductRecord(event.data.object as Stripe.Product);
+          await upsertProductRecord(event.data.object);
           break;
         case "price.created":
         case "price.updated":
-          await upsertPriceRecord(event.data.object as Stripe.Price);
+          await upsertPriceRecord(event.data.object);
           break;
         case "price.deleted":
-          await deletePriceRecord(event.data.object as Stripe.Price);
+          await deletePriceRecord(event.data.object);
           break;
         case "product.deleted":
-          await deleteProductRecord(event.data.object as Stripe.Product);
+          await deleteProductRecord(event.data.object);
           break;
         case "customer.subscription.created":
         case "customer.subscription.updated":
         case "customer.subscription.deleted": {
-          const subscription = event.data.object as Stripe.Subscription;
+          const subscription = event.data.object;
           await manageSubscriptionStatusChange(
             subscription.id,
             subscription.customer as string,
@@ -69,7 +71,7 @@ export async function POST(req: Request) {
           break;
         }
         case "checkout.session.completed": {
-          const checkoutSession = event.data.object as Stripe.Checkout.Session;
+          const checkoutSession = event.data.object;
           if (checkoutSession.mode === "subscription") {
             const subscriptionId = checkoutSession.subscription;
             await manageSubscriptionStatusChange(
