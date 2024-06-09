@@ -6,10 +6,10 @@ import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { CheckIcon } from "lucide-react";
 
+import type { Tables } from "@theliaison/supabase/database-types";
 import { cn } from "@theliaison/ui";
 import { Button } from "@theliaison/ui/button";
 
-import type { Tables } from "~/types/database-types";
 import { getErrorRedirect } from "~/utils/helpers";
 import { getStripe } from "~/utils/stripe/client";
 import { checkoutWithStripe } from "~/utils/stripe/server";
