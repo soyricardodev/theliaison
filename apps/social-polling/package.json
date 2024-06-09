@@ -77,6 +77,7 @@
     "@theliaison/eslint-config": "workspace:*",
     "@theliaison/prettier-config": "workspace:*",
     "@theliaison/tailwind-config": "workspace:*",
+    "@theliaison/supabase": "workspace:*",
     "@theliaison/tsconfig": "workspace:*",
     "dotenv-cli": "7.4.2",
     "@tailwindcss/typography": "0.5.13",
