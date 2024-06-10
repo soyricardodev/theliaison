@@ -49,20 +49,12 @@ export function ModernPricing({ products }: { products: Product[] }) {
       <CardBody className="gap-8">
         <p className="flex items-baseline gap-1 pt-2">
           <span className="to-foreground-600 inline bg-gradient-to-br from-foreground bg-clip-text text-4xl font-semibold leading-7 tracking-tight text-transparent">
-            {/* {typeof tier.price === "string" ? tier.price : tier.price[selectedFrequency.key]} */}
             {Intl.NumberFormat("en-US", {
               style: "currency",
               currency: "usd",
               minimumFractionDigits: 0,
             }).format((product.prices[0]?.unit_amount || 0) / 100)}
           </span>
-          {/* {typeof tier.price !== "string" ? (
-                  <span className="text-small font-medium text-default-400">
-                    {tier.priceSuffix
-                      ? `/${tier.priceSuffix}/${selectedFrequency.priceSuffix}`
-                      : `/${selectedFrequency.priceSuffix}`}
-                  </span>
-                ) : null} */}
           <span className="text-small text-default-400 font-medium">
             /per month
           </span>
