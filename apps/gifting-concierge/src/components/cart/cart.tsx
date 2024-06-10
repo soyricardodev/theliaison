@@ -19,9 +19,7 @@ export function Cart() {
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger asChild>
-        <Button>Open</Button>
-      </SheetTrigger>
+      <SheetTrigger asChild></SheetTrigger>
       <SheetContent className="p-4">
         <SheetHeader>
           <SheetTitle>My Cart</SheetTitle>
@@ -40,29 +38,11 @@ export function Cart() {
             </ul>
             {/* / list items */}
             {/* totals */}
-            <div className="py-4 text-sm text-neutral-500">
-              <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1">
-                <p>Taxes</p>
-                <p className="text-right text-base text-black dark:text-white">
-                  $0.00
-                  <span className="ml-1 inline">USD</span>
-                </p>
-              </div>
-              <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
-                <p className="text-right">Calculated at checkout</p>
-              </div>
-              <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1 dark:border-neutral-700">
-                <p>Total</p>
-                <p className="text-right text-base text-black dark:text-white">
-                  $0.00
-                  <span className="ml-1 inline">USD</span>
-                </p>
-              </div>
-            </div>
+            <CartTotals />
             {/* / totals */}
 
             <Button color="primary" radius="full" fullWidth className="mb-4">
-              Continue
+              Continue to gifting
             </Button>
           </div>
         ) : (
@@ -75,5 +55,42 @@ export function Cart() {
         )}
       </SheetContent>
     </Sheet>
+  );
+}
+
+function CartTotals() {
+  const { shoppingCart } = useCartStore();
+
+  const totalPrice = shoppingCart.reduce(
+    (acc, gift) => acc + (gift.unitPrice / 100) * gift.quantity,
+    0,
+  );
+  const total = Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(totalPrice);
+
+  return (
+    <div className="py-4 text-sm text-neutral-500">
+      <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1">
+        <p>Taxes</p>
+        <p className="text-right text-base text-black">
+          $0.00
+          <span className="ml-1 inline">USD</span>
+        </p>
+      </div>
+      <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1">
+        <p className="text-right">Calculated at checkout</p>
+      </div>
+      <div className="mb-3 flex items-center justify-between border-b border-neutral-200 pb-1 pt-1">
+        <p>Total</p>
+        <p className="text-right text-base text-black">
+          {total}
+          <span className="ml-1 inline">USD</span>
+        </p>
+      </div>
+    </div>
   );
 }

@@ -1,12 +1,10 @@
 import { create } from "zustand";
-
-// interface Cart {
-//   items: CartItem[]
-// }
+import { persist } from "zustand/middleware";
 
 export interface CartItem {
   id: string;
   quantity: number;
+  unitPrice: number;
 }
 
 interface CartStore {
@@ -14,60 +12,54 @@ interface CartStore {
   setIsOpen: (isOpen: boolean) => void;
 
   shoppingCart: CartItem[];
-  // addItemToCart: (item: CartItem) => void;
   addToCart: (item: CartItem) => void;
   decrementItemQuantity: (item: CartItem) => void;
   removeItemFromCart: (item: CartItem) => void;
 }
 
-export const useCartStore = create<CartStore>((set, get) => ({
-  isOpen: false,
-  setIsOpen: (isOpen: boolean) => set({ isOpen }),
-  shoppingCart: [],
-  addToCart: (item: CartItem) => {
-    const { shoppingCart } = get();
-    const updatedCart = updateCart(item.id, shoppingCart);
-    set({ shoppingCart: updatedCart });
-  },
-  incrementItemQuantity: (item: CartItem) =>
-    set((state) => ({
-      shoppingCart: state.shoppingCart.map((gift) =>
-        gift.id === item.id ? { ...gift, quantity: gift.quantity + 1 } : gift,
-      ),
-    })),
-  decrementItemQuantity: (item: CartItem) => {
-    const { shoppingCart } = get();
-    const updatedCart = removeCart(item.id, shoppingCart);
-    set({ shoppingCart: updatedCart });
-  },
-  // (item: CartItem) =>
-  //   set((state) => ({
-  //     shoppingCart: state.shoppingCart.map((gift) => {
-  //       if (gift.id === item.id) {
-  //         if (gift.quantity <= 1) {
-  //           state.removeItemFromCart(gift);
+export const useCartStore = create(
+  persist<CartStore>(
+    (set, get) => ({
+      isOpen: false,
+      setIsOpen: (isOpen: boolean) => set({ isOpen }),
+      shoppingCart: [],
+      addToCart: (item: CartItem) => {
+        const { shoppingCart } = get();
+        const updatedCart = updateCart(item.id, shoppingCart, item.unitPrice);
+        set({ shoppingCart: updatedCart });
+      },
+      incrementItemQuantity: (item: CartItem) =>
+        set((state) => ({
+          shoppingCart: state.shoppingCart.map((gift) =>
+            gift.id === item.id
+              ? { ...gift, quantity: gift.quantity + 1 }
+              : gift,
+          ),
+        })),
+      decrementItemQuantity: (item: CartItem) => {
+        const { shoppingCart } = get();
+        const updatedCart = removeCart(item.id, shoppingCart);
+        set({ shoppingCart: updatedCart });
+      },
+      removeItemFromCart: (item: CartItem) =>
+        set((state) => ({
+          shoppingCart: state.shoppingCart.filter(
+            (gift) => gift.id !== item.id,
+          ),
+        })),
+    }),
+    {
+      name: "cart",
+    },
+  ),
+);
 
-  //           const filteredCart = state.shoppingCart.filter(
-  //             (gift) => gift.id !== item.id,
-  //           );
-
-  //           return filteredCart[0]!;
-  //         }
-  //         console.log("should decrement, if remove don't come here", gift);
-  //         return { ...gift, quantity: gift.quantity - 1 };
-  //       }
-  //       console.log("nothing");
-  //       return gift;
-  //     }),
-  //   })),
-  removeItemFromCart: (item: CartItem) =>
-    set((state) => ({
-      shoppingCart: state.shoppingCart.filter((gift) => gift.id !== item.id),
-    })),
-}));
-
-function updateCart(giftId: string, shoppingCart: CartItem[]): CartItem[] {
-  const cartItem: CartItem = { id: giftId, quantity: 1 };
+function updateCart(
+  giftId: string,
+  shoppingCart: CartItem[],
+  unitPrice: number,
+): CartItem[] {
+  const cartItem: CartItem = { id: giftId, quantity: 1, unitPrice };
 
   const productOnCart = shoppingCart.map((item) => item.id).includes(giftId);
 

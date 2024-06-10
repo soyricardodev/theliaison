@@ -28,6 +28,7 @@ export default async function GiftsPage() {
             currency: "usd",
             minimumFractionDigits: 0,
           }).format((product.prices[0]?.unit_amount ?? 0) / 100);
+          const unitPrice = product.prices[0]?.unit_amount ?? 0;
 
           return (
             <article
@@ -52,7 +53,10 @@ export default async function GiftsPage() {
                   </p>
                 </div>
                 <div className="flex gap-2">
-                  <ProductButton productId={product.id} />
+                  <ProductButton
+                    productId={product.id}
+                    productUnitPrice={unitPrice}
+                  />
                 </div>
               </div>
             </article>
