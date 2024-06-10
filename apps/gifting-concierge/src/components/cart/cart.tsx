@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Button } from "@nextui-org/react";
 import { ShoppingCartIcon } from "lucide-react";
 
@@ -41,7 +42,14 @@ export function Cart() {
             <CartTotals />
             {/* / totals */}
 
-            <Button color="primary" radius="full" fullWidth className="mb-4">
+            <Button
+              color="primary"
+              radius="full"
+              fullWidth
+              className="mb-4"
+              as={Link}
+              href="/send-gift"
+            >
               Continue to gifting
             </Button>
           </div>
