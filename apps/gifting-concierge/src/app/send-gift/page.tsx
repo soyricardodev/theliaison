@@ -182,7 +182,7 @@ export default function Component() {
         <div className="flex justify-between px-2">
           <div className="flex items-center">
             {/* <AcmeIcon size={40} /> */}
-            <p className="font-semibold">ACME</p>
+            <p className="font-semibold">Gifting Concierge</p>
           </div>
           <div className="flex items-center gap-2">
             <p>
