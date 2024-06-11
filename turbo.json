@@ -27,14 +27,6 @@
 			"persistent": true,
 			"cache": false
 		},
-		"format": {
-			"outputs": ["node_modules/.cache/.prettiercache"],
-			"outputLogs": "new-only"
-		},
-		"lint": {
-			"dependsOn": ["^topo", "^build"],
-			"outputs": ["node_modules/.cache/.eslintcache"]
-		},
 		"typecheck": {
 			"dependsOn": ["^topo", "^build"],
 			"outputs": ["node_modules/.cache/tsbuildinfo.json"]

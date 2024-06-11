@@ -7,8 +7,6 @@
 		"build": "pnpm with-env next build",
 		"clean": "git clean -xdf .next .turbo node_modules",
 		"dev": "pnpm with-env next dev",
-		"format": "prettier --check . --ignore-path ../../.gitignore",
-		"lint": "eslint",
 		"start": "pnpm with-env next start",
 		"typecheck": "tsc --noEmit",
 		"with-env": "dotenv -e ../../.env --"
@@ -33,8 +31,6 @@
 		"zustand": "4.5.2"
 	},
 	"devDependencies": {
-		"@theliaison/eslint-config": "workspace:*",
-		"@theliaison/prettier-config": "workspace:*",
 		"@theliaison/supabase": "workspace:*",
 		"@theliaison/tailwind-config": "workspace:*",
 		"@theliaison/tsconfig": "workspace:*",
@@ -42,11 +38,8 @@
 		"@types/react": "^18.3.2",
 		"@types/react-dom": "18.3.0",
 		"dotenv-cli": "7.4.2",
-		"eslint": "^9.2.0",
-		"eslint-config-next": "14.2.3",
 		"postcss": "^8.4.38",
 		"tailwindcss": "^3.4.3",
 		"typescript": "^5.4.5"
-	},
-	"prettier": "@theliaison/prettier-config"
+	}
 }
