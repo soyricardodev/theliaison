@@ -2,7 +2,7 @@ import { Progress } from "@nextui-org/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-import { getSubscriptionProgress } from "@theliaison/ui";
+import { getSubscriptionProgress } from "~/lib/utils";
 import { Button } from "@theliaison/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@theliaison/ui/tabs";
 
