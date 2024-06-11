@@ -1,7 +1,7 @@
 import OpenAI from "openai";
 import { z } from "zod";
 
-import { createIdFromString } from "@theliaison/ui";
+import { createIdFromString } from "~/lib/utils";
 
 import { env } from "~/env";
 import { createClient } from "~/utils/supabase/server";
