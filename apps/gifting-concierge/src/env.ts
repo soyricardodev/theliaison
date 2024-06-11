@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-properties */
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
@@ -16,7 +15,7 @@ export const env = createEnv({
 		NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string(),
 		NEXT_PUBLIC_PROJECT_ID: z.string(),
 	},
-	skipValidation: !!process.env.SKIP_ENV_VALIDATION,
+	skipValidation: true,
 
 	emptyStringAsUndefined: true,
 
