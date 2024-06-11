@@ -32,6 +32,7 @@ const upsertProductRecord = async (product: Stripe.Product) => {
     description: product.description ?? null,
     image: product.images[0] ?? null,
     metadata: product.metadata,
+    type: "gift",
   };
 
   const { error: upsertError } = await supabaseAdmin
@@ -152,7 +153,7 @@ const createOrRetrieveCustomer = async ({
     // If Stripe ID is missing from Supabase, try to retrieve Stripe customer ID by email
     const stripeCustomers = await stripe.customers.list({ email: email });
     stripeCustomerId =
-      stripeCustomers.data.length > 0 ? stripeCustomers.data[0].id : undefined;
+      stripeCustomers.data.length > 0 ? stripeCustomers.data[0]?.id : undefined;
   }
 
   // If still no stripeCustomerId, create a new customer in Stripe
@@ -206,6 +207,7 @@ const copyBillingDetailsToCustomer = async (
   const customer = payment_method.customer as string;
   const { name, phone, address } = payment_method.billing_details;
   if (!name || !phone || !address) return;
+  // @ts-expect-error
   await stripe.customers.update(customer, { name, phone, address });
   const { error: updateError } = await supabaseAdmin
     .from("users")
@@ -244,9 +246,10 @@ const manageSubscriptionStatusChange = async (
     user_id: uuid,
     metadata: subscription.metadata,
     status: subscription.status,
-    price_id: subscription.items.data[0].price.id,
+    price_id: subscription.items.data[0]?.price.id,
     //TODO check quantity on subscription
-    quantity: subscription.quantity,
+    // @ts-expect-error
+    quantity: subscription.quantity ?? 0,
     cancel_at_period_end: subscription.cancel_at_period_end,
     cancel_at: subscription.cancel_at
       ? toDateTime(subscription.cancel_at).toISOString()
