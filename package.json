@@ -1,33 +1,29 @@
 {
-  "name": "theliaison",
-  "private": true,
-  "workspaces": [
-    "./apps/**",
-    "./packages/**",
-    "./tooling/**"
-  ],
-  "engines": {
-    "node": ">=20.12.0"
-  },
-  "packageManager": "pnpm@9.1.2",
-  "scripts": {
-    "build": "turbo build",
-    "clean": "git clean -xdf node_modules",
-    "clean:workspaces": "turbo clean",
-    "db:push": "pnpm -F db push",
-    "db:studio": "pnpm -F db studio",
-    "dev": "turbo dev --parallel",
-    "biome": "biome check .",
-    "biome:fix": "biome check . --write",
-    "lint:ws": "pnpm dlx sherif@latest",
-    "postinstall": "pnpm lint:ws",
-    "typecheck": "turbo typecheck",
-    "ui-add": "pnpm -F ui ui-add"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.8.1",
-    "@turbo/gen": "^2.0.3",
-    "turbo": "^2.0.3",
-    "typescript": "^5.4.5"
-  }
+	"name": "theliaison",
+	"private": true,
+	"workspaces": ["./apps/**", "./packages/**", "./tooling/**"],
+	"engines": {
+		"node": ">=20.12.0"
+	},
+	"packageManager": "pnpm@9.3.0",
+	"scripts": {
+		"build": "turbo build --cache-dir=.turbo",
+		"clean": "git clean -xdf node_modules",
+		"clean:workspaces": "turbo clean",
+		"db:push": "pnpm -F db push",
+		"db:studio": "pnpm -F db studio",
+		"dev": "turbo dev --parallel",
+		"biome": "biome check .",
+		"biome:fix": "biome check . --write",
+		"lint:ws": "pnpm dlx sherif@latest",
+		"postinstall": "pnpm lint:ws",
+		"typecheck": "turbo typecheck",
+		"ui-add": "pnpm -F ui ui-add"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.8.1",
+		"@turbo/gen": "^2.0.3",
+		"turbo": "^2.0.3",
+		"typescript": "^5.4.5"
+	}
 }
