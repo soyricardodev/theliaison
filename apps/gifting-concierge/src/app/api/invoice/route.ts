@@ -1,16 +1,10 @@
 import { NextResponse } from "next/server";
 import { stripe } from "~/utils/stripe/config";
 import { z } from "zod";
+import { createClient } from "~/supabase/server";
 
 const createInvoice = z.object({
-  email: z.string().email(),
-  products: z.array(
-    z.object({
-      product_id: z.string(),
-      price_id: z.string(),
-      quantity: z.number(),
-    }),
-  ),
+  giftId: z.string(),
 });
 
 export async function POST(request: Request) {
@@ -21,7 +15,39 @@ export async function POST(request: Request) {
     return NextResponse.json(parsed.error.format());
   }
 
-  const { email, products } = parsed.data;
+  const { giftId } = parsed.data;
+
+  const email = "ricardo@mail.com";
+
+  const supabase = createClient();
+
+  const { data, error } = await supabase
+    .from("gifts")
+    .select("gifts_products(quantity, products(prices(id)))")
+    .eq("id", giftId)
+    .single();
+
+  if (error) {
+    return NextResponse.json(error);
+  }
+
+  const products: {
+    price_id: string;
+    quantity: number;
+  }[] = [];
+
+  for (const giftItem of data.gifts_products) {
+    if (giftItem.products == null) continue;
+
+    const priceId = giftItem.products?.prices[0]?.id;
+
+    if (priceId == null) continue;
+
+    products.push({
+      price_id: priceId,
+      quantity: giftItem.quantity,
+    });
+  }
 
   const newCustomer = await stripe.customers.create({
     email,
