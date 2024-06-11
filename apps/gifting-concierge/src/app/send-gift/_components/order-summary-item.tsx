@@ -11,6 +11,8 @@ import { cn } from "@theliaison/ui";
 export interface OrderSummaryItemType {
   id: string;
   quantity: number;
+  hideX?: boolean;
+  hidePrice?: boolean;
 }
 
 export type OrderSummaryItemProps = React.HTMLAttributes<HTMLLIElement> &
@@ -20,6 +22,8 @@ const OrderSummaryItem = ({
   id,
   children,
   quantity,
+  hideX = false,
+  hidePrice = false,
   className,
 }: OrderSummaryItemProps) => {
   const { data: product } = useQuery({
@@ -57,23 +61,27 @@ const OrderSummaryItem = ({
             {product?.name ?? children}
           </p>
         </h4>
-        <div className="mt-2 flex items-center gap-2">
-          <span className="text-small font-semibold text-default-700">
-            {price}
-          </span>
-          <span className="text-small text-default-500">x {quantity}</span>
-        </div>
+        {!hidePrice && (
+          <div className="mt-2 flex items-center gap-2">
+            <span className="text-small font-semibold text-default-700">
+              {price}
+            </span>
+            <span className="text-small text-default-500">x {quantity}</span>
+          </div>
+        )}
       </div>
-      <Tooltip content="Remove" placement="top">
-        <Button
-          isIconOnly
-          className="h-7 w-7 min-w-[1.5rem]"
-          radius="full"
-          variant="flat"
-        >
-          <XIcon width={14} />
-        </Button>
-      </Tooltip>
+      {!hideX && (
+        <Tooltip content="Remove" placement="top">
+          <Button
+            isIconOnly
+            className="h-7 w-7 min-w-[1.5rem]"
+            radius="full"
+            variant="flat"
+          >
+            <XIcon width={14} />
+          </Button>
+        </Tooltip>
+      )}
     </li>
   );
 };
