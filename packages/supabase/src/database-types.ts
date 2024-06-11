@@ -156,6 +156,99 @@ export interface Database {
           },
         ];
       };
+      gifts: {
+        Row: {
+          created_at: string;
+          id: number;
+          is_confirmed: boolean;
+          is_rejected: boolean;
+          recipient_address: string | null;
+          recipient_appartment: string | null;
+          recipient_city: string | null;
+          recipient_country: string | null;
+          recipient_email: string | null;
+          recipient_name: string;
+          recipient_pc: number | null;
+          recipient_phone: string | null;
+          recipient_social: string;
+          sender_name: string;
+          total_price: number;
+        };
+        Insert: {
+          created_at?: string;
+          id?: number;
+          is_confirmed?: boolean;
+          is_rejected?: boolean;
+          recipient_address?: string | null;
+          recipient_appartment?: string | null;
+          recipient_city?: string | null;
+          recipient_country?: string | null;
+          recipient_email?: string | null;
+          recipient_name: string;
+          recipient_pc?: number | null;
+          recipient_phone?: string | null;
+          recipient_social: string;
+          sender_name?: string;
+          total_price: number;
+        };
+        Update: {
+          created_at?: string;
+          id?: number;
+          is_confirmed?: boolean;
+          is_rejected?: boolean;
+          recipient_address?: string | null;
+          recipient_appartment?: string | null;
+          recipient_city?: string | null;
+          recipient_country?: string | null;
+          recipient_email?: string | null;
+          recipient_name?: string;
+          recipient_pc?: number | null;
+          recipient_phone?: string | null;
+          recipient_social?: string;
+          sender_name?: string;
+          total_price?: number;
+        };
+        Relationships: [];
+      };
+      gifts_products: {
+        Row: {
+          created_at: string;
+          gift_id: number | null;
+          id: number;
+          product_id: string;
+          quantity: number;
+        };
+        Insert: {
+          created_at?: string;
+          gift_id?: number | null;
+          id?: number;
+          product_id: string;
+          quantity: number;
+        };
+        Update: {
+          created_at?: string;
+          gift_id?: number | null;
+          id?: number;
+          product_id?: string;
+          quantity?: number;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "gifts_products_gift_id_fkey";
+            columns: ["gift_id"];
+            isOneToOne: false;
+            referencedRelation: "gifts";
+            referencedColumns: ["id"];
+          },
+          {
+            foreignKeyName: "gifts_products_product_id_fkey";
+            columns: ["product_id"];
+            isOneToOne: false;
+            referencedRelation: "products";
+            referencedColumns: ["id"];
+          },
+        ];
+      };
       options: {
         Row: {
           id: number;
