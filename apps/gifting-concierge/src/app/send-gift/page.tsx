@@ -1,16 +1,7 @@
 "use client";
 
 import React from "react";
-import {
-  Accordion,
-  AccordionItem,
-  Badge,
-  Button,
-  Image,
-  Link,
-  Progress,
-  RadioGroup,
-} from "@nextui-org/react";
+import { Badge, Button, Image, Link, Progress } from "@nextui-org/react";
 import { AnimatePresence, LazyMotion, m, domAnimation } from "framer-motion";
 import {
   PlusIcon,
@@ -18,19 +9,18 @@ import {
   ArrowLeftIcon,
   ShoppingCartIcon,
 } from "lucide-react";
-// import {VisaIcon, MasterCardIcon, PayPalIcon} from "./providers";
-// import {AcmeIcon} from "./social";
-// import ShippingForm from "./shipping-form";
 import { OrderSummary } from "./_components/order-summary";
 import { RecipientContactForm } from "./_components/recipient-contact-form";
 import { useCartStore } from "~/store/cart";
-// import cartItems from "./cart-items";
-// import PaymentForm from "./payment-form";
-// import PaymentMethodRadio from "./payment-method-radio";
+import { OrderSummaryConfirmation } from "./_components/order-summary-confirmation";
+import { useRecipientStore } from "~/store/recipient";
+import { createGift } from "./actions";
 
 export default function Component() {
   const [[page, direction], setPage] = React.useState([0, 0]);
   const { shoppingCart } = useCartStore();
+  const { canContinue, recipientName, recipientSocial, recipientEmail } =
+    useRecipientStore();
 
   const totalPrice = React.useMemo(() => {
     return shoppingCart.reduce(
@@ -65,19 +55,37 @@ export default function Component() {
   };
 
   const paginate = (newDirection: number) => {
+    if (page + newDirection > 2) {
+      return createGift({
+        total_price: totalPrice,
+        sender_name: "Ricardo",
+        recipient_name: recipientName,
+        recipient_social: recipientSocial,
+        recipient_email: recipientEmail,
+        gifts: shoppingCart.map((gift) => ({
+          id: gift.id,
+          quantity: gift.quantity,
+        })),
+      });
+    }
+
     if (page + newDirection < 0 || page + newDirection > 2) return;
 
     setPage([page + newDirection, newDirection]);
   };
+
+  const shouldCancelContinue = React.useMemo(() => {
+    return page === 0 ? false : page > 1 ? false : !canContinue;
+  }, [page, canContinue]);
 
   const ctaLabel = React.useMemo(() => {
     switch (page) {
       case 0:
         return "Continue to send gift";
       case 1:
-        return "Finish order";
+        return "Finish gift";
       case 2:
-        return "Place order";
+        return "Place gift";
       default:
         return "Continue to shipping";
     }
@@ -86,23 +94,17 @@ export default function Component() {
   const stepTitle = React.useMemo(() => {
     switch (page) {
       case 0:
-        return "Review your order";
+        return "Review your gift";
       case 1:
         return "Who do you want to send the gift to?";
       case 2:
-        return "How would you like to pay?";
+        return "Confirm and Finish";
       default:
-        return "Review your order";
+        return "Review your gift";
     }
   }, [page]);
 
   const stepsContent = React.useMemo(() => {
-    const paymentRadioClasses = {
-      wrapper: "group-data-[selected=true]:border-foreground",
-      base: "data-[selected=true]:border-foreground",
-      control: "bg-foreground",
-    };
-
     switch (page) {
       case 0:
         return <OrderSummary hideTitle />;
@@ -114,60 +116,8 @@ export default function Component() {
         );
       case 2:
         return (
-          <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2">
-              <Accordion
-                keepContentMounted
-                aria-label="Select or add payment method"
-                defaultExpandedKeys={["select_existing_payment"]}
-                itemClasses={{
-                  title: "text-medium text-foreground-500",
-                  indicator: "text-foreground",
-                }}
-                selectionMode="multiple"
-                showDivider={false}
-              >
-                <AccordionItem
-                  key="select_existing_payment"
-                  title="Select existing payment method"
-                >
-                  <RadioGroup
-                    aria-label="Select existing payment method"
-                    classNames={{ wrapper: "gap-3" }}
-                    defaultValue="4229"
-                  >
-                    {/* <PaymentMethodRadio
-                      isRecommended
-                      classNames={paymentRadioClasses}
-                      description="Expires on 12/2024"
-                      icon={<VisaIcon height={30} width={30} />}
-                      label="Visa ending in 4229"
-                      value="4229"
-                    />
-                    <PaymentMethodRadio
-                      classNames={paymentRadioClasses}
-                      description="Expires on 02/2025"
-                      icon={<MasterCardIcon height={30} width={30} />}
-                      label="MasterCard ending in 8888"
-                      value="8888"
-                    />
-                    <PaymentMethodRadio
-                      classNames={paymentRadioClasses}
-                      description="Select this option to pay with PayPal"
-                      icon={<PayPalIcon height={30} width={30} />}
-                      label="PayPal"
-                      value="paypal"
-                    /> */}
-                  </RadioGroup>
-                </AccordionItem>
-                <AccordionItem
-                  key="add_new_payment"
-                  title="Add a new payment method"
-                >
-                  {/* <PaymentForm variant="bordered" /> */}
-                </AccordionItem>
-              </Accordion>
-            </div>
+          <div className="flex flex-col gap-4 mt-4">
+            <OrderSummaryConfirmation />
           </div>
         );
       default:
@@ -235,6 +185,7 @@ export default function Component() {
                   className="mt-8 bg-foreground text-background"
                   size="lg"
                   onPress={() => paginate(1)}
+                  isDisabled={shouldCancelContinue}
                 >
                   {ctaLabel}
                 </Button>
