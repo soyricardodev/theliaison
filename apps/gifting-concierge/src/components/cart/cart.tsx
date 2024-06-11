@@ -20,7 +20,7 @@ export function Cart() {
 
 	return (
 		<Sheet open={isOpen} onOpenChange={setIsOpen}>
-			<SheetTrigger asChild></SheetTrigger>
+			<SheetTrigger asChild />
 			<SheetContent className="p-4">
 				<SheetHeader>
 					<SheetTitle>My Cart</SheetTitle>
