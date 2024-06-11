@@ -3,9 +3,9 @@ import reactConfig from "@theliaison/eslint-config/react";
 
 /** @type {import('typescript-eslint').Config} */
 export default [
-  {
-    ignores: [],
-  },
-  ...baseConfig,
-  ...reactConfig,
+	{
+		ignores: [],
+	},
+	...baseConfig,
+	...reactConfig,
 ];

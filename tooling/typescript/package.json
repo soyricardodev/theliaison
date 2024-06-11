@@ -1,8 +1,6 @@
 {
-  "name": "@theliaison/tsconfig",
-  "private": true,
-  "version": "0.1.0",
-  "files": [
-    "*.json"
-  ]
+	"name": "@theliaison/tsconfig",
+	"private": true,
+	"version": "0.1.0",
+	"files": ["*.json"]
 }

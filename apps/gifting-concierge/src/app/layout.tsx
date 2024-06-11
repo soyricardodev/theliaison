@@ -12,28 +12,28 @@ import { Providers } from "~/components/providers";
 import { Cart } from "../components/cart/cart";
 
 export const metadata: Metadata = {
-  title: "The Liaison | Gifting Concierge",
-  description:
-    "The Liaison is a gifting concierge that helps you find the perfect gift for your loved one.",
+	title: "The Liaison | Gifting Concierge",
+	description:
+		"The Liaison is a gifting concierge that helps you find the perfect gift for your loved one.",
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        className={cn("min-h-dvh font-sans antialiased", GeistSans.variable)}
-      >
-        <Providers>
-          <Header />
-          <Cart />
-          {children}
-        </Providers>
-        <TailwindIndicator />
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body
+				className={cn("min-h-dvh font-sans antialiased", GeistSans.variable)}
+			>
+				<Providers>
+					<Header />
+					<Cart />
+					{children}
+				</Providers>
+				<TailwindIndicator />
+			</body>
+		</html>
+	);
 }

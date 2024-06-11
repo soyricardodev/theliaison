@@ -1,9 +1,9 @@
 import ShippingForm from "./shipping-form";
 
 export default function Page({
-  params: { giftId },
+	params: { giftId },
 }: {
-  params: { giftId: string };
+	params: { giftId: string };
 }) {
-  return <ShippingForm giftId={giftId} />;
+	return <ShippingForm giftId={giftId} />;
 }

@@ -12,37 +12,37 @@ import { Providers } from "~/components/providers";
 import { env } from "~/env";
 
 export const metadata = {
-  title: "Ask The Liaison - Social Polling",
-  description:
-    "Social Polling is a web application that allows users to create polls and vote on them.",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+	title: "Ask The Liaison - Social Polling",
+	description:
+		"Social Polling is a web application that allows users to create polls and vote on them.",
+	icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "font-sans antialiased",
-          GeistSans.variable,
-          MinervaBoldFont.variable,
-        )}
-      >
-        <Providers>
-          <div className="bg-background text-foreground">{children}</div>
-        </Providers>
-        <TailwindIndicator />
-        {env.NODE_ENV === "production" ? (
-          <>
-            <Analytics />
-            <SpeedInsights />
-          </>
-        ) : null}
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en" suppressHydrationWarning>
+			<body
+				className={cn(
+					"font-sans antialiased",
+					GeistSans.variable,
+					MinervaBoldFont.variable,
+				)}
+			>
+				<Providers>
+					<div className="bg-background text-foreground">{children}</div>
+				</Providers>
+				<TailwindIndicator />
+				{env.NODE_ENV === "production" ? (
+					<>
+						<Analytics />
+						<SpeedInsights />
+					</>
+				) : null}
+			</body>
+		</html>
+	);
 }

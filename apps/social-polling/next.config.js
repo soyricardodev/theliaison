@@ -6,18 +6,18 @@ await import("./src/env.js");
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  transpilePackages: ["@theliaison/ui", "@theliaison/supabase"],
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  images: {
-    loader: "custom",
-    loaderFile: "./src/utils/supabase/image-loader.js",
-  },
+	reactStrictMode: true,
+	transpilePackages: ["@theliaison/ui", "@theliaison/supabase"],
+	typescript: {
+		ignoreBuildErrors: true,
+	},
+	eslint: {
+		ignoreDuringBuilds: true,
+	},
+	images: {
+		loader: "custom",
+		loaderFile: "./src/utils/supabase/image-loader.js",
+	},
 };
 
 export default nextConfig;
