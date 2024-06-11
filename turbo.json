@@ -38,6 +38,10 @@
     },
     "//#clean": {
       "cache": false
+    },
+    "//#biome": {},
+    "//#biome:fix": {
+      "cache": false
     }
   },
   "globalEnv": [
