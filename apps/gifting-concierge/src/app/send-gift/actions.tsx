@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 "use server";
 
 import { createClient } from "~/supabase/server";
@@ -34,21 +35,21 @@ export async function createGift({
       recipient_social,
       recipient_email,
     })
-    .select("id");
+    .select("id")
+    .single();
 
   if (error) {
     return console.log(error);
   }
 
-  const gift_id = data[0]?.id as number;
-
   for await (const gift of gifts) {
     await supabase.from("gifts_products").insert({
-      gift_id,
+      gift_id: data.id,
       product_id: gift.id,
       quantity: gift.quantity,
     });
   }
 
-  return gift_id;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  return data.id;
 }
