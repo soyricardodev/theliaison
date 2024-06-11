@@ -6,4 +6,5 @@ export const env = createEnv({
 		NODE_ENV: z.enum(["development", "test", "production"]),
 	},
 	experimental__runtimeEnv: {},
+	skipValidation: true,
 });
