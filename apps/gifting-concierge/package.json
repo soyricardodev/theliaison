@@ -9,7 +9,7 @@
 		"dev": "pnpm with-env next dev",
 		"start": "pnpm with-env next start",
 		"typecheck": "tsc --noEmit",
-		"with-env": "dotenv -e ../../.env --"
+		"with-env": "dotenv -e ./.env.local --"
 	},
 	"dependencies": {
 		"@nextui-org/react": "2.4.1",
