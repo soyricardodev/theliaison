@@ -1,7 +1,13 @@
+/* eslint-disable no-restricted-properties */
 "use server";
 
 import { redirect } from "next/navigation";
 import { createClient } from "~/supabase/server";
+
+const url =
+  process.env.NODE_ENV !== "production"
+    ? "http://localhost:3000/api/invoice"
+    : "https://gifting-concierge.vercel.app/api/invoice";
 
 export async function confirmGiftFromRecipient(formData: FormData) {
   const supabase = createClient();
@@ -33,6 +39,13 @@ export async function confirmGiftFromRecipient(formData: FormData) {
     .eq("id", giftId);
 
   console.log(error);
+
+  await fetch(url, {
+    method: "POST",
+    body: JSON.stringify({
+      giftId,
+    }),
+  });
 
   redirect("/details/thanks");
 }
