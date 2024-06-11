@@ -1,5 +1,6 @@
 export const Logo1 = (
 	<svg
+		aria-hidden="true"
 		fill="none"
 		height="41"
 		viewBox="0 0 168 41"
@@ -71,6 +72,7 @@ export const Logo1 = (
 
 export const Logo2 = (
 	<svg
+		aria-hidden="true"
 		fill="none"
 		height="41"
 		id="logo-52"
@@ -125,6 +127,7 @@ export const Logo2 = (
 
 export const Logo3 = (
 	<svg
+		aria-hidden="true"
 		fill="none"
 		height="41"
 		id="logo-54"
@@ -179,6 +182,7 @@ export const Logo3 = (
 
 export const Logo4 = (
 	<svg
+		aria-hidden="true"
 		fill="none"
 		height="41"
 		id="logo-51"
@@ -233,6 +237,7 @@ export const Logo4 = (
 
 export const Logo5 = (
 	<svg
+		aria-hidden="true"
 		fill="none"
 		height="57"
 		id="logo-32"
@@ -267,6 +272,7 @@ export const Logo5 = (
 
 export const Logo6 = (
 	<svg
+		aria-hidden="true"
 		fill="none"
 		height="30"
 		id="logo-8"
@@ -328,6 +334,7 @@ export const Logo6 = (
 
 export const Logo7 = (
 	<svg
+		aria-hidden="true"
 		fill="none"
 		height="19"
 		viewBox="0 0 152 19"
@@ -343,6 +350,7 @@ export const Logo7 = (
 
 export const Logo8 = (
 	<svg
+		aria-hidden="true"
 		fill="none"
 		height="51"
 		viewBox="0 0 100 51"
@@ -406,6 +414,7 @@ export const Logo8 = (
 
 export const Logo9 = (
 	<svg
+		aria-hidden="true"
 		fill="none"
 		height="30"
 		viewBox="0 0 119 30"
@@ -421,6 +430,7 @@ export const Logo9 = (
 
 export const Logo10 = (
 	<svg
+		aria-hidden="true"
 		fill="none"
 		height="30"
 		viewBox="0 0 160 30"
