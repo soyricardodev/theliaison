@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { createClient } from "~/supabase/server";
 import { stripe } from "~/utils/stripe/config";
 import { z } from "zod";
 
