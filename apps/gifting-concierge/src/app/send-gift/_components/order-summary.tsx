@@ -23,7 +23,7 @@ export const OrderSummary = ({ hideTitle }: OrderSummaryProps) => {
   }).format(totalPrice);
 
   return (
-    <div>
+    <div className="overflow-hidden">
       {!hideTitle && (
         <>
           <h2 className="font-medium text-default-500">Your Order</h2>
@@ -31,11 +31,13 @@ export const OrderSummary = ({ hideTitle }: OrderSummaryProps) => {
         </>
       )}
       <h3 className="sr-only">Items in your cart</h3>
-      <ul>
-        {shoppingCart.map((item) => (
-          <OrderSummaryItem key={item.id} {...item} />
-        ))}
-      </ul>
+      <div className="h-auto overflow-hidden">
+        <ul className="overflow-auto max-h-[450px]">
+          {shoppingCart.map((item) => (
+            <OrderSummaryItem key={item.id} {...item} />
+          ))}
+        </ul>
+      </div>
       <div>
         <dl className="flex flex-col gap-4 py-4">
           <div className="flex justify-between">
