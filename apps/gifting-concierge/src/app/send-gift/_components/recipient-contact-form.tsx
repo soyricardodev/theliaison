@@ -2,34 +2,42 @@
 
 import type { InputProps } from "@nextui-org/react";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Input } from "@nextui-org/react";
 
 import { cn } from "@theliaison/ui";
-import { z } from "zod";
+import { useRecipientStore } from "~/store/recipient";
 
 export type RecipientContactFormProps = React.HTMLAttributes<HTMLDivElement> & {
   variant?: InputProps["variant"];
   hideTitle?: boolean;
 };
 
-// Need to request info for the recipient
-// Name/Username *required*
-// Social (Facebook / Twitter / Instagram / Snapchat) *required*
-// Email
-// Phone
-const recipientContactSchema = z.object({
-  name: z.string({ required_error: "Name or username is required" }).min(1),
-  social: z.string().min(1),
-  email: z.string().email().optional(),
-  phone: z.string().min(1).optional(),
-});
-
 export const RecipientContactForm = ({
   variant = "flat",
   className,
   hideTitle,
 }: RecipientContactFormProps) => {
+  const {
+    setCanContinue,
+    setRecipientEmail,
+    recipientEmail,
+    recipientName,
+    recipientSocial,
+    setRecipientName,
+    setRecipientPhone,
+    setRecipientSocial,
+    recipientPhone,
+  } = useRecipientStore();
+
+  useEffect(() => {
+    if (recipientName.trim() !== "" && recipientSocial.trim() !== "") {
+      setCanContinue(true);
+    } else {
+      setCanContinue(false);
+    }
+  }, [recipientName, recipientSocial, setCanContinue]);
+
   return (
     <div className={cn("flex flex-col gap-4", className)}>
       {!hideTitle && (
@@ -45,6 +53,8 @@ export const RecipientContactForm = ({
           labelPlacement="outside"
           placeholder="Enter the name or username of the recipient"
           variant={variant}
+          value={recipientName}
+          onChange={(e) => setRecipientName(e.target.value)}
         />
         <Input
           isRequired
@@ -52,6 +62,8 @@ export const RecipientContactForm = ({
           labelPlacement="outside"
           placeholder="Facebook / Twitter / Instagram / Snapchat"
           variant={variant}
+          value={recipientSocial}
+          onChange={(e) => setRecipientSocial(e.target.value)}
         />
       </div>
       <div className="flex flex-wrap items-center gap-4 sm:flex-nowrap">
@@ -60,6 +72,8 @@ export const RecipientContactForm = ({
           labelPlacement="outside"
           placeholder="+1 (555) 555-5555 (optional)"
           variant={variant}
+          value={recipientPhone}
+          onChange={(e) => setRecipientPhone(e.target.value)}
         />
         <Input
           label="Email address"
@@ -67,6 +81,8 @@ export const RecipientContactForm = ({
           type="email"
           placeholder="user@email.com (optional)"
           variant={variant}
+          value={recipientEmail}
+          onChange={(e) => setRecipientEmail(e.target.value)}
         />
       </div>
     </div>
