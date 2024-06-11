@@ -14,10 +14,10 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "files.stripe.com"
-      }
-    ]
-  }
+        hostname: "files.stripe.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;
