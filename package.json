@@ -19,6 +19,8 @@
     "dev": "turbo dev --parallel",
     "format": "turbo format --continue -- --cache --cache-location node_modules/.cache/.prettiercache",
     "format:fix": "turbo format --continue -- --write --cache --cache-location node_modules/.cache/.prettiercache",
+    "biome": "biome check .",
+    "biome:fix": "biome check . --write",
     "lint": "turbo lint --continue -- --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:fix": "turbo lint --continue -- --fix --cache --cache-location node_modules/.cache/.eslintcache",
     "lint:ws": "pnpm dlx sherif@latest",
@@ -27,11 +29,12 @@
     "ui-add": "pnpm -F ui ui-add"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.8.1",
     "@s-ui/mono": "^2.45.0",
     "@theliaison/prettier-config": "workspace:*",
-    "@turbo/gen": "^1.13.3",
+    "@turbo/gen": "^2.0.3",
     "prettier": "^3.2.5",
-    "turbo": "^1.13.3",
+    "turbo": "^2.0.3",
     "typescript": "^5.4.5"
   },
   "prettier": "@theliaison/prettier-config"
