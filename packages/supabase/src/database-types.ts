@@ -160,6 +160,7 @@ export interface Database {
         Row: {
           created_at: string;
           id: number;
+          invoice_link: string | null;
           is_confirmed: boolean;
           is_rejected: boolean;
           recipient_address: string | null;
@@ -177,6 +178,7 @@ export interface Database {
         Insert: {
           created_at?: string;
           id?: number;
+          invoice_link?: string | null;
           is_confirmed?: boolean;
           is_rejected?: boolean;
           recipient_address?: string | null;
@@ -194,6 +196,7 @@ export interface Database {
         Update: {
           created_at?: string;
           id?: number;
+          invoice_link?: string | null;
           is_confirmed?: boolean;
           is_rejected?: boolean;
           recipient_address?: string | null;
