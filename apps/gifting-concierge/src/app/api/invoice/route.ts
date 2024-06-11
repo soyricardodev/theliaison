@@ -72,5 +72,14 @@ export async function POST(request: Request) {
 
   const invoiceSend = await stripe.invoices.sendInvoice(invoice.id);
 
+  const invoiceHostedLink = invoiceSend.hosted_invoice_url;
+
+  await supabase
+    .from("gifts")
+    .update({
+      invoice_link: invoiceHostedLink,
+    })
+    .eq("id", giftId);
+
   return NextResponse.json({ invoiceSend });
 }
