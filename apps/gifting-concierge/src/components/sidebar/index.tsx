@@ -1,6 +1,6 @@
 "use client";
 
-import type React from "react";
+import { Icon } from "@iconify/react";
 import {
 	Avatar,
 	Button,
@@ -8,12 +8,12 @@ import {
 	Spacer,
 	Tooltip,
 } from "@nextui-org/react";
-import { Icon } from "@iconify/react";
 import { useMediaQuery } from "@theliaison/hooks";
+import type React from "react";
 
-import { sectionItemsWithTeams } from "./sidebar-items";
 import { cn } from "@theliaison/ui";
 import { usePathname } from "next/navigation";
+import { sectionItemsWithTeams } from "./sidebar-items";
 
 import Sidebar from "./sidebar";
 

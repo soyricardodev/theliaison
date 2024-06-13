@@ -1,16 +1,16 @@
 "use client";
 
-import React from "react";
 import {
-	Card,
-	CardHeader,
-	CardBody,
-	Button,
 	Avatar,
-	Tabs,
-	Tab,
+	Button,
+	Card,
+	CardBody,
+	CardHeader,
 	Chip,
+	Tab,
+	Tabs,
 } from "@nextui-org/react";
+import React from "react";
 
 export default function Component() {
 	return (

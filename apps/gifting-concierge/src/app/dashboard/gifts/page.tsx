@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { MoreHorizontal } from "lucide-react";
 import { Button } from "@theliaison/ui/button";
 import {
 	Card,
@@ -24,6 +22,8 @@ import {
 	TableHeader,
 	TableRow,
 } from "@theliaison/ui/table";
+import { MoreHorizontal } from "lucide-react";
+import Image from "next/image";
 import { createClient } from "~/supabase/server";
 
 export default async function GiftsPage() {

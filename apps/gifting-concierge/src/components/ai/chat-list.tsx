@@ -1,8 +1,8 @@
 import { Separator } from "@theliaison/ui/separator";
-import type { UIState } from "./chat/actions";
-import type { Session } from "~/utils/types";
-import Link from "next/link";
 import { TriangleAlertIcon } from "lucide-react";
+import Link from "next/link";
+import type { Session } from "~/utils/types";
+import type { UIState } from "./chat/actions";
 
 export interface ChatList {
 	messages: UIState;

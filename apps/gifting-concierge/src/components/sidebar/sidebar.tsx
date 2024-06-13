@@ -1,5 +1,6 @@
 "use client";
 
+import { Icon } from "@iconify/react";
 import {
 	Accordion,
 	AccordionItem,
@@ -7,14 +8,13 @@ import {
 	type ListboxSectionProps,
 	type Selection,
 } from "@nextui-org/react";
-import React from "react";
 import {
 	Listbox,
-	Tooltip,
 	ListboxItem,
 	ListboxSection,
+	Tooltip,
 } from "@nextui-org/react";
-import { Icon } from "@iconify/react";
+import React from "react";
 
 import { cn } from "@theliaison/ui";
 
@@ -94,7 +94,7 @@ const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
 
 				if (isNestType) {
 					// Is a nest type item , so we need to remove the href
-					delete item.href;
+					item.href = undefined;
 				}
 
 				return (

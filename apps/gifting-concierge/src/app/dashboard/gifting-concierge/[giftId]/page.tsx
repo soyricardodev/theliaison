@@ -1,13 +1,13 @@
 import { createClient } from "~/supabase/server";
 
+import { Button } from "@theliaison/ui/button";
 import {
 	Card,
+	CardContent,
+	CardDescription,
 	CardHeader,
 	CardTitle,
-	CardDescription,
-	CardContent,
 } from "@theliaison/ui/card";
-import { Button } from "@theliaison/ui/button";
 import Image from "next/image";
 
 export default async function GiftingConciergeByIdPage({

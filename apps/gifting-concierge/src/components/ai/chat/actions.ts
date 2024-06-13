@@ -52,15 +52,15 @@ export const getUIStateFromAIState = (aiState: Chat) => {
               </BotCard>
             ) : tool.toolName === 'showStockPrice' ? (
               <BotCard>
-                <Stock props={tool.result} />
+                <Stock props=tool.result/>
               </BotCard>
             ) : tool.toolName === 'showStockPurchase' ? (
               <BotCard>
-                <Purchase props={tool.result} />
+                <Purchase props=tool.result/>
               </BotCard>
             ) : tool.toolName === 'getEvents' ? (
               <BotCard>
-                <Events props={tool.result} />
+                <Events props=tool.result/>
               </BotCard>
             ) : null
           })

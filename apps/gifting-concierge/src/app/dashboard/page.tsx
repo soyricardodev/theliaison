@@ -1,3 +1,6 @@
+import { Avatar, AvatarFallback, AvatarImage } from "@theliaison/ui/avatar";
+import { Badge } from "@theliaison/ui/badge";
+import { Button } from "@theliaison/ui/button";
 import {
 	Card,
 	CardContent,
@@ -6,15 +9,6 @@ import {
 	CardTitle,
 } from "@theliaison/ui/card";
 import {
-	Activity,
-	ArrowUpRight,
-	CreditCard,
-	DollarSign,
-	Users,
-} from "lucide-react";
-import { Button } from "@theliaison/ui/button";
-import Link from "next/link";
-import {
 	Table,
 	TableBody,
 	TableCell,
@@ -22,8 +16,14 @@ import {
 	TableHeader,
 	TableRow,
 } from "@theliaison/ui/table";
-import { Badge } from "@theliaison/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@theliaison/ui/avatar";
+import {
+	Activity,
+	ArrowUpRight,
+	CreditCard,
+	DollarSign,
+	Users,
+} from "lucide-react";
+import Link from "next/link";
 
 export default function DashboardPage() {
 	return (
