@@ -10,6 +10,7 @@ import { TailwindIndicator } from "@theliaison/ui/tailwind-indicator";
 import { Header } from "~/components/header";
 import { Providers } from "~/components/providers";
 import { Cart } from "../components/cart/cart";
+import { FloatingAICta } from "~/components/ai/floating-ai-cta";
 
 export const metadata: Metadata = {
 	title: "The Liaison | Gifting Concierge",
@@ -28,7 +29,7 @@ export default function RootLayout({
 				className={cn("min-h-dvh font-sans antialiased", GeistSans.variable)}
 			>
 				<Providers>
-					<Header />
+					{/* <Header /> */}
 					<Cart />
 					{children}
 				</Providers>
