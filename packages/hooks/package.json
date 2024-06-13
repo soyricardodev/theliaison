@@ -1,0 +1,31 @@
+{
+	"name": "@theliaison/hooks",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./src/index.ts"
+		}
+	},
+	"license": "MIT",
+	"scripts": {
+		"clean": "rm -rf .turbo node_modules",
+		"build": "tsc",
+		"typecheck": "tsc --noEmit --emitDeclarationOnly false"
+	},
+	"dependencies": {
+		"react": "18.3.1"
+	},
+	"devDependencies": {
+		"@theliaison/tsconfig": "workspace:*",
+		"@types/react": "^18.3.2",
+		"typescript": "^5.4.5"
+	},
+	"peerDependencies": {
+		"react": "18.3.1"
+	}
+}

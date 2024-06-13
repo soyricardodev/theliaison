@@ -15,7 +15,7 @@
 	},
 	"dependencies": {
 		"@theliaison/ui": "workspace:*",
-		"@ai-sdk/openai": "0.0.18",
+		"@ai-sdk/openai": "0.0.24",
 		"@headlessui/react": "^2.0.4",
 		"@headlessui/tailwindcss": "^0.2.1",
 		"@hookform/resolvers": "^3.4.2",
