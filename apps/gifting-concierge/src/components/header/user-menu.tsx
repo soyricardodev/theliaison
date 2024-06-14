@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { createClient } from "~/supabase/server";
 import { Avatar, Badge } from "@nextui-org/react";
 import {
@@ -5,8 +6,15 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 	DropdownMenuContent,
+	DropdownMenuSeparator,
 } from "@theliaison/ui/dropdown-menu";
+import { Button } from "@theliaison/ui/button";
 import { SignOutForm } from "./signout-form";
+import {
+	CircleUserRoundIcon,
+	GiftIcon,
+	HeartHandshakeIcon,
+} from "lucide-react";
 
 export async function UserMenu() {
 	const supabase = createClient();
@@ -15,9 +23,17 @@ export async function UserMenu() {
 		error,
 	} = await supabase.auth.getUser();
 
-	console.log(user);
 	if (error) {
-		return <p>Error: {error.message}</p>;
+		return (
+			<div className="flex gap-2">
+				<Button variant="outline" asChild>
+					<Link href="/login">Login</Link>
+				</Button>
+				<Button asChild>
+					<Link href="/register">Sign Up</Link>
+				</Button>
+			</div>
+		);
 	}
 
 	return (
@@ -37,20 +53,30 @@ export async function UserMenu() {
 					</Badge>
 				</button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent aria-label="Profile Actions">
-				<DropdownMenuItem key="profile" className="h-14 gap-2">
-					<p className="font-semibold">Signed in as</p>
-					<p className="font-semibold">{user?.email}</p>
+			<DropdownMenuContent
+				aria-label="Profile Actions"
+				className="w-56 shadow-lg [&>a]:cursor-pointer"
+			>
+				<DropdownMenuItem asChild>
+					<Link href="/profile" className="font-medium flex gap-2">
+						{user?.email}
+					</Link>
 				</DropdownMenuItem>
-				<DropdownMenuItem key="settings">My Settings</DropdownMenuItem>
-				<DropdownMenuItem key="team_settings">Team Settings</DropdownMenuItem>
-				<DropdownMenuItem key="analytics">Analytics</DropdownMenuItem>
-				<DropdownMenuItem key="system">System</DropdownMenuItem>
-				<DropdownMenuItem key="configurations">Configurations</DropdownMenuItem>
-				<DropdownMenuItem key="help_and_feedback">
-					Help & Feedback
+				<DropdownMenuSeparator />
+				<DropdownMenuItem asChild>
+					<Link href="/profile/gifts" className="flex gap-2">
+						<GiftIcon className="size-5" />
+						My Gifts
+					</Link>
 				</DropdownMenuItem>
-				<DropdownMenuItem key="logout">
+				<DropdownMenuItem asChild>
+					<Link href="/help-and-feedback" className="flex gap-2">
+						<HeartHandshakeIcon className="size-5" />
+						Help & Feedback
+					</Link>
+				</DropdownMenuItem>
+				<DropdownMenuSeparator />
+				<DropdownMenuItem asChild>
 					<SignOutForm />
 				</DropdownMenuItem>
 			</DropdownMenuContent>
