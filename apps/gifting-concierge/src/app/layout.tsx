@@ -29,7 +29,7 @@ export default function RootLayout({
 				className={cn("min-h-dvh font-sans antialiased", GeistSans.variable)}
 			>
 				<Providers>
-					{/* <Header /> */}
+					<Header />
 					<Cart />
 					{children}
 				</Providers>
