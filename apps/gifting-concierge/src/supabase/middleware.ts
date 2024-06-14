@@ -1,9 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-import type { CookieOptions } from "@supabase/ssr";
-import { createServerClient } from "@supabase/ssr";
-import type { NextRequest } from "next/server";
-import { NextResponse } from "next/server";
-
+import { createServerClient, type CookieOptions } from "@supabase/ssr";
+import { NextResponse, type NextRequest } from "next/server";
 import { env } from "~/env";
 
 export async function updateSession(request: NextRequest) {
