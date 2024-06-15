@@ -3,7 +3,8 @@
  * for Docker builds.
  */
 await import("./src/env.js");
-import { env } from "./src/env.js";
+
+const giftingConciergeURL = "https://giftingconcierge.theliaison.vercel.app";
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
@@ -27,19 +28,19 @@ const nextConfig = {
 			},
 			{
 				source: "/gift",
-				destination: env.GIFTING_CONCIERGE_URL,
+				destination: giftingConciergeURL,
 			},
 			{
 				source: "/gift/:path*",
-				destination: `${env.GIFTING_CONCIERGE_URL}/:path*`,
+				destination: `${giftingConciergeURL}/:path*`,
 			},
 			{
 				source: "/giftshop",
-				destination: `${env.GIFTING_CONCIERGE_URL}/giftshop`,
+				destination: `${giftingConciergeURL}/giftshop`,
 			},
 			{
 				source: "/giftshop/:path*",
-				destination: `${env.GIFTING_CONCIERGE_URL}/giftshop/:path*`,
+				destination: `${giftingConciergeURL}/giftshop/:path*`,
 			},
 		]
 	}
