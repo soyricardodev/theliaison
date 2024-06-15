@@ -39,7 +39,6 @@ export function runOpenAICompletion<
 		functionsMap[fn.name] = fn;
 	}
 
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	const onFunctionCall = {} as any;
 
 	const { functions, ...rest } = params;
@@ -58,7 +57,6 @@ export function runOpenAICompletion<
 							unknown
 						>,
 					})),
-					// biome-ignore lint/suspicious/noExplicitAny: here we need the type to be any
 				})) as any,
 				{
 					async experimental_onFunctionCall(functionCallPayload) {
@@ -130,7 +128,6 @@ export const formatNumber = (value: number) =>
 	}).format(value);
 
 export const runAsyncFnWithoutBlocking = (
-	// biome-ignore lint/suspicious/noExplicitAny: here we need the type to be any
 	fn: (...args: any) => Promise<any>,
 ) => {
 	fn();

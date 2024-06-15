@@ -26,7 +26,6 @@ export function PricingSelect({
 	products,
 	userSubscriptionId,
 	user,
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 }: {
 	products: any;
 	userSubscriptionId?: string | null;

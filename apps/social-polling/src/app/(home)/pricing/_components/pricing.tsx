@@ -187,7 +187,7 @@ export default function Pricing({ user, products, subscription }: Props) {
 										"group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter",
 										"transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
 									)}
-									onClick={() => handleStripeCheckout(price!)}
+									onClick={() => price != null && handleStripeCheckout(price)}
 								>
 									<span className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 transform-gpu bg-white opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-96 dark:bg-black" />
 									<p>{subscription ? "Manage" : "Subscribe"}</p>

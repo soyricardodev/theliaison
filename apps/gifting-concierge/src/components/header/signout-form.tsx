@@ -1,7 +1,7 @@
 "use client";
 
-import { signOut } from "./actions";
 import { LogOutIcon } from "lucide-react";
+import { signOut } from "./actions";
 
 export function SignOutForm() {
 	return (

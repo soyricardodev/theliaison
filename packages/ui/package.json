@@ -5,10 +5,7 @@
 	"type": "module",
 	"exports": {
 		".": "./src/index.ts",
-		"./*": [
-			"./src/*.tsx",
-			"./src/*.ts"
-		]
+		"./*": ["./src/*.tsx", "./src/*.ts"]
 	},
 	"license": "MIT",
 	"scripts": {

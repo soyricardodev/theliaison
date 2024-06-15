@@ -29,7 +29,6 @@ export interface TestimonialCardProps {
 	img?: string;
 	description: React.ReactNode;
 	className?: string;
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	[key: string]: any;
 }
 

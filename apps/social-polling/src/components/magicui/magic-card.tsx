@@ -179,7 +179,6 @@ interface MagicCardProps {
 	 * */
 	background?: string;
 
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	[key: string]: any;
 
 	onClick?: () => void;

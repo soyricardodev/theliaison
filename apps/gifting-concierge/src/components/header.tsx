@@ -16,9 +16,9 @@ import {
 } from "@nextui-org/react";
 import { BellIcon, SearchIcon } from "lucide-react";
 import React from "react";
-import { NotificationsCard } from "./notifications/notifications-header-card";
-import { UserMenu } from "./header/user-menu";
 import { ShoppingCartCta } from "./header/shopping-cart-cta";
+import { UserMenu } from "./header/user-menu";
+import { NotificationsCard } from "./notifications/notifications-header-card";
 
 export function Header() {
 	return (

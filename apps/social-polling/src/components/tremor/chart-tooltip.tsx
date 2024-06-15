@@ -86,7 +86,6 @@ export const ChartTooltipRow = ({
 
 export interface ChartTooltipProps {
 	active: boolean | undefined;
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	payload: any;
 	label: string;
 	categoryColors: Map<string, Color | string>;
@@ -101,7 +100,6 @@ const ChartTooltip = ({
 	valueFormatter,
 }: ChartTooltipProps) => {
 	if (active && payload) {
-		// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 		const filteredPayload = payload.filter((item: any) => item.type !== "none");
 
 		return (
@@ -138,7 +136,7 @@ const ChartTooltip = ({
 								}`}
 								value={valueFormatter(value)}
 								name={name}
-								color={categoryColors.get(name) ?? BaseColors.Blue}
+								color={categoryColors.get(name) ?? (BaseColors.Blue as string)}
 							/>
 						),
 					)}

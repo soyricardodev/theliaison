@@ -11,7 +11,6 @@ export type TAnyToolDefinitionArray = Array<
  * A map of ToolDefinitions, indexed by name.
  */
 export type TAnyToolDefinitionMap = Readonly<{
-	// biome-ignore lint/suspicious/noExplicitAny: is used to create a map of ToolDefinitions, indexed by name.
 	[K in string]: ToolDefinition<any, any>;
 }>;
 

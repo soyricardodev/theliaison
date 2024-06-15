@@ -56,7 +56,6 @@ const tiles = [
 	},
 ];
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 const shuffleArray = (array: any[]) => {
 	let currentIndex = array.length;
 	let randomIndex: number;

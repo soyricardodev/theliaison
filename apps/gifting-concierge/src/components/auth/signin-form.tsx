@@ -1,15 +1,16 @@
 "use client";
-import React, { useState, useTransition } from "react";
-import { SocialAuth } from "./social-auth";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import React, { useState, useTransition } from "react";
+import { SocialAuth } from "./social-auth";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { z } from "zod";
 
+import { cn } from "@theliaison/ui";
 import { Button } from "@theliaison/ui/button";
 import {
 	Form,
@@ -20,9 +21,8 @@ import {
 	FormMessage,
 } from "@theliaison/ui/form";
 import { Input } from "@theliaison/ui/input";
-import { toast } from "sonner";
-import { cn } from "@theliaison/ui";
 import Link from "next/link";
+import { toast } from "sonner";
 import { signInWithEmail } from "./actions";
 
 const FormSchema = z.object({

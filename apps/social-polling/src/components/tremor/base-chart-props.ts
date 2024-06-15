@@ -63,7 +63,6 @@ export type ValueFormatter = (value: number) => string;
 interface BaseChartProps
 	extends BaseAnimationTimingProps,
 		React.HTMLAttributes<HTMLDivElement> {
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	data: any[];
 	categories: string[];
 	index: string;

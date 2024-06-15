@@ -1,19 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
-import { RiArrowRightSFill, RiArrowDropLeftFill } from "react-icons/ri";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { SiMinutemailer } from "react-icons/si";
-import { REGEXP_ONLY_DIGITS } from "input-otp";
-import {
-	InputOTP,
-	InputOTPGroup,
-	InputOTPSeparator,
-	InputOTPSlot,
-} from "@theliaison/ui/input-otp";
+import { cn } from "@theliaison/ui";
 import { Button } from "@theliaison/ui/button";
 import {
 	Form,
@@ -24,12 +12,24 @@ import {
 	FormMessage,
 } from "@theliaison/ui/form";
 import { Input } from "@theliaison/ui/input";
-import { useState, useTransition } from "react";
+import {
+	InputOTP,
+	InputOTPGroup,
+	InputOTPSeparator,
+	InputOTPSlot,
+} from "@theliaison/ui/input-otp";
+import { REGEXP_ONLY_DIGITS } from "input-otp";
 import Link from "next/link";
-import { cn } from "@theliaison/ui";
-import { verifyOtp } from "./actions";
-import { toast } from "sonner";
 import { usePathname, useRouter } from "next/navigation";
+import { useState, useTransition } from "react";
+import { useForm } from "react-hook-form";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { RiArrowDropLeftFill, RiArrowRightSFill } from "react-icons/ri";
+import { SiMinutemailer } from "react-icons/si";
+import { toast } from "sonner";
+import { z } from "zod";
+import { verifyOtp } from "./actions";
 
 const FormSchema = z
 	.object({

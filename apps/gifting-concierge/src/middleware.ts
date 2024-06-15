@@ -1,6 +1,6 @@
-import { NextResponse, type NextRequest } from "next/server";
-import { updateSession } from "./supabase/middleware";
 import { type JwtPayload, jwtDecode } from "jwt-decode";
+import { type NextRequest, NextResponse } from "next/server";
+import { updateSession } from "./supabase/middleware";
 import { createClient } from "./supabase/server";
 
 const adminPaths = ["/dashboard"];

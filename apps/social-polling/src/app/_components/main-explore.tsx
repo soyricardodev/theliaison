@@ -37,7 +37,6 @@ export async function MainExplore() {
 	const { data: featuredPollsQuery } = await featuredPollsWithOptionsQuery;
 	const { data: allPollsQuery } = await pollsWithOptionsQuery;
 
-	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	function calculateVotes(data: any) {
 		const votesDetailsArray: PollWithOptionsAndVotes[] = [];
 

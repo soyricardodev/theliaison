@@ -1,20 +1,20 @@
-import Link from "next/link";
-import { createClient } from "~/supabase/server";
 import { Avatar, Badge } from "@nextui-org/react";
+import { Button } from "@theliaison/ui/button";
 import {
 	DropdownMenu,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
 	DropdownMenuContent,
+	DropdownMenuItem,
 	DropdownMenuSeparator,
+	DropdownMenuTrigger,
 } from "@theliaison/ui/dropdown-menu";
-import { Button } from "@theliaison/ui/button";
-import { SignOutForm } from "./signout-form";
 import {
 	CircleUserRoundIcon,
 	GiftIcon,
 	HeartHandshakeIcon,
 } from "lucide-react";
+import Link from "next/link";
+import { createClient } from "~/supabase/server";
+import { SignOutForm } from "./signout-form";
 
 export async function UserMenu() {
 	const supabase = createClient();
