@@ -23,10 +23,6 @@ const nextConfig = {
 	async rewrites() {
 		return [
 			{
-				source: "/:path*",
-				destination: "/:path*",
-			},
-			{
 				source: "/gift",
 				destination: giftingConciergeURL,
 			},
@@ -41,6 +37,10 @@ const nextConfig = {
 			{
 				source: "/giftshop/:path*",
 				destination: `${giftingConciergeURL}/giftshop/:path*`,
+			},
+			{
+				source: "/:path*",
+				destination: "/:path*",
 			},
 		]
 	}
