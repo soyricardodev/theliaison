@@ -3,6 +3,7 @@
  * for Docker builds.
  */
 await import("./src/env.js");
+import { env } from "./src/env.js";
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
@@ -18,6 +19,30 @@ const nextConfig = {
 		loader: "custom",
 		loaderFile: "./src/utils/supabase/image-loader.js",
 	},
+	async rewrites() {
+		return [
+			{
+				source: "/:path*",
+				destination: "/:path*",
+			},
+			{
+				source: "/gift",
+				destination: env.GIFTING_CONCIERGE_URL,
+			},
+			{
+				source: "/gift/:path*",
+				destination: `${env.GIFTING_CONCIERGE_URL}/:path*`,
+			},
+			{
+				source: "/giftshop",
+				destination: `${env.GIFTING_CONCIERGE_URL}/giftshop`,
+			},
+			{
+				source: "/giftshop/:path*",
+				destination: `${env.GIFTING_CONCIERGE_URL}/giftshop/:path*`,
+			},
+		]
+	}
 };
 
 export default nextConfig;
