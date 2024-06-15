@@ -1,6 +1,5 @@
 "use server";
 
-import type { AuthError } from "@supabase/supabase-js";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "~/supabase/server";
@@ -35,7 +34,6 @@ export async function signInWithEmail({
 	});
 
 	if (error) {
-		console.log(error);
 		return error.message;
 	}
 
