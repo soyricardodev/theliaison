@@ -14,6 +14,7 @@ import { useRecipientStore } from "~/store/recipient";
 import { OrderSummary } from "./_components/order-summary";
 import { OrderSummaryConfirmation } from "./_components/order-summary-confirmation";
 import { RecipientContactForm } from "./_components/recipient-contact-form";
+import { RecipientDataForm } from "./_components/recipient-data-form";
 import { createGift } from "./actions";
 
 export default function Component() {
@@ -111,7 +112,8 @@ export default function Component() {
 			case 1:
 				return (
 					<div className="mt-4 flex flex-col gap-6">
-						<RecipientContactForm hideTitle variant="bordered" />
+						<RecipientDataForm />
+						{/* <RecipientContactForm hideTitle variant="bordered" /> */}
 					</div>
 				);
 			case 2:
@@ -226,56 +228,7 @@ export default function Component() {
 			</div>
 
 			{/* Right */}
-			<div className="relative hidden w-full overflow-hidden rounded-medium shadow-small lg:block">
-				{/* Top Shadow */}
-				<div className="absolute top-0 z-10 h-32 w-full rounded-medium bg-gradient-to-b from-black/80 to-transparent" />
-				{/* Bottom Shadow */}
-				<div className="absolute bottom-0 z-10 h-32 w-full rounded-medium bg-gradient-to-b from-transparent to-black/80" />
-
-				{/* Content */}
-				<div className="absolute top-10 z-10 flex w-full items-start justify-between px-10">
-					<h2 className="text-2xl font-medium text-white/70 [text-shadow:_0_2px_10px_rgb(0_0_0_/_20%)]">
-						The future of footwear is here.
-					</h2>
-					<div className="flex flex-col items-end gap-1">
-						<div className="flex gap-1">
-							{Array.from({ length: 5 }).map((_, i) => (
-								<StarIcon key={i} className="text-white/80" width={16} />
-							))}
-						</div>
-						<Link
-							className="text-white/60"
-							href="#"
-							size="sm"
-							underline="always"
-						>
-							120 reviews
-						</Link>
-					</div>
-				</div>
-				<Image
-					removeWrapper
-					alt="Nike Adapt BB 2.0"
-					className="absolute inset-0 z-0 h-full w-full rounded-none object-cover"
-					height="100%"
-					src="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/shoes.jpg"
-				/>
-				<div className="absolute inset-x-4 bottom-4 z-10 flex items-center justify-between rounded-medium bg-background/10 p-8 backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50 ">
-					<div className="flex flex-col gap-1">
-						<h2 className="left-10 z-10 text-2xl font-medium text-white/90">
-							Nike Adapt BB 2.0
-						</h2>
-						<p className="left-10 z-10 text-white/80">$399.99</p>
-					</div>
-					<Button
-						className="border-white/40 pl-3 text-white"
-						startContent={<PlusIcon width={24} />}
-						variant="bordered"
-					>
-						Add to cart
-					</Button>
-				</div>
-			</div>
+			<div className="relative hidden w-full overflow-hidden lg:block" />
 		</section>
 	);
 }
