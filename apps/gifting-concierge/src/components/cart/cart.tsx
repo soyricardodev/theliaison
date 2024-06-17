@@ -31,7 +31,7 @@ export function Cart() {
 						<ul className="flex-grow overflow-auto py-4">
 							{shoppingCart.map((gift, i) => (
 								<ProductCart
-									key={i}
+									key={gift.id}
 									productId={gift.id}
 									quantity={gift.quantity}
 								/>
@@ -49,6 +49,9 @@ export function Cart() {
 							className="mb-4"
 							as={Link}
 							href="/send-gift"
+							onClick={() => {
+								setIsOpen(false);
+							}}
 						>
 							Continue to gifting
 						</Button>
