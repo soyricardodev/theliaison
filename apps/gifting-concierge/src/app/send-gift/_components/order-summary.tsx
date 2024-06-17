@@ -34,7 +34,7 @@ export const OrderSummary = ({ hideTitle }: OrderSummaryProps) => {
 			<div className="h-auto overflow-hidden">
 				<ul className="overflow-auto max-h-[450px]">
 					{shoppingCart.map((item) => (
-						<OrderSummaryItem key={item.id} {...item} />
+						<OrderSummaryItem hideX key={item.id} {...item} />
 					))}
 				</ul>
 			</div>
@@ -48,11 +48,9 @@ export const OrderSummary = ({ hideTitle }: OrderSummaryProps) => {
 					</div>
 					<div className="flex justify-between">
 						<dt className="text-small text-default-500">Delivery</dt>
-						<dd className="text-small font-semibold text-default-700">$0.00</dd>
-					</div>
-					<div className="flex justify-between">
-						<dt className="text-small text-default-500">Tax</dt>
-						<dd className="text-small font-semibold text-default-700">$0.00</dd>
+						<dd className="text-small text-default-700">
+							Calculated at gift confirmation
+						</dd>
 					</div>
 					<div className="flex justify-between">
 						<dt className="text-small text-default-500">Discount</dt>
