@@ -98,6 +98,7 @@ function GiftIcon({ className }: { className: string }) {
 			strokeLinecap="round"
 			strokeLinejoin="round"
 		>
+			<title>Gift</title>
 			<rect x="3" y="8" width="18" height="4" rx="1" />
 			<path d="M12 8v13" />
 			<path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7" />
