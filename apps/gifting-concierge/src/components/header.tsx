@@ -1,5 +1,4 @@
 import {
-	Badge,
 	Button,
 	Input,
 	Link,
@@ -10,15 +9,12 @@ import {
 	NavbarMenu,
 	NavbarMenuItem,
 	NavbarMenuToggle,
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
 } from "@nextui-org/react";
-import { BellIcon, SearchIcon } from "lucide-react";
+import { SearchIcon } from "lucide-react";
 import React from "react";
 import { ShoppingCartCta } from "./header/shopping-cart-cta";
 import { UserMenu } from "./header/user-menu";
-import { NotificationsCard } from "./notifications/notifications-header-card";
+import { FloatingAICta } from "./ai/floating-ai-cta";
 
 export function Header() {
 	return (
@@ -48,12 +44,13 @@ export function Header() {
 					<Input
 						aria-label="Search"
 						classNames={{
-							inputWrapper: "bg-content2 dark:bg-content1",
+							inputWrapper: "bg-content2",
 						}}
 						labelPlacement="outside"
 						placeholder="Search..."
 						radius="full"
 						startContent={<SearchIcon className="text-default-500 size-5" />}
+						endContent={<FloatingAICta />}
 					/>
 				</NavbarItem>
 				{/* Mobile search */}
@@ -67,7 +64,7 @@ export function Header() {
 					<ShoppingCartCta />
 				</NavbarItem>
 				{/* Notifications */}
-				<NavbarItem className="flex">
+				{/* <NavbarItem className="flex">
 					<Popover offset={12} placement="bottom-end">
 						<PopoverTrigger>
 							<Button
@@ -86,7 +83,7 @@ export function Header() {
 							<NotificationsCard className="w-full shadow-none" />
 						</PopoverContent>
 					</Popover>
-				</NavbarItem>
+				</NavbarItem> */}
 				{/* User Menu */}
 				<NavbarItem className="px-2">
 					<UserMenu />
