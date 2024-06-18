@@ -44,6 +44,31 @@ export default {
 					from: { transform: "translateY(0)" },
 					to: { transform: "translateY(calc(-50% - var(--gap)/2))" },
 				},
+				grid: {
+					"0%": { transform: "translateY(-50%)" },
+					"100%": { transform: "translateY(0)" },
+				},
+				"border-beam": {
+					"100%": {
+						"offset-distance": "100%",
+					},
+				},
+				"image-glow": {
+					"0%": {
+						content: "var(--tw-content)",
+						opacity: "0",
+						"animation-timing-function": "cubic-bezier(.74,.25,.76,1)",
+					},
+					"10%": {
+						content: "var(--tw-content)",
+						opacity: ".7",
+						"animation-timing-function": "cubic-bezier(.12,.01,.08,.99)",
+					},
+					"100%": {
+						content: "var(--tw-content)",
+						opacity: ".4",
+					},
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
@@ -52,6 +77,9 @@ export default {
 				"scrolling-banner": "scrolling-banner var(--duration) linear infinite",
 				"scrolling-banner-vertical":
 					"scrolling-banner-vertical var(--duration) linear infinite",
+				grid: "grid 15s linear infinite",
+				"border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+				"image-glow": "image-glow 4.1s ease-out .6s forwards;",
 			},
 		},
 	},
