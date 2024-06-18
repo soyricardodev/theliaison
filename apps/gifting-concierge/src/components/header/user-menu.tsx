@@ -46,10 +46,7 @@ export async function UserMenu() {
 						placement="bottom-right"
 						shape="circle"
 					>
-						<Avatar
-							size="sm"
-							src="https://i.pravatar.cc/150?u=a04258114e29526708c"
-						/>
+						<Avatar size="sm" />
 					</Badge>
 				</button>
 			</DropdownMenuTrigger>
