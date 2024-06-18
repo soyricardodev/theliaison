@@ -49,7 +49,8 @@ export function Hero() {
 					type: "spring",
 				}}
 			>
-				We are the new way to send gifts.
+				We are the new way
+				<br className="hidden lg:block" /> to send gifts.
 			</motion.h1>
 			<motion.p
 				className="text-balance text-lg tracking-tight text-gray-600 md:text-xl mb-12"
