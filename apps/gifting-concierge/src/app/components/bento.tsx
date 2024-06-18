@@ -1,5 +1,3 @@
-import { AnimatedBeam } from "@theliaison/ui/magicui/animated-beam";
-
 import { Calendar } from "@theliaison/ui/calendar";
 import {
 	Command,
@@ -14,6 +12,7 @@ import { BentoCard, BentoGrid } from "@theliaison/ui/magicui/bento-grid";
 import Marquee from "@theliaison/ui/magicui/marquee";
 import { CalendarIcon, FileTextIcon, InputIcon } from "@radix-ui/react-icons";
 import { Share2Icon } from "lucide-react";
+import { AnimatedBeamMultipleOutputDemo } from "./beam-multiple";
 
 const files = [
 	{
@@ -185,7 +184,7 @@ const features = [
 		cta: "Learn more",
 		className: "col-span-3 lg:col-span-2",
 		background: (
-			<AnimatedBeam className="absolute right-2 top-4 h-[300px] w-[600px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105" />
+			<AnimatedBeamMultipleOutputDemo className="absolute right-2 top-4 h-[300px] w-[600px] border-none transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] group-hover:scale-105" />
 		),
 	},
 	{
