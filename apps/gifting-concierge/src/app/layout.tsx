@@ -26,7 +26,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body
-				className={cn("min-h-dvh font-sans antialiased", GeistSans.variable)}
+				className={cn(
+					"min-h-dvh font-sans antialiased bg-background",
+					GeistSans.variable,
+				)}
 			>
 				<Providers>
 					<Header />
