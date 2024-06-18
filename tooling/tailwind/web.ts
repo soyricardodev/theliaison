@@ -69,6 +69,14 @@ export default {
 						opacity: ".4",
 					},
 				},
+				marquee: {
+					from: { transform: "translateX(0)" },
+					to: { transform: "translateX(calc(-100% - var(--gap)))" },
+				},
+				"marquee-vertical": {
+					from: { transform: "translateY(0)" },
+					to: { transform: "translateY(calc(-100% - var(--gap)))" },
+				},
 			},
 			animation: {
 				"accordion-down": "accordion-down 0.2s ease-out",
@@ -80,6 +88,8 @@ export default {
 				grid: "grid 15s linear infinite",
 				"border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
 				"image-glow": "image-glow 4.1s ease-out .6s forwards;",
+				marquee: "marquee var(--duration) linear infinite",
+				"marquee-vertical": "marquee-vertical var(--duration) linear infinite",
 			},
 		},
 	},

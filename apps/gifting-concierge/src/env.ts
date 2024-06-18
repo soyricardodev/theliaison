@@ -8,8 +8,8 @@ export const env = createEnv({
 		STRIPE_WEBHOOK_SECRET: z.string(),
 		SUPABASE_SERVICE_ROLE_KEY: z.string(),
 		OPENAI_API_KEY: z.string(),
-		RESEND_DOMAIN: z.string(),
-		RESEND_API_KEY: z.string(),
+		// RESEND_DOMAIN: z.string(),
+		// RESEND_API_KEY: z.string(),
 	},
 	client: {
 		NEXT_PUBLIC_SUPABASE_URL: z.string().url(),
