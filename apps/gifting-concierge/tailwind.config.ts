@@ -20,6 +20,7 @@ const config = {
 		},
 	},
 	plugins: [
+		require("@tailwindcss/typography"),
 		nextui({
 			defaultTheme: "light",
 			themes: {
