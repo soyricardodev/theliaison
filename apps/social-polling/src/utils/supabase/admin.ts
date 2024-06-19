@@ -10,6 +10,11 @@ import type {
 import { env } from "~/env";
 import { toDateTime } from "~/utils/helpers";
 import { stripe } from "~/utils/stripe/config";
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+	apiKey: env.OPENAI_API_KEY,
+});
 
 type Product = Tables<"products">;
 type Price = Tables<"prices">;
@@ -25,6 +30,13 @@ const supabaseAdmin = createClient<Database>(
 );
 
 const upsertProductRecord = async (product: Stripe.Product) => {
+	const embeddingResponse = await openai.embeddings.create({
+		model: "text-embedding-ada-002",
+		input: `${product.name} ${product.description ?? ""}`,
+	});
+
+	const embedding = embeddingResponse.data[0]?.embedding;
+
 	const productData: Product = {
 		id: product.id,
 		active: product.active,
@@ -33,6 +45,8 @@ const upsertProductRecord = async (product: Stripe.Product) => {
 		image: product.images[0] ?? null,
 		metadata: product.metadata,
 		type: "gift",
+		// @ts-expect-error - TODO: Fix this type error
+		embedding,
 	};
 
 	const { error: upsertError } = await supabaseAdmin
