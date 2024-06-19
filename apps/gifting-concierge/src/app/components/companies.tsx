@@ -1,4 +1,4 @@
-const companies = ["Google", "Amazon", "YouTube", "Instagram", "Spotify"];
+import { brands } from "~/lib/constants/brands";
 
 export function Companies() {
 	return (
@@ -12,15 +12,9 @@ export function Companies() {
 						TRUSTED BY TEAMS FROM AROUND THE WORLD
 					</h3>
 					<div className="relative mt-6">
-						<ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16 [&_path]:fill-white">
-							{companies.map((logo, idx) => (
-								<li key={`${idx}-${logo}`}>
-									<img
-										src={`https://cdn.magicui.design/companies/${logo}.svg`}
-										className="h-8 w-28 px-2 dark:brightness-0 dark:invert"
-										alt={logo}
-									/>
-								</li>
+						<ul className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 md:gap-x-16 [&_path]:fill-black ">
+							{brands.map((brand, idx) => (
+								<li key={`${idx}-${brand.slug}`}>{brand.logo}</li>
 							))}
 						</ul>
 					</div>
