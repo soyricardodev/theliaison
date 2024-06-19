@@ -2,9 +2,9 @@
 
 import type { IconProps } from "@iconify/react";
 
-import React from "react";
-import { Link, Spacer } from "@nextui-org/react";
 import { Icon } from "@iconify/react";
+import { Link, Spacer } from "@nextui-org/react";
+import React from "react";
 
 type SocialIconProps = Omit<IconProps, "icon">;
 

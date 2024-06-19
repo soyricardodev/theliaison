@@ -42,8 +42,8 @@ const nextConfig = {
 				source: "/:path*",
 				destination: "/:path*",
 			},
-		]
-	}
+		];
+	},
 };
 
 export default nextConfig;

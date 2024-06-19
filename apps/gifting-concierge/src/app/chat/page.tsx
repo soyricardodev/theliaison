@@ -1,7 +1,7 @@
-import { nanoid } from "~/utils";
 import { Chat } from "~/components/ai/chat";
 import { AI } from "~/components/ai/chat/actions";
 import { createClient } from "~/supabase/server";
+import { nanoid } from "~/utils";
 import type { Session } from "~/utils/types";
 
 export const metadata = {

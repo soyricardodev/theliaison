@@ -1,17 +1,17 @@
 "use client";
 
+import { useAIState, useUIState } from "ai/rsc";
 import { useEffect, useState } from "react";
-import { useUIState, useAIState } from "ai/rsc";
 
-import type { Message, Session } from "~/utils/types";
 import { cn } from "@theliaison/ui";
 import { usePathname, useRouter } from "next/navigation";
-import { useScrollAnchor } from "~/lib/hooks/use-scroll-anchor";
 import { useLocalStorage } from "~/lib/hooks/use-local-storage";
+import { useScrollAnchor } from "~/lib/hooks/use-scroll-anchor";
+import type { Message, Session } from "~/utils/types";
 
-import { EmptyScreen } from "../empty-screen";
 import { ChatList } from "../chat-list";
 import { ChatPanel } from "../chat-panel";
+import { EmptyScreen } from "../empty-screen";
 
 import { toast } from "sonner";
 

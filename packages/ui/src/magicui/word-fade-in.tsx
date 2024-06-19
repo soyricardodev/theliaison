@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "../";
 import { type Variants, motion } from "framer-motion";
+import { cn } from "../";
 
 export interface WordFadeInProps {
 	words: string;

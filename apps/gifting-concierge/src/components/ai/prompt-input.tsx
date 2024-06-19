@@ -2,8 +2,8 @@
 
 import type { TextAreaProps } from "@nextui-org/react";
 
-import React from "react";
 import { Textarea } from "@nextui-org/react";
+import React from "react";
 
 import { cn } from "@theliaison/ui";
 

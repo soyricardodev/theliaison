@@ -3,8 +3,8 @@ import { notFound, redirect } from "next/navigation";
 
 import { Chat } from "~/components/ai/chat";
 import { AI, getChat } from "~/components/ai/chat/actions";
-import type { Session } from "~/utils/types";
 import { createClient } from "~/supabase/server";
+import type { Session } from "~/utils/types";
 
 export interface ChatPageProps {
 	params: {

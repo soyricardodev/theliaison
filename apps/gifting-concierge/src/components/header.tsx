@@ -12,9 +12,9 @@ import {
 } from "@nextui-org/react";
 import { SearchIcon } from "lucide-react";
 import React from "react";
+import { FloatingAICta } from "./ai/floating-ai-cta";
 import { ShoppingCartCta } from "./header/shopping-cart-cta";
 import { UserMenu } from "./header/user-menu";
-import { FloatingAICta } from "./ai/floating-ai-cta";
 
 export function Header() {
 	return (

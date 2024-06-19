@@ -1,7 +1,7 @@
 "use client";
 
-import { buttonVariants } from "@theliaison/ui/button";
 import { cn } from "@theliaison/ui";
+import { buttonVariants } from "@theliaison/ui/button";
 import Marquee from "@theliaison/ui/magicui/marquee";
 import { motion, useAnimation, useInView } from "framer-motion";
 import {

@@ -7,10 +7,10 @@ import type {
 	TablesInsert,
 } from "@theliaison/supabase/database-types";
 
+import OpenAI from "openai";
 import { env } from "~/env";
 import { toDateTime } from "~/utils/helpers";
 import { stripe } from "~/utils/stripe/config";
-import OpenAI from "openai";
 
 const openai = new OpenAI({
 	apiKey: env.OPENAI_API_KEY,

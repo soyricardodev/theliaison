@@ -1,13 +1,13 @@
-import * as React from "react";
 import { Button } from "@theliaison/ui/button";
 import { useAIState, useActions, useUIState } from "ai/rsc";
-import type { AI } from "./chat/actions";
 import { nanoid } from "nanoid";
-import { UserMessage } from "./message";
+import * as React from "react";
 import { IconShare } from "../ui/icons";
-import { PromptForm } from "./prompt-form";
-import { FooterText } from "./footer";
 import { ButtonScrollToBottom } from "./button-scroll-to-bottom";
+import type { AI } from "./chat/actions";
+import { FooterText } from "./footer";
+import { UserMessage } from "./message";
+import { PromptForm } from "./prompt-form";
 
 export interface ChatPanelProps {
 	id?: string;

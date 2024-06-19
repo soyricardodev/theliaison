@@ -5,19 +5,19 @@ import Textarea from "react-textarea-autosize";
 
 import { useActions, useUIState } from "ai/rsc";
 
-import { UserMessage } from "./message";
-import type { AI } from "./chat/actions";
 import { Button } from "@theliaison/ui/button";
-import { IconArrowElbow, IconPlus } from "../ui/icons";
 import {
-	TooltipProvider,
 	Tooltip,
 	TooltipContent,
+	TooltipProvider,
 	TooltipTrigger,
 } from "@theliaison/ui/tooltip";
-import { useEnterSubmit } from "~/lib/hooks/use-enter-submit";
 import { nanoid } from "nanoid";
 import { useRouter } from "next/navigation";
+import { useEnterSubmit } from "~/lib/hooks/use-enter-submit";
+import { IconArrowElbow, IconPlus } from "../ui/icons";
+import type { AI } from "./chat/actions";
+import { UserMessage } from "./message";
 
 export function PromptForm({
 	input,

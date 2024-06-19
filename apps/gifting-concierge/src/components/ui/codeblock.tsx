@@ -7,9 +7,9 @@ import { type FC, memo } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
+import { Button } from "@theliaison/ui/button";
 import { useCopyToClipboard } from "~/lib/hooks/use-copy-to-clipboard";
 import { IconCheck, IconCopy, IconDownload } from "./icons";
-import { Button } from "@theliaison/ui/button";
 
 interface Props {
 	language: string;

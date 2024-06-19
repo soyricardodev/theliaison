@@ -1,5 +1,6 @@
 "use client";
 
+import { Icon } from "@iconify/react";
 import {
 	Button,
 	Modal,
@@ -11,10 +12,9 @@ import {
 	Tooltip,
 	useDisclosure,
 } from "@nextui-org/react";
+import { cn } from "@theliaison/ui";
 import React, { useState } from "react";
 import { PromptInput } from "./prompt-input";
-import { Icon } from "@iconify/react";
-import { cn } from "@theliaison/ui";
 
 const ideas = [
 	"Create a blog post about NextUI",

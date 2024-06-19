@@ -1,14 +1,14 @@
 "use client";
 
-import { IconOpenAI, IconUser } from "../ui/icons";
 import { cn } from "@theliaison/ui";
-import { spinner } from "./spinner";
-import { CodeBlock } from "../ui/codeblock";
-import { MemoizedReactMarkdown } from "../markdown";
+import type { StreamableValue } from "ai/rsc";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
-import type { StreamableValue } from "ai/rsc";
 import { useStreamableText } from "~/lib/hooks/use-streamable-text";
+import { MemoizedReactMarkdown } from "../markdown";
+import { CodeBlock } from "../ui/codeblock";
+import { IconOpenAI, IconUser } from "../ui/icons";
+import { spinner } from "./spinner";
 
 // Different types of message bubbles.
 

@@ -1,3 +1,5 @@
+import { CalendarIcon, FileTextIcon, InputIcon } from "@radix-ui/react-icons";
+import { cn } from "@theliaison/ui";
 import { Calendar } from "@theliaison/ui/calendar";
 import {
 	Command,
@@ -7,10 +9,8 @@ import {
 	CommandItem,
 	CommandList,
 } from "@theliaison/ui/command";
-import { cn } from "@theliaison/ui";
 import { BentoCard, BentoGrid } from "@theliaison/ui/magicui/bento-grid";
 import Marquee from "@theliaison/ui/magicui/marquee";
-import { CalendarIcon, FileTextIcon, InputIcon } from "@radix-ui/react-icons";
 import { Share2Icon } from "lucide-react";
 import { AnimatedBeamMultipleOutputDemo } from "./beam-multiple";
 

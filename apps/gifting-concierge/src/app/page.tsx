@@ -1,9 +1,9 @@
-import { Hero } from "./components/hero";
-import { Footer } from "./components/footer";
 import { BentoDemo } from "./components/bento";
-import { Companies } from "./components/companies";
 import { CallToAction } from "./components/call-to-action";
+import { Companies } from "./components/companies";
 import { FAQs } from "./components/faq";
+import { Footer } from "./components/footer";
+import { Hero } from "./components/hero";
 import { SocialProofTestimonials } from "./components/testimonials";
 
 export default function Home() {
