@@ -6,7 +6,7 @@ export type Json =
 	| { [key: string]: Json | undefined }
 	| Json[];
 
-export interface Database {
+export type Database = {
 	public: {
 		Tables: {
 			categories: {
@@ -156,81 +156,219 @@ export interface Database {
 					},
 				];
 			};
+			gift_payments: {
+				Row: {
+					created_at: string;
+					delivery_fee: number | null;
+					gift_id: number | null;
+					id: number;
+					invoice_link: string | null;
+					payment_status: Database["public"]["Enums"]["gift_payment_status"];
+					service_fee: number | null;
+					total_price: number | null;
+					updated_at: string | null;
+				};
+				Insert: {
+					created_at?: string;
+					delivery_fee?: number | null;
+					gift_id?: number | null;
+					id?: number;
+					invoice_link?: string | null;
+					payment_status?: Database["public"]["Enums"]["gift_payment_status"];
+					service_fee?: number | null;
+					total_price?: number | null;
+					updated_at?: string | null;
+				};
+				Update: {
+					created_at?: string;
+					delivery_fee?: number | null;
+					gift_id?: number | null;
+					id?: number;
+					invoice_link?: string | null;
+					payment_status?: Database["public"]["Enums"]["gift_payment_status"];
+					service_fee?: number | null;
+					total_price?: number | null;
+					updated_at?: string | null;
+				};
+				Relationships: [
+					{
+						foreignKeyName: "gift_payments_gift_id_fkey";
+						columns: ["gift_id"];
+						isOneToOne: false;
+						referencedRelation: "gifts";
+						referencedColumns: ["id"];
+					},
+				];
+			};
+			gift_recipient_addresses: {
+				Row: {
+					address: string | null;
+					city: string | null;
+					country: string | null;
+					created_at: string;
+					id: number;
+					is_private: boolean;
+					postal_code: string | null;
+					recipient_id: string;
+					state: string | null;
+					updated_at: string;
+				};
+				Insert: {
+					address?: string | null;
+					city?: string | null;
+					country?: string | null;
+					created_at?: string;
+					id?: number;
+					is_private?: boolean;
+					postal_code?: string | null;
+					recipient_id: string;
+					state?: string | null;
+					updated_at?: string;
+				};
+				Update: {
+					address?: string | null;
+					city?: string | null;
+					country?: string | null;
+					created_at?: string;
+					id?: number;
+					is_private?: boolean;
+					postal_code?: string | null;
+					recipient_id?: string;
+					state?: string | null;
+					updated_at?: string;
+				};
+				Relationships: [
+					{
+						foreignKeyName: "gift_recipient_addresses_recipient_id_fkey";
+						columns: ["recipient_id"];
+						isOneToOne: false;
+						referencedRelation: "gift_recipients";
+						referencedColumns: ["id"];
+					},
+				];
+			};
+			gift_recipient_contacts: {
+				Row: {
+					created_at: string;
+					email: string | null;
+					id: string;
+					phone_number: string | null;
+					recipient_id: string;
+					social_media_handle: string | null;
+					social_media_platform: string | null;
+				};
+				Insert: {
+					created_at?: string;
+					email?: string | null;
+					id?: string;
+					phone_number?: string | null;
+					recipient_id?: string;
+					social_media_handle?: string | null;
+					social_media_platform?: string | null;
+				};
+				Update: {
+					created_at?: string;
+					email?: string | null;
+					id?: string;
+					phone_number?: string | null;
+					recipient_id?: string;
+					social_media_handle?: string | null;
+					social_media_platform?: string | null;
+				};
+				Relationships: [
+					{
+						foreignKeyName: "gift_recipient_contacts_recipient_id_fkey";
+						columns: ["recipient_id"];
+						isOneToOne: false;
+						referencedRelation: "gift_recipients";
+						referencedColumns: ["id"];
+					},
+				];
+			};
+			gift_recipients: {
+				Row: {
+					created_at: string;
+					id: string;
+					knows_address: boolean;
+					name: string;
+					provided_contact: boolean;
+				};
+				Insert: {
+					created_at?: string;
+					id?: string;
+					knows_address?: boolean;
+					name: string;
+					provided_contact?: boolean;
+				};
+				Update: {
+					created_at?: string;
+					id?: string;
+					knows_address?: boolean;
+					name?: string;
+					provided_contact?: boolean;
+				};
+				Relationships: [];
+			};
 			gifts: {
 				Row: {
 					created_at: string;
 					id: number;
-					invoice_link: string | null;
-					is_confirmed: boolean;
-					is_rejected: boolean;
-					recipient_address: string | null;
-					recipient_appartment: string | null;
-					recipient_city: string | null;
-					recipient_country: string | null;
-					recipient_email: string | null;
-					recipient_name: string;
-					recipient_pc: number | null;
-					recipient_phone: string | null;
-					recipient_social: string;
-					sender_name: string;
-					total_price: number;
+					recipient_id: string;
+					sender_id: string;
+					status: Database["public"]["Enums"]["gift_status"];
+					updated_at: string;
 				};
 				Insert: {
 					created_at?: string;
 					id?: number;
-					invoice_link?: string | null;
-					is_confirmed?: boolean;
-					is_rejected?: boolean;
-					recipient_address?: string | null;
-					recipient_appartment?: string | null;
-					recipient_city?: string | null;
-					recipient_country?: string | null;
-					recipient_email?: string | null;
-					recipient_name: string;
-					recipient_pc?: number | null;
-					recipient_phone?: string | null;
-					recipient_social: string;
-					sender_name?: string;
-					total_price: number;
+					recipient_id: string;
+					sender_id: string;
+					status?: Database["public"]["Enums"]["gift_status"];
+					updated_at?: string;
 				};
 				Update: {
 					created_at?: string;
 					id?: number;
-					invoice_link?: string | null;
-					is_confirmed?: boolean;
-					is_rejected?: boolean;
-					recipient_address?: string | null;
-					recipient_appartment?: string | null;
-					recipient_city?: string | null;
-					recipient_country?: string | null;
-					recipient_email?: string | null;
-					recipient_name?: string;
-					recipient_pc?: number | null;
-					recipient_phone?: string | null;
-					recipient_social?: string;
-					sender_name?: string;
-					total_price?: number;
+					recipient_id?: string;
+					sender_id?: string;
+					status?: Database["public"]["Enums"]["gift_status"];
+					updated_at?: string;
 				};
-				Relationships: [];
+				Relationships: [
+					{
+						foreignKeyName: "gifts_recipient_id_fkey";
+						columns: ["recipient_id"];
+						isOneToOne: false;
+						referencedRelation: "gift_recipients";
+						referencedColumns: ["id"];
+					},
+					{
+						foreignKeyName: "gifts_sender_id_fkey";
+						columns: ["sender_id"];
+						isOneToOne: false;
+						referencedRelation: "users";
+						referencedColumns: ["id"];
+					},
+				];
 			};
 			gifts_products: {
 				Row: {
 					created_at: string;
-					gift_id: number | null;
+					gift_id: number;
 					id: number;
 					product_id: string;
 					quantity: number;
 				};
 				Insert: {
 					created_at?: string;
-					gift_id?: number | null;
+					gift_id: number;
 					id?: number;
 					product_id: string;
 					quantity: number;
 				};
 				Update: {
 					created_at?: string;
-					gift_id?: number | null;
+					gift_id?: number;
 					id?: number;
 					product_id?: string;
 					quantity?: number;
@@ -404,6 +542,7 @@ export interface Database {
 				Row: {
 					active: boolean | null;
 					description: string | null;
+					embedding: string[] | null;
 					id: string;
 					image: string | null;
 					metadata: Json | null;
@@ -413,6 +552,7 @@ export interface Database {
 				Insert: {
 					active?: boolean | null;
 					description?: string | null;
+					embedding?: string[] | null;
 					id: string;
 					image?: string | null;
 					metadata?: Json | null;
@@ -422,11 +562,30 @@ export interface Database {
 				Update: {
 					active?: boolean | null;
 					description?: string | null;
+					embedding?: string[] | null;
 					id?: string;
 					image?: string | null;
 					metadata?: Json | null;
 					name?: string | null;
 					type?: Database["public"]["Enums"]["product_type"];
+				};
+				Relationships: [];
+			};
+			role_permissions: {
+				Row: {
+					id: number;
+					permission: Database["public"]["Enums"]["app_permission"];
+					role: Database["public"]["Enums"]["app_role"];
+				};
+				Insert: {
+					id?: number;
+					permission: Database["public"]["Enums"]["app_permission"];
+					role: Database["public"]["Enums"]["app_role"];
+				};
+				Update: {
+					id?: number;
+					permission?: Database["public"]["Enums"]["app_permission"];
+					role?: Database["public"]["Enums"]["app_role"];
 				};
 				Relationships: [];
 			};
@@ -521,6 +680,32 @@ export interface Database {
 					},
 					{
 						foreignKeyName: "subscriptions_user_id_fkey";
+						columns: ["user_id"];
+						isOneToOne: false;
+						referencedRelation: "users";
+						referencedColumns: ["id"];
+					},
+				];
+			};
+			user_roles: {
+				Row: {
+					id: number;
+					role: Database["public"]["Enums"]["app_role"];
+					user_id: string;
+				};
+				Insert: {
+					id?: number;
+					role: Database["public"]["Enums"]["app_role"];
+					user_id: string;
+				};
+				Update: {
+					id?: number;
+					role?: Database["public"]["Enums"]["app_role"];
+					user_id?: string;
+				};
+				Relationships: [
+					{
+						foreignKeyName: "user_roles_user_id_fkey";
 						columns: ["user_id"];
 						isOneToOne: false;
 						referencedRelation: "users";
@@ -647,6 +832,18 @@ export interface Database {
 			[_ in never]: never;
 		};
 		Functions: {
+			authorize: {
+				Args: {
+					requested_permission: Database["public"]["Enums"]["app_permission"];
+				};
+				Returns: boolean;
+			};
+			custom_access_token_hook: {
+				Args: {
+					event: Json;
+				};
+				Returns: Json;
+			};
 			downvote_comment: {
 				Args: {
 					p_comment_id: number;
@@ -726,7 +923,17 @@ export interface Database {
 			};
 		};
 		Enums: {
+			app_permission: "gifts.delete" | "gifts.edit";
+			app_role: "admin";
 			gender: "female" | "male" | "other";
+			gift_payment_status: "pending" | "paid" | "failed";
+			gift_status:
+				| "awaiting_recipient_confirmation"
+				| "awaiting_invoice_payment"
+				| "preparing_gift"
+				| "shipped"
+				| "delivered"
+				| "cancelled";
 			marital_status:
 				| "single"
 				| "married"
@@ -751,7 +958,7 @@ export interface Database {
 			[_ in never]: never;
 		};
 	};
-}
+};
 
 type PublicSchema = Database[Extract<keyof Database, "public">];
 
