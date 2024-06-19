@@ -214,7 +214,8 @@ async function submitUserMessage(content: string) {
 							name: z.string().describe("The name of the gift"),
 							description: z.string().describe("The description of the gift"),
 							image: z.string().describe("The image of the gift"),
-							price: z.number().describe("The price of the gift"),
+							unit_amount: z.number().describe("The price of the gift"),
+							similarity: z.number().describe("The similarity of the gift"),
 						}),
 					),
 				}),
@@ -224,6 +225,21 @@ async function submitUserMessage(content: string) {
 							<div>skeleton</div>
 						</BotCard>
 					);
+
+					const openAIEmbedding = openai.embedding("text-embedding-ada-002");
+
+					const recipientDescriptionEmbedding = await openAIEmbedding.doEmbed({
+						values: Array.from(recipientDescription),
+					});
+					const descriptionEmbedding =
+						recipientDescriptionEmbedding.embeddings[0];
+					const supabase = createClient();
+					const { data, error } = await supabase.rpc("search_gifts", {
+						// @ts-expect-error - TODO: Fix this type error
+						query_embedding: descriptionEmbedding,
+						similarity_threshold: 0.75,
+						match_count: 5,
+					});
 
 					const toolCallId = nanoid();
 
@@ -260,7 +276,11 @@ async function submitUserMessage(content: string) {
 
 					return (
 						<BotCard>
-							<div>similar gifts</div>
+							<div>similar gifts </div>
+							<pre>
+								data
+								<code>{JSON.stringify(data, null, 2)}</code>
+							</pre>
 						</BotCard>
 					);
 				},
