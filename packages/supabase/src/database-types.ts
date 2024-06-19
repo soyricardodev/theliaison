@@ -542,7 +542,7 @@ export type Database = {
 				Row: {
 					active: boolean | null;
 					description: string | null;
-					embedding: string[] | null;
+					embedding: string | null;
 					id: string;
 					image: string | null;
 					metadata: Json | null;
@@ -552,7 +552,7 @@ export type Database = {
 				Insert: {
 					active?: boolean | null;
 					description?: string | null;
-					embedding?: string[] | null;
+					embedding?: string | null;
 					id: string;
 					image?: string | null;
 					metadata?: Json | null;
@@ -562,7 +562,7 @@ export type Database = {
 				Update: {
 					active?: boolean | null;
 					description?: string | null;
-					embedding?: string[] | null;
+					embedding?: string | null;
 					id?: string;
 					image?: string | null;
 					metadata?: Json | null;
@@ -863,6 +863,21 @@ export type Database = {
 					"": unknown;
 				};
 				Returns: unknown;
+			};
+			search_gifts: {
+				Args: {
+					query_embedding: string;
+					similarity_threshold: number;
+					match_count: number;
+				};
+				Returns: {
+					id: string;
+					name: string;
+					description: string;
+					image: string;
+					similarity: number;
+					unit_amount: number;
+				}[];
 			};
 			search_polls: {
 				Args: {
