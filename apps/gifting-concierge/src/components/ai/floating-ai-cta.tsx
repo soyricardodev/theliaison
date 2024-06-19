@@ -46,23 +46,7 @@ export function FloatingAICta() {
 								The Gifting Concierge AI
 							</ModalHeader>
 							<ModalBody>
-								<ScrollShadow className="max-h-[600px] h-full">
-									<p>
-										Lorem ipsum dolor sit amet consectetur adipisicing elit.
-										Harum, omnis nam corporis, quod laborum quos inventore
-										numquam quis maiores vero aliquam aliquid! Culpa officia ad
-										hic inventore blanditiis ea aut aspernatur voluptates
-										doloribus quae ab maiores fuga odit facilis earum quibusdam,
-										id dolores facere sequi. Possimus impedit eos, magni id enim
-										culpa architecto dolorem eum repellat, repellendus a iure
-										porro omnis. Unde voluptas sapiente obcaecati quod excepturi
-										labore voluptatem magnam illum provident distinctio autem,
-										voluptate modi in, quo dolorum corporis incidunt, illo
-										quaerat. Assumenda qui asperiores labore, iusto ipsum enim
-										dolore neque explicabo saepe odio voluptas, impedit officiis
-										esse veritatis?
-									</p>
-								</ScrollShadow>
+								<p>temp</p>
 							</ModalBody>
 							<ModalFooter>
 								<div className="flex w-full flex-col gap-4">
