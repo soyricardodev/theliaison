@@ -57,6 +57,18 @@ export const brands = [
 		),
 	},
 	{
+		slug: "guy-fox",
+		name: "Guy Fox",
+		logo: (
+			<Image
+				src="/GUYFOX-Logo.avif"
+				alt="Logo of Guy Fox"
+				width={180}
+				height={90}
+			/>
+		),
+	},
+	{
 		slug: "truff",
 		name: "Truff",
 		logo: (
