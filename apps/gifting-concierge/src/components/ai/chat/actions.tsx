@@ -16,6 +16,7 @@ import { createClient } from "~/supabase/server";
 import { nanoid, sleep } from "~/utils";
 import type { Chat, Message } from "~/utils/types";
 import { BotCard, BotMessage, SpinnerMessage, UserMessage } from "../message";
+import Image from "next/image";
 
 export type AIState = {
 	chatId: string;
@@ -50,12 +51,6 @@ async function submitUserMessage(content: string) {
 	const result = await streamUI({
 		model: openai("gpt-3.5-turbo"),
 		initial: <SpinnerMessage />,
-		/**
-
-
-
-
-		 */
 		system: `\
     You are a gifting assistant conversation bot, and you can help users buy gifts step by step.
 		
@@ -280,6 +275,26 @@ async function submitUserMessage(content: string) {
 							<pre>
 								data
 								<code>{JSON.stringify(data, null, 2)}</code>
+								<div>
+									{data?.map((gift) => (
+										<div key={gift.id}>
+											{gift.name}
+											<Image
+												src={gift.image}
+												width={200}
+												height={200}
+												alt={gift.name}
+											/>
+											<p>
+												{Intl.NumberFormat("en-US", {
+													style: "currency",
+													currency: "USD",
+													minimumFractionDigits: 0,
+												}).format(gift.unit_amount / 100)}
+											</p>
+										</div>
+									))}
+								</div>
 							</pre>
 						</BotCard>
 					);
