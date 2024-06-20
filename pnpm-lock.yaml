@@ -18,7 +18,7 @@ importers:
         specifier: 2.0.3
         version: 2.0.3
       typescript:
-        specifier: ^5.4.5
+        specifier: 5.4.5
         version: 5.4.5
 
   apps/gifting-concierge:
