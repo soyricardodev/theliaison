@@ -12,12 +12,12 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"dependencies": {
-		"postcss": "^8.4.38",
-		"tailwindcss": "^3.4.3",
-		"tailwindcss-animate": "^1.0.7"
+		"postcss": "8.4.38",
+		"tailwindcss": "3.4.3",
+		"tailwindcss-animate": "1.0.7"
 	},
 	"devDependencies": {
-		"typescript": "^5.4.5",
+		"typescript": "5.4.5",
 		"@theliaison/tsconfig": "workspace:*"
 	}
 }

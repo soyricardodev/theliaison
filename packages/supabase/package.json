@@ -18,11 +18,11 @@
 		"gen:types": "supabase gen types typescript --project-id 'vsgxmrltaxjozgytqgwh' --schema public > ./src/database-types.ts && pnpm build"
 	},
 	"dependencies": {
-		"supabase": "^1.172.2"
+		"supabase": "1.172.2"
 	},
 	"devDependencies": {
 		"@theliaison/tsconfig": "workspace:*",
 		"@types/node": "20.12.14",
-		"typescript": "^5.4.5"
+		"typescript": "5.4.5"
 	}
 }
