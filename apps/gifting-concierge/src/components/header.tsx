@@ -54,10 +54,11 @@ export function Header() {
 					/>
 				</NavbarItem>
 				{/* Mobile search */}
-				<NavbarItem className="lg:hidden">
+				<NavbarItem className="lg:hidden flex items-center">
 					<Button isIconOnly radius="full" variant="light">
 						<SearchIcon className="text-default-500 size-5" />
 					</Button>
+					<FloatingAICta />
 				</NavbarItem>
 				{/* Shopping Cart */}
 				<NavbarItem>
