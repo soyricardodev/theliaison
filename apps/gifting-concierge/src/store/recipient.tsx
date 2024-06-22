@@ -10,6 +10,9 @@ export interface Recipient {
 	recipientSocial: string;
 	setRecipientSocial: (recipientSocial: string) => void;
 
+	recipientSocialHandle?: string;
+	setRecipientSocialHandle: (recipientSocialHandle: string) => void;
+
 	recipientEmail?: string;
 	setRecipientEmail: (recipientEmail: string) => void;
 
@@ -26,6 +29,10 @@ export const useRecipientStore = create<Recipient>((set) => ({
 
 	recipientSocial: "",
 	setRecipientSocial: (recipientSocial) => set({ recipientSocial }),
+
+	recipientSocialHandle: undefined,
+	setRecipientSocialHandle: (recipientSocialHandle) =>
+		set({ recipientSocialHandle }),
 
 	recipientEmail: undefined,
 	setRecipientEmail: (recipientEmail) => set({ recipientEmail }),
