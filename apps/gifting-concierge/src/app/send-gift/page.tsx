@@ -1,27 +1,30 @@
 "use client";
 
-import { Badge, Button, Image, Link, Progress } from "@nextui-org/react";
+import { Badge, Button, Progress } from "@nextui-org/react";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
-import {
-	ArrowLeftIcon,
-	PlusIcon,
-	ShoppingCartIcon,
-	StarIcon,
-} from "lucide-react";
+import { ArrowLeftIcon, ShoppingCartIcon } from "lucide-react";
 import React from "react";
 import { useCartStore } from "~/store/cart";
 import { useRecipientStore } from "~/store/recipient";
 import { OrderSummary } from "./_components/order-summary";
 import { OrderSummaryConfirmation } from "./_components/order-summary-confirmation";
-import { RecipientContactForm } from "./_components/recipient-contact-form";
 import { RecipientDataForm } from "./_components/recipient-data-form";
 import { createGift } from "./actions";
+import { toast } from "sonner";
+import { redirect } from "next/navigation";
+import { Toaster } from "@theliaison/ui/sonner";
 
 export default function Component() {
 	const [[page, direction], setPage] = React.useState([0, 0]);
 	const { shoppingCart } = useCartStore();
-	const { canContinue, recipientName, recipientSocial, recipientEmail } =
-		useRecipientStore();
+	const {
+		canContinue,
+		recipientName,
+		recipientSocial,
+		recipientEmail,
+		recipientPhone,
+		recipientSocialHandle,
+	} = useRecipientStore();
 
 	const totalPrice = React.useMemo(() => {
 		return shoppingCart.reduce(
@@ -56,18 +59,33 @@ export default function Component() {
 	};
 
 	const paginate = (newDirection: number) => {
-		if (page + newDirection > 2) {
-			return createGift({
-				total_price: totalPrice,
-				sender_name: "Ricardo",
-				recipient_name: recipientName,
-				recipient_social: recipientSocial,
-				recipient_email: recipientEmail,
-				gifts: shoppingCart.map((gift) => ({
-					id: gift.id,
-					quantity: gift.quantity,
-				})),
-			});
+		if (page + newDirection > 1) {
+			console.log("Creating gift");
+			toast.promise(
+				createGift({
+					recipient_name: recipientName,
+					recipient_social: recipientSocial,
+					recipient_email: recipientEmail,
+					gifts: shoppingCart.map((gift) => ({
+						id: gift.id,
+						quantity: gift.quantity,
+					})),
+					knows_address: false,
+					recipient_phone: recipientPhone,
+					recipient_social_handle: recipientSocialHandle,
+				}),
+				{
+					loading: "Creating order...",
+					error: (error) => {
+						console.log(error);
+						return error;
+					},
+					success: () => {
+						return "OK";
+					},
+				},
+			);
+			return;
 		}
 
 		if (page + newDirection < 0 || page + newDirection > 2) return;
@@ -76,7 +94,7 @@ export default function Component() {
 	};
 
 	const shouldCancelContinue = React.useMemo(() => {
-		return page === 0 ? false : page > 1 ? false : !canContinue;
+		return page === 0 ? false : !canContinue;
 	}, [page, canContinue]);
 
 	const ctaLabel = React.useMemo(() => {
@@ -129,12 +147,10 @@ export default function Component() {
 
 	return (
 		<section className="flex h-[calc(100vh_-_60px)] w-full gap-8">
-			{/* Left */}
-			<div className="w-full flex-none py-4 lg:w-[44%]">
+			<div className="w-full flex-none py-4 px-10 lg:max-w-screen-xl mx-auto">
 				<div className="flex justify-between px-2">
 					<div className="flex items-center">
-						{/* <AcmeIcon size={40} /> */}
-						<p className="font-semibold">Gifting Concierge</p>
+						<p className="font-semibold">Send the gift</p>
 					</div>
 					<div className="flex items-center gap-2">
 						<p>
@@ -150,6 +166,7 @@ export default function Component() {
 						</Badge>
 					</div>
 				</div>
+
 				<div className="flex h-full flex-1 flex-col p-4">
 					<div>
 						<Button
@@ -226,9 +243,7 @@ export default function Component() {
 					</div>
 				</div>
 			</div>
-
-			{/* Right */}
-			<div className="relative hidden w-full overflow-hidden lg:block" />
+			<Toaster />
 		</section>
 	);
 }
