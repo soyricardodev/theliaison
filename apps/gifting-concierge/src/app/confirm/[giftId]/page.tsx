@@ -2,7 +2,16 @@ import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "~/supabase/server";
-
+import {
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@theliaison/ui/dialog";
+import ShippingForm from "./details/shipping-form";
 export default async function Confirm({
 	params: { giftId },
 }: {
@@ -59,7 +68,10 @@ export default async function Confirm({
 
 							<ul className="mt-4 space-y-4">
 								{data.gifts_products.map((item) => (
-									<li className="flex items-center gap-x-4 border-b-small border-divider py-4">
+									<li
+										className="flex items-center gap-x-4 border-b-small border-divider py-4"
+										key={item.product_id}
+									>
 										<div className="flex size-20 flex-shrink-0 items-center justify-center">
 											<Image
 												alt={item.products?.name ?? ""}
@@ -90,9 +102,23 @@ export default async function Confirm({
 			<section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
 				<div className="container px-4 md:px-6 flex justify-center">
 					<div className="flex gap-2 items-center justify-center">
-						<Button className="mb-4" color="success">
-							Confirm Receiving Gift
-						</Button>
+						<Dialog>
+							<DialogTrigger asChild>
+								<Button color="primary" className="mb-4">
+									Confirm Gift
+								</Button>
+							</DialogTrigger>
+							<DialogContent className="sm:max-w-[425px]">
+								<DialogHeader>
+									<DialogTitle>Edit profile</DialogTitle>
+									<DialogDescription>
+										Make changes to your profile here. Click save when you're
+										done.
+									</DialogDescription>
+								</DialogHeader>
+								<ShippingForm hideTitle giftId={giftId} />
+							</DialogContent>
+						</Dialog>
 						<Button variant="light" color="danger" className="mb-4">
 							Cancel Gift
 						</Button>
