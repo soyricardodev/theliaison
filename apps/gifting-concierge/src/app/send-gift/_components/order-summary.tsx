@@ -53,6 +53,12 @@ export const OrderSummary = ({ hideTitle }: OrderSummaryProps) => {
 						</dd>
 					</div>
 					<div className="flex justify-between">
+						<dt className="text-small text-default-500">The Liaison Fee</dt>
+						<dd className="text-small text-default-700 font-semibold">
+							$10.00
+						</dd>
+					</div>
+					<div className="flex justify-between">
 						<dt className="text-small text-default-500">Discount</dt>
 						<dd className="text-small font-semibold text-success"> - $0.00</dd>
 					</div>
