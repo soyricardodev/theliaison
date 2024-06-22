@@ -1,31 +1,20 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@theliaison/ui";
 import { Button } from "@theliaison/ui/button";
-import {
-	Form,
-	FormControl,
-	FormDescription,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage,
-} from "@theliaison/ui/form";
 import { Input } from "@theliaison/ui/input";
-import { RadioGroup, RadioGroupItem } from "@theliaison/ui/radio-group";
+import { Label } from "@theliaison/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
-	SelectLabel,
 	SelectTrigger,
 	SelectValue,
 } from "@theliaison/ui/select";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
 import React from "react";
-import { Controller, useForm } from "react-hook-form";
 import { z } from "zod";
+import { useRecipientStore } from "~/store/recipient";
 
 const recipientSchema = z.object({
 	recipient_name: z.string().min(1, "You need to enter a name"),
@@ -44,57 +33,26 @@ const recipientSchema = z.object({
 
 type RecipientDataFormValues = z.infer<typeof recipientSchema>;
 
-const giftSchema = z.object({
-	sender_id: z.number().int().positive(),
-	recipient_id: z.number().int().positive(),
-	status: z.enum([
-		"awaiting_recipient_confirmation",
-		"awaiting_invoice_payment",
-		"preparing_gift",
-		"shipped",
-		"delivered",
-		"cancelled",
-	]),
-});
-
-const giftPaymentSchema = z.object({
-	gift_id: z.number().int().positive(),
-	delivery_fee: z.number().optional(),
-	service_fee: z.number().optional(),
-	total_price: z.number().optional(),
-	invoice_link: z.string().url().optional(),
-	payment_status: z.enum(["pending", "paid", "failed"]).optional(),
-});
-
-const giftShippingSchema = z.object({
-	gift_id: z.number().int().positive(),
-	shipping_status: z.enum([
-		"not_shipped",
-		"in_transit",
-		"near_delivery",
-		"delivered",
-	]),
-	tracking_number: z.string().optional(),
-});
-
 export const RecipientDataForm = () => {
 	const [[page, direction], setPage] = React.useState([0, 0]);
+	const [canContinue, setCanContinue] = React.useState(false);
 
-	const form = useForm<RecipientDataFormValues>({
-		resolver: zodResolver(recipientSchema),
-		defaultValues: {
-			knows_address: "no",
-			has_contact: "yes",
-		},
-	});
+	const {
+		canContinue: canContinueForm,
+		recipientName,
+		recipientSocial,
+		recipientEmail,
+		recipientPhone,
+		recipientSocialHandle,
+		setCanContinue: setCanContinueForm,
+		setRecipientName,
+		setRecipientSocial,
+		setRecipientEmail,
+		setRecipientPhone,
+		setRecipientSocialHandle,
+	} = useRecipientStore();
 
-	const knowsAddress = form.watch("knows_address");
-	const hasContact = form.watch("has_contact");
-
-	const onSubmit = (values: RecipientDataFormValues) => {
-		console.log(values);
-		return;
-	};
+	const [knowAddress, setKnowAddress] = React.useState(false);
 
 	const variants = {
 		enter: (direction: number) => ({
@@ -113,350 +71,250 @@ export const RecipientDataForm = () => {
 		}),
 	};
 
+	React.useEffect(() => {
+		if (page === 0) {
+			if (recipientName.trim() === "") {
+				setCanContinue(false);
+				return;
+			}
+			setCanContinue(true);
+			return;
+		}
+
+		if (page === 1 && !knowAddress) {
+			if (
+				recipientSocialHandle != null &&
+				recipientSocialHandle.trim() === "" &&
+				recipientPhone != null &&
+				recipientPhone.trim() === "" &&
+				recipientEmail != null &&
+				recipientEmail.trim() === ""
+			) {
+				setCanContinue(false);
+				return;
+			}
+			setCanContinueForm(true);
+		}
+	}, [
+		page,
+		recipientName,
+		recipientSocialHandle,
+		recipientPhone,
+		recipientEmail,
+		knowAddress,
+		setCanContinueForm,
+	]);
+
 	const paginate = (newDirection: number) => {
-		if (page + newDirection < 0 || page + newDirection > 2) return;
+		if (page + newDirection < 0 || page + newDirection > 2) {
+			return;
+		}
 
 		setPage([page + newDirection, newDirection]);
 	};
 
-	const formCtaLabel = React.useMemo(() => {
-		switch (page) {
-			case 0:
-				return "Continue to send gift";
-			case 1:
-				return "Finish gift";
-			case 2:
-				return "Place gift";
-			default:
-				return "Continue to shipping";
-		}
-	}, [page]);
-
-	const formStepTitle = React.useMemo(() => {
-		switch (page) {
-			case 0:
-				return "Give Us some information";
-			case 1:
-				return "Who do you want to send the gift to?";
-			case 2:
-				return "Confirm and Finish";
-			default:
-				return "Review your gift";
-		}
-	}, [page]);
-
+	// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	const formStepsContent = React.useMemo(() => {
 		switch (page) {
 			case 0:
 				return (
 					<>
-						<FormField
-							control={form.control}
-							name="recipient_name"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Recipient Name</FormLabel>
-									<FormControl>
-										<Input placeholder="shadcn" {...field} />
-									</FormControl>
-									<FormDescription>
-										This is the name of the recipient. It will be used to create
-										the gift.
-									</FormDescription>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<FormField
-							control={form.control}
-							name="knows_address"
-							render={({ field }) => (
-								<FormItem className="space-y-3">
-									<FormLabel>Did you know the address?</FormLabel>
-									<FormControl>
-										<RadioGroup
-											onValueChange={field.onChange}
-											defaultValue={field.value}
-											className="flex flex-col space-y-1"
-										>
-											<FormItem className="flex items-center space-x-3 space-y-0">
-												<FormControl>
-													<RadioGroupItem value="yes" />
-												</FormControl>
-												<FormLabel className="font-normal">
-													Yes, I know the address
-												</FormLabel>
-											</FormItem>
-											<FormItem className="flex items-center space-x-3 space-y-0">
-												<FormControl>
-													<RadioGroupItem value="no" />
-												</FormControl>
-												<FormLabel className="font-normal">
-													No, I don't know the address
-												</FormLabel>
-											</FormItem>
-										</RadioGroup>
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
+						<div className="grid gap-2">
+							<Label>Recipient Name</Label>
+							<Input
+								placeholder="shadcn"
+								name="recipient_name"
+								value={recipientName}
+								onChange={(e) => setRecipientName(e.target.value)}
+							/>
+							<InputDescription>
+								This is the name of the recipient. It will be used to create the
+								gift.
+							</InputDescription>
+							<InputMessage />
+						</div>
+
+						<div className="grid gap-2">
+							<Label>Did you know the address?</Label>
+
+							<Button
+								onClick={() => {
+									setKnowAddress(true);
+									if (canContinue) {
+										paginate(1);
+										setCanContinueForm(false);
+									}
+								}}
+							>
+								Yes
+							</Button>
+							<Button
+								onClick={() => {
+									setKnowAddress(false);
+									if (canContinue) {
+										paginate(1);
+										setCanContinueForm(false);
+									}
+								}}
+							>
+								No
+							</Button>
+						</div>
 					</>
 				);
 			case 1:
-				return knowsAddress === "yes" ? (
+				return knowAddress ? (
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-1">
-						<FormField
-							control={form.control}
-							name="address"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Recipient Address</FormLabel>
-									<FormControl>
-										<Input placeholder="shadcn" {...field} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<FormField
-							control={form.control}
-							name="city"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Recipient city</FormLabel>
-									<FormControl>
-										<Input placeholder="shadcn" {...field} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<FormField
-							control={form.control}
-							name="state"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Recipient state</FormLabel>
-									<FormControl>
-										<Input placeholder="shadcn" {...field} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<FormField
-							control={form.control}
-							name="postal_code"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Recipient postal_code</FormLabel>
-									<FormControl>
-										<Input placeholder="shadcn" {...field} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
-						<FormField
-							control={form.control}
-							name="country"
-							render={({ field }) => (
-								<FormItem>
-									<FormLabel>Recipient country</FormLabel>
-									<FormControl>
-										<Input placeholder="shadcn" {...field} />
-									</FormControl>
-									<FormMessage />
-								</FormItem>
-							)}
-						/>
+						<div>
+							<Label>Recipient Address</Label>
+							<Input placeholder="shadcn" />
+							<InputMessage />
+						</div>
+						<div>
+							<Label>Recipient city</Label>
+							<Input placeholder="shadcn" />
+							<InputMessage />
+						</div>
+						<div>
+							<Label>Recipient state</Label>
+							<Input placeholder="shadcn" />
+							<InputMessage />
+						</div>
+						<div>
+							<Label>Recipient postal_code</Label>
+							<Input placeholder="shadcn" />
+							<InputMessage />
+						</div>
+						<div>
+							<Label>Recipient country</Label>
+							<Input placeholder="shadcn" />
+							<InputMessage />
+						</div>
 					</div>
 				) : (
-					<FormField
-						control={form.control}
-						name="has_contact"
-						render={({ field }) => (
-							<FormItem className="space-y-3">
-								<FormLabel>
-									Did you have any other contact information? (Instagram, Phone,
-									Email, etc.)
-								</FormLabel>
-								<FormControl>
-									<RadioGroup
-										onValueChange={field.onChange}
-										defaultValue={field.value}
-										className="flex flex-col space-y-1"
-									>
-										<FormItem className="flex items-center space-x-3 space-y-0">
-											<FormControl>
-												<RadioGroupItem value="yes" />
-											</FormControl>
-											<FormLabel className="font-normal">
-												Yes, I have other contact information (social media,
-												email, etc.)
-											</FormLabel>
-										</FormItem>
-										<FormItem className="flex items-center space-x-3 space-y-0">
-											<FormControl>
-												<RadioGroupItem value="no" />
-											</FormControl>
-											<FormLabel className="font-normal">
-												No, I don't have other contact information
-											</FormLabel>
-										</FormItem>
-									</RadioGroup>
-								</FormControl>
-								<FormMessage />
-							</FormItem>
-						)}
-					/>
-				);
-			case 2:
-				return (
-					<>
-						{hasContact === "yes" && (
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-2 gap-x-4">
-								<FormField
-									control={form.control}
-									name="phone"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Recipient Phone Number</FormLabel>
-											<FormControl>
-												<Input placeholder="+1 (555) 555-5555" {...field} />
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-2 gap-x-4">
+						<div>
+							<Label>Recipient Phone Number</Label>
+							<Input
+								placeholder="+1 (555) 555-5555"
+								name="recipient_phone"
+								onChange={(e) => setRecipientPhone(e.target.value)}
+								value={recipientPhone}
+							/>
+							<InputMessage />
+						</div>
 
-								<FormField
-									control={form.control}
-									name="email"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Recipient Email</FormLabel>
-											<FormControl>
-												<Input placeholder="recipient@email.com" {...field} />
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
+						<div>
+							<Label>Recipient Email</Label>
+							<Input
+								placeholder="recipient@email.com"
+								name="recipient_email"
+								onChange={(e) => setRecipientEmail(e.target.value)}
+								value={recipientEmail}
+							/>
+							<InputMessage />
+						</div>
 
-								<FormField
-									control={form.control}
-									name="social_platform"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Social Platform</FormLabel>
-											<Select
-												onValueChange={field.onChange}
-												defaultValue={field.value}
-											>
-												<FormControl>
-													<SelectTrigger>
-														<SelectValue placeholder="Select a Social Platform" />
-													</SelectTrigger>
-												</FormControl>
-												<SelectContent>
-													<SelectItem value="facebook">Facebook</SelectItem>
-													<SelectItem value="instagram">Instagram</SelectItem>
-													<SelectItem value="twitch">Twitch</SelectItem>
-													<SelectItem value="tiktok">Tiktok</SelectItem>
-													<SelectItem value="x">X (Twitter)</SelectItem>
-													<SelectItem value="snapchat">Snapchat</SelectItem>
-													<SelectItem value="youtube">Youtube</SelectItem>
-													<SelectItem value="linkedin">LinkedIn</SelectItem>
-													<SelectItem value="github">Github</SelectItem>
-												</SelectContent>
-											</Select>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
+						<div>
+							<Label>Social Platform</Label>
+							<Select onValueChange={() => {}} defaultValue={"facebook"}>
+								<SelectTrigger>
+									<SelectValue placeholder="Select a Social Platform" />
+								</SelectTrigger>
+								<SelectContent>
+									<SelectItem value="facebook">Facebook</SelectItem>
+									<SelectItem value="instagram">Instagram</SelectItem>
+									<SelectItem value="twitch">Twitch</SelectItem>
+									<SelectItem value="tiktok">Tiktok</SelectItem>
+									<SelectItem value="x">X (Twitter)</SelectItem>
+									<SelectItem value="snapchat">Snapchat</SelectItem>
+									<SelectItem value="youtube">Youtube</SelectItem>
+									<SelectItem value="linkedin">LinkedIn</SelectItem>
+									<SelectItem value="github">Github</SelectItem>
+								</SelectContent>
+							</Select>
+							<InputMessage />
+						</div>
 
-								<FormField
-									control={form.control}
-									name="social_handle"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel>Social Handle</FormLabel>
-											<FormControl>
-												<Input
-													placeholder="@recipient_social_handle"
-													{...field}
-												/>
-											</FormControl>
-											<FormMessage />
-										</FormItem>
-									)}
-								/>
-							</div>
-						)}
-					</>
+						<div>
+							<Label>Social Handle</Label>
+							<Input
+								placeholder="@recipient_social_handle"
+								name="recipient_social_handle"
+								value={recipientSocialHandle}
+								onChange={(e) => setRecipientSocialHandle(e.target.value)}
+							/>
+							<InputMessage />
+						</div>
+					</div>
 				);
 			default:
 				return null;
 		}
-	}, [page, form.control, knowsAddress, hasContact]);
+	}, [
+		page,
+		knowAddress,
+		recipientName,
+		setRecipientName,
+		setRecipientSocial,
+		setRecipientEmail,
+		setRecipientPhone,
+		canContinue,
+	]);
 
 	return (
-		<Form {...form}>
-			<AnimatePresence custom={direction} initial={false} mode="wait">
-				<LazyMotion features={domAnimation}>
-					<m.form
-						// onSubmit={(e) => {
-						// 	e.preventDefault();
-						// 	form.handleSubmit(onSubmit);
-						// }}
-						key={page}
-						animate="center"
-						className="mt-8 flex flex-col gap-3"
-						custom={direction}
-						exit="exit"
-						initial="enter"
-						transition={{
-							x: { type: "spring", stiffness: 300, damping: 30 },
-							opacity: { duration: 0.2 },
-						}}
-						variants={variants}
-						onSubmit={(e) => {
-							e.preventDefault();
-							console.log("submit", e);
-						}}
-					>
-						<h4 className="text-lg font-bold">{formStepTitle}</h4>
-						{formStepsContent}
-						<div className="w-full flex justify-end gap-2">
-							<Button
-								type="button"
-								onClick={() => paginate(-1)}
-								variant={"outline"}
-							>
-								Go Back
-							</Button>
-							<Button
-								className="bg-foreground text-background"
-								onClick={() => paginate(1)}
-								type="button"
-							>
-								{formCtaLabel}
-							</Button>
-						</div>
-
+		<AnimatePresence custom={direction} initial={false} mode="wait">
+			<LazyMotion features={domAnimation}>
+				<m.div
+					key={page}
+					animate="center"
+					className="mt-8 flex flex-col gap-3"
+					custom={direction}
+					exit="exit"
+					initial="enter"
+					transition={{
+						x: { type: "spring", stiffness: 300, damping: 30 },
+						opacity: { duration: 0.2 },
+					}}
+					variants={variants}
+				>
+					{formStepsContent}
+					<div className="w-full flex justify-end gap-2">
 						<Button
-							type="submit"
-							className={cn("hidden", {
-								block: page === 2,
-							})}
+							type="button"
+							onClick={() => {
+								console.log("back");
+								paginate(-1);
+							}}
+							variant={"outline"}
+							className={cn({ hidden: page === 0 })}
 						>
-							Create
+							Go Back
 						</Button>
-					</m.form>
-				</LazyMotion>
-			</AnimatePresence>
-		</Form>
+					</div>
+				</m.div>
+			</LazyMotion>
+		</AnimatePresence>
 	);
 };
+
+function InputMessage({
+	children,
+	error,
+}: { children?: React.ReactNode; error?: { message: string } }) {
+	const body = error ? String(error.message) : children;
+
+	if (!body) {
+		return null;
+	}
+
+	return <p className="text-[0.8rem] font-medium text-destructive">{body}</p>;
+}
+
+function InputDescription({ children }: { children?: React.ReactNode }) {
+	return (
+		<p className="text-[0.8rem] font-medium text-muted-foreground">
+			{children}
+		</p>
+	);
+}
