@@ -75,7 +75,7 @@ export async function POST(request: Request) {
 	const invoiceHostedLink = invoiceSend.hosted_invoice_url;
 
 	await supabase
-		.from("gifts")
+		.from("gift_payments")
 		.update({
 			invoice_link: invoiceHostedLink,
 		})
