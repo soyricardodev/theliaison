@@ -23,20 +23,18 @@ export async function confirmGiftFromRecipient(formData: FormData) {
 	const recipientCity = formData.get("recipient_city") as string;
 	const recipientPostalCode = formData.get("recipient_pc") as string;
 
-	const { error } = await supabase
-		.from("gifts")
-		.update({
-			recipient_email: recipientEmail,
-			recipient_name: `${recipientFirstName} ${recipientLastName}`,
-			recipient_phone: recipientPhone,
-			recipient_country: recipientCountry,
-			recipient_address: recipientAddress,
-			recipient_appartment: recipientApartment,
-			recipient_city: recipientCity,
-			recipient_pc: Number(recipientPostalCode),
-			is_confirmed: true,
-		})
-		.eq("id", giftId);
+	const { data, error } = await supabase
+		.from("gift_recipient_addresses")
+		.insert({
+			recipient_id: "55f3d06b-d45b-4f48-8909-54ebf0317005",
+			address: recipientAddress,
+			city: recipientCity,
+			country: recipientCountry,
+			is_private: true,
+			postal_code: recipientPostalCode,
+			state: "CA",
+			updated_at: String(Date.now()),
+		});
 
 	console.log(error);
 
