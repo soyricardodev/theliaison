@@ -21,11 +21,11 @@ export default async function GiftIdPage({
 
 	const { data, error } = await supabase
 		.from("gifts")
-		.select(
-			"id, created_at, recipient_name, recipient_social, is_confirmed, is_rejected",
-		)
+		.select("*")
 		.eq("id", giftIdAsNumber)
 		.single();
+
+	console.log({ data });
 
 	if (error) {
 		return (
@@ -61,13 +61,13 @@ export default async function GiftIdPage({
 					</div>
 					<div className="flex items-center justify-between">
 						<div className="text-gray-500 text-lg">Gift Status:</div>
-						{data.is_confirmed ? (
+						{/* {data.is_confirmed ? (
 							<Chip color="success">Confirmed</Chip>
 						) : (
 							<Chip variant="faded" color="warning">
 								Pending
 							</Chip>
-						)}
+						)} */}
 					</div>
 					<div className="flex items-center justify-between">
 						<div className="text-gray-500 text-lg">Gift ID:</div>
