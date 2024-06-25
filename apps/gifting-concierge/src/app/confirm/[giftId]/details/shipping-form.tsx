@@ -1,148 +1,278 @@
 "use client";
 
-import type { InputProps } from "@nextui-org/react";
-
-import {
-	Autocomplete,
-	AutocompleteItem,
-	Avatar,
-	Button,
-	Input,
-} from "@nextui-org/react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Button } from "@theliaison/ui/button";
+import { Input } from "@theliaison/ui/input";
 import type React from "react";
 
 import { cn } from "@theliaison/ui";
-import { confirmGiftFromRecipient } from "./actions";
-import countries from "./countries";
+import { confirmGiftFromRecipient, validateRecipientAddress } from "./actions";
+import { usCities } from "~/lib/constants/cities";
 
+import {
+	Form,
+	FormControl,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@theliaison/ui/form";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@theliaison/ui/select";
+import { toast } from "sonner";
 export type ShippingFormProps = React.HTMLAttributes<HTMLDivElement> & {
-	variant?: InputProps["variant"];
 	hideTitle?: boolean;
-	giftId: string;
+	giftId: number;
+	recipientId: string;
+	senderId: string;
 };
+
+const ShippingFormSchema = z.object({
+	name: z.string({ required_error: "Your name is required" }),
+	email: z
+		.string({ required_error: "Your email is required" })
+		.email({ message: "Invalid email" }),
+	phone: z
+		.string({ required_error: "Your phone number is required" })
+		.min(10, { message: "Your phone should be at least 10 digits" }),
+	address_line_1: z.string({ required_error: "Your address is required" }),
+	address_line_2: z.string().optional(),
+	city: z.string({ required_error: "Your city is required" }),
+	apartment: z.string().optional(),
+	postal_code: z.string({ required_error: "Your postal code is required" }),
+	country: z.string().default("US"),
+});
 
 const ShippingForm = ({
-	variant = "flat",
 	className,
+	senderId,
 	hideTitle,
 	giftId,
+	recipientId,
 }: ShippingFormProps) => {
+	const form = useForm<z.infer<typeof ShippingFormSchema>>({
+		resolver: zodResolver(ShippingFormSchema),
+		defaultValues: {
+			name: "",
+			email: "",
+			phone: "",
+			address_line_1: "",
+			address_line_2: "",
+			city: "",
+			apartment: "",
+			postal_code: "",
+			country: "US",
+		},
+	});
+
+	function onSubmit(data: z.infer<typeof ShippingFormSchema>) {
+		console.log(data);
+		toast.promise(
+			validateRecipientAddress({
+				streetLines: [data.address_line_1, data.address_line_2 ?? ""],
+				city: data.city,
+				stateOrProvinceCode: data.country,
+				postalCode: data.postal_code,
+			}),
+			{
+				loading: "Validating address...",
+				success: async (validated) => {
+					if (validated) {
+						await confirmGiftFromRecipient({
+							sender_id: senderId,
+							address_line_1: data.address_line_1,
+							address_line_2: data.address_line_2,
+							city: data.city,
+							country: data.country,
+							email: data.email,
+							name: data.name,
+							phone: data.phone,
+							postal_code: data.postal_code,
+							recipient_id: recipientId,
+							gift_id: giftId,
+						});
+						return "Thank you for confirming your gift!";
+					}
+					return "Your address is invalid";
+				},
+				error: "Address validation failed",
+			},
+		);
+	}
+
 	return (
-		<form
-			className={cn("flex flex-col gap-4", className)}
-			action={confirmGiftFromRecipient}
-		>
-			{!hideTitle && (
-				<span className="relative text-foreground-500">
-					Shipping Information
-				</span>
-			)}
-			<input type="hidden" name="gift_id" value={giftId} />
-			<Input
-				isRequired
-				label="Email address"
-				labelPlacement="outside"
-				placeholder="Enter your email"
-				name="recipient_email"
-				type="email"
-				variant={variant}
-			/>
-			<div className="flex flex-wrap items-center gap-4 sm:flex-nowrap">
-				<Input
-					isRequired
-					label="First name"
-					labelPlacement="outside"
-					placeholder="Enter your first name"
-					name="recipient_first_name"
-					variant={variant}
-				/>
-				<Input
-					isRequired
-					label="Last name"
-					labelPlacement="outside"
-					name="recipient_last_name"
-					placeholder="Enter your last name"
-					variant={variant}
-				/>
-			</div>
-			<div className="flex flex-wrap items-center gap-4 sm:flex-nowrap">
-				<Input
-					isRequired
-					label="Address"
-					labelPlacement="outside"
-					placeholder="Lane 1, Street 1"
-					name="recipient_address"
-					variant={variant}
-				/>
-				<Input
-					label="Apt, suite, etc."
-					labelPlacement="outside"
-					placeholder="Apartment, studio, or floor"
-					name="recipient_apartment"
-					variant={variant}
-				/>
-			</div>
-			<div className="flex flex-wrap items-center gap-4 sm:flex-nowrap">
-				<Input
-					isRequired
-					label="City"
-					labelPlacement="outside"
-					placeholder="Enter your city"
-					name="recipient_city"
-					variant={variant}
-				/>
-				<Autocomplete
-					isRequired
-					defaultItems={countries}
-					label="Country"
-					labelPlacement="outside"
-					placeholder="Select country"
-					name="recipient_country"
-					showScrollIndicators={false}
-					variant={variant}
-				>
-					{(item) => (
-						<AutocompleteItem
-							key={item.code}
-							startContent={
-								<Avatar
-									alt="Country Flag"
-									className="h-6 w-6"
-									src={`https://flagcdn.com/${item.code.toLowerCase()}.svg`}
-								/>
-							}
-							value={item.code}
-						>
-							{item.name}
-						</AutocompleteItem>
+		<Form {...form}>
+			<form
+				className={cn("space-y-6 h-full overflow-y-scroll", className)}
+				onSubmit={form.handleSubmit(onSubmit)}
+			>
+				<FormField
+					control={form.control}
+					name="email"
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Email</FormLabel>
+							<FormControl>
+								<Input placeholder="your@email.com" {...field} />
+							</FormControl>
+							<FormMessage />
+						</FormItem>
 					)}
-				</Autocomplete>
-			</div>
-			<div className="flex flex-wrap items-center gap-4 sm:flex-nowrap">
-				<Input
-					isRequired
-					label="Postal code"
-					labelPlacement="outside"
-					placeholder="12345"
-					name="recipient_pc"
-					variant={variant}
 				/>
-				<Input
-					isRequired
-					label="Phone number"
-					name="recipient_phone"
-					labelPlacement="outside"
-					placeholder="+1 (555) 555-5555"
-					variant={variant}
-				/>
-			</div>
-			<Button type="submit" color="primary">
-				Confirm
-			</Button>
-		</form>
+
+				<div className="flex flex-wrap items-center gap-4 sm:flex-nowrap">
+					<FormField
+						control={form.control}
+						name="name"
+						render={({ field }) => (
+							<FormItem className="w-full">
+								<FormLabel>Name</FormLabel>
+								<FormControl>
+									<Input placeholder="John Doe" className="w-full" {...field} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+					<FormField
+						control={form.control}
+						name="phone"
+						render={({ field }) => (
+							<FormItem className="w-full">
+								<FormLabel>Phone Number</FormLabel>
+
+								<FormControl>
+									<Input
+										placeholder="+1 (555) 555-5555"
+										className="w-full"
+										{...field}
+									/>
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				</div>
+
+				<div className="flex flex-wrap items-center gap-4 sm:flex-nowrap">
+					<FormField
+						control={form.control}
+						name="address_line_1"
+						render={({ field }) => (
+							<FormItem className="w-full">
+								<FormLabel>Address Line 1</FormLabel>
+								<FormControl>
+									<Input placeholder="Street 1, Lane 1" {...field} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+					<FormField
+						control={form.control}
+						name="address_line_2"
+						render={({ field }) => (
+							<FormItem className="w-full">
+								<FormLabel>Address Line 2</FormLabel>
+								<FormControl>
+									<Input placeholder="Street 1, Lane 1" {...field} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				</div>
+
+				<div className="flex flex-wrap items-center gap-4 sm:flex-nowrap">
+					<FormField
+						control={form.control}
+						name="city"
+						render={({ field }) => (
+							<FormItem className="w-full">
+								<FormLabel>City</FormLabel>
+								<Select
+									onValueChange={field.onChange}
+									defaultValue={field.value}
+								>
+									<FormControl>
+										<SelectTrigger>
+											<SelectValue placeholder="Select your city" />
+										</SelectTrigger>
+									</FormControl>
+									<SelectContent>
+										{usCities.map((city, i) => (
+											<SelectItem
+												key={`${city.stateCode}-${i}-${city.city}`}
+												value={city.stateCode}
+												onSelect={() => form.setValue("city", city.stateCode)}
+											>
+												{city.city}
+											</SelectItem>
+										))}
+									</SelectContent>
+								</Select>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+
+					<FormField
+						control={form.control}
+						name="apartment"
+						render={({ field }) => (
+							<FormItem className="w-full">
+								<FormLabel>Apt, suite, etc.</FormLabel>
+								<FormControl>
+									<Input placeholder="Apartment, studio, or floor" {...field} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				</div>
+
+				<div className="flex flex-wrap items-center gap-4 sm:flex-nowrap">
+					<FormField
+						control={form.control}
+						name="postal_code"
+						render={({ field }) => (
+							<FormItem className="w-full">
+								<FormLabel>Postal Code/ZIP</FormLabel>
+								<FormControl>
+									<Input placeholder="90210" {...field} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+					<FormField
+						control={form.control}
+						name="country"
+						render={({ field }) => (
+							<FormItem className="w-full">
+								<FormLabel>Country</FormLabel>
+								<FormControl>
+									<Input placeholder="United States" disabled {...field} />
+								</FormControl>
+								<FormMessage />
+							</FormItem>
+						)}
+					/>
+				</div>
+
+				<Button type="submit" className="w-full">
+					Confirm
+				</Button>
+			</form>
+		</Form>
 	);
 };
-
-ShippingForm.displayName = "ShippingForm";
 
 export default ShippingForm;
