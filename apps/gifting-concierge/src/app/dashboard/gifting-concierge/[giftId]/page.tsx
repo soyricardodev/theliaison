@@ -89,6 +89,51 @@ export default async function GiftingConciergeByIdPage({
 										</div>
 									</div>
 								))}
+								<div>
+									<div className="flex items-center gap-4">
+										<Image
+											src={"/placeholder.svg"}
+											alt={"Shipping"}
+											width={80}
+											height={80}
+											className="rounded-md"
+										/>
+										<div className="flex-1">
+											<p className="font-medium">Shipping</p>
+											<p className="text-sm font-medium">
+												{Intl.NumberFormat("en-US", {
+													style: "currency",
+													currency: "USD",
+												}).format(
+													(data.gift_payments[0]?.delivery_fee ?? 0) / 100 ?? 0,
+												)}
+											</p>
+										</div>
+									</div>
+									<div>
+										<div className="flex items-center gap-4">
+											<Image
+												src={"/placeholder.svg"}
+												alt={"Shipping"}
+												width={80}
+												height={80}
+												className="rounded-md"
+											/>
+											<div className="flex-1">
+												<p className="font-medium">The Liaison Fee</p>
+												<p className="text-sm font-medium">
+													{Intl.NumberFormat("en-US", {
+														style: "currency",
+														currency: "USD",
+													}).format(
+														(data.gift_payments[0]?.service_fee ?? 0) / 100 ??
+															0,
+													)}
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 						<div>
@@ -97,27 +142,11 @@ export default async function GiftingConciergeByIdPage({
 								<div className="flex items-center gap-4">
 									<TruckIcon className="h-8 w-8 text-gray-500 dark:text-gray-400" />
 									<div className="flex-1">
-										<p className="font-medium">Pending Confirmation</p>
-										<p className="text-sm text-gray-500 dark:text-gray-400">
-											Your gift is awaiting approval.
+										<p className="font-medium">
+											{data.gift_payments?.[0]?.payment_status}
 										</p>
-									</div>
-								</div>
-								<div className="flex items-center gap-4">
-									<TruckIcon className="h-8 w-8 text-yellow-500" />
-									<div className="flex-1">
-										<p className="font-medium">Pending Payment</p>
 										<p className="text-sm text-gray-500 dark:text-gray-400">
-											Please complete your payment.
-										</p>
-									</div>
-								</div>
-								<div className="flex items-center gap-4">
-									<TruckIcon className="h-8 w-8 text-green-500" />
-									<div className="flex-1">
-										<p className="font-medium">In Shipping</p>
-										<p className="text-sm text-gray-500 dark:text-gray-400">
-											Your gift is on its way.
+											Your gift is waiting payment
 										</p>
 									</div>
 								</div>
@@ -138,7 +167,9 @@ export default async function GiftingConciergeByIdPage({
 									{Intl.NumberFormat("en-US", {
 										style: "currency",
 										currency: "USD",
-									}).format(data.gift_payments?.[0]?.total_price ?? 0)}
+									}).format(
+										(data.gift_payments?.[0]?.total_price ?? 0) / 100 ?? 0,
+									)}
 								</p>
 								<p className="text-sm text-gray-500 dark:text-gray-400">
 									Total
