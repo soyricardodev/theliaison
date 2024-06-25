@@ -12,8 +12,8 @@ import supabaseAdmin, { createOrRetrieveCustomer } from "~/supabase/admin";
 
 const url =
 	process.env.NODE_ENV !== "production"
-		? "http://localhost:3000/api/invoice"
-		: "https://gifting-concierge.vercel.app/api/invoice";
+		? "http://localhost:3002/api/invoice"
+		: "https://giftingconcierge.theliaison.vercel.app/api/invoice";
 
 interface ConfirmGiftFromRecipientProps {
 	name: string;
@@ -260,6 +260,17 @@ export async function createInvoice(
 		.eq("id", giftId);
 
 	console.log({ updateGiftPaymentError });
+
+	await fetch("/api/invoice", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			email: user.email ?? "",
+			invoiceLink: invoiceHostedLink,
+		}),
+	});
 
 	return {
 		updateGiftPaymentError,
