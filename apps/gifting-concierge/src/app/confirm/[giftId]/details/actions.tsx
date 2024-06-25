@@ -252,6 +252,7 @@ export async function createInvoice(
 	const { error: updateGiftPaymentError } = await supabase
 		.from("gift_payments")
 		.upsert({
+			gift_id: giftId,
 			delivery_fee: Math.round(shipmentRate * 100),
 			payment_status: "pending",
 			invoice_link: invoiceHostedLink,
