@@ -1,0 +1,35 @@
+{
+	"name": "@theliaison/fedex",
+	"version": "1.0.0",
+	"description": "Fedex APIs utils",
+	"main": "./src/index.ts",
+	"exports": {
+		"./types/ship": "./src/types/ship.ts",
+		"./fetch/ship": "./src/fetch/ship.ts",
+		"./types/track": "./src/types/track.ts",
+		"./fetch/track": "./src/fetch/track.ts",
+		"./types/authorization": "./src/types/authorization.ts",
+		"./fetch/authorization": "./src/fetch/authorization.ts",
+		"./types/rate": "./src/types/rate.ts",
+		"./fetch/rate": "./src/fetch/rate.ts",
+		"./types/address-validation": "./src/types/address-validation.ts",
+		"./fetch/address-validation": "./src/fetch/address-validation.ts"
+	},
+	"scripts": {
+		"gen:ship": "openapi-typescript ./src/schemas/ship.json -o ./src/types/ship.ts",
+		"gen:track": "openapi-typescript ./src/schemas/track.json -o ./src/types/track.ts",
+		"gen:authorization": "openapi-typescript ./src/schemas/authorization.json -o ./src/types/authorization.ts",
+		"gen:rate": "openapi-typescript ./src/schemas/rate.json -o ./src/types/rate.ts",
+		"gen:address-validation": "openapi-typescript ./src/schemas/address-validation.json -o ./src/types/address-validation.ts"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"openapi-typescript": "7.0.0",
+		"typescript": "5.4.5"
+	},
+	"dependencies": {
+		"openapi-fetch": "0.10.1"
+	}
+}
