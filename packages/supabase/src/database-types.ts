@@ -85,7 +85,7 @@ export type Database = {
 					stripe_customer_id: string | null;
 				};
 				Insert: {
-					id: string;
+					id?: string;
 					stripe_customer_id?: string | null;
 				};
 				Update: {
@@ -202,39 +202,42 @@ export type Database = {
 			};
 			gift_recipient_addresses: {
 				Row: {
-					address: string | null;
+					address_line_1: string;
+					address_line_2: string | null;
+					appartment: string | null;
 					city: string | null;
-					country: string | null;
+					country: string;
 					created_at: string;
 					id: number;
 					is_private: boolean;
 					postal_code: string | null;
 					recipient_id: string;
-					state: string | null;
 					updated_at: string;
 				};
 				Insert: {
-					address?: string | null;
+					address_line_1: string;
+					address_line_2?: string | null;
+					appartment?: string | null;
 					city?: string | null;
-					country?: string | null;
+					country?: string;
 					created_at?: string;
 					id?: number;
 					is_private?: boolean;
 					postal_code?: string | null;
 					recipient_id: string;
-					state?: string | null;
 					updated_at?: string;
 				};
 				Update: {
-					address?: string | null;
+					address_line_1?: string;
+					address_line_2?: string | null;
+					appartment?: string | null;
 					city?: string | null;
-					country?: string | null;
+					country?: string;
 					created_at?: string;
 					id?: number;
 					is_private?: boolean;
 					postal_code?: string | null;
 					recipient_id?: string;
-					state?: string | null;
 					updated_at?: string;
 				};
 				Relationships: [
@@ -389,6 +392,27 @@ export type Database = {
 						referencedColumns: ["id"];
 					},
 				];
+			};
+			number_test: {
+				Row: {
+					float8: number | null;
+					id: number;
+					int8: number | null;
+					numeric: number | null;
+				};
+				Insert: {
+					float8?: number | null;
+					id?: number;
+					int8?: number | null;
+					numeric?: number | null;
+				};
+				Update: {
+					float8?: number | null;
+					id?: number;
+					int8?: number | null;
+					numeric?: number | null;
+				};
+				Relationships: [];
 			};
 			options: {
 				Row: {
