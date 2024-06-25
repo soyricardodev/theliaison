@@ -19,10 +19,12 @@ export default async function GiftingConciergeByIdPage({
 	const { data, error } = await supabase
 		.from("gifts")
 		.select(`
-      sender_name,
-      recipient_name,
-      total_price,
-      gifts_products(id, quantity, products(name, image, prices(unit_amount)))
+			id,
+      recipient_id,
+			gift_recipients(id, name),
+			users(id, full_name, username),
+      gifts_products(id, quantity, products(name, image, prices(unit_amount))),
+			gift_payments(id, total_price, payment_status, invoice_link, service_fee, delivery_fee)
     `)
 		.eq("id", giftId)
 		.single();
@@ -126,9 +128,9 @@ export default async function GiftingConciergeByIdPage({
 						<h3 className="font-semibold text-lg mb-4">Sender & Recipient</h3>
 						<div className="flex items-center gap-4">
 							<div className="flex-1">
-								<p className="font-medium">Sender: {data.sender_name}</p>
+								<p className="font-medium">Sender: {data.users?.full_name}</p>
 								<p className="text-sm text-gray-500 dark:text-gray-400">
-									Recipient: {data.recipient_name}
+									Recipient: {data.gift_recipients?.name}
 								</p>
 							</div>
 							<div className="text-right">
@@ -136,7 +138,7 @@ export default async function GiftingConciergeByIdPage({
 									{Intl.NumberFormat("en-US", {
 										style: "currency",
 										currency: "USD",
-									}).format(data.total_price ?? 0)}
+									}).format(data.gift_payments?.[0]?.total_price ?? 0)}
 								</p>
 								<p className="text-sm text-gray-500 dark:text-gray-400">
 									Total
