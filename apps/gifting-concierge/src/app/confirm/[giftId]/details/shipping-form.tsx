@@ -27,6 +27,7 @@ import {
 	SelectValue,
 } from "@theliaison/ui/select";
 import { toast } from "sonner";
+import { redirect } from "next/navigation";
 export type ShippingFormProps = React.HTMLAttributes<HTMLDivElement> & {
 	hideTitle?: boolean;
 	giftId: number;
@@ -85,20 +86,28 @@ const ShippingForm = ({
 				loading: "Validating address...",
 				success: async (validated) => {
 					if (validated) {
-						await confirmGiftFromRecipient({
-							sender_id: senderId,
-							address_line_1: data.address_line_1,
-							address_line_2: data.address_line_2,
-							city: data.city,
-							country: data.country,
-							email: data.email,
-							name: data.name,
-							phone: data.phone,
-							postal_code: data.postal_code,
-							recipient_id: recipientId,
-							gift_id: giftId,
-						});
-						return "Thank you for confirming your gift!";
+						toast.promise(
+							confirmGiftFromRecipient({
+								sender_id: senderId,
+								address_line_1: data.address_line_1,
+								address_line_2: data.address_line_2,
+								city: data.city,
+								country: data.country,
+								email: data.email,
+								name: data.name,
+								phone: data.phone,
+								postal_code: data.postal_code,
+								recipient_id: recipientId,
+								gift_id: giftId,
+							}),
+							{
+								loading: "Confirming gift...",
+								success: () => {
+									redirect("/details/thanks");
+								},
+								error: "Something went wrong confirming your gift",
+							},
+						);
 					}
 					return "Your address is invalid";
 				},
