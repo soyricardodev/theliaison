@@ -15,7 +15,10 @@ export default function supabaseAdmin() {
 	);
 }
 
-const upsertCustomerToSupabase = async (uuid: string, customerId: string) => {
+export const upsertCustomerToSupabase = async (
+	uuid: string,
+	customerId: string,
+) => {
 	const { error: upsertError } = await supabaseAdmin()
 		.from("customers")
 		.upsert([{ id: uuid, stripe_customer_id: customerId }]);
@@ -29,14 +32,14 @@ const upsertCustomerToSupabase = async (uuid: string, customerId: string) => {
 	return customerId;
 };
 
-const createCustomerInStripe = async (uuid: string, email: string) => {
+export const createCustomerInStripe = async (uuid: string, email: string) => {
 	const customerData = { metadata: { supabaseUUID: uuid }, email: email };
 	const newCustomer = await stripe.customers.create(customerData);
 
 	return newCustomer.id;
 };
 
-const createOrRetrieveCustomer = async ({
+export const createOrRetrieveCustomer = async ({
 	email,
 	uuid,
 }: {
@@ -65,9 +68,8 @@ const createOrRetrieveCustomer = async ({
 	} else {
 		// If Stripe ID is missing from Supabase, try to retrieve Stripe customer ID by email
 		const stripeCustomers = await stripe.customers.list({ email: email });
-		stripeCustomerId = stripeCustomers.data.length > 0
-			? stripeCustomers.data[0]?.id
-			: undefined;
+		stripeCustomerId =
+			stripeCustomers.data.length > 0 ? stripeCustomers.data[0]?.id : undefined;
 	}
 
 	// If still no stripeCustomerId, create a new customer in Stripe
