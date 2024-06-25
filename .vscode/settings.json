@@ -18,6 +18,7 @@
 	"cSpell.words": [
 		"ABCDEFGHJKLMNPQRSTUVWXY",
 		"agender",
+		"apikey",
 		"autosize",
 		"Bento",
 		"bigender",
@@ -26,6 +27,7 @@
 		"cmdk",
 		"cobe",
 		"coldark",
+		"Datestamp",
 		"demiboy",
 		"demigirl",
 		"Downvote",
@@ -49,8 +51,10 @@
 		"nextjs",
 		"nextui",
 		"openai",
+		"openapi",
 		"pangender",
 		"pansexual",
+		"payor",
 		"shadcn",
 		"signin",
 		"signout",
@@ -66,10 +70,12 @@
 		"theliaison",
 		"tiktok",
 		"topo",
+		"trackingnumbers",
 		"Truff",
 		"tsbuildinfo",
 		"tseslint",
 		"typecheck",
+		"upsert",
 		"upserted",
 		"upstash",
 		"upvote",
@@ -82,5 +88,8 @@
 		"zadd",
 		"zrem",
 		"zustand"
-	]
+	],
+	"[typescript]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	}
 }
