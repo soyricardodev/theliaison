@@ -12,6 +12,7 @@ import {
 	DialogTrigger,
 } from "@theliaison/ui/dialog";
 import ShippingForm from "./details/shipping-form";
+
 export default async function Confirm({
 	params: { giftId },
 }: {
@@ -21,7 +22,9 @@ export default async function Confirm({
 
 	const { data, error } = await supabase
 		.from("gifts")
-		.select("*, gifts_products(product_id, quantity, products(name, image))")
+		.select(
+			"id, recipient_id, sender_id, gifts_products(product_id, quantity, products(name, image))",
+		)
 		.eq("id", giftId)
 		.single();
 
@@ -43,7 +46,7 @@ export default async function Confirm({
 						<div className="flex flex-col justify-center space-y-4">
 							<div className="space-y-2">
 								<h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-									Hey, {} wants to send you a gift.
+									Hey, wants to send you a gift.
 								</h1>
 								<p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
 									The Liaison Gifting concierge manages the gift sending.
@@ -104,19 +107,22 @@ export default async function Confirm({
 					<div className="flex gap-2 items-center justify-center">
 						<Dialog>
 							<DialogTrigger asChild>
-								<Button color="primary" className="mb-4">
-									Confirm Gift
-								</Button>
+								<Button className="mb-4">Confirm Gift</Button>
 							</DialogTrigger>
-							<DialogContent className="sm:max-w-[425px]">
+							<DialogContent className="sm:max-w-[600px]">
 								<DialogHeader>
-									<DialogTitle>Edit profile</DialogTitle>
+									<DialogTitle>Get Shipping Details</DialogTitle>
 									<DialogDescription>
-										Make changes to your profile here. Click save when you're
-										done.
+										Please provide your shipping details. Click confirm when
+										you're done.
 									</DialogDescription>
 								</DialogHeader>
-								<ShippingForm hideTitle giftId={giftId} />
+								<ShippingForm
+									hideTitle
+									giftId={data.id}
+									recipientId={data.recipient_id}
+									senderId={data.sender_id}
+								/>
 							</DialogContent>
 						</Dialog>
 						<Button variant="light" color="danger" className="mb-4">
