@@ -20,25 +20,19 @@ import Link from "next/link";
 
 export async function GiftsData() {
 	const supabase = createClient();
-	const { data, error } = await supabase.from("gifts").select("*");
+	const { data, error } = await supabase.from("gifts").select(`
+		id,
+		status,
+		recipient_id,
+		gift_recipients(id, name),
+		users(id, full_name, username),
+		created_at
+	`);
 
 	if (error) {
 		console.log(error);
 		return <div>Error</div>;
 	}
-
-	const status = ({
-		confirmed,
-		rejected,
-	}: { confirmed: boolean; rejected: boolean }) => {
-		return rejected ? "Declined" : confirmed ? "Confirmed" : "Pending";
-	};
-	const statusVariant = ({
-		confirmed,
-		rejected,
-	}: { confirmed: boolean; rejected: boolean }) => {
-		return rejected ? "destructive" : confirmed ? "default" : "secondary";
-	};
 
 	function transformPGDate(createdAtString: string) {
 		const createdAtDate = new Date(createdAtString);
@@ -82,50 +76,32 @@ export async function GiftsData() {
 							<TableHead className="hidden sm:table-cell">Recipient</TableHead>
 							<TableHead className="hidden sm:table-cell">Status</TableHead>
 							<TableHead className="hidden md:table-cell">Date</TableHead>
-							<TableHead className="text-right">Amount</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
 						{data?.map((gift) => (
 							<TableRow key={gift.id}>
 								<TableCell>
-									<Link href={`/dashboard/users/${gift.sender_name}`}>
-										<div className="font-medium">{gift.sender_name}</div>
+									<Link href={`/dashboard/users/${gift.users?.username}`}>
+										<div className="font-medium">{gift.users?.full_name}</div>
 										<div className="hidden text-sm text-muted-foreground md:inline">
 											ricardo@mail.com
 										</div>
 									</Link>
 								</TableCell>
 								<TableCell className="hidden sm:table-cell">
-									<Link href={`/dashboard/gifting-concierge/${gift.id}`}>
-										<div className="font-medium">{gift.recipient_name}</div>
-										<div className="hidden text-sm text-muted-foreground md:inline">
-											{gift.recipient_social}
-										</div>
+									<Link
+										href={`/dashboard/gifting-concierge/${gift.id}`}
+										className="font-medium"
+									>
+										{gift.gift_recipients?.name}
 									</Link>
 								</TableCell>
 								<TableCell className="hidden sm:table-cell">
-									<Badge
-										className="text-xs"
-										variant={statusVariant({
-											confirmed: gift.is_confirmed,
-											rejected: gift.is_rejected,
-										})}
-									>
-										{status({
-											confirmed: gift.is_confirmed,
-											rejected: gift.is_rejected,
-										})}
-									</Badge>
+									<Badge className="text-xs">{gift.status}</Badge>
 								</TableCell>
 								<TableCell className="hidden md:table-cell">
 									{transformPGDate(gift.created_at).prettySanDiegoFormattedDate}
-								</TableCell>
-								<TableCell className="text-right">
-									{Intl.NumberFormat("en-US", {
-										style: "currency",
-										currency: "USD",
-									}).format(gift.total_price)}
 								</TableCell>
 							</TableRow>
 						))}
