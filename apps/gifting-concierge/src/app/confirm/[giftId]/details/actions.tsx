@@ -262,7 +262,7 @@ export async function createInvoice(
 
 	console.log({ updateGiftPaymentError });
 
-	await fetch("/api/invoice", {
+	await fetch(url, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
