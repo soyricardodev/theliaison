@@ -74,7 +74,7 @@ export async function confirmGiftFromRecipient({
 	}
 
 	console.log("lets create invoice");
-	await createInvoice(sender_id, gift_id, email, shipmentRate);
+	await createInvoice(sender_id, gift_id, shipmentRate);
 
 	redirect("/details/thanks");
 }
@@ -154,7 +154,6 @@ export async function validateRecipientAddress({
 export async function createInvoice(
 	userId: string,
 	giftId: number,
-	email: string,
 	shipmentRate: number,
 ) {
 	const supabase = createClient();
@@ -195,8 +194,6 @@ export async function createInvoice(
 		error: findCustomerError,
 	} = await supabaseAdminClient.auth.admin.getUserById(userId);
 
-	console.log({ user });
-
 	if (findCustomerError || !user) {
 		console.log({ findCustomerError });
 		return error;
@@ -222,7 +219,7 @@ export async function createInvoice(
 		});
 	}
 
-	const shipmentItem = await stripe.invoiceItems.create({
+	await stripe.invoiceItems.create({
 		customer: senderId,
 		description: "Shipment",
 		unit_amount: Math.round(shipmentRate * 100),
@@ -230,9 +227,7 @@ export async function createInvoice(
 		invoice: invoice.id,
 	});
 
-	console.log({ shipmentItem });
-
-	const theLiaisonFeeItem = await stripe.invoiceItems.create({
+	await stripe.invoiceItems.create({
 		customer: senderId,
 		description: "The Liaison Gifting Concierge",
 		unit_amount: Math.round(10 * 100),
@@ -241,13 +236,10 @@ export async function createInvoice(
 		invoice: invoice.id,
 	});
 
-	console.log({ theLiaisonFeeItem });
-
 	const invoiceSend = await stripe.invoices.sendInvoice(invoice.id);
+	const totalPriceInvoice = invoiceSend.total;
 
 	const invoiceHostedLink = invoiceSend.hosted_invoice_url;
-
-	console.log({ invoiceHostedLink, invoiceSend });
 
 	const { error: updateGiftPaymentError } = await supabase
 		.from("gift_payments")
@@ -256,7 +248,8 @@ export async function createInvoice(
 			delivery_fee: Math.round(shipmentRate * 100),
 			payment_status: "pending",
 			invoice_link: invoiceHostedLink,
-			service_fee: 10,
+			service_fee: Math.round(10 * 100),
+			total_price: totalPriceInvoice,
 		})
 		.eq("id", giftId);
 
