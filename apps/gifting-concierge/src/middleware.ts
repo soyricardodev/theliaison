@@ -31,9 +31,9 @@ export async function middleware(request: NextRequest) {
 		supabase.auth.onAuthStateChange(async (_, session) => {
 			if (session) {
 				const jwt = jwtDecode(session.access_token) as JwtPayload & {
-					user_role: string;
+					user_role: string | null;
 				};
-				const userRole = jwt.user_role as string | null;
+				const userRole = jwt.user_role;
 				const isAdmin = userRole === "admin";
 
 				if (!isAdmin) {
