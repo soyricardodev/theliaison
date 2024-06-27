@@ -1,4 +1,5 @@
 import { AnimatedBeamMultipleOutputDemo } from "../beam-multiple";
+import { SimpleSendGift } from "../gift/simple-send-gift";
 import { GiftsMarquee } from "./gifts-marquee";
 
 import dynamic from "next/dynamic";
@@ -25,6 +26,10 @@ export function Bento() {
 						someone’s home address to send a gift.
 					</p>
 				</div>
+			</div>
+
+			<div>
+				<SimpleSendGift />
 			</div>
 
 			<div className="relative">

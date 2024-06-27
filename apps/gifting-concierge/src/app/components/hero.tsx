@@ -1,10 +1,12 @@
 "use client";
 
 import { cn } from "@theliaison/ui";
+import { buttonVariants } from "@theliaison/ui/button";
 import { BorderBeam } from "@theliaison/ui/magicui/border-beam";
 import { Particles } from "@theliaison/ui/magicui/particles";
 import { motion, useInView } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { GiftIcon, StoreIcon } from "lucide-react";
+import Link from "next/link";
 import { useRef } from "react";
 
 export function Hero() {
@@ -30,8 +32,8 @@ export function Hero() {
 			className="relative h-full mx-auto z-10 mt-32 max-w-[80rem] px-6 text-center md:px-8"
 		>
 			<Particles
-				className="absolute inset-0"
-				quantity={200}
+				className="absolute inset-0 -z-10"
+				quantity={100}
 				ease={80}
 				color={"#000000"}
 				refresh
@@ -49,11 +51,13 @@ export function Hero() {
 					type: "spring",
 				}}
 			>
-				We are the new way
-				<br className="hidden lg:block" /> to send gifts.
+				Secure and Private Gifting.{" "}
+				<strong className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-secondary/80">
+					Made Easy.
+				</strong>
 			</motion.h1>
 			<motion.p
-				className="text-balance text-lg tracking-tight text-gray-600 md:text-xl mb-12"
+				className="text-balance text-lg tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-black via-gray-700 to-gray-400 md:text-xl mb-12"
 				animate={fadeInInView ? "animate" : "initial"}
 				variants={fadeUpVariants}
 				initial={false}
@@ -64,14 +68,14 @@ export function Hero() {
 					type: "spring",
 				}}
 			>
-				The <strong className="font-semibold">BEST</strong> Way to send a gift
-				without the address hassle.
+				Gift Effortlessly, Surprise Instantly.{" "}
+				<strong>No Address Needed.</strong>
 			</motion.p>
 
 			<motion.div
 				animate={fadeInInView ? "animate" : "initial"}
 				variants={fadeUpVariants}
-				className="flex flex-col gap-4 lg:flex-row"
+				className="flex flex-row items-center justify-center gap-4 mx-auto w-full"
 				initial={false}
 				transition={{
 					duration: 0.6,
@@ -80,22 +84,27 @@ export function Hero() {
 					type: "spring",
 				}}
 			>
-				<a
-					href="/giftshop"
+				<Link
+					href="/send"
 					className={cn(
-						// colors
-						"bg-black  text-white shadow hover:bg-black/90 dark:bg-white dark:text-black dark:hover:bg-white/90 max-w-fit mx-auto",
-
-						// layout
-						"group relative inline-flex h-9 w-full items-center justify-center gap-2 overflow-hidden whitespace-pre rounded-md px-4 py-2 text-base font-semibold tracking-tighter focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 md:flex",
-
-						// animation
-						"transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-2",
+						buttonVariants({ size: "lg" }),
+						"flex gap-2 items-center text-base",
 					)}
 				>
-					Get Started
-					<ChevronRight className="size-4 translate-x-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
-				</a>
+					Send Gift
+					<GiftIcon className="size-5 translate-x-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
+				</Link>
+
+				<Link
+					href="/giftshop"
+					className={cn(
+						buttonVariants({ variant: "secondary", size: "lg" }),
+						"flex gap-2 items-center text-base",
+					)}
+				>
+					Shop Now
+					<StoreIcon className="size-5 translate-x-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
+				</Link>
 			</motion.div>
 
 			<motion.div

@@ -1,5 +1,4 @@
 import { Bento } from "./components/bento/index";
-import { BentoDemo } from "./components/bento";
 import { CallToAction } from "./components/call-to-action";
 import { Companies } from "./components/companies";
 import { FAQs } from "./components/faq";
