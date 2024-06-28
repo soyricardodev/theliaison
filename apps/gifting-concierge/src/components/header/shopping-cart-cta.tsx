@@ -1,6 +1,7 @@
 "use client";
 
-import { Badge, Button } from "@nextui-org/react";
+import { Button } from "@theliaison/ui/button";
+import { Badge } from "@nextui-org/react";
 import { ShoppingCartIcon } from "lucide-react";
 import { useCartStore } from "~/store/cart";
 
@@ -12,19 +13,13 @@ export function ShoppingCartCta() {
 	};
 
 	return (
-		<Button
-			isIconOnly
-			radius="full"
-			variant="light"
-			className="overflow-visible"
-			onClick={handleToggleCart}
-		>
+		<Button variant="ghost" className="rounded-full" onClick={handleToggleCart}>
 			{shoppingCart.length > 0 ? (
 				<Badge
 					color="success"
 					content={shoppingCart.length}
 					showOutline={false}
-					size="md"
+					size="sm"
 				>
 					<ShoppingCartIcon className="text-default-500 size-5" />
 				</Badge>
