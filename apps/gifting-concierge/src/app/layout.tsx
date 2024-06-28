@@ -7,7 +7,6 @@ import { GeistSans } from "geist/font/sans";
 import { cn } from "@theliaison/ui";
 import { TailwindIndicator } from "@theliaison/ui/tailwind-indicator";
 
-import { FloatingAICta } from "~/components/ai/floating-ai-cta";
 import { Header } from "~/components/header";
 import { Providers } from "~/components/providers";
 import { Cart } from "../components/cart/cart";
@@ -31,11 +30,7 @@ export default function RootLayout({
 					GeistSans.variable,
 				)}
 			>
-				<Providers>
-					<Header />
-					<Cart />
-					{children}
-				</Providers>
+				<Providers>{children}</Providers>
 				<TailwindIndicator />
 			</body>
 		</html>
