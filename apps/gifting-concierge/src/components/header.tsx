@@ -53,38 +53,16 @@ export function Header() {
 						endContent={<FloatingAICta />}
 					/>
 				</NavbarItem>
-				{/* Mobile search */}
-				<NavbarItem className="lg:hidden flex items-center">
-					<Button isIconOnly radius="full" variant="light">
-						<SearchIcon className="text-default-500 size-5" />
-					</Button>
-					<FloatingAICta />
-				</NavbarItem>
 				{/* Shopping Cart */}
 				<NavbarItem>
 					<ShoppingCartCta />
 				</NavbarItem>
-				{/* Notifications */}
-				{/* <NavbarItem className="flex">
-					<Popover offset={12} placement="bottom-end">
-						<PopoverTrigger>
-							<Button
-								disableRipple
-								isIconOnly
-								className="overflow-visible"
-								radius="full"
-								variant="light"
-							>
-								<Badge color="danger" content="5" showOutline={false} size="md">
-									<BellIcon className="text-default-500 size-6" />
-								</Badge>
-							</Button>
-						</PopoverTrigger>
-						<PopoverContent className="max-w-[90vw] p-0 sm:max-w-[380px]">
-							<NotificationsCard className="w-full shadow-none" />
-						</PopoverContent>
-					</Popover>
-				</NavbarItem> */}
+				{/* Mobile search */}
+				<NavbarItem className="lg:hidden flex items-center">
+					<Button isIconOnly radius="full" variant="light">
+						<FloatingAICta />
+					</Button>
+				</NavbarItem>
 				{/* User Menu */}
 				<NavbarItem className="px-2">
 					<UserMenu />
