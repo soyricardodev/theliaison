@@ -19,14 +19,18 @@ export function ShoppingCartCta() {
 			className="overflow-visible"
 			onClick={handleToggleCart}
 		>
-			<Badge
-				color="success"
-				content={shoppingCart.length}
-				showOutline={false}
-				size="md"
-			>
-				<ShoppingCartIcon className="text-default-500 size-6" />
-			</Badge>
+			{shoppingCart.length > 0 ? (
+				<Badge
+					color="success"
+					content={shoppingCart.length}
+					showOutline={false}
+					size="md"
+				>
+					<ShoppingCartIcon className="text-default-500 size-5" />
+				</Badge>
+			) : (
+				<ShoppingCartIcon className="text-default-500 size-5" />
+			)}
 		</Button>
 	);
 }
