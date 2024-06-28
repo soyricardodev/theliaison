@@ -1,5 +1,5 @@
+import React from "react";
 import {
-	Button,
 	Link,
 	Navbar,
 	NavbarBrand,
@@ -9,7 +9,6 @@ import {
 	NavbarMenuItem,
 	NavbarMenuToggle,
 } from "@nextui-org/react";
-import React from "react";
 import { FloatingAICta } from "./ai/floating-ai-cta";
 import { ShoppingCartCta } from "./header/shopping-cart-cta";
 import { UserMenu } from "./header/user-menu";
@@ -46,9 +45,7 @@ export function Header() {
 				</NavbarItem>
 				{/* Mobile search */}
 				<NavbarItem className="lg:hidden flex items-center">
-					<Button isIconOnly radius="full" variant="light">
-						<FloatingAICta />
-					</Button>
+					<FloatingAICta />
 				</NavbarItem>
 				{/* User Menu */}
 				<NavbarItem className="px-2">
@@ -59,28 +56,8 @@ export function Header() {
 			{/* Mobile Menu */}
 			<NavbarMenu>
 				<NavbarMenuItem>
-					<Link className="w-full" color="foreground" href="#">
-						Dashboard
-					</Link>
-				</NavbarMenuItem>
-				<NavbarMenuItem isActive>
-					<Link aria-current="page" className="w-full" color="primary" href="#">
-						Deployments
-					</Link>
-				</NavbarMenuItem>
-				<NavbarMenuItem>
-					<Link className="w-full" color="foreground" href="#">
-						Analytics
-					</Link>
-				</NavbarMenuItem>
-				<NavbarMenuItem>
-					<Link className="w-full" color="foreground" href="#">
-						Team
-					</Link>
-				</NavbarMenuItem>
-				<NavbarMenuItem>
-					<Link className="w-full" color="foreground" href="#">
-						Settings
+					<Link className="w-full" color="foreground" href="/giftshop">
+						Giftshop
 					</Link>
 				</NavbarMenuItem>
 			</NavbarMenu>
