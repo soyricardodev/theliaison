@@ -28,8 +28,7 @@ export function Header() {
 		>
 			<NavbarBrand>
 				<NavbarMenuToggle className="mr-2 h-6 sm:hidden" />
-				{/* <AcmeIcon /> */}
-				<p>TL</p>
+				<p>TL</p>{" "}
 				<p className="font-bold text-inherit hidden sm:block">
 					Gifting Concierge
 				</p>
@@ -41,17 +40,7 @@ export function Header() {
 				justify="end"
 			>
 				<NavbarItem className="mr-2 hidden lg:flex">
-					<Input
-						aria-label="Search"
-						classNames={{
-							inputWrapper: "bg-content2",
-						}}
-						labelPlacement="outside"
-						placeholder="Search..."
-						radius="full"
-						startContent={<SearchIcon className="text-default-500 size-5" />}
-						endContent={<FloatingAICta />}
-					/>
+					<FloatingAICta />
 				</NavbarItem>
 				{/* Shopping Cart */}
 				<NavbarItem>
