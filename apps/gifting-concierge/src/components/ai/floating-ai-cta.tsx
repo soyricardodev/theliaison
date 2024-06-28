@@ -24,11 +24,11 @@ export async function FloatingAICta() {
 		<Dialog>
 			<DialogTrigger asChild>
 				<Button
-					variant="outline"
-					className="rounded-full bg-primary text-white"
 					size="sm"
+					variant="secondary"
+					className="rounded-full font-medium"
 				>
-					Ask AI
+					AI
 				</Button>
 			</DialogTrigger>
 			<DialogContent className="min-w-full w-full md:min-w-[800px] h-full min-h-[600px]">
