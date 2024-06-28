@@ -15,24 +15,17 @@ export default function Register() {
 		<div className="w-full mx-auto sm:w-[26rem] sm:p-5 rounded-md">
 			<div className="p-5 space-y-5">
 				<div className="text-center space-y-3">
-					<Image
-						src={"/supabase.png"}
-						alt="supabase logo"
-						width={50}
-						height={50}
-						className=" rounded-full mx-auto"
-					/>
-					<h1 className="font-bold">Create Account</h1>
+					<h1 className="font-bold text-xl">Create Account</h1>
 					<p className="text-sm">
 						Welcome! Please fill in the details to get started.
 					</p>
 				</div>
-				<SocialAuth redirectTo={next || "/"} />
+				{/* <SocialAuth redirectTo={next || "/"} />
 				<div className="flex items-center gap-5">
 					<div className="flex-1 h-[0.5px] w-full bg-zinc-400" />
 					<div className="text-sm">or</div>
 					<div className="flex-1 h-[0.5px] w-full bg-zinc-400" />
-				</div>
+				</div> */}
 			</div>
 			<SignUp redirectTo={next || "/"} />
 		</div>
