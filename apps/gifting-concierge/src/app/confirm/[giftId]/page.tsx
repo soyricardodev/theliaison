@@ -6,12 +6,12 @@ import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
-	DialogFooter,
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
 } from "@theliaison/ui/dialog";
 import ShippingForm from "./details/shipping-form";
+import giftboxGIF from "~/assets/giftbox2.gif";
 
 export default async function Confirm({
 	params: { giftId },
@@ -39,29 +39,24 @@ export default async function Confirm({
 	}
 
 	return (
-		<div className="flex flex-col min-h-[100dvh]">
-			<section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
-				<div className="container px-4 md:px-6">
-					<div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
-						<div className="flex flex-col justify-center space-y-4">
-							<div className="space-y-2">
-								<h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-									Hey, wants to send you a gift.
-								</h1>
-								<p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-									The Liaison Gifting concierge manages the gift sending.
-								</p>
-							</div>
-						</div>
-						<Image
-							src="/placeholder.svg"
-							width="550"
-							height="310"
-							alt="Gift"
-							className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
-						/>
-					</div>
+		<div className="flex flex-col relative z-20">
+			<section className="w-full py-12 md:py-24 lg:py-32">
+				<div className="relative mx-auto flex max-w-2xl flex-col items-center">
+					<h1 className="text-center text-gray-50 text-balance font-medium tracking-tighter text-3xl sm:text-6xl/none">
+						Hey, someone special
+						<span className="animate-text-gradient inline-flex bg-gradient-to-r bg-[200%_auto] bg-clip-text leading-tight text-transparent from-neutral-100 via-slate-400 to-neutral-400">
+							wants to send you a gift.
+						</span>
+					</h1>
+					<p className="mt-6 text-center text-lg leading-6 text-gray-200">
+						The Liaison Gifting concierge manages the gift sending.
+					</p>
 				</div>
+				<Image
+					src={giftboxGIF}
+					alt="Giftbox"
+					className="mx-auto sm:w-full lg:order-last hover:scale-105 transition-all hover:[filter:drop-shadow(0_0_8px_#f0f0f0)]"
+				/>
 			</section>
 			<section className="w-full py-12 md:py-24 lg:py-32">
 				<div className="container px-4 md:px-6">
@@ -102,7 +97,7 @@ export default async function Confirm({
 					</div>
 				</div>
 			</section>
-			<section className="w-full py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
+			<section className="w-full py-12 md:py-24 lg:py-32">
 				<div className="container px-4 md:px-6 flex justify-center">
 					<div className="flex gap-2 items-center justify-center">
 						<Dialog>
