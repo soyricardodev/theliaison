@@ -222,7 +222,7 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 					/>
 					<Button
 						type="submit"
-						className="w-full h-8 bg-indigo-500 hover:bg-indigo-600 transition-all text-white flex items-center gap-2"
+						className="w-full h-8 bg-primary hover:bg-primary/90 transition-all text-white flex items-center gap-2"
 					>
 						<AiOutlineLoading3Quarters
 							className={cn(!isPending ? "hidden" : "block animate-spin")}
@@ -235,7 +235,7 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 							Already have account?{" "}
 							<Link
 								href={redirectTo ? `/signin?next=${redirectTo}` : "/signin"}
-								className="text-blue-400"
+								className="text-blue-500"
 							>
 								Signin
 							</Link>
