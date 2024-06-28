@@ -26,11 +26,16 @@ export async function UserMenu() {
 	if (error) {
 		return (
 			<div className="flex gap-2">
-				<Button variant="outline" asChild>
-					<Link href="/login">Login</Link>
+				<Button variant="ghost" asChild>
+					<Link href="/login" className="hidden md:block">
+						Login
+					</Link>
 				</Button>
-				<Button asChild>
-					<Link href="/register">Sign Up</Link>
+				<Button asChild className="rounded-full">
+					<Link href="/register">
+						<span className="hidden md:block">Sign Up</span>
+						<span className="md:hidden">Get Started</span>
+					</Link>
 				</Button>
 			</div>
 		);
@@ -39,13 +44,8 @@ export async function UserMenu() {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<button className="mt-1 h-8 w-8 transition-transform" type="button">
-					<Badge
-						color="success"
-						content=""
-						placement="bottom-right"
-						shape="circle"
-					>
+				<button className="mt-1 size-8 transition-transform" type="button">
+					<Badge color="success" placement="bottom-right" shape="circle">
 						<Avatar size="sm" />
 					</Badge>
 				</button>
