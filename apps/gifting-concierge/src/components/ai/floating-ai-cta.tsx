@@ -26,9 +26,10 @@ export async function FloatingAICta() {
 				<Button
 					size="sm"
 					variant="secondary"
-					className="rounded-full font-medium"
+					className="font-medium md:h-9 md:px-4 md:py-2"
 				>
-					AI
+					<span className="lg:hidden">AI</span>
+					<span className="hidden lg:inline">Ask AI</span>
 				</Button>
 			</DialogTrigger>
 			<DialogContent className="min-w-full w-full md:min-w-[800px] h-full min-h-[600px]">
