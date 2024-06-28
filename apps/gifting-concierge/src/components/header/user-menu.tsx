@@ -27,7 +27,7 @@ export async function UserMenu() {
 		return (
 			<div className="flex gap-2">
 				<Button variant="ghost" asChild>
-					<Link href="/login" className="hidden md:block">
+					<Link href="/login" className="hidden md:block rounded-full">
 						Login
 					</Link>
 				</Button>
