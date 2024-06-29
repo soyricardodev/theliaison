@@ -1,8 +1,6 @@
 "use client";
-import Image from "next/image";
 import React from "react";
 import SignUp from "~/components/auth/signup-form";
-import { SocialAuth } from "~/components/auth/social-auth";
 
 export default function Register() {
 	const queryString =
@@ -20,12 +18,6 @@ export default function Register() {
 						Welcome! Please fill in the details to get started.
 					</p>
 				</div>
-				{/* <SocialAuth redirectTo={next || "/"} />
-				<div className="flex items-center gap-5">
-					<div className="flex-1 h-[0.5px] w-full bg-zinc-400" />
-					<div className="text-sm">or</div>
-					<div className="flex-1 h-[0.5px] w-full bg-zinc-400" />
-				</div> */}
 			</div>
 			<SignUp redirectTo={next || "/"} />
 		</div>
