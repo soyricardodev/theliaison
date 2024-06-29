@@ -119,7 +119,7 @@ const ShippingForm = ({
 	return (
 		<Form {...form}>
 			<form
-				className={cn("space-y-6 h-full overflow-y-scroll", className)}
+				className={cn("space-y-6 h-full dark", className)}
 				onSubmit={form.handleSubmit(onSubmit)}
 			>
 				<FormField
@@ -218,7 +218,7 @@ const ShippingForm = ({
 									<SelectContent>
 										{usCities.map((city, i) => (
 											<SelectItem
-												key={`${city.stateCode}-${i}-${city.city}`}
+												key={`${i}-${city.city}`}
 												value={city.stateCode}
 												onSelect={() => form.setValue("city", city.stateCode)}
 											>
