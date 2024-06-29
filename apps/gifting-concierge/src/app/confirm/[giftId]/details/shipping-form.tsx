@@ -25,9 +25,11 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
+  SelectGroup
 } from "@theliaison/ui/select";
 import { toast } from "sonner";
 import { redirect } from "next/navigation";
+
 export type ShippingFormProps = React.HTMLAttributes<HTMLDivElement> & {
 	hideTitle?: boolean;
 	giftId: number;
@@ -127,7 +129,7 @@ const ShippingForm = ({
 					name="email"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Email</FormLabel>
+							<FormLabel className="text-foreground">Email</FormLabel>
 							<FormControl>
 								<Input placeholder="your@email.com" {...field} />
 							</FormControl>
@@ -142,7 +144,7 @@ const ShippingForm = ({
 						name="name"
 						render={({ field }) => (
 							<FormItem className="w-full">
-								<FormLabel>Name</FormLabel>
+								<FormLabel className="text-foreground">Name</FormLabel>
 								<FormControl>
 									<Input placeholder="John Doe" className="w-full" {...field} />
 								</FormControl>
@@ -155,7 +157,7 @@ const ShippingForm = ({
 						name="phone"
 						render={({ field }) => (
 							<FormItem className="w-full">
-								<FormLabel>Phone Number</FormLabel>
+								<FormLabel className="text-foreground">Phone Number</FormLabel>
 
 								<FormControl>
 									<Input
@@ -176,7 +178,7 @@ const ShippingForm = ({
 						name="address_line_1"
 						render={({ field }) => (
 							<FormItem className="w-full">
-								<FormLabel>Address Line 1</FormLabel>
+								<FormLabel className="text-foreground">Address Line 1</FormLabel>
 								<FormControl>
 									<Input placeholder="Street 1, Lane 1" {...field} />
 								</FormControl>
@@ -189,7 +191,7 @@ const ShippingForm = ({
 						name="address_line_2"
 						render={({ field }) => (
 							<FormItem className="w-full">
-								<FormLabel>Address Line 2</FormLabel>
+								<FormLabel className="text-foreground">Address Line 2</FormLabel>
 								<FormControl>
 									<Input placeholder="Street 1, Lane 1" {...field} />
 								</FormControl>
@@ -205,26 +207,28 @@ const ShippingForm = ({
 						name="city"
 						render={({ field }) => (
 							<FormItem className="w-full">
-								<FormLabel>City</FormLabel>
+								<FormLabel className="text-foreground">City</FormLabel>
 								<Select
 									onValueChange={field.onChange}
 									defaultValue={field.value}
 								>
 									<FormControl>
-										<SelectTrigger>
-											<SelectValue placeholder="Select your city" />
+										<SelectTrigger className="text-white">
+										  <SelectValue placeholder="Select your city" className="text-white"/>
 										</SelectTrigger>
 									</FormControl>
-									<SelectContent>
-										{usCities.map((city, i) => (
-											<SelectItem
-												key={`${i}-${city.city}`}
-												value={city.stateCode}
-												onSelect={() => form.setValue("city", city.stateCode)}
-											>
-												{city.city}
-											</SelectItem>
-										))}
+									<SelectContent className="dark">
+                    <SelectGroup>
+										  {usCities.map((city, i) => (
+											  <SelectItem
+												  key={`${i}-${city.city}`}
+												  value={city.city}
+												  onSelect={() => form.setValue("city", city.stateCode)}
+											  >
+												  {city.city}
+											  </SelectItem>
+										  ))}
+                    </SelectGroup>
 									</SelectContent>
 								</Select>
 								<FormMessage />
@@ -237,7 +241,7 @@ const ShippingForm = ({
 						name="apartment"
 						render={({ field }) => (
 							<FormItem className="w-full">
-								<FormLabel>Apt, suite, etc.</FormLabel>
+								<FormLabel className="text-foreground">Apt, suite, etc.</FormLabel>
 								<FormControl>
 									<Input placeholder="Apartment, studio, or floor" {...field} />
 								</FormControl>
@@ -253,7 +257,7 @@ const ShippingForm = ({
 						name="postal_code"
 						render={({ field }) => (
 							<FormItem className="w-full">
-								<FormLabel>Postal Code/ZIP</FormLabel>
+								<FormLabel className="text-foreground">Postal Code/ZIP</FormLabel>
 								<FormControl>
 									<Input placeholder="90210" {...field} />
 								</FormControl>
@@ -266,9 +270,9 @@ const ShippingForm = ({
 						name="country"
 						render={({ field }) => (
 							<FormItem className="w-full">
-								<FormLabel>Country</FormLabel>
+								<FormLabel className="text-foreground">Country</FormLabel>
 								<FormControl>
-									<Input placeholder="United States" disabled {...field} />
+									<Input placeholder="United States" disabled className="text-foreground" {...field} />
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -276,7 +280,7 @@ const ShippingForm = ({
 					/>
 				</div>
 
-				<Button type="submit" className="w-full">
+				<Button type="submit" className="w-full bg-white text-black hover:bg-[#DBD0C5]">
 					Confirm
 				</Button>
 			</form>

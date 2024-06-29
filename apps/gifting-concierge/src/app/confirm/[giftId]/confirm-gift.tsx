@@ -36,9 +36,9 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 						Confirm Gift
 					</Button>
 				</DialogTrigger>
-				<DialogContent className="sm:max-w-[425px] dark">
+				<DialogContent className="sm:max-w-[525px] dark">
 					<DialogHeader>
-						<DialogTitle>Get Shipping Details</DialogTitle>
+						<DialogTitle className="text-foreground">Get Shipping Details</DialogTitle>
 						<DialogDescription>
 							Please provide your shipping details. Click confirm when you're
 							done.
@@ -57,22 +57,22 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 					Confirm Gift
 				</Button>
 			</DrawerTrigger>
-			<DrawerContent className="max-h-[80%] dark">
-				<ScrollArea className="h-[500px] w-full px-4">
-					<DrawerHeader className="text-left">
-						<DrawerTitle>Get Shipping Details</DrawerTitle>
-						<DrawerDescription>
-							Please provide your shipping details. Click confirm when you're
-							done.
-						</DrawerDescription>
-					</DrawerHeader>
+			<DrawerContent className="min-h-full max-h-[80%] dark">
+				<DrawerHeader className="text-left">
+					<DrawerTitle className="text-foreground">Get Shipping Details</DrawerTitle>
+					<DrawerDescription>
+						Please provide your shipping details. Click confirm when you're
+						done.
+					</DrawerDescription>
+				</DrawerHeader>
+				<ScrollArea className="min-h-[600px] h-[700px] w-full px-4 py-6">
 					{children}
-					<DrawerFooter className="pt-2">
-						<DrawerClose asChild>
-							<Button variant="outline">Cancel</Button>
-						</DrawerClose>
-					</DrawerFooter>
 				</ScrollArea>
+				<DrawerFooter className="pt-2">
+					<DrawerClose asChild>
+						<Button variant="outline" className="dark text-foreground border-foreground/90">Cancel</Button>
+					</DrawerClose>
+				</DrawerFooter>
 			</DrawerContent>
 		</Drawer>
 	);
