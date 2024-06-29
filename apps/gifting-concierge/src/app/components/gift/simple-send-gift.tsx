@@ -21,6 +21,14 @@ import {
 import { Button } from "@theliaison/ui/button";
 
 export function SimpleSendGift() {
+	const [recipientName, setRecipientName] = useState("");
+	const [contactInfo, setContactInfo] = useState("");
+
+	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+		e.preventDefault();
+		console.log("submit");
+	}
+
 	return (
 		<Card className="mx-auto max-w-md">
 			<CardHeader>
@@ -33,7 +41,13 @@ export function SimpleSendGift() {
 				<form className="space-y-4">
 					<div className="grid gap-2">
 						<Label htmlFor="recipient-name">Recipient's Name</Label>
-						<Input id="recipient-name" placeholder="Enter recipient's name" />
+						<Input
+							id="recipient-name"
+							placeholder="Enter recipient's name"
+							name="recipient-name"
+							value={recipientName}
+							onChange={(e) => setRecipientName(e.target.value)}
+						/>
 					</div>
 					<div className="grid gap-2">
 						<Label htmlFor="contact-method">Contact Method</Label>
@@ -104,7 +118,13 @@ export function SimpleSendGift() {
 								maxLength={15}
 							/>
 						</div> */}
-						<Input id="contact-info" placeholder="recipient@email.com" />
+						<Input
+							id="contact-info"
+							placeholder="recipient@email.com"
+							name="contact-info"
+							value={contactInfo}
+							onChange={(e) => setContactInfo(e.target.value)}
+						/>
 					</div>
 					<Button type="submit" className="w-full">
 						Send Gift
