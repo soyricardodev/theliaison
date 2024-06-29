@@ -42,7 +42,7 @@ export default function Globe({
 }) {
 	let phi = 0;
 	let width = 0;
-	const canvasRef = useRef<HTMLCanvasElement>(null);
+	const canvasRef = useRef<HTMLCanvasElement | null>(null);
 	const pointerInteracting = useRef(null);
 	const pointerInteractionMovement = useRef(0);
 	const [{ r }, api] = useSpring(() => ({
@@ -57,7 +57,9 @@ export default function Globe({
 
 	const updatePointerInteraction = (value: any) => {
 		pointerInteracting.current = value;
-		canvasRef.current.style.cursor = value ? "grabbing" : "grab";
+		if (canvasRef.current) {
+			canvasRef.current.style.cursor = value ? "grabbing" : "grab";
+		}
 	};
 
 	const updateMovement = (clientX: any) => {
@@ -90,16 +92,21 @@ export default function Globe({
 		window.addEventListener("resize", onResize);
 		onResize();
 
-		const globe = createGlobe(canvasRef.current, {
-			...config,
-			width: width * 2,
-			height: width * 2,
-			onRender,
+		setTimeout(() => {
+			if (canvasRef.current) {
+				canvasRef.current.style.opacity = "1";
+			}
 		});
 
-		// biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
-		setTimeout(() => (canvasRef.current.style.opacity = "1"));
-		return () => globe.destroy();
+		if (canvasRef.current) {
+			const globe = createGlobe(canvasRef.current, {
+				...config,
+				width: width * 2,
+				height: width * 2,
+				onRender,
+			});
+			return () => globe.destroy();
+		}
 	}, []);
 
 	return (
