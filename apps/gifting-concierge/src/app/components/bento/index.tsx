@@ -2,11 +2,11 @@ import { AnimatedBeamMultipleOutputDemo } from "../beam-multiple";
 import { SimpleSendGift } from "../gift/simple-send-gift";
 import { GiftsMarquee } from "./gifts-marquee";
 
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 
-const Globe = dynamic(() => import("./globe-magicui").then((m) => m), {
-	ssr: false,
-});
+// const Globe = dynamic(() => import("./globe-magicui").then((m) => m), {
+// 	ssr: false,
+// });
 
 export function Bento() {
 	return (
@@ -122,7 +122,7 @@ export function Bento() {
 							matter where they are.
 						</p>
 
-						<Globe className="top-10 md:top-28" />
+						{/* <Globe className="top-10 md:top-28" /> */}
 					</div>
 				</div>
 			</div>
