@@ -1,3 +1,4 @@
+import { Header } from "~/components/header";
 import { Bento } from "./components/bento/index";
 import { CallToAction } from "./components/call-to-action";
 import { Companies } from "./components/companies";
@@ -10,6 +11,7 @@ import { SocialProofTestimonials } from "./components/testimonials";
 export default function Home() {
 	return (
 		<>
+			<Header />
 			<main className="antialiased overflow-x-hidden">
 				<div className="max-w-7xl mx-auto px-4 flex min-h-screen flex-col items-center justify-between">
 					<Hero />
