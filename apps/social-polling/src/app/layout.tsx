@@ -15,7 +15,6 @@ export const metadata = {
 	title: "Ask The Liaison - Social Polling",
 	description:
 		"Social Polling is a web application that allows users to create polls and vote on them.",
-	icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
 export default function RootLayout({
