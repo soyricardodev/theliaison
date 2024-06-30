@@ -7,7 +7,7 @@ Confirm Gift Tasks:
 - [ ] make the gift box slightly smaller
 - [x] change "Confirm Gift" to "Receive Gift"
 - [x] "What is the liaison" to "How it works" 
-- [ ] put "How it works" under "Receive Gift"
+- [x] put "How it works" under "Receive Gift"
 
 Header:
 - [x] Let’s clean up the menu header. We don’t need the cart, AI, or get started button up there.

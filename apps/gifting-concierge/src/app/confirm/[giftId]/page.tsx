@@ -63,7 +63,7 @@ export default async function Confirm({
 						<br />
 						<strong>The Liaison</strong> will handle the rest.
 					</p>
-					<div className="w-full mx-auto flex items-center justify-center gap-6 mt-12">
+					<div className="w-full mx-auto flex flex-col items-center justify-center gap-6 mt-12">
 						<ConfirmGift>
 							<ShippingForm
 								hideTitle
@@ -74,10 +74,9 @@ export default async function Confirm({
 						</ConfirmGift>
 						<Link
 							href="/how-it-works"
-							className="text-white hover:text-[#DBD0C5] transition-colors text-sm flex gap-0.5 group"
+							className="text-white hover:text-secondary text-sm flex gap-0.5 group hover:underline"
 						>
 							How it works
-							<ChevronRightIcon className="size-5 text-[#DBD0C5] opacity-0 group-hover:opacity-100 transition-opacity" />
 						</Link>
 					</div>
 				</div>
