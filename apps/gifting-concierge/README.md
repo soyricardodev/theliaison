@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Tasks:
 
-## Getting Started
+Confirm Gift Tasks:
+- [ ] put the gif up top as the first thing people see.
 
-First, run the development server:
+Header:
+- [ ] Let’s clean up the menu header. We don’t need the cart, AI, or get started button up there.
+- [ ] TL should be on the left. Hamburger menu on the right side of the menu
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+FAQ:
+- [ ] Update FAQ answers 
+(Docs)[https://docs.google.com/document/d/1E9wbSQpK_ZvKMGJZokJBJuvEx12kzk2TIFQm8Ze5pLg/edit?usp=sharing]
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Home Page:
+- [ ] Let’s make “Secure and private gifting.” bold and have the animated shine effect on the “Made easy.”
+- [ ] “Gift effortlessly, surprise instantly” on one line. “No address needed” underneath.
+- [ ] Button: “Choose a gift”
+- [ ] Not a button, but clickable “How it works” underneath the “choose a gift” button.
+- [ ] Nothing else on this page. Please move everything over to the “How it works” page.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Notes: 
+Only other thing should be a chat bot bubble on the right bottom corner and the footer.
