@@ -5,8 +5,8 @@ Confirm Gift Tasks:
 - [x] add instructions for the gift sender
 
 Header:
-- [ ] Let’s clean up the menu header. We don’t need the cart, AI, or get started button up there.
-- [ ] TL should be on the left. Hamburger menu on the right side of the menu
+- [x] Let’s clean up the menu header. We don’t need the cart, AI, or get started button up there.
+- [x] TL should be on the left. Hamburger menu on the right side of the menu
 
 FAQ:
 - [ ] Update FAQ answers 
