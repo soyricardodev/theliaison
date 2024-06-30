@@ -33,12 +33,14 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 			<Dialog open={open} onOpenChange={setOpen}>
 				<DialogTrigger asChild>
 					<Button className="bg-white text-black hover:bg-[#DBD0C5] text-sm px-6">
-						Confirm Gift
+						Submit Address Securely
 					</Button>
 				</DialogTrigger>
 				<DialogContent className="sm:max-w-[525px] dark">
 					<DialogHeader>
-						<DialogTitle className="text-foreground">Get Shipping Details</DialogTitle>
+						<DialogTitle className="text-foreground">
+							Get Shipping Details
+						</DialogTitle>
 						<DialogDescription>
 							Please provide your shipping details. Click confirm when you're
 							done.
@@ -54,12 +56,14 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 		<Drawer open={open} onOpenChange={setOpen} className="dark">
 			<DrawerTrigger asChild>
 				<Button className="bg-white text-black hover:bg-[#DBD0C5] text-sm px-6">
-					Confirm Gift
+					Submit Address Securely
 				</Button>
 			</DrawerTrigger>
 			<DrawerContent className="min-h-full max-h-[80%] dark">
 				<DrawerHeader className="text-left">
-					<DrawerTitle className="text-foreground">Get Shipping Details</DrawerTitle>
+					<DrawerTitle className="text-foreground">
+						Get Shipping Details
+					</DrawerTitle>
 					<DrawerDescription>
 						Please provide your shipping details. Click confirm when you're
 						done.
@@ -70,7 +74,12 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 				</ScrollArea>
 				<DrawerFooter className="pt-2">
 					<DrawerClose asChild>
-						<Button variant="outline" className="dark text-foreground border-foreground/90">Cancel</Button>
+						<Button
+							variant="outline"
+							className="dark text-foreground border-foreground/90"
+						>
+							Cancel
+						</Button>
 					</DrawerClose>
 				</DrawerFooter>
 			</DrawerContent>
