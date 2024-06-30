@@ -1,4 +1,4 @@
-Tasks:
+Tasks (Last updated: June 29/2024):
 
 Confirm Gift Tasks:
 - [x] put the gif up top as the first thing people see.
@@ -9,7 +9,7 @@ Header:
 - [x] TL should be on the left. Hamburger menu on the right side of the menu
 
 FAQ:
-- [ ] Update FAQ answers 
+- [x] Update FAQ answers 
 (Docs)[https://docs.google.com/document/d/1E9wbSQpK_ZvKMGJZokJBJuvEx12kzk2TIFQm8Ze5pLg/edit?usp=sharing]
 
 Home Page:

@@ -3,42 +3,70 @@
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import { PlusIcon } from "lucide-react";
 import React from "react";
+import Link from "next/link";
 
 const faqs = [
 	{
 		title: "What is The Liaison Gifting's Concierge Service?",
 		content:
-			"Our Concierge Service is designed to simplify the gifting process. It allows you to send gifts to recipients without knowing their mailing address. Our dedicated team discreetly contacts the recipient to collect the necessary information, ensuring a seamless and surprise-filled gifting experience.",
+			"Our Concierge Service is designed to simplify the gifting process. It allows you to send gifts to recipients without knowing their mailing address. We discreetly contact the recipient to collect the necessary information, ensuring a seamless and respectful gifting experience.",
 	},
 	{
 		title: "How does the concierge service work?",
 		content:
-			"Our Concierge Service is designed to simplify the gifting process. It allows you to send gifts to recipients without knowing their mailing address. Our dedicated team discreetly contacts the recipient to collect the necessary information, ensuring a seamless and surprise-filled gifting experience.",
+			"It's easy! After selecting a gift from our shop or providing a link to an item you love, we discreetly reach out to the recipient for their address and handle all the details, making sure your gift arrives confidentially.",
 	},
 	{
 		title: "Is my recipients information kept confidential?",
 		content:
-			"Our Concierge Service is designed to simplify the gifting process. It allows you to send gifts to recipients without knowing their mailing address. Our dedicated team discreetly contacts the recipient to collect the necessary information, ensuring a seamless and surprise-filled gifting experience.",
+			"We prioritize privacy and confidentiality. Your recipient's information is kept strictly confidential.",
 	},
 	{
 		title: "Can I personalize my gift?",
 		content:
-			"Our Concierge Service is designed to simplify the gifting process. It allows you to send gifts to recipients without knowing their mailing address. Our dedicated team discreetly contacts the recipient to collect the necessary information, ensuring a seamless and surprise-filled gifting experience.",
+			"Yes, we offer customization options, including adding a personalized message to your gift.",
 	},
 	{
 		title: "How can I contact customer support?",
-		content:
-			"Our Concierge Service is designed to simplify the gifting process. It allows you to send gifts to recipients without knowing their mailing address. Our dedicated team discreetly contacts the recipient to collect the necessary information, ensuring a seamless and surprise-filled gifting experience.",
+		content: (
+			<p>
+				You can reach out to us via our chat or at{" "}
+				<a
+					href="mailto:support@theliaison.com"
+					className="text-primary underline hover:no-underline"
+				>
+					support@theliaison.com
+				</a>
+				. Our customer support team is available 24/7 to assist you with any
+				questions or concerns.
+			</p>
+		),
 	},
 	{
 		title: "What happens if there are issues with the delivery or my order?",
 		content:
-			"Our Concierge Service is designed to simplify the gifting process. It allows you to send gifts to recipients without knowing their mailing address. Our dedicated team discreetly contacts the recipient to collect the necessary information, ensuring a seamless and surprise-filled gifting experience.",
+			"While we make every effort to ensure smooth deliveries, unforeseen issues can sometimes occur. In such cases, please contact our customer support team, and we'll work to resolve any problems and ensure your satisfaction.",
 	},
 	{
 		title: "How can I trust the liaison gifting's concierge service?",
 		content:
-			"Our Concierge Service is designed to simplify the gifting process. It allows you to send gifts to recipients without knowing their mailing address. Our dedicated team discreetly contacts the recipient to collect the necessary information, ensuring a seamless and surprise-filled gifting experience.",
+			"Yes, there is a service fee associated with using our Concierge Service, in addition to the cost of the selected gift. This fee covers the extra care and attention we provide to ensure a successful gifting experience.",
+	},
+	{
+		title: "Can I review The Liaison Gifting's Terms of Service?",
+		content: (
+			<p>
+				Absolutely. You can review our Terms of Service{" "}
+				<Link
+					href="/terms-of-service"
+					className="text-primary underline hover:no-underline"
+				>
+					here
+				</Link>
+				. Familiarizing yourself with these terms will ensure we're all on the
+				same page and help you make informed decisions
+			</p>
+		),
 	},
 ];
 
