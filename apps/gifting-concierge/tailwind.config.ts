@@ -38,6 +38,18 @@ const config = {
 						},
 					},
 				},
+				dark: {
+					colors: {
+						primary: {
+							DEFAULT: "#473F36",
+							foreground: "#FFF8F5",
+						},
+						secondary: {
+							DEFAULT: "#DBD0C5",
+							foreground: "#282626",
+						},
+					},
+				},
 			},
 		}),
 	],
