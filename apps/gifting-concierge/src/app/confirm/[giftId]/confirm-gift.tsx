@@ -23,6 +23,7 @@ import {
 	DrawerTrigger,
 } from "@theliaison/ui/drawer";
 import { ScrollArea } from "@theliaison/ui/scroll-area";
+import { ChevronRightIcon } from "lucide-react";
 
 export function ConfirmGift({ children }: { children: React.ReactNode }) {
 	const [open, setOpen] = React.useState(false);
@@ -32,8 +33,11 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 		return (
 			<Dialog open={open} onOpenChange={setOpen}>
 				<DialogTrigger asChild>
-					<Button className="bg-white text-black hover:bg-[#DBD0C5] text-sm px-6">
+					<Button className="bg-white text-black hover:bg-[#DBD0C5] px-6 w-full rounded-full font-semibold h-12 pl-5 pr-2 text-base">
 						Receive Gift
+						<span className="text-[#70757E]">
+							<ChevronRightIcon />
+						</span>
 					</Button>
 				</DialogTrigger>
 				<DialogContent className="sm:max-w-[525px] dark">
@@ -53,10 +57,13 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 	}
 
 	return (
-		<Drawer open={open} onOpenChange={setOpen} className="dark">
+		<Drawer open={open} onOpenChange={setOpen}>
 			<DrawerTrigger asChild>
-				<Button className="bg-white text-black hover:bg-[#DBD0C5] text-sm px-6">
+				<Button className="bg-white text-black hover:bg-[#DBD0C5] px-6 w-full rounded-full font-semibold h-12 pl-5 pr-2 text-base">
 					Receive Gift
+					<span className="text-[#70757E]">
+						<ChevronRightIcon />
+					</span>
 				</Button>
 			</DrawerTrigger>
 			<DrawerContent className="min-h-full max-h-[80%] dark">
