@@ -14,10 +14,10 @@ FAQ:
 
 Home Page:
 - [x] Let’s make “Secure and private gifting.” bold and have the animated shine effect on the “Made easy.”
-- [ ] “Gift effortlessly, surprise instantly” on one line. “No address needed” underneath.
-- [ ] Button: “Choose a gift”
-- [ ] Not a button, but clickable “How it works” underneath the “choose a gift” button.
-- [ ] Nothing else on this page. Please move everything over to the “How it works” page.
+- [x] “Gift effortlessly, surprise instantly” on one line. “No address needed” underneath.
+- [x] Button: “Choose a gift”
+- [x] Not a button, but clickable “How it works” underneath the “choose a gift” button.
+- [x] Nothing else on this page. Please move everything over to the “How it works” page.
 
 Notes: 
 Only other thing should be a chat bot bubble on the right bottom corner and the footer.
