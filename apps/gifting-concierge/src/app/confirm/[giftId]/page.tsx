@@ -64,8 +64,9 @@ export default async function Confirm({
 						</span>
 					</h1>
 					<p className="sans mb-8 mt-4 max-w-[30rem] text-center leading-7 text-base md:text-[1.125rem] md:leading-[1.5] text-default-800 font-normal">
-						Enter Your Address <strong>Securely</strong> to Receive Your Gift!{" "}
-						<br />
+						Enter Your Address{" "}
+						<strong className="hidden sm:inline">Securely</strong> to Receive
+						Your Gift! <br />
 						<strong>The Liaison</strong> will handle the rest.
 					</p>
 					<div className="flex flex-col justify-center gap-4 w-full max-w-xl">
