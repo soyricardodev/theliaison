@@ -33,7 +33,7 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 			<Dialog open={open} onOpenChange={setOpen}>
 				<DialogTrigger asChild>
 					<Button className="bg-white text-black hover:bg-[#DBD0C5] text-sm px-6">
-						Submit Address Securely
+						Receive Gift
 					</Button>
 				</DialogTrigger>
 				<DialogContent className="sm:max-w-[525px] dark">
@@ -56,7 +56,7 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 		<Drawer open={open} onOpenChange={setOpen} className="dark">
 			<DrawerTrigger asChild>
 				<Button className="bg-white text-black hover:bg-[#DBD0C5] text-sm px-6">
-					Submit Address Securely
+					Receive Gift
 				</Button>
 			</DrawerTrigger>
 			<DrawerContent className="min-h-full max-h-[80%] dark">
