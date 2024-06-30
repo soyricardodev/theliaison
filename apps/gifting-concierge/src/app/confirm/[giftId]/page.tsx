@@ -2,7 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "~/supabase/server";
 import { ConfirmGift } from "./confirm-gift";
-import { ChevronRightIcon } from "lucide-react";
+import {
+	ChevronRightIcon,
+	HeartHandshakeIcon,
+	GiftIcon,
+	ZapIcon,
+} from "lucide-react";
 import ShippingForm from "./details/shipping-form";
 import giftboxGIF from "~/assets/giftbox2.gif";
 import { cn } from "@theliaison/ui";
@@ -76,15 +81,65 @@ export default async function Confirm({
 						</Link>
 					</div>
 				</div>
+				<div className="w-full mx-auto flex items-center justify-center gap-6 mt-20">
+					<div className="w-full max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
+						<InstructionCard
+							icon={<HeartHandshakeIcon className="text-secondary" />}
+							title="Secure First"
+							description={
+								<p>
+									<strong>1.</strong> Rest assured, your address will only be
+									used to deliver your gift and{" "}
+									<strong>will remain private</strong>. The sender will not know
+									your address.
+								</p>
+							}
+						/>
+						<InstructionCard
+							icon={<GiftIcon className="text-secondary" />}
+							title="Wait for the surprise"
+							description={
+								<p>
+									<strong>2.</strong> The gift sender wanted to keep this gift a
+									surprise, so <strong>enjoy the anticipation</strong>.
+								</p>
+							}
+						/>
+						<InstructionCard
+							icon={<ZapIcon className="text-secondary" />}
+							title="Fast"
+							description={
+								<p>
+									<strong>3.</strong> Fast and <strong>secure delivery</strong>.
+									Once you provide your address, we'll take care of the rest and
+									deliver your gift promptly.
+								</p>
+							}
+						/>
+					</div>
+				</div>
 			</section>
 		</div>
 	);
 }
 
-/**
- * Intructions:
- * 1. Rest assured, your address will only be used to deliver your gift and will remain private. The sender will not know your address.
- * 2. The gift sender wanted to keep this gift a surprise, so enjoy the anticipation.
- * 3. Fast and Secure Delivery. Once you provide your address, we'll take care of the rest and deliver your gift promptly.
- * CTA Button: Submit Address Securely
- */
+function InstructionCard({
+	description,
+	icon,
+	title,
+}: { icon: JSX.Element; title: string; description: string | JSX.Element }) {
+	return (
+		<div className="flex flex-col relative overflow-hidden h-auto text-foreground box-border outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none border-transparent bg-default-400/10 backdrop-blur-lg backdrop-saturate-[1.8]">
+			<div className="flex p-3 z-10 w-full justify-start items-center shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large gap-2 pb-0">
+				<div className="flex justify-center p-2 rounded-full items-center bg-primary/80 text-secondary">
+					{icon}
+				</div>
+				<div className="text-base font-semibold">{title}</div>
+			</div>
+
+			<div className="relative flex w-full p-3 flex-auto flex-col place-content-inherit align-items-inherit h-auto break-words text-left overflow-y-auto subpixel-antialiased [&>p]:font-normal [&>p]:text-base [&>p]:text-default-600">
+				{description}
+			</div>
+		</div>
+	);
+}
