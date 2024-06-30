@@ -73,10 +73,10 @@ export default async function Confirm({
 							/>
 						</ConfirmGift>
 						<Link
-							href="/faq"
+							href="/how-it-works"
 							className="text-white hover:text-[#DBD0C5] transition-colors text-sm flex gap-0.5 group"
 						>
-							What is The Liaison
+							How it works
 							<ChevronRightIcon className="size-5 text-[#DBD0C5] opacity-0 group-hover:opacity-100 transition-opacity" />
 						</Link>
 					</div>
