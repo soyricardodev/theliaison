@@ -44,7 +44,7 @@ export default async function Confirm({
 				<Image
 					src={giftboxGIF}
 					alt="Giftbox"
-					className="mx-auto w-full max-w-xl hover:scale-105 transition-all hover:[filter:drop-shadow(0_0_8px_#f0f0f0)]"
+					className="mx-auto w-full max-w-xl hover:scale-105 transition-all hover:[filter:drop-shadow(0_0_8px_#f0f0f0)] -mt-20"
 				/>
 				<div className="relative mx-auto flex max-w-2xl flex-col items-center">
 					<h1 className="text-center text-gray-50 font-medium tracking-tighter text-4xl/none sm:text-6xl/none">
@@ -53,9 +53,10 @@ export default async function Confirm({
 							Wants to Send You a Gift!
 						</span>
 					</h1>
-					<p className="mt-6 text-center text-lg leading-6 text-gray-200">
-						Enter Your Address Securely to Receive Your Gift! The Liaison will
-						handle the rest.
+					<p className="mt-6 text-center text-lg leading-6 text-gray-200 text-pretty">
+						Enter Your Address <strong>Securely</strong> to Receive Your Gift!{" "}
+						<br />
+						<strong>The Liaison</strong> will handle the rest.
 					</p>
 					<div className="w-full mx-auto flex items-center justify-center gap-6 mt-12">
 						<ConfirmGift>
