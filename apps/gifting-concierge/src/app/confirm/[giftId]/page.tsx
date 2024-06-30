@@ -49,10 +49,12 @@ export default async function Confirm({
 				<Image
 					src={giftboxGIF}
 					alt="Giftbox"
-					className="mx-auto w-full max-w-xl hover:scale-105 transition-all hover:[filter:drop-shadow(0_0_8px_#f0f0f0)] -mt-20"
+					className="mx-auto max-w-md hover:scale-105 transition-all hover:[filter:drop-shadow(0_0_8px_#f0f0f0)] -mt-20 lg:-mt-32 w-80"
+					width={400}
+					height={400}
 				/>
 				<div className="relative mx-auto flex max-w-2xl flex-col items-center">
-					<h1 className="text-center text-gray-50 font-medium tracking-tighter text-4xl/none sm:text-6xl/none">
+					<h1 className="text-center text-gray-50 font-medium tracking-tighter text-4xl/none sm:text-5xl/none">
 						Someone Special
 						<span className="inline-flex animate-background-shine bg-[linear-gradient(110deg,#939393,45%,#DBD0C5,55%,#939393)] bg-[length:250%_100%] bg-clip-text text-transparent leading-tight">
 							Wants to Send You a Gift!

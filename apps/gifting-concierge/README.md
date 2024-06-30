@@ -3,8 +3,8 @@ Tasks (Last updated: June 30/2024):
 Confirm Gift Tasks:
 - [x] put the gif up top as the first thing people see.
 - [x] add instructions for the gift sender
-- [ ] make everything fit on the page nicely
-- [ ] make the gift box slightly smaller
+- [x] make everything fit on the page nicely
+- [x] make the gift box slightly smaller
 - [x] change "Confirm Gift" to "Receive Gift"
 - [x] "What is the liaison" to "How it works" 
 - [x] put "How it works" under "Receive Gift"
