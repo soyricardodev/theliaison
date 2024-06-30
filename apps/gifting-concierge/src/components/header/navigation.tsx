@@ -57,17 +57,17 @@ const menuItemsLoggedIn = [
 		href: "/faq",
 		Icon: <CircleHelp className="mr-2 size-5 text-foreground" />,
 	},
-	{
-		key: "logout",
-		label: "Logout",
-		href: "/auth/logout",
-		Icon: (
-			<LogOutIcon
-				className="mr-2 size-5 text-foreground"
-				onClick={() => fetch("/auth/signout", { method: "POST" })}
-			/>
-		),
-	},
+	// {
+	// 	key: "logout",
+	// 	label: "Logout",
+	// 	href: "/auth/logout",
+	// 	Icon: (
+	// 		<LogOutIcon
+	// 			className="mr-2 size-5 text-foreground"
+	// 			onClick={() => fetch("/auth/signout", { method: "POST" })}
+	// 		/>
+	// 	),
+	// },
 ];
 
 interface HeaderNavigationProps {
