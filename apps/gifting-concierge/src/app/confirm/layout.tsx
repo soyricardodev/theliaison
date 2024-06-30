@@ -10,7 +10,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         </div>
       </div> */}
 
-			<div className="relative z-20 mx-auto h-screen w-full max-w-7xl px-6 md:px-8 lg:px-12">
+			<div className="relative z-20 mx-auto min-h-screen h-full w-full max-w-7xl px-6 md:px-8 lg:px-12 bg-black">
 				<Header />
 				{children}
 			</div>
