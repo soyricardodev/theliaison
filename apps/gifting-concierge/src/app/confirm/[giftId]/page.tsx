@@ -45,19 +45,21 @@ export default async function Confirm({
 
 	return (
 		<div className="flex flex-col relative z-20">
-			<section className="w-full py-12 md:py-24 lg:py-32">
+			<section className="w-full py-12 md:py-24 lg:py-32 h-[calc(100vh-60px)] flex flex-col items-center justify-center">
 				<Image
 					src={giftboxGIF}
 					alt="Giftbox"
-					className="mx-auto max-w-md hover:scale-105 transition-all hover:[filter:drop-shadow(0_0_8px_#f0f0f0)] -mt-16 lg:-mt-32 w-48 md:w-56"
+					className="mx-auto max-w-md hover:scale-105 transition-all hover:[filter:drop-shadow(0_0_8px_#f0f0f0)] w-48 md:w-64"
 					width={192}
 					height={192}
 				/>
 				<div className="relative mx-auto flex max-w-2xl flex-col items-center">
-					<span className="inline-flex h-full animate-background-shine cursor-pointer items-center justify-center rounded-full border border-neutral-600 bg-[linear-gradient(110deg,#000,45%,#4D4B4B,55%,#000)] bg-[length:250%_100%] px-3 py-1 font-medium text-gray-300 mt-2 mb-10 text-[14px]">
-						Your Gifting Concierge
-					</span>
-					<h1 className="text-center bg-[linear-gradient(110deg,#f1f1f1,45%,#DBD0C5,55%,#f1f1f1)] bg-[length:250%_100%] bg-clip-text text-transparent font-medium tracking-tighter text-4xl/none sm:text-5xl/none text-pretty">
+					<p className="rounded-full h-[32px] [line-height:0] bg-[linear-gradient(90deg,#02fcef70,#ffb52b70_50%,#a02bfe70)] mb-10 inline-flex items-center justify-center text-[14px] animate-background-shine bg-[length:190%_100%]">
+						<span className="inline-flex items-center gap-1 whitespace-nowrap px-3 py-1 leading-none m-[1px] rounded-full w-[calc(100%-2px)] h-[calc(32px-2px)] bg-[#0b0e14] text-white">
+							Your Gifting Concierge
+						</span>
+					</p>
+					<h1 className="text-center bg-[linear-gradient(110deg,#f1f1f1,45%,#DBD0C5,55%,#f1f1f1)] bg-[length:190%_100%] bg-clip-text text-transparent font-medium tracking-tighter text-4xl/none sm:text-5xl/none text-pretty">
 						Someone wants to{" "}
 						<span className="inline-flex animate-background-shine bg-[linear-gradient(110deg,#939393,45%,#DBD0C5,55%,#939393)] bg-[length:250%_100%] bg-clip-text text-transparent leading-tight">
 							send you a gift!
@@ -92,43 +94,43 @@ export default async function Confirm({
 						</Link>
 					</div>
 				</div>
-				<div className="w-full mx-auto flex items-center justify-center gap-6 mt-40">
-					<div className="w-full max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
-						<InstructionCard
-							icon={<HeartHandshakeIcon className="text-secondary" />}
-							title="Secure First"
-							description={
-								<p>
-									Rest assured, your address will only be used to deliver your
-									gift and <strong>will remain private</strong>. The sender will
-									not know your address.
-								</p>
-							}
-						/>
-						<InstructionCard
-							icon={<GiftIcon className="text-secondary" />}
-							title="Wait for the surprise"
-							description={
-								<p>
-									The gift sender wanted to keep this gift a surprise, so{" "}
-									<strong>enjoy the anticipation</strong>.
-								</p>
-							}
-						/>
-						<InstructionCard
-							icon={<ZapIcon className="text-secondary" />}
-							title="Fast"
-							description={
-								<p>
-									Fast and <strong>secure delivery</strong>. Once you provide
-									your address, we'll take care of the rest and deliver your
-									gift promptly.
-								</p>
-							}
-						/>
-					</div>
-				</div>
 			</section>
+			<div className="w-full mx-auto flex items-center justify-center gap-6 my-20 py-12">
+				<div className="w-full max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
+					<InstructionCard
+						icon={<HeartHandshakeIcon className="text-secondary" />}
+						title="Secure First"
+						description={
+							<p>
+								Rest assured, your address will only be used to deliver your
+								gift and <strong>will remain private</strong>. The sender will
+								not know your address.
+							</p>
+						}
+					/>
+					<InstructionCard
+						icon={<GiftIcon className="text-secondary" />}
+						title="Wait for the surprise"
+						description={
+							<p>
+								The gift sender wanted to keep this gift a surprise, so{" "}
+								<strong>enjoy the anticipation</strong>.
+							</p>
+						}
+					/>
+					<InstructionCard
+						icon={<ZapIcon className="text-secondary" />}
+						title="Fast"
+						description={
+							<p>
+								Fast and <strong>secure delivery</strong>. Once you provide your
+								address, we'll take care of the rest and deliver your gift
+								promptly.
+							</p>
+						}
+					/>
+				</div>
+			</div>
 		</div>
 	);
 }

@@ -9,8 +9,8 @@ Confirm Gift Tasks:
 - [x] "What is the liaison" to "How it works" 
 - [x] put "How it works" under "Receive Gift"
 - [ ] OG Image
-- [ ] No Capitalization
-- [ ] Spectrum of color on your gifting concierge CTA
+- [x] No Capitalization
+- [x] Spectrum of color on your gifting concierge CTA
 
 Header:
 - [x] Let’s clean up the menu header. We don’t need the cart, AI, or get started button up there.
