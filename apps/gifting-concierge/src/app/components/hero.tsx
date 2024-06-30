@@ -8,6 +8,7 @@ import { motion, useInView } from "framer-motion";
 import { GiftIcon, StoreIcon } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
+import { CircleHelpIcon } from "lucide-react";
 
 export function Hero() {
 	const fadeInRef = useRef(null);
@@ -29,7 +30,7 @@ export function Hero() {
 	return (
 		<section
 			id="hero"
-			className="relative h-full mx-auto z-10 mt-32 max-w-[80rem] px-6 text-center md:px-8"
+			className="relative h-full mx-auto z-10 mt-28 max-w-[80rem] px-6 text-center md:px-8"
 		>
 			<Particles
 				className="absolute inset-0 -z-10"
@@ -68,14 +69,15 @@ export function Hero() {
 					type: "spring",
 				}}
 			>
-				Gift Effortlessly, Surprise Instantly.{" "}
+				Gift Effortlessly, Surprise Instantly.
+				<br />
 				<strong>No Address Needed.</strong>
 			</motion.p>
 
 			<motion.div
 				animate={fadeInInView ? "animate" : "initial"}
 				variants={fadeUpVariants}
-				className="flex flex-row items-center justify-center gap-4 mx-auto w-full"
+				className="grid grid-cols-1 gap-4 mx-auto w-full max-w-sm"
 				initial={false}
 				transition={{
 					duration: 0.6,
@@ -85,29 +87,29 @@ export function Hero() {
 				}}
 			>
 				<Link
-					href="/send"
+					href="/giftshop"
 					className={cn(
 						buttonVariants({ size: "lg" }),
 						"flex gap-2 items-center text-base",
 					)}
 				>
-					Send Gift
+					Choose Gift
 					<GiftIcon className="size-5 translate-x-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
 				</Link>
 
 				<Link
-					href="/giftshop"
+					href="/how-it-works"
 					className={cn(
 						buttonVariants({ variant: "secondary", size: "lg" }),
 						"flex gap-2 items-center text-base",
 					)}
 				>
-					Shop Now
-					<StoreIcon className="size-5 translate-x-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
+					How it Works
+					<CircleHelpIcon className="size-5 translate-x-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
 				</Link>
 			</motion.div>
 
-			<motion.div
+			{/* <motion.div
 				animate={fadeInInView ? "animate" : "initial"}
 				variants={fadeUpVariants}
 				initial={false}
@@ -127,7 +129,7 @@ export function Hero() {
 						alt="dashboard"
 					/>
 				</div>
-			</motion.div>
+			</motion.div> */}
 		</section>
 	);
 }
