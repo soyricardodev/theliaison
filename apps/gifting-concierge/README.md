@@ -2,6 +2,7 @@ Tasks:
 
 Confirm Gift Tasks:
 - [x] put the gif up top as the first thing people see.
+- [x] add instructions for the gift sender
 
 Header:
 - [ ] Let’s clean up the menu header. We don’t need the cart, AI, or get started button up there.
