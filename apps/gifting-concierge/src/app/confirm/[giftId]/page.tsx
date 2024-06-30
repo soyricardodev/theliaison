@@ -49,24 +49,24 @@ export default async function Confirm({
 				<Image
 					src={giftboxGIF}
 					alt="Giftbox"
-					className="mx-auto max-w-md hover:scale-105 transition-all hover:[filter:drop-shadow(0_0_8px_#f0f0f0)] -mt-14 lg:-mt-32 w-44 md:w-56"
-					width={176}
-					height={176}
+					className="mx-auto max-w-md hover:scale-105 transition-all hover:[filter:drop-shadow(0_0_8px_#f0f0f0)] -mt-16 lg:-mt-32 w-48 md:w-56"
+					width={192}
+					height={192}
 				/>
 				<div className="relative mx-auto flex max-w-2xl flex-col items-center">
 					<span className="inline-flex h-full animate-background-shine cursor-pointer items-center justify-center rounded-full border border-neutral-600 bg-[linear-gradient(110deg,#000,45%,#4D4B4B,55%,#000)] bg-[length:250%_100%] px-3 py-1 font-medium text-gray-300 mt-2 mb-10 text-[14px]">
 						Your Gifting Concierge
 					</span>
 					<h1 className="text-center bg-[linear-gradient(110deg,#f1f1f1,45%,#DBD0C5,55%,#f1f1f1)] bg-[length:250%_100%] bg-clip-text text-transparent font-medium tracking-tighter text-4xl/none sm:text-5xl/none text-pretty">
-						Someone Wants to{" "}
+						Someone wants to{" "}
 						<span className="inline-flex animate-background-shine bg-[linear-gradient(110deg,#939393,45%,#DBD0C5,55%,#939393)] bg-[length:250%_100%] bg-clip-text text-transparent leading-tight">
-							Send You a Gift!
+							send you a gift!
 						</span>
 					</h1>
 					<p className="sans mb-8 mt-4 max-w-[30rem] text-center leading-7 text-base md:text-[1.125rem] md:leading-[1.5] text-default-800 font-normal">
-						Enter Your Address{" "}
-						<strong className="hidden sm:inline">Securely</strong> to Receive
-						Your Gift! <br />
+						Enter your address{" "}
+						<strong className="hidden sm:inline">securely</strong> to receive
+						your gift! <br />
 						<strong>The Liaison</strong> will handle the rest.
 					</p>
 					<div className="flex flex-col justify-center gap-4 w-full max-w-xl">
@@ -92,7 +92,7 @@ export default async function Confirm({
 						</Link>
 					</div>
 				</div>
-				<div className="w-full mx-auto flex items-center justify-center gap-6 mt-20">
+				<div className="w-full mx-auto flex items-center justify-center gap-6 mt-40">
 					<div className="w-full max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
 						<InstructionCard
 							icon={<HeartHandshakeIcon className="text-secondary" />}
