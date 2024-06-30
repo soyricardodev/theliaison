@@ -49,23 +49,26 @@ export default async function Confirm({
 				<Image
 					src={giftboxGIF}
 					alt="Giftbox"
-					className="mx-auto max-w-md hover:scale-105 transition-all hover:[filter:drop-shadow(0_0_8px_#f0f0f0)] -mt-20 lg:-mt-32 w-80"
-					width={400}
-					height={400}
+					className="mx-auto max-w-md hover:scale-105 transition-all hover:[filter:drop-shadow(0_0_8px_#f0f0f0)] -mt-14 lg:-mt-32 w-44 md:w-56"
+					width={176}
+					height={176}
 				/>
 				<div className="relative mx-auto flex max-w-2xl flex-col items-center">
-					<h1 className="text-center text-gray-50 font-medium tracking-tighter text-4xl/none sm:text-5xl/none">
-						Someone Special
+					<span className="inline-flex h-full animate-background-shine cursor-pointer items-center justify-center rounded-full border border-neutral-600 bg-[linear-gradient(110deg,#000,45%,#4D4B4B,55%,#000)] bg-[length:250%_100%] px-3 py-1 font-medium text-gray-300 mt-2 mb-10 text-[14px]">
+						Your Gifting Concierge
+					</span>
+					<h1 className="text-center bg-[linear-gradient(110deg,#f1f1f1,45%,#DBD0C5,55%,#f1f1f1)] bg-[length:250%_100%] bg-clip-text text-transparent font-medium tracking-tighter text-4xl/none sm:text-5xl/none text-pretty">
+						Someone Wants to{" "}
 						<span className="inline-flex animate-background-shine bg-[linear-gradient(110deg,#939393,45%,#DBD0C5,55%,#939393)] bg-[length:250%_100%] bg-clip-text text-transparent leading-tight">
-							Wants to Send You a Gift!
+							Send You a Gift!
 						</span>
 					</h1>
-					<p className="mt-6 text-center text-lg leading-6 text-gray-200 text-pretty">
+					<p className="sans mb-8 mt-4 max-w-[30rem] text-center leading-7 text-base md:text-[1.125rem] md:leading-[1.5] text-default-800 font-normal">
 						Enter Your Address <strong>Securely</strong> to Receive Your Gift!{" "}
 						<br />
 						<strong>The Liaison</strong> will handle the rest.
 					</p>
-					<div className="w-full mx-auto flex flex-col items-center justify-center gap-6 mt-12">
+					<div className="flex flex-col justify-center gap-4 w-full max-w-xl">
 						<ConfirmGift>
 							<ShippingForm
 								hideTitle
@@ -76,9 +79,15 @@ export default async function Confirm({
 						</ConfirmGift>
 						<Link
 							href="/how-it-works"
-							className="text-white hover:text-secondary text-sm flex gap-0.5 group hover:underline"
+							className={cn(
+								buttonVariants({ variant: "ghost" }),
+								"pl-5 pr-2 text-base h-12 rounded-full text-[#f1f7feb5] hover:text-[#fcfdffef] transition-colors",
+							)}
 						>
 							How it works
+							<span className="text-[#70757E]">
+								<ChevronRightIcon />
+							</span>
 						</Link>
 					</div>
 				</div>
@@ -89,10 +98,9 @@ export default async function Confirm({
 							title="Secure First"
 							description={
 								<p>
-									<strong>1.</strong> Rest assured, your address will only be
-									used to deliver your gift and{" "}
-									<strong>will remain private</strong>. The sender will not know
-									your address.
+									Rest assured, your address will only be used to deliver your
+									gift and <strong>will remain private</strong>. The sender will
+									not know your address.
 								</p>
 							}
 						/>
@@ -101,8 +109,8 @@ export default async function Confirm({
 							title="Wait for the surprise"
 							description={
 								<p>
-									<strong>2.</strong> The gift sender wanted to keep this gift a
-									surprise, so <strong>enjoy the anticipation</strong>.
+									The gift sender wanted to keep this gift a surprise, so{" "}
+									<strong>enjoy the anticipation</strong>.
 								</p>
 							}
 						/>
@@ -111,9 +119,9 @@ export default async function Confirm({
 							title="Fast"
 							description={
 								<p>
-									<strong>3.</strong> Fast and <strong>secure delivery</strong>.
-									Once you provide your address, we'll take care of the rest and
-									deliver your gift promptly.
+									Fast and <strong>secure delivery</strong>. Once you provide
+									your address, we'll take care of the rest and deliver your
+									gift promptly.
 								</p>
 							}
 						/>
