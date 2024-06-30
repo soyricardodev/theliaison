@@ -1,4 +1,11 @@
 import { Header } from "./[giftId]/header";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+	title: "Someone special wants to send you a gift!",
+	description:
+		"Enter your address securely to receive your gift! The Liaison will handle the rest.",
+};
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
