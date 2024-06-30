@@ -1,66 +1,48 @@
-import React from "react";
-import {
-	Link,
-	Navbar,
-	NavbarBrand,
-	NavbarContent,
-	NavbarItem,
-	NavbarMenu,
-	NavbarMenuItem,
-	NavbarMenuToggle,
-} from "@nextui-org/react";
-import { FloatingAICta } from "./ai/floating-ai-cta";
-import { ShoppingCartCta } from "./header/shopping-cart-cta";
-import { UserMenu } from "./header/user-menu";
+import Image from "next/image";
+import Link from "next/link";
+import { createClient } from "~/supabase/server";
+import { HeaderNavigation } from "./header/navigation";
 
 export function Header() {
 	return (
-		<Navbar
-			isBordered
-			classNames={{
-				item: "data-[active=true]:text-primary",
-				wrapper: "px-4 sm:px-6",
-			}}
-			height="64px"
-		>
-			<NavbarBrand>
-				<NavbarMenuToggle className="mr-2 h-6 sm:hidden" />
-				<p>TL</p>{" "}
-				<p className="font-bold text-inherit hidden sm:block">
-					Gifting Concierge
-				</p>
-			</NavbarBrand>
+		<div className="sticky top-0 z-20">
+			<header className="flex w-full flex-col gap-3 p-3 md:h-16 md:flex-row md:items-center lg:px-4 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+				<div className="flex w-full items-center gap-8">
+					<div className="flex items-center gap-2">
+						<Link
+							href="/"
+							className="flex items-center justify-center gap-2 rounded focus:outline-0 focus:ring-0 focus-visible:bg-zinc-200"
+						>
+							<span className="sr-only">Home</span>
+							<Image
+								src="/logo-white.webp"
+								alt="The Liaison Logo"
+								width={45}
+								height={45}
+							/>
+							<p className="text-white hidden sm:inline-flex gap-0.5">
+								TL <strong>Gifting Concierge</strong>
+							</p>
+						</Link>
+					</div>
 
-			{/* Right Menu */}
-			<NavbarContent
-				className="ml-auto h-12 max-w-fit items-center gap-0"
-				justify="end"
-			>
-				<NavbarItem className="mr-2 hidden lg:flex">
-					<FloatingAICta />
-				</NavbarItem>
-				{/* Shopping Cart */}
-				<NavbarItem>
-					<ShoppingCartCta />
-				</NavbarItem>
-				{/* Mobile search */}
-				<NavbarItem className="lg:hidden flex items-center">
-					<FloatingAICta />
-				</NavbarItem>
-				{/* User Menu */}
-				<NavbarItem className="px-2">
-					<UserMenu />
-				</NavbarItem>
-			</NavbarContent>
-
-			{/* Mobile Menu */}
-			<NavbarMenu>
-				<NavbarMenuItem>
-					<Link className="w-full" color="foreground" href="/giftshop">
-						Giftshop
-					</Link>
-				</NavbarMenuItem>
-			</NavbarMenu>
-		</Navbar>
+					<div className="ml-auto flex items-center gap-2 sm:gap-4">
+						<HeaderUser />
+					</div>
+				</div>
+			</header>
+		</div>
 	);
+}
+
+async function HeaderUser() {
+	const supabase = createClient();
+	const {
+		data: { user },
+		error,
+	} = await supabase.auth.getUser();
+
+	if (!user || error) return <HeaderNavigation isLoggedIn={false} />;
+
+	return <HeaderNavigation isLoggedIn={true} />;
 }
