@@ -13,7 +13,7 @@ FAQ:
 (Docs)[https://docs.google.com/document/d/1E9wbSQpK_ZvKMGJZokJBJuvEx12kzk2TIFQm8Ze5pLg/edit?usp=sharing]
 
 Home Page:
-- [ ] Let’s make “Secure and private gifting.” bold and have the animated shine effect on the “Made easy.”
+- [x] Let’s make “Secure and private gifting.” bold and have the animated shine effect on the “Made easy.”
 - [ ] “Gift effortlessly, surprise instantly” on one line. “No address needed” underneath.
 - [ ] Button: “Choose a gift”
 - [ ] Not a button, but clickable “How it works” underneath the “choose a gift” button.

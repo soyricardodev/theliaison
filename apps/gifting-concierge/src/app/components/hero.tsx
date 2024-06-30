@@ -51,10 +51,10 @@ export function Hero() {
 					type: "spring",
 				}}
 			>
-				Secure and Private Gifting.{" "}
-				<strong className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-secondary/80">
+				<strong>Secure and Private Gifting.</strong>{" "}
+				<span className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-secondary/80">
 					Made Easy.
-				</strong>
+				</span>
 			</motion.h1>
 			<motion.p
 				className="text-balance text-lg tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-black via-gray-700 to-gray-400 md:text-xl mb-12"
