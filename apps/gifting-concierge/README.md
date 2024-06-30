@@ -25,8 +25,8 @@ Home Page:
 - [x] Button: “Choose a gift”
 - [x] Not a button, but clickable “How it works” underneath the “choose a gift” button.
 - [x] Nothing else on this page. Please move everything over to the “How it works” page.
-- [ ] Let's change "Choose Gift" to "What would you like to send?" and then 3 options appear... (our gift shop, a unique link or a custom gift).
-- [ ] Also "How it works" doesn't have to be a button.
+- [x] Let's change "Choose Gift" to "What would you like to send?" and then 3 options appear... (our gift shop, a unique link or a custom gift).
+- [x] Also "How it works" doesn't have to be a button.
 Notes: Only other thing should be a chat bot bubble on the right bottom corner and the footer.
 
 Footer:
