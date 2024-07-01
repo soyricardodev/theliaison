@@ -135,7 +135,7 @@ export function Hero() {
 				<Drawer>
 					<DrawerTrigger asChild>
 						<Button size="lg" className="flex gap-2 items-center text-base">
-							Choose Gift
+							What would you like to send?
 							<GiftIcon className="size-5 translate-x-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
 						</Button>
 					</DrawerTrigger>
