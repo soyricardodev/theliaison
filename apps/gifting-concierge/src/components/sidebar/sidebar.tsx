@@ -85,6 +85,7 @@ const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
 			}),
 		};
 
+		// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 		const renderNestItem = React.useCallback(
 			(item: SidebarItem) => {
 				const isNestType =
@@ -205,6 +206,7 @@ const Sidebar = React.forwardRef<HTMLElement, SidebarProps>(
 			[isCompact, hideEndContent, iconClassName, items],
 		);
 
+		// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 		const renderItem = React.useCallback(
 			(item: SidebarItem) => {
 				const isNestType =
