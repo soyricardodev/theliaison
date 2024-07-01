@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { InstagramIcon, MenuIcon } from "lucide-react";
+import { HeaderNavigation } from "~/components/header/navigation";
 
 export function Header() {
 	return (
@@ -17,9 +17,7 @@ export function Header() {
 				</p>
 			</Link>
 
-			<button type="button">
-				<MenuIcon className="text-white hover:text-white/90 transition-colors size-5" />
-			</button>
+			<HeaderNavigation isLoggedIn={false} />
 		</header>
 	);
 }
