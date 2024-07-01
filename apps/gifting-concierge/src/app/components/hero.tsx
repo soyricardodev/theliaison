@@ -235,11 +235,6 @@ export function Hero() {
 
 							{isInitialDrawerState ? (
 								<>
-									<header className="mb-4 -mt-6 flex h-[72px] items-center border-b border-[#F7F7F7] pl-2">
-										<h2 className="text-[19px] font-semibold text-[#222222] md:font-medium">
-											Options
-										</h2>
-									</header>
 									<div className="space-y-3">
 										<a
 											href="/giftshop"
