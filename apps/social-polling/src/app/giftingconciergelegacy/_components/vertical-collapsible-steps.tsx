@@ -168,7 +168,7 @@ const VerticalCollapsibleSteps = React.forwardRef<
 
 						return (
 							<li
-								key={stepIdx}
+								key={`${stepIdx}-${step.title}`}
 								className={cn(
 									"rounded-large border-default-200 data-[status=active]:bg-default-100 dark:border-default-50 dark:data-[status=active]:bg-default-50 group relative gap-4 border",
 									stepClassName,
@@ -177,7 +177,7 @@ const VerticalCollapsibleSteps = React.forwardRef<
 							>
 								<div className="flex w-full max-w-full items-center">
 									<button
-										key={stepIdx}
+										key={`${stepIdx}-${step.title}`}
 										ref={ref}
 										aria-current={status === "active" ? "step" : undefined}
 										className={cn(
@@ -256,7 +256,6 @@ const VerticalCollapsibleSteps = React.forwardRef<
 								{step.details && step.details?.length > 0 && (
 									<LazyMotion features={domAnimation}>
 										<m.div
-											key={stepIdx}
 											animate={status}
 											className="flex"
 											exit="complete"
@@ -279,8 +278,8 @@ const VerticalCollapsibleSteps = React.forwardRef<
 										>
 											<Spacer x={14} />
 											<ul className="text-default-400 list-disc pb-4 pl-1 pr-12">
-												{step.details.map((detail, idx) => (
-													<li key={idx} className="text-tiny mb-1">
+												{step.details.map((detail) => (
+													<li key={detail} className="text-tiny mb-1">
 														{detail}
 													</li>
 												))}
