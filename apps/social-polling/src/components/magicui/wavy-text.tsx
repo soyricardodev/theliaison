@@ -33,7 +33,10 @@ const WavyText = ({
 			<AnimatePresence>
 				{characters.map((char, i) => (
 					<motion.h1
-						key={i}
+						key={`${char}-${
+							// biome-ignore lint/suspicious/noArrayIndexKey: here is needed
+							i
+						}`}
 						initial="hidden"
 						animate="visible"
 						exit="hidden"
