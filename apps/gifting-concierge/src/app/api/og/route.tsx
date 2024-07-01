@@ -1,41 +1,49 @@
 import { ImageResponse } from "next/og";
 
+export const runtime = "edge";
+
+const geistSansSemibold = fetch(
+	new URL("./Geist-SemiBold.ttf", import.meta.url),
+).then((res) => {
+	return res.arrayBuffer();
+});
+
 export async function GET() {
+	const geistSansSemiboldFont = await geistSansSemibold;
+
 	return new ImageResponse(
-		<div
-			style={{
-				display: "flex",
-				height: "100%",
-				width: "100%",
-				alignItems: "center",
-				justifyContent: "center",
-				flexDirection: "column",
-				backgroundColor: "black",
-				fontSize: 60,
-				letterSpacing: -2,
-				fontWeight: 700,
-				textAlign: "center",
-			}}
-		>
+		<div tw="h-full w-full flex flex-col items-center justify-center text-center text-7xl bg-black">
+			<div tw="absolute top-3 left-3 flex gap-2 items-center">
+				<img
+					tw="w-[65px] h-[65px]"
+					src="https://giftingconcierge.theliaison.vercel.app/logo-black.png"
+					alt="The Liaison Logo"
+				/>
+
+				<div
+					tw="text-white font-semibold text-2xl"
+					style={{ letterSpacing: "-1.5px" }}
+				>
+					The Liaison
+				</div>
+			</div>
+
+			<img
+				src="https://i.ibb.co/KrGMxHx/giftbox.gif"
+				width={300}
+				tw="-mt-16"
+				alt="Giftbox"
+			/>
+
 			<div
-				style={{
-					color: "white",
-					textAlign: "center",
-				}}
+				tw="text-white text-center font-semibold"
+				style={{ letterSpacing: "-4.5px" }}
 			>
 				Someone special
 			</div>
 			<div
-				style={{
-					// backgroundImage:
-					// "linear-gradient(to bottom right,#f1f1f1 45%, #DBD0C5)",
-					// backgroundClip: "text",
-					// @ts-expect-error
-					// "-webkit-background-clip": "text",
-					// color: "transparent",
-					color: "#DBD0C5",
-					textAlign: "center",
-				}}
+				tw="text-[#DBD0C5] text-center font-semibold"
+				style={{ letterSpacing: "-4.5px" }}
 			>
 				wants to send you a gift!
 			</div>
@@ -43,6 +51,13 @@ export async function GET() {
 		{
 			width: 1200,
 			height: 630,
+			fonts: [
+				{
+					name: "Geist",
+					data: geistSansSemiboldFont,
+					style: "normal",
+				},
+			],
 		},
 	);
 }
