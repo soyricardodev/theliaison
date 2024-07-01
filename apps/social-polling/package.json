@@ -14,7 +14,6 @@
 		"with-env": "dotenv -e ./.env.local --"
 	},
 	"dependencies": {
-		"@theliaison/ui": "workspace:*",
 		"@ai-sdk/openai": "0.0.24",
 		"@headlessui/react": "2.0.4",
 		"@headlessui/tailwindcss": "0.2.1",
@@ -32,6 +31,7 @@
 		"@t3-oss/env-nextjs": "0.10.1",
 		"@tailwindcss/forms": "0.5.7",
 		"@tanstack/react-query": "5.40.0",
+		"@theliaison/ui": "workspace:*",
 		"@tremor/react": "3.17.2",
 		"@upstash/redis": "1.31.3",
 		"@vercel/analytics": "1.3.1",
@@ -46,7 +46,7 @@
 		"geist": "1.3.0",
 		"lucide-react": "0.379.0",
 		"nanoid": "5.0.7",
-		"next": "14.2.3",
+		"next": "14.2.4",
 		"openai": "4.47.3",
 		"openai-edge": "1.2.2",
 		"react": "18.3.1",
@@ -72,14 +72,14 @@
 		"zustand": "4.5.2"
 	},
 	"devDependencies": {
-		"@theliaison/tailwind-config": "workspace:*",
-		"@theliaison/supabase": "workspace:*",
-		"@theliaison/tsconfig": "workspace:*",
-		"dotenv-cli": "7.4.2",
 		"@tailwindcss/typography": "0.5.13",
+		"@theliaison/supabase": "workspace:*",
+		"@theliaison/tailwind-config": "workspace:*",
+		"@theliaison/tsconfig": "workspace:*",
 		"@types/node": "20.12.14",
 		"@types/react": "18.3.2",
 		"@types/react-dom": "18.3.0",
+		"dotenv-cli": "7.4.2",
 		"postcss": "8.4.38",
 		"tailwindcss": "3.4.3",
 		"typescript": "5.4.5"
