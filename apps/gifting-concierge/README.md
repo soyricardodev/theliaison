@@ -1,4 +1,4 @@
-Tasks (Last updated: June 30/2024):
+Tasks (Last updated: July 1/2024):
 
 Confirm Gift Tasks:
 - [x] put the gif up top as the first thing people see.
@@ -11,6 +11,7 @@ Confirm Gift Tasks:
 - [ ] OG Image
 - [x] No Capitalization
 - [x] Spectrum of color on your gifting concierge CTA
+- [ ] Dark Mode Menu
 
 Header:
 - [x] Let’s clean up the menu header. We don’t need the cart, AI, or get started button up there.
@@ -39,5 +40,9 @@ Notes: Like they can change after 5-10 seconds or so fading in and out subtly.
 
 
 Gifting Concierge:
-- [ ] Send custom gift
-- [ ] Send gift from custom link
+- [x] Send custom gift ui
+- [x] Send gift from custom link ui
+- [ ] Client side validation
+- [ ] Server side validation
+- [ ] Send custom gift api
+- [ ] Send gift from custom link api
