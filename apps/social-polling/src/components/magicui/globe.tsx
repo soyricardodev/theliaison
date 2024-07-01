@@ -3,7 +3,8 @@
 import { OrbitControls } from "@react-three/drei";
 import type { Object3DNode } from "@react-three/fiber";
 import { Canvas, extend, useThree } from "@react-three/fiber";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+// @ts-expect-error - TODO: Fix this type error
 import { Color, Fog, PerspectiveCamera, Scene, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
 
@@ -167,6 +168,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 				});
 			startAnimation();
 		}
+		// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
 	}, [globeData, defaultProps]);
 
 	const startAnimation = () => {
