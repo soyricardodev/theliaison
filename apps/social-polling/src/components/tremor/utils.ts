@@ -1,6 +1,5 @@
 import { extendTailwindMerge } from "tailwind-merge";
 
-// import { DeltaTypes } from "./constants";
 import type { Color, ValueFormatter } from "./base-chart-props";
 
 export const tremorTwMerge = extendTailwindMerge({
@@ -116,13 +115,13 @@ export const mapInputsToDeltaType = (
 	}
 	switch (deltaType) {
 		case DeltaTypes.Increase:
-			return DeltaTypes.Decrease;
+			return DeltaTypes.Decrease ?? "";
 		case DeltaTypes.ModerateIncrease:
-			return DeltaTypes.ModerateDecrease;
+			return DeltaTypes.ModerateDecrease ?? "";
 		case DeltaTypes.Decrease:
-			return DeltaTypes.Increase;
+			return DeltaTypes.Increase ?? "";
 		case DeltaTypes.ModerateDecrease:
-			return DeltaTypes.ModerateIncrease;
+			return DeltaTypes.ModerateIncrease ?? "";
 	}
 	return "";
 };
@@ -136,7 +135,6 @@ export const currencyValueFormatter: ValueFormatter = (e: number) =>
 export const sumNumericArray = (arr: number[]) =>
 	arr.reduce((prefixSum, num) => prefixSum + num, 0);
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export const isValueInArray = (value: any, array: any[]): boolean => {
 	for (let i = 0; i < array.length; i++) {
 		if (array[i] === value) {
