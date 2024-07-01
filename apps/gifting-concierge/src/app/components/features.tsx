@@ -1,13 +1,13 @@
 import {
 	DollarSignIcon,
 	ListTodoIcon,
-	SparklesIcon,
-	ShoppingCartIcon,
-	PhoneOutgoingIcon,
-	TruckIcon,
 	LockKeyholeIcon,
 	MessageSquareHeartIcon,
 	PartyPopperIcon,
+	PhoneOutgoingIcon,
+	ShoppingCartIcon,
+	SparklesIcon,
+	TruckIcon,
 	UndoDotIcon,
 } from "lucide-react";
 

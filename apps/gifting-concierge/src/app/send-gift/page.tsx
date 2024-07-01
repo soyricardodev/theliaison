@@ -1,18 +1,18 @@
 "use client";
 
 import { Badge, Button, Progress } from "@nextui-org/react";
+import { Toaster } from "@theliaison/ui/sonner";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
 import { ArrowLeftIcon, ShoppingCartIcon } from "lucide-react";
+import { redirect } from "next/navigation";
 import React from "react";
+import { toast } from "sonner";
 import { useCartStore } from "~/store/cart";
 import { useRecipientStore } from "~/store/recipient";
 import { OrderSummary } from "./_components/order-summary";
 import { OrderSummaryConfirmation } from "./_components/order-summary-confirmation";
 import { RecipientDataForm } from "./_components/recipient-data-form";
 import { createGift } from "./actions";
-import { toast } from "sonner";
-import { redirect } from "next/navigation";
-import { Toaster } from "@theliaison/ui/sonner";
 
 export default function Component() {
 	const [[page, direction], setPage] = React.useState([0, 0]);

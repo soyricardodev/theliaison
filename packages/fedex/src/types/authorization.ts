@@ -4,153 +4,153 @@
  */
 
 export interface paths {
-    "/oauth/token": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * API Authorization
-         * @description Use this endpoint to request the OAuth token (bearer token) to authorize your application to access FedEx resources. You can pass this bearer token in your subsequent individual FedEx API endpoint requests.<br/><i>Note: FedEx APIs do not support Cross-Origin Resource Sharing (CORS) mechanism.</i>
-         */
-        post: operations["API Authorization"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
+	"/oauth/token": {
+		parameters: {
+			query?: never;
+			header?: never;
+			path?: never;
+			cookie?: never;
+		};
+		get?: never;
+		put?: never;
+		/**
+		 * API Authorization
+		 * @description Use this endpoint to request the OAuth token (bearer token) to authorize your application to access FedEx resources. You can pass this bearer token in your subsequent individual FedEx API endpoint requests.<br/><i>Note: FedEx APIs do not support Cross-Origin Resource Sharing (CORS) mechanism.</i>
+		 */
+		post: operations["API Authorization"];
+		delete?: never;
+		options?: never;
+		head?: never;
+		patch?: never;
+		trace?: never;
+	};
 }
 export type webhooks = Record<string, never>;
 export interface components {
-    schemas: {
-        /** @description The request elements for OAuth API. */
-        FullSchema: {
-            /** @description Specify Type of customer requesting the Oauth token.<br>Valid Values: client_credentials, csp_credentials, client_pc_credentials<br>Note:<br>client_credentials - should be used for customers and brand new Compatible Provider customers who are yet to unboard child accounts.<br>csp_credentials - should be used for Compatible Provider customers with existing child accounts.<br>client_pc_credentials – should be used for Proprietary Parent Child customers. */
-            grant_type: string;
-            /** @description Specify the Client ID also known as API Key received during FedEx Developer portal registration.<br>Example: XXXX-XXX-XXXX-XXX */
-            client_id: string;
-            /** @description Specify the Client secret also known as Secret Key received during FedEx Developer portal registration.<br>Example: XXXX-XXX-XXXX-XXX */
-            client_secret: string;
-            /** @description Specify the Client ID also known as Customer Key. This element is used as a login credential for a Compatible customer or a Proprietary Parent Child customer to access the application on behalf of their customer.<br>Example: XXXX-XXX-XXXX-XXX<br>Note: This element should be used by Compatible and Proprietary Parent Child customers. */
-            child_Key?: string;
-            /** @description Specify the Client secret also known as Customer Secret. This element is used as a login credential for a Compatible customer or a Proprietary Parent Child customer to access the application on behalf of their customer.<br>Example: XXXX-XXX-XXXX-XXX<br>Note: This element should be used by Compatible and Proprietary Parent Child customers. */
-            child_secret?: string;
-        };
-        /** @description This is the response of OAuth token and having access token details. */
-        Response: {
-            /**
-             * @description This is an encrypted OAuth token used to authenticate your API requests. Use it in the authorization header of your API requests.<br>Example:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX……
-             * @example eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX……
-             */
-            access_token?: string;
-            /**
-             * @description This is a token type. In this case, it is 'bearer authentication'.
-             * @example bearer
-             */
-            token_type?: string;
-            /**
-             * @description Indicates the token expiration time in seconds. The standard token expiration time is one hour. <br>Example: 3600
-             * @example 3600
-             */
-            expires_in?: number;
-            /**
-             * @description Indicates the scope of authorization provided to the consumer.<br> Example: CXS
-             * @example CXS
-             */
-            scope?: string;
-        };
-        ErrorResponseVO: {
-            /**
-             * @description The transaction ID is a special set of numbers that defines each transaction.<br>Example: bc95c0e4-b33e-42a2-80d2-334282b5d37a
-             * @example bc95c0e4-b33e-42a2-80d2-334282b5d37a
-             */
-            transactionId?: string;
-            /** @description Indicates error details when suspicious files, potential exploits and viruses are found while scanning files, directories and user accounts. This includes code, message and error parameters. */
-            errors?: components["schemas"]["CXSError"][];
-        };
-        CXSError: {
-            /** @description Indicates the error code.<br>Example: NOT.FOUND.ERROR */
-            code?: string;
-            /** @description List of parameters which indicates the properties of the alert message. */
-            parameterList?: components["schemas"]["Parameter"][];
-            /**
-             * @description Indicates the API error alert message.<br>Example: We are unable to process this request. Please try again later or contact FedEx Customer Service.
-             * @example We are unable to process this request. Please try again later or contact FedEx Customer Service.
-             */
-            message?: string;
-        };
-        Parameter: {
-            /** @description Indicates the error option to be applied. */
-            value?: string;
-            /** @description Indicates the value associated with the key. */
-            key?: string;
-        };
-    };
-    responses: never;
-    parameters: never;
-    requestBodies: never;
-    headers: never;
-    pathItems: never;
+	schemas: {
+		/** @description The request elements for OAuth API. */
+		FullSchema: {
+			/** @description Specify Type of customer requesting the Oauth token.<br>Valid Values: client_credentials, csp_credentials, client_pc_credentials<br>Note:<br>client_credentials - should be used for customers and brand new Compatible Provider customers who are yet to unboard child accounts.<br>csp_credentials - should be used for Compatible Provider customers with existing child accounts.<br>client_pc_credentials – should be used for Proprietary Parent Child customers. */
+			grant_type: string;
+			/** @description Specify the Client ID also known as API Key received during FedEx Developer portal registration.<br>Example: XXXX-XXX-XXXX-XXX */
+			client_id: string;
+			/** @description Specify the Client secret also known as Secret Key received during FedEx Developer portal registration.<br>Example: XXXX-XXX-XXXX-XXX */
+			client_secret: string;
+			/** @description Specify the Client ID also known as Customer Key. This element is used as a login credential for a Compatible customer or a Proprietary Parent Child customer to access the application on behalf of their customer.<br>Example: XXXX-XXX-XXXX-XXX<br>Note: This element should be used by Compatible and Proprietary Parent Child customers. */
+			child_Key?: string;
+			/** @description Specify the Client secret also known as Customer Secret. This element is used as a login credential for a Compatible customer or a Proprietary Parent Child customer to access the application on behalf of their customer.<br>Example: XXXX-XXX-XXXX-XXX<br>Note: This element should be used by Compatible and Proprietary Parent Child customers. */
+			child_secret?: string;
+		};
+		/** @description This is the response of OAuth token and having access token details. */
+		Response: {
+			/**
+			 * @description This is an encrypted OAuth token used to authenticate your API requests. Use it in the authorization header of your API requests.<br>Example:  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX……
+			 * @example eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX……
+			 */
+			access_token?: string;
+			/**
+			 * @description This is a token type. In this case, it is 'bearer authentication'.
+			 * @example bearer
+			 */
+			token_type?: string;
+			/**
+			 * @description Indicates the token expiration time in seconds. The standard token expiration time is one hour. <br>Example: 3600
+			 * @example 3600
+			 */
+			expires_in?: number;
+			/**
+			 * @description Indicates the scope of authorization provided to the consumer.<br> Example: CXS
+			 * @example CXS
+			 */
+			scope?: string;
+		};
+		ErrorResponseVO: {
+			/**
+			 * @description The transaction ID is a special set of numbers that defines each transaction.<br>Example: bc95c0e4-b33e-42a2-80d2-334282b5d37a
+			 * @example bc95c0e4-b33e-42a2-80d2-334282b5d37a
+			 */
+			transactionId?: string;
+			/** @description Indicates error details when suspicious files, potential exploits and viruses are found while scanning files, directories and user accounts. This includes code, message and error parameters. */
+			errors?: components["schemas"]["CXSError"][];
+		};
+		CXSError: {
+			/** @description Indicates the error code.<br>Example: NOT.FOUND.ERROR */
+			code?: string;
+			/** @description List of parameters which indicates the properties of the alert message. */
+			parameterList?: components["schemas"]["Parameter"][];
+			/**
+			 * @description Indicates the API error alert message.<br>Example: We are unable to process this request. Please try again later or contact FedEx Customer Service.
+			 * @example We are unable to process this request. Please try again later or contact FedEx Customer Service.
+			 */
+			message?: string;
+		};
+		Parameter: {
+			/** @description Indicates the error option to be applied. */
+			value?: string;
+			/** @description Indicates the value associated with the key. */
+			key?: string;
+		};
+	};
+	responses: never;
+	parameters: never;
+	requestBodies: never;
+	headers: never;
+	pathItems: never;
 }
 export type $defs = Record<string, never>;
 export interface operations {
-    "API Authorization": {
-        parameters: {
-            query?: never;
-            header: {
-                /** @description This is used to indicate the media type of the resource. The media type is a string sent along with the file indicating format of the file.<br> Example: application/x-www-form-urlencoded */
-                "content-type": string;
-            };
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/x-www-form-urlencoded": components["schemas"]["FullSchema"];
-            };
-        };
-        responses: {
-            /** @description Success */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["Response"];
-                };
-            };
-            /** @description Unauthorized */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorResponseVO"];
-                };
-            };
-            /** @description Failure */
-            500: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorResponseVO"];
-                };
-            };
-            /** @description Service Unavailable */
-            503: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ErrorResponseVO"];
-                };
-            };
-        };
-    };
+	"API Authorization": {
+		parameters: {
+			query?: never;
+			header: {
+				/** @description This is used to indicate the media type of the resource. The media type is a string sent along with the file indicating format of the file.<br> Example: application/x-www-form-urlencoded */
+				"content-type": string;
+			};
+			path?: never;
+			cookie?: never;
+		};
+		requestBody: {
+			content: {
+				"application/x-www-form-urlencoded": components["schemas"]["FullSchema"];
+			};
+		};
+		responses: {
+			/** @description Success */
+			200: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					"application/json": components["schemas"]["Response"];
+				};
+			};
+			/** @description Unauthorized */
+			401: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					"application/json": components["schemas"]["ErrorResponseVO"];
+				};
+			};
+			/** @description Failure */
+			500: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					"application/json": components["schemas"]["ErrorResponseVO"];
+				};
+			};
+			/** @description Service Unavailable */
+			503: {
+				headers: {
+					[name: string]: unknown;
+				};
+				content: {
+					"application/json": components["schemas"]["ErrorResponseVO"];
+				};
+			};
+		};
+	};
 }

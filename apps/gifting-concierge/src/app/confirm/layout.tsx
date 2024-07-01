@@ -1,5 +1,5 @@
-import { Header } from "./[giftId]/header";
 import type { Metadata } from "next";
+import { Header } from "./[giftId]/header";
 
 export const metadata: Metadata = {
 	title: "Someone special wants to send you a gift!",

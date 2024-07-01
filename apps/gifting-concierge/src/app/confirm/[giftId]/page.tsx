@@ -1,17 +1,17 @@
-import Image from "next/image";
-import Link from "next/link";
-import { createClient } from "~/supabase/server";
-import { ConfirmGift } from "./confirm-gift";
-import {
-	ChevronRightIcon,
-	HeartHandshakeIcon,
-	GiftIcon,
-	ZapIcon,
-} from "lucide-react";
-import ShippingForm from "./details/shipping-form";
-import giftboxGIF from "~/assets/giftbox2.gif";
 import { cn } from "@theliaison/ui";
 import { buttonVariants } from "@theliaison/ui/button";
+import {
+	ChevronRightIcon,
+	GiftIcon,
+	HeartHandshakeIcon,
+	ZapIcon,
+} from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import giftboxGIF from "~/assets/giftbox2.gif";
+import { createClient } from "~/supabase/server";
+import { ConfirmGift } from "./confirm-gift";
+import ShippingForm from "./details/shipping-form";
 
 export default async function Confirm({
 	params: { giftId },

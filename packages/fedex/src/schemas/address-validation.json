@@ -284,10 +284,7 @@
 					"streetLinesToken": {
 						"type": "array",
 						"description": "Indicates the resolved street address lines.<br>Example: [\\\"7372 PARKRIDGE BLVD\\\", \\\"APT 286, 2903 sprank\\\"]",
-						"example": [
-							"7372 PARKRIDGE BLVD",
-							"APT 286"
-						],
+						"example": ["7372 PARKRIDGE BLVD", "APT 286"],
 						"items": {
 							"type": "string"
 						}
@@ -317,9 +314,7 @@
 					"cityToken": {
 						"type": "array",
 						"description": "This is the resolved city name with a token. The token is an indication to the changes made.<br> Examples: [TOK-1X3256]",
-						"example": [
-							"TOK-1X3256"
-						],
+						"example": ["TOK-1X3256"],
 						"items": {
 							"$ref": "#/components/schemas/ResolutionToken"
 						}
@@ -339,12 +334,7 @@
 						"type": "string",
 						"description": "This is the classification type of a FedEx address.<br>Valid values:<ul><li>BUSINESS</li><li>RESIDENTIAL</li><li>MIXED (If it is a multi-tenant based address and contains both business and residential units.)</li><li>UNKNOWN (If just a zip code is provided, Address Validation Service returns 'unknown' for the business/residential classification.)</li>",
 						"example": "BUSINESS",
-						"enum": [
-							"MIXED",
-							"UNKNOWN",
-							"BUSINESS",
-							"RESIDENTIAL"
-						]
+						"enum": ["MIXED", "UNKNOWN", "BUSINESS", "RESIDENTIAL"]
 					},
 					"postOfficeBox": {
 						"type": "boolean",
@@ -510,10 +500,7 @@
 				}
 			},
 			"ParsedPersonName": {
-				"required": [
-					"firstName",
-					"lastName"
-				],
+				"required": ["firstName", "lastName"],
 				"type": "object",
 				"properties": {
 					"firstName": {
@@ -545,11 +532,7 @@
 						"type": "string",
 						"description": "Format Type of email notification",
 						"example": "TEXT",
-						"enum": [
-							"SMS_TEXT_MESSAGE",
-							"TEXT",
-							"HTML"
-						]
+						"enum": ["SMS_TEXT_MESSAGE", "TEXT", "HTML"]
 					},
 					"address": {
 						"type": "string",
@@ -560,10 +543,7 @@
 						"type": "string",
 						"description": "Email Permission Type",
 						"example": "DENY",
-						"enum": [
-							"GRANT",
-							"DENY"
-						]
+						"enum": ["GRANT", "DENY"]
 					}
 				},
 				"description": "EMailDetail Model"
@@ -585,11 +565,7 @@
 				"description": "SocialMediaDetail Model"
 			},
 			"PhoneNumberDetail": {
-				"required": [
-					"number",
-					"permissions",
-					"usage"
-				],
+				"required": ["number", "permissions", "usage"],
 				"type": "object",
 				"properties": {
 					"number": {
@@ -604,49 +580,31 @@
 						"type": "string",
 						"description": "Shows the Phone Permission Status",
 						"example": "GRANT/DENY",
-						"enum": [
-							"GRANT",
-							"DENY"
-						]
+						"enum": ["GRANT", "DENY"]
 					},
 					"usage": {
 						"type": "string",
 						"description": "Specifies the Phone Usage",
 						"example": "PRIMARY",
-						"enum": [
-							"PRIMARY",
-							"SECONDARY"
-						]
+						"enum": ["PRIMARY", "SECONDARY"]
 					},
 					"type": {
 						"type": "string",
 						"description": "Phone Number Type",
 						"example": "FAX/WORK",
-						"enum": [
-							"FAX",
-							"HOME",
-							"MOBILE",
-							"PAGER",
-							"WORK"
-						]
+						"enum": ["FAX", "HOME", "MOBILE", "PAGER", "WORK"]
 					},
 					"phoneNotificationFormatType": {
 						"type": "string",
 						"description": "Phone Notification Format Type",
 						"example": "SMS_TEXT_MESSAGE",
-						"enum": [
-							"SMS_TEXT_MESSAGE"
-						]
+						"enum": ["SMS_TEXT_MESSAGE"]
 					}
 				},
 				"description": "PhoneNumberDetail Model"
 			},
 			"PhoneNumber": {
-				"required": [
-					"areaCode",
-					"countryCode",
-					"localNumber"
-				],
+				"required": ["areaCode", "countryCode", "localNumber"],
 				"type": "object",
 				"properties": {
 					"areaCode": {
@@ -678,9 +636,7 @@
 				"description": "PhoneNumber Model"
 			},
 			"CompanyName": {
-				"required": [
-					"name"
-				],
+				"required": ["name"],
 				"type": "object",
 				"properties": {
 					"division": {
@@ -768,10 +724,7 @@
 						"type": "string",
 						"description": "Indicates the API alert type.",
 						"example": "NOTE",
-						"enum": [
-							"NOTE",
-							"WARNING"
-						]
+						"enum": ["NOTE", "WARNING"]
 					}
 				},
 				"description": "Specifies the API alerts."
@@ -1023,9 +976,7 @@
 				"description": "Indicates error alert when suspicious files, potential exploits and viruses found while scanning files , directories and user accounts. This includes code, message and parameter"
 			},
 			"Full_Schema_Validate_Address": {
-				"required": [
-					"addressesToValidate"
-				],
+				"required": ["addressesToValidate"],
 				"type": "object",
 				"properties": {
 					"inEffectAsOfTimestamp": {
@@ -1058,9 +1009,7 @@
 				"description": "Specify the parameters applied to validate the address."
 			},
 			"ResolveContactAndAddress": {
-				"required": [
-					"address"
-				],
+				"required": ["address"],
 				"type": "object",
 				"properties": {
 					"address": {
@@ -1075,20 +1024,12 @@
 				"description": "Specifies the address details of a location."
 			},
 			"Address": {
-				"required": [
-					"streetLines",
-					"city",
-					"postalCode"
-				],
+				"required": ["streetLines", "city", "postalCode"],
 				"properties": {
 					"streetLines": {
 						"type": "array",
 						"description": "Indicate the combination of number, street name. etc. <br>Example: [\"7372 PARKRIDGE BLVD\", \"APT 286, 2903 sprank\"].<br><br>Note:<ul><li>At least one line is required for a valid physical address; empty lines should not be included.</li><li>Maximum up to three lines & no error check if entered more than this limit.</li><li>Recommended limit per line is 35 characters.</li></ul>",
-						"example": [
-							"7372 PARKRIDGE BLVD",
-							"APT 286",
-							"2903 sprank"
-						],
+						"example": ["7372 PARKRIDGE BLVD", "APT 286", "2903 sprank"],
 						"items": {
 							"type": "string"
 						}
@@ -1119,9 +1060,7 @@
 					"addressesToValidate": [
 						{
 							"address": {
-								"streetLines": [
-									"Toronto City Hall 100 Queen St W"
-								],
+								"streetLines": ["Toronto City Hall 100 Queen St W"],
 								"city": "Toranto",
 								"stateOrProvinceCode": "ON",
 								"postalCode": "M5H2N1",
@@ -1136,10 +1075,7 @@
 					"addressesToValidate": [
 						{
 							"address": {
-								"streetLines": [
-									"7372 PARKRIDGE BLVD",
-									"APT 286"
-								],
+								"streetLines": ["7372 PARKRIDGE BLVD", "APT 286"],
 								"city": "IRVING",
 								"stateOrProvinceCode": "TX",
 								"postalCode": "75063-8659",
@@ -1154,9 +1090,7 @@
 					"addressesToValidate": [
 						{
 							"address": {
-								"streetLines": [
-									"Adam-von-Trott-Straße 1"
-								],
+								"streetLines": ["Adam-von-Trott-Straße 1"],
 								"city": "Berlin",
 								"stateOrProvinceCode": "",
 								"postalCode": "13627",
@@ -1171,9 +1105,7 @@
 					"addressesToValidate": [
 						{
 							"address": {
-								"streetLines": [
-									"Via Vittorio Veneto, 121"
-								],
+								"streetLines": ["Via Vittorio Veneto, 121"],
 								"city": "Roma",
 								"postalCode": 187,
 								"countryCode": "IT"
@@ -1187,9 +1119,7 @@
 					"addressesToValidate": [
 						{
 							"address": {
-								"streetLines": [
-									"24 Grosvenor Square"
-								],
+								"streetLines": ["24 Grosvenor Square"],
 								"city": "London",
 								"postalCode": "W1A 2LQ",
 								"countryCode": "GB"

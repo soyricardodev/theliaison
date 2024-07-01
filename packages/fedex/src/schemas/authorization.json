@@ -176,11 +176,7 @@
 	"components": {
 		"schemas": {
 			"FullSchema": {
-				"required": [
-					"client_id",
-					"client_secret",
-					"grant_type"
-				],
+				"required": ["client_id", "client_secret", "grant_type"],
 				"type": "object",
 				"properties": {
 					"grant_type": {

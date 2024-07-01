@@ -1,8 +1,8 @@
-import { EmailTemplate } from "./email-template";
-import { Resend } from "resend";
-import type React from "react";
 import { type NextRequest, NextResponse } from "next/server";
+import type React from "react";
+import { Resend } from "resend";
 import { env } from "~/env";
+import { EmailTemplate } from "./email-template";
 
 const resend = new Resend(env.RESEND_API_KEY);
 

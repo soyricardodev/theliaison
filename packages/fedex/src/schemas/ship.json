@@ -10,9 +10,7 @@
 			"description": "Production Server"
 		}
 	],
-	"schemes": [
-		"https"
-	],
+	"schemes": ["https"],
 	"info": {
 		"version": "1.0.0",
 		"title": "Ship API"
@@ -1331,11 +1329,7 @@
 						"type": "string",
 						"description": "It specifies the content of the merged pdf URL in the response. The merged pdf URL is generated only if the labelResponseOption is indicated as URL_ONLY.<ul><li>If the value is 'LABELS_AND_DOCS', then merged (all shipping labels and shipping documents) pdf URL will be returned.</li><li>If the value is 'LABELS_ONLY', merged (all shipping labels only) pdf URL will be returned.</li><li>If the value is 'NONE', then no merged pdf URL will be returned.</li></ul><br>This is optional field and will default to LABELS_AND_DOCS.<br>Note: If the value is 'LABELS_ONLY', then the returned merged pdf label will not be in the Base64 encoded format.",
 						"example": "LABELS_AND_DOCS",
-						"enum": [
-							"NONE",
-							"LABELS_AND_DOCS",
-							"LABELS_ONLY"
-						]
+						"enum": ["NONE", "LABELS_AND_DOCS", "LABELS_ONLY"]
 					},
 					"requestedShipment": {
 						"$ref": "#/components/schemas/RequestedShipment"
@@ -1390,10 +1384,7 @@
 						"description": "Indicate the Shipper contact details for this shipment.",
 						"example": {
 							"address": {
-								"streetLines": [
-									"10 FedEx Parkway",
-									"Suite 302"
-								],
+								"streetLines": ["10 FedEx Parkway", "Suite 302"],
 								"city": "Beverly Hills",
 								"stateOrProvinceCode": "CA",
 								"postalCode": "90210",
@@ -1512,10 +1503,7 @@
 					"rateRequestType": {
 						"type": "array",
 						"description": "Indicate the type of rates to be returned. The account specific rates are returned by default if the account number is specified in the request.<br>Following are values:<ul><li>LIST - Returns FedEx published list rates in addition to account-specific rates (if applicable).</li><li>INCENTIVE - This is one-time discount for incentivising the customer. For more information, contact your FedEx representative.</li><li>ACCOUNT - Returns account specific rates (Default).</li><li>PREFERRED - Returns rates in the preferred currency specified in the element preferredCurrency.</li><li>RETAIL - Returns customer rate from one of retail FedEx service centers.</li></ul>Examples: [\"ACCOUNT\", \"PREFERRED\"]",
-						"example": [
-							"LIST",
-							"PREFERRED"
-						],
+						"example": ["LIST", "PREFERRED"],
 						"items": {
 							"type": "string",
 							"enum": [
@@ -1587,10 +1575,7 @@
 				"description": "This customs value is applicable for all items(or units) under the specified commodity."
 			},
 			"ShipperParty": {
-				"required": [
-					"address",
-					"contact"
-				],
+				"required": ["address", "contact"],
 				"type": "object",
 				"properties": {
 					"address": {
@@ -1610,10 +1595,7 @@
 				"description": "Indicate the Shipper contact details for this shipment.",
 				"example": {
 					"address": {
-						"streetLines": [
-							"10 FedEx Parkway",
-							"Suite 302"
-						],
+						"streetLines": ["10 FedEx Parkway", "Suite 302"],
 						"city": "Beverly Hills",
 						"stateOrProvinceCode": "CA",
 						"postalCode": "90210",
@@ -1662,11 +1644,7 @@
 				}
 			},
 			"PartyAddress": {
-				"required": [
-					"city",
-					"countryCode",
-					"streetLines"
-				],
+				"required": ["city", "countryCode", "streetLines"],
 				"type": "object",
 				"properties": {
 					"streetLines": {
@@ -1706,10 +1684,7 @@
 				},
 				"description": "This is detailed information on physical location. May be used as an actual physical address (place to which one could go), or as a container of address parts which should be handled as a unit (such as a city-state-ZIP combination within the US).",
 				"example": {
-					"streetLines": [
-						"10 FedEx Parkway",
-						"Suite 302"
-					],
+					"streetLines": ["10 FedEx Parkway", "Suite 302"],
 					"city": "Beverly Hills",
 					"stateOrProvinceCode": "CA",
 					"postalCode": "90210",
@@ -1718,9 +1693,7 @@
 				}
 			},
 			"PartyContact": {
-				"required": [
-					"phoneNumber"
-				],
+				"required": ["phoneNumber"],
 				"type": "object",
 				"properties": {
 					"personName": {
@@ -1804,10 +1777,7 @@
 				}
 			},
 			"RecipientsParty": {
-				"required": [
-					"address",
-					"contact"
-				],
+				"required": ["address", "contact"],
 				"type": "object",
 				"properties": {
 					"address": {
@@ -1832,10 +1802,7 @@
 				"description": "The descriptive information of the recipient for the shipment and the physical location for the package destination.",
 				"example": {
 					"address": {
-						"streetLines": [
-							"10 FedEx Parkway",
-							"Suite 302"
-						],
+						"streetLines": ["10 FedEx Parkway", "Suite 302"],
 						"city": "Beverly Hills",
 						"stateOrProvinceCode": "CA",
 						"postalCode": "90210",
@@ -1874,10 +1841,7 @@
 				"description": "Specifies the contact and address details of a location.",
 				"example": {
 					"address": {
-						"streetLines": [
-							"10 FedEx Parkway",
-							"Suite 302"
-						],
+						"streetLines": ["10 FedEx Parkway", "Suite 302"],
 						"city": "Beverly Hills",
 						"stateOrProvinceCode": "CA",
 						"postalCode": "38127",
@@ -1944,10 +1908,7 @@
 					"streetLines": {
 						"type": "array",
 						"description": "This is the combination of number, street name, etc. <br>Note: At least one line is required and streetlines more than 3 will be ignored. Empty lines should not be included. Maximum length per line is 35.<br>Example: [10 FedEx Parkway, Suite 302, .etc.]",
-						"example": [
-							"Bldg. 10",
-							"10 FedEx Parkway"
-						],
+						"example": ["Bldg. 10", "10 FedEx Parkway"],
 						"items": {
 							"type": "string"
 						}
@@ -1981,20 +1942,13 @@
 				"description": "This is detailed information on physical location. May be used as an actual physical address (place to which one could go), or as a container of address parts which should be handled as a unit (such as a city-state-ZIP combination within the U.S.)."
 			},
 			"Payment": {
-				"required": [
-					"paymentType"
-				],
+				"required": ["paymentType"],
 				"type": "object",
 				"properties": {
 					"paymentType": {
 						"type": "string",
 						"description": "Specifies the payment Type. <br>Note: This is required for Express, Ground and SmartPost shipments.<br> The payment type COLLECT is applicable only for Ground shipments.",
-						"enum": [
-							"SENDER",
-							"RECIPIENT",
-							"THIRD_PARTY",
-							"COLLECT"
-						]
+						"enum": ["SENDER", "RECIPIENT", "THIRD_PARTY", "COLLECT"]
 					},
 					"payor": {
 						"$ref": "#/components/schemas/Payor"
@@ -2006,10 +1960,7 @@
 					"payor": {
 						"responsibleParty": {
 							"address": {
-								"streetLines": [
-									"10 FedEx Parkway",
-									"Suite 302"
-								],
+								"streetLines": ["10 FedEx Parkway", "Suite 302"],
 								"city": "Beverly Hills",
 								"stateOrProvinceCode": "CA",
 								"postalCode": "90210",
@@ -2032,9 +1983,7 @@
 				}
 			},
 			"Payor": {
-				"required": [
-					"responsibleParty"
-				],
+				"required": ["responsibleParty"],
 				"type": "object",
 				"properties": {
 					"responsibleParty": {
@@ -2045,10 +1994,7 @@
 				"example": {
 					"responsibleParty": {
 						"address": {
-							"streetLines": [
-								"10 FedEx Parkway",
-								"Suite 302"
-							],
+							"streetLines": ["10 FedEx Parkway", "Suite 302"],
 							"city": "Beverly Hills",
 							"stateOrProvinceCode": "CA",
 							"postalCode": "90210",
@@ -2070,9 +2016,7 @@
 				}
 			},
 			"ResponsiblePartyParty": {
-				"required": [
-					"accountNumber"
-				],
+				"required": ["accountNumber"],
 				"type": "object",
 				"properties": {
 					"address": {
@@ -2088,10 +2032,7 @@
 				"description": "Indicate the payer Information responsible for paying for the shipment. <br>Note: ResponsibleParty accountNumber is required for ACCOUNT based services.",
 				"example": {
 					"address": {
-						"streetLines": [
-							"10 FedEx Parkway",
-							"Suite 302"
-						],
+						"streetLines": ["10 FedEx Parkway", "Suite 302"],
 						"city": "Beverly Hills",
 						"stateOrProvinceCode": "CA",
 						"postalCode": "90210",
@@ -2129,10 +2070,7 @@
 					"specialServiceTypes": {
 						"type": "array",
 						"description": "Special services requested for the shipment.<br>Example: <ul><li>HOLD_AT_LOCATION</li><li>RETURN_SHIPMENT</li><li>BROKER_SELECT_OPTION</li><li>CALL_BEFORE_DELIVERY</li><li>COD</li><li>CUSTOM_DELIVERY_WINDOW</li></ul><br><a onclick='loadDocReference(\"shipmentlevelspecialservicetypes\")'>click here to see Shipment Special Service Types</a>",
-						"example": [
-							"THIRD_PARTY_CONSIGNEE",
-							"PROTECTION_FROM_FREEZING"
-						],
+						"example": ["THIRD_PARTY_CONSIGNEE", "PROTECTION_FROM_FREEZING"],
 						"items": {
 							"type": "string"
 						}
@@ -2178,9 +2116,7 @@
 						"description": "Use this attribute to specify if the Trade documents will be uploaded post the shipment.",
 						"items": {
 							"type": "string",
-							"enum": [
-								"POST_SHIPMENT_UPLOAD_REQUESTED"
-							]
+							"enum": ["POST_SHIPMENT_UPLOAD_REQUESTED"]
 						}
 					},
 					"attachedDocuments": {
@@ -2193,10 +2129,7 @@
 					"requestedDocumentTypes": {
 						"type": "array",
 						"description": "Indicate the types of shipping documents produced for the shipper by FedEx. The types of shipping documents are copied back to the shipper in the shipment result data.<br>Note: For more information document types, refer business overview topic - <a href='#shippingandcustoms'><b>Shipping and Customs Documents.</b></a>",
-						"example": [
-							"VICS_BILL_OF_LADING",
-							"GENERAL_AGENCY_AGREEMENT"
-						],
+						"example": ["VICS_BILL_OF_LADING", "GENERAL_AGENCY_AGREEMENT"],
 						"items": {
 							"type": "string",
 							"enum": [
@@ -2256,9 +2189,7 @@
 				"description": "Specify the document upload reference details."
 			},
 			"ReturnShipmentDetail": {
-				"required": [
-					"returnType"
-				],
+				"required": ["returnType"],
 				"type": "object",
 				"properties": {
 					"returnEmailDetail": {
@@ -2274,18 +2205,13 @@
 						"type": "string",
 						"description": "This is the return Type. Required to be set to PRINT_RETURN_LABEL for printed return label shipments. For email return label shipments returnType must be set to PENDING and pendingShipmentDetail must be set to EMAIL.",
 						"example": "PRINT_RETURN_LABEL",
-						"enum": [
-							"PENDING",
-							"PRINT_RETURN_LABEL"
-						]
+						"enum": ["PENDING", "PRINT_RETURN_LABEL"]
 					}
 				},
 				"description": "Use this object for specifying return shipment details."
 			},
 			"ReturnEmailDetail": {
-				"required": [
-					"merchantPhoneNumber"
-				],
+				"required": ["merchantPhoneNumber"],
 				"type": "object",
 				"properties": {
 					"merchantPhoneNumber": {
@@ -2299,10 +2225,7 @@
 						"items": {
 							"type": "string",
 							"example": "SATURDAY_DELIVERY",
-							"enum": [
-								"SATURDAY_DELIVERY",
-								"SATURDAY_PICKUP"
-							]
+							"enum": ["SATURDAY_DELIVERY", "SATURDAY_PICKUP"]
 						}
 					}
 				},
@@ -2345,23 +2268,15 @@
 								"$ref": "#/components/schemas/RecipientsParty"
 							},
 							{
-								"required": [
-									"address",
-									"contact"
-								],
+								"required": ["address", "contact"],
 								"properties": {
 									"address": {
-										"required": [
-											"countryCode",
-											"streetLines"
-										],
+										"required": ["countryCode", "streetLines"],
 										"properties": {
 											"streetLines": {
 												"type": "array",
 												"description": "This is the combination of number, street name, etc. <br>Note: At least one line is required and streetlines more than 3 will be ignored. Empty lines should not be included. Maximum length per line is 35.<br>Example: [10 FedEx Parkway, Suite 302, .etc.]",
-												"example": [
-													"23, RUE JOSEPH-DE MA"
-												],
+												"example": ["23, RUE JOSEPH-DE MA"],
 												"items": {
 													"type": "string"
 												}
@@ -2374,11 +2289,7 @@
 										}
 									},
 									"contact": {
-										"required": [
-											"companyName",
-											"personName",
-											"phoneNumber"
-										],
+										"required": ["companyName", "personName", "phoneNumber"],
 										"properties": {
 											"companyName": {
 												"type": "string",
@@ -2405,9 +2316,7 @@
 				"description": "Indicate the Delivery On Invoice Acceptance detail. Recipient is required for Delivery On Invoice Special service."
 			},
 			"InternationalTrafficInArmsRegulationsDetail": {
-				"required": [
-					"licenseOrExemptionNumber"
-				],
+				"required": ["licenseOrExemptionNumber"],
 				"type": "object",
 				"properties": {
 					"licenseOrExemptionNumber": {
@@ -2419,19 +2328,14 @@
 				"description": "These are International Traffic In Arms Regulations shipment service details."
 			},
 			"PendingShipmentDetail": {
-				"required": [
-					"emailLabelDetail",
-					"pendingShipmentType"
-				],
+				"required": ["emailLabelDetail", "pendingShipmentType"],
 				"type": "object",
 				"properties": {
 					"pendingShipmentType": {
 						"type": "string",
 						"description": "This is Pending Shipment Type. Must include the value 'EMAIL' for email return shipments.<br>Not applicable for other types of shipments.",
 						"example": "EMAIL",
-						"enum": [
-							"EMAIL"
-						]
+						"enum": ["EMAIL"]
 					},
 					"processingOptions": {
 						"$ref": "#/components/schemas/PendingShipmentProcessingOptionsRequested"
@@ -2463,23 +2367,17 @@
 					"options": {
 						"type": "array",
 						"description": "These are processing options.",
-						"example": [
-							"ALLOW_MODIFICATIONS"
-						],
+						"example": ["ALLOW_MODIFICATIONS"],
 						"items": {
 							"type": "string",
-							"enum": [
-								"ALLOW_MODIFICATIONS"
-							]
+							"enum": ["ALLOW_MODIFICATIONS"]
 						}
 					}
 				},
 				"description": "Use this object to allow the Email Label shipment originator,  specify if the Email label shipment completer can make modifications to editable shipment data."
 			},
 			"RecommendedDocumentSpecification": {
-				"required": [
-					"types"
-				],
+				"required": ["types"],
 				"type": "object",
 				"properties": {
 					"types": {
@@ -2540,10 +2438,7 @@
 				"description": "These are specific information about the pending email label.<br>Required when PendingShipmentType is EMAIL.<br>Not applicable for CreateTag."
 			},
 			"EmailRecipient": {
-				"required": [
-					"emailAddress",
-					"role"
-				],
+				"required": ["emailAddress", "role"],
 				"type": "object",
 				"properties": {
 					"emailAddress": {
@@ -2557,10 +2452,7 @@
 					"role": {
 						"type": "string",
 						"description": "This is to specify Recipient role in the shipment.Shipment completor role is needed when we pass shipment initiator. We cannot use shipment initiator alone.",
-						"enum": [
-							"SHIPMENT_COMPLETOR",
-							"SHIPMENT_INITIATOR"
-						]
+						"enum": ["SHIPMENT_COMPLETOR", "SHIPMENT_INITIATOR"]
 					},
 					"locale": {
 						"type": "string",
@@ -2629,9 +2521,7 @@
 				"description": "Specify the document upload reference details."
 			},
 			"HoldAtLocationDetail": {
-				"required": [
-					"locationId"
-				],
+				"required": ["locationId"],
 				"type": "object",
 				"properties": {
 					"locationId": {
@@ -2672,10 +2562,7 @@
 				"description": "Specifies the contact and address details of a location.",
 				"example": {
 					"address": {
-						"streetLines": [
-							"10 FedEx Parkway",
-							"Suite 302"
-						],
+						"streetLines": ["10 FedEx Parkway", "Suite 302"],
 						"city": "Beverly Hills",
 						"stateOrProvinceCode": "CA",
 						"postalCode": "38127",
@@ -2737,9 +2624,7 @@
 				}
 			},
 			"ShipmentCODDetail": {
-				"required": [
-					"codCollectionType"
-				],
+				"required": ["codCollectionType"],
 				"type": "object",
 				"properties": {
 					"addTransportationChargesDetail": {
@@ -2783,12 +2668,7 @@
 					"returnReferenceIndicatorType": {
 						"type": "string",
 						"description": "Indicate return reference type information to include on the COD return shipping label.",
-						"enum": [
-							"INVOICE",
-							"PO",
-							"REFERENCE",
-							"TRACKING"
-						]
+						"enum": ["INVOICE", "PO", "REFERENCE", "TRACKING"]
 					},
 					"shipmentCodAmount": {
 						"description": "Indicate the COD amount for this shipment.",
@@ -2807,27 +2687,17 @@
 					"rateType": {
 						"type": "string",
 						"description": "Specify the Rate Type used.",
-						"enum": [
-							"ACCOUNT",
-							"CURRENT",
-							"CUSTOM"
-						]
+						"enum": ["ACCOUNT", "CURRENT", "CUSTOM"]
 					},
 					"rateLevelType": {
 						"type": "string",
 						"description": "Specify which level the rate to be applied.",
-						"enum": [
-							"BUNDLED_RATE",
-							"INDIVIDUAL_PACKAGE_RATE"
-						]
+						"enum": ["BUNDLED_RATE", "INDIVIDUAL_PACKAGE_RATE"]
 					},
 					"chargeLevelType": {
 						"type": "string",
 						"description": "Specify which level the charges to be applied.",
-						"enum": [
-							"CURRENT_PACKAGE",
-							"SUM_OF_PACKAGES"
-						]
+						"enum": ["CURRENT_PACKAGE", "SUM_OF_PACKAGES"]
 					},
 					"chargeType": {
 						"type": "string",
@@ -2864,10 +2734,7 @@
 				},
 				"example": {
 					"address": {
-						"streetLines": [
-							"10 FedEx Parkway",
-							"Suite 302"
-						],
+						"streetLines": ["10 FedEx Parkway", "Suite 302"],
 						"city": "Beverly Hills",
 						"stateOrProvinceCode": "CA",
 						"postalCode": "90210",
@@ -2917,10 +2784,7 @@
 						"type": "string",
 						"description": "This is the package weight unit. For Dry Ice the unit of measure is KG.",
 						"example": "LB",
-						"enum": [
-							"KG",
-							"LB"
-						]
+						"enum": ["KG", "LB"]
 					},
 					"value": {
 						"type": "number",
@@ -2936,9 +2800,7 @@
 				}
 			},
 			"InternationalControlledExportDetail": {
-				"required": [
-					"type"
-				],
+				"required": ["type"],
 				"type": "object",
 				"properties": {
 					"licenseOrPermitExpirationDate": {
@@ -2994,11 +2856,7 @@
 						"type": "string",
 						"description": "This is Home Delivery Premium Type. It allows to specify additional premimum service options for the home delivery shipment. Can specify Evening delivery or a Date certain, or can specify appointment for the delivery.",
 						"example": "APPOINTMENT",
-						"enum": [
-							"APPOINTMENT",
-							"DATE_CERTAIN",
-							"EVENING"
-						]
+						"enum": ["APPOINTMENT", "DATE_CERTAIN", "EVENING"]
 					}
 				},
 				"description": "These are Special service elements for FedEx Ground Home Delivery shipments. If selected, element homedeliveryPremiumType is mandatory. "
@@ -3038,10 +2896,7 @@
 						"type": "string",
 						"description": "This is the shipment Notification Aggregation Type.",
 						"example": "PER_PACKAGE",
-						"enum": [
-							"PER_PACKAGE",
-							"PER_SHIPMENT"
-						]
+						"enum": ["PER_PACKAGE", "PER_SHIPMENT"]
 					},
 					"emailNotificationRecipients": {
 						"type": "array",
@@ -3059,10 +2914,7 @@
 				"description": "This is used to provide eMail notification information.."
 			},
 			"ShipShipmentEmailNotificationRecipient": {
-				"required": [
-					"emailAddress",
-					"emailNotificationRecipientType"
-				],
+				"required": ["emailAddress", "emailNotificationRecipientType"],
 				"type": "object",
 				"properties": {
 					"name": {
@@ -3074,13 +2926,7 @@
 						"type": "string",
 						"description": "Specify the recipient type for email notification.",
 						"example": "SHIPPER",
-						"enum": [
-							"BROKER",
-							"OTHER",
-							"RECIPIENT",
-							"SHIPPER",
-							"THIRD_PARTY"
-						]
+						"enum": ["BROKER", "OTHER", "RECIPIENT", "SHIPPER", "THIRD_PARTY"]
 					},
 					"emailAddress": {
 						"type": "string",
@@ -3091,18 +2937,13 @@
 						"type": "string",
 						"description": "This is the format for the email notification. Either HTML or plain text can be provided.<br>Example: TEXT",
 						"example": "TEXT",
-						"enum": [
-							"HTML",
-							"TEXT"
-						]
+						"enum": ["HTML", "TEXT"]
 					},
 					"notificationType": {
 						"type": "string",
 						"description": "Indicate the type of notification that will be sent as an email<br>Example: EMAIL",
 						"example": "EMAIL",
-						"enum": [
-							"EMAIL"
-						]
+						"enum": ["EMAIL"]
 					},
 					"locale": {
 						"type": "string",
@@ -3112,10 +2953,7 @@
 					"notificationEventType": {
 						"type": "array",
 						"description": "These are to specify the notification event types.<br> Example: [ON_PICKUP_DRIVER_ARRIVED, ON_SHIPMENT]<br><a onclick='loadDocReference(\"notificationeventtypes\")'>Click here for more information on Notification Event Types.</a>",
-						"example": [
-							"ON_PICKUP_DRIVER_ARRIVED",
-							"ON_SHIPMENT"
-						],
+						"example": ["ON_PICKUP_DRIVER_ARRIVED", "ON_SHIPMENT"],
 						"items": {
 							"type": "string",
 							"enum": [
@@ -3185,10 +3023,7 @@
 						"type": "string",
 						"description": "indicates whether or not the rating is being done at the package level, or if the packages are bundled together. At the package level, charges are applied based on the details of each individual package. If they are bundled, one package is chosen as the parent and charges are applied based on that one package.",
 						"example": "INDIVIDUAL_PACKAGE_RATE",
-						"enum": [
-							"BUNDLED_RATE",
-							"INDIVIDUAL_PACKAGE_RATE"
-						]
+						"enum": ["BUNDLED_RATE", "INDIVIDUAL_PACKAGE_RATE"]
 					},
 					"fixedValue": {
 						"description": "This is to specify a fixed handling charge on the shipment. The element allows entry of 7 characters before the decimal and 2 characters following the decimal. <br>Example: 5.00.",
@@ -3197,10 +3032,7 @@
 								"$ref": "#/components/schemas/Money"
 							},
 							{
-								"required": [
-									"amount",
-									"currency"
-								],
+								"required": ["amount", "currency"],
 								"properties": {
 									"amount": {
 										"type": "number",
@@ -3233,10 +3065,7 @@
 				"description": "Indicate the details about how to calculate variable handling charges at the shipment level. They can be based on a percentage of the shipping charges or a fixed amount. If indicated, element rateLevelType is required."
 			},
 			"CustomsClearanceDetail": {
-				"required": [
-					"commercialInvoice",
-					"commodities"
-				],
+				"required": ["commercialInvoice", "commodities"],
 				"type": "object",
 				"properties": {
 					"regulatoryControls": {
@@ -3267,10 +3096,7 @@
 						"type": "string",
 						"description": "Specify the risk owner for the Freight shipment.This element is only mandatory or valid for Intra India shipments.",
 						"example": "OWN_RISK",
-						"enum": [
-							"CARRIER_RISK",
-							"OWN_RISK"
-						]
+						"enum": ["CARRIER_RISK", "OWN_RISK"]
 					},
 					"dutiesPayment": {
 						"$ref": "#/components/schemas/Payment_1"
@@ -3345,10 +3171,7 @@
 								"$ref": "#/components/schemas/Party_1"
 							},
 							{
-								"required": [
-									"address",
-									"contact"
-								],
+								"required": ["address", "contact"],
 								"properties": {
 									"address": {
 										"description": "Specifies broker address details."
@@ -3364,19 +3187,14 @@
 						"type": "string",
 						"description": "Identifies the type of broker.",
 						"example": "IMPORT",
-						"enum": [
-							"IMPORT"
-						]
+						"enum": ["IMPORT"]
 					}
 				},
 				"description": "These are broker details for the shipment.",
 				"example": {
 					"broker": {
 						"address": {
-							"streetLines": [
-								"10 FedEx Parkway",
-								"Suite 302"
-							],
+							"streetLines": ["10 FedEx Parkway", "Suite 302"],
 							"city": "Beverly Hills",
 							"stateOrProvinceCode": "CA",
 							"postalCode": "90210",
@@ -3419,9 +3237,7 @@
 					"comments": {
 						"type": "array",
 						"description": "The comments that will populate the Commercial Invoice (or Pro Forma). Only the comments specified in the first two indexes of the array will be printed on the invoice and other comments would be ignored as the limitation is set for only two indexes. It considers the comment which is in the first index as a Special Instructions, Hence the comment at first index will be printed under special instructions and the other will be printed at comments section in the Commercial Invoice Document. <br>Example: comments",
-						"example": [
-							"optional comments for the commercial invoice"
-						],
+						"example": ["optional comments for the commercial invoice"],
 						"items": {
 							"type": "string"
 						}
@@ -3568,12 +3384,7 @@
 					"paymentType": {
 						"type": "string",
 						"description": "This is a payment type, basically indicates who is the payor for the shipment.<br>Required for Express and Ground.<br>The payment type COLLECT is applicable only for Ground shipments.",
-						"enum": [
-							"SENDER",
-							"RECIPIENT",
-							"THIRD_PARTY",
-							"COLLECT"
-						]
+						"enum": ["SENDER", "RECIPIENT", "THIRD_PARTY", "COLLECT"]
 					}
 				},
 				"description": "This is a payment type, basically indicates who is the payor for the shipment.Conditional required for International Shipments",
@@ -3581,10 +3392,7 @@
 					"payor": {
 						"responsibleParty": {
 							"address": {
-								"streetLines": [
-									"10 FedEx Parkway",
-									"Suite 302"
-								],
+								"streetLines": ["10 FedEx Parkway", "Suite 302"],
 								"city": "Beverly Hills",
 								"stateOrProvinceCode": "CA",
 								"postalCode": "38127",
@@ -3642,10 +3450,7 @@
 				"example": {
 					"responsibleParty": {
 						"address": {
-							"streetLines": [
-								"10 FedEx Parkway",
-								"Suite 302"
-							],
+							"streetLines": ["10 FedEx Parkway", "Suite 302"],
 							"city": "Beverly Hills",
 							"stateOrProvinceCode": "CA",
 							"postalCode": "38127",
@@ -3705,10 +3510,7 @@
 				"description": "Use this object to provide the attributes such as physical address, contact information and account number information.",
 				"example": {
 					"address": {
-						"streetLines": [
-							"10 FedEx Parkway",
-							"Suite 302"
-						],
+						"streetLines": ["10 FedEx Parkway", "Suite 302"],
 						"city": "Beverly Hills",
 						"stateOrProvinceCode": "CA",
 						"postalCode": "38127",
@@ -3783,9 +3585,7 @@
 				}
 			},
 			"Commodity": {
-				"required": [
-					"description"
-				],
+				"required": ["description"],
 				"type": "object",
 				"properties": {
 					"unitPrice": {
@@ -3875,10 +3675,7 @@
 						"type": "string",
 						"description": "This is the purpose of this shipment. This is used for calculation of duties and taxes.",
 						"example": "BUSINESS",
-						"enum": [
-							"BUSINESS",
-							"CONSUMER"
-						]
+						"enum": ["BUSINESS", "CONSUMER"]
 					},
 					"usmcaDetail": {
 						"$ref": "#/components/schemas/UsmcaDetail"
@@ -3902,19 +3699,14 @@
 				}
 			},
 			"Weight": {
-				"required": [
-					"units",
-					"value"
-				],
+				"required": ["units", "value"],
 				"type": "object",
 				"properties": {
 					"units": {
 						"type": "string",
 						"description": "Indicate the weight unit type. The package and commodity weight unit should be the same else the request will result in an error.",
 						"example": "KG",
-						"enum": [
-							"KG"
-						]
+						"enum": ["KG"]
 					},
 					"value": {
 						"type": "number",
@@ -3930,19 +3722,14 @@
 				}
 			},
 			"Weight_4": {
-				"required": [
-					"units",
-					"value"
-				],
+				"required": ["units", "value"],
 				"type": "object",
 				"properties": {
 					"units": {
 						"type": "string",
 						"description": "Indicate the weight unit type. The package and commodity weight unit should be the same else the request will result in an error.",
 						"example": "KG",
-						"enum": [
-							"KG"
-						]
+						"enum": ["KG"]
 					},
 					"value": {
 						"type": "number",
@@ -3958,19 +3745,14 @@
 				}
 			},
 			"Weight_3": {
-				"required": [
-					"units",
-					"value"
-				],
+				"required": ["units", "value"],
 				"type": "object",
 				"properties": {
 					"units": {
 						"type": "string",
 						"description": "Indicate the weight unit type. The package and commodity weight unit should be the same else the request will result in an error.",
 						"example": "KG",
-						"enum": [
-							"KG"
-						]
+						"enum": ["KG"]
 					},
 					"value": {
 						"type": "number",
@@ -3991,13 +3773,7 @@
 					"originCriterion": {
 						"type": "string",
 						"description": "Specify the origin criterion.",
-						"enum": [
-							"A",
-							"B",
-							"C",
-							"D",
-							"E"
-						]
+						"enum": ["A", "B", "C", "D", "E"]
 					}
 				},
 				"description": "Indicates the USMCA detail"
@@ -4009,11 +3785,7 @@
 						"type": "string",
 						"description": "This is ID Type.",
 						"example": "PASSPORT",
-						"enum": [
-							"COMPANY",
-							"INDIVIDUAL",
-							"PASSPORT"
-						]
+						"enum": ["COMPANY", "INDIVIDUAL", "PASSPORT"]
 					},
 					"value": {
 						"type": "string",
@@ -4087,9 +3859,7 @@
 				"description": "These are export Detail used for US or CA exports."
 			},
 			"DestinationControlDetail": {
-				"required": [
-					"statementTypes"
-				],
+				"required": ["statementTypes"],
 				"type": "object",
 				"properties": {
 					"endUser": {
@@ -4110,10 +3880,7 @@
 					"destinationCountries": {
 						"type": "array",
 						"description": "Specify DCS shipment destination country. You may enter up to four country codes in this element. Up to 11 alphanumeric characters are allowed.<br>Example: US<br><a onclick='loadDocReference(\"countrycodes\")'>click here to see Country codes</a>",
-						"example": [
-							"USA",
-							"India"
-						],
+						"example": ["USA", "India"],
 						"items": {
 							"type": "string"
 						}
@@ -4122,9 +3889,7 @@
 				"description": "Use this object to specify the appropriate destination control statement type(s). Also make sure to specify destination country and end user."
 			},
 			"CustomsDeclarationStatementDetail": {
-				"required": [
-					"usmcaLowValueStatementDetail"
-				],
+				"required": ["usmcaLowValueStatementDetail"],
 				"type": "object",
 				"properties": {
 					"usmcaLowValueStatementDetail": {
@@ -4134,9 +3899,7 @@
 				"description": "Specifies about the statements to be declared for Customs. "
 			},
 			"UsmcaLowValueStatementDetail": {
-				"required": [
-					"customsRole"
-				],
+				"required": ["customsRole"],
 				"type": "object",
 				"properties": {
 					"countryOfOriginLowValueDocumentRequested": {
@@ -4148,19 +3911,13 @@
 						"type": "string",
 						"description": "Specify the shipper role for Customs declaration.",
 						"example": "EXPORTER",
-						"enum": [
-							"EXPORTER",
-							"IMPORTER"
-						]
+						"enum": ["EXPORTER", "IMPORTER"]
 					}
 				},
 				"description": "Specify the low Value statement necessary for printing the USMCA for Customs documentation."
 			},
 			"SmartPostInfoDetail": {
-				"required": [
-					"hubId",
-					"indicia"
-				],
+				"required": ["hubId", "indicia"],
 				"type": "object",
 				"properties": {
 					"ancillaryEndorsement": {
@@ -4196,37 +3953,26 @@
 						"type": "string",
 						"description": "Specify the special handling associated with Smartpost Shipment.",
 						"example": "USPS_DELIVERY_CONFIRMATION",
-						"enum": [
-							"USPS_DELIVERY_CONFIRMATION"
-						]
+						"enum": ["USPS_DELIVERY_CONFIRMATION"]
 					}
 				},
 				"description": "Use this object to specify the smartpost shipment details. <br>Required for SMARTPOST service. If SmartPostInfoDetail is indicated, the elements below it are also required."
 			},
 			"LabelSpecification": {
-				"required": [
-					"imageType",
-					"labelStockType"
-				],
+				"required": ["imageType", "labelStockType"],
 				"type": "object",
 				"properties": {
 					"labelFormatType": {
 						"type": "string",
 						"description": "Specify the label Format Type.<br><a onclick='loadDocReference(\"labelstocktypes\")'>click here to see label format types</a>",
 						"example": "COMMON2D",
-						"enum": [
-							"COMMON2D",
-							"LABEL_DATA_ONLY"
-						]
+						"enum": ["COMMON2D", "LABEL_DATA_ONLY"]
 					},
 					"labelOrder": {
 						"type": "string",
 						"description": "This is the order of the Shipping label/documents to be generated.",
 						"example": "SHIPPING_LABEL_FIRST",
-						"enum": [
-							"SHIPPING_LABEL_FIRST",
-							"SHIPPING_LABEL_LAST"
-						]
+						"enum": ["SHIPPING_LABEL_FIRST", "SHIPPING_LABEL_LAST"]
 					},
 					"customerSpecifiedDetail": {
 						"$ref": "#/components/schemas/CustomerSpecifiedLabelDetail"
@@ -4262,32 +4008,19 @@
 						"type": "string",
 						"description": "This is applicable only to documents produced on thermal printers with roll stock.",
 						"example": "UPSIDE_DOWN",
-						"enum": [
-							"LEFT",
-							"RIGHT",
-							"UPSIDE_DOWN",
-							"NONE"
-						]
+						"enum": ["LEFT", "RIGHT", "UPSIDE_DOWN", "NONE"]
 					},
 					"imageType": {
 						"type": "string",
 						"description": "Specify the image format used for a shipping document.<br><a onclick='loadDocReference(\"labelstocktypes\")'>click here to see label format types</a>",
 						"example": "PDF",
-						"enum": [
-							"ZPLII",
-							"EPL2",
-							"PDF",
-							"PNG"
-						]
+						"enum": ["ZPLII", "EPL2", "PDF", "PNG"]
 					},
 					"labelPrintingOrientation": {
 						"type": "string",
 						"description": "This is applicable only to documents produced on thermal printers with roll stock.",
 						"example": "TOP_EDGE_OF_TEXT_FIRST",
-						"enum": [
-							"BOTTOM_EDGE_OF_TEXT_FIRST",
-							"TOP_EDGE_OF_TEXT_FIRST"
-						]
+						"enum": ["BOTTOM_EDGE_OF_TEXT_FIRST", "TOP_EDGE_OF_TEXT_FIRST"]
 					},
 					"returnedDispositionDetail": {
 						"type": "boolean",
@@ -4303,10 +4036,7 @@
 					"maskedData": {
 						"type": "array",
 						"description": "Specify which data/sections on the label to be masked.<br>Note: <ul><li>SECONDARY_BARCODE &ndash; This is used for Smartpost shipment labels.</li><li>SHIPPER_INFORMATION &ndash; This is used for Third Party Consignee, Intra-UK shipments.</li><li>TOTAL_WEIGHT &ndash; This replaces the Total weight with Actual Weight in Master label and AWB copies.</li></ul>",
-						"example": [
-							"CUSTOMS_VALUE",
-							"TOTAL_WEIGHT"
-						],
+						"example": ["CUSTOMS_VALUE", "TOTAL_WEIGHT"],
 						"items": {
 							"type": "string",
 							"default": "SHIPPER_INFORMATION",
@@ -4360,9 +4090,7 @@
 						"type": "string",
 						"description": "Specify the type of regulatory content to be added on the label.",
 						"example": "ALCOHOL_SHIPMENT_LABEL",
-						"enum": [
-							"ALCOHOL_SHIPMENT_LABEL"
-						]
+						"enum": ["ALCOHOL_SHIPMENT_LABEL"]
 					}
 				}
 			},
@@ -4401,13 +4129,7 @@
 						"type": "string",
 						"description": "Indicates the content type of the doc tab.",
 						"example": "BARCODED",
-						"enum": [
-							"BARCODED",
-							"CUSTOM",
-							"MINIMUM",
-							"STANDARD",
-							"ZONE001"
-						]
+						"enum": ["BARCODED", "CUSTOM", "MINIMUM", "STANDARD", "ZONE001"]
 					},
 					"zone001": {
 						"$ref": "#/components/schemas/DocTabContentZone001"
@@ -4455,10 +4177,7 @@
 						"type": "string",
 						"description": "Indicates the justification format for the string.",
 						"example": "RIGHT",
-						"enum": [
-							"LEFT",
-							"RIGHT"
-						]
+						"enum": ["LEFT", "RIGHT"]
 					}
 				},
 				"description": "Indicates the doc tab zone specification."
@@ -4513,9 +4232,7 @@
 					"shippingDocumentTypes": {
 						"type": "array",
 						"description": "Indicates the types of shipping documents requested.\n",
-						"example": [
-							"RETURN_INSTRUCTIONS"
-						],
+						"example": ["RETURN_INSTRUCTIONS"],
 						"items": {
 							"type": "string",
 							"enum": [
@@ -4569,9 +4286,7 @@
 						"type": "string",
 						"description": "Indicate the used label stock type. Note to list the correct type of paper for the freight address label option.",
 						"example": "PAPER_LETTER",
-						"enum": [
-							"PAPER_LETTER"
-						]
+						"enum": ["PAPER_LETTER"]
 					},
 					"dispositions": {
 						"type": "array",
@@ -4589,9 +4304,7 @@
 						"type": "string",
 						"description": "Specify the image format used for a shipping document.<br><a onclick='loadDocReference(\"labelstocktypes\")'>click here to see label format types</a>",
 						"example": "PDF",
-						"enum": [
-							"PDF"
-						]
+						"enum": ["PDF"]
 					}
 				},
 				"description": "Specify the shipping document format."
@@ -4602,10 +4315,7 @@
 					"options": {
 						"type": "array",
 						"description": "Indicates the format options. SUPPRESS_ADDITIONAL_LANGUAGES value will suppress English language if another language is specified in the language code field.",
-						"example": [
-							"SUPPRESS_ADDITIONAL_LANGUAGES",
-							"SHIPPING_LABEL_LAST"
-						],
+						"example": ["SUPPRESS_ADDITIONAL_LANGUAGES", "SHIPPING_LABEL_LAST"],
 						"items": {
 							"type": "string",
 							"enum": [
@@ -4643,9 +4353,7 @@
 				"description": "These are document diposition details. Each occurrence of this class specifies a particular way in which a kind of shipping document is to be produced and provided."
 			},
 			"ShippingDocumentEmailDetail": {
-				"required": [
-					"eMailRecipients"
-				],
+				"required": ["eMailRecipients"],
 				"type": "object",
 				"properties": {
 					"eMailRecipients": {
@@ -4664,18 +4372,13 @@
 						"type": "string",
 						"description": "Identifies the convention by which documents are to be grouped as email attachment.",
 						"example": "NONE",
-						"enum": [
-							"BY_RECIPIENT",
-							"NONE"
-						]
+						"enum": ["BY_RECIPIENT", "NONE"]
 					}
 				},
 				"description": "Specifies how to e-mail shipping documents."
 			},
 			"ShippingDocumentEmailRecipient": {
-				"required": [
-					"recipientType"
-				],
+				"required": ["recipientType"],
 				"type": "object",
 				"properties": {
 					"emailAddress": {
@@ -4728,9 +4431,7 @@
 						"type": "string",
 						"description": "Specify the label stock type.<br><a onclick='loadDocReference(\"labelstocktypes\")'>click here to see label format types</a>",
 						"example": "PAPER_LETTER",
-						"enum": [
-							"PAPER_LETTER"
-						]
+						"enum": ["PAPER_LETTER"]
 					},
 					"dispositions": {
 						"type": "array",
@@ -4748,10 +4449,7 @@
 						"type": "string",
 						"description": "Specify the image format used for shipping document.<br><a onclick='loadDocReference(\"labelstocktypes\")'>click here to see label format types</a>",
 						"example": "PNG",
-						"enum": [
-							"PNG",
-							"PDF"
-						]
+						"enum": ["PNG", "PDF"]
 					}
 				},
 				"description": "These are characteristics of a shipping document to be produced."
@@ -4784,31 +4482,19 @@
 						"type": "string",
 						"description": "Specify the Image ID.",
 						"example": "IMAGE_5",
-						"enum": [
-							"IMAGE_1",
-							"IMAGE_2",
-							"IMAGE_3",
-							"IMAGE_4",
-							"IMAGE_5"
-						]
+						"enum": ["IMAGE_1", "IMAGE_2", "IMAGE_3", "IMAGE_4", "IMAGE_5"]
 					},
 					"type": {
 						"type": "string",
 						"description": "Specify document image type.",
 						"example": "SIGNATURE",
-						"enum": [
-							"SIGNATURE",
-							"LETTER_HEAD"
-						]
+						"enum": ["SIGNATURE", "LETTER_HEAD"]
 					},
 					"providedImageType": {
 						"type": "string",
 						"description": "Specify the provided document image type.",
 						"example": "SIGNATURE",
-						"enum": [
-							"LETTER_HEAD",
-							"SIGNATURE"
-						]
+						"enum": ["LETTER_HEAD", "SIGNATURE"]
 					}
 				},
 				"description": "Specify the usse and identification of supplied images to be used on this document."
@@ -4830,30 +4516,19 @@
 						"type": "string",
 						"description": "This is certifier specification.",
 						"example": "EXPORTER",
-						"enum": [
-							"EXPORTER",
-							"IMPORTER",
-							"PRODUCER"
-						]
+						"enum": ["EXPORTER", "IMPORTER", "PRODUCER"]
 					},
 					"importerSpecification": {
 						"type": "string",
 						"description": "This is importer specification.",
 						"example": "UNKNOWN",
-						"enum": [
-							"UNKNOWN",
-							"VARIOUS"
-						]
+						"enum": ["UNKNOWN", "VARIOUS"]
 					},
 					"producerSpecification": {
 						"type": "string",
 						"description": "This is producer specification.",
 						"example": "SAME_AS_EXPORTER",
-						"enum": [
-							"AVAILABLE_UPON_REQUEST",
-							"VARIOUS",
-							"SAME_AS_EXPORTER"
-						]
+						"enum": ["AVAILABLE_UPON_REQUEST", "VARIOUS", "SAME_AS_EXPORTER"]
 					},
 					"producer": {
 						"$ref": "#/components/schemas/Party_3"
@@ -4888,10 +4563,7 @@
 				},
 				"example": {
 					"address": {
-						"streetLines": [
-							"10 FedEx Parkway",
-							"Suite 302"
-						],
+						"streetLines": ["10 FedEx Parkway", "Suite 302"],
 						"city": "Beverly Hills",
 						"stateOrProvinceCode": "CA",
 						"postalCode": "90210",
@@ -4925,10 +4597,7 @@
 					"streetLines": {
 						"type": "array",
 						"description": "This is the combination of number, street name, etc. Maximum length per line is 35.<br>Example: 10 FedEx Parkway, Suite 302.<p><i>Note:<ul><li>At least one line is required.</li><li>Streetlines more than 3 will be ignored.</li><li>Empty lines should not be included</li><li>For SmartPost Shipments, only 30 characters from the individual street lines will be printed on the labels.</li></ul></i></p>",
-						"example": [
-							"1550 Union Blvd",
-							"Suite 302"
-						],
+						"example": ["1550 Union Blvd", "Suite 302"],
 						"items": {
 							"type": "string"
 						}
@@ -4966,10 +4635,7 @@
 				},
 				"description": "This is detailed information on physical location. May be used as an actual physical address (place to which one could go), or as a container of address parts which should be handled as a unit (such as a city-state-ZIP combination within the US).",
 				"example": {
-					"streetLines": [
-						"10 FedEx Parkway",
-						"Suite 302"
-					],
+					"streetLines": ["10 FedEx Parkway", "Suite 302"],
 					"city": "Beverly Hills",
 					"stateOrProvinceCode": "CA",
 					"postalCode": "90210",
@@ -5052,30 +4718,19 @@
 						"type": "string",
 						"description": "This is certifier specification.",
 						"example": "EXPORTER",
-						"enum": [
-							"EXPORTER",
-							"IMPORTER",
-							"PRODUCER"
-						]
+						"enum": ["EXPORTER", "IMPORTER", "PRODUCER"]
 					},
 					"importerSpecification": {
 						"type": "string",
 						"description": "This is importer specification.",
 						"example": "UNKNOWN",
-						"enum": [
-							"UNKNOWN",
-							"VARIOUS"
-						]
+						"enum": ["UNKNOWN", "VARIOUS"]
 					},
 					"producerSpecification": {
 						"type": "string",
 						"description": "This is producer specification.",
 						"example": "SAME_AS_EXPORTER",
-						"enum": [
-							"AVAILABLE_UPON_REQUEST",
-							"VARIOUS",
-							"SAME_AS_EXPORTER"
-						]
+						"enum": ["AVAILABLE_UPON_REQUEST", "VARIOUS", "SAME_AS_EXPORTER"]
 					},
 					"producer": {
 						"$ref": "#/components/schemas/Party_3"
@@ -5147,9 +4802,7 @@
 				"description": "Indicates the tracking details of the package.Required for child shipments of an oneLabelAtATime shipments"
 			},
 			"RequestedPackageLineItem": {
-				"required": [
-					"weight"
-				],
+				"required": ["weight"],
 				"type": "object",
 				"properties": {
 					"sequenceNumber": {
@@ -5268,10 +4921,7 @@
 						"type": "string",
 						"description": "Indicate the Unit of measure for the provided dimensions.<br>Valid Values are:<li>IN - inches</li><li>CM - centimeters</li>Note: Any value other than CM including blank/null will default to IN.",
 						"example": "CM",
-						"enum": [
-							"CM",
-							"IN"
-						]
+						"enum": ["CM", "IN"]
 					}
 				},
 				"description": "Indicate the dimensions of the package.<br> Following conditions will apply: <ul><li>Dimensions are optional but when added, then all three dimensions must be indicated.</li><li>Dimensions are required with YOUR_PACKAGING package type.</li></ul>Note: The maximum/minimum dimension values varies based on the services and the packaging types. Refer <a href=\"https://www.fedex.com/en-us/service-guide.html\" target=\"_blank\">FedEx Service Guide</a> for service details related to DIM Weighting for FedEx Express and oversize conditions for FedEx Express and FedEx Ground.",
@@ -5315,10 +4965,7 @@
 					"specialServiceTypes": {
 						"type": "array",
 						"description": "Indicate the types of special services requested for the shipment.<br><a onclick='loadDocReference(\"packagelevelspecialservicetypes\")'>click here to see Package Special Service Types</a>",
-						"example": [
-							"ALCOHOL",
-							"NON_STANDARD_CONTAINER"
-						],
+						"example": ["ALCOHOL", "NON_STANDARD_CONTAINER"],
 						"items": {
 							"type": "string"
 						}
@@ -5374,9 +5021,7 @@
 					"enhancementTypes": {
 						"type": "array",
 						"description": "The types of all enhancement for the Priority Alert.<br>Example: PRIORITY_ALERT_PLUS",
-						"example": [
-							"PRIORITY_ALERT_PLUS"
-						],
+						"example": ["PRIORITY_ALERT_PLUS"],
 						"items": {
 							"type": "string"
 						}
@@ -5384,9 +5029,7 @@
 					"content": {
 						"type": "array",
 						"description": "Specifies Content for the Priority Alert Detail.",
-						"example": [
-							"string"
-						],
+						"example": ["string"],
 						"items": {
 							"type": "string"
 						}
@@ -5412,10 +5055,7 @@
 						"type": "string",
 						"description": "Specify the Alcohol Recipient Type of the shipment. <br> Example: LICENSEE ",
 						"example": "LICENSEE",
-						"enum": [
-							"LICENSEE",
-							"CONSUMER"
-						]
+						"enum": ["LICENSEE", "CONSUMER"]
 					},
 					"shipperAgreementType": {
 						"type": "string",
@@ -5426,9 +5066,7 @@
 				"description": "These are detcontentails for the package containing alcohol. This is required for alcohol special service. The alcoholRecipientType is required."
 			},
 			"DangerousGoodsDetail": {
-				"required": [
-					"accessibility"
-				],
+				"required": ["accessibility"],
 				"type": "object",
 				"properties": {
 					"cargoAircraftOnly": {
@@ -5440,18 +5078,12 @@
 						"type": "string",
 						"description": "Specify Dangerous Goods Accessibility Type. <ul><li>Inaccessible &ndash; it does not have to be accessable on the aircraft.</li><li>Accessible &ndash; it must be fully accessible on the aircraft, and is more strictly controlled.</li></ul>",
 						"example": "INACCESSIBLE",
-						"enum": [
-							"ACCESSIBLE",
-							"INACCESSIBLE"
-						]
+						"enum": ["ACCESSIBLE", "INACCESSIBLE"]
 					},
 					"options": {
 						"type": "array",
 						"description": "Indicate type of DG being reported.<br> - SMALL_QUANTITY_EXCEPTION : It is applicable for only One Piece shipment.",
-						"example": [
-							"LIMITED_QUANTITIES_COMMODITIES",
-							"ORM_D"
-						],
+						"example": ["LIMITED_QUANTITIES_COMMODITIES", "ORM_D"],
 						"items": {
 							"type": "string",
 							"xml": {
@@ -5490,25 +5122,17 @@
 					"batteryPackingType": {
 						"type": "string",
 						"description": "Describe the packing arrangement of the battery or cell with respect to other items within the same package.",
-						"enum": [
-							"CONTAINED_IN_EQUIPMENT",
-							"PACKED_WITH_EQUIPMENT"
-						]
+						"enum": ["CONTAINED_IN_EQUIPMENT", "PACKED_WITH_EQUIPMENT"]
 					},
 					"batteryRegulatoryType": {
 						"type": "string",
 						"description": "This is a regulation specific classification for the battery or the cell.",
-						"enum": [
-							"IATA_SECTION_II"
-						]
+						"enum": ["IATA_SECTION_II"]
 					},
 					"batteryMaterialType": {
 						"type": "string",
 						"description": "Indicate the material composition of the battery or cell.",
-						"enum": [
-							"LITHIUM_METAL",
-							"LITHIUM_ION"
-						]
+						"enum": ["LITHIUM_METAL", "LITHIUM_ION"]
 					}
 				}
 			},
@@ -5516,15 +5140,10 @@
 				"type": "string",
 				"description": "This is to specify whether the encoded bytecode or  the Label URL to be returned in the response.<p>Valid values:<ul><li>LABEL &ndash; Indicates request is for encoded bytecode.</li><li>URL_ONLY &ndash; Indicates label URL request.</li></ul>Note: For asynchronous shipment (More than 40 packages) request only the value LABEL is suported.</p><br><i>Note: With URL_ONLY option, the URL once created will be active for 12 hours.</i>",
 				"example": "LABEL",
-				"enum": [
-					"URL_ONLY",
-					"LABEL"
-				]
+				"enum": ["URL_ONLY", "LABEL"]
 			},
 			"ShipperAccountNumber": {
-				"required": [
-					"value"
-				],
+				"required": ["value"],
 				"type": "object",
 				"properties": {
 					"value": {
@@ -5541,19 +5160,13 @@
 				"type": "string",
 				"description": "Indicate shipment action for the Shipment. <ul><li>CONFIRM &ndash; used in case of shipment submission</li><li>TRANSFER &ndash; used in case of Email Label Shipment or Pending Shipment submission.",
 				"example": "CONFIRM",
-				"enum": [
-					"CONFIRM",
-					"TRANSFER"
-				]
+				"enum": ["CONFIRM", "TRANSFER"]
 			},
 			"AsynchronousProcessingOptionType_1": {
 				"type": "string",
 				"description": "Indicate the processing option for submitting a Single shot MPS shipment. The value indicates if the MPS to be processed synchronously or asynchronously.<br>Note: <ul><li>Default value is SYNCHRONOUS_ONLY.</li><li>Value or element is not needed when groupPackageCount is less than or equal to 40.</li><li>Must provide element with value ALLOW_ASYNCHRONOUS when groupPackageCount is greater than 40.</li></ul>",
 				"example": "ALLOW_ASYNCHRONOUS",
-				"enum": [
-					"SYNCHRONOUS_ONLY",
-					"ALLOW_ASYNCHRONOUS"
-				]
+				"enum": ["SYNCHRONOUS_ONLY", "ALLOW_ASYNCHRONOUS"]
 			},
 			"SHPCResponseVO_ShipShipment": {
 				"type": "object",
@@ -5739,10 +5352,7 @@
 						"type": "string",
 						"description": "Specifies the API alert type.",
 						"example": "NOTE",
-						"enum": [
-							"NOTE",
-							"WARNING"
-						]
+						"enum": ["NOTE", "WARNING"]
 					},
 					"message": {
 						"type": "string",
@@ -6341,20 +5951,14 @@
 				"description": "These the details on the kind and quantity of an individual hazardous commodity in a package."
 			},
 			"HazardousCommodityQuantityDetail": {
-				"required": [
-					"amount",
-					"quantityType"
-				],
+				"required": ["amount", "quantityType"],
 				"type": "object",
 				"properties": {
 					"quantityType": {
 						"type": "string",
 						"description": "Indicate the measure of units quantity to be validated.",
 						"example": "GROSS",
-						"enum": [
-							"GROSS",
-							"NET"
-						]
+						"enum": ["GROSS", "NET"]
 					},
 					"amount": {
 						"type": "number",
@@ -6401,20 +6005,14 @@
 				}
 			},
 			"HazardousCommodityQuantityDetail002": {
-				"required": [
-					"amount",
-					"quantityType"
-				],
+				"required": ["amount", "quantityType"],
 				"type": "object",
 				"properties": {
 					"quantityType": {
 						"type": "string",
 						"description": "Specifies which measure of quantity is to be validated.",
 						"example": "NET",
-						"enum": [
-							"GROSS",
-							"NET"
-						]
+						"enum": ["GROSS", "NET"]
 					},
 					"amount": {
 						"type": "number",
@@ -6436,11 +6034,7 @@
 					"labelTextOption": {
 						"type": "string",
 						"description": "Indicates the label text option.",
-						"enum": [
-							"APPEND",
-							"OVERRIDE",
-							"STANDARD"
-						]
+						"enum": ["APPEND", "OVERRIDE", "STANDARD"]
 					},
 					"customerSuppliedLabelText": {
 						"type": "string",
@@ -6451,10 +6045,7 @@
 				"description": "Indicates details of hazardous commodity option detail."
 			},
 			"HazardousCommodityDescription01": {
-				"required": [
-					"packingGroup",
-					"reportableQuantity"
-				],
+				"required": ["packingGroup", "reportableQuantity"],
 				"type": "object",
 				"properties": {
 					"sequenceNumber": {
@@ -6469,17 +6060,13 @@
 						"items": {
 							"type": "string",
 							"example": "INCLUDE_SPECIAL_PROVISIONS",
-							"enum": [
-								"INCLUDE_SPECIAL_PROVISIONS"
-							]
+							"enum": ["INCLUDE_SPECIAL_PROVISIONS"]
 						}
 					},
 					"subsidiaryClasses": {
 						"type": "array",
 						"description": "Required\n\nIndicates list of subsidiary classes<br>Example: [\"Subsidiary Classes\"]",
-						"example": [
-							"Subsidiary Classes"
-						],
+						"example": ["Subsidiary Classes"],
 						"items": {
 							"type": "string"
 						}
@@ -6522,12 +6109,7 @@
 						"type": "string",
 						"description": "Identifies DOT packing group for a hazardous commodity",
 						"example": "I",
-						"enum": [
-							"DEFAULT",
-							"I",
-							"II",
-							"III"
-						]
+						"enum": ["DEFAULT", "I", "II", "III"]
 					},
 					"properShippingName": {
 						"type": "string",
@@ -6543,9 +6125,7 @@
 				"description": "Required<br>Details of hazardous commodity description."
 			},
 			"HazardousCommodityPackingDetail01": {
-				"required": [
-					"cargoAircraftOnly"
-				],
+				"required": ["cargoAircraftOnly"],
 				"type": "object",
 				"properties": {
 					"packingInstructions": {
@@ -6578,9 +6158,7 @@
 					"subsidiaryClasses": {
 						"type": "array",
 						"description": "Specifies subsidiary Classes.<br>Example:[\"Subsidiary Classes\"]",
-						"example": [
-							"Subsidiary Classes"
-						],
+						"example": ["Subsidiary Classes"],
 						"items": {
 							"type": "string"
 						}
@@ -6623,9 +6201,7 @@
 					"attributes": {
 						"type": "array",
 						"description": "Specifies attributes.<br>Example: [\"attributes\"]",
-						"example": [
-							"attributes"
-						],
+						"example": ["attributes"],
 						"items": {
 							"type": "string"
 						}
@@ -6737,9 +6313,7 @@
 					"deliveryEligibilities": {
 						"type": "array",
 						"description": "FedEx Ground delivery features for which this shipment may be eligible.<br>Example: [\"deliveryEligibilities\"]",
-						"example": [
-							"deliveryEligibilities"
-						],
+						"example": ["deliveryEligibilities"],
 						"items": {
 							"type": "string"
 						}
@@ -6859,10 +6433,7 @@
 				}
 			},
 			"Address": {
-				"required": [
-					"countryCode",
-					"streetLines"
-				],
+				"required": ["countryCode", "streetLines"],
 				"type": "object",
 				"properties": {
 					"streetLines": {
@@ -6895,10 +6466,7 @@
 				},
 				"description": "Descriptive data for a physical location. May be used as an actual physical address (place to which one could go), or as a container of \"address parts\" which should be handled as a unit (such as a city-state-ZIP combination within the US).",
 				"example": {
-					"streetLines": [
-						"10 FedEx Parkway",
-						"Suite 302"
-					],
+					"streetLines": ["10 FedEx Parkway", "Suite 302"],
 					"city": "Beverly Hills",
 					"stateOrProvinceCode": "CA",
 					"postalCode": "38127",
@@ -7005,9 +6573,7 @@
 					"operatingOrgCodes": {
 						"type": "array",
 						"description": "FOR FEDEX INTERNAL USE ONLY. The operating org code in a service.<br>Example: [\"FXE\", \"FXE\"]",
-						"example": [
-							"FXE"
-						],
+						"example": ["FXE"],
 						"items": {
 							"type": "string"
 						}
@@ -7114,10 +6680,7 @@
 				"description": "This contains the ADR license information, which identifies the license number, the effective date and the expiration date under which the customer is allowed to ship."
 			},
 			"ShipmentDryIceDetail": {
-				"required": [
-					"packageCount",
-					"totalWeight"
-				],
+				"required": ["packageCount", "totalWeight"],
 				"type": "object",
 				"properties": {
 					"totalWeight": {
@@ -7146,9 +6709,7 @@
 					"options": {
 						"type": "array",
 						"description": "Specifies the options.<br>Example: [\"options\"]",
-						"example": [
-							"options"
-						],
+						"example": ["options"],
 						"items": {
 							"type": "string"
 						}
@@ -7587,10 +7148,7 @@
 					"requiredDocuments": {
 						"type": "array",
 						"description": "Indicates the required documents information.<br>Example: [\"COMMERCIAL_OR_PRO_FORMA_INVOICE\",\"AIR_WAYBILL\"]",
-						"example": [
-							"COMMERCIAL_OR_PRO_FORMA_INVOICE",
-							"AIR_WAYBILL"
-						],
+						"example": ["COMMERCIAL_OR_PRO_FORMA_INVOICE", "AIR_WAYBILL"],
 						"items": {
 							"type": "string"
 						}
@@ -7598,9 +7156,7 @@
 					"prohibitedDocuments": {
 						"type": "array",
 						"description": "Indicates the prohibited Documents info.<br>Example: [\"CERTIFICATE_OF_ORIGIN \"]",
-						"example": [
-							"CERTIFICATE_OF_ORIGIN"
-						],
+						"example": ["CERTIFICATE_OF_ORIGIN"],
 						"items": {
 							"type": "string"
 						}
@@ -7745,9 +7301,7 @@
 					"categories": {
 						"type": "array",
 						"description": "Indicate the shipment rule type.<br>Example: [\"categories\"]",
-						"example": [
-							"categories"
-						],
+						"example": ["categories"],
 						"items": {
 							"type": "string"
 						}
@@ -8074,10 +7628,7 @@
 				"description": "Indicates error alert when suspicious files, potential exploits and viruses found while scanning files , directories and user accounts. This includes code, message and parameter"
 			},
 			"Full_Schema_Cancel_Shipment": {
-				"required": [
-					"accountNumber",
-					"trackingNumber"
-				],
+				"required": ["accountNumber", "trackingNumber"],
 				"type": "object",
 				"properties": {
 					"accountNumber": {
@@ -8102,9 +7653,7 @@
 						"type": "string",
 						"description": "Specifies which packages in a shipment to be canceled<b>DELETE_ALL_PACKAGES</b> which will cancel all tracking numbers associated to the shipment.",
 						"example": "DELETE_ALL_PACKAGES",
-						"enum": [
-							"DELETE_ALL_PACKAGES"
-						]
+						"enum": ["DELETE_ALL_PACKAGES"]
 					},
 					"trackingNumber": {
 						"type": "string",
@@ -8291,10 +7840,7 @@
 				}
 			},
 			"FullSchema-getConfirmedShipmentAsyncResults": {
-				"required": [
-					"accountNumber",
-					"jobId"
-				],
+				"required": ["accountNumber", "jobId"],
 				"type": "object",
 				"properties": {
 					"accountNumber": {
@@ -8359,9 +7905,7 @@
 				}
 			},
 			"FullSchema-VerifyShipment": {
-				"required": [
-					"requestedShipment"
-				],
+				"required": ["requestedShipment"],
 				"type": "object",
 				"properties": {
 					"requestedShipment": {
@@ -8421,10 +7965,7 @@
 						"description": "Indicate shippers details. <br>Note: Shipper address and Origin address should be the same address.",
 						"example": {
 							"address": {
-								"streetLines": [
-									"10 FedEx Parkway",
-									"Suite 302"
-								],
+								"streetLines": ["10 FedEx Parkway", "Suite 302"],
 								"city": "Beverly Hills",
 								"stateOrProvinceCode": "CA",
 								"postalCode": "90210",
@@ -8501,10 +8042,7 @@
 					"rateRequestType": {
 						"type": "array",
 						"description": "Indicate the type of rates to be returned.<br>Following are values:<ul><li>LIST - Returns published list rates will be returned in addition to account-specific rate (if applicable).</li><li>PREFERRED - It returns rates in currency as specified in the PreferredCurrency element.</li><li>ACCOUNT - Returns account specific rates. Note: The account specific rates are returned by default if the shipper account number is specified in the shipment.</li><li>INCENTIVE - This is one-time discount for incentivizing the customer.</li></ul>Examples: [\"ACCOUNT\", \"PREFERRED\"] ",
-						"example": [
-							"LIST",
-							"PREFERRED"
-						],
+						"example": ["LIST", "PREFERRED"],
 						"items": {
 							"type": "string",
 							"enum": [
@@ -8545,10 +8083,7 @@
 				"description": "Specifies the contact and address details of a location.",
 				"example": {
 					"address": {
-						"streetLines": [
-							"10 FedEx Parkway",
-							"Suite 302"
-						],
+						"streetLines": ["10 FedEx Parkway", "Suite 302"],
 						"city": "Beverly Hills",
 						"stateOrProvinceCode": "CA",
 						"postalCode": "38127",
@@ -8616,10 +8151,7 @@
 						"type": "string",
 						"description": "Indicate the shipment notification aggregation type.",
 						"example": "PER_PACKAGE",
-						"enum": [
-							"PER_PACKAGE",
-							"PER_SHIPMENT"
-						]
+						"enum": ["PER_PACKAGE", "PER_SHIPMENT"]
 					},
 					"emailNotificationRecipients": {
 						"type": "array",
@@ -8637,9 +8169,7 @@
 				"description": "These are email disposition details. Provides the type and email addresses of e-mail recipients. If returnedDispositionDetail in labelSpecification is set as true then email will be send with label and documents copy."
 			},
 			"EmailNotificationRecipient": {
-				"required": [
-					"emailNotificationRecipientType"
-				],
+				"required": ["emailNotificationRecipientType"],
 				"type": "object",
 				"properties": {
 					"name": {
@@ -8651,13 +8181,7 @@
 						"type": "string",
 						"description": "Specify the recipient type for email notification.",
 						"example": "SHIPPER",
-						"enum": [
-							"BROKER",
-							"OTHER",
-							"RECIPIENT",
-							"SHIPPER",
-							"THIRD_PARTY"
-						]
+						"enum": ["BROKER", "OTHER", "RECIPIENT", "SHIPPER", "THIRD_PARTY"]
 					},
 					"emailAddress": {
 						"type": "string",
@@ -8668,18 +8192,13 @@
 						"type": "string",
 						"description": "This is the format for the email notification. Either HTML or plain text can be provided.",
 						"example": "TEXT",
-						"enum": [
-							"HTML",
-							"TEXT"
-						]
+						"enum": ["HTML", "TEXT"]
 					},
 					"notificationType": {
 						"type": "string",
 						"description": "Indicate the type of notification that will be sent as an email.",
 						"example": "EMAIL",
-						"enum": [
-							"EMAIL"
-						]
+						"enum": ["EMAIL"]
 					},
 					"locale": {
 						"type": "string",
@@ -8689,10 +8208,7 @@
 					"notificationEventType": {
 						"type": "array",
 						"description": "Specify notification event types.<br><a onclick='loadDocReference(\"notificationeventtypes\")'>Click here for more information on Notification Event Types.</a>",
-						"example": [
-							"ON_PICKUP_DRIVER_ARRIVED",
-							"ON_SHIPMENT"
-						],
+						"example": ["ON_PICKUP_DRIVER_ARRIVED", "ON_SHIPMENT"],
 						"items": {
 							"type": "string",
 							"enum": [
@@ -8753,9 +8269,7 @@
 					"specialServiceTypes": {
 						"type": "array",
 						"description": "Indicate the Special services requested for this shipment.<br>Example: <ul><li>HOLD_AT_LOCATION</li><li>RETURN_SHIPMENT</li><li>BROKER_SELECT_OPTION</li><li>CALL_BEFORE_DELIVERY</li><li>COD</li><li>CUSTOM_DELIVERY_WINDOW</li></ul><br><a onclick='loadDocReference(\"shipmentlevelspecialservicetypes\")'>click here to see Shipment Special Service Types</a>",
-						"example": [
-							"THIRD_PARTY_CONSIGNEE"
-						],
+						"example": ["THIRD_PARTY_CONSIGNEE"],
 						"items": {
 							"type": "string"
 						}
@@ -8794,10 +8308,7 @@
 				"description": "Indicate the shipment special service or handling required for this shipment. <br>Note: <ul><li>If the shipper is requesting a special service, the special service type must be indicated in the object specialServiceTypes, and all supporting detail must be provided in the appropriate sub-object below.</li><li>For returns it is required to provide value RETURN_SHIPMENT in the specialServiceTypes.</li></ul>"
 			},
 			"Full_Schema_Create_Tag": {
-				"required": [
-					"accountNumber",
-					"requestedShipment"
-				],
+				"required": ["accountNumber", "requestedShipment"],
 				"type": "object",
 				"properties": {
 					"requestedShipment": {
@@ -8838,10 +8349,7 @@
 					{
 						"properties": {
 							"pickupDetail": {
-								"required": [
-									"latestPickupDateTime",
-									"readyPickupDateTime"
-								],
+								"required": ["latestPickupDateTime", "readyPickupDateTime"],
 								"properties": {
 									"readyPickupDateTime": {
 										"type": "string",
@@ -8922,11 +8430,7 @@
 				]
 			},
 			"CompletedTagDetail_2": {
-				"required": [
-					"confirmationNumber",
-					"dispatchDate",
-					"location"
-				],
+				"required": ["confirmationNumber", "dispatchDate", "location"],
 				"type": "object",
 				"properties": {
 					"confirmationNumber": {
@@ -8947,11 +8451,7 @@
 				}
 			},
 			"FullSchema-CancelTag": {
-				"required": [
-					"accountNumber",
-					"completedTagDetail",
-					"serviceType"
-				],
+				"required": ["accountNumber", "completedTagDetail", "serviceType"],
 				"type": "object",
 				"properties": {
 					"accountNumber": {

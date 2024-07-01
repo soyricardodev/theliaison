@@ -2,8 +2,8 @@
 
 import { cn } from "@theliaison/ui";
 import { AnimatedBeam } from "@theliaison/ui/magicui/animated-beam";
+import { CircleUserRoundIcon, HeartIcon } from "lucide-react";
 import { forwardRef, useRef } from "react";
-import { HeartIcon, CircleUserRoundIcon } from "lucide-react";
 import type React from "react";
 const Circle = forwardRef<
 	HTMLDivElement,

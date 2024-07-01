@@ -1,15 +1,15 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Button } from "@theliaison/ui/button";
 import { Input } from "@theliaison/ui/input";
 import type React from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 import { cn } from "@theliaison/ui";
-import { confirmGiftFromRecipient, validateRecipientAddress } from "./actions";
 import { usCities } from "~/lib/constants/cities";
+import { confirmGiftFromRecipient, validateRecipientAddress } from "./actions";
 
 import {
 	Form,
@@ -22,13 +22,13 @@ import {
 import {
 	Select,
 	SelectContent,
+	SelectGroup,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-  SelectGroup
 } from "@theliaison/ui/select";
-import { toast } from "sonner";
 import { redirect } from "next/navigation";
+import { toast } from "sonner";
 
 export type ShippingFormProps = React.HTMLAttributes<HTMLDivElement> & {
 	hideTitle?: boolean;
@@ -178,7 +178,9 @@ const ShippingForm = ({
 						name="address_line_1"
 						render={({ field }) => (
 							<FormItem className="w-full">
-								<FormLabel className="text-foreground">Address Line 1</FormLabel>
+								<FormLabel className="text-foreground">
+									Address Line 1
+								</FormLabel>
 								<FormControl>
 									<Input placeholder="Street 1, Lane 1" {...field} />
 								</FormControl>
@@ -191,7 +193,9 @@ const ShippingForm = ({
 						name="address_line_2"
 						render={({ field }) => (
 							<FormItem className="w-full">
-								<FormLabel className="text-foreground">Address Line 2</FormLabel>
+								<FormLabel className="text-foreground">
+									Address Line 2
+								</FormLabel>
 								<FormControl>
 									<Input placeholder="Street 1, Lane 1" {...field} />
 								</FormControl>
@@ -214,21 +218,24 @@ const ShippingForm = ({
 								>
 									<FormControl>
 										<SelectTrigger className="text-white">
-										  <SelectValue placeholder="Select your city" className="text-white"/>
+											<SelectValue
+												placeholder="Select your city"
+												className="text-white"
+											/>
 										</SelectTrigger>
 									</FormControl>
 									<SelectContent className="dark">
-                    <SelectGroup>
-										  {usCities.map((city, i) => (
-											  <SelectItem
-												  key={`${i}-${city.city}`}
-												  value={city.city}
-												  onSelect={() => form.setValue("city", city.stateCode)}
-											  >
-												  {city.city}
-											  </SelectItem>
-										  ))}
-                    </SelectGroup>
+										<SelectGroup>
+											{usCities.map((city, i) => (
+												<SelectItem
+													key={`${i}-${city.city}`}
+													value={city.city}
+													onSelect={() => form.setValue("city", city.stateCode)}
+												>
+													{city.city}
+												</SelectItem>
+											))}
+										</SelectGroup>
 									</SelectContent>
 								</Select>
 								<FormMessage />
@@ -241,7 +248,9 @@ const ShippingForm = ({
 						name="apartment"
 						render={({ field }) => (
 							<FormItem className="w-full">
-								<FormLabel className="text-foreground">Apt, suite, etc.</FormLabel>
+								<FormLabel className="text-foreground">
+									Apt, suite, etc.
+								</FormLabel>
 								<FormControl>
 									<Input placeholder="Apartment, studio, or floor" {...field} />
 								</FormControl>
@@ -257,7 +266,9 @@ const ShippingForm = ({
 						name="postal_code"
 						render={({ field }) => (
 							<FormItem className="w-full">
-								<FormLabel className="text-foreground">Postal Code/ZIP</FormLabel>
+								<FormLabel className="text-foreground">
+									Postal Code/ZIP
+								</FormLabel>
 								<FormControl>
 									<Input placeholder="90210" {...field} />
 								</FormControl>
@@ -272,7 +283,12 @@ const ShippingForm = ({
 							<FormItem className="w-full">
 								<FormLabel className="text-foreground">Country</FormLabel>
 								<FormControl>
-									<Input placeholder="United States" disabled className="text-foreground" {...field} />
+									<Input
+										placeholder="United States"
+										disabled
+										className="text-foreground"
+										{...field}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -280,7 +296,10 @@ const ShippingForm = ({
 					/>
 				</div>
 
-				<Button type="submit" className="w-full bg-white text-black hover:bg-[#DBD0C5]">
+				<Button
+					type="submit"
+					className="w-full bg-white text-black hover:bg-[#DBD0C5]"
+				>
 					Confirm
 				</Button>
 			</form>

@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@theliaison/ui/button";
 import { Badge } from "@nextui-org/react";
+import { Button } from "@theliaison/ui/button";
 import { ShoppingCartIcon } from "lucide-react";
 import { useCartStore } from "~/store/cart";
 

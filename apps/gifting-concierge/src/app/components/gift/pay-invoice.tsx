@@ -1,10 +1,10 @@
+import { Button } from "@theliaison/ui/button";
 /**
  * v0 by Vercel.
  * @see https://v0.dev/t/NLqJBYDW4jV
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
 import { Separator } from "@theliaison/ui/separator";
-import { Button } from "@theliaison/ui/button";
 
 export function PayInvoice() {
 	return (

@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { useState, useRef } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { TwitterLogoIcon } from "@radix-ui/react-icons";
 import { cn } from "@theliaison/ui";
 import { Button, buttonVariants } from "@theliaison/ui/button";
 import {
@@ -10,7 +10,6 @@ import {
 	DrawerContent,
 	DrawerTrigger,
 } from "@theliaison/ui/drawer";
-import { Particles } from "@theliaison/ui/magicui/particles";
 import {
 	Form,
 	FormControl,
@@ -19,20 +18,9 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@theliaison/ui/form";
-import { motion, useInView } from "framer-motion";
-import {
-	GiftIcon,
-	StoreIcon,
-	LinkIcon,
-	Link2Icon,
-	MailIcon,
-	TwitterIcon,
-	PhoneIcon,
-} from "lucide-react";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@theliaison/ui/input";
+import { Label } from "@theliaison/ui/label";
+import { Particles } from "@theliaison/ui/magicui/particles";
 import { RadioGroup, RadioGroupItem } from "@theliaison/ui/radio-group";
 import {
 	Select,
@@ -41,16 +29,19 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@theliaison/ui/select";
+import { motion, useInView } from "framer-motion";
 import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@theliaison/ui/card";
-import { Label } from "@theliaison/ui/label";
-import { TwitterLogoIcon } from "@radix-ui/react-icons";
+	GiftIcon,
+	Link2Icon,
+	LinkIcon,
+	MailIcon,
+	PhoneIcon,
+	StoreIcon,
+} from "lucide-react";
+import Link from "next/link";
+import { useRef, useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 export function Hero() {
 	const [isInitialDrawerState, setIsInitialDrawerState] = useState(true);

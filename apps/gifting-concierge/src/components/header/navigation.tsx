@@ -8,15 +8,15 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+import { cn } from "@theliaison/ui";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
+	DropdownMenuGroup,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-	DropdownMenuGroup,
 } from "@theliaison/ui/dropdown-menu";
 import { Separator } from "@theliaison/ui/separator";
-import { cn } from "@theliaison/ui";
 
 const menuItemsLoggedOut = [
 	{

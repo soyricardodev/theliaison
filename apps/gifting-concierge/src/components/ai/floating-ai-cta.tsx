@@ -1,10 +1,10 @@
 import { Button } from "@theliaison/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@theliaison/ui/dialog";
-import { AI } from "./chat/actions";
-import { Chat } from "./chat";
-import { nanoid } from "~/utils";
 import { createClient } from "~/supabase/server";
+import { nanoid } from "~/utils";
 import type { Session } from "~/utils/types";
+import { Chat } from "./chat";
+import { AI } from "./chat/actions";
 
 export async function FloatingAICta() {
 	const id = nanoid();

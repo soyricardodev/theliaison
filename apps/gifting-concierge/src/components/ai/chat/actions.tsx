@@ -10,13 +10,13 @@ import {
 	streamUI,
 } from "ai/rsc";
 import { revalidatePath } from "next/cache";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createClient } from "~/supabase/server";
 import { nanoid, sleep } from "~/utils";
 import type { Chat, Message } from "~/utils/types";
 import { BotCard, BotMessage, SpinnerMessage, UserMessage } from "../message";
-import Image from "next/image";
 
 export type AIState = {
 	chatId: string;
