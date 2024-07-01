@@ -113,9 +113,8 @@ export default async function Confirm({
 						title="Fast"
 						description={
 							<p>
-								Fast and <strong>secure delivery</strong>. Once you provide your
-								address, we'll take care of the rest and deliver your gift
-								promptly.
+								Once you provide your address, we'll take care of the rest and
+								deliver your gift promptly.
 							</p>
 						}
 					/>
