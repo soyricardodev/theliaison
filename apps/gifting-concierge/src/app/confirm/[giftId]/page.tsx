@@ -99,22 +99,12 @@ export default async function Confirm({
 				<div className="w-full max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
 					<InstructionCard
 						icon={<HeartHandshakeIcon className="text-secondary" />}
-						title="Secure First"
+						title="Secure"
 						description={
 							<p>
 								Rest assured, your address will only be used to deliver your
 								gift and <strong>will remain private</strong>. The sender will
 								not know your address.
-							</p>
-						}
-					/>
-					<InstructionCard
-						icon={<GiftIcon className="text-secondary" />}
-						title="Wait for the surprise"
-						description={
-							<p>
-								The gift sender wanted to keep this gift a surprise, so{" "}
-								<strong>enjoy the anticipation</strong>.
 							</p>
 						}
 					/>
@@ -126,6 +116,16 @@ export default async function Confirm({
 								Fast and <strong>secure delivery</strong>. Once you provide your
 								address, we'll take care of the rest and deliver your gift
 								promptly.
+							</p>
+						}
+					/>
+					<InstructionCard
+						icon={<GiftIcon className="text-secondary" />}
+						title="Surprise"
+						description={
+							<p>
+								The gift sender wanted to keep this gift a surprise, so{" "}
+								<strong>enjoy the anticipation</strong>.
 							</p>
 						}
 					/>
