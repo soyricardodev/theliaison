@@ -17,7 +17,7 @@ export function Header() {
 				</p>
 			</Link>
 
-			<HeaderNavigation isLoggedIn={false} />
+			<HeaderNavigation isLoggedIn={false} isDarkMode={true} />
 		</header>
 	);
 }
