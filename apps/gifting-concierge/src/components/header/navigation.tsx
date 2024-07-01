@@ -16,6 +16,7 @@ import {
 	DropdownMenuGroup,
 } from "@theliaison/ui/dropdown-menu";
 import { Separator } from "@theliaison/ui/separator";
+import { cn } from "@theliaison/ui";
 
 const menuItemsLoggedOut = [
 	{
@@ -72,12 +73,14 @@ const menuItemsLoggedIn = [
 
 interface HeaderNavigationProps {
 	isLoggedIn: boolean;
+	isDarkMode?: boolean;
 }
 
 export function HeaderNavigation(props: HeaderNavigationProps) {
 	const { isLoggedIn } = props;
 
-	if (!isLoggedIn) return <HeaderNavigationLoggedOut />;
+	if (!isLoggedIn)
+		return <HeaderNavigationLoggedOut isDarkMode={props.isDarkMode} />;
 
 	return (
 		<DropdownMenu>
@@ -103,7 +106,14 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 					</svg>
 				</button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent className="min-w-[16rem] rounded-xl bg-white z-50 overflow-hidden shadow-none">
+			<DropdownMenuContent
+				className={cn(
+					"min-w-[16rem] rounded-xl bg-white z-50 overflow-hidden shadow-none",
+					{
+						dark: props.isDarkMode,
+					},
+				)}
+			>
 				<DropdownMenuGroup className="p-2">
 					<DropdownMenuItem asChild>
 						<Link
@@ -134,13 +144,18 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 	);
 }
 
-function HeaderNavigationLoggedOut() {
+function HeaderNavigationLoggedOut({ isDarkMode }: { isDarkMode?: boolean }) {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<button
 					type="button"
-					className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 h-8 w-8 shrink-0 rounded-full border"
+					className={cn(
+						"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 h-8 w-8 shrink-0 rounded-full border dark:text-gray-400 dark:hover:bg-gray-600 dark:border-gray-600",
+						{
+							dark: isDarkMode,
+						},
+					)}
 				>
 					<svg
 						className="size-5"
@@ -159,13 +174,17 @@ function HeaderNavigationLoggedOut() {
 					</svg>
 				</button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent className="min-w-[16rem] rounded-xl bg-white z-50 overflow-hidden shadow-none">
+			<DropdownMenuContent
+				className={cn(
+					"min-w-[16rem] rounded-xl bg-white z-50 overflow-hidden shadow-none dark:bg-black dark:text-white",
+				)}
+			>
 				<DropdownMenuGroup className="p-2">
 					{menuItemsLoggedOut.map((menuLink) => (
 						<DropdownMenuItem asChild key={menuLink.key}>
 							<Link
 								href={menuLink.href}
-								className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50gap-3"
+								className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3"
 							>
 								{menuLink.Icon}
 								{menuLink.label}
