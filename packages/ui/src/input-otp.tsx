@@ -35,7 +35,9 @@ const InputOTPSlot = React.forwardRef<
 	React.ComponentPropsWithoutRef<"div"> & { index: number }
 >(({ index, className, ...props }, ref) => {
 	const inputOTPContext = React.useContext(OTPInputContext);
-	const { char, hasFakeCaret, isActive } = inputOTPContext.slots[index];
+	const context = inputOTPContext.slots[index];
+	if (!context) return null;
+	const { char, hasFakeCaret, isActive } = context;
 
 	return (
 		<div
@@ -62,7 +64,14 @@ const InputOTPSeparator = React.forwardRef<
 	React.ElementRef<"div">,
 	React.ComponentPropsWithoutRef<"div">
 >(({ ...props }, ref) => (
-	<div ref={ref} role="separator" {...props}>
+	<div
+		ref={ref}
+		role="separator"
+		aria-valuemax={100}
+		aria-valuemin={0}
+		aria-valuenow={50}
+		{...props}
+	>
 		<DashIcon />
 	</div>
 ));
