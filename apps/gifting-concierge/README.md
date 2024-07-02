@@ -39,9 +39,9 @@ Home Page:
 - [x] Nothing else on this page. Please move everything over to the “How it works” page.
 - [x] Let's change "Choose Gift" to "What would you like to send?" and then 3 options appear... (our gift shop, a unique link or a custom gift).
 - [x] Also "How it works" doesn't have to be a button.
-- [ ] remove capitaization
-- [ ] Also, I don't think this "How it works" needs to be a button. Just the words hyperlinked
-- [ ] Sure let's see it. Also, remove the ">"
+- [x] remove capitaization
+- [x] Also, I don't think this "How it works" needs to be a button. Just the words hyperlinked
+- [x] Sure let's see it. Also, remove the ">"
 Notes: Only other thing should be a chat bot bubble on the right bottom corner and the footer.
 
 Footer:
