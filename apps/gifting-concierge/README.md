@@ -12,14 +12,14 @@ Confirm Gift Tasks:
 - [x] No Capitalization
 - [x] Spectrum of color on your gifting concierge CTA
 - [ ] Dark Mode Menu
-- [ ] make this gift box a little bit bigger while making sure spacing and framing of everything still is great
-- [ ] if you hover over it, can you make text appear next to the cursor that says "Receive gift" and then hyperlink it to the form to input details.
+- [x] make this gift box a little bit bigger while making sure spacing and framing of everything still is great
+- [x] if you hover over it, can you make text appear next to the cursor that says "Receive gift" and then hyperlink it to the form to input details.
 
 
 Rotating Quotes:
-- [ ] For each quote, let's put them above the TL Gifting Concierge
-- [ ] add some spacing. Needs to be slow fade in and out every 15 sec
-- [ ] put the "- quote author" below each quote.
+- [x] For each quote, let's put them above the TL Gifting Concierge
+- [x] add some spacing. Needs to be slow fade in and out every 15 sec
+- [x] put the "- quote author" below each quote.
 
 Header:
 - [x] Let’s clean up the menu header. We don’t need the cart, AI, or get started button up there.
