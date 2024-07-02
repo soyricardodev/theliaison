@@ -176,7 +176,10 @@ function HeaderNavigationLoggedOut({ isDarkMode }: { isDarkMode?: boolean }) {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent
 				className={cn(
-					"min-w-[16rem] rounded-xl bg-white z-50 overflow-hidden shadow-none dark:bg-black dark:text-white",
+					"min-w-[16rem] rounded-xl z-50 overflow-hidden shadow-none dark:bg-black dark:text-white dark:hover:bg-zinc-600",
+					{
+						dark: isDarkMode,
+					},
 				)}
 			>
 				<DropdownMenuGroup className="p-2">
@@ -184,7 +187,7 @@ function HeaderNavigationLoggedOut({ isDarkMode }: { isDarkMode?: boolean }) {
 						<DropdownMenuItem asChild key={menuLink.key}>
 							<Link
 								href={menuLink.href}
-								className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3"
+								className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 dark:focus:bg-zinc-600 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3 dark:hover:bg-zinc-600"
 							>
 								{menuLink.Icon}
 								{menuLink.label}
@@ -197,7 +200,7 @@ function HeaderNavigationLoggedOut({ isDarkMode }: { isDarkMode?: boolean }) {
 					<DropdownMenuItem asChild>
 						<Link
 							href="/login"
-							className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3"
+							className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 dark:focus:bg-zinc-600 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3 dark:hover:bg-zinc-600"
 						>
 							<UserRoundIcon className="size-5" />
 							<span>Sign In</span>
@@ -206,7 +209,7 @@ function HeaderNavigationLoggedOut({ isDarkMode }: { isDarkMode?: boolean }) {
 					<DropdownMenuItem asChild>
 						<Link
 							href="/register"
-							className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3"
+							className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 dark:focus:bg-zinc-600 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3 dark:hover:bg-zinc-600"
 						>
 							<CircleUserRound className="size-5" />
 							<span>Sign Up</span>

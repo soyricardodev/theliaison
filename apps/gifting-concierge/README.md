@@ -11,7 +11,7 @@ Confirm Gift Tasks:
 - [x] OG Image
 - [x] No Capitalization
 - [x] Spectrum of color on your gifting concierge CTA
-- [ ] Dark Mode Menu
+- [x] Dark Mode Menu
 - [x] make this gift box a little bit bigger while making sure spacing and framing of everything still is great
 - [x] if you hover over it, can you make text appear next to the cursor that says "Receive gift" and then hyperlink it to the form to input details.
 
