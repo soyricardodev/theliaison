@@ -34,7 +34,7 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 			<Dialog open={open} onOpenChange={setOpen}>
 				<DialogTrigger asChild>
 					<Button className="bg-white text-black hover:bg-[#DBD0C5] px-6 w-full rounded-full font-semibold h-12 pl-5 pr-2 text-base">
-						Receive Gift
+						Receive gift
 						<span className="text-[#70757E]">
 							<ChevronRightIcon />
 						</span>
@@ -60,7 +60,7 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 		<Drawer open={open} onOpenChange={setOpen}>
 			<DrawerTrigger asChild>
 				<Button className="bg-white text-black hover:bg-[#DBD0C5] px-6 w-full rounded-full font-semibold h-12 pl-5 pr-2 text-base">
-					Receive Gift
+					Receive gift
 					<span className="text-[#70757E]">
 						<ChevronRightIcon />
 					</span>
