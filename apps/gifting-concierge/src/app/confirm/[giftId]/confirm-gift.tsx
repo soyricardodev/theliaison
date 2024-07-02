@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from "react";
-
 import { useMediaQuery } from "@theliaison/hooks";
 import { Button } from "@theliaison/ui/button";
 import {
@@ -24,14 +22,15 @@ import {
 } from "@theliaison/ui/drawer";
 import { ScrollArea } from "@theliaison/ui/scroll-area";
 import { ChevronRightIcon } from "lucide-react";
+import { useConfirmDialogStore } from "~/store/confirm-dialog";
 
 export function ConfirmGift({ children }: { children: React.ReactNode }) {
-	const [open, setOpen] = React.useState(false);
+	const { isOpen, setIsOpen } = useConfirmDialogStore();
 	const isDesktop = useMediaQuery("(min-width: 768px)");
 
 	if (isDesktop) {
 		return (
-			<Dialog open={open} onOpenChange={setOpen}>
+			<Dialog open={isOpen} onOpenChange={setIsOpen}>
 				<DialogTrigger asChild>
 					<Button className="bg-white text-black hover:bg-[#DBD0C5] px-6 w-full rounded-full font-semibold h-12 pl-5 pr-2 text-base">
 						Receive gift
@@ -57,7 +56,7 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 	}
 
 	return (
-		<Drawer open={open} onOpenChange={setOpen}>
+		<Drawer open={isOpen} onOpenChange={setIsOpen}>
 			<DrawerTrigger asChild>
 				<Button className="bg-white text-black hover:bg-[#DBD0C5] px-6 w-full rounded-full font-semibold h-12 pl-5 pr-2 text-base">
 					Receive gift
