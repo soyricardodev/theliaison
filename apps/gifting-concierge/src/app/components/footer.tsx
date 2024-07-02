@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 import { Link, Spacer } from "@nextui-org/react";
 import React from "react";
 
-import { WordRotate } from "@theliaison/ui/magicui/word-rotate";
+import { QuotesRotate } from "~/components/quotes-rotate";
 
 type SocialIconProps = Omit<IconProps, "icon">;
 
@@ -69,27 +69,13 @@ export function Footer() {
 	return (
 		<footer className="flex w-full flex-col">
 			<div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-center px-6 py-12 lg:px-8">
+				<div>
+					<QuotesRotate />
+				</div>
 				<div className="flex items-center justify-center">
 					<span className="text-medium font-medium">
-						<strong>TL</strong> Gifting Concierge
+						TL <strong>Gifting Concierge</strong>
 					</span>
-				</div>
-				<div>
-					<WordRotate
-						words={[
-							'"A gift consist not in what is done or given, but in the intention of the giver or doer." - Seneca',
-							'"The manner of giving is worth more than the gift." - Pierre Corneille',
-							'"Every gift which is given, even though it be small, is in reality great, if it is given with affection." - Pindar',
-							'"We make a living by what we get, but we make a life by what we give." - Winston Churchill',
-							'"No one has ever overcome poor by giving." - Anne Frank',
-							'"It is not how much we give, but how much love we put into giving." - Mother Teresa',
-							'"For it is in giving that we receive." - Francis of Assisi',
-							'"Gratitude is not only the greatest of virtues, but the parent of all others." - Cicero',
-							'"When we give cheerfully and accept gratefully, everyone is blessed." - Maya Angelou',
-							'"The meaning of life is to find your gift. The purpose of life is to give it away." - Pablo Picasso',
-						]}
-						duration={5000}
-					/>
 				</div>
 				<Spacer y={4} />
 				<div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
