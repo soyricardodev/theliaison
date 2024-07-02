@@ -6,12 +6,11 @@ import {
 	HeartHandshakeIcon,
 	ZapIcon,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
-import giftboxGIF from "~/assets/giftbox2.gif";
 import { createClient } from "~/supabase/server";
 import { ConfirmGift } from "./confirm-gift";
 import ShippingForm from "./details/shipping-form";
+import { Giftbox } from "./giftbox";
 
 export default async function Confirm({
 	params: { giftId },
@@ -46,13 +45,7 @@ export default async function Confirm({
 	return (
 		<div className="flex flex-col relative z-20">
 			<section className="w-full py-12 md:py-24 lg:py-32 h-[calc(100vh-60px)] flex flex-col items-center justify-center">
-				<Image
-					src={giftboxGIF}
-					alt="Giftbox"
-					className="mx-auto max-w-md hover:scale-105 transition-all hover:[filter:drop-shadow(0_0_8px_#f0f0f0)] w-48 md:w-64"
-					width={192}
-					height={192}
-				/>
+				<Giftbox />
 				<div className="relative mx-auto flex max-w-2xl flex-col items-center">
 					<p className="rounded-full h-[32px] [line-height:0] bg-[linear-gradient(90deg,#02fcef70,#ffb52b70_50%,#a02bfe70)] mb-10 inline-flex items-center justify-center text-[14px] animate-background-shine bg-[length:190%_100%]">
 						<span className="inline-flex items-center gap-1 whitespace-nowrap px-3 py-1 leading-none m-[1px] rounded-full w-[calc(100%-2px)] h-[calc(32px-2px)] bg-[#0b0e14] text-white">
