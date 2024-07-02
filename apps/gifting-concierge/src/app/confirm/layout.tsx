@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Header } from "./[giftId]/header";
 import { QuotesRotate } from "~/components/quotes-rotate";
+import { Header } from "./[giftId]/header";
 
 const navLinks = [
 	{
