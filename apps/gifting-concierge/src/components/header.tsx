@@ -20,7 +20,7 @@ export function Header() {
 								width={45}
 								height={45}
 							/>
-							<p className="hidden sm:inline-flex gap-0.5">
+							<p className="inline-flex gap-0.5">
 								TL <strong>Gifting Concierge</strong>
 							</p>
 						</Link>
