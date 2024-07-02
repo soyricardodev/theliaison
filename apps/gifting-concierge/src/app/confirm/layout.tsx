@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import { WordRotate } from "@theliaison/ui/magicui/word-rotate";
-import { Header } from "./[giftId]/header";
+import type { Metadata } from "next";
 import Link from "next/link";
+import { Header } from "./[giftId]/header";
 
 const navLinks = [
 	{
@@ -78,10 +78,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 						{navLinks.map((item) => (
 							<Link
 								key={item.name}
-								isExternal
 								className="text-default-500"
 								href={item.href}
-								size="sm"
 							>
 								{item.name}
 							</Link>

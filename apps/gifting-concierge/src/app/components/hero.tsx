@@ -1,10 +1,10 @@
-import Link from "next/link";
 import { cn } from "@theliaison/ui";
 import { buttonVariants } from "@theliaison/ui/button";
+import Link from "next/link";
 
 import { Particles } from "@theliaison/ui/magicui/particles";
-import { SendGiftPopover } from "./send-gift-popover";
 import { HeroTextAnimation } from "./hero-text-animation";
+import { SendGiftPopover } from "./send-gift-popover";
 
 export function Hero() {
 	return (
