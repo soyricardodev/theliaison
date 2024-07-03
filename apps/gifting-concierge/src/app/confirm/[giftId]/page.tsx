@@ -1,11 +1,6 @@
 import { cn } from "@theliaison/ui";
 import { buttonVariants } from "@theliaison/ui/button";
-import {
-	ChevronRightIcon,
-	GiftIcon,
-	HeartHandshakeIcon,
-	ZapIcon,
-} from "lucide-react";
+import { GiftIcon, HeartHandshakeIcon, ZapIcon } from "lucide-react";
 import Link from "next/link";
 import { createClient } from "~/supabase/server";
 import { ConfirmGift } from "./confirm-gift";
@@ -58,11 +53,10 @@ export default async function Confirm({
 							send you a gift!
 						</span>
 					</h1>
-					<p className="sans mb-8 mt-4 max-w-[30rem] text-center leading-7 text-base md:text-[1.125rem] md:leading-[1.5] text-default-800 font-normal">
-						Enter your address{" "}
-						<strong className="hidden sm:inline">securely</strong> to receive
-						your gift! <br />
-						<strong>The Liaison</strong> will handle the rest.
+					<p className="mb-8 mt-4 max-w-[30rem] text-left leading-7 text-base md:text-[1.125rem] md:leading-[1.5] text-default-800 font-normal">
+						<strong>Hint:</strong> <span className="italic">
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis itaque repellendus laudantium, sint iusto eius!
+						</span>
 					</p>
 					<div className="flex flex-col justify-center gap-4 w-full max-w-xl">
 						<ConfirmGift>
@@ -73,11 +67,18 @@ export default async function Confirm({
 								senderId={data.sender_id}
 							/>
 						</ConfirmGift>
+
+						<p className="mb-2 mt-5 max-w-[30rem] text-center leading-7 text-base md:text-[1.125rem] md:leading-[1.5] text-default-800 font-normal">
+							Enter your address{" "}
+							<strong className="hidden sm:inline">securely</strong> to receive
+							your gift! <br />
+							<strong>The Liaison</strong> will handle the rest.
+						</p>
 						<Link
 							href="/how-it-works"
 							className="text-white text-center hover:text-secondary transition-colors"
 						>
-							How it works
+							How it works?
 						</Link>
 					</div>
 				</div>
