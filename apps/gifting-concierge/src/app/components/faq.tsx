@@ -75,7 +75,6 @@ export function FAQs() {
 		<section className="mx-auto w-full max-w-6xl py-20 sm:px-6 sm:py-32 lg:px-8 lg:py-40">
 			<div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-6 lg:flex-row lg:items-start lg:gap-12">
 				<h2 className="px-2 text-3xl leading-7">
-					{/* <span className="font-semibold inline-block lg:hidden">FAQs</span> */}
 					<p className="bg-gradient-to-br from-black from-40% to-primary/60 bg-clip-text pt-4 text-5xl font-semibold tracking-tight text-transparent lg:inline-block text-center lg:text-left">
 						Frequently <br className="hidden lg:block" />
 						asked <br className="hidden lg:block" />
@@ -99,7 +98,7 @@ export function FAQs() {
 						<AccordionItem
 							key={item.title}
 							indicator={
-								<PlusIcon width={24} className="text-[var(--color-one)]" />
+								<PlusIcon width={24} className="text-primary" />
 							}
 							title={item.title}
 						>
