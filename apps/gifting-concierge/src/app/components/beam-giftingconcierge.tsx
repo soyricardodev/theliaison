@@ -2,7 +2,7 @@
 
 import { cn } from "@theliaison/ui";
 import { AnimatedBeam } from "@theliaison/ui/magicui/animated-beam";
-import { UserRoundIcon, HeartIcon } from "lucide-react";
+import { HeartIcon, UserRoundIcon } from "lucide-react";
 import Image from "next/image";
 import { forwardRef, useRef } from "react";
 import type React from "react";

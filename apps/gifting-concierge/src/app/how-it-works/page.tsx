@@ -1,11 +1,11 @@
-import { Header } from "~/components/header";
-import { FAQs } from "../components/faq";
-import { Footer } from "../components/footer";
-import { SimpleSendGift } from "../components/gift/simple-send-gift";
-import { BeamGiftingConcierge } from "../components/beam-giftingconcierge";
 import { cn } from "@theliaison/ui";
 import { buttonVariants } from "@theliaison/ui/button";
 import { ChevronRight } from "lucide-react";
+import { Header } from "~/components/header";
+import { BeamGiftingConcierge } from "../components/beam-giftingconcierge";
+import { FAQs } from "../components/faq";
+import { Footer } from "../components/footer";
+import { SimpleSendGift } from "../components/gift/simple-send-gift";
 
 export default function HowItWorks() {
 	return (

@@ -97,9 +97,7 @@ export function FAQs() {
 					{faqs.map((item) => (
 						<AccordionItem
 							key={item.title}
-							indicator={
-								<PlusIcon width={24} className="text-primary" />
-							}
+							indicator={<PlusIcon width={24} className="text-primary" />}
 							title={item.title}
 						>
 							{item.content}

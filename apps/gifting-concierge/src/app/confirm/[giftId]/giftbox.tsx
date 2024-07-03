@@ -2,9 +2,9 @@
 
 import { Tooltip } from "@nextui-org/react";
 import Image from "next/image";
+import { useRef, useState } from "react";
 import giftboxGIF from "~/assets/giftbox2.gif";
 import { useConfirmDialogStore } from "~/store/confirm-dialog";
-import { useState, useRef } from "react";
 
 export function Giftbox() {
 	const { isOpen, setIsOpen } = useConfirmDialogStore();
@@ -18,17 +18,22 @@ export function Giftbox() {
 
 		if (imageRef.current) {
 			const { top, height } = imageRef.current.getBoundingClientRect();
-			const offsetY = top - mousePosition.y + (height / 4);
+			const offsetY = top - mousePosition.y + height / 4;
 
 			console.log({ offsetY });
 			setOffset(offsetY);
 		}
 	};
 
-	const toggleDialog = () => setIsOpen(!isOpen)
+	const toggleDialog = () => setIsOpen(!isOpen);
 
 	return (
-		<Tooltip content="Receive gift" offset={offset} delay={1500} onClick={toggleDialog}>
+		<Tooltip
+			content="Receive gift"
+			offset={offset}
+			delay={1500}
+			onClick={toggleDialog}
+		>
 			<Image
 				ref={imageRef}
 				src={giftboxGIF}

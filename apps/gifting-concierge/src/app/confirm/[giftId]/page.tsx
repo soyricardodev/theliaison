@@ -54,8 +54,10 @@ export default async function Confirm({
 						</span>
 					</h1>
 					<p className="mb-8 mt-4 max-w-[30rem] text-left leading-7 text-base md:text-[1.125rem] md:leading-[1.5] text-default-800 font-normal">
-						<strong>Hint:</strong> <span className="italic">
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis itaque repellendus laudantium, sint iusto eius!
+						<strong>Hint:</strong>{" "}
+						<span className="italic">
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Omnis
+							itaque repellendus laudantium, sint iusto eius!
 						</span>
 					</p>
 					<div className="flex flex-col justify-center gap-4 w-full max-w-xl">

@@ -44,15 +44,17 @@ function WordRotate({
 			<AnimatePresence mode="wait">
 				<motion.p
 					key={quotes[index]}
-					className={cn(className, "dark:text-white flex flex-col gap-1 items-center justify-center text-center text-pretty w-full", {
-						dark: isDark,
-					})}
+					className={cn(
+						className,
+						"dark:text-white flex flex-col gap-1 items-center justify-center text-center text-pretty w-full",
+						{
+							dark: isDark,
+						},
+					)}
 					{...framerProps}
 				>
 					{quotes[index]} <br />
-					<span className="dark:text-white">
-						- {authors[index]}
-					</span>
+					<span className="dark:text-white">- {authors[index]}</span>
 				</motion.p>
 			</AnimatePresence>
 		</div>
