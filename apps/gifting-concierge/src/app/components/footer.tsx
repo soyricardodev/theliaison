@@ -65,6 +65,16 @@ const socialItems = [
 	},
 ];
 
+export function NewFooter() {
+	return (
+		<footer className="[font-size:.875rem] p-[28px_24px_24px] xl:p-[32px_24px]">
+			<nav aria-label="The Liaison Directory" className="lg: mx-auto flex flex-nowrap justify-between">
+
+			</nav>
+		</footer>
+	)
+}
+
 export function Footer() {
 	return (
 		<footer className="flex w-full flex-col">

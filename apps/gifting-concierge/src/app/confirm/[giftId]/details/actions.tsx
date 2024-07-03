@@ -20,8 +20,7 @@ interface ConfirmGiftFromRecipientProps {
 	email: string;
 	phone: string;
 	address_line_1: string;
-	address_line_2?: string;
-	city: string;
+	city?: string;
 	apartment?: string;
 	postal_code: string;
 	country: string;
@@ -30,11 +29,7 @@ interface ConfirmGiftFromRecipientProps {
 	sender_id: string;
 }
 export async function confirmGiftFromRecipient({
-	name,
-	email,
-	phone,
 	address_line_1,
-	address_line_2,
 	city,
 	apartment,
 	postal_code,
@@ -50,15 +45,12 @@ export async function confirmGiftFromRecipient({
 		.insert({
 			recipient_id,
 			address_line_1,
-			address_line_2,
 			city,
 			postal_code,
 			appartment: apartment,
 			country: "US",
 			is_private: true,
 		});
-
-	console.log({ updateRecipientAddress });
 
 	const tempPackageWeight = 10;
 
@@ -81,8 +73,8 @@ export async function confirmGiftFromRecipient({
 
 interface AddressValidationRequest {
 	streetLines: string[];
-	city: string;
-	stateOrProvinceCode: string;
+	city?: string;
+	stateOrProvinceCode?: string;
 	postalCode: string;
 }
 export async function validateRecipientAddress({
