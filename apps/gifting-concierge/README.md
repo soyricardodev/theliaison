@@ -14,10 +14,10 @@ Confirm Gift Tasks:
 - [x] Dark Mode Menu
 - [x] make this gift box a little bit bigger while making sure spacing and framing of everything still is great
 - [x] if you hover over it, can you make text appear next to the cursor that says "Receive gift" and then hyperlink it to the form to input details.
-- [ ] The tooltip should render above the mouse location
-- [ ] Tooltip should be bg black text white
-- [ ] How it works link like the home page
-- [ ] Page background should be a gradient of dark colors
+- [-] The tooltip should render above the mouse location
+- [x] Tooltip should be bg black text white
+- [x] How it works link like the home page
+- [x] Page background should be a gradient of dark colors
 - [ ] add more space in footer
 
 Form Recipient Address:
@@ -34,9 +34,9 @@ Rotating Quotes:
 - [x] For each quote, let's put them above the TL Gifting Concierge
 - [x] add some spacing. Needs to be slow fade in and out every 15 sec
 - [x] put the "- quote author" below each quote.
-- [ ] fade in/out for quotes instead of rotating
-- [ ] center the quotes (author)
-- [ ] same font size
+- [x] fade in/out for quotes instead of rotating
+- [x] center the quotes (author)
+- [x] same font size
 
 Header:
 - [x] Let’s clean up the menu header. We don’t need the cart, AI, or get started button up there.
