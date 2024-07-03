@@ -47,7 +47,7 @@ export const metadata: Metadata = {
 export default function Layout({ children }: { children: React.ReactNode }) {
 	return (
 		<main className="flex min-h-dvh flex-col dark bg-black">
-			<div className="relative z-20 mx-auto min-h-screen h-full w-full max-w-7xl px-6 md:px-8 lg:px-12 bg-black">
+			<div className="relative z-20 mx-auto min-h-screen h-full w-full max-w-7xl px-6 md:px-8 lg:px-12 bg-gradient-to-r from-black via-[#222] to-black">
 				<Header />
 				{children}
 				<footer className="mt-24 mb-8 max-w-screen-xl mx-auto px-6 lg:px-8 text-white">
