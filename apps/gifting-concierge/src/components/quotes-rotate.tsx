@@ -20,9 +20,9 @@ function WordRotate({
 	authors,
 	duration = 2500,
 	framerProps = {
-		initial: { opacity: 0, y: -50 },
-		animate: { opacity: 1, y: 0 },
-		exit: { opacity: 0, y: 50 },
+		initial: { opacity: 0 },
+		animate: { opacity: 1 },
+		exit: { opacity: 0 },
 		transition: { duration: 0.25, ease: "easeOut" },
 	},
 	className,
@@ -40,17 +40,17 @@ function WordRotate({
 	}, [quotes, duration]);
 
 	return (
-		<div className="overflow-hidden py-2 max-w-xl mx-auto">
+		<div className="overflow-hidden py-2 max-w-2xl mx-auto">
 			<AnimatePresence mode="wait">
 				<motion.p
 					key={quotes[index]}
-					className={cn(className, "dark:text-white", {
+					className={cn(className, "dark:text-white flex flex-col gap-1 items-center justify-center text-center text-pretty w-full", {
 						dark: isDark,
 					})}
 					{...framerProps}
 				>
 					{quotes[index]} <br />
-					<span className="text-sm text-default-800 dark:text-white">
+					<span className="dark:text-white">
 						- {authors[index]}
 					</span>
 				</motion.p>
@@ -85,7 +85,7 @@ export function QuotesRotate({ className, isDark = false }: QuotesRotateProps) {
 		<WordRotate
 			quotes={justQuotes}
 			authors={justWriters}
-			duration={15000}
+			duration={15000} // 15 seconds
 			className={cn("text-base text-default-900", className)}
 			isDark={isDark}
 		/>
