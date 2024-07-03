@@ -70,7 +70,7 @@ export default async function Confirm({
 							/>
 						</ConfirmGift>
 
-						<p className="mb-2 mt-5 max-w-[30rem] text-center leading-7 text-base md:text-[1.125rem] md:leading-[1.5] text-default-800 font-normal">
+						<p className="mb-2 mt-5 max-w-[30rem] text-center leading-7 text-base md:text-[1.125rem] md:leading-[1.5] text-default-800 font-normal mx-auto">
 							Enter your address{" "}
 							<strong className="hidden sm:inline">securely</strong> to receive
 							your gift! <br />
