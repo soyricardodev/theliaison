@@ -81,13 +81,13 @@ Gifting Concierge:
 - [ ] Send gift from custom link api
 
 How It Works Page:
-- [ ] right after of the form, put the FAQ
-- [ ] remove how it works
-- [ ] remove bento grid
+- [x] right after of the form, put the FAQ
+- [x] remove how it works
+- [x] remove bento grid
 - [ ] improve the form
-- [ ] remove everything (bento grid, the features, the how it works, the last CTA)
-- [ ] the animated beam should before the footer with the get started button
-- [ ] change plus icon in FAQ for a brand color
+- [x] remove everything (bento grid, the features, the how it works, the last CTA)
+- [x] the animated beam should before the footer with the get started button
+- [x] change plus icon in FAQ for a brand color
 
 FedEx:
 - [ ] implement Hold at Location solution
