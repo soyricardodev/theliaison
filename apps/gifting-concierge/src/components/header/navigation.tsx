@@ -2,9 +2,12 @@ import {
 	CircleHelp,
 	CircleUserRound,
 	GiftIcon,
+	HomeIcon,
 	LogOutIcon,
 	PackageIcon,
 	UserRoundIcon,
+	BadgeInfoIcon,
+	ListIcon
 } from "lucide-react";
 import Link from "next/link";
 
@@ -20,14 +23,32 @@ import { Separator } from "@theliaison/ui/separator";
 
 const menuItemsLoggedOut = [
 	{
+		key: "home",
+		label: "Home",
+		href: "/",
+		Icon: <HomeIcon className="mr-2 size-5 text-foreground" />,
+	},
+	{
+		key: "about",
+		label: "About",
+		href: "/about",
+		Icon: <BadgeInfoIcon className="mr-2 size-5 text-foreground" />,
+	},
+	{
+		key: "services",
+		label: "Services",
+		href: "/services",
+		Icon: <ListIcon className="mr-2 size-5 text-foreground" />,
+	},
+	{
 		key: "giftshop",
-		label: "Giftshop",
+		label: "Gift shop",
 		href: "/giftshop",
 		Icon: <GiftIcon className="mr-2 size-5 text-foreground" />,
 	},
 	{
 		key: "send-custom",
-		label: "Send Custom Gift",
+		label: "Send custom gift",
 		href: "/send",
 		Icon: <PackageIcon className="mr-2 size-5 text-foreground" />,
 	},
