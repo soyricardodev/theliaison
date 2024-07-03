@@ -69,8 +69,8 @@ Notes: Like they can change after 5-10 seconds or so fading in and out subtly.
 
 Header:
 - [ ] add footer links to menu header
-- [ ] space gift shop in menu header
-- [ ] lowercase Custom Gift in header
+- [x] space gift shop in menu header
+- [x] lowercase Custom Gift in header
 
 Gifting Concierge:
 - [x] Send custom gift ui
