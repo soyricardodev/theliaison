@@ -75,15 +75,9 @@ export default async function Confirm({
 						</ConfirmGift>
 						<Link
 							href="/how-it-works"
-							className={cn(
-								buttonVariants({ variant: "ghost" }),
-								"pl-5 pr-2 text-base h-12 rounded-full text-[#f1f7feb5] hover:text-[#fcfdffef] transition-colors",
-							)}
+							className="text-white text-center hover:text-secondary transition-colors"
 						>
 							How it works
-							<span className="text-[#70757E]">
-								<ChevronRightIcon />
-							</span>
 						</Link>
 					</div>
 				</div>
