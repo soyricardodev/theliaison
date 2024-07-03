@@ -21,11 +21,11 @@ Confirm Gift Tasks:
 - [ ] add more space in footer
 
 Form Recipient Address:
-- [ ] Color for inputs (rn is same as bg)
-- [ ] Replace address line 2 with appartment...
-- [ ] Make the city as a input writable
-- [ ] add a state select with US States
-- [ ] Just mark as required the FedEx required inputs (name, email, phone and Postal Code/ZIP)
+- [x] Color for inputs (rn is same as bg)
+- [x] Replace address line 2 with appartment...
+- [x] Make the city as a input writable
+- [x] add a state select with US States
+- [x] Just mark as required the FedEx required inputs (name, email, phone and Postal Code/ZIP)
 - [ ] when the user click on receive will see a non dismisable modal with terms and conditions,
 after confirmation he will be requested to login
 in order to receive and fill the gift address data
