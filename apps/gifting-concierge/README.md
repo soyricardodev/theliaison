@@ -1,4 +1,4 @@
-Tasks (Last updated: July 1/2024):
+Tasks (Last updated: July 3/2024):
 
 Confirm Gift Tasks:
 - [x] put the gif up top as the first thing people see.
@@ -14,12 +14,29 @@ Confirm Gift Tasks:
 - [x] Dark Mode Menu
 - [x] make this gift box a little bit bigger while making sure spacing and framing of everything still is great
 - [x] if you hover over it, can you make text appear next to the cursor that says "Receive gift" and then hyperlink it to the form to input details.
+- [ ] The tooltip should render above the mouse location
+- [ ] Tooltip should be bg black text white
+- [ ] How it works link like the home page
+- [ ] Page background should be a gradient of dark colors
+- [ ] add more space in footer
 
+Form Recipient Address:
+- [ ] Color for inputs (rn is same as bg)
+- [ ] Replace address line 2 with appartment...
+- [ ] Make the city as a input writable
+- [ ] add a state select with US States
+- [ ] Just mark as required the FedEx required inputs (name, email, phone and Postal Code/ZIP)
+- [ ] when the user click on receive will see a non dismisable modal with terms and conditions,
+after confirmation he will be requested to login
+in order to receive and fill the gift address data
 
 Rotating Quotes:
 - [x] For each quote, let's put them above the TL Gifting Concierge
 - [x] add some spacing. Needs to be slow fade in and out every 15 sec
 - [x] put the "- quote author" below each quote.
+- [ ] fade in/out for quotes instead of rotating
+- [ ] center the quotes (author)
+- [ ] same font size
 
 Header:
 - [x] Let’s clean up the menu header. We don’t need the cart, AI, or get started button up there.
@@ -47,8 +64,13 @@ Notes: Only other thing should be a chat bot bubble on the right bottom corner a
 Footer:
 - [x] put some on rotation or on different pages at the bottom of each page.
 (Docs)[https://docs.google.com/document/d/1E9wbSQpK_ZvKMGJZokJBJuvEx12kzk2TIFQm8Ze5pLg/edit?usp=sharing]
+- [ ] footer like Vercel
 Notes: Like they can change after 5-10 seconds or so fading in and out subtly.
 
+Header:
+- [ ] add footer links to menu header
+- [ ] space gift shop in menu header
+- [ ] lowercase Custom Gift in header
 
 Gifting Concierge:
 - [x] Send custom gift ui
@@ -57,3 +79,15 @@ Gifting Concierge:
 - [ ] Server side validation
 - [ ] Send custom gift api
 - [ ] Send gift from custom link api
+
+How It Works Page:
+- [ ] right after of the form, put the FAQ
+- [ ] remove how it works
+- [ ] remove bento grid
+- [ ] improve the form
+- [ ] remove everything (bento grid, the features, the how it works, the last CTA)
+- [ ] the animated beam should before the footer with the get started button
+- [ ] change plus icon in FAQ for a brand color
+
+FedEx:
+- [ ] implement Hold at Location solution
