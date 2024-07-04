@@ -13,14 +13,17 @@
 		"./types/rate": "./src/types/rate.ts",
 		"./fetch/rate": "./src/fetch/rate.ts",
 		"./types/address-validation": "./src/types/address-validation.ts",
-		"./fetch/address-validation": "./src/fetch/address-validation.ts"
+		"./fetch/address-validation": "./src/fetch/address-validation.ts",
+		"./types/locations": "./src/types/locations.ts",
+		"./fetch/locations": "./src/fetch/locations.ts"
 	},
 	"scripts": {
 		"gen:ship": "openapi-typescript ./src/schemas/ship.json -o ./src/types/ship.ts",
 		"gen:track": "openapi-typescript ./src/schemas/track.json -o ./src/types/track.ts",
 		"gen:authorization": "openapi-typescript ./src/schemas/authorization.json -o ./src/types/authorization.ts",
 		"gen:rate": "openapi-typescript ./src/schemas/rate.json -o ./src/types/rate.ts",
-		"gen:address-validation": "openapi-typescript ./src/schemas/address-validation.json -o ./src/types/address-validation.ts"
+		"gen:address-validation": "openapi-typescript ./src/schemas/address-validation.json -o ./src/types/address-validation.ts",
+		"gen:locations": "openapi-typescript ./src/schemas/locations.json -o ./src/types/locations.ts"
 	},
 	"keywords": [],
 	"author": "",
