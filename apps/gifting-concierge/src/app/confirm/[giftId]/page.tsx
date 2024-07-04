@@ -75,16 +75,16 @@ export default async function Confirm({
 							your gift! <br />
 							<strong>The Liaison</strong> will handle the rest.
 						</p>
-						<Link
-							href="/how-it-works"
-							className="text-white text-center hover:text-secondary transition-colors"
-						>
-							How it works?
-						</Link>
 					</div>
 				</div>
 			</section>
-			<div className="w-full mx-auto flex items-center justify-center gap-6 my-20 py-12">
+			<div className="w-full mx-auto flex flex-col items-center justify-center gap-10 my-20 py-12">
+				<Link
+					href="/how-it-works"
+					className="text-white text-center hover:text-secondary transition-colors"
+				>
+					How it works?
+				</Link>
 				<div className="w-full max-w-screen-2xl grid grid-cols-1 md:grid-cols-3 gap-4 text-white">
 					<InstructionCard
 						icon={<HeartHandshakeIcon className="text-secondary" />}
