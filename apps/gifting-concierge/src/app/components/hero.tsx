@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { Particles } from "@theliaison/ui/magicui/particles";
 import { HeroTextAnimation } from "./hero-text-animation";
-import { SendGiftPopover } from "./send-gift-popover";
+import { SendGiftDialog } from "./send-gift-popover";
 
 export function Hero() {
 	return (
@@ -20,7 +20,7 @@ export function Hero() {
 				refresh
 			/>
 			<HeroTextAnimation>
-				<SendGiftPopover />
+				<SendGiftDialog />
 
 				<Link
 					href="/how-it-works"
