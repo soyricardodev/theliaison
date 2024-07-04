@@ -32,12 +32,15 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 		return (
 			<Dialog open={isOpen} onOpenChange={setIsOpen}>
 				<DialogTrigger asChild>
-					<Button className="bg-white text-black hover:bg-[#DBD0C5] px-6 w-full rounded-full font-semibold h-12 pl-5 pr-2 text-base">
-						Receive gift
-						<span className="text-[#70757E]">
-							<ChevronRightIcon />
-						</span>
-					</Button>
+					<div className="relative group">
+						<div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt" />
+						<Button className="bg-white hover:bg-white text-black px-6 w-full rounded-full font-semibold h-12 pl-5 pr-2 text-base relative">
+							Receive gift
+							<span className="text-[#70757E]">
+								<ChevronRightIcon />
+							</span>
+						</Button>
+					</div>
 				</DialogTrigger>
 				<DialogContent className="sm:max-w-[525px] dark">
 					<DialogHeader>
@@ -57,12 +60,15 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 	return (
 		<Drawer open={isOpen} onOpenChange={setIsOpen}>
 			<DrawerTrigger asChild>
-				<Button className="bg-white text-black hover:bg-[#DBD0C5] px-6 w-full rounded-full font-semibold h-12 pl-5 pr-2 text-base">
-					Receive gift
-					<span className="text-[#70757E]">
-						<ChevronRightIcon />
-					</span>
-				</Button>
+				<div className="relative group">
+					<div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt" />
+					<Button className="bg-white hover:bg-white text-black px-6 w-full rounded-full font-semibold h-12 pl-5 pr-2 text-base relative">
+						Receive gift
+						<span className="text-[#70757E]">
+							<ChevronRightIcon />
+						</span>
+					</Button>
+				</div>
 			</DrawerTrigger>
 			<DrawerContent className="min-h-full max-h-[80%] dark">
 				<DrawerHeader className="text-left">
