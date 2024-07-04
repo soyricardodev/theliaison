@@ -42,11 +42,10 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 				<DialogContent className="sm:max-w-[525px] dark">
 					<DialogHeader>
 						<DialogTitle className="text-foreground">
-							Get Shipping Details
+							Shipping Details
 						</DialogTitle>
 						<DialogDescription>
-							Please provide your shipping details. Click confirm when you're
-							done.
+							Please provide your shipping details.
 						</DialogDescription>
 					</DialogHeader>
 					{children}
@@ -68,11 +67,10 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 			<DrawerContent className="min-h-full max-h-[80%] dark">
 				<DrawerHeader className="text-left">
 					<DrawerTitle className="text-foreground">
-						Get Shipping Details
+						Shipping Details
 					</DrawerTitle>
 					<DrawerDescription>
-						Please provide your shipping details. Click confirm when you're
-						done.
+						Please provide your shipping details.
 					</DrawerDescription>
 				</DrawerHeader>
 				<ScrollArea className="min-h-[600px] h-[700px] w-full px-4 py-6">
