@@ -54,7 +54,7 @@ export function HeroTextAnimation({ children }: { children: React.ReactNode }) {
 			>
 				Gift effortlessly, surprise instantly.
 				<br />
-				<strong>No address needed.</strong>
+				<strong className="inline-flex animate-background-shine bg-[linear-gradient(110deg,#939393,45%,#DBD0C5,55%,#939393)] bg-[length:250%_100%] bg-clip-text text-transparent leading-tight">No address needed.</strong>
 			</motion.p>
 
 			<motion.div
