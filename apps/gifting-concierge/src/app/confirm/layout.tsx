@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "./[giftId]/header";
 import { Footer } from "../components/footer";
+import { QuotesRotate } from "~/components/quotes-rotate";
 
 export const metadata: Metadata = {
 	title: "Someone special wants to send you a gift! - The Liaison",
@@ -31,6 +32,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 				<Header />
 				{children}
 
+				<QuotesRotate isDark />
 				<Footer isDark />
 			</div>
 		</main>

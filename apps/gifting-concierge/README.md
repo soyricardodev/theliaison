@@ -18,7 +18,7 @@ Confirm Gift Tasks:
 - [x] Tooltip should be bg black text white
 - [x] How it works link like the home page
 - [x] Page background should be a gradient of dark colors
-- [ ] add more space in footer
+- [x] add more space in footer
 
 Form Recipient Address:
 - [x] Color for inputs (rn is same as bg)
@@ -70,7 +70,7 @@ Footer:
 (Docs)[https://docs.google.com/document/d/1E9wbSQpK_ZvKMGJZokJBJuvEx12kzk2TIFQm8Ze5pLg/edit?usp=sharing]
 - [x] footer like Vercel
 - [x] social order => instagram x tiktok youtube
-- [ ] add the quotes above the footer
+- [x] add the quotes above the footer
 - [x] the liaison with rights and terms and privacy should be fit
 - [x] text white for TL
 - [x] remove the liaison history

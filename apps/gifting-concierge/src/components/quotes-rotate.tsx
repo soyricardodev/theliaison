@@ -40,7 +40,7 @@ function WordRotate({
 	}, [quotes, duration]);
 
 	return (
-		<div className="overflow-hidden mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left">
+		<div className="overflow-hidden mt-6 md:max-w-screen-xl mx-auto my-8 text-center leading-relaxed text-gray-500">
 			<AnimatePresence mode="wait">
 				<motion.p
 					key={quotes[index]}
