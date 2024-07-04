@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "~/supabase/server";
 import { HeaderNavigation } from "./header/navigation";
+import { UserRoundIcon } from "lucide-react";
 
 export function Header() {
 	return (
@@ -27,6 +28,9 @@ export function Header() {
 					</div>
 
 					<div className="ml-auto flex items-center gap-2 sm:gap-4">
+						<Link href="/login" className="">
+							<UserRoundIcon className="size-5 text-gray-500 dark:text-gray-400" />
+						</Link>
 						<HeaderUser />
 					</div>
 				</div>

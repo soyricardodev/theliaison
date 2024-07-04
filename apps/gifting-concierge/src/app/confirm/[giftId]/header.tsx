@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { HeaderNavigation } from "~/components/header/navigation";
 import { createClient } from "~/supabase/server";
+import { UserRoundIcon } from "lucide-react";
 
 export async function Header() {
 	const supabase = createClient();
@@ -23,7 +24,12 @@ export async function Header() {
 				</p>
 			</Link>
 
-			<HeaderNavigation isLoggedIn={user != null} isDarkMode={true} />
+			<div className="flex items-center gap-2 sm:gap-4">
+				<Link href="/login">
+					<UserRoundIcon className="size-5 text-gray-500 dark:text-gray-400" />
+				</Link>
+				<HeaderNavigation isLoggedIn={user != null} isDarkMode={true} />
+			</div>
 		</header>
 	);
 }
