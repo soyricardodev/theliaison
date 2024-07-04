@@ -1,16 +1,21 @@
 import { Button } from "@theliaison/ui/button";
 import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from "@theliaison/ui/popover";
-import { GiftIcon, LinkIcon, StoreIcon } from "lucide-react";
+	Dialog,
+	DialogContent,
+	DialogTrigger,
+} from "@theliaison/ui/dialog";
+import {
+	GiftIcon,
+	LinkIcon,
+	StoreIcon,
+	SendHorizontalIcon,
+} from "lucide-react";
 import Link from "next/link";
 
-export function SendGiftPopover() {
+export function SendGiftDialog() {
 	return (
-		<Popover>
-			<PopoverTrigger asChild>
+		<Dialog>
+			<DialogTrigger asChild>
 				<Button
 					size="lg"
 					className="flex gap-2 items-center rounded-full h-14 text-base sm:text-lg"
@@ -18,32 +23,105 @@ export function SendGiftPopover() {
 					What would you like to send?
 					<GiftIcon className="size-5 translate-x-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
 				</Button>
-			</PopoverTrigger>
-			<PopoverContent className="w-[300px] sm:w-[400px] rounded-xl">
-				<div className="space-y-3">
-					<Link
-						href="/giftshop"
-						className="text-left flex h-12 w-full items-center gap-[15px] rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all px-4 text-[17px] font-semibold text-[#222222] focus:scale-95 focus-visible:shadow-focus-ring-button active:scale-95 md:font-medium"
-					>
-						<StoreIcon />
-						Our gift shop
-					</Link>
-					<Link
-						href="/send"
-						className="text-left flex h-12 w-full items-center gap-[15px] rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all px-4 text-[17px] font-semibold text-[#222222] focus:scale-95 focus-visible:shadow-focus-ring-button active:scale-95 md:font-medium"
-					>
-						<GiftIcon />
-						Send a custom gift
-					</Link>
-					<Link
-						href="/send-by-link"
-						className="text-left flex h-12 w-full items-center gap-[15px] rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-all px-4 text-[17px] font-semibold text-[#222222] focus:scale-95 focus-visible:shadow-focus-ring-button active:scale-95 md:font-medium"
-					>
-						<LinkIcon />
-						Send a gift from a link
-					</Link>
+			</DialogTrigger>
+			<DialogContent className="rounded-md">
+				<div className="spacem-auto w-[calc(100vw - 48px)] pt-6">
+					<div className="flex flex-col items-center justify-start flex-initial gap-6">
+						<div className="flex justify-center items-center bg-default-100 rounded-lg p-[14px] h-[60px] border border-black/10">
+							<SendHorizontalIcon className="size-8 text-black/60" />
+						</div>
+
+						<div className="flex flex-col items-stretch justify-start flex-initial gap-2">
+							<p className="max-w-[340px] my-0 mx-auto leading-6 font-medium">
+								Send a gift
+							</p>
+							<p className="text-gray-900 text-sm font-normal max-w-[340px] my-0 mx-auto text-center leading-5">
+								<span className="inline-block text-balance max-w-[203px]">
+									Send a gift to someone special without the address hassle.
+								</span>
+							</p>
+						</div>
+
+						<div className="flex flex-col items-stretch justify-start flex-initial border rounded-md w-full bg-blue-400">
+							<SendGiftCard
+								icon={<StoreIcon />}
+								title="Visit our gift shop"
+								description="Gift shop description here"
+								href="/giftshop"
+								linkText="Visit"
+							/>
+
+							<SendGiftCard
+								icon={<GiftIcon />}
+								title="Send a custom gift"
+								description="Send a custom gift"
+								href="/send"
+								linkText="Send"
+							/>
+							<SendGiftCard
+								icon={<LinkIcon />}
+								title="Send a gift from a link"
+								description="Send a gift from a link"
+								href="/send-by-link"
+								linkText="Send"
+							/>
+						</div>
+
+						<div className="w-full max-w-[500px] bg-white border rounded-md flex gap-4 justify-between">
+							<div className="p-4 bg-white flex flex-col">
+								<p className="font-semibold text-sm leading-5">Need help?</p>
+								<p className="text-gray-800 font-normal text-[0.8125rem]">
+									Contact us for assistance
+								</p>
+							</div>
+							<div className="flex gap-2 items-center sm:justify-center flex-col sm:flex-row sm:mr-2">
+								<Button>Ask AI</Button>
+								<Button>Contact us</Button>
+							</div>
+						</div>
+					</div>
 				</div>
-			</PopoverContent>
-		</Popover>
+			</DialogContent>
+		</Dialog>
+	);
+}
+
+function SendGiftCard({
+	icon,
+	title,
+	description,
+	href,
+	linkText,
+}: {
+	icon: JSX.Element;
+	title: string;
+	description: string;
+	href: string;
+	linkText: string;
+}) {
+	return (
+		<div className="flex flex-row items-center justify-between gap-6 p-4 bg-white w-full border-b last:border-b-0">
+			<div className="flex items-stretch justify-start flex-initial gap-3">
+				<div className="flex items-center justify-center flex-initial p-0 gap-0 shrink-0">
+					{icon}
+				</div>
+
+				<div className="flex flex-col items-stretch justify-start flex-initial p-0 gap-0">
+					<p className="font-semibold text-sm leading-5">{title}</p>
+					<p className="text-gray-800 font-normal text-[0.8125rem]">
+						{description}
+					</p>
+				</div>
+			</div>
+
+			<div className="flex flex-col items-stretch justify-start flex-initial gap-0">
+				<Link
+					href={href}
+					className="px-[15px] h-[40px] bg-white hover:bg-default-200 transition-all border rounded-[6px] font-medium flex items-center justify-center text-sm"
+				>
+					{linkText}
+				</Link>
+			</div>
+		</div>
 	);
 }
