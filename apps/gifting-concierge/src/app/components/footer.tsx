@@ -249,7 +249,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 									</svg>
 
 									<p className="-mt-0.5 not-italic text-gray-700 dark:text-white w-full">
-										Southern California
+										Southern California{" "}
 										<span className="dark:hidden inline">🖤</span>
 										<span className="hidden dark:inline">🤍</span>
 									</p>
