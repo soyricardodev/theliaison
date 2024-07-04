@@ -69,17 +69,17 @@ Footer:
 - [x] put some on rotation or on different pages at the bottom of each page.
 (Docs)[https://docs.google.com/document/d/1E9wbSQpK_ZvKMGJZokJBJuvEx12kzk2TIFQm8Ze5pLg/edit?usp=sharing]
 - [x] footer like Vercel
-- [ ] social order => instagram x tiktok youtube
+- [x] social order => instagram x tiktok youtube
 - [ ] add the quotes above the footer
-- [ ] the liaison with rights and terms and privacy should be fit
-- [ ] text white for TL
-- [ ] remove the liaison history
-- [ ] remove the About Us in footer
-- [ ] Remove Our from Our Services
-- [ ] change from Dating Profile Review to Personal Branding
-- [ ] remove contact link
-- [ ] Remove Us from Contact Us
-- [ ] White heart in black
+- [x] the liaison with rights and terms and privacy should be fit
+- [x] text white for TL
+- [x] remove the liaison history
+- [x] remove the About Us in footer
+- [x] Remove Our from Our Services
+- [x] change from Dating Profile Review to Personal Branding
+- [x] remove contact link
+- [x] Remove Us from Contact Us
+- [x] White heart in black
 
 Header:
 - [ ] add footer links to menu header
