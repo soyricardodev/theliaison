@@ -23,7 +23,7 @@ function WordRotate({
 		initial: { opacity: 0 },
 		animate: { opacity: 1 },
 		exit: { opacity: 0 },
-		transition: { duration: 0.25, ease: "easeOut" },
+		transition: { duration: 0.80, ease: "easeOut" },
 	},
 	className,
 	isDark = false,
@@ -40,13 +40,13 @@ function WordRotate({
 	}, [quotes, duration]);
 
 	return (
-		<div className="overflow-hidden py-2 max-w-2xl mx-auto">
+		<div className="overflow-hidden mt-6 max-w-md text-center leading-relaxed text-gray-500 sm:max-w-xs sm:text-left">
 			<AnimatePresence mode="wait">
 				<motion.p
 					key={quotes[index]}
 					className={cn(
 						className,
-						"dark:text-white flex flex-col gap-1 items-center justify-center text-center text-pretty w-full",
+						"dark:text-white flex flex-col gap-1 items-center justify-center text-pretty w-full",
 						{
 							dark: isDark,
 						},
