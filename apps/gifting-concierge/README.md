@@ -95,8 +95,8 @@ Gifting Concierge:
 - [ ] Send custom gift api
 - [ ] Send gift from custom link api
 - [ ] how it works just should render on scroll
-- [ ] Shipping Details instead of Get Shipping Details
-- [ ] remove click confirm when youre done
+- [x] Shipping Details instead of Get Shipping Details
+- [x] remove click confirm when youre done
 - [ ] We need the link and details/description of the link named Specifications
 
 How It Works Page:
@@ -109,4 +109,4 @@ How It Works Page:
 - [x] change plus icon in FAQ for a brand color
 
 FedEx:
-- [ ] implement Hold at Location solution
+- [-] implement Hold at Location solution
