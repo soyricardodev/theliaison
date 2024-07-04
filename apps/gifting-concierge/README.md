@@ -59,11 +59,11 @@ Home Page:
 - [x] remove capitaization
 - [x] Also, I don't think this "How it works" needs to be a button. Just the words hyperlinked
 - [x] Sure let's see it. Also, remove the ">"
-- [ ] Send gift from a link 1, custom gift 2, and shop 3
-- [ ] add a cool shine effect for the buttons
-- [ ] Remove Ask AI
-- [ ] Change Contact Us to Chat
-- Any questions?
+- [x] Send gift from a link 1, custom gift 2, and shop 3
+- [x] add a cool shine effect for the buttons
+- [x] Remove Ask AI
+- [x] Change Contact Us to Chat
+- [x] Any questions?
 
 Footer:
 - [x] put some on rotation or on different pages at the bottom of each page.
@@ -85,7 +85,7 @@ Header:
 - [ ] add footer links to menu header
 - [x] space gift shop in menu header
 - [x] lowercase Custom Gift in header
-- [ ] add user round for quick login
+- [x] add user round for quick login
 
 Gifting Concierge:
 - [x] Send custom gift ui
@@ -94,7 +94,7 @@ Gifting Concierge:
 - [ ] Server side validation
 - [ ] Send custom gift api
 - [ ] Send gift from custom link api
-- [ ] how it works just should render on scroll
+- [x] how it works just should render on scroll
 - [x] Shipping Details instead of Get Shipping Details
 - [x] remove click confirm when youre done
 - [ ] We need the link and details/description of the link named Specifications
