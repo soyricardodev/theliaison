@@ -1,13 +1,10 @@
 "use client";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import React, { useState, useTransition } from "react";
+import React, { useState } from "react";
 import { SocialAuth } from "./social-auth";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { LoaderCircleIcon, EyeIcon, EyeOffIcon } from "lucide-react";
 import { z } from "zod";
 
 import { cn } from "@theliaison/ui";
@@ -24,6 +21,7 @@ import { Input } from "@theliaison/ui/input";
 import Link from "next/link";
 import { toast } from "sonner";
 import { signInWithEmail } from "./actions";
+import { useServerAction } from "zsa-react";
 
 const FormSchema = z.object({
 	email: z.string().email({ message: "Invalid Email Address" }),
@@ -58,9 +56,8 @@ export default function SignIn() {
 }
 
 export function SignInForm({ redirectTo }: { redirectTo: string }) {
+	const { isPending, execute } = useServerAction(signInWithEmail);
 	const [passwordReveal, setPasswordReveal] = useState(false);
-	const [isPending, startTransition] = useTransition();
-	const router = useRouter();
 
 	const form = useForm<z.infer<typeof FormSchema>>({
 		resolver: zodResolver(FormSchema),
@@ -70,18 +67,17 @@ export function SignInForm({ redirectTo }: { redirectTo: string }) {
 		},
 	});
 
-	function onSubmit(data: z.infer<typeof FormSchema>) {
+	async function onSubmit(values: z.infer<typeof FormSchema>) {
 		if (!isPending) {
-			startTransition(async () => {
-				const error = await signInWithEmail({
-					email: data.email,
-					password: data.password,
-					redirectTo,
-				});
-				if (error != null) {
-					toast.error(error);
-				}
+			const [_data, error] = await execute({
+				email: values.email,
+				password: values.password,
+				redirectTo,
 			});
+
+			if (error != null) {
+				toast.error(error.message);
+			}
 		}
 	}
 
@@ -114,35 +110,32 @@ export function SignInForm({ redirectTo }: { redirectTo: string }) {
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel className="text-sm font-semibold">Password</FormLabel>
-							<FormControl>
-								<div className=" relative">
+							<div className="relative">
+								<FormControl>
 									<Input
 										className="h-8"
 										type={passwordReveal ? "text" : "password"}
 										{...field}
 									/>
-									<button
-										className="absolute right-2 top-[30%] cursor-pointer group"
-										onClick={() => setPasswordReveal(!passwordReveal)}
-										type="button"
-									>
-										{passwordReveal ? (
-											<FaRegEye className=" group-hover:scale-105 transition-all" />
-										) : (
-											<FaRegEyeSlash className=" group-hover:scale-105 transition-all" />
-										)}
-									</button>
-								</div>
-							</FormControl>
+								</FormControl>
+								<button
+									className="absolute right-2 top-[30%] cursor-pointer group"
+									onClick={() => setPasswordReveal(!passwordReveal)}
+									type="button"
+								>
+									{passwordReveal ? (
+										<EyeIcon className=" group-hover:scale-105 transition-all" />
+									) : (
+										<EyeOffIcon className=" group-hover:scale-105 transition-all" />
+									)}
+								</button>
+							</div>
 							<FormMessage className="text-red-500" />
 						</FormItem>
 					)}
 				/>
-				<Button
-					type="submit"
-					className="w-full h-8 bg-indigo-500 hover:bg-indigo-600 transition-all text-white flex items-center gap-2"
-				>
-					<AiOutlineLoading3Quarters
+				<Button type="submit" className="w-full h-8 flex items-center gap-2">
+					<LoaderCircleIcon
 						className={cn(!isPending ? "hidden" : "block animate-spin")}
 					/>
 					Continue
