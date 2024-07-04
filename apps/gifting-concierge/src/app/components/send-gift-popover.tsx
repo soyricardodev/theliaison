@@ -1,9 +1,5 @@
 import { Button } from "@theliaison/ui/button";
-import {
-	Dialog,
-	DialogContent,
-	DialogTrigger,
-} from "@theliaison/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@theliaison/ui/dialog";
 import {
 	GiftIcon,
 	LinkIcon,
@@ -16,13 +12,16 @@ export function SendGiftDialog() {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button
-					size="lg"
-					className="flex gap-2 items-center rounded-full h-14 text-base sm:text-lg"
-				>
-					What would you like to send?
-					<GiftIcon className="size-5 translate-x-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
-				</Button>
+				<div className="relative group">
+					<div className="absolute -inset-0.5 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt" />
+					<Button
+						size="lg"
+						className="relative flex gap-2 items-center h-14 text-base sm:text-lg bg-black hover:bg-black/90 transition-colors w-full mx-auto"
+					>
+						What would you like to send?
+						<GiftIcon className="size-5 translate-x-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
+					</Button>
+				</div>
 			</DialogTrigger>
 			<DialogContent className="rounded-md">
 				<div className="spacem-auto w-[calc(100vw - 48px)] pt-6">
@@ -42,15 +41,14 @@ export function SendGiftDialog() {
 							</p>
 						</div>
 
-						<div className="flex flex-col items-stretch justify-start flex-initial border rounded-md w-full bg-blue-400">
+						<div className="flex flex-col items-stretch justify-start flex-initial border rounded-md w-full">
 							<SendGiftCard
-								icon={<StoreIcon />}
-								title="Visit our gift shop"
-								description="Gift shop description here"
-								href="/giftshop"
-								linkText="Visit"
+								icon={<LinkIcon />}
+								title="Send a gift from a link"
+								description="Send a gift from a link"
+								href="/send-by-link"
+								linkText="Send"
 							/>
-
 							<SendGiftCard
 								icon={<GiftIcon />}
 								title="Send a custom gift"
@@ -59,24 +57,23 @@ export function SendGiftDialog() {
 								linkText="Send"
 							/>
 							<SendGiftCard
-								icon={<LinkIcon />}
-								title="Send a gift from a link"
-								description="Send a gift from a link"
-								href="/send-by-link"
-								linkText="Send"
+								icon={<StoreIcon />}
+								title="Visit our gift shop"
+								description="Gift shop description here"
+								href="/giftshop"
+								linkText="Visit"
 							/>
 						</div>
 
 						<div className="w-full max-w-[500px] bg-white border rounded-md flex gap-4 justify-between">
 							<div className="p-4 bg-white flex flex-col">
-								<p className="font-semibold text-sm leading-5">Need help?</p>
+								<p className="font-semibold text-sm leading-5">Any question?</p>
 								<p className="text-gray-800 font-normal text-[0.8125rem]">
 									Contact us for assistance
 								</p>
 							</div>
 							<div className="flex gap-2 items-center sm:justify-center flex-col sm:flex-row sm:mr-2">
-								<Button>Ask AI</Button>
-								<Button>Contact us</Button>
+								<Button>Chat</Button>
 							</div>
 						</div>
 					</div>
