@@ -13,8 +13,8 @@ export default function Register() {
 		<div className="w-full mx-auto sm:w-[26rem] sm:p-5 rounded-md">
 			<div className="p-5 space-y-5">
 				<div className="text-center space-y-3">
-					<h1 className="font-bold text-xl">Create Account</h1>
-					<p className="text-sm">
+					<h1 className="font-bold text-2xl">Create Account</h1>
+					<p className="text-lg text-pretty">
 						Welcome! Please fill in the details to get started.
 					</p>
 				</div>
