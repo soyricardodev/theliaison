@@ -1,4 +1,4 @@
-Tasks (Last updated: July 3/2024):
+Tasks (Last updated: July 4/2024):
 
 Confirm Gift Tasks:
 - [x] put the gif up top as the first thing people see.
@@ -59,18 +59,33 @@ Home Page:
 - [x] remove capitaization
 - [x] Also, I don't think this "How it works" needs to be a button. Just the words hyperlinked
 - [x] Sure let's see it. Also, remove the ">"
-Notes: Only other thing should be a chat bot bubble on the right bottom corner and the footer.
+- [ ] Send gift from a link 1, custom gift 2, and shop 3
+- [ ] add a cool shine effect for the buttons
+- [ ] Remove Ask AI
+- [ ] Change Contact Us to Chat
+- Any questions?
 
 Footer:
 - [x] put some on rotation or on different pages at the bottom of each page.
 (Docs)[https://docs.google.com/document/d/1E9wbSQpK_ZvKMGJZokJBJuvEx12kzk2TIFQm8Ze5pLg/edit?usp=sharing]
 - [x] footer like Vercel
-Notes: Like they can change after 5-10 seconds or so fading in and out subtly.
+- [ ] social order => instagram x tiktok youtube
+- [ ] add the quotes above the footer
+- [ ] the liaison with rights and terms and privacy should be fit
+- [ ] text white for TL
+- [ ] remove the liaison history
+- [ ] remove the About Us in footer
+- [ ] Remove Our from Our Services
+- [ ] change from Dating Profile Review to Personal Branding
+- [ ] remove contact link
+- [ ] Remove Us from Contact Us
+- [ ] White heart in black
 
 Header:
 - [ ] add footer links to menu header
 - [x] space gift shop in menu header
 - [x] lowercase Custom Gift in header
+- [ ] add user round for quick login
 
 Gifting Concierge:
 - [x] Send custom gift ui
@@ -79,6 +94,10 @@ Gifting Concierge:
 - [ ] Server side validation
 - [ ] Send custom gift api
 - [ ] Send gift from custom link api
+- [ ] how it works just should render on scroll
+- [ ] Shipping Details instead of Get Shipping Details
+- [ ] remove click confirm when youre done
+- [ ] We need the link and details/description of the link named Specifications
 
 How It Works Page:
 - [x] right after of the form, put the FAQ
