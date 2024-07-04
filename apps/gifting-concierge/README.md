@@ -64,7 +64,7 @@ Notes: Only other thing should be a chat bot bubble on the right bottom corner a
 Footer:
 - [x] put some on rotation or on different pages at the bottom of each page.
 (Docs)[https://docs.google.com/document/d/1E9wbSQpK_ZvKMGJZokJBJuvEx12kzk2TIFQm8Ze5pLg/edit?usp=sharing]
-- [ ] footer like Vercel
+- [x] footer like Vercel
 Notes: Like they can change after 5-10 seconds or so fading in and out subtly.
 
 Header:
