@@ -236,7 +236,7 @@ const ShippingForm = ({
 									<FormControl>
 										<SelectTrigger className="text-white">
 											<SelectValue
-												placeholder="Select your city"
+												placeholder="Select your state"
 												className="text-white"
 											/>
 										</SelectTrigger>
