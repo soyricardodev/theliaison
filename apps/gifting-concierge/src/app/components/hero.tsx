@@ -26,7 +26,7 @@ export function Hero() {
 					href="/how-it-works"
 					className={cn(
 						buttonVariants({ variant: "link" }),
-						"w-fit mx-auto hover:font-semibold hover:text-primary text-base sm:text-lg transition-colors",
+						"w-fit mx-auto hover:font-semibold hover:text-primary text-base sm:text-lg transition-colors hover:no-underline",
 					)}
 				>
 					How it works
