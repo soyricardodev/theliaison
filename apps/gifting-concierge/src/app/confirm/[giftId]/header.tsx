@@ -1,8 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HeaderNavigation } from "~/components/header/navigation";
+import { createClient } from "~/supabase/server";
 
-export function Header() {
+export async function Header() {
+	const supabase = createClient();
+	const {
+		data: { user },
+	} = await supabase.auth.getUser();
+
 	return (
 		<header className="w-full mx-auto mt-4 flex items-center justify-between">
 			<Link href="/" className="flex items-center justify-center gap-2">
@@ -17,7 +23,7 @@ export function Header() {
 				</p>
 			</Link>
 
-			<HeaderNavigation isLoggedIn={false} isDarkMode={true} />
+			<HeaderNavigation isLoggedIn={user != null} isDarkMode={true} />
 		</header>
 	);
 }
