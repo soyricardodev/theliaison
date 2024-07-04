@@ -108,7 +108,9 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 			<DropdownMenuTrigger asChild>
 				<button
 					type="button"
-					className="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 h-8 w-8 shrink-0 rounded-full border"
+					className={cn("inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 h-8 w-8 shrink-0 rounded-full border dark:text-gray-400 dark:hover:bg-gray-600 dark:border-gray-600", {
+						dark: props.isDarkMode,
+					})}
 				>
 					<svg
 						className="size-5"
@@ -129,7 +131,7 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent
 				className={cn(
-					"min-w-[16rem] rounded-xl bg-white z-50 overflow-hidden shadow-none",
+					"min-w-[16rem] rounded-xl z-50 overflow-hidden shadow-none dark:bg-black dark:border-gray-600",
 					{
 						dark: props.isDarkMode,
 					},
@@ -139,7 +141,7 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 					<DropdownMenuItem asChild>
 						<Link
 							href="/profile"
-							className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3"
+							className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3 dark:focus:bg-zinc-600 dark:hover:bg-zinc-600"
 						>
 							<UserRoundIcon className="size-5" />
 							<span>Profile</span>
@@ -152,7 +154,7 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 						<DropdownMenuItem asChild key={menuLink.key}>
 							<Link
 								href={menuLink.href}
-								className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3"
+								className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3 dark:focus:bg-zinc-600 dark:hover:bg-zinc-600"
 							>
 								{menuLink.Icon}
 								{menuLink.label}
