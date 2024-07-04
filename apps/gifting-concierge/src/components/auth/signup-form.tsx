@@ -29,18 +29,23 @@ import { RiArrowDropLeftFill, RiArrowRightSFill } from "react-icons/ri";
 import { SiMinutemailer } from "react-icons/si";
 import { toast } from "sonner";
 import { z } from "zod";
-import { verifyOtp } from "./actions";
+import { verifyOtp, signUpAction } from "./actions";
+import { useServerAction } from "zsa-react";
+import { MailIcon, SendIcon, LoaderCircleIcon } from "lucide-react";
 
-const FormSchema = z
+const signUpSchema = z
 	.object({
 		email: z.string().email({ message: "Invalid Email Address" }),
-		password: z.string().min(6, { message: "Password is too short" }),
-		"confirm-pass": z.string().min(6, { message: "Password is too short" }),
+		password: z
+			.string()
+			.min(8, { message: "Password is too short (min 8 characters)" }),
+		"confirm-pass": z
+			.string()
+			.min(8, { message: "Password is too short (min 8 characters)" }),
 	})
 	.refine(
 		(data) => {
 			if (data["confirm-pass"] !== data.password) {
-				console.log("running");
 				return false;
 			}
 			return true;
@@ -49,6 +54,8 @@ const FormSchema = z
 	);
 
 export default function SignUp({ redirectTo }: { redirectTo: string }) {
+	const { isPending, execute, data, error } = useServerAction(signUpAction);
+
 	const queryString =
 		typeof window !== "undefined" ? window.location.search : "";
 	const urlParams = new URLSearchParams(queryString);
@@ -59,12 +66,11 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 	const [passwordReveal, setPasswordReveal] = useState(false);
 	const [isConfirmed, setIsConfirmed] = useState(verify === "true");
 	const [verifyStatus, setVerifyStatus] = useState<string>("");
-	const [isPending, startTransition] = useTransition();
 	const [isSendAgain, startSendAgain] = useTransition();
 	const pathname = usePathname();
 	const router = useRouter();
-	const form = useForm<z.infer<typeof FormSchema>>({
-		resolver: zodResolver(FormSchema),
+	const form = useForm<z.infer<typeof signUpSchema>>({
+		resolver: zodResolver(signUpSchema),
 		defaultValues: {
 			email: "",
 			password: "",
@@ -72,55 +78,25 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 		},
 	});
 
-	const postEmail = async ({
-		email,
-		password,
-	}: {
-		email: string;
-		password: string;
-	}) => {
-		const requestOptions = {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ email, password }),
-		};
-		// Send the POST request
-		const res = await fetch("/api/signup", requestOptions);
-		const json = await res.json();
-		return json;
-	};
-
-	const sendVerifyEmail = async (data: z.infer<typeof FormSchema>) => {
-		const json = await postEmail({
-			email: data.email,
-			password: data.password,
-		});
-		if (!json.error) {
-			router.replace(
-				`${pathname || "/"}?verify=true&email=${form.getValues("email")}`,
-			);
-			setIsConfirmed(true);
-		} else {
-			if (json.error.code) {
-				toast.error(json.error.code);
-			} else if (json.error.message) {
-				toast.error(json.error.message);
-			}
-		}
-	};
-
 	const inputOptClass = cn({
 		"border-green-500": verifyStatus === "success",
 		"border-red-500": verifyStatus === "failed",
 	});
 
-	function onSubmit(data: z.infer<typeof FormSchema>) {
+	async function onSubmit(values: z.infer<typeof signUpSchema>) {
 		if (!isPending) {
-			startTransition(async () => {
-				await sendVerifyEmail(data);
+			const [data, err] = await execute({
+				email: values.email,
+				password: values.password,
 			});
+
+			if (err) {
+				toast.error(err.message);
+				return;
+			}
+
+			router.replace(`${pathname || "/"}?verify=true&email=${values.email}`);
+			setIsConfirmed(true);
 		}
 	}
 
@@ -132,7 +108,7 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 					className={cn(
 						"space-y-3 inline-block w-full transform transition-all",
 						{
-							"-translate-x-[110%]": isConfirmed,
+							"-translate-x-[150%]": isConfirmed,
 						},
 					)}
 				>
@@ -164,26 +140,26 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 								<FormLabel className="text-sm font-semibold">
 									Password
 								</FormLabel>
-								<FormControl>
-									<div className="relative">
+								<div className="relative">
+									<FormControl className="">
 										<Input
 											className="h-8"
 											type={passwordReveal ? "text" : "password"}
 											{...field}
 										/>
-										<button
-											className="absolute right-2 top-[30%] cursor-pointer group"
-											onClick={() => setPasswordReveal(!passwordReveal)}
-											type="button"
-										>
-											{passwordReveal ? (
-												<FaRegEye className="group-hover:scale-105 transition-all" />
-											) : (
-												<FaRegEyeSlash className="group-hover:scale-105 transition-all" />
-											)}
-										</button>
-									</div>
-								</FormControl>
+									</FormControl>
+									<button
+										className="absolute right-2 top-[30%] cursor-pointer group"
+										onClick={() => setPasswordReveal(!passwordReveal)}
+										type="button"
+									>
+										{passwordReveal ? (
+											<FaRegEye className="group-hover:scale-105 transition-all" />
+										) : (
+											<FaRegEyeSlash className="group-hover:scale-105 transition-all" />
+										)}
+									</button>
+								</div>
 								<FormMessage className="text-red-500" />
 							</FormItem>
 						)}
@@ -196,26 +172,26 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 								<FormLabel className="text-sm font-semibold">
 									Confirm Password
 								</FormLabel>
-								<FormControl>
-									<div className="relative">
+								<div className="relative">
+									<FormControl>
 										<Input
 											className="h-8"
 											type={passwordReveal ? "text" : "password"}
 											{...field}
 										/>
-										<button
-											className="absolute right-2 top-[30%] cursor-pointer group"
-											onClick={() => setPasswordReveal(!passwordReveal)}
-											type="button"
-										>
-											{passwordReveal ? (
-												<FaRegEye className="group-hover:scale-105 transition-all" />
-											) : (
-												<FaRegEyeSlash className="group-hover:scale-105 transition-all" />
-											)}
-										</button>
-									</div>
-								</FormControl>
+									</FormControl>
+									<button
+										className="absolute right-2 top-[30%] cursor-pointer group"
+										onClick={() => setPasswordReveal(!passwordReveal)}
+										type="button"
+									>
+										{passwordReveal ? (
+											<FaRegEye className="group-hover:scale-105 transition-all" />
+										) : (
+											<FaRegEyeSlash className="group-hover:scale-105 transition-all" />
+										)}
+									</button>
+								</div>
 								<FormMessage className="text-red-500" />
 							</FormItem>
 						)}
@@ -234,10 +210,10 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 						<h1>
 							Already have account?{" "}
 							<Link
-								href={redirectTo ? `/signin?next=${redirectTo}` : "/signin"}
+								href={redirectTo ? `/login?next=${redirectTo}` : "/login"}
 								className="text-blue-500"
 							>
-								Signin
+								Login
 							</Link>
 						</h1>
 					</div>
@@ -251,7 +227,7 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 				)}
 			>
 				<div className="flex h-full items-center justify-center flex-col space-y-5">
-					<SiMinutemailer className=" size-8" />
+					<SendIcon className="size-8" />
 
 					<p className="text-2xl font-semibold text-center">Verify email</p>
 					<p className="text-center text-sm">
@@ -268,12 +244,12 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 						onChange={async (value) => {
 							if (value.length === 6) {
 								document.getElementById("input-otp")?.blur();
-								const res = await verifyOtp({
+								const [data] = await verifyOtp({
 									email: form.getValues("email"),
 									otp: value,
-									type: "email",
 								});
-								const { error } = JSON.parse(res);
+								if (data == null) return;
+								const { error } = JSON.parse(data);
 								if (error) {
 									setVerifyStatus("failed");
 								} else {
@@ -291,25 +267,25 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 						<InputOTPSeparator />
 						<InputOTPGroup>
 							<InputOTPSlot index={3} className={inputOptClass} />
-							<InputOTPSlot index={4} className={cn(inputOptClass)} />
-							<InputOTPSlot index={5} className={cn(inputOptClass)} />
+							<InputOTPSlot index={4} className={inputOptClass} />
+							<InputOTPSlot index={5} className={inputOptClass} />
 						</InputOTPGroup>
 					</InputOTP>
 					<div className="text-sm flex gap-2">
 						<p>Didn't work? </p>
 						<button
 							type="button"
-							className="text-blue-400 cursor-pointer hover:underline transition-all flex items-center gap-2 "
+							className="text-blue-400 cursor-pointer hover:underline transition-all flex items-center gap-2"
 							onClick={async () => {
 								if (!isSendAgain) {
 									startSendAgain(async () => {
 										if (!form.getValues("password")) {
-											const json = await postEmail({
+											const [_data, err] = await execute({
 												email: form.getValues("email"),
 												password: form.getValues("password"),
 											});
 
-											if (json.error) {
+											if (err) {
 												toast.error("Fail to resend email");
 											} else {
 												toast.success("Please check your email.");
@@ -324,20 +300,23 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 								}
 							}}
 						>
-							<AiOutlineLoading3Quarters
-								className={`${!isSendAgain ? "hidden" : "block animate-spin"}`}
+							<LoaderCircleIcon
+								className={cn({
+									hidden: !isSendAgain,
+									"block animate-spin": isSendAgain,
+								})}
 							/>
 							Send me another code.
 						</button>
 					</div>
 					<Button
 						type="submit"
-						className="w-full h-8 bg-indigo-500 hover:bg-indigo-600 transition-all text-white flex items-center gap-2"
+						className="w-full h-8 flex items-center gap-2 -pl-4"
 						onClick={async () => {
 							setIsConfirmed(false);
 						}}
 					>
-						<RiArrowDropLeftFill className=" size-5" />
+						<MailIcon className="size-5 -pl-2" />
 						Change Email
 					</Button>
 				</div>
