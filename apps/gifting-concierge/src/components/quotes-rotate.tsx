@@ -23,7 +23,7 @@ function WordRotate({
 		initial: { opacity: 0 },
 		animate: { opacity: 1 },
 		exit: { opacity: 0 },
-		transition: { duration: 0.80, ease: "easeOut" },
+		transition: { duration: 0.8, ease: "easeOut" },
 	},
 	className,
 	isDark = false,
@@ -68,7 +68,7 @@ interface QuotesRotateProps {
 
 export function QuotesRotate({ className, isDark = false }: QuotesRotateProps) {
 	const quotes = [
-		'"A gift consist not in what is done or given, but in the intention of the giver or doer." - Seneca',
+		'"A gift consists not in what is done or given, but in the intention of the giver or doer." - Seneca',
 		'"The manner of giving is worth more than the gift." - Pierre Corneille',
 		'"Every gift which is given, even though it be small, is in reality great, if it is given with affection." - Pindar',
 		'"We make a living by what we get, but we make a life by what we give." - Winston Churchill',
