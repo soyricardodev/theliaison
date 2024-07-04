@@ -24,17 +24,6 @@ export const sendGiftFromLinkAction = createServerAction()
 			});
 		}
 
-		// const accessToken = await getAccessToken(
-		// 	env.FEDEX_TEST_API_KEY,
-		// 	env.FEDEX_TEST_SECRET_KEY,
-		// );
-
-		// if (!accessToken) {
-		// 	return new ZSAError("INTERNAL_SERVER_ERROR", {
-		// 		status: 500,
-		// 	});
-		// }
-
 		const {
 			giftLink,
 			giftSpecifications,
@@ -45,23 +34,57 @@ export const sendGiftFromLinkAction = createServerAction()
 			recipientPhone,
 		} = input;
 
-		console.log({
-			giftLink,
-			giftSpecifications,
-			recipientName,
-			recipientEmail,
-			recipientSocial,
-			recipientSocialHandle,
-			recipientPhone,
-		});
+		const { data: recipientId, error: createRecipientError } = await supabase
+			.from("gift_recipients")
+			.insert({
+				knows_address: false,
+				provided_contact: true,
+				name: recipientName,
+			})
+			.select("id")
+			.single();
 
-		return {
-			giftLink,
-			giftSpecifications,
-			recipientName,
-			recipientEmail,
-			recipientSocial,
-			recipientSocialHandle,
-			recipientPhone,
-		};
+		if (createRecipientError || !recipientId) {
+			return new ZSAError("INTERNAL_SERVER_ERROR", {
+				status: 500,
+			});
+		}
+
+		const { error: recipientContactDataError } = await supabase
+			.from("gift_recipient_contacts")
+			.insert({
+				recipient_id: recipientId.id,
+				email: recipientEmail,
+				phone_number: recipientPhone,
+				social_media_handle: recipientSocialHandle,
+				social_media_platform: recipientSocial,
+			});
+
+		if (recipientContactDataError) {
+			console.log({ recipientContactDataError });
+			return new ZSAError("INTERNAL_SERVER_ERROR", {
+				status: 500,
+			});
+		}
+
+		const { data: giftId, error: saveGiftLinkError } = await supabase
+			.from("gifts")
+			.insert({
+				recipient_id: recipientId.id,
+				sender_id: user.id,
+				status: "awaiting_recipient_confirmation",
+				gift_link: giftLink,
+				gift_link_specifications: giftSpecifications,
+			})
+			.select("id")
+			.single();
+
+		if (saveGiftLinkError || !giftId) {
+			console.log({ saveGiftLinkError });
+			return new ZSAError("INTERNAL_SERVER_ERROR", {
+				status: 500,
+			});
+		}
+
+		return giftId.id;
 	});
