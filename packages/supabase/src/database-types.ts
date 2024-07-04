@@ -315,6 +315,8 @@ export type Database = {
 			gifts: {
 				Row: {
 					created_at: string;
+					gift_link: string | null;
+					gift_link_specifications: string | null;
 					id: number;
 					recipient_id: string;
 					sender_id: string;
@@ -323,6 +325,8 @@ export type Database = {
 				};
 				Insert: {
 					created_at?: string;
+					gift_link?: string | null;
+					gift_link_specifications?: string | null;
 					id?: number;
 					recipient_id: string;
 					sender_id: string;
@@ -331,6 +335,8 @@ export type Database = {
 				};
 				Update: {
 					created_at?: string;
+					gift_link?: string | null;
+					gift_link_specifications?: string | null;
 					id?: number;
 					recipient_id?: string;
 					sender_id?: string;
