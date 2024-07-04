@@ -1,5 +1,5 @@
 import { Header } from "~/components/header";
-import { SimpleSendGift } from "../components/gift/simple-send-gift";
+import { SimpleSendGift } from "../../components/gift/simple-send-gift";
 
 export default function SendPage() {
 	return (
