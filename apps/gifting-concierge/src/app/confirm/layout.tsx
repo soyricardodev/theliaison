@@ -1,26 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { QuotesRotate } from "~/components/quotes-rotate";
 import { Header } from "./[giftId]/header";
-
-const navLinks = [
-	{
-		name: "Home",
-		href: "/",
-	},
-	{
-		name: "How it works",
-		href: "/how-it-works",
-	},
-	{
-		name: "Social Polling",
-		href: "https://theliaison.vercel.app/",
-	},
-	{
-		name: "Gift Shop",
-		href: "/giftshop",
-	},
-];
+import { Footer } from "../components/footer";
 
 export const metadata: Metadata = {
 	title: "Someone special wants to send you a gift! - The Liaison",
@@ -50,32 +30,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 			<div className="relative z-20 mx-auto min-h-screen h-full w-full max-w-7xl px-6 md:px-8 lg:px-12 bg-gradient-to-r from-black via-[#222] to-black">
 				<Header />
 				{children}
-				<footer className="mt-24 mb-8 max-w-screen-xl mx-auto px-6 lg:px-8 text-white">
-					<div className="flex items-center justify-center mx-auto w-full">
-						<QuotesRotate isDark />
-					</div>
-					<div className="flex items-center justify-center">
-						<span className="text-medium font-medium">
-							TL <strong>Gifting Concierge</strong>
-						</span>
-					</div>
 
-					<div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
-						{navLinks.map((item) => (
-							<Link
-								key={item.name}
-								className="text-default-500"
-								href={item.href}
-							>
-								{item.name}
-							</Link>
-						))}
-					</div>
-
-					<p className="mt-1 text-center text-small text-default-400">
-						&copy; {new Date().getFullYear()} The Liaison. All rights reserved.
-					</p>
-				</footer>
+				<Footer isDark />
 			</div>
 		</main>
 	);
