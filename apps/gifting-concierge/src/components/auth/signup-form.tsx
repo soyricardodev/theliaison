@@ -19,6 +19,7 @@ import {
 	InputOTPSlot,
 } from "@theliaison/ui/input-otp";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
+import { LoaderCircleIcon, MailIcon, SendIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
@@ -29,9 +30,8 @@ import { RiArrowDropLeftFill, RiArrowRightSFill } from "react-icons/ri";
 import { SiMinutemailer } from "react-icons/si";
 import { toast } from "sonner";
 import { z } from "zod";
-import { verifyOtp, signUpAction } from "./actions";
 import { useServerAction } from "zsa-react";
-import { MailIcon, SendIcon, LoaderCircleIcon } from "lucide-react";
+import { signUpAction, verifyOtp } from "./actions";
 
 const signUpSchema = z
 	.object({

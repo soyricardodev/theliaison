@@ -49,7 +49,9 @@ const ShippingFormSchema = z.object({
 	city: z.string().optional(),
 	state: z.string().optional(),
 	apartment: z.string().optional(),
-	postal_code: z.string({ required_error: "Your postal code is required" }).min(5, { message: "Your postal code should be at least 5 digits" }),
+	postal_code: z
+		.string({ required_error: "Your postal code is required" })
+		.min(5, { message: "Your postal code should be at least 5 digits" }),
 	country: z.string().default("US"),
 });
 
@@ -130,7 +132,11 @@ const ShippingForm = ({
 						<FormItem>
 							<FormLabel className="text-white">Email</FormLabel>
 							<FormControl>
-								<Input placeholder="your@email.com" className="text-white" {...field} />
+								<Input
+									placeholder="your@email.com"
+									className="text-white"
+									{...field}
+								/>
 							</FormControl>
 							<FormMessage />
 						</FormItem>
@@ -145,7 +151,11 @@ const ShippingForm = ({
 							<FormItem className="w-full text-white">
 								<FormLabel className="text-foreground">Name</FormLabel>
 								<FormControl>
-									<Input placeholder="John Doe" className="w-full text-white" {...field} />
+									<Input
+										placeholder="John Doe"
+										className="w-full text-white"
+										{...field}
+									/>
 								</FormControl>
 								<FormMessage />
 							</FormItem>
@@ -206,15 +216,12 @@ const ShippingForm = ({
 				</div>
 
 				<div className="flex flex-wrap items-center gap-4 sm:flex-nowrap">
-
 					<FormField
 						control={form.control}
 						name="city"
 						render={({ field }) => (
 							<FormItem className="w-full text-white">
-								<FormLabel className="text-foreground">
-									City
-								</FormLabel>
+								<FormLabel className="text-foreground">City</FormLabel>
 								<FormControl>
 									<Input placeholder="City" {...field} />
 								</FormControl>
@@ -247,7 +254,9 @@ const ShippingForm = ({
 												<SelectItem
 													key={`${state.abbreviation}-${state.name}`}
 													value={state.abbreviation}
-													onSelect={() => form.setValue("city", state.abbreviation)}
+													onSelect={() =>
+														form.setValue("city", state.abbreviation)
+													}
 												>
 													{state.name}
 												</SelectItem>

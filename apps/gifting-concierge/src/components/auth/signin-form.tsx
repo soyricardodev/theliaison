@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import { SocialAuth } from "./social-auth";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { EyeIcon, EyeOffIcon, LoaderCircleIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { LoaderCircleIcon, EyeIcon, EyeOffIcon } from "lucide-react";
 import { z } from "zod";
 
 import { cn } from "@theliaison/ui";
@@ -20,8 +20,8 @@ import {
 import { Input } from "@theliaison/ui/input";
 import Link from "next/link";
 import { toast } from "sonner";
-import { signInWithEmail } from "./actions";
 import { useServerAction } from "zsa-react";
+import { signInWithEmail } from "./actions";
 
 const FormSchema = z.object({
 	email: z.string().email({ message: "Invalid Email Address" }),

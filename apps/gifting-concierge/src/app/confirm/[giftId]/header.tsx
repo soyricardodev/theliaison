@@ -1,8 +1,8 @@
+import { UserRoundIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { HeaderNavigation } from "~/components/header/navigation";
 import { createClient } from "~/supabase/server";
-import { UserRoundIcon } from "lucide-react";
 
 export async function Header() {
 	const supabase = createClient();

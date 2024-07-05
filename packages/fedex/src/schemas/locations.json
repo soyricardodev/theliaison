@@ -239,9 +239,7 @@
 	"components": {
 		"schemas": {
 			"Full_Schema_Find_Location": {
-				"required": [
-					"location"
-				],
+				"required": ["location"],
 				"type": "object",
 				"properties": {
 					"locationsSummaryRequestControlParameters": {
@@ -264,11 +262,7 @@
 						"type": "string",
 						"description": "Specify the criteria to be used to search for FedEx locations. Default value is ADDRESS if no value is passed.<p>Valid values: <ul><li>ADDRESS &ndash; Search by address. Location detail data is required.</li><li>GEOGRAPHIC_COORDINATES &ndash; Search by geocodes. Location geocodes are required.</li><li>PHONE_NUMBER &ndash; Search by phone number. Location Phone number is required.</li></ul></p><p><i>Note: Country code is REQUIRED when searching by any of the LocationsSearchCriterion, even PhoneNumber and GeorgraphicCoordinates.</i></p>",
 						"example": "ADDRESS",
-						"enum": [
-							"ADDRESS",
-							"GEOGRAPHIC_COORDINATES",
-							"PHONE_NUMBER"
-						]
+						"enum": ["ADDRESS", "GEOGRAPHIC_COORDINATES", "PHONE_NUMBER"]
 					},
 					"location": {
 						"description": "Based on the locationSearchCriterion value specified, the location element specifies the minimum requirement for address search like postalCode, countryCode, GeoCodes or city.Location phone number is required. Only landline number is allowed.<br><br><i>Note: Country code is REQUIRED for the search.</i>",
@@ -287,11 +281,7 @@
 						"type": "string",
 						"description": "Specify the criterion to be used to return location results when there are multiple matches.<br>Valid values: RETURN_ALL,RETURN_ERROR, RETURN_FIRST.<br><br><i>Note: The 'maxResults' value takes precedence over RETURN_ALL value.</i>",
 						"example": "RETURN_ALL",
-						"enum": [
-							"RETURN_ALL",
-							"RETURN_ERROR",
-							"RETURN_FIRST"
-						]
+						"enum": ["RETURN_ALL", "RETURN_ERROR", "RETURN_FIRST"]
 					},
 					"sort": {
 						"$ref": "#/components/schemas/Sort"
@@ -322,10 +312,7 @@
 					"locationAttrTypes": {
 						"type": "array",
 						"description": "Specify attributes to filter location types. If more than one value is specified, only those locations that have all the specified attributes will be returned.<br>Note: In order to filter for DROP_BOX location, need to add locationTypes as FEDEX_SELF_SERVICE_LOCATION",
-						"example": [
-							"ACCEPTS_CASH",
-							"PACK_AND_SHIP"
-						],
+						"example": ["ACCEPTS_CASH", "PACK_AND_SHIP"],
 						"items": {
 							"type": "string",
 							"enum": [
@@ -402,10 +389,7 @@
 						"description": "Unique code to identify the transporter.",
 						"items": {
 							"type": "string",
-							"enum": [
-								"FDXE",
-								"FDXG"
-							]
+							"enum": ["FDXE", "FDXG"]
 						}
 					},
 					"getCall": {
@@ -440,10 +424,7 @@
 					"units": {
 						"type": "string",
 						"description": "Indicates the unit of measure for the distance.",
-						"enum": [
-							"KM",
-							"MI"
-						]
+						"enum": ["KM", "MI"]
 					},
 					"value": {
 						"type": "number",
@@ -466,11 +447,7 @@
 						"items": {
 							"type": "string",
 							"example": "LOCATION_DROPOFF_TIMES",
-							"enum": [
-								"HOLIDAYS",
-								"LOCATION_DROPOFF_TIMES",
-								"TIMEZONE_OFFSET"
-							]
+							"enum": ["HOLIDAYS", "LOCATION_DROPOFF_TIMES", "TIMEZONE_OFFSET"]
 						}
 					},
 					"dropOffTimeNeeded": {
@@ -487,9 +464,7 @@
 				}
 			},
 			"Location": {
-				"required": [
-					"address"
-				],
+				"required": ["address"],
 				"type": "object",
 				"properties": {
 					"address": {
@@ -501,18 +476,13 @@
 				}
 			},
 			"Address": {
-				"required": [
-					"countryCode"
-				],
+				"required": ["countryCode"],
 				"type": "object",
 				"properties": {
 					"streetLines": {
 						"type": "array",
 						"description": "This is a combination of number, street name, etc. <br><i>Note: Streetlines more than 3 will be ignored. Empty lines should not be included.</i><br>Example: [\\\"10 FedEx Parkway\\\", \\\"Suite 302\\\"]",
-						"example": [
-							"10 FedEx Parkway",
-							"Suite 302"
-						],
+						"example": ["10 FedEx Parkway", "Suite 302"],
 						"items": {
 							"type": "string"
 						}
@@ -550,28 +520,17 @@
 					"addressClassification": {
 						"type": "string",
 						"description": "The business residential indicators.",
-						"enum": [
-							"MIXED",
-							"UNKNOWN",
-							"BUSINESS",
-							"RESIDENTIAL"
-						]
+						"enum": ["MIXED", "UNKNOWN", "BUSINESS", "RESIDENTIAL"]
 					},
 					"addressClassificationConfidence": {
 						"type": "string",
 						"description": "The confidence of business residential classification business residential indicators.",
-						"enum": [
-							"POTENTIAL",
-							"PERMANENT"
-						]
+						"enum": ["POTENTIAL", "PERMANENT"]
 					}
 				},
 				"description": "Descriptive data for a physical location. May be used as an actual physical address (place to which one could go), or as a container of \\\"address parts\\\" which should be handled as a unit (such as a city-state-ZIP combination within the US).",
 				"example": {
-					"streetLines": [
-						"10 FedEx Parkway",
-						"Suite 302"
-					],
+					"streetLines": ["10 FedEx Parkway", "Suite 302"],
 					"city": "Beverly Hills",
 					"stateOrProvinceCode": "CA",
 					"postalCode": "90210",
@@ -615,10 +574,7 @@
 						"type": "string",
 						"description": "Specify the sort order of the location search results, either ascending or descending. Defaults to ascending order.",
 						"example": "ASCENDING",
-						"enum": [
-							"ASCENDING",
-							"DESCENDING"
-						]
+						"enum": ["ASCENDING", "DESCENDING"]
 					}
 				},
 				"description": "Specifies how the location search results will be sorted in the reply."
@@ -656,10 +612,7 @@
 						"type": "string",
 						"description": "Unique code to identify the transporter.",
 						"example": "FDXE",
-						"enum": [
-							"FDXE",
-							"FDXG"
-						]
+						"enum": ["FDXE", "FDXG"]
 					},
 					"transferOfPossessionType": {
 						"type": "string",
@@ -696,10 +649,7 @@
 					"serviceType": "PRIORITY_OVERNIGHT",
 					"transferOfPossessionType": "DROPOFF",
 					"serviceCategory": "EXPRESS_PARCEL",
-					"daysOfWeek": [
-						"MON",
-						"TUE"
-					]
+					"daysOfWeek": ["MON", "TUE"]
 				}
 			},
 			"PackageAttribute": {
@@ -742,10 +692,7 @@
 						"type": "string",
 						"description": "Specify the weighing unit of the package.",
 						"example": "LB",
-						"enum": [
-							"KG",
-							"LB"
-						]
+						"enum": ["KG", "LB"]
 					},
 					"value": {
 						"type": "number",
@@ -785,10 +732,7 @@
 						"type": "string",
 						"description": "Indicate the dimensions of the package.<br> Following conditions will apply: <ul><li>Dimensions are optional but when added, then all three dimensions must be indicated.</li><li>Dimensions are required with YOUR_PACKAGING package type.</li></ul><i>Note: <ul><li>The maximum/minimum dimension values varies based on the services and the packaging types.</i> Refer <a href=\"https://www.fedex.com/en-us/service-guide.html\" target=\"_blank\">FedEx Service Guide</a> for service details related to DIM Weighting for FedEx Express and oversize conditions for FedEx Express and FedEx Ground.</li><li>Any value other than CM including blank/null will default to IN.</li></ul>",
 						"example": "CM",
-						"enum": [
-							"CM",
-							"IN"
-						]
+						"enum": ["CM", "IN"]
 					}
 				},
 				"description": "Indicate the dimensions of the package.<br> Following conditions will apply: <ul><li>Dimensions are optional but when added, then all three dimensions must be indicated.</li><li>Dimensions are required with YOUR_PACKAGING package type.</li></ul><i>Note: The maximum/minimum dimension values varies based on the services and the packaging types.</i><br>Refer <a href=\"https://www.fedex.com/en-us/service-guide.html\" target=\"_blank\">FedEx Service Guide</a> for service details related to DIM Weighting for FedEx Express and oversize conditions for FedEx Express and FedEx Ground.",
@@ -931,11 +875,7 @@
 						"type": "string",
 						"description": "Specify the criterion to be used to return location results when there are multiple matches.<br><br><i>Note: The 'maxResults' value takes precedence over RETURN_ALL value.</i>",
 						"example": "RETURN_ALL",
-						"enum": [
-							"RETURN_ALL",
-							"RETURN_ERROR",
-							"RETURN_FIRST"
-						]
+						"enum": ["RETURN_ALL", "RETURN_ERROR", "RETURN_FIRST"]
 					},
 					"sort": {
 						"$ref": "#/components/schemas/Sort"
@@ -966,10 +906,7 @@
 					"locationAttrTypes": {
 						"type": "array",
 						"description": "Indicates the attributes for the location.",
-						"example": [
-							"ACCEPTS_CASH",
-							"PACK_AND_SHIP"
-						],
+						"example": ["ACCEPTS_CASH", "PACK_AND_SHIP"],
 						"items": {
 							"type": "string",
 							"description": "Specify attributes to filter location types. If more than one value is specified, only those locations that have all the specified attributes will be returned. <br> Example: [ACCEPTS_CASH, PACK_AND_SHIP]",
@@ -1059,10 +996,7 @@
 						"description": "Unique code to identify the transporter.",
 						"items": {
 							"type": "string",
-							"enum": [
-								"FDXE",
-								"FDXG"
-							]
+							"enum": ["FDXE", "FDXG"]
 						}
 					},
 					"getCall": {
@@ -1223,10 +1157,7 @@
 					},
 					"contactAndAddress": {
 						"address": {
-							"streetLines": [
-								"1640 Union Blvd",
-								"streetLine2"
-							],
+							"streetLines": ["1640 Union Blvd", "streetLine2"],
 							"city": "Beverly Hills",
 							"postalCode": "90210",
 							"countryCode": "US",
@@ -1312,10 +1243,7 @@
 						"longitude": 3.61607
 					},
 					"locationType": "FEDEX_AUTHORIZED_SHIP_CENTER",
-					"locationAttributeTypes": [
-						"ACCEPTS_CASH",
-						"COPY_AND_PRINT_SERVICES"
-					],
+					"locationAttributeTypes": ["ACCEPTS_CASH", "COPY_AND_PRINT_SERVICES"],
 					"lockerAvailability": false,
 					"packageMaximumLimits": {
 						"weight": {
@@ -1378,10 +1306,7 @@
 				"description": "The contact and address information for a location.",
 				"example": {
 					"address": {
-						"streetLines": [
-							"streetLines",
-							"streetLines"
-						],
+						"streetLines": ["streetLines", "streetLines"],
 						"city": "Beverly Hills",
 						"stateOrProvinceCode": "CA",
 						"postalCode": "90210",
@@ -1456,10 +1381,7 @@
 				}
 			},
 			"AddressAncillaryDetail": {
-				"required": [
-					"displayName",
-					"locationInCity"
-				],
+				"required": ["displayName", "locationInCity"],
 				"type": "object",
 				"properties": {
 					"locationInCity": {
@@ -1544,11 +1466,7 @@
 					"operationalHoursType": {
 						"type": "string",
 						"description": "Indicates the type of operational hours.",
-						"enum": [
-							"CLOSED_ALL_DAY",
-							"OPEN_ALL_DAY",
-							"OPEN_BY_HOURS"
-						]
+						"enum": ["CLOSED_ALL_DAY", "OPEN_ALL_DAY", "OPEN_BY_HOURS"]
 					},
 					"operationalHours": {
 						"type": "array",
@@ -1560,11 +1478,7 @@
 					"exceptionalHoursType": {
 						"type": "string",
 						"description": "Indicates the type of exceptional hours.",
-						"enum": [
-							"CLOSED_ALL_DAY",
-							"OPEN_ALL_DAY",
-							"OPEN_BY_HOURS"
-						]
+						"enum": ["CLOSED_ALL_DAY", "OPEN_ALL_DAY", "OPEN_BY_HOURS"]
 					},
 					"exceptionalHours": {
 						"type": "array",
@@ -1656,10 +1570,7 @@
 					"alertType": {
 						"type": "string",
 						"description": "Specifies the API alert type.",
-						"enum": [
-							"NOTE",
-							"WARNING"
-						]
+						"enum": ["NOTE", "WARNING"]
 					},
 					"message": {
 						"type": "string",

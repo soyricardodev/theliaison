@@ -1,6 +1,6 @@
-import { createClient } from "~/supabase/server";
 import Image from "next/image";
 import { ProductButton } from "~/app/components/product-button";
+import { createClient } from "~/supabase/server";
 
 export async function ProductsList() {
 	const supabase = createClient();

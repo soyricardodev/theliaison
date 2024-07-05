@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Header } from "./[giftId]/header";
-import { Footer } from "../components/footer";
 import { QuotesRotate } from "~/components/quotes-rotate";
+import { Footer } from "../components/footer";
+import { Header } from "./[giftId]/header";
 
 export const metadata: Metadata = {
 	title: "Someone special wants to send you a gift! - The Liaison",

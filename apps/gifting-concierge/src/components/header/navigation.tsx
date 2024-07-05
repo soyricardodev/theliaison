@@ -1,13 +1,13 @@
 import {
+	BadgeInfoIcon,
 	CircleHelp,
 	CircleUserRound,
 	GiftIcon,
 	HomeIcon,
+	ListIcon,
 	LogOutIcon,
 	PackageIcon,
 	UserRoundIcon,
-	BadgeInfoIcon,
-	ListIcon
 } from "lucide-react";
 import Link from "next/link";
 
@@ -108,9 +108,12 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 			<DropdownMenuTrigger asChild>
 				<button
 					type="button"
-					className={cn("inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 h-8 w-8 shrink-0 rounded-full border dark:text-gray-400 dark:hover:bg-gray-600 dark:border-gray-600", {
-						dark: props.isDarkMode,
-					})}
+					className={cn(
+						"inline-flex items-center justify-center whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 h-8 w-8 shrink-0 rounded-full border dark:text-gray-400 dark:hover:bg-gray-600 dark:border-gray-600",
+						{
+							dark: props.isDarkMode,
+						},
+					)}
 				>
 					<svg
 						className="size-5"

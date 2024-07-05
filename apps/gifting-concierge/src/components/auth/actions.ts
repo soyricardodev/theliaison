@@ -4,12 +4,12 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "~/supabase/server";
 
-import { createServerAction } from "zsa";
-import { z } from "zod";
-import supabaseAdmin from "~/supabase/admin";
 import { Resend } from "resend";
-import { env } from "~/env";
+import { z } from "zod";
+import { createServerAction } from "zsa";
 import SupaAuthVerifyEmail from "~/emails";
+import { env } from "~/env";
+import supabaseAdmin from "~/supabase/admin";
 
 export const verifyOtp = createServerAction()
 	.input(
@@ -63,7 +63,7 @@ export const signUpAction = createServerAction()
 		z.object({
 			email: z.string().email({ message: "Invalid email address" }),
 			password: z.string().min(6, { message: "Invalid password" }),
-		})
+		}),
 	)
 	.handler(async ({ input }) => {
 		const supabase = supabaseAdmin();

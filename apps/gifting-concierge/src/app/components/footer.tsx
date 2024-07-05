@@ -1,11 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import type { IconProps } from "@iconify/react";
+import Link from "next/link";
 
 import React from "react";
 
-import { QuotesRotate } from "~/components/quotes-rotate";
 import { cn } from "@theliaison/ui";
 
 type SocialIconProps = Omit<IconProps, "icon">;

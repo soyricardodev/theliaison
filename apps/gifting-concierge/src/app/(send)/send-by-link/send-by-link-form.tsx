@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@theliaison/ui/button";
 import {
 	Form,
@@ -10,6 +10,8 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@theliaison/ui/form";
+import { Input } from "@theliaison/ui/input";
+import { Label } from "@theliaison/ui/label";
 import { RadioGroup, RadioGroupItem } from "@theliaison/ui/radio-group";
 import {
 	Select,
@@ -18,16 +20,14 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@theliaison/ui/select";
-import { Label } from "@theliaison/ui/label";
-import { Input } from "@theliaison/ui/input";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { GiftIcon, LinkIcon, MailIcon, PhoneIcon } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import type { z } from "zod";
 import { useServerAction } from "zsa-react";
-import { sendGiftFromLinkAction } from "./actions";
 import { sendByLinkSchema } from "../validators";
-import { GiftIcon, LinkIcon, MailIcon, PhoneIcon } from "lucide-react";
-import { toast } from "sonner";
+import { sendGiftFromLinkAction } from "./actions";
 
 export function SendByLinkForm() {
 	const { isPending, execute, data, error } = useServerAction(

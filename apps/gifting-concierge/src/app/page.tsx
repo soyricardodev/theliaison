@@ -1,7 +1,7 @@
 import { Header } from "~/components/header";
+import { QuotesRotate } from "~/components/quotes-rotate";
 import { Footer } from "./components/footer";
 import { Hero } from "./components/hero";
-import { QuotesRotate } from "~/components/quotes-rotate";
 
 export default function Home() {
 	return (

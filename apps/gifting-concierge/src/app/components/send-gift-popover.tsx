@@ -3,8 +3,8 @@ import { Dialog, DialogContent, DialogTrigger } from "@theliaison/ui/dialog";
 import {
 	GiftIcon,
 	LinkIcon,
-	StoreIcon,
 	SendHorizontalIcon,
+	StoreIcon,
 } from "lucide-react";
 import Link from "next/link";
 
