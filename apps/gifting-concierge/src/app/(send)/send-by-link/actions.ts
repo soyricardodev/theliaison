@@ -7,6 +7,7 @@ import { client as fedexClientLocations } from "@theliaison/fedex/fetch/location
 import { getAccessToken } from "@theliaison/fedex/fetch/authorization";
 import { env } from "~/env";
 import { sendByLinkSchema } from "../validators";
+import { redirect } from "next/navigation";
 
 export const sendGiftFromLinkAction = createServerAction()
 	.input(sendByLinkSchema)
@@ -86,5 +87,5 @@ export const sendGiftFromLinkAction = createServerAction()
 			});
 		}
 
-		return giftId.id;
+		redirect(`/sebd-by-link/${giftId.id}`);
 	});
