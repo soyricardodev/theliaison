@@ -81,7 +81,7 @@ export default function Component() {
 						return error;
 					},
 					success: () => {
-						return "OK";
+						return "Order placed successfully";
 					},
 				},
 			);
