@@ -23,43 +23,6 @@ export const sectionItems: SidebarItem[] = [
 				icon: "solar:checklist-minimalistic-outline",
 				title: "Gifting Concierge",
 			},
-			{
-				key: "team",
-				href: "/dashboard/team",
-				icon: "solar:users-group-two-rounded-outline",
-				title: "Team",
-			},
-			{
-				key: "tracker",
-				href: "/dashboard/tracker",
-				icon: "solar:sort-by-time-linear",
-				title: "Tracker",
-			},
-		],
-	},
-	{
-		key: "organization",
-		title: "Organization",
-		items: [
-			{
-				key: "cap_table",
-				href: "/dashboard/cap-table",
-				title: "Cap Table",
-				icon: "solar:pie-chart-2-outline",
-			},
-			{
-				key: "analytics",
-				href: "/dashboard/analytics",
-				icon: "solar:chart-outline",
-				title: "Analytics",
-			},
-
-			{
-				key: "settings",
-				href: "/dashboard/settings",
-				icon: "solar:settings-outline",
-				title: "Settings",
-			},
 		],
 	},
 ];
