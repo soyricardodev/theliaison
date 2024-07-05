@@ -1,8 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 "use server";
 
 import { redirect } from "next/navigation";
 import { createClient } from "~/supabase/server";
+import { ZSAError, createServerAction } from "zsa";
+import { z } from "zod";
 
 interface InsertGift {
 	recipient_name: string;
@@ -16,6 +17,82 @@ interface InsertGift {
 	}[];
 	knows_address: boolean;
 }
+
+const insertGiftSchema = z.object({
+	recipient_name: z.string(),
+	recipient_social: z.string().optional(),
+	recipient_social_handle: z.string().optional(),
+	recipient_email: z.string().optional(),
+	recipient_phone: z.string().optional(),
+	gifts: z.array(
+		z.object({
+			id: z.string(),
+			quantity: z.number(),
+		}),
+	),
+	knows_address: z.boolean(),
+});
+
+// in progress
+export const createGiftAction = createServerAction()
+	.input(insertGiftSchema)
+	.handler(async ({ input }) => {
+		const supabase = createClient();
+
+		const {
+			data: { user },
+			error,
+		} = await supabase.auth.getUser();
+
+		if (error || !user) {
+			return new ZSAError("NOT_AUTHORIZED", {
+				status: 401,
+			});
+		}
+
+		const { data: recipientId, error: createRecipientError } = await supabase
+			.from("gift_recipients")
+			.insert({
+				name: input.recipient_name,
+				knows_address: input.knows_address,
+				provided_contact: true,
+			})
+			.select("id")
+			.single();
+
+		if (createRecipientError || !recipientId) {
+			return new ZSAError("INTERNAL_SERVER_ERROR", {
+				status: 500,
+			});
+		}
+
+		await supabase.from("gift_recipient_contacts").insert({
+			recipient_id: recipientId.id,
+			email: input.recipient_email,
+			phone_number: input.recipient_phone,
+			social_media_handle: input.recipient_social,
+			social_media_platform: input.recipient_social_handle,
+		});
+
+		const { data: giftId, error: saveGiftLinkError } = await supabase
+			.from("gifts")
+			.insert({
+				recipient_id: recipientId.id,
+				sender_id: user.id,
+				status: "awaiting_invoice_payment",
+			})
+			.select("id")
+			.single();
+
+		if (saveGiftLinkError || !giftId) {
+			console.log(saveGiftLinkError);
+			return new ZSAError("INTERNAL_SERVER_ERROR", {
+				status: 500,
+			});
+		}
+
+		redirect(`/status/${giftId.id}`);
+	});
 
 export async function createGift({
 	recipient_name,
@@ -83,5 +160,5 @@ export async function createGift({
 		});
 	}
 
-	return createGiftOrderQuery.id;
+	return redirect(`/status/${createGiftOrderQuery.id}`);
 }
