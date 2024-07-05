@@ -59,7 +59,10 @@ export function SendByLinkForm() {
 
 	return (
 		<Form {...form}>
-			<form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
+			<form
+				onSubmit={form.handleSubmit(onSubmit)}
+				className="space-y-8 w-full max-w-xl mx-auto"
+			>
 				<FormField
 					control={form.control}
 					name="giftLink"
