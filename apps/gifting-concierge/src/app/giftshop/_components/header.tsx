@@ -24,7 +24,7 @@ export async function Header() {
 				</p>
 			</Link>
 
-			<ul className="flex gap-4">
+			<ul className="flex items-center justify-center gap-4">
 				<li>
 					<CartToggle />
 				</li>
