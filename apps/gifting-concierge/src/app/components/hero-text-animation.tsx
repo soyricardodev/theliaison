@@ -36,12 +36,12 @@ export function HeroTextAnimation({ children }: { children: React.ReactNode }) {
 				}}
 			>
 				<strong>Secure and private gifting.</strong>{" "}
-				<span className="text-transparent bg-clip-text bg-gradient-to-br from-primary to-secondary/80">
+				<span className="text-transparent bg-clip-text bg-gradient-to-br from-black/40 to-black/80">
 					Made easy.
 				</span>
 			</motion.h1>
 			<motion.p
-				className="text-balance text-lg tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-black via-gray-700 to-gray-400 md:text-xl mb-12"
+				className="text-balance text-lg tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-black via-neutral-700 to-neutral-800 md:text-xl mb-12"
 				animate={fadeInInView ? "animate" : "initial"}
 				variants={fadeUpVariants}
 				initial={false}
@@ -54,7 +54,12 @@ export function HeroTextAnimation({ children }: { children: React.ReactNode }) {
 			>
 				Gift effortlessly, surprise instantly.
 				<br />
-				<strong className="inline-flex animate-background-shine bg-[linear-gradient(110deg,#939393,45%,#DBD0C5,55%,#939393)] bg-[length:250%_100%] bg-clip-text text-transparent leading-tight">
+				<strong
+					style={{
+						color: "#ff0000",
+					}}
+					className="inline-flex animate-background-shine bg-[linear-gradient(110deg,#121212,45%,#000,55%,#121212)] bg-[length:250%_100%] bg-clip-text text-transparent leading-tight"
+				>
 					No address needed.
 				</strong>
 			</motion.p>
