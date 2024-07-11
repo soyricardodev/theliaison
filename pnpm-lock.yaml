@@ -41,6 +41,9 @@ importers:
       '@react-email/components':
         specifier: 0.0.19
         version: 0.0.19(@types/react@18.3.2)(react@18.3.1)
+      '@react-spring/three':
+        specifier: ^9.7.3
+        version: 9.7.3(@react-three/fiber@8.16.6(react-dom@18.3.1(react@18.3.1))(react-native@0.74.2(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.3.2)(react@18.3.1))(react@18.3.1)(three@0.164.1))(react@18.3.1)(three@0.164.1)
       '@react-three/drei':
         specifier: 9.105.6
         version: 9.105.6(@react-three/fiber@8.16.6(react-dom@18.3.1(react@18.3.1))(react-native@0.74.2(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.3.2)(react@18.3.1))(react@18.3.1)(three@0.164.1))(@types/react@18.3.2)(@types/three@0.165.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.164.1)
@@ -137,6 +140,9 @@ importers:
       resend:
         specifier: 3.4.0
         version: 3.4.0
+      shadergradient:
+        specifier: ^1.2.14
+        version: 1.2.14(@react-spring/three@9.7.3(@react-three/fiber@8.16.6(react-dom@18.3.1(react@18.3.1))(react-native@0.74.2(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.3.2)(react@18.3.1))(react@18.3.1)(three@0.164.1))(react@18.3.1)(three@0.164.1))(@react-three/drei@9.105.6(@react-three/fiber@8.16.6(react-dom@18.3.1(react@18.3.1))(react-native@0.74.2(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.3.2)(react@18.3.1))(react@18.3.1)(three@0.164.1))(@types/react@18.3.2)(@types/three@0.165.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.164.1))(@react-three/fiber@8.16.6(react-dom@18.3.1(react@18.3.1))(react-native@0.74.2(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.3.2)(react@18.3.1))(react@18.3.1)(three@0.164.1))(react@18.3.1)(three@0.164.1)
       sonner:
         specifier: 1.4.41
         version: 1.4.41(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -8088,6 +8094,15 @@ packages:
 
   setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
+
+  shadergradient@1.2.14:
+    resolution: {integrity: sha512-x3FxPJsBIu2K9Bs/inQFVnLlQIy9xr/5He4KHz5m/cXeya8Q4muXh02mZd6jrE3derF/eOFgmmsBA5bT3g9NDQ==}
+    peerDependencies:
+      '@react-spring/three': '*'
+      '@react-three/drei': '*'
+      '@react-three/fiber': '*'
+      react: '*'
+      three: 0.154.0
 
   shallow-clone@3.0.1:
     resolution: {integrity: sha512-/6KqX+GVUdqPuPPd2LxDDxzX6CAbjJehAAOKlNpqqUpAqPM6HeL8f+o3a+JsyGjn2lv0WY8UsTgUJjU9Ok55NA==}
@@ -18668,6 +18683,14 @@ snapshots:
       has-property-descriptors: 1.0.2
 
   setprototypeof@1.2.0: {}
+
+  shadergradient@1.2.14(@react-spring/three@9.7.3(@react-three/fiber@8.16.6(react-dom@18.3.1(react@18.3.1))(react-native@0.74.2(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.3.2)(react@18.3.1))(react@18.3.1)(three@0.164.1))(react@18.3.1)(three@0.164.1))(@react-three/drei@9.105.6(@react-three/fiber@8.16.6(react-dom@18.3.1(react@18.3.1))(react-native@0.74.2(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.3.2)(react@18.3.1))(react@18.3.1)(three@0.164.1))(@types/react@18.3.2)(@types/three@0.165.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.164.1))(@react-three/fiber@8.16.6(react-dom@18.3.1(react@18.3.1))(react-native@0.74.2(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.3.2)(react@18.3.1))(react@18.3.1)(three@0.164.1))(react@18.3.1)(three@0.164.1):
+    dependencies:
+      '@react-spring/three': 9.7.3(@react-three/fiber@8.16.6(react-dom@18.3.1(react@18.3.1))(react-native@0.74.2(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.3.2)(react@18.3.1))(react@18.3.1)(three@0.164.1))(react@18.3.1)(three@0.164.1)
+      '@react-three/drei': 9.105.6(@react-three/fiber@8.16.6(react-dom@18.3.1(react@18.3.1))(react-native@0.74.2(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.3.2)(react@18.3.1))(react@18.3.1)(three@0.164.1))(@types/react@18.3.2)(@types/three@0.165.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(three@0.164.1)
+      '@react-three/fiber': 8.16.6(react-dom@18.3.1(react@18.3.1))(react-native@0.74.2(@babel/core@7.24.5)(@babel/preset-env@7.24.7(@babel/core@7.24.5))(@types/react@18.3.2)(react@18.3.1))(react@18.3.1)(three@0.164.1)
+      react: 18.3.1
+      three: 0.164.1
 
   shallow-clone@3.0.1:
     dependencies:
