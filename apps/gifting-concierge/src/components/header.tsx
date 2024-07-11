@@ -6,8 +6,8 @@ import { HeaderNavigation } from "./header/navigation";
 
 export function Header() {
 	return (
-		<div className="sticky top-0 z-20">
-			<header className="flex w-full flex-col gap-3 p-3 md:h-16 md:flex-row md:items-center lg:px-4 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+		<div className="sticky top-0 z-50">
+			<header className="flex w-full flex-col gap-3 p-3 md:h-16 md:flex-row md:items-center lg:px-4 bg-white/25 backdrop-blur supports-[backdrop-filter]:bg-white/20">
 				<div className="flex w-full items-center gap-8">
 					<div className="flex items-center gap-2">
 						<Link
