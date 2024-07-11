@@ -23,18 +23,18 @@ export function SendGiftDialog() {
 					</Button>
 				</div>
 			</DialogTrigger>
-			<DialogContent className="rounded-md">
+			<DialogContent className="rounded-md bg-white/10 border-transparent backdrop-blur-xl">
 				<div className="spacem-auto w-[calc(100vw - 48px)] pt-6">
 					<div className="flex flex-col items-center justify-start flex-initial gap-6">
 						<div className="flex justify-center items-center bg-default-100 rounded-lg p-[14px] h-[60px] border border-black/10">
 							<SendHorizontalIcon className="size-8 text-black/60" />
 						</div>
 
-						<div className="flex flex-col items-stretch justify-start flex-initial gap-2">
+						<div className="flex flex-col items-stretch justify-start flex-initial gap-2 text-white">
 							<p className="max-w-[340px] my-0 mx-auto leading-6 font-medium">
 								Send a gift
 							</p>
-							<p className="text-gray-900 text-sm font-normal max-w-[340px] my-0 mx-auto text-center leading-5">
+							<p className="text-sm font-normal max-w-[340px] my-0 mx-auto text-center leading-5">
 								<span className="inline-block text-balance max-w-[203px]">
 									Send a gift to someone special without the address hassle.
 								</span>
@@ -65,15 +65,17 @@ export function SendGiftDialog() {
 							/>
 						</div>
 
-						<div className="w-full max-w-[500px] bg-white border rounded-md flex gap-4 justify-between">
-							<div className="p-4 bg-white flex flex-col">
-								<p className="font-semibold text-sm leading-5">Any question?</p>
-								<p className="text-gray-800 font-normal text-[0.8125rem]">
+						<div className="w-full max-w-[500px] border rounded-md flex gap-4 justify-between">
+							<div className="p-4 flex flex-col">
+								<p className="font-semibold text-sm leading-5 text-white">
+									Any question?
+								</p>
+								<p className="text-white font-normal text-[0.8125rem]">
 									Contact us for assistance
 								</p>
 							</div>
 							<div className="flex gap-2 items-center sm:justify-center flex-col sm:flex-row sm:mr-2">
-								<Button>Chat</Button>
+								<Button variant={"outline"}>Chat</Button>
 							</div>
 						</div>
 					</div>
@@ -97,7 +99,7 @@ function SendGiftCard({
 	linkText: string;
 }) {
 	return (
-		<div className="flex flex-row items-center justify-between gap-6 p-4 bg-white w-full border-b last:border-b-0">
+		<div className="flex flex-row items-center justify-between gap-6 p-4 w-full border-b last:border-b-0 text-white">
 			<div className="flex items-stretch justify-start flex-initial gap-3">
 				<div className="flex items-center justify-center flex-initial p-0 gap-0 shrink-0">
 					{icon}
@@ -105,16 +107,14 @@ function SendGiftCard({
 
 				<div className="flex flex-col items-stretch justify-start flex-initial p-0 gap-0">
 					<p className="font-semibold text-sm leading-5">{title}</p>
-					<p className="text-gray-800 font-normal text-[0.8125rem]">
-						{description}
-					</p>
+					<p className="font-normal text-[0.8125rem]">{description}</p>
 				</div>
 			</div>
 
 			<div className="flex flex-col items-stretch justify-start flex-initial gap-0">
 				<Link
 					href={href}
-					className="px-[15px] h-[40px] bg-white hover:bg-default-200 transition-all border rounded-[6px] font-medium flex items-center justify-center text-sm"
+					className="px-[15px] h-[40px] bg-white hover:bg-default-200 transition-all border rounded-[6px] font-medium flex items-center justify-center text-sm text-black"
 				>
 					{linkText}
 				</Link>
