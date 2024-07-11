@@ -26,7 +26,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body
 				className={cn(
-					"min-h-dvh font-sans antialiased bg-background",
+					"min-h-dvh font-sans antialiased bg-white",
 					GeistSans.variable,
 				)}
 			>
