@@ -15,7 +15,9 @@
 		"dev": "tsc --watch",
 		"clean": "rm -rf .turbo node_modules",
 		"typecheck": "tsc --noEmit --emitDeclarationOnly false",
-		"gen:types": "supabase gen types typescript --project-id 'vsgxmrltaxjozgytqgwh' --schema public > ./src/database-types.ts && pnpm build"
+		"gen:types": "supabase gen types typescript --project-id 'vsgxmrltaxjozgytqgwh' --schema public > ./src/database-types.ts && pnpm build",
+		"supabase:start": "supabase start",
+		"supabase:status": "supabase status"
 	},
 	"dependencies": {
 		"supabase": "1.172.2"
