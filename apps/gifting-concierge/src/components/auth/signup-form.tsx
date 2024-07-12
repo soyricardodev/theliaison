@@ -4,15 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@theliaison/ui";
 import { Button } from "@theliaison/ui/button";
 import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage,
-} from "@theliaison/ui/form";
-import { Input } from "@theliaison/ui/input";
-import {
 	InputOTP,
 	InputOTPGroup,
 	InputOTPSeparator,
@@ -20,18 +11,14 @@ import {
 } from "@theliaison/ui/input-otp";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { LoaderCircleIcon, MailIcon, SendIcon } from "lucide-react";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
-import { RiArrowDropLeftFill, RiArrowRightSFill } from "react-icons/ri";
-import { SiMinutemailer } from "react-icons/si";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useServerAction } from "zsa-react";
 import { signUpAction, verifyOtp } from "./actions";
+import { RegisterForm } from "~/app/(auth)/register/register-form";
 
 const signUpSchema = z
 	.object({
@@ -54,7 +41,7 @@ const signUpSchema = z
 	);
 
 export default function SignUp({ redirectTo }: { redirectTo: string }) {
-	const { isPending, execute, data, error } = useServerAction(signUpAction);
+	const { isPending, execute } = useServerAction(signUpAction);
 
 	const queryString =
 		typeof window !== "undefined" ? window.location.search : "";
@@ -63,7 +50,6 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 	const verify = urlParams.get("verify");
 	const existEmail = urlParams.get("email");
 
-	const [passwordReveal, setPasswordReveal] = useState(false);
 	const [isConfirmed, setIsConfirmed] = useState(verify === "true");
 	const [verifyStatus, setVerifyStatus] = useState<string>("");
 	const [isSendAgain, startSendAgain] = useTransition();
@@ -85,7 +71,7 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 
 	async function onSubmit(values: z.infer<typeof signUpSchema>) {
 		if (!isPending) {
-			const [data, err] = await execute({
+			const [_data, err] = await execute({
 				email: values.email,
 				password: values.password,
 			});
@@ -102,123 +88,7 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 
 	return (
 		<div className="whitespace-nowrap p-5 space-x-5 overflow-hidden items-center align-top">
-			<Form {...form}>
-				<form
-					onSubmit={form.handleSubmit(onSubmit)}
-					className={cn(
-						"space-y-3 inline-block w-full transform transition-all",
-						{
-							"-translate-x-[150%]": isConfirmed,
-						},
-					)}
-				>
-					<FormField
-						control={form.control}
-						name="email"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel className="font-semibold test-sm">
-									Email Address
-								</FormLabel>
-								<FormControl>
-									<Input
-										className="h-8"
-										placeholder="example@gmail.com"
-										type="email"
-										{...field}
-									/>
-								</FormControl>
-								<FormMessage className="text-red-500" />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="password"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel className="text-sm font-semibold">
-									Password
-								</FormLabel>
-								<div className="relative">
-									<FormControl className="">
-										<Input
-											className="h-8"
-											type={passwordReveal ? "text" : "password"}
-											{...field}
-										/>
-									</FormControl>
-									<button
-										className="absolute right-2 top-[30%] cursor-pointer group"
-										onClick={() => setPasswordReveal(!passwordReveal)}
-										type="button"
-									>
-										{passwordReveal ? (
-											<FaRegEye className="group-hover:scale-105 transition-all" />
-										) : (
-											<FaRegEyeSlash className="group-hover:scale-105 transition-all" />
-										)}
-									</button>
-								</div>
-								<FormMessage className="text-red-500" />
-							</FormItem>
-						)}
-					/>
-					<FormField
-						control={form.control}
-						name="confirm-pass"
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel className="text-sm font-semibold">
-									Confirm Password
-								</FormLabel>
-								<div className="relative">
-									<FormControl>
-										<Input
-											className="h-8"
-											type={passwordReveal ? "text" : "password"}
-											{...field}
-										/>
-									</FormControl>
-									<button
-										className="absolute right-2 top-[30%] cursor-pointer group"
-										onClick={() => setPasswordReveal(!passwordReveal)}
-										type="button"
-									>
-										{passwordReveal ? (
-											<FaRegEye className="group-hover:scale-105 transition-all" />
-										) : (
-											<FaRegEyeSlash className="group-hover:scale-105 transition-all" />
-										)}
-									</button>
-								</div>
-								<FormMessage className="text-red-500" />
-							</FormItem>
-						)}
-					/>
-					<Button
-						type="submit"
-						className="w-full h-8 bg-primary hover:bg-primary/90 transition-all text-white flex items-center gap-2"
-					>
-						<AiOutlineLoading3Quarters
-							className={cn(!isPending ? "hidden" : "block animate-spin")}
-						/>
-						Continue
-						<RiArrowRightSFill className="size-4" />
-					</Button>
-					<div className="text-center text-sm">
-						<h1>
-							Already have account?{" "}
-							<Link
-								href={redirectTo ? `/login?next=${redirectTo}` : "/login"}
-								className="text-blue-500"
-							>
-								Login
-							</Link>
-						</h1>
-					</div>
-				</form>
-			</Form>
+			<RegisterForm redirectTo={redirectTo} />
 			{/* verify email */}
 			<div
 				className={cn(
@@ -249,7 +119,7 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 									otp: value,
 								});
 								if (data == null) return;
-								const { error } = JSON.parse(data);
+								const { error } = data;
 								if (error) {
 									setVerifyStatus("failed");
 								} else {
