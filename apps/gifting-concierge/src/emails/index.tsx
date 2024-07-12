@@ -3,10 +3,7 @@ import {
 	Container,
 	Head,
 	Heading,
-	Hr,
 	Html,
-	Img,
-	Link,
 	Preview,
 	Section,
 	Text,
@@ -34,7 +31,7 @@ export default function SupaAuthVerifyEmail({
 							</Heading>
 							<Text style={mainText}>
 								{
-									"Thanks for starting the new account creation process. We want to make sure it's really you. Please enter the following verification code when prompted. If you don&apos;t want to create an account, you can ignore this message."
+									"Thanks for registering for an account on The Liaison! Before we get started, we just need to confirm that this is you. Copy the code below and paste it into the verification field when prompted. If you don&apos;t want to create an account, you can ignore this message."
 								}
 							</Text>
 							<Section style={verificationSection}>
