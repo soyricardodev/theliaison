@@ -1,4 +1,4 @@
-Tasks (Last updated: July 4/2024):
+Tasks (Last updated: July 12/2024):
 
 Confirm Gift Tasks:
 - [x] put the gif up top as the first thing people see.
@@ -110,3 +110,8 @@ How It Works Page:
 
 FedEx:
 - [-] implement Hold at Location solution
+
+Authentication Login:
+- [ ] Improve Form UI
+- [ ] Add gradient background
+- [ ] Good styling
