@@ -19,38 +19,38 @@ export async function middleware(request: NextRequest) {
 	const pathname = url.pathname;
 	const nextPath = url.searchParams.get("next");
 
-	if (adminPaths.includes(pathname)) {
-		if (!user || error) {
-			url.pathname = "/login";
-			url.searchParams.set("next", nextPath ?? pathname);
+	// if (adminPaths.includes(pathname)) {
+	// 	if (!user || error) {
+	// 		url.pathname = "/login";
+	// 		url.searchParams.set("next", nextPath ?? pathname);
 
-			return NextResponse.redirect(url);
-		}
+	// 		return NextResponse.redirect(url);
+	// 	}
 
-		// * Check if user is admin
-		supabase.auth.onAuthStateChange(async (_, session) => {
-			if (session) {
-				const jwt = jwtDecode(session.access_token) as JwtPayload & {
-					user_role: string | null;
-				};
-				const userRole = jwt.user_role;
-				const isAdmin = userRole === "admin";
+	// 	// * Check if user is admin
+	// 	supabase.auth.onAuthStateChange(async (_, session) => {
+	// 		if (session) {
+	// 			const jwt = jwtDecode(session.access_token) as JwtPayload & {
+	// 				user_role: string | null;
+	// 			};
+	// 			const userRole = jwt.user_role;
+	// 			const isAdmin = userRole === "admin";
 
-				if (!isAdmin) {
-					url.pathname = "/unauthorized";
-					NextResponse.redirect(url);
-					return;
-				}
+	// 			if (!isAdmin) {
+	// 				url.pathname = "/unauthorized";
+	// 				NextResponse.redirect(url);
+	// 				return;
+	// 			}
 
-				NextResponse.next();
-				return;
-			}
-			url.pathname = "/login";
-			url.searchParams.set("next", nextPath ?? pathname);
-			NextResponse.redirect(url);
-			return;
-		});
-	}
+	// 			NextResponse.next();
+	// 			return;
+	// 		}
+	// 		url.pathname = "/login";
+	// 		url.searchParams.set("next", nextPath ?? pathname);
+	// 		NextResponse.redirect(url);
+	// 		return;
+	// 	});
+	// }
 
 	if (authPaths.includes(pathname)) {
 		if (user != null || !error) {
