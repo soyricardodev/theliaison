@@ -11,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@theliaison/ui/tabs";
 import { File, ListFilter, PlusCircle } from "lucide-react";
 import { ProductsTable } from "./products-table";
 import { getProducts } from "./actions";
+import Link from "next/link";
 
 export default async function ProductsPage({
 	searchParams,
@@ -61,11 +62,13 @@ export default async function ProductsPage({
 							Export
 						</span>
 					</Button>
-					<Button size="sm" className="h-8 gap-1">
-						<PlusCircle className="h-3.5 w-3.5" />
-						<span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-							Add Product
-						</span>
+					<Button size="sm" className="h-8 gap-1" asChild>
+						<Link href="/dashboard/products/create">
+							<PlusCircle className="h-3.5 w-3.5" />
+							<span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+								Add Product
+							</span>
+						</Link>
 					</Button>
 				</div>
 			</div>
