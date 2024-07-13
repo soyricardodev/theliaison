@@ -3,7 +3,7 @@
 import { client as addressValidationClient } from "@theliaison/fedex/fetch/address-validation";
 import { getAccessToken } from "@theliaison/fedex/fetch/authorization";
 import { redirect } from "next/navigation";
-import { getShipmentRate } from "~/app/dashboard/gifting-concierge/actions";
+import { getShipmentRate } from "~/app/(dashboard)/dashboard/gifting-concierge/actions";
 import { env } from "~/env";
 import supabaseAdmin, { createOrRetrieveCustomer } from "~/supabase/admin";
 import { createClient } from "~/supabase/server";
