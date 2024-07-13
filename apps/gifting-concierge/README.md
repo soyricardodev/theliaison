@@ -1,4 +1,4 @@
-Tasks (Last updated: July 12/2024):
+Tasks (Last updated: July 13/2024):
 
 Confirm Gift Tasks:
 - [x] put the gif up top as the first thing people see.
@@ -97,7 +97,7 @@ Gifting Concierge:
 - [x] how it works just should render on scroll
 - [x] Shipping Details instead of Get Shipping Details
 - [x] remove click confirm when youre done
-- [ ] We need the link and details/description of the link named Specifications
+- [x] We need the link and details/description of the link named Specifications
 
 How It Works Page:
 - [x] right after of the form, put the FAQ
@@ -112,6 +112,10 @@ FedEx:
 - [-] implement Hold at Location solution
 
 Authentication Login:
-- [ ] Improve Form UI
-- [ ] Add gradient background
-- [ ] Good styling
+- [x] Improve Form UI
+- [x] Add gradient background
+- [x] Good styling
+- [x] Unique BGs
+
+Dashboard:
+- [x] Add a dashboard page
