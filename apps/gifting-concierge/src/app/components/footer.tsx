@@ -241,7 +241,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 
 						<Accordion
 							type="multiple"
-							className={cn("block sm:hidden dark:text-white", {
+							className={cn("block sm:hidden text-black dark:text-white", {
 								dark: isDark,
 							})}
 						>
@@ -471,7 +471,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 							</Link>
 						</p>
 
-						<p className="hidden sm:block mt-4 text-sm text-gray-500 dark:text-white sm:order-first sm:mt-0">
+						<p className="hidden sm:block mt-4 text-sm text-black dark:text-white sm:order-first sm:mt-0">
 							&copy; {new Date().getFullYear()} The Liaison
 						</p>
 					</div>
