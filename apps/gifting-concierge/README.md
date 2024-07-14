@@ -81,8 +81,8 @@ Footer:
 - [x] remove contact link
 - [x] Remove Us from Contact Us
 - [x] White heart in black
-- [ ] make the footer responsive like the vercel footer
-- [ ] simplify the footer in mobile
+- [x] make the footer responsive like the vercel footer
+- [x] simplify the footer in mobile
 
 Header:
 - [ ] add footer links to menu header
