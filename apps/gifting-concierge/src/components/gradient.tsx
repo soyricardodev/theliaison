@@ -15,7 +15,7 @@ export function Gradient({
 	url?: string;
 }) {
 	return (
-		<div className="absolute top-0 left-0 z-10 w-screen h-screen overflow-hidden">
+		<div className="fixed top-0 left-0 z-10 w-screen h-screen overflow-hidden">
 			<ShaderGradientCanvas
 				style={{
 					position: "relative",
