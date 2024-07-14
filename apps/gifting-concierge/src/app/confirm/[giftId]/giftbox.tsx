@@ -3,7 +3,7 @@
 import { Tooltip } from "@nextui-org/react";
 import Image from "next/image";
 import { useRef, useState } from "react";
-import giftboxGIF from "~/assets/giftbox2.gif";
+import giftboxGIF from "~/assets/giftbox.gif";
 import { useConfirmDialogStore } from "~/store/confirm-dialog";
 
 export function Giftbox() {
@@ -20,7 +20,6 @@ export function Giftbox() {
 			const { top, height } = imageRef.current.getBoundingClientRect();
 			const offsetY = top - mousePosition.y + height / 4;
 
-			console.log({ offsetY });
 			setOffset(offsetY);
 		}
 	};
