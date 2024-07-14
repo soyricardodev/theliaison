@@ -119,3 +119,5 @@ Authentication Login:
 
 Dashboard:
 - [x] Add a dashboard page
+- [-] Add create product page
+- [ ] 
