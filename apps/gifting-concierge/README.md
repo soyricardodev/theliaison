@@ -1,4 +1,4 @@
-Tasks (Last updated: July 13/2024):
+Tasks (Last updated: July 14/2024):
 
 Confirm Gift Tasks:
 - [x] put the gif up top as the first thing people see.
@@ -19,6 +19,7 @@ Confirm Gift Tasks:
 - [x] How it works link like the home page
 - [x] Page background should be a gradient of dark colors
 - [x] add more space in footer
+- [ ] add a shader gradient background
 
 Form Recipient Address:
 - [x] Color for inputs (rn is same as bg)
@@ -80,6 +81,8 @@ Footer:
 - [x] remove contact link
 - [x] Remove Us from Contact Us
 - [x] White heart in black
+- [ ] make the footer responsive like the vercel footer
+- [ ] simplify the footer in mobile
 
 Header:
 - [ ] add footer links to menu header
@@ -120,4 +123,3 @@ Authentication Login:
 Dashboard:
 - [x] Add a dashboard page
 - [-] Add create product page
-- [ ] 
