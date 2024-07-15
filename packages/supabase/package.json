@@ -7,6 +7,10 @@
 		"./database-types": {
 			"types": "./dist/database-types.d.ts",
 			"default": "./src/database-types.ts"
+		},
+		"./database-types-local": {
+			"types": "./dist/database-types-local.d.ts",
+			"default": "./src/database-types-local.ts"
 		}
 	},
 	"license": "MIT",
@@ -16,8 +20,10 @@
 		"clean": "rm -rf .turbo node_modules",
 		"typecheck": "tsc --noEmit --emitDeclarationOnly false",
 		"gen:types": "supabase gen types typescript --project-id 'vsgxmrltaxjozgytqgwh' --schema public > ./src/database-types.ts && pnpm build",
+		"gen:types-local": "supabase gen types typescript --local --schema public > ./src/database-types-local.ts && pnpm build",
 		"supabase:start": "supabase start",
-		"supabase:status": "supabase status"
+		"supabase:status": "supabase status",
+		"supabase:stop": "supabase stop --no-cache"
 	},
 	"dependencies": {
 		"supabase": "1.172.2"
