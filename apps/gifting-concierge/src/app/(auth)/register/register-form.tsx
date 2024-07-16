@@ -77,23 +77,6 @@ export function RegisterForm({ redirectTo }: { redirectTo: string }) {
 				/>
 				<FormField
 					control={form.control}
-					name="username"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel className="font-semibold test-sm">Username</FormLabel>
-							<FormControl>
-								<Input
-									className="h-8 border-black placeholder:text-black/80"
-									placeholder="josnghdoe"
-									{...field}
-								/>
-							</FormControl>
-							<FormMessage className="text-red-500" />
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
 					name="email"
 					render={({ field }) => (
 						<FormItem>
@@ -120,38 +103,6 @@ export function RegisterForm({ redirectTo }: { redirectTo: string }) {
 							<FormLabel className="text-sm font-semibold">Password</FormLabel>
 							<div className="relative">
 								<FormControl className="">
-									<Input
-										className="h-8 border-black placeholder:text-black/80"
-										type={passwordReveal ? "text" : "password"}
-										{...field}
-									/>
-								</FormControl>
-								<button
-									className="absolute right-2 top-[30%] cursor-pointer group"
-									onClick={() => setPasswordReveal(!passwordReveal)}
-									type="button"
-								>
-									{passwordReveal ? (
-										<EyeIcon className="group-hover:scale-105 transition-all size-4" />
-									) : (
-										<EyeOffIcon className="group-hover:scale-105 transition-all size-4" />
-									)}
-								</button>
-							</div>
-							<FormMessage className="text-red-500" />
-						</FormItem>
-					)}
-				/>
-				<FormField
-					control={form.control}
-					name="confirm-pass"
-					render={({ field }) => (
-						<FormItem>
-							<FormLabel className="text-sm font-semibold">
-								Confirm Password
-							</FormLabel>
-							<div className="relative">
-								<FormControl>
 									<Input
 										className="h-8 border-black placeholder:text-black/80"
 										type={passwordReveal ? "text" : "password"}
