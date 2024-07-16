@@ -17,9 +17,12 @@ import {
 	DropdownMenuContent,
 	DropdownMenuGroup,
 	DropdownMenuItem,
+	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@theliaison/ui/dropdown-menu";
 import { Separator } from "@theliaison/ui/separator";
+import { createClient } from "~/supabase/server";
+import { redirect } from "next/navigation";
 
 const menuItemsLoggedOut = [
 	{
@@ -79,17 +82,6 @@ const menuItemsLoggedIn = [
 		href: "/faq",
 		Icon: <CircleHelp className="mr-2 size-5 text-foreground" />,
 	},
-	// {
-	// 	key: "logout",
-	// 	label: "Logout",
-	// 	href: "/auth/logout",
-	// 	Icon: (
-	// 		<LogOutIcon
-	// 			className="mr-2 size-5 text-foreground"
-	// 			onClick={() => fetch("/auth/signout", { method: "POST" })}
-	// 		/>
-	// 	),
-	// },
 ];
 
 interface HeaderNavigationProps {
@@ -102,6 +94,16 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 
 	if (!isLoggedIn)
 		return <HeaderNavigationLoggedOut isDarkMode={props.isDarkMode} />;
+
+	const logoutAction = async () => {
+		"use server";
+
+		const supabase = createClient();
+
+		const { error } = await supabase.auth.signOut();
+
+		redirect("/login");
+	};
 
 	return (
 		<DropdownMenu>
@@ -165,6 +167,21 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 						</DropdownMenuItem>
 					))}
 				</DropdownMenuGroup>
+				<DropdownMenuSeparator />
+				<DropdownMenuItem asChild>
+					<form
+						className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3 dark:focus:bg-zinc-600 dark:hover:bg-zinc-600"
+						action={logoutAction}
+					>
+						<button
+							type="submit"
+							className="flex items-center gap-3 rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-zinc-600 dark:hover:bg-zinc-600"
+						>
+							<LogOutIcon className="size-5" />
+							<span>Log out</span>
+						</button>
+					</form>
+				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);
