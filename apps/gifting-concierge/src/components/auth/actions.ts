@@ -9,8 +9,8 @@ import { z } from "zod";
 import { createServerAction } from "zsa";
 import SupaAuthVerifyEmail from "~/emails";
 import { env } from "~/env";
-import supabaseAdmin from "~/supabase/admin";
 import { simpleSignUpSchema, verifyOtpSchema } from "~/lib/validators/auth";
+import supabaseAdmin from "~/supabase/admin";
 
 export const verifyOtp = createServerAction()
 	.input(verifyOtpSchema)

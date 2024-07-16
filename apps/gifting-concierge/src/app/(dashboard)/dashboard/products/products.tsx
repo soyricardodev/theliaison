@@ -1,3 +1,12 @@
+import { Badge } from "@theliaison/ui/badge";
+import { Button } from "@theliaison/ui/button";
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuTrigger,
+} from "@theliaison/ui/dropdown-menu";
 import {
 	Table,
 	TableBody,
@@ -6,17 +15,8 @@ import {
 	TableHeader,
 	TableRow,
 } from "@theliaison/ui/table";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuTrigger,
-} from "@theliaison/ui/dropdown-menu";
-import Image from "next/image";
-import { Badge } from "@theliaison/ui/badge";
-import { Button } from "@theliaison/ui/button";
 import { MoreHorizontal } from "lucide-react";
+import Image from "next/image";
 
 export function Products() {
 	return (

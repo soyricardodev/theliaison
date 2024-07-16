@@ -1,6 +1,6 @@
-import { createClient } from "~/supabase/server";
+import { Button, Input } from "@nextui-org/react";
 import { redirect } from "next/navigation";
-import { Input, Button } from "@nextui-org/react";
+import { createClient } from "~/supabase/server";
 
 export default function Verify({
 	searchParams,

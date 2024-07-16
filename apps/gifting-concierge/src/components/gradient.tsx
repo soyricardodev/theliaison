@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ShaderGradientCanvas, ShaderGradient } from "shadergradient";
+import { ShaderGradient, ShaderGradientCanvas } from "shadergradient";
 
 export function Gradient({
 	color1 = "#ff5005",

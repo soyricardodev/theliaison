@@ -1,4 +1,4 @@
-import Image from "next/image";
+import type { Tables } from "@theliaison/supabase/database-types";
 import { Badge } from "@theliaison/ui/badge";
 import { Button } from "@theliaison/ui/button";
 import {
@@ -8,9 +8,9 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuTrigger,
 } from "@theliaison/ui/dropdown-menu";
-import { MoreHorizontal } from "lucide-react";
 import { TableCell, TableRow } from "@theliaison/ui/table";
-import type { Tables } from "@theliaison/supabase/database-types";
+import { MoreHorizontal } from "lucide-react";
+import Image from "next/image";
 
 type SelectProduct = Tables<"products">;
 

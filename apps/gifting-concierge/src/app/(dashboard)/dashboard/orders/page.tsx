@@ -1,19 +1,19 @@
+import { Badge } from "@theliaison/ui/badge";
 import {
 	Card,
+	CardContent,
+	CardDescription,
 	CardHeader,
 	CardTitle,
-	CardDescription,
-	CardContent,
 } from "@theliaison/ui/card";
 import {
 	Table,
-	TableHeader,
-	TableRow,
-	TableHead,
 	TableBody,
 	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
 } from "@theliaison/ui/table";
-import { Badge } from "@theliaison/ui/badge";
 import { createClient } from "~/supabase/server";
 
 export default async function Component() {

@@ -1,8 +1,8 @@
-import { redirect } from "next/navigation";
+import { Button, Input } from "@nextui-org/react";
 import { headers } from "next/headers";
-import { createClient } from "~/supabase/server";
+import { redirect } from "next/navigation";
 import { toast } from "sonner";
-import { Input, Button } from "@nextui-org/react";
+import { createClient } from "~/supabase/server";
 
 export default async function LoginForm() {
 	const signInWithGoogleAction = async () => {

@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { ChevronLeft, PlusCircle, Upload } from "lucide-react";
+import Image from "next/image";
 
 import { Badge } from "@theliaison/ui/badge";
 import { Button } from "@theliaison/ui/button";

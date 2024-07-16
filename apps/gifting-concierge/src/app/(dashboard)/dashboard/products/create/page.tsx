@@ -1,26 +1,26 @@
 "use client";
 
-import React from "react";
-import Image from "next/image";
 import { Button } from "@theliaison/ui/button";
-import { Input } from "@theliaison/ui/input";
 import {
 	Card,
+	CardContent,
+	CardDescription,
 	CardHeader,
 	CardTitle,
-	CardDescription,
-	CardContent,
 } from "@theliaison/ui/card";
+import { Input } from "@theliaison/ui/input";
 import { Label } from "@theliaison/ui/label";
-import { Textarea } from "@theliaison/ui/textarea";
 import {
 	Select,
-	SelectTrigger,
-	SelectValue,
 	SelectContent,
 	SelectItem,
+	SelectTrigger,
+	SelectValue,
 } from "@theliaison/ui/select";
+import { Textarea } from "@theliaison/ui/textarea";
 import { ChevronLeftIcon, UploadIcon } from "lucide-react";
+import Image from "next/image";
+import React from "react";
 import { createClient } from "~/supabase/client";
 
 export default function CreateProduct() {

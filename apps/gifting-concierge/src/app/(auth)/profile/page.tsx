@@ -1,7 +1,4 @@
-import { redirect } from "next/navigation";
-import { createClient } from "~/supabase/server";
-import { Input, Avatar, Button } from "@nextui-org/react";
-import { revalidatePath } from "next/cache";
+import { Avatar, Button, Input } from "@nextui-org/react";
 import {
 	Select,
 	SelectContent,
@@ -11,8 +8,11 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@theliaison/ui/select";
-import { UploadAvatar } from "./upload-avatar";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { env } from "~/env";
+import { createClient } from "~/supabase/server";
+import { UploadAvatar } from "./upload-avatar";
 
 export default async function ProfilePage() {
 	const supabase = createClient();

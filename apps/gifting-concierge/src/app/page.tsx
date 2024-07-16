@@ -1,8 +1,8 @@
+import { Gradient } from "~/components/gradient";
 import { Header } from "~/components/header";
 import { QuotesRotate } from "~/components/quotes-rotate";
 import { Footer } from "./components/footer";
 import { Hero } from "./components/hero";
-import { Gradient } from "~/components/gradient";
 
 export default function Home() {
 	return (

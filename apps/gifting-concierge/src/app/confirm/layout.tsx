@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import { Gradient } from "~/components/gradient";
 import { QuotesRotate } from "~/components/quotes-rotate";
 import { Footer } from "../components/footer";
 import { Header } from "./[giftId]/header";
-import { Gradient } from "~/components/gradient";
 
 export const metadata: Metadata = {
 	title: "Someone special wants to send you a gift! - The Liaison",

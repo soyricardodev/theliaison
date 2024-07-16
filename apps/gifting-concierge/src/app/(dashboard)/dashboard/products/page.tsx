@@ -9,9 +9,9 @@ import {
 } from "@theliaison/ui/dropdown-menu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@theliaison/ui/tabs";
 import { File, ListFilter, PlusCircle } from "lucide-react";
-import { ProductsTable } from "./products-table";
-import { getProducts } from "./actions";
 import Link from "next/link";
+import { getProducts } from "./actions";
+import { ProductsTable } from "./products-table";
 
 export default async function ProductsPage({
 	searchParams,

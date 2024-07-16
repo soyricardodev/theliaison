@@ -5,8 +5,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@theliaison/ui/card";
-import { Customers } from "./customers";
 import { getCustomers } from "./actions";
+import { Customers } from "./customers";
 
 export default async function CustomersPage() {
 	const { customers } = await getCustomers();

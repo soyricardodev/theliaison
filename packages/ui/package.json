@@ -5,10 +5,7 @@
 	"type": "module",
 	"exports": {
 		".": "./src/index.ts",
-		"./*": [
-			"./src/*.tsx",
-			"./src/*.ts"
-		],
+		"./*": ["./src/*.tsx", "./src/*.ts"],
 		"./magicui": "./src/magicui/*.tsx"
 	},
 	"license": "MIT",

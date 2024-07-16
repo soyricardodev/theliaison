@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@theliaison/ui";
 import { Button } from "@theliaison/ui/button";
@@ -13,17 +12,18 @@ import {
 	FormMessage,
 } from "@theliaison/ui/form";
 import { Input } from "@theliaison/ui/input";
-import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import type { z } from "zod";
-import { useServerAction } from "zsa-react";
 import {
 	ChevronRightIcon,
 	EyeIcon,
 	EyeOffIcon,
 	LoaderCircleIcon,
 } from "lucide-react";
+import Link from "next/link";
+import React from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import type { z } from "zod";
+import { useServerAction } from "zsa-react";
 import { signUpAction } from "~/components/auth/actions";
 import { signUpSchema } from "~/lib/validators/auth";
 

@@ -1,12 +1,6 @@
 "use client";
 
-import {
-	TableHead,
-	TableRow,
-	TableHeader,
-	TableBody,
-	Table,
-} from "@theliaison/ui/table";
+import { Button } from "@theliaison/ui/button";
 import {
 	Card,
 	CardContent,
@@ -15,10 +9,16 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@theliaison/ui/card";
-import { Product } from "./product";
-import { useRouter } from "next/navigation";
+import {
+	Table,
+	TableBody,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "@theliaison/ui/table";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@theliaison/ui/button";
+import { useRouter } from "next/navigation";
+import { Product } from "./product";
 
 export function ProductsTable({
 	products,

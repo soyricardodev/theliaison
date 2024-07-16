@@ -17,8 +17,8 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
 import { useServerAction } from "zsa-react";
-import { signUpAction, verifyOtp } from "./actions";
 import { RegisterForm } from "~/app/(auth)/register/register-form";
+import { signUpAction, verifyOtp } from "./actions";
 
 const signUpSchema = z
 	.object({

@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
 import Link from "next/link";
+import React from "react";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@theliaison/ui/button";
 import {
 	Card,
@@ -21,13 +22,12 @@ import {
 } from "@theliaison/ui/form";
 import { Input } from "@theliaison/ui/input";
 import { Label } from "@theliaison/ui/label";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import type { z } from "zod";
 import { useServerAction } from "zsa-react";
 import { signInWithEmail } from "~/components/auth/actions";
 import { signInWithEmailSchema } from "~/lib/validators/auth";
-import { toast } from "sonner";
 
 export function LoginForm({ redirectTo }: { redirectTo: string }) {
 	const { isPending, execute } = useServerAction(signInWithEmail);

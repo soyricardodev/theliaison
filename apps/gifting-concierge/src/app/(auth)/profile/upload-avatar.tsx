@@ -1,9 +1,9 @@
 "use client";
 
-import { createClient } from "~/supabase/client";
-import { useRef } from "react";
-import { useRouter } from "next/navigation";
 import { nanoid } from "nanoid";
+import { useRouter } from "next/navigation";
+import { useRef } from "react";
+import { createClient } from "~/supabase/client";
 
 export function UploadAvatar({ userId }: { userId: string }) {
 	const inputRef = useRef<HTMLInputElement>(null);

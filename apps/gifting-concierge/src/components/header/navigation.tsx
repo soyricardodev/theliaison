@@ -21,8 +21,8 @@ import {
 	DropdownMenuTrigger,
 } from "@theliaison/ui/dropdown-menu";
 import { Separator } from "@theliaison/ui/separator";
-import { createClient } from "~/supabase/server";
 import { redirect } from "next/navigation";
+import { createClient } from "~/supabase/server";
 
 const menuItemsLoggedOut = [
 	{

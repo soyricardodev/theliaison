@@ -1,7 +1,7 @@
 "use client";
+import { Card, CardContent, CardHeader } from "@theliaison/ui/card";
 import React from "react";
 import { RegisterForm } from "./register-form";
-import { Card, CardContent, CardHeader } from "@theliaison/ui/card";
 
 export default function Register() {
 	const queryString =

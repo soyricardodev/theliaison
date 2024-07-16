@@ -2,6 +2,7 @@
 
 import React from "react";
 
+import { cn } from "@theliaison/ui";
 import {
 	InputOTP,
 	InputOTPGroup,
@@ -10,10 +11,9 @@ import {
 } from "@theliaison/ui/input-otp";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { SendIcon } from "lucide-react";
-import { verifyOtp } from "~/components/auth/actions";
-import { cn } from "@theliaison/ui";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { verifyOtp } from "~/components/auth/actions";
 
 export function VerifyOtp({ email }: { email: string }) {
 	const [verifyStatus, setVerifyStatus] = React.useState<
