@@ -19,14 +19,14 @@
 		"dev": "tsc --watch",
 		"clean": "rm -rf .turbo node_modules",
 		"typecheck": "tsc --noEmit --emitDeclarationOnly false",
-		"gen:types": "supabase gen types typescript --project-id 'vsgxmrltaxjozgytqgwh' --schema public > ./src/database-types.ts && pnpm build",
-		"gen:types-local": "supabase gen types typescript --local --schema public > ./src/database-types-local.ts && pnpm build",
+		"gen:types": "supabase gen types --lang=typescript --project-id 'vsgxmrltaxjozgytqgwh' --schema public > ./src/database-types.ts && pnpm build",
+		"gen:types-local": "supabase gen types --lang=typescript --local --schema public > ./src/database-types-local.ts && pnpm build",
 		"supabase:start": "supabase start",
 		"supabase:status": "supabase status",
-		"supabase:stop": "supabase stop --no-cache"
+		"supabase:stop": "supabase stop --no-backup"
 	},
 	"dependencies": {
-		"supabase": "1.172.2"
+		"supabase": "1.183.5"
 	},
 	"devDependencies": {
 		"@theliaison/tsconfig": "workspace:*",
