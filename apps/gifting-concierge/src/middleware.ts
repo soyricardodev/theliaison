@@ -4,7 +4,6 @@ import { updateSession } from "./supabase/middleware";
 import { createClient } from "./supabase/server";
 
 const adminPaths = ["/dashboard"];
-const authPaths = ["/register", "/login"];
 
 export async function middleware(request: NextRequest) {
 	await updateSession(request);
@@ -51,15 +50,6 @@ export async function middleware(request: NextRequest) {
 	// 		return;
 	// 	});
 	// }
-
-	if (authPaths.includes(pathname)) {
-		if (user != null || !error) {
-			url.pathname = "/";
-			return NextResponse.redirect(url);
-		}
-		return NextResponse.next();
-	}
-
 	return NextResponse.next();
 }
 
