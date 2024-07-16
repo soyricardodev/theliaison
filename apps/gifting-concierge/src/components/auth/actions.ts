@@ -61,24 +61,24 @@ export const signUpAction = createServerAction()
 	.input(simpleSignUpSchema)
 	.handler(async ({ input }) => {
 		const supabase = supabaseAdmin();
-		const resend = new Resend(env.RESEND_API_KEY);
-		console.log("here");
-		const res = await supabase.auth.admin.generateLink({
-			type: "signup",
+		// const resend = new Resend(env.RESEND_API_KEY);
+
+		const res = await supabase.auth.signInWithOtp({
 			email: input.email,
-			password: input.password,
 		});
 
-		if (res.data.properties?.email_otp) {
-			await resend.emails.send({
-				from: `The Liaison <noreply@${env.RESEND_DOMAIN}>`,
-				to: [input.email],
-				subject: "Verify Email Address for The Liaison",
-				react: SupaAuthVerifyEmail({
-					verificationCode: res.data.properties?.email_otp,
-				}),
-			});
-		}
+		console.log({ res });
+
+		// if (res.data.properties?.email_otp) {
+		// 	await resend.emails.send({
+		// 		from: `The Liaison <noreply@${env.RESEND_DOMAIN}>`,
+		// 		to: [input.email],
+		// 		subject: "Verify Email Address for The Liaison",
+		// 		react: SupaAuthVerifyEmail({
+		// 			verificationCode: res.data.properties?.email_otp,
+		// 		}),
+		// 	});
+		// }
 
 		if (res.error) throw new Error(res.error.message);
 
