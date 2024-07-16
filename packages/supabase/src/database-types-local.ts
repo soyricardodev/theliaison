@@ -293,32 +293,29 @@ export type Database = {
 			gifts: {
 				Row: {
 					created_at: string;
-					gift_link: string | null;
-					gift_link_specifications: string | null;
 					id: number;
 					recipient_id: string;
 					sender_id: string;
 					status: Database["public"]["Enums"]["gift_status"];
+					type: Database["public"]["Enums"]["gift_order_type"];
 					updated_at: string;
 				};
 				Insert: {
 					created_at?: string;
-					gift_link?: string | null;
-					gift_link_specifications?: string | null;
 					id?: number;
 					recipient_id: string;
 					sender_id: string;
 					status?: Database["public"]["Enums"]["gift_status"];
+					type?: Database["public"]["Enums"]["gift_order_type"];
 					updated_at?: string;
 				};
 				Update: {
 					created_at?: string;
-					gift_link?: string | null;
-					gift_link_specifications?: string | null;
 					id?: number;
 					recipient_id?: string;
 					sender_id?: string;
 					status?: Database["public"]["Enums"]["gift_status"];
+					type?: Database["public"]["Enums"]["gift_order_type"];
 					updated_at?: string;
 				};
 				Relationships: [
@@ -327,6 +324,45 @@ export type Database = {
 						columns: ["recipient_id"];
 						isOneToOne: false;
 						referencedRelation: "gift_recipients";
+						referencedColumns: ["id"];
+					},
+					{
+						foreignKeyName: "gifts_sender_id_fkey";
+						columns: ["sender_id"];
+						isOneToOne: false;
+						referencedRelation: "users";
+						referencedColumns: ["id"];
+					},
+				];
+			};
+			gifts_orders_links: {
+				Row: {
+					created_at: string;
+					gift_order_id: number;
+					id: number;
+					link: string;
+					specs: string;
+				};
+				Insert: {
+					created_at?: string;
+					gift_order_id: number;
+					id?: number;
+					link: string;
+					specs: string;
+				};
+				Update: {
+					created_at?: string;
+					gift_order_id?: number;
+					id?: number;
+					link?: string;
+					specs?: string;
+				};
+				Relationships: [
+					{
+						foreignKeyName: "gifts_orders_links_gift_order_id_fkey";
+						columns: ["gift_order_id"];
+						isOneToOne: true;
+						referencedRelation: "gifts";
 						referencedColumns: ["id"];
 					},
 				];
@@ -913,6 +949,7 @@ export type Database = {
 			app_permission: "gifts.delete" | "gifts.edit";
 			app_role: "admin";
 			gender: "female" | "male" | "other";
+			gift_order_type: "link" | "custom" | "store";
 			gift_payment_status: "pending" | "paid" | "failed";
 			gift_status:
 				| "awaiting_recipient_confirmation"
