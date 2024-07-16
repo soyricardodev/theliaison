@@ -16,6 +16,7 @@ export const env = createEnv({
 		FEDEX_TEST_TRACKING_SECRET_KEY: z.string(),
 		RESEND_DOMAIN: z.string(),
 		RESEND_API_KEY: z.string(),
+		NODE_ENV: z.enum(["development", "test", "production"]),
 	},
 	client: {
 		NEXT_PUBLIC_SUPABASE_URL: z.string().url(),
