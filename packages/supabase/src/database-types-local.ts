@@ -70,13 +70,6 @@ export type Database = {
 						referencedRelation: "polls";
 						referencedColumns: ["id"];
 					},
-					{
-						foreignKeyName: "comments_user_id_fkey1";
-						columns: ["user_id"];
-						isOneToOne: false;
-						referencedRelation: "users";
-						referencedColumns: ["id"];
-					},
 				];
 			};
 			customers: {
@@ -139,22 +132,7 @@ export type Database = {
 					following_id?: string;
 					id?: number;
 				};
-				Relationships: [
-					{
-						foreignKeyName: "follows_follower_id_fkey";
-						columns: ["follower_id"];
-						isOneToOne: false;
-						referencedRelation: "users";
-						referencedColumns: ["id"];
-					},
-					{
-						foreignKeyName: "follows_following_id_fkey";
-						columns: ["following_id"];
-						isOneToOne: false;
-						referencedRelation: "users";
-						referencedColumns: ["id"];
-					},
-				];
+				Relationships: [];
 			};
 			gift_payments: {
 				Row: {
@@ -351,13 +329,6 @@ export type Database = {
 						referencedRelation: "gift_recipients";
 						referencedColumns: ["id"];
 					},
-					{
-						foreignKeyName: "gifts_sender_id_fkey";
-						columns: ["sender_id"];
-						isOneToOne: false;
-						referencedRelation: "users";
-						referencedColumns: ["id"];
-					},
 				];
 			};
 			gifts_products: {
@@ -474,15 +445,7 @@ export type Database = {
 					question?: string;
 					user_id?: string;
 				};
-				Relationships: [
-					{
-						foreignKeyName: "polls_user_id_fkey";
-						columns: ["user_id"];
-						isOneToOne: false;
-						referencedRelation: "users";
-						referencedColumns: ["id"];
-					},
-				];
+				Relationships: [];
 			};
 			polls_categories: {
 				Row: {
@@ -733,74 +696,60 @@ export type Database = {
 					role?: Database["public"]["Enums"]["app_role"];
 					user_id?: string;
 				};
-				Relationships: [
-					{
-						foreignKeyName: "user_roles_user_id_fkey";
-						columns: ["user_id"];
-						isOneToOne: false;
-						referencedRelation: "users";
-						referencedColumns: ["id"];
-					},
-				];
+				Relationships: [];
 			};
 			users: {
 				Row: {
 					avatar_url: string | null;
 					billing_address: Json | null;
-					birthday_date: string | null;
 					city: string | null;
 					country: string | null;
-					data_verified: boolean | null;
-					full_name: string;
+					email: string | null;
+					full_name: string | null;
 					gender: Database["public"]["Enums"]["gender"] | null;
 					id: string;
-					instagram_username: string | null;
 					payment_method: Json | null;
 					relationship_status:
 						| Database["public"]["Enums"]["marital_status"]
 						| null;
-					updated_at: string | null;
-					username: string;
+					state: string | null;
+					zip_code: number | null;
 				};
 				Insert: {
 					avatar_url?: string | null;
 					billing_address?: Json | null;
-					birthday_date?: string | null;
 					city?: string | null;
 					country?: string | null;
-					data_verified?: boolean | null;
-					full_name: string;
+					email?: string | null;
+					full_name?: string | null;
 					gender?: Database["public"]["Enums"]["gender"] | null;
 					id: string;
-					instagram_username?: string | null;
 					payment_method?: Json | null;
 					relationship_status?:
 						| Database["public"]["Enums"]["marital_status"]
 						| null;
-					updated_at?: string | null;
-					username: string;
+					state?: string | null;
+					zip_code?: number | null;
 				};
 				Update: {
 					avatar_url?: string | null;
 					billing_address?: Json | null;
-					birthday_date?: string | null;
 					city?: string | null;
 					country?: string | null;
-					data_verified?: boolean | null;
-					full_name?: string;
+					email?: string | null;
+					full_name?: string | null;
 					gender?: Database["public"]["Enums"]["gender"] | null;
 					id?: string;
-					instagram_username?: string | null;
 					payment_method?: Json | null;
 					relationship_status?:
 						| Database["public"]["Enums"]["marital_status"]
 						| null;
-					updated_at?: string | null;
-					username?: string;
+					state?: string | null;
+					zip_code?: number | null;
 				};
 				Relationships: [
 					{
-						foreignKeyName: "profiles_id_fkey";
+						foreignKeyName: "users_id_fkey";
 						columns: ["id"];
 						isOneToOne: true;
 						referencedRelation: "users";
@@ -846,13 +795,6 @@ export type Database = {
 						columns: ["poll_id"];
 						isOneToOne: false;
 						referencedRelation: "polls";
-						referencedColumns: ["id"];
-					},
-					{
-						foreignKeyName: "votes_user_id_fkey";
-						columns: ["user_id"];
-						isOneToOne: false;
-						referencedRelation: "users";
 						referencedColumns: ["id"];
 					},
 				];
