@@ -2,14 +2,14 @@ import type { CookieOptions } from "@supabase/ssr";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
-import type { Database } from "@theliaison/supabase/database-types";
+import type { Database as LocalDatabase } from "@theliaison/supabase/database-types-local";
 
 import { env } from "~/env";
 
 export function createClient() {
 	const cookieStore = cookies();
 
-	return createServerClient<Database>(
+	return createServerClient<LocalDatabase>(
 		env.NEXT_PUBLIC_SUPABASE_URL,
 		env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
 		{
