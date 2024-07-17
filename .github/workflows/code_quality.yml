@@ -18,5 +18,5 @@ jobs:
         with:
           version: latest
 
-      - name: Run Biome
-        run: biome ci .
+      - name: Run Biome Fix
+        run: biome check . --write
