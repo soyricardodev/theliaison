@@ -1,16 +1,7 @@
 import { Avatar } from "@nextui-org/react";
+import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import { cn } from "@theliaison/ui";
 import { Badge } from "@theliaison/ui/badge";
-import {
-	Table,
-	TableBody,
-	TableCell,
-	TableHead,
-	TableHeader,
-	TableRow,
-} from "@theliaison/ui/table";
-import type { Orders } from "./orders-query";
-import { DotsHorizontalIcon } from "@radix-ui/react-icons";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -19,8 +10,17 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@theliaison/ui/dropdown-menu";
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "@theliaison/ui/table";
 import { EyeIcon } from "lucide-react";
 import Link from "next/link";
+import type { Orders } from "./orders-query";
 
 export function OrdersTable({ orders }: { orders: Orders }) {
 	return (

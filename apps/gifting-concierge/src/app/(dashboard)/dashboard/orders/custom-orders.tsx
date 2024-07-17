@@ -1,5 +1,5 @@
-import { OrdersTable } from "./orders-table";
 import { getCustomOrdersQuery } from "./orders-query";
+import { OrdersTable } from "./orders-table";
 
 export async function CustomOrders() {
 	const { data, error } = await getCustomOrdersQuery;

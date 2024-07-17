@@ -7,8 +7,8 @@ import {
 } from "@theliaison/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@theliaison/ui/tabs";
 import { AllOrders } from "./all-orders";
-import { LinkOrders } from "./link-orders";
 import { CustomOrders } from "./custom-orders";
+import { LinkOrders } from "./link-orders";
 import { StoreOrders } from "./store-orders";
 
 export default function OrdersPage() {

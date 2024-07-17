@@ -1,5 +1,5 @@
-import { OrdersTable } from "./orders-table";
 import { getAllOrdersQuery } from "./orders-query";
+import { OrdersTable } from "./orders-table";
 
 export async function AllOrders() {
 	const { data, error } = await getAllOrdersQuery;
