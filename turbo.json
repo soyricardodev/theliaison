@@ -15,9 +15,6 @@
 		"RESEND_API_KEY"
 	],
 	"tasks": {
-		"topo": {
-			"dependsOn": ["^topo"]
-		},
 		"build": {
 			"dependsOn": ["^build"],
 			"outputs": [
@@ -48,7 +45,7 @@
 			]
 		},
 		"typecheck": {
-			"dependsOn": ["^topo", "^build"],
+			"dependsOn": ["^build"],
 			"outputs": ["node_modules/.cache/tsbuildinfo.json"]
 		},
 		"clean": {
