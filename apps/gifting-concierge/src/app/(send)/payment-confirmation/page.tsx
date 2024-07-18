@@ -47,10 +47,11 @@ export default async function CheckoutReturnPage({
 
 	if (session.status === "complete") {
 		return (
-			<div className="flex h-full flex-col items-center justify-center gap-4 bg-background py-32">
+			<div className="flex min-h-full h-full flex-col items-center justify-center gap-4 bg-background py-32">
+				<h1 className="text-4xl font-bold text-balance">
+					Thank you for your purchase!
+				</h1>
 				<ActualData sessionId={sessionId} type={type} />
-				<h1 className="text-4xl font-bold">Thank you for your purchase!</h1>
-				<h3 className="text-xl font-semibold">!</h3>
 			</div>
 		);
 	}
