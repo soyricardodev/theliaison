@@ -236,7 +236,7 @@ export function BarChart(props: BarChartProps) {
 	);
 	const hasOnValueChange = !!onValueChange;
 
-	function onBarClick(data: any, idx: number, event: React.MouseEvent) {
+	function onBarClick(data: any, _idx: number, event: React.MouseEvent) {
 		event.stopPropagation();
 		if (!onValueChange) return;
 		if (deepEqual(activeBar, { ...data.payload, value: data.value })) {

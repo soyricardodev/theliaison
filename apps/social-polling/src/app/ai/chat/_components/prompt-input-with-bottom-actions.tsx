@@ -3,7 +3,6 @@
 import { Icon } from "@iconify/react";
 import { Button, ScrollShadow, Tooltip } from "@nextui-org/react";
 import { useChat } from "ai/react";
-import React from "react";
 
 import { cn } from "@theliaison/ui";
 
@@ -11,7 +10,7 @@ import { MessageCard } from "./message-card";
 import { PromptInput } from "./prompt-input";
 
 export function PromptInputWithBottomActions() {
-	const ideas = [
+	const _ideas = [
 		{
 			title: "Create a blog post about NextUI",
 			description: "explain it in simple terms",

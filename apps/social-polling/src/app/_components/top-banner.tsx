@@ -2,7 +2,6 @@
 
 import { Icon } from "@iconify/react";
 import { Button, Link } from "@nextui-org/react";
-import React from "react";
 
 import { cn } from "@theliaison/ui";
 

@@ -130,7 +130,7 @@ export async function createShipment({
 	}
 
 	const shipmentRequestId = nanoid();
-	const shipmentRequest = await shipClient.POST("/ship/v1/shipments", {
+	const _shipmentRequest = await shipClient.POST("/ship/v1/shipments", {
 		params: {
 			header: {
 				"content-type": "application/json",
@@ -241,11 +241,11 @@ export async function getTrackingStatus(trackingNumber: string) {
 
 	// important data about the delivery status
 	const track = trackerRequest.data?.output?.completeTrackResults;
-	const deliveryStatus =
+	const _deliveryStatus =
 		track?.[0]?.trackResults?.[0]?.latestStatusDetail?.statusByLocale;
-	const shipmentDeliveryType =
+	const _shipmentDeliveryType =
 		track?.[0]?.trackResults?.[0]?.estimatedDeliveryTimeWindow?.type;
-	const shipmentDeliveryDescription =
+	const _shipmentDeliveryDescription =
 		track?.[0]?.trackResults?.[0]?.estimatedDeliveryTimeWindow?.description;
 
 	return {};

@@ -1,7 +1,6 @@
 "use client";
 
 import { useChat } from "ai/react";
-import React from "react";
 
 import { MessageCard } from "./message-card";
 

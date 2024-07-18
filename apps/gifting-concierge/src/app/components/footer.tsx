@@ -3,8 +3,6 @@
 import type { IconProps } from "@iconify/react";
 import Link from "next/link";
 
-import React from "react";
-
 import { cn } from "@theliaison/ui";
 import {
 	Accordion,
@@ -50,7 +48,7 @@ const XIcon = (props: SVGProps<SVGSVGElement>) => (
 	</svg>
 );
 
-const TikTokIcon = (props: SVGProps<SVGSVGElement>) => (
+const TikTokIcon = (_props: SVGProps<SVGSVGElement>) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width="1em"

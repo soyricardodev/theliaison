@@ -4,7 +4,6 @@ import { WavyText } from "~/components/magicui/wavy-text";
 import { Brands } from "./_components/brands";
 import { CardIDK } from "./_components/card-idk";
 import { FAQs } from "./_components/faqs";
-import { Hero } from "./_components/hero";
 import { HeroAnimation } from "./_components/hero-animation";
 import { Robot3D } from "./_components/robot3d";
 import { Steps } from "./_components/steps";

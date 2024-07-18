@@ -1,6 +1,5 @@
 "use client";
 import { Button } from "@theliaison/ui/button";
-import React from "react";
 import { FcGoogle } from "react-icons/fc";
 import { IoLogoGithub } from "react-icons/io5";
 import { createClient } from "~/supabase/client";

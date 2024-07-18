@@ -1,9 +1,8 @@
-import { type JwtPayload, jwtDecode } from "jwt-decode";
 import { type NextRequest, NextResponse } from "next/server";
 import { updateSession } from "./supabase/middleware";
 import { createClient } from "./supabase/server";
 
-const adminPaths = ["/dashboard"];
+const _adminPaths = ["/dashboard"];
 
 export async function middleware(request: NextRequest) {
 	await updateSession(request);
@@ -15,8 +14,8 @@ export async function middleware(request: NextRequest) {
 	} = await supabase.auth.getUser();
 
 	const url = request.nextUrl.clone();
-	const pathname = url.pathname;
-	const nextPath = url.searchParams.get("next");
+	const _pathname = url.pathname;
+	const _nextPath = url.searchParams.get("next");
 
 	// if (adminPaths.includes(pathname)) {
 	// 	if (!user || error) {

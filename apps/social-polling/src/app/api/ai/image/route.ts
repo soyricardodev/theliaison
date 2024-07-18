@@ -62,7 +62,7 @@ const generateImage = async (prompt: string) => {
 		});
 
 		return response.data[0]?.b64_json;
-	} catch (error) {
+	} catch (_error) {
 		return null;
 	}
 };

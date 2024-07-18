@@ -20,7 +20,7 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@theliaison/ui/select";
-import { GiftIcon, LinkIcon, MailIcon, PhoneIcon } from "lucide-react";
+import { MailIcon, PhoneIcon } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";

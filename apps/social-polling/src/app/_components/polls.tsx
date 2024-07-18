@@ -115,7 +115,7 @@ export function NewPollsAproach({
 	polls: PollWithOptionsAndVotes[];
 	delay?: number;
 }) {
-	const router = useRouter();
+	const _router = useRouter();
 	const POLLS_HOME_PAGE_COUNT = 15;
 
 	return (

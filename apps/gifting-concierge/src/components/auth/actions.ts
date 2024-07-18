@@ -2,15 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { createClient } from "~/supabase/server";
-
-import { Resend } from "resend";
 import { z } from "zod";
 import { createServerAction } from "zsa";
-import SupaAuthVerifyEmail from "~/emails";
-import { env } from "~/env";
 import { simpleSignUpSchema, verifyOtpSchema } from "~/lib/validators/auth";
 import supabaseAdmin from "~/supabase/admin";
+import { createClient } from "~/supabase/server";
 
 export const verifyOtp = createServerAction()
 	.input(verifyOtpSchema)

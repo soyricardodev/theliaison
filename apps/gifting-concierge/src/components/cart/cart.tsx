@@ -29,7 +29,7 @@ export function Cart() {
 					<div className="flex h-full flex-col justify-between overflow-hidden p-1">
 						{/* list items */}
 						<ul className="flex-grow overflow-auto py-4">
-							{shoppingCart.map((gift, i) => (
+							{shoppingCart.map((gift, _i) => (
 								<ProductCart
 									key={gift.id}
 									productId={gift.id}

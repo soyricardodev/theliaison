@@ -1,25 +1,19 @@
 "use server";
 import "server-only";
 import { createClient as createClientAdmin } from "@supabase/supabase-js";
-import type {
-	Database,
-	Tables,
-	TablesInsert,
-} from "@theliaison/supabase/database-types";
-import type Stripe from "stripe";
+import type { Database, Tables } from "@theliaison/supabase/database-types";
 import { createClient } from "~/supabase/server";
 
 import OpenAI from "openai";
 import { env } from "~/env";
-import { stripe } from "~/utils/stripe/config";
 
 type Product = Tables<"products">;
 type Price = Tables<"prices">;
-const TRIAL_PERIOD_DAYS = 0;
-const openai = new OpenAI({
+const _TRIAL_PERIOD_DAYS = 0;
+const _openai = new OpenAI({
 	apiKey: env.OPENAI_API_KEY,
 });
-const supabaseAdmin = createClientAdmin<Database>(
+const _supabaseAdmin = createClientAdmin<Database>(
 	env.NEXT_PUBLIC_SUPABASE_URL,
 	env.SUPABASE_SERVICE_ROLE_KEY,
 );

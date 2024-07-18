@@ -3,7 +3,6 @@
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import { PlusIcon } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
 const faqs = [
 	{

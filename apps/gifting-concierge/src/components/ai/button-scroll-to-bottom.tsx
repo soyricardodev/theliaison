@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from "react";
-
 import { cn } from "@theliaison/ui";
 import { Button, type ButtonProps } from "@theliaison/ui/button";
 import { IconArrowDown } from "../ui/icons";

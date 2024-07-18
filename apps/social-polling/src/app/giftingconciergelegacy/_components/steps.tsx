@@ -1,9 +1,7 @@
 "use client";
 
-import { Progress, Spacer } from "@nextui-org/react";
+import { Progress } from "@nextui-org/react";
 import React from "react";
-
-import SupportCard from "./support-card";
 import VerticalCollapsibleSteps from "./vertical-collapsible-steps";
 
 const steps = [

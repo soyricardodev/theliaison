@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { SocialAuth } from "./social-auth";
 
 import { zodResolver } from "@hookform/resolvers/zod";

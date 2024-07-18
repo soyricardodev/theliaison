@@ -8,7 +8,6 @@ import { cn } from "@theliaison/ui";
 
 import { CommunityMember } from "./_components/community-member";
 import { ModalUserData } from "./_components/modal-user-data";
-import { SelectCard } from "./_components/select-card";
 
 function CustomRadio({
 	children,

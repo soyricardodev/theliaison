@@ -1,12 +1,9 @@
 "use client";
 
-import { Tooltip, User } from "@nextui-org/react";
+import { User } from "@nextui-org/react";
 import { CircleArrowDownIcon, CircleArrowUpIcon } from "lucide-react";
 import type React from "react";
 import { useState } from "react";
-import { toast } from "sonner";
-
-import { downvoteComment, upvoteComment } from "../../actions/comments";
 
 export type ReviewType = {
 	user: {

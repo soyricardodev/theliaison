@@ -117,7 +117,7 @@ export function Navigation(props: NavbarProps) {
 					},
 				}}
 			>
-				{menuItems.map((item, index) => (
+				{menuItems.map((item, _index) => (
 					<NavbarMenuItem key={item}>
 						<Link className="text-default-500 w-full" href="#" size="md">
 							{item}

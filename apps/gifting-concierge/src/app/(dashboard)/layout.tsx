@@ -17,7 +17,6 @@ import {
 	Home,
 	LineChart,
 	Package,
-	Package2,
 	PanelLeft,
 	Settings,
 	ShoppingCart,

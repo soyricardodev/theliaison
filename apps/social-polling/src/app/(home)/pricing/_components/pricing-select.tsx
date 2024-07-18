@@ -33,7 +33,7 @@ export function PricingSelect({
 }) {
 	const [value, setValue] = React.useState(products[0].name);
 	const router = useRouter();
-	const [priceIdLoading, setPriceIdLoading] = React.useState<string>();
+	const [_priceIdLoading, setPriceIdLoading] = React.useState<string>();
 	const currentPath = usePathname();
 
 	const handleStripeCheckout = async (price: Price) => {

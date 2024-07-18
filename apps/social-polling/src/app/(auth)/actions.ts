@@ -54,7 +54,7 @@ export async function signInWithOAuth() {
 }
 
 export async function signup(
-	prevState: FormState,
+	_prevState: FormState,
 	formData: FormData,
 ): Promise<FormState> {
 	const formDataEntries = Object.fromEntries(formData);
@@ -92,7 +92,7 @@ export async function signup(
 
 		revalidatePath("/", "layout");
 		redirect(`/signup/confirm/${user.email}`);
-	} catch (error) {
+	} catch (_error) {
 		return { message: "Failed to sign up" };
 	}
 }

@@ -250,7 +250,7 @@ const ShippingForm = ({
 									</FormControl>
 									<SelectContent className="dark">
 										<SelectGroup>
-											{usStates.map((state, i) => (
+											{usStates.map((state, _i) => (
 												<SelectItem
 													key={`${state.abbreviation}-${state.name}`}
 													value={state.abbreviation}

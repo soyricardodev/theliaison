@@ -2,7 +2,6 @@
 
 import { Icon } from "@iconify/react";
 import { Accordion, AccordionItem } from "@nextui-org/react";
-import React from "react";
 
 const faqs = [
 	{
@@ -82,7 +81,7 @@ export function FAQs() {
 					items={faqs}
 					selectionMode="multiple"
 				>
-					{faqs.map((item, i) => (
+					{faqs.map((item, _i) => (
 						<AccordionItem
 							key={item.title}
 							indicator={<Icon icon="lucide:plus" width={24} />}

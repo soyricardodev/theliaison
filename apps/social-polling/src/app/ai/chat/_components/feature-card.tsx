@@ -26,7 +26,7 @@ export const FeatureCard = ({
 				<p className="text-medium text-content2-foreground">{title}</p>
 			</CardHeader>
 			<CardBody className="flex flex-col gap-2">
-				{descriptions.map((description, index) => (
+				{descriptions.map((description, _index) => (
 					<div
 						key={description}
 						className="rounded-medium bg-content3 text-content3-foreground flex min-h-[50px] px-3 py-2"

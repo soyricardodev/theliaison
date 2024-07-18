@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@theliaison/ui/button";
@@ -12,14 +11,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@theliaison/ui/card";
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage,
-} from "@theliaison/ui/form";
 import { Input } from "@theliaison/ui/input";
 import { Label } from "@theliaison/ui/label";
 import { useForm } from "react-hook-form";
@@ -31,7 +22,7 @@ import { signInWithEmailSchema } from "~/lib/validators/auth";
 
 export function LoginForm({ redirectTo }: { redirectTo: string }) {
 	const { isPending, execute } = useServerAction(signInWithEmail);
-	const form = useForm<z.infer<typeof signInWithEmailSchema>>({
+	const _form = useForm<z.infer<typeof signInWithEmailSchema>>({
 		resolver: zodResolver(signInWithEmailSchema),
 		mode: "onChange",
 	});

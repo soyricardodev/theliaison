@@ -31,7 +31,7 @@ const uploadToSupabase = async (buffer: ArrayBuffer, fileName: string) => {
 	return data.path;
 };
 
-const updatePollImage = async (pollId: string, imagePath: string) => {
+const _updatePollImage = async (pollId: string, imagePath: string) => {
 	const supabase = createClient();
 	const { error } = await supabase
 		.from("polls")

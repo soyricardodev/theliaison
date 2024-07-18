@@ -1,5 +1,3 @@
-import React from "react";
-
 import { HeaderCTA } from "./header-cta";
 import { HeaderUser } from "./header-user";
 import { MainNav } from "./main-nav";

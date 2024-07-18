@@ -9,7 +9,6 @@ import {
 	CardHeader,
 	RadioGroup,
 } from "@nextui-org/react";
-import React from "react";
 
 import { PlanRadio } from "./plan-radio";
 

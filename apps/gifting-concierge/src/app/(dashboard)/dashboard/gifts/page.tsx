@@ -70,7 +70,7 @@ export default async function GiftsPage() {
 							</TableRow>
 						</TableHeader>
 						<TableBody>
-							{data?.map((product, index) => (
+							{data?.map((product, _index) => (
 								<TableRow key={product.id}>
 									<TableCell className="hidden sm:table-cell">
 										<Image

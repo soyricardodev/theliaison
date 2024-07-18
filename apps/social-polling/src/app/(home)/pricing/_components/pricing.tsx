@@ -35,7 +35,7 @@ interface Props {
 
 export default function Pricing({ user, products, subscription }: Props) {
 	const router = useRouter();
-	const [priceIdLoading, setPriceIdLoading] = useState<string>();
+	const [_priceIdLoading, setPriceIdLoading] = useState<string>();
 	const currentPath = usePathname();
 
 	const handleStripeCheckout = async (price: Price) => {

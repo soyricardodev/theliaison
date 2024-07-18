@@ -1,5 +1,5 @@
 import { InstagramLogoIcon, TwitterLogoIcon } from "@radix-ui/react-icons";
-import { ChevronRight, HeartHandshake } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 
 import { cn } from "@theliaison/ui";

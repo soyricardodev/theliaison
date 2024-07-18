@@ -2,7 +2,6 @@
 
 import { ScrollShadow, Spacer } from "@nextui-org/react";
 import { useMediaQuery } from "@theliaison/hooks";
-import type React from "react";
 
 import { cn } from "@theliaison/ui";
 import { usePathname } from "next/navigation";

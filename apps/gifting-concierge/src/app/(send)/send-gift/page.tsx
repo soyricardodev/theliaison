@@ -4,7 +4,6 @@ import { Badge, Button, Progress } from "@nextui-org/react";
 import { Toaster } from "@theliaison/ui/sonner";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
 import { ArrowLeftIcon, ShoppingCartIcon } from "lucide-react";
-import { redirect } from "next/navigation";
 import React from "react";
 import { toast } from "sonner";
 import { useCartStore } from "~/store/cart";

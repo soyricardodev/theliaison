@@ -80,7 +80,7 @@ export function ModalUserData({
 			</Button>
 			<Modal isOpen={isOpen} className="dark" onOpenChange={onOpenChange}>
 				<ModalContent>
-					{(onClose) => (
+					{(_onClose) => (
 						<>
 							<ModalHeader className="flex flex-col gap-1 text-white">
 								Tell us more about yourself

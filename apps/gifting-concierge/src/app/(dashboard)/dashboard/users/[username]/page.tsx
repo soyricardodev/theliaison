@@ -2,7 +2,6 @@
 
 import {
 	Avatar,
-	Button,
 	Card,
 	CardBody,
 	CardHeader,
@@ -10,7 +9,6 @@ import {
 	Tab,
 	Tabs,
 } from "@nextui-org/react";
-import React from "react";
 
 export default function Component() {
 	return (

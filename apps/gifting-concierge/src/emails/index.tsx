@@ -8,7 +8,6 @@ import {
 	Section,
 	Text,
 } from "@react-email/components";
-import * as React from "react";
 
 interface SupaAuthVerifyEmailProp {
 	verificationCode?: string;
@@ -70,7 +69,7 @@ const h1 = {
 	marginBottom: "15px",
 };
 
-const link = {
+const _link = {
 	color: "#2754C5",
 	fontFamily:
 		"-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
@@ -98,9 +97,9 @@ const coverSection = { backgroundColor: "#fff" };
 
 const upperSection = { padding: "25px 35px" };
 
-const lowerSection = { padding: "25px 35px" };
+const _lowerSection = { padding: "25px 35px" };
 
-const footerText = {
+const _footerText = {
 	...text,
 	fontSize: "12px",
 	padding: "0 20px",

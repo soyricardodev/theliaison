@@ -1,11 +1,6 @@
 "use server";
-
-import { getAccessToken } from "@theliaison/fedex/fetch/authorization";
-import { client as fedexClientLocations } from "@theliaison/fedex/fetch/locations";
 import { redirect } from "next/navigation";
-import { z } from "zod";
 import { ZSAError, createServerAction } from "zsa";
-import { env } from "~/env";
 import { createClient } from "~/supabase/server";
 import { sendByLinkSchema } from "../validators";
 

@@ -7,11 +7,7 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@theliaison/ui/dropdown-menu";
-import {
-	CircleUserRoundIcon,
-	GiftIcon,
-	HeartHandshakeIcon,
-} from "lucide-react";
+import { GiftIcon, HeartHandshakeIcon } from "lucide-react";
 import Link from "next/link";
 import { createClient } from "~/supabase/server";
 import { SignOutForm } from "./signout-form";

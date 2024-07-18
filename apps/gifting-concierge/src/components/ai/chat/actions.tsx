@@ -594,7 +594,7 @@ export const AI = createAI<AIState, UIState>({
 			const firstMessageContent = messages[0]?.content as string;
 			const title = firstMessageContent.substring(0, 100);
 
-			const chat: Chat = {
+			const _chat: Chat = {
 				id: chatId,
 				title,
 				userId,

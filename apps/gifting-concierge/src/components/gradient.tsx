@@ -1,6 +1,4 @@
 "use client";
-
-import React from "react";
 import { ShaderGradient, ShaderGradientCanvas } from "shadergradient";
 
 export function Gradient({

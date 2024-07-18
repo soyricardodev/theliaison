@@ -1,6 +1,5 @@
 import { createClient } from "~/utils/supabase/server";
 import { ModernPricing } from "./_components/modern-pricing";
-import { PricingSelect } from "./_components/pricing-select";
 
 export default async function PricingPage() {
 	const supabase = createClient();
@@ -25,7 +24,7 @@ export default async function PricingPage() {
 
 	console.log(products);
 
-	const userSubscriptionId =
+	const _userSubscriptionId =
 		subscription != null ? subscription.prices?.id : null;
 
 	if (!products) return;

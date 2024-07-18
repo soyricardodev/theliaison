@@ -27,10 +27,10 @@ export default function CreateProduct() {
 	const [productName, setProductName] = React.useState("");
 	const [productDescription, setProductDescription] = React.useState("");
 	const [productPrice, setProductPrice] = React.useState("");
-	const [productCategory, setProductCategory] = React.useState("");
-	const [productImage, setProductImage] = React.useState("");
+	const [_productCategory, _setProductCategory] = React.useState("");
+	const [_productImage, _setProductImage] = React.useState("");
 
-	const supabase = createClient();
+	const _supabase = createClient();
 
 	return (
 		<div className="mx-auto grid max-w-[59rem] flex-1 auto-rows-max gap-4">

@@ -11,13 +11,6 @@ import {
 import { Input } from "@theliaison/ui/input";
 import { Label } from "@theliaison/ui/label";
 import { RadioGroup, RadioGroupItem } from "@theliaison/ui/radio-group";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@theliaison/ui/select";
 import { useState } from "react";
 
 export function SimpleSendGift() {

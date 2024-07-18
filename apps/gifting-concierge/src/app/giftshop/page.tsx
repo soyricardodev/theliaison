@@ -1,5 +1,4 @@
 import type { SVGProps } from "react";
-import React from "react";
 
 import { ProductsList } from "./_components/products-list";
 

@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
 	Logo1,
 	Logo2,

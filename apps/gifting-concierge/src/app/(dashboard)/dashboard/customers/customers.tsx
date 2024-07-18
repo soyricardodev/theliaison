@@ -1,11 +1,4 @@
 import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardHeader,
-	CardTitle,
-} from "@theliaison/ui/card";
-import {
 	Table,
 	TableBody,
 	TableCell,

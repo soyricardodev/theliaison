@@ -3,7 +3,7 @@
 import { OrbitControls } from "@react-three/drei";
 import type { Object3DNode } from "@react-three/fiber";
 import { Canvas, extend, useThree } from "@react-three/fiber";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // @ts-expect-error - TODO: Fix this type error
 import { Color, Fog, PerspectiveCamera, Scene, Vector3 } from "three";
 import ThreeGlobe from "three-globe";
@@ -163,7 +163,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 				.showAtmosphere(defaultProps.showAtmosphere)
 				.atmosphereColor(defaultProps.atmosphereColor)
 				.atmosphereAltitude(defaultProps.atmosphereAltitude)
-				.hexPolygonColor((e) => {
+				.hexPolygonColor((_e) => {
 					return defaultProps.polygonColor;
 				});
 			startAnimation();
@@ -191,7 +191,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 			.arcDashLength(defaultProps.arcLength)
 			.arcDashInitialGap((e) => (e as { order: number }).order * 1)
 			.arcDashGap(15)
-			.arcDashAnimateTime((e) => defaultProps.arcTime);
+			.arcDashAnimateTime((_e) => defaultProps.arcTime);
 
 		globeRef.current
 			.pointsData(data)
@@ -222,7 +222,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
 			);
 
 			globeRef.current.ringsData(
-				globeData.filter((d, i) => numbersOfRings.includes(i)),
+				globeData.filter((_d, i) => numbersOfRings.includes(i)),
 			);
 		}, 2000);
 
@@ -290,7 +290,7 @@ export function hexToRgb(hex: string) {
 	const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
 	const newHex = hex.replace(
 		shorthandRegex,
-		(m, r, g, b) => r + r + g + g + b + b,
+		(_m, r, g, b) => r + r + g + g + b + b,
 	);
 
 	const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(newHex);

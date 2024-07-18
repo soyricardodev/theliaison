@@ -7,14 +7,9 @@ import {
 	CardBody,
 	CardFooter,
 	CardHeader,
-	Chip,
 	Divider,
 	Link,
-	Spacer,
-	Tab,
-	Tabs,
 } from "@nextui-org/react";
-import React from "react";
 
 import type { Tables } from "@theliaison/supabase/database-types";
 import { cn } from "@theliaison/ui";
