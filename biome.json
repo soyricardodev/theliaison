@@ -9,6 +9,13 @@
 			"recommended": true,
 			"suspicious": {
 				"noExplicitAny": "off"
+			},
+			"a11y": {
+				"useKeyWithClickEvents": "off"
+			},
+			"correctness": {
+				"noUnusedVariables": "error",
+				"noUnusedImports": "error"
 			}
 		}
 	},
