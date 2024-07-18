@@ -30,9 +30,7 @@ import { sendByLinkSchema } from "../validators";
 import { sendGiftFromLinkAction } from "./actions";
 
 export function SendByLinkForm() {
-	const { isPending, execute, data, error } = useServerAction(
-		sendGiftFromLinkAction,
-	);
+	const { isPending, execute, error } = useServerAction(sendGiftFromLinkAction);
 
 	const [contactMethod, setContactMethod] = useState<
 		"email" | "phone" | "social"

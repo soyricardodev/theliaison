@@ -17,11 +17,6 @@ export function SimpleSendGift() {
 	const [recipientName, setRecipientName] = useState("");
 	const [contactInfo, setContactInfo] = useState("");
 
-	function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-		e.preventDefault();
-		console.log("submit");
-	}
-
 	return (
 		<Card className="mx-auto max-w-md">
 			<CardHeader>

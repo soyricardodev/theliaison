@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
 			});
 		}
 
-		const { url, pollId } = parsed.data;
+		const { url } = parsed.data;
 
 		const imageBuffer = await downloadImage(url);
 		console.log("imageBuffer", imageBuffer);

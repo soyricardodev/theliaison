@@ -9,6 +9,7 @@ function StarFilledIcon({ ...props }: React.SVGProps<SVGSVGElement>) {
 			viewBox="0 0 15 15"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
+			{...props}
 		>
 			<title>Star Filled</title>
 			<path

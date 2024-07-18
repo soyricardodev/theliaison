@@ -13,34 +13,14 @@ import {
 } from "@theliaison/ui/select";
 import { AnimatePresence, LazyMotion, domAnimation, m } from "framer-motion";
 import React from "react";
-import { z } from "zod";
 import { useRecipientStore } from "~/store/recipient";
-
-const recipientSchema = z.object({
-	recipient_name: z.string().min(1, "You need to enter a name"),
-	knows_address: z.enum(["yes", "no"]),
-	address: z.string().optional(),
-	city: z.string().optional(),
-	state: z.string().optional(),
-	postal_code: z.string().optional(),
-	country: z.string().optional(),
-	has_contact: z.enum(["yes", "no"]),
-	phone: z.string().optional(),
-	email: z.string().email("Please provide a valid email").optional(),
-	social_platform: z.string().optional(),
-	social_handle: z.string().optional(),
-});
-
-type RecipientDataFormValues = z.infer<typeof recipientSchema>;
 
 export const RecipientDataForm = () => {
 	const [[page, direction], setPage] = React.useState([0, 0]);
 	const [canContinue, setCanContinue] = React.useState(false);
 
 	const {
-		canContinue: canContinueForm,
 		recipientName,
-		recipientSocial,
 		recipientEmail,
 		recipientPhone,
 		recipientSocialHandle,

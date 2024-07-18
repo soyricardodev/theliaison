@@ -229,7 +229,7 @@ async function submitUserMessage(content: string) {
 					const descriptionEmbedding =
 						recipientDescriptionEmbedding.embeddings[0];
 					const supabase = createClient();
-					const { data, error } = await supabase.rpc("search_gifts", {
+					const { data } = await supabase.rpc("search_gifts", {
 						// @ts-expect-error - TODO: Fix this type error
 						query_embedding: descriptionEmbedding,
 						similarity_threshold: 0.75,
@@ -562,7 +562,6 @@ export const AI = createAI<AIState, UIState>({
 		const supabase = createClient();
 		const {
 			data: { user },
-			error,
 		} = await supabase.auth.getUser();
 
 		if (user) {
@@ -581,7 +580,6 @@ export const AI = createAI<AIState, UIState>({
 		const supabase = createClient();
 		const {
 			data: { user },
-			error,
 		} = await supabase.auth.getUser();
 
 		if (user) {

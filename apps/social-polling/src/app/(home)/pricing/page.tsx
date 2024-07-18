@@ -4,11 +4,7 @@ import { ModernPricing } from "./_components/modern-pricing";
 export default async function PricingPage() {
 	const supabase = createClient();
 
-	const {
-		data: { user },
-	} = await supabase.auth.getUser();
-
-	const { data: subscription, error } = await supabase
+	const { data: subscription } = await supabase
 		.from("subscriptions")
 		.select("*, prices(*, products(*))")
 		.in("status", ["trialing", "active"])
@@ -33,10 +29,5 @@ export default async function PricingPage() {
 		<div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
 			<ModernPricing products={[products[1], products[2], products[0]]} />
 		</div>
-		// <PricingSelect
-		// 	user={user}
-		// 	products={products}
-		// 	userSubscriptionId={userSubscriptionId}
-		// />
 	);
 }
