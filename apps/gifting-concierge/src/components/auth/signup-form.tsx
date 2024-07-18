@@ -41,7 +41,7 @@ const signUpSchema = z
 	);
 
 export default function SignUp({ redirectTo }: { redirectTo: string }) {
-	const { isPending, execute } = useServerAction(signUpAction);
+	const { execute } = useServerAction(signUpAction);
 
 	const queryString =
 		typeof window !== "undefined" ? window.location.search : "";
@@ -68,23 +68,6 @@ export default function SignUp({ redirectTo }: { redirectTo: string }) {
 		"border-green-500": verifyStatus === "success",
 		"border-red-500": verifyStatus === "failed",
 	});
-
-	async function onSubmit(values: z.infer<typeof signUpSchema>) {
-		if (!isPending) {
-			const [_data, err] = await execute({
-				email: values.email,
-				password: values.password,
-			});
-
-			if (err) {
-				toast.error(err.message);
-				return;
-			}
-
-			router.replace(`${pathname || "/"}?verify=true&email=${values.email}`);
-			setIsConfirmed(true);
-		}
-	}
 
 	return (
 		<div className="whitespace-nowrap p-5 space-x-5 overflow-hidden items-center align-top">

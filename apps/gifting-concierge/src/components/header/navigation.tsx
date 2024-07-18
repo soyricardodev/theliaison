@@ -100,7 +100,7 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 
 		const supabase = createClient();
 
-		const { error } = await supabase.auth.signOut();
+		await supabase.auth.signOut();
 
 		redirect("/login");
 	};
