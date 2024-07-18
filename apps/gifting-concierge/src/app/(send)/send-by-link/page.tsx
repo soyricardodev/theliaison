@@ -1,10 +1,16 @@
 import { Toaster } from "@theliaison/ui/sonner";
-import { SendByLinkForm } from "./send-by-link-form";
+import { StepperForm } from "./stepper-form";
+
+export const metadata = {
+	title: "Send a Gift by Link",
+	description: "Provide gift links and we'll take care of the rest.",
+};
 
 export default function SendByLink() {
 	return (
 		<div className="max-w-screen-2xl mx-auto px-4 sm:px-6 md:px-8 w-full">
-			<SendByLinkForm />
+			<StepperForm />
+			{/* <SendByLinkForm /> */}
 			<Toaster />
 		</div>
 	);
