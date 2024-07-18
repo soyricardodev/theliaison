@@ -214,7 +214,6 @@ export function BarChart(props: BarChartProps) {
 		minValue,
 		maxValue,
 		allowDecimals = true,
-		noDataText,
 		onValueChange,
 		enableLegendSlider = false,
 		customTooltip,
@@ -223,7 +222,6 @@ export function BarChart(props: BarChartProps) {
 		tickGap = 5,
 		xAxisLabel,
 		yAxisLabel,
-		className,
 	} = props;
 	const CustomTooltip = customTooltip;
 

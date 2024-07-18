@@ -1,14 +1,12 @@
 "use server";
 import "server-only";
 import { createClient as createClientAdmin } from "@supabase/supabase-js";
-import type { Database, Tables } from "@theliaison/supabase/database-types";
+import type { Database } from "@theliaison/supabase/database-types";
 import { createClient } from "~/supabase/server";
 
 import OpenAI from "openai";
 import { env } from "~/env";
 
-type Product = Tables<"products">;
-type Price = Tables<"prices">;
 const _TRIAL_PERIOD_DAYS = 0;
 const _openai = new OpenAI({
 	apiKey: env.OPENAI_API_KEY,

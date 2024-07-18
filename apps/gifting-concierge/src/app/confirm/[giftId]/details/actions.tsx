@@ -40,17 +40,15 @@ export async function confirmGiftFromRecipient({
 	const supabase = createClient();
 
 	// * updating recipient address
-	const { error: updateRecipientAddress } = await supabase
-		.from("gift_recipient_addresses")
-		.insert({
-			recipient_id,
-			address_line_1,
-			city,
-			postal_code,
-			appartment: apartment,
-			country: "US",
-			is_private: true,
-		});
+	await supabase.from("gift_recipient_addresses").insert({
+		recipient_id,
+		address_line_1,
+		city,
+		postal_code,
+		appartment: apartment,
+		country: "US",
+		is_private: true,
+	});
 
 	const tempPackageWeight = 10;
 

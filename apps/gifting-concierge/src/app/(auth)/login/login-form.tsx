@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@theliaison/ui/button";
 import {
 	Card,
@@ -13,34 +12,7 @@ import {
 } from "@theliaison/ui/card";
 import { Input } from "@theliaison/ui/input";
 import { Label } from "@theliaison/ui/label";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import type { z } from "zod";
-import { useServerAction } from "zsa-react";
-import { signInWithEmail } from "~/components/auth/actions";
-import { signInWithEmailSchema } from "~/lib/validators/auth";
-
-export function LoginForm({ redirectTo }: { redirectTo: string }) {
-	const { isPending, execute } = useServerAction(signInWithEmail);
-	const _form = useForm<z.infer<typeof signInWithEmailSchema>>({
-		resolver: zodResolver(signInWithEmailSchema),
-		mode: "onChange",
-	});
-
-	async function onSubmit(values: z.infer<typeof signInWithEmailSchema>) {
-		if (!isPending) {
-			const [_data, error] = await execute({
-				email: values.email,
-				password: values.password,
-				redirectTo,
-			});
-
-			if (error != null) {
-				toast.error(error.message);
-			}
-		}
-	}
-
+export function LoginForm() {
 	return (
 		<Card className="mx-auto max-w-sm backdrop-blur-2xl bg-white/20 border-transparent shadow-sm">
 			<CardHeader>

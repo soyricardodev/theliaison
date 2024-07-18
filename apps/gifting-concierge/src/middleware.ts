@@ -1,17 +1,10 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { updateSession } from "./supabase/middleware";
-import { createClient } from "./supabase/server";
 
 const _adminPaths = ["/dashboard"];
 
 export async function middleware(request: NextRequest) {
 	await updateSession(request);
-
-	const supabase = createClient();
-	const {
-		data: { user },
-		error,
-	} = await supabase.auth.getUser();
 
 	const url = request.nextUrl.clone();
 	const _pathname = url.pathname;

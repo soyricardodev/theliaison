@@ -58,7 +58,6 @@ const ShippingFormSchema = z.object({
 const ShippingForm = ({
 	className,
 	senderId,
-	hideTitle,
 	giftId,
 	recipientId,
 }: ShippingFormProps) => {

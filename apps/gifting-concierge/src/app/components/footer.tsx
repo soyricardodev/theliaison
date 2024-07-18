@@ -479,7 +479,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 							dark: isDark,
 						})}
 					>
-						{socialItems.map(({ icon, iconLegacy: Icon, name, href }) => (
+						{socialItems.map(({ iconLegacy: Icon, name, href }) => (
 							<a
 								key={name}
 								href={href}

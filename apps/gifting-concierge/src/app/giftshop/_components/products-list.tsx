@@ -5,7 +5,7 @@ import { createClient } from "~/supabase/server";
 export async function ProductsList() {
 	const supabase = createClient();
 
-	const { data, error } = await supabase
+	const { data } = await supabase
 		.from("products")
 		.select("id, name, image, prices(unit_amount)")
 		.eq("active", true)

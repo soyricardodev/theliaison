@@ -51,7 +51,7 @@ export async function POST(req: Request) {
 
 	const embedding = embeddingResponse.data[0]?.embedding;
 
-	const { data: poll, error: createPollError } = await supabase
+	const { error: createPollError } = await supabase
 		.from("polls")
 		// @ts-expect-error - TODO: Fix this, embedding is not a string
 		.insert({
