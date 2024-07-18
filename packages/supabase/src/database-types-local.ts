@@ -297,6 +297,7 @@ export type Database = {
 					recipient_id: string;
 					sender_id: string;
 					status: Database["public"]["Enums"]["gift_status"];
+					stripe_session_id: string;
 					type: Database["public"]["Enums"]["gift_order_type"];
 					updated_at: string;
 				};
@@ -306,6 +307,7 @@ export type Database = {
 					recipient_id: string;
 					sender_id: string;
 					status?: Database["public"]["Enums"]["gift_status"];
+					stripe_session_id: string;
 					type?: Database["public"]["Enums"]["gift_order_type"];
 					updated_at?: string;
 				};
@@ -315,6 +317,7 @@ export type Database = {
 					recipient_id?: string;
 					sender_id?: string;
 					status?: Database["public"]["Enums"]["gift_status"];
+					stripe_session_id?: string;
 					type?: Database["public"]["Enums"]["gift_order_type"];
 					updated_at?: string;
 				};
@@ -331,6 +334,32 @@ export type Database = {
 						columns: ["sender_id"];
 						isOneToOne: false;
 						referencedRelation: "users";
+						referencedColumns: ["id"];
+					},
+				];
+			};
+			gifts_orders_custom: {
+				Row: {
+					created_at: string;
+					gift_id: number | null;
+					id: number;
+				};
+				Insert: {
+					created_at?: string;
+					gift_id?: number | null;
+					id?: number;
+				};
+				Update: {
+					created_at?: string;
+					gift_id?: number | null;
+					id?: number;
+				};
+				Relationships: [
+					{
+						foreignKeyName: "gifts_orders_custom_gift_id_fkey";
+						columns: ["gift_id"];
+						isOneToOne: false;
+						referencedRelation: "gifts";
 						referencedColumns: ["id"];
 					},
 				];
