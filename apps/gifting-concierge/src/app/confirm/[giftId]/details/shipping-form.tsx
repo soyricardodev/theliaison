@@ -9,6 +9,7 @@ import { z } from "zod";
 
 import { cn } from "@theliaison/ui";
 
+import { ChevronDownIcon } from "@radix-ui/react-icons";
 import {
 	Form,
 	FormControl,
@@ -17,16 +18,15 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@theliaison/ui/form";
-import { getFedexLocations } from "./actions";
-import { useState } from "react";
-import { toast } from "sonner";
-import { ChevronDownIcon } from "@radix-ui/react-icons";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 } from "@theliaison/ui/select";
+import { useState } from "react";
+import { toast } from "sonner";
+import { getFedexLocations } from "./actions";
 
 export type ShippingFormProps = React.HTMLAttributes<HTMLDivElement> & {
 	hideTitle?: boolean;
