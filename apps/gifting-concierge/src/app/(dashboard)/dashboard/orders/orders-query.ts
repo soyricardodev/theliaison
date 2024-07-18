@@ -1,7 +1,10 @@
-import type { QueryData } from "@supabase/supabase-js";
-import { createClient } from "~/supabase/server";
+import { createClient, type QueryData } from "@supabase/supabase-js";
+import { env } from "~/env";
 
-const supabase = createClient();
+const supabase = createClient(
+	env.NEXT_PUBLIC_SUPABASE_URL,
+	env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+);
 
 export const getAllOrdersQuery = supabase.from("gifts").select(`
   id,
