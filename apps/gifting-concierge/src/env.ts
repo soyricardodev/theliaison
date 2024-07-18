@@ -17,6 +17,7 @@ export const env = createEnv({
 		RESEND_DOMAIN: z.string(),
 		RESEND_API_KEY: z.string(),
 		NODE_ENV: z.enum(["development", "test", "production"]),
+		STRIPE_GIFTING_CONCIERGE_PRODUCT_ID: z.string(),
 	},
 	client: {
 		NEXT_PUBLIC_SUPABASE_URL: z.string().url(),
