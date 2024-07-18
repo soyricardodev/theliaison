@@ -6,7 +6,8 @@
 	"exports": {
 		".": "./src/index.ts",
 		"./*": ["./src/*.tsx", "./src/*.ts"],
-		"./magicui": "./src/magicui/*.tsx"
+		"./magicui": "./src/magicui/*.tsx",
+		"./stepper": "./src/stepper/index.tsx"
 	},
 	"license": "MIT",
 	"scripts": {
