@@ -1,7 +1,8 @@
 import { type QueryData, createClient } from "@supabase/supabase-js";
+import type { Database } from "@theliaison/supabase/database-types-local";
 import { env } from "~/env";
 
-const supabase = createClient(
+const supabase = createClient<Database>(
 	env.NEXT_PUBLIC_SUPABASE_URL,
 	env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
 );
@@ -10,7 +11,7 @@ export const getAllOrdersQuery = supabase.from("gifts").select(`
   id,
   users(id, email, full_name, avatar_url),
   recipient_id,
-  gift_recipients(id, name),
+  gift_recipients(*),
   status,
   type
 `);
@@ -23,7 +24,7 @@ export const getLinkOrdersQuery = supabase
     id,
     users(id, email, full_name, avatar_url),
     recipient_id,
-    gift_recipients(id, name),
+    gift_recipients(*),
     status,
     type
   `)
