@@ -1,4 +1,4 @@
-import { createClient, type QueryData } from "@supabase/supabase-js";
+import { type QueryData, createClient } from "@supabase/supabase-js";
 import { env } from "~/env";
 
 const supabase = createClient(

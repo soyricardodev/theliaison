@@ -1,7 +1,7 @@
+import { redirect } from "next/navigation";
 import { createClient } from "~/supabase/server";
 import { stripe } from "~/utils/stripe/config";
 import { ActualData } from "./actual-data";
-import { redirect } from "next/navigation";
 
 async function getSession(sessionId: string) {
 	try {

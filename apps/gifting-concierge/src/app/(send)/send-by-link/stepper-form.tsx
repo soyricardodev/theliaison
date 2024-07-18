@@ -1,12 +1,25 @@
 "use client";
 
-import { useCallback, type SVGProps } from "react";
+import { type SVGProps, useCallback } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-import { Step, Stepper, useStepper } from "@theliaison/ui/stepper";
+import {
+	Input,
+	Radio,
+	RadioGroup,
+	Select,
+	SelectItem,
+	Textarea,
+} from "@nextui-org/react";
+import {
+	EmbeddedCheckout,
+	EmbeddedCheckoutProvider,
+} from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { cn } from "@theliaison/ui";
 import { Button } from "@theliaison/ui/button";
 import {
 	Form,
@@ -15,23 +28,10 @@ import {
 	FormItem,
 	FormMessage,
 } from "@theliaison/ui/form";
-import {
-	Input,
-	Textarea,
-	RadioGroup,
-	Radio,
-	Select,
-	SelectItem,
-} from "@nextui-org/react";
+import { Step, Stepper, useStepper } from "@theliaison/ui/stepper";
 import { toast } from "sonner";
-import { useFormStore } from "./form-store";
-import { cn } from "@theliaison/ui";
-import {
-	EmbeddedCheckoutProvider,
-	EmbeddedCheckout,
-} from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
 import { env } from "~/env";
+import { useFormStore } from "./form-store";
 
 const steps: Array<{ label: string; description: string }> = [
 	{
