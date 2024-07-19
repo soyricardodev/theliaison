@@ -32,10 +32,16 @@ import { Step, Stepper, useStepper } from "@theliaison/ui/stepper";
 import { toast } from "sonner";
 import { env } from "~/env";
 import { useFormStore } from "./form-store";
+import {
+	MailIcon,
+	PhoneIcon,
+	TwitchIcon as LucideTwitchIcon,
+	UserIcon,
+} from "lucide-react";
 
 const steps: Array<{ label: string; description: string }> = [
 	{
-		label: "Start Sending",
+		label: "Gift Link",
 		description: "Provide gift links and we'll take care of the rest.",
 	},
 	{
@@ -107,7 +113,6 @@ function FirstStepForm() {
 
 	const form = useForm<z.infer<typeof FirstFormSchema>>({
 		resolver: zodResolver(FirstFormSchema),
-		mode: "onChange",
 		defaultValues: { giftLink: "", giftSpecifications: "" },
 	});
 
@@ -130,7 +135,7 @@ function FirstStepForm() {
 								<Input
 									type="url"
 									label="Gift Link"
-									placeholder="https://..."
+									placeholder="Link to the gift you'd like to send"
 									labelPlacement="outside"
 									startContent={
 										<div className="pointer-events-none flex items-center">
@@ -141,10 +146,11 @@ function FirstStepForm() {
 									{...field}
 								/>
 							</FormControl>
-							<FormMessage />
+							<FormMessage className="text-xs" />
 						</FormItem>
 					)}
 				/>
+
 				<FormField
 					control={form.control}
 					name="giftSpecifications"
@@ -153,7 +159,7 @@ function FirstStepForm() {
 							<FormControl>
 								<Textarea
 									label="Gift Specifications"
-									placeholder="Size ..., Color ..., Quantity ..."
+									placeholder="Order details such as size, color, quantity."
 									labelPlacement="outside"
 									description="Give us a little more information about the product like size, color, quantity, etc."
 									startContent={
@@ -164,7 +170,7 @@ function FirstStepForm() {
 									{...field}
 								/>
 							</FormControl>
-							<FormMessage />
+							<FormMessage className="text-xs" />
 						</FormItem>
 					)}
 				/>
@@ -242,7 +248,7 @@ function SecondStepForm() {
 						Phone
 					</CustomRadio>
 					<CustomRadio description="" value="social">
-						<PlanetIcon className="mb-3 text-5xl" />
+						<LucideTwitchIcon className="mb-3 text-5xl" />
 						Social
 					</CustomRadio>
 				</RadioGroup>
@@ -257,6 +263,7 @@ function SecondStepForm() {
 									placeholder="John Doe"
 									label="Recipient Name"
 									labelPlacement="outside"
+									startContent={<UserIcon className="text-xl" />}
 									{...field}
 								/>
 							</FormControl>
@@ -278,7 +285,7 @@ function SecondStepForm() {
 									labelPlacement="outside"
 									startContent={
 										<div className="pointer-events-none flex items-center">
-											<MailIcon className="text-xl" />
+											<MailIcon className="text-base" />
 										</div>
 									}
 									description="Enter the recipient's email address."
@@ -301,7 +308,7 @@ function SecondStepForm() {
 									labelPlacement="outside"
 									startContent={
 										<div className="pointer-events-none flex items-center">
-											<PhoneIcon className="text-xl" />
+											<PhoneIcon className="text-base" />
 										</div>
 									}
 									description="Enter the recipient's phone number with country code."
@@ -416,7 +423,7 @@ function SecondStepForm() {
 										labelPlacement="outside"
 										startContent={
 											<div className="pointer-events-none flex items-center">
-												<PlanetIcon className="text-xl" />
+												<LucideTwitchIcon className="text-base" />
 											</div>
 										}
 										description="This is the username of the recipient's social media account."
@@ -616,98 +623,6 @@ function PenIcon(props: SVGProps<SVGSVGElement>) {
 			<path
 				fill="currentColor"
 				d="m13.951 3.6l-.03.03l.03.09c.26.75.75 1.732 1.674 2.656A7.005 7.005 0 0 0 18.37 8.08l-6.85 6.85c-.462.462-.693.693-.948.891c-.3.234-.625.435-.969.6c-.291.138-.601.241-1.22.448l-3.268 1.09a.849.849 0 0 1-1.073-1.074l1.089-3.268c.206-.62.31-.93.448-1.22c.164-.344.365-.67.6-.97c.198-.254.429-.485.89-.947z"
-			/>
-		</svg>
-	);
-}
-
-function MailIcon(props: SVGProps<SVGSVGElement>) {
-	return (
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="1em"
-			height="1em"
-			viewBox="0 0 24 24"
-			{...props}
-		>
-			<title>Mail</title>
-			<path
-				fill="currentColor"
-				d="M2 11.25C2 8.35 4.015 6 6.5 6S11 8.35 11 11.25V20H4.233C3 20 2 18.834 2 17.395z"
-				opacity={0.5}
-			/>
-			<path
-				fill="currentColor"
-				d="M11 11.25V20h8.793C21.012 20 22 18.847 22 17.425V11.25C22 8.35 19.985 6 17.5 6h-11C8.985 6 11 8.35 11 11.25"
-				opacity={0.8}
-			/>
-			<path
-				fill="currentColor"
-				d="M9.5 20v2a.75.75 0 0 0 1.5 0v-2zm5.5 0h-1.5v2a.75.75 0 0 0 1.5 0z"
-			/>
-			<path
-				fill="currentColor"
-				fillRule="evenodd"
-				d="M4.25 16a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H5a.75.75 0 0 1-.75-.75m13.135-9.415l.256-.052a2.181 2.181 0 0 1 1.24.115c.69.277 1.446.328 2.165.148l.061-.015c.524-.131.893-.618.893-1.178v-2.13c0-.738-.664-1.282-1.355-1.109c-.396.1-.812.071-1.193-.081l-.073-.03a3.517 3.517 0 0 0-2-.185l-.449.09c-.54.108-.93.6-.93 1.17v6.953c0 .397.31.719.692.719a.706.706 0 0 0 .693-.72z"
-				clipRule="evenodd"
-			/>
-		</svg>
-	);
-}
-
-function PhoneIcon(props: SVGProps<SVGSVGElement>) {
-	return (
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="1em"
-			height="1em"
-			viewBox="0 0 24 24"
-			{...props}
-		>
-			<title>Phone</title>
-			<path
-				fill="currentColor"
-				d="m15.556 14.548l-.455.48s-1.083 1.139-4.038-1.972c-2.955-3.111-1.872-4.25-1.872-4.25l.287-.303c.706-.744.773-1.938.156-2.81L8.374 3.91C7.61 2.83 6.135 2.688 5.26 3.609L3.691 5.26c-.433.457-.723 1.048-.688 1.705c.09 1.68.808 5.293 4.812 9.51c4.247 4.47 8.232 4.648 9.861 4.487c.516-.05.964-.329 1.325-.709l1.42-1.496c.96-1.01.69-2.74-.538-3.446l-1.91-1.1c-.806-.463-1.787-.327-2.417.336"
-				opacity={0.5}
-			/>
-			<path
-				fill="currentColor"
-				d="M13.26 1.88a.751.751 0 0 1 .861-.62c.025.005.107.02.15.03c.085.018.204.048.352.09c.297.087.712.23 1.21.458c.996.457 2.321 1.256 3.697 2.631c1.376 1.376 2.175 2.702 2.632 3.698c.228.498.37.912.457 1.21a5.727 5.727 0 0 1 .113.454l.005.031a.765.765 0 0 1-.617.878a.75.75 0 0 1-.86-.617a2.82 2.82 0 0 0-.081-.327a7.395 7.395 0 0 0-.38-1.004c-.39-.85-1.092-2.024-2.33-3.262c-1.237-1.238-2.411-1.939-3.262-2.329a7.394 7.394 0 0 0-1.003-.38a5.749 5.749 0 0 0-.318-.08a.759.759 0 0 1-.626-.861"
-			/>
-			<path
-				fill="currentColor"
-				fillRule="evenodd"
-				d="M13.486 5.33a.75.75 0 0 1 .927-.516l-.206.721l.206-.72h.003l.003.001l.008.002l.02.006l.056.02a5.028 5.028 0 0 1 .767.373c.489.29 1.157.77 1.942 1.556c.785.785 1.266 1.453 1.556 1.942c.145.245.241.444.303.59a2.969 2.969 0 0 1 .09.233l.005.02l.003.008v.003l.001.001s0 .002-.72.208l.72-.206a.75.75 0 0 1-1.439.422l-.003-.01a3.67 3.67 0 0 0-.25-.504c-.224-.377-.627-.947-1.327-1.647c-.7-.7-1.269-1.102-1.646-1.325a3.662 3.662 0 0 0-.504-.25l-.01-.004a.75.75 0 0 1-.505-.925"
-				clipRule="evenodd"
-			/>
-		</svg>
-	);
-}
-
-function PlanetIcon(props: SVGProps<SVGSVGElement>) {
-	return (
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			width="1em"
-			height="1em"
-			viewBox="0 0 24 24"
-			{...props}
-		>
-			<title>Planet</title>
-			<path
-				fill="currentColor"
-				d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0"
-				opacity={0.5}
-			/>
-			<path
-				fill="currentColor"
-				d="M19.009 6.784a.75.75 0 0 0-.138-1.494c-.424.04-.874.106-1.345.2a.748.748 0 0 0-.472.309l1.117 1.097c.296-.05.576-.088.838-.112"
-			/>
-			<path
-				fill="currentColor"
-				fillRule="evenodd"
-				d="M20.937 5.38a.75.75 0 1 0-.346 1.459c.394.093.546.232.602.322c.063.102.133.366-.157.948a.75.75 0 0 0 1.343.67c.378-.759.563-1.65.086-2.413c-.344-.55-.923-.843-1.528-.987m-.225 5.581a.75.75 0 1 0-1.065-1.057c-.686.692-1.567 1.43-2.608 2.171a.75.75 0 0 0 .87 1.222c1.095-.78 2.044-1.572 2.803-2.336M3.587 14.947c.201-.252.437-.516.706-.79l-.238-1.33a.75.75 0 0 0-.744.189c-.334.336-.635.669-.896.995a.75.75 0 1 0 1.172.937m12.163-.243a.75.75 0 1 0-.77-1.287a35.086 35.086 0 0 1-3.092 1.645a.75.75 0 0 0 .638 1.357a36.938 36.938 0 0 0 3.224-1.715M2.815 16.25a.75.75 0 0 0-1.43-.455c-.191.601-.211 1.262.15 1.84c.453.724 1.307 1.006 2.154 1.087a.75.75 0 1 0 .143-1.493c-.694-.066-.948-.267-1.025-.39c-.05-.08-.102-.244.008-.589m7.268 1.203a.75.75 0 0 0-.527-1.404c-1.225.46-2.365.791-3.362.989a.75.75 0 0 0 .291 1.471c1.093-.216 2.313-.574 3.598-1.056"
-				clipRule="evenodd"
 			/>
 		</svg>
 	);
