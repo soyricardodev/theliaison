@@ -39,19 +39,15 @@ import {
 	UserIcon,
 } from "lucide-react";
 
-const steps: Array<{ label: string; description: string }> = [
+const steps: Array<{ label: string }> = [
 	{
 		label: "Gift Link",
-		description: "Provide gift links and we'll take care of the rest.",
 	},
 	{
 		label: "Recipient Info",
-		description:
-			"Share recipient's name and contact info (phone/email/social media).",
 	},
 	{
 		label: "Pay for Service",
-		description: "Pay $10 to let us send the gift anonymously.",
 	},
 ];
 
@@ -142,7 +138,6 @@ function FirstStepForm() {
 											<LinkIcon className="text-xl" />
 										</div>
 									}
-									description="Paste the link to the gift you want to send."
 									{...field}
 								/>
 							</FormControl>
@@ -161,7 +156,6 @@ function FirstStepForm() {
 									label="Gift Specifications"
 									placeholder="Order details such as size, color, quantity."
 									labelPlacement="outside"
-									description="Give us a little more information about the product like size, color, quantity, etc."
 									startContent={
 										<div className="pointer-events-none flex items-center">
 											<PenIcon className="text-xl" />
