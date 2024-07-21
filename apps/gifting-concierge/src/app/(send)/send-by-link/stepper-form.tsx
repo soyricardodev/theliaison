@@ -41,7 +41,7 @@ import {
 
 const steps: Array<{ label: string }> = [
 	{
-		label: "Gift Link",
+		label: "What would you like to send?",
 	},
 	{
 		label: "Recipient Info",
