@@ -2,7 +2,6 @@ import { cn } from "@theliaison/ui";
 import { buttonVariants } from "@theliaison/ui/button";
 import Link from "next/link";
 
-import { Particles } from "@theliaison/ui/magicui/particles";
 import { HeroTextAnimation } from "./hero-text-animation";
 import { SendGiftDialog } from "./send-gift-popover";
 
@@ -12,13 +11,6 @@ export function Hero() {
 			id="hero"
 			className="relative flex flex-col items-center justify-center h-[calc(100vh-100px)] mx-auto z-10 max-w-[80rem] px-6 text-center md:px-8"
 		>
-			<Particles
-				className="absolute inset-0 -z-10"
-				quantity={100}
-				ease={80}
-				color={"#000000"}
-				refresh
-			/>
 			<HeroTextAnimation>
 				<SendGiftDialog />
 
