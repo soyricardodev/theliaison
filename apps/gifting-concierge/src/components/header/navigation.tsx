@@ -23,6 +23,7 @@ import {
 import { Separator } from "@theliaison/ui/separator";
 import { redirect } from "next/navigation";
 import { createClient } from "~/supabase/server";
+import { ChangeTheme } from "./change-theme";
 
 const menuItemsLoggedOut = [
 	{
@@ -169,6 +170,10 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 				</DropdownMenuGroup>
 				<DropdownMenuSeparator />
 				<DropdownMenuItem asChild>
+					<ChangeTheme />
+				</DropdownMenuItem>
+				<DropdownMenuSeparator />
+				<DropdownMenuItem asChild>
 					<form
 						className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3 dark:focus:bg-zinc-600 dark:hover:bg-zinc-600"
 						action={logoutAction}
@@ -257,6 +262,12 @@ function HeaderNavigationLoggedOut({ isDarkMode }: { isDarkMode?: boolean }) {
 							<CircleUserRound className="size-5" />
 							<span>Sign Up</span>
 						</Link>
+					</DropdownMenuItem>
+				</DropdownMenuGroup>
+				<Separator className="h-px" />
+				<DropdownMenuGroup className="p-2">
+					<DropdownMenuItem asChild>
+						<ChangeTheme />
 					</DropdownMenuItem>
 				</DropdownMenuGroup>
 			</DropdownMenuContent>
