@@ -23,7 +23,7 @@ export function SendGiftDialog() {
 					</Button>
 				</div>
 			</DialogTrigger>
-			<DialogContent className="rounded-md bg-white/10 border-transparent backdrop-blur-xl">
+			<DialogContent className="rounded-md supports-[backdrop-filter]:bg-white/10 border-transparent bg-black/95  backdrop-blur-xl">
 				<div className="spacem-auto w-[calc(100vw - 48px)] pt-6">
 					<div className="flex flex-col items-center justify-start flex-initial gap-6">
 						<div className="flex justify-center items-center bg-default-100 rounded-lg p-[14px] h-[60px] border border-black/10">
@@ -45,37 +45,39 @@ export function SendGiftDialog() {
 							<SendGiftCard
 								icon={<LinkIcon />}
 								title="Send a gift from a link"
-								description="Send a gift from a link"
 								href="/send-by-link"
 								linkText="Send"
 							/>
 							<SendGiftCard
 								icon={<GiftIcon />}
 								title="Send a custom gift"
-								description="Send a custom gift"
 								href="/send"
 								linkText="Send"
 							/>
 							<SendGiftCard
 								icon={<StoreIcon />}
 								title="Visit our gift shop"
-								description="Gift shop description here"
 								href="/giftshop"
 								linkText="Visit"
 							/>
 						</div>
 
-						<div className="w-full max-w-[500px] border rounded-md flex gap-4 justify-between">
-							<div className="p-4 flex flex-col">
+						<div className="w-full max-w-[500px] border rounded-md flex gap-4 justify-between p-4">
+							<div className="flex flex-col">
 								<p className="font-semibold text-sm leading-5 text-white">
-									Any question?
+									Any questions?
 								</p>
 								<p className="text-white font-normal text-[0.8125rem]">
 									Contact us for assistance
 								</p>
 							</div>
-							<div className="flex gap-2 items-center sm:justify-center flex-col sm:flex-row sm:mr-2">
-								<Button variant={"outline"}>Chat</Button>
+							<div className="flex items-center justify-center">
+								<Button
+									variant={"outline"}
+									className="px-[15px] h-[40px] bg-white hover:bg-default-200 transition-all border rounded-[6px] font-medium flex items-center justify-center text-sm text-black"
+								>
+									Chat
+								</Button>
 							</div>
 						</div>
 					</div>
@@ -88,13 +90,11 @@ export function SendGiftDialog() {
 function SendGiftCard({
 	icon,
 	title,
-	description,
 	href,
 	linkText,
 }: {
 	icon: JSX.Element;
 	title: string;
-	description: string;
 	href: string;
 	linkText: string;
 }) {
@@ -105,9 +105,8 @@ function SendGiftCard({
 					{icon}
 				</div>
 
-				<div className="flex flex-col items-stretch justify-start flex-initial p-0 gap-0">
-					<p className="font-semibold text-sm leading-5">{title}</p>
-					<p className="font-normal text-[0.8125rem]">{description}</p>
+				<div className="flex flex-col items-stretch justify-center flex-initial p-0 gap-0">
+					<p className="font-semibold text-base leading-5">{title}</p>
 				</div>
 			</div>
 
