@@ -21,8 +21,8 @@ export const sendGiftFromLinkAction = createServerAction()
 		}
 
 		const {
-			giftLink,
-			giftSpecifications,
+			// giftLink,
+			// giftSpecifications,
 			recipientName,
 			recipientEmail,
 			recipientSocial,
@@ -69,8 +69,7 @@ export const sendGiftFromLinkAction = createServerAction()
 				recipient_id: recipientId.id,
 				sender_id: user.id,
 				status: "awaiting_recipient_confirmation",
-				gift_link: giftLink,
-				gift_link_specifications: giftSpecifications,
+				stripe_session_id: "",
 			})
 			.select("id")
 			.single();
