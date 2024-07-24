@@ -4,7 +4,7 @@ import Link from "next/link";
 import { createClient } from "~/supabase/server";
 import { HeaderNavigation } from "./header/navigation";
 
-export function Header() {
+export function Header({ showModeToggle }: { showModeToggle?: boolean }) {
 	return (
 		<div className="sticky top-0 z-50">
 			<header className="flex w-full flex-col gap-3 p-3 md:h-16 md:flex-row md:items-center lg:px-4 bg-black/70 backdrop-blur-3xl supports-[backdrop-filter]:bg-white/30 shadow-sm">
@@ -31,7 +31,7 @@ export function Header() {
 						<Link href="/login" className="">
 							<UserRoundIcon className="size-5 text-gray-500 dark:text-gray-400" />
 						</Link>
-						<HeaderUser />
+						<HeaderUser showModeToggle={showModeToggle} />
 					</div>
 				</div>
 			</header>
@@ -39,14 +39,17 @@ export function Header() {
 	);
 }
 
-async function HeaderUser() {
+async function HeaderUser({ showModeToggle }: { showModeToggle?: boolean }) {
 	const supabase = createClient();
 	const {
 		data: { user },
 		error,
 	} = await supabase.auth.getUser();
 
-	if (!user || error) return <HeaderNavigation isLoggedIn={false} />;
+	if (!user || error)
+		return (
+			<HeaderNavigation isLoggedIn={false} showModeToggle={showModeToggle} />
+		);
 
-	return <HeaderNavigation isLoggedIn={true} />;
+	return <HeaderNavigation isLoggedIn={true} showModeToggle={showModeToggle} />;
 }

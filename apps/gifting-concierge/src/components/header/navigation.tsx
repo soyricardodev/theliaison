@@ -88,6 +88,7 @@ const menuItemsLoggedIn = [
 interface HeaderNavigationProps {
 	isLoggedIn: boolean;
 	isDarkMode?: boolean;
+	showModeToggle?: boolean;
 }
 
 export function HeaderNavigation(props: HeaderNavigationProps) {
@@ -168,10 +169,14 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 						</DropdownMenuItem>
 					))}
 				</DropdownMenuGroup>
-				<DropdownMenuSeparator />
-				<DropdownMenuItem asChild>
-					<ChangeTheme />
-				</DropdownMenuItem>
+				{props.showModeToggle && (
+					<>
+						<DropdownMenuSeparator />
+						<DropdownMenuItem asChild>
+							<ChangeTheme />
+						</DropdownMenuItem>
+					</>
+				)}
 				<DropdownMenuSeparator />
 				<DropdownMenuItem asChild>
 					<form
@@ -192,7 +197,10 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 	);
 }
 
-function HeaderNavigationLoggedOut({ isDarkMode }: { isDarkMode?: boolean }) {
+function HeaderNavigationLoggedOut({
+	isDarkMode,
+	showModeToggle,
+}: { isDarkMode?: boolean; showModeToggle?: boolean }) {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
@@ -264,12 +272,16 @@ function HeaderNavigationLoggedOut({ isDarkMode }: { isDarkMode?: boolean }) {
 						</Link>
 					</DropdownMenuItem>
 				</DropdownMenuGroup>
-				<Separator className="h-px" />
-				<DropdownMenuGroup className="p-2">
-					<DropdownMenuItem asChild>
-						<ChangeTheme />
-					</DropdownMenuItem>
-				</DropdownMenuGroup>
+				{showModeToggle && (
+					<>
+						<Separator className="h-px" />
+						<DropdownMenuGroup className="p-2">
+							<DropdownMenuItem asChild>
+								<ChangeTheme />
+							</DropdownMenuItem>
+						</DropdownMenuGroup>
+					</>
+				)}
 			</DropdownMenuContent>
 		</DropdownMenu>
 	);
