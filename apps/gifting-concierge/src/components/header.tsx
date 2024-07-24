@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "~/supabase/server";
 import { HeaderNavigation } from "./header/navigation";
+import { useTheme } from "next-themes";
+import { useState } from "react";
 
 export function Header({ showModeToggle }: { showModeToggle?: boolean }) {
 	return (
@@ -31,7 +33,8 @@ export function Header({ showModeToggle }: { showModeToggle?: boolean }) {
 						<Link href="/login" className="">
 							<UserRoundIcon className="size-5 text-gray-500 dark:text-gray-400" />
 						</Link>
-						<HeaderUser showModeToggle={showModeToggle} />
+						{/* cambiar luego a showModeToggle */}
+						<HeaderUser showModeToggle={true} />
 					</div>
 				</div>
 			</header>
@@ -45,6 +48,7 @@ async function HeaderUser({ showModeToggle }: { showModeToggle?: boolean }) {
 		data: { user },
 		error,
 	} = await supabase.auth.getUser();
+
 
 	if (!user || error)
 		return (
