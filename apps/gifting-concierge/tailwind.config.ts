@@ -55,6 +55,7 @@ const config = {
 			},
 		}),
 	],
+	darkMode: 'media',
 } satisfies Config;
 
 export default config;

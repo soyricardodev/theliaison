@@ -18,7 +18,7 @@ export function ChangeTheme() {
 						className={cn(
 							"rounded-full flex items-center justify-center bg-none size-8 m-0 cursor-pointer relative transition-colors text-gray-700",
 							{
-								"bg-backdround border text-gray-900": theme === "system",
+								"bg-backdground border text-gray-900": theme === "system",
 							},
 						)}
 					>
@@ -32,7 +32,7 @@ export function ChangeTheme() {
 						className={cn(
 							"rounded-full flex items-center justify-center bg-none size-8 m-0 cursor-pointer relative transition-colors text-gray-700",
 							{
-								"bg-backdround border text-gray-900": theme === "light",
+								"bg-backdground border text-gray-900": theme === "light",
 							},
 						)}
 					>
@@ -46,7 +46,7 @@ export function ChangeTheme() {
 						className={cn(
 							"rounded-full flex items-center justify-center bg-none size-8 m-0 cursor-pointer relative transition-colors text-gray-700",
 							{
-								"bg-backdround border text-gray-900": theme === "dark",
+								"bg-backdground border text-gray-900": theme === "dark",
 							},
 						)}
 					>

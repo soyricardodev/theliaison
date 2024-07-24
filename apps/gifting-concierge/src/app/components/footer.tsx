@@ -220,19 +220,19 @@ const socialItems = [
 export function Footer({ isDark }: { isDark?: boolean }) {
 	return (
 		<footer
-			className={cn("bg-transparent bg-background", {
+			className={cn("bg-transparent text-black", {
 				dark: isDark,
 			})}
 		>
 			<div className="mx-auto max-w-screen-xl px-4 pb-6 pt-16 sm:px-6 lg:px-8 lg:pt-24">
 				<div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
 					<div className="flex flex-col gap-6">
-						<div className="flex items-center gap-2 text-black dark:text-white sm:justify-start">
+						<div className="flex items-center gap-2 text-foreground dark:text-white sm:justify-start">
 							<span className="font-bold sm:font-normal">TL</span>{" "}
 							<span className="xs:block sm:hidden text-sm text-black dark:text-white">
 								&copy; {new Date().getFullYear()}
 							</span>{" "}
-							<strong className="hidden sm:inline text-black dark:text-white">
+							<strong className="hidden sm:inline text-foreground dark:text-white">
 								Gifting Concierge
 							</strong>
 						</div>
@@ -260,7 +260,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 														href={href}
 														rel="noreferrer"
 														target="_blank"
-														className="text-black hover:text-black/75 dark:text-gray-300 dark:hover:text-gray-400/75"
+														className="text-white hover:text-black/75 dark:text-gray-300 dark:hover:text-gray-400/75"
 													>
 														{name}
 													</Link>
@@ -350,7 +350,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 									>
 										<span className="sr-only">{name}</span>
 										<Icon
-											className="size-6 stroke-current fill-transparent"
+											className="size-6 stroke-current fill-transparent text-foreground"
 											width={24}
 										/>
 									</Link>
@@ -362,7 +362,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 					<div className="hidden sm:grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:col-span-2">
 						{footerNavigation.map(({ name, links }) => (
 							<div className="text-center sm:text-left" key={name}>
-								<p className="text-lg font-medium text-black dark:text-white">
+								<p className="text-lg font-medium text-foreground dark:text-white">
 									{name}
 								</p>
 
@@ -370,7 +370,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 									{links.map(({ name, href }) => (
 										<li key={name}>
 											<Link
-												className="text-black transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
+												className="text-foreground transition hover:text-gray-700/75 dark:text-white dark:hover:text-white/75"
 												href={href}
 											>
 												{name}
@@ -382,7 +382,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 						))}
 
 						<div className="text-center sm:text-left">
-							<p className="text-lg font-medium text-black dark:text-white">
+							<p className="text-lg font-medium text-foreground dark:text-white">
 								Contact Us
 							</p>
 
@@ -394,7 +394,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 									>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
-											className="size-5 shrink-0 text-gray-900 dark:text-white"
+											className="size-5 shrink-0 text-foreground dark:text-white"
 											fill="none"
 											viewBox="0 0 24 24"
 											stroke="currentColor"
@@ -408,7 +408,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 											/>
 										</svg>
 
-										<span className="flex-1 text-black dark:text-white">
+										<span className="flex-1 text-foreground dark:text-white">
 											support@theliaison.com
 										</span>
 									</a>
@@ -417,7 +417,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 								<li className="flex items-start justify-center gap-1.5 sm:justify-start">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
-										className="size-5 shrink-0 text-gray-900 dark:text-white"
+										className="size-5 shrink-0 text-foreground dark:text-white"
 										fill="none"
 										viewBox="0 0 24 24"
 										stroke="currentColor"
@@ -436,7 +436,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 										/>
 									</svg>
 
-									<p className="-mt-0.5 not-italic text-black dark:text-white w-full">
+									<p className="-mt-0.5 not-italic text-foreground dark:text-white w-full">
 										Southern California{" "}
 										<span className="dark:hidden inline">🖤</span>
 										<span className="hidden dark:inline">🤍</span>
@@ -447,13 +447,13 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 					</div>
 				</div>
 
-				<div className="mt-4 sm:mt-12 sm:border-t border-black dark:border-gray-800 sm:pt-6">
+				<div className="mt-4 sm:mt-12 sm:border-t border-foreground dark:border-gray-800 sm:pt-6">
 					<div className="hidden text-center sm:flex gap-4 sm:text-left">
-						<p className="text-sm text-black dark:text-white flex gap-1">
+						<p className="text-sm text-foreground dark:text-white flex gap-1">
 							<span className="block sm:inline">All rights reserved.</span>
 
 							<Link
-								className="inline-block text-black underline transition hover:text-primary/75 dark:hover:text-secondary/75 dark:text-secondary"
+								className="inline-block text-foreground underline transition hover:text-primary/75 dark:hover:text-secondary/75 dark:text-secondary"
 								href="/terms-of-service"
 							>
 								Terms & Conditions
@@ -462,14 +462,14 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 							<span>&middot;</span>
 
 							<Link
-								className="inline-block text-black underline transition hover:text-primary/75 dark:hover:text-secondary/75 dark:text-secondary"
+								className="inline-block text-foreground underline transition hover:text-primary/75 dark:hover:text-secondary/75 dark:text-secondary"
 								href="/privacy-policy"
 							>
 								Privacy Policy
 							</Link>
 						</p>
 
-						<p className="hidden sm:block mt-4 text-sm text-black dark:text-white sm:order-first sm:mt-0">
+						<p className="hidden sm:block mt-4 text-sm text-foreground dark:text-white sm:order-first sm:mt-0">
 							&copy; {new Date().getFullYear()} The Liaison
 						</p>
 					</div>
@@ -485,7 +485,7 @@ export function Footer({ isDark }: { isDark?: boolean }) {
 								href={href}
 								rel="noreferrer"
 								target="_blank"
-								className="text-black hover:text-black/75 dark:text-white dark:hover:text-white/75"
+								className="text-foreground hover:text-black/75 dark:text-white dark:hover:text-white/75"
 							>
 								<Icon className="size-6 stroke-current" />
 								<span className="sr-only">{name}</span>

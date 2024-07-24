@@ -3,8 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "~/supabase/server";
 import { HeaderNavigation } from "./header/navigation";
-import { useTheme } from "next-themes";
-import { useState } from "react";
 
 export function Header({ showModeToggle }: { showModeToggle?: boolean }) {
 	return (
