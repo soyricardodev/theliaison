@@ -12,7 +12,7 @@ export default async function Component({
 			id,
 			type,
 			status,
-			users(id, full_name, email),
+			users(id, full_name, email, avatar_url),
 			gift_recipients(id, name),
 			gifts_orders_links(id, link, specs),
 			updated_at,
