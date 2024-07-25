@@ -3,8 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "~/supabase/server";
 import { HeaderNavigation } from "./header/navigation";
+//import { usePathname } from "next/navigation";
 
 export function Header({ showModeToggle }: { showModeToggle?: boolean }) {
+
 	return (
 		<div className="sticky top-0 z-50">
 			<header className="flex w-full flex-col gap-3 p-3 md:h-16 md:flex-row md:items-center lg:px-4 bg-black/70 backdrop-blur-3xl supports-[backdrop-filter]:bg-white/30 shadow-sm">
