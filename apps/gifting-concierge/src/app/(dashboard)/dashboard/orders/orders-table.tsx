@@ -23,6 +23,7 @@ import Link from "next/link";
 import type { Orders } from "./orders-query";
 
 export function OrdersTable({ orders }: { orders: Orders }) {
+	console.log(orders)
 	return (
 		<Table>
 			<TableHeader>
