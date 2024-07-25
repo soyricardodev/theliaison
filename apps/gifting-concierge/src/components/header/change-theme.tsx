@@ -7,8 +7,8 @@ import { useTheme } from "next-themes";
 export function ChangeTheme() {
 	const { theme, setTheme } = useTheme();
 	return (
-		<div className="flex items-center justify-between">
-			<p>Theme</p>
+		<div className="flex items-center justify-between text-foreground">
+			<p className="ml-4">Theme</p>
 			<fieldset className="flex items-center w-fit h-8 rounded-full border ">
 				<legend className="sr-only">Select a display theme:</legend>
 				<span>
@@ -16,7 +16,7 @@ export function ChangeTheme() {
 						htmlFor=""
 						onClick={() => setTheme("system")}
 						className={cn(
-							"rounded-full flex items-center justify-center bg-none size-8 m-0 cursor-pointer relative transition-colors text-gray-700",
+							"rounded-full flex items-center justify-center bg-none size-8 m-0 cursor-pointer relative transition-colors text-foreground",
 							{
 								"bg-backdground border text-gray-900": theme === "system",
 							},
@@ -30,7 +30,7 @@ export function ChangeTheme() {
 						htmlFor=""
 						onClick={() => setTheme("light")}
 						className={cn(
-							"rounded-full flex items-center justify-center bg-none size-8 m-0 cursor-pointer relative transition-colors text-gray-700",
+							"rounded-full flex items-center justify-center bg-none size-8 m-0 cursor-pointer relative transition-colors text-foreground",
 							{
 								"bg-backdground border text-gray-900": theme === "light",
 							},
@@ -44,9 +44,9 @@ export function ChangeTheme() {
 						htmlFor=""
 						onClick={() => setTheme("dark")}
 						className={cn(
-							"rounded-full flex items-center justify-center bg-none size-8 m-0 cursor-pointer relative transition-colors text-gray-700",
+							"rounded-full flex items-center justify-center bg-none size-8 m-0 cursor-pointer relative transition-colors text-gray-900",
 							{
-								"bg-backdground border text-gray-900": theme === "dark",
+								"bg-backdground border text-gray-100": theme === "dark",
 							},
 						)}
 					>

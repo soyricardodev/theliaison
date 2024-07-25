@@ -120,7 +120,7 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 					)}
 				>
 					<svg
-						className="size-5"
+						className="size-5 text-foreground hover:text-gray-600"
 						fill="none"
 						stroke="currentColor"
 						strokeWidth="1.5"
@@ -138,7 +138,7 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 			</DropdownMenuTrigger>
 			<DropdownMenuContent
 				className={cn(
-					"min-w-[16rem] rounded-xl z-50 overflow-hidden shadow-none dark:bg-black dark:border-gray-600",
+					"min-w-[16rem] rounded-xl z-50 overflow-hidden shadow-none bg-background dark:bg-black border-gray-500",
 					{
 						dark: false,
 					},
@@ -148,7 +148,7 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 					<DropdownMenuItem asChild>
 						<Link
 							href="/profile"
-							className="cursor-pointer relative flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3 dark:focus:bg-zinc-600 dark:hover:bg-zinc-600"
+							className="cursor-pointer relative text-foreground flex select-none items-center rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 gap-3 dark:focus:bg-zinc-600 dark:hover:bg-zinc-600"
 						>
 							<UserRoundIcon className="size-5 text-foreground" />
 							<span>Profile</span>
@@ -185,7 +185,7 @@ export function HeaderNavigation(props: HeaderNavigationProps) {
 					>
 						<button
 							type="submit"
-							className="flex items-center gap-3 rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-zinc-600 dark:hover:bg-zinc-600"
+							className="flex items-center gap-3 rounded-md px-2 py-2.5 text-sm outline-none transition-colors focus:bg-zinc-100 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-zinc-600 dark:hover:bg-zinc-600 text-foreground"
 						>
 							<LogOutIcon className="size-5" />
 							<span>Log out</span>
