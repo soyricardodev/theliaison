@@ -40,6 +40,8 @@ const config = {
 				},
 				dark: {
 					colors: {
+						background: "black",
+						foreground: "#FBFBFE",
 						primary: {
 							DEFAULT: "#473F36",
 							foreground: "#FFF8F5",
@@ -53,6 +55,7 @@ const config = {
 			},
 		}),
 	],
+	darkMode: 'media',
 } satisfies Config;
 
 export default config;

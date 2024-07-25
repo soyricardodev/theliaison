@@ -29,9 +29,10 @@ export function Header({ showModeToggle }: { showModeToggle?: boolean }) {
 
 					<div className="ml-auto flex items-center gap-2 sm:gap-4">
 						<Link href="/login" className="">
-							<UserRoundIcon className="size-5 text-gray-500 dark:text-gray-400" />
+							<UserRoundIcon className="size-5 text-foreground dark:text-gray-400" />
 						</Link>
-						<HeaderUser showModeToggle={showModeToggle} />
+						{/* cambiar luego a showModeToggle */}
+						<HeaderUser showModeToggle={true} />
 					</div>
 				</div>
 			</header>
@@ -45,6 +46,7 @@ async function HeaderUser({ showModeToggle }: { showModeToggle?: boolean }) {
 		data: { user },
 		error,
 	} = await supabase.auth.getUser();
+
 
 	if (!user || error)
 		return (

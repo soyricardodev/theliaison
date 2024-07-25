@@ -26,7 +26,7 @@ export function SendGiftDialog() {
 			<DialogContent className="rounded-md supports-[backdrop-filter]:bg-white/10 border-transparent bg-black/95  backdrop-blur-xl">
 				<div className="spacem-auto w-[calc(100vw - 48px)] pt-6">
 					<div className="flex flex-col items-center justify-start flex-initial gap-6">
-						<div className="flex justify-center items-center bg-default-100 rounded-lg p-[14px] h-[60px] border border-black/10">
+						<div className="flex justify-center items-center bg-slate-100 rounded-lg p-[14px] h-[60px] border border-black/10">
 							<SendHorizontalIcon className="size-8 text-black/60" />
 						</div>
 

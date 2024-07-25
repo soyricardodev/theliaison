@@ -11,7 +11,8 @@ export const getAllOrdersQuery = supabase.from("gifts").select(`
   id,
   users(id, email, full_name, avatar_url),
   recipient_id,
-  gift_recipients(*),
+  gift_recipients(id, name),
+  gifts_orders_links(id),
   status,
   type
 `);
@@ -24,7 +25,8 @@ export const getLinkOrdersQuery = supabase
     id,
     users(id, email, full_name, avatar_url),
     recipient_id,
-    gift_recipients(*),
+    gift_recipients(id, name),
+    gifts_orders_links(id),
     status,
     type
   `)
@@ -37,6 +39,7 @@ export const getCustomOrdersQuery = supabase
     users(id, email, full_name, avatar_url),
     recipient_id,
     gift_recipients(id, name),
+    gifts_orders_links(id),
     status,
     type
   `)
@@ -49,6 +52,7 @@ export const getStoreOrdersQuery = supabase
     users(id, email, full_name, avatar_url),
     recipient_id,
     gift_recipients(id, name),
+    gifts_orders_links(id),
     status,
     type
   `)
