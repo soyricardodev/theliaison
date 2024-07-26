@@ -149,9 +149,9 @@ const ShippingForm = ({
 						{fedexLocationData?.map((location) => (
 							<SelectItem
 								value={location.distance.value}
-								key={location.distance.units}
+								key={location.contactAndAddress.address.streetLines[0]}
 								className="grid grid-cols-2 gap-1 grid-flow-col"
-								onClick={() => console.log(location.contactAndAddress.address.city)}
+								// onClick={() => console.log(location.contactAndAddress)}
 							>
 								<div>
 									<p className="font-semibold">

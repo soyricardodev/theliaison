@@ -157,10 +157,11 @@ const Footer = () => {
 							onClick={prevStep}
 							size="sm"
 							variant="secondary"
+							className="bg-white hover:bg-slate-300"
 						>
 							Prev
 						</Button>
-						<Button size="sm" onClick={nextStep}>
+						<Button size="sm" className="bg-gray-800 hover:bg-slate-900" onClick={nextStep}>
 							{isLastStep ? "Finish" : isOptionalStep ? "Skip" : "Next"}
 						</Button>
 					</>
