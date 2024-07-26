@@ -56,13 +56,22 @@ const ShippingForm = ({
 	});
 
 	const [fedexLocationData, setFedexLocationData] = useState<any>();
+	const [isLoading, setIsLoading] = useState<boolean>(false)
 //"Getting fedex locations..."
 	async function onSubmit(data: z.infer<typeof ShippingFormSchema>) {
-		toast.info("Loading location...");
-		const fedexLocation = await getFedexLocations(data.postal_code);
-		setFedexLocationData(fedexLocation?.locationDetailList);
-		console.log(fedexLocation);
-		toast.success("FedEx locations fetched successfully!");
+		setIsLoading(true)
+		try {
+			toast.info("Loading location...");
+			const fedexLocation = await getFedexLocations(data.postal_code);
+			setFedexLocationData(fedexLocation?.locationDetailList);
+			console.log(fedexLocation);
+			
+		} catch (error) {
+			console.error(error)
+		} finally {
+			toast.success("FedEx locations fetched successfully!");
+			setIsLoading(false)
+		}
 		// console.log(data);
 		// toast.promise(
 		// 	validateRecipientAddress({
@@ -164,6 +173,7 @@ const ShippingForm = ({
 				<Button 
 					className="w-full bg-white text-black hover:bg-[#DBD0C5]"
 					type="submit"
+					isLoading={isLoading}
 					disabled={false}
 					>
 					Search
@@ -181,12 +191,12 @@ const ShippingForm = ({
 	);
 };
 
-function Loading() {
-	return (
-		<>
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect fill="#FFF" width="100%" height="100%"/><radialGradient id="a12" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="#CACBCC"></stop><stop offset=".3" stop-color="#CACBCC" stop-opacity=".9"></stop><stop offset=".6" stop-color="#CACBCC" stop-opacity=".6"></stop><stop offset=".8" stop-color="#CACBCC" stop-opacity=".3"></stop><stop offset="1" stop-color="#CACBCC" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(#a12)" stroke-width="26" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="#CACBCC" stroke-width="26" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg>
-  		</>
-	)
-}
+// function Loading() {
+// 	return (
+// 		<>
+// 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect fill="#FFF" width="100%" height="100%"/><radialGradient id="a12" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="#CACBCC"></stop><stop offset=".3" stop-color="#CACBCC" stop-opacity=".9"></stop><stop offset=".6" stop-color="#CACBCC" stop-opacity=".6"></stop><stop offset=".8" stop-color="#CACBCC" stop-opacity=".3"></stop><stop offset="1" stop-color="#CACBCC" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(#a12)" stroke-width="26" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="2" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="#CACBCC" stroke-width="26" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg>
+//   		</>
+// 	)
+// }
 
 export default ShippingForm;
