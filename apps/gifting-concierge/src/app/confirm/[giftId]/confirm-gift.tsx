@@ -107,10 +107,10 @@ function StepperConfirmGift({ children }: { children: React.ReactNode }) {
 			<Stepper initialStep={0} steps={steps}>
 				{steps.map((stepProps, index) => {
 					return (
-						<Step key={stepProps.label} {...stepProps}>
+						<Step key={stepProps.label}>
 							<div
 								className={cn(
-									"min-h-40 h-auto flex items-center justify-center my-2 border bg-secondary text-primary rounded-md p-4",
+									"min-h-40 h-auto flex items-center justify-center my-2 border bg-foreground text-primary rounded-md p-4",
 									{
 										"bg-transparent": index === 2,
 									},
