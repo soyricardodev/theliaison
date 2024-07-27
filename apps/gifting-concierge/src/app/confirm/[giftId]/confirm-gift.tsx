@@ -9,6 +9,9 @@ import { Step, Stepper, useStepper } from "@theliaison/ui/stepper";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import { useConfirmDialogStore } from "~/store/confirm-dialog";
+import { createClient } from '@supabase/supabase-js'; 
+import { LoginForm } from "~/app/(auth)/login/login-form";
+
 
 const steps: { label: string; description: string }[] = [
 	{
@@ -110,13 +113,14 @@ function StepperConfirmGift({ children }: { children: React.ReactNode }) {
 						<Step key={stepProps.label}>
 							<div
 								className={cn(
-									"min-h-40 h-auto flex items-center justify-center my-2 border bg-foreground text-primary rounded-md p-4",
+									"min-h-40 h-auto flex items-center justify-center my-2 border bg-white text-primary rounded-md p-4",
 									{
 										"bg-transparent": index === 2,
 									},
 								)}
 							>
 								{index === 0 ? <FirstStepConfirmGift /> : null}
+								{index === 1 ? <LoginForm/> : null}
 								{index === 2 ? children : null}
 							</div>
 						</Step>
@@ -217,4 +221,16 @@ function FirstStepConfirmGift() {
 			</p>
 		</div>
 	);
+}
+
+function LoginButton() {
+	// const origin = window.location.origin
+	// return (
+	// 	<div className="flex flex-col gap-2">
+	// 		<p>You need to log in</p>
+	// 		<Button onClick={() => window.open(`${origin}/login`, '_blank')}>
+	// 			Login
+	// 		</Button>
+	// 	</div>
+	// )
 }
