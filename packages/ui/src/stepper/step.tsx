@@ -64,7 +64,8 @@ const Step = React.forwardRef<HTMLLIElement, StepProps>(
 						</VerticalStep>
 					);
 				default:
-					return <HorizontalStep ref={ref} {...sharedProps} />;
+					return <span className="h-6"/>
+					// return <HorizontalStep ref={ref} {...sharedProps} />;
 			}
 		};
 
