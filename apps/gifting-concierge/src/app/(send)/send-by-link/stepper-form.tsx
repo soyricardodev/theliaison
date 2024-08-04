@@ -66,7 +66,7 @@ const _customGiftSteps = [
 export function StepperForm() {
 	return (
 		<div className="flex w-full flex-col gap-4">
-			<Stepper variant="circle-alt" initialStep={0} steps={steps}>
+			<Stepper variant="circle-alt" initialStep={0} steps={steps} hidden={true}>
 				{steps.map((stepProps, index) => {
 					if (index === 0) {
 						return (

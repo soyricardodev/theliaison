@@ -34,6 +34,7 @@ const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
 			styles,
 			variables,
 			scrollTracking = false,
+			hidden = false,
 			...rest
 		} = props;
 
@@ -85,6 +86,7 @@ const Stepper = React.forwardRef<HTMLDivElement, StepperProps>(
 					steps,
 					scrollTracking,
 					styles,
+					hidden
 				}}
 			>
 				<div

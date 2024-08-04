@@ -107,7 +107,7 @@ export function ConfirmGift({ children }: { children: React.ReactNode }) {
 function StepperConfirmGift({ children }: { children: React.ReactNode }) {
 	return (
 		<div className="flex w-full flex-col gap-4">
-			<Stepper initialStep={0} steps={steps}>
+			<Stepper initialStep={0} steps={steps} hidden={true}>
 				{steps.map((stepProps, index) => {
 					return (
 						<Step key={stepProps.label}>
