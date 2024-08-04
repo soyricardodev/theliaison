@@ -37,6 +37,7 @@ import {
 	PhoneIcon,
 	TwitchIcon as LucideTwitchIcon,
 	UserIcon,
+	InstagramIcon as LucideInstagramIcon
 } from "lucide-react";
 
 const steps: Array<{ label: string }> = [
@@ -234,7 +235,7 @@ function SecondStepForm() {
 					label="Select a way to contact the recipient"
 				>
 					<CustomRadio description="" value="social">
-						<LucideTwitchIcon className="mb-3 text-5xl" />
+						<LucideInstagramIcon className="mb-3 text-5xl" />
 						Social
 					</CustomRadio>
 					<CustomRadio description="" value="email">
