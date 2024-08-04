@@ -200,7 +200,7 @@ function SecondStepForm() {
 	const form = useForm<z.infer<typeof SecondFormSchema>>({
 		resolver: zodResolver(SecondFormSchema),
 		defaultValues: {
-			recipientContactWay: "email",
+			recipientContactWay: "social",
 		},
 	});
 
@@ -233,6 +233,10 @@ function SecondStepForm() {
 					}}
 					label="Select a way to contact the recipient"
 				>
+					<CustomRadio description="" value="social">
+						<LucideTwitchIcon className="mb-3 text-5xl" />
+						Social
+					</CustomRadio>
 					<CustomRadio description="" value="email">
 						<MailIcon className="mb-3 text-5xl" />
 						Email
@@ -240,10 +244,6 @@ function SecondStepForm() {
 					<CustomRadio description="" value="phone">
 						<PhoneIcon className="mb-3 text-5xl" />
 						Phone
-					</CustomRadio>
-					<CustomRadio description="" value="social">
-						<LucideTwitchIcon className="mb-3 text-5xl" />
-						Social
 					</CustomRadio>
 				</RadioGroup>
 
@@ -289,30 +289,6 @@ function SecondStepForm() {
 						)}
 					/>
 				) : null}
-
-				{recipientContactWay === "phone" ? (
-					<FormField
-						control={form.control}
-						name="recipientPhoneNumber"
-						render={({ field }) => (
-							<FormControl>
-								<Input
-									label="Phone Number"
-									placeholder="+1 (555) 555-5555"
-									labelPlacement="outside"
-									startContent={
-										<div className="pointer-events-none flex items-center">
-											<PhoneIcon className="text-base" />
-										</div>
-									}
-									description="Enter the recipient's phone number with country code."
-									{...field}
-								/>
-							</FormControl>
-						)}
-					/>
-				) : null}
-
 				{recipientContactWay === "social" ? (
 					<>
 						<FormField
@@ -428,6 +404,30 @@ function SecondStepForm() {
 						/>
 					</>
 				) : null}
+
+				{recipientContactWay === "phone" ? (
+					<FormField
+						control={form.control}
+						name="recipientPhoneNumber"
+						render={({ field }) => (
+							<FormControl>
+								<Input
+									label="Phone Number"
+									placeholder="+1 (555) 555-5555"
+									labelPlacement="outside"
+									startContent={
+										<div className="pointer-events-none flex items-center">
+											<PhoneIcon className="text-base" />
+										</div>
+									}
+									description="Enter the recipient's phone number with country code."
+									{...field}
+								/>
+							</FormControl>
+						)}
+					/>
+				) : null}
+
 				<StepperFormActions />
 			</form>
 		</Form>
