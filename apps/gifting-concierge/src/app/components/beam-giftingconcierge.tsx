@@ -60,7 +60,7 @@ export function BeamGiftingConcierge({
 				</div>
 				<div className="flex flex-col justify-center gap-2">
 					<Circle ref={div1Ref}>
-						<HeartIcon className="size-11" />
+						<HeartIcon className="size-11 text-black" />
 					</Circle>
 				</div>
 			</div>
