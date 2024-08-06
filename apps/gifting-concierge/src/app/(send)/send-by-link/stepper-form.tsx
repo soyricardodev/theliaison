@@ -232,7 +232,7 @@ function SecondStepForm() {
 						wrapper: cn("flex flex-row items-center justify-center"),
 						base: cn("flex items-center justify-center gap-4"),
 					}}
-					label="Select a way to contact the recipient"
+					label="What contact information do you have for the recipient?" //Select a way to contact the recipient
 				>
 					<CustomRadio description="" value="social">
 						<LucideInstagramIcon className="mb-3 text-5xl" />
