@@ -37,6 +37,7 @@ import {
 	PhoneIcon,
 	TwitchIcon as LucideTwitchIcon,
 	UserIcon,
+	InstagramIcon as LucideInstagramIcon
 } from "lucide-react";
 
 const steps: Array<{ label: string }> = [
@@ -200,7 +201,7 @@ function SecondStepForm() {
 	const form = useForm<z.infer<typeof SecondFormSchema>>({
 		resolver: zodResolver(SecondFormSchema),
 		defaultValues: {
-			recipientContactWay: "email",
+			recipientContactWay: "social",
 		},
 	});
 
@@ -231,8 +232,12 @@ function SecondStepForm() {
 						wrapper: cn("flex flex-row items-center justify-center"),
 						base: cn("flex items-center justify-center gap-4"),
 					}}
-					label="Select a way to contact the recipient"
+					label="What contact information do you have for the recipient?" //Select a way to contact the recipient
 				>
+					<CustomRadio description="" value="social">
+						<LucideInstagramIcon className="mb-3 text-5xl" />
+						Social
+					</CustomRadio>
 					<CustomRadio description="" value="email">
 						<MailIcon className="mb-3 text-5xl" />
 						Email
@@ -240,10 +245,6 @@ function SecondStepForm() {
 					<CustomRadio description="" value="phone">
 						<PhoneIcon className="mb-3 text-5xl" />
 						Phone
-					</CustomRadio>
-					<CustomRadio description="" value="social">
-						<LucideTwitchIcon className="mb-3 text-5xl" />
-						Social
 					</CustomRadio>
 				</RadioGroup>
 
@@ -289,30 +290,6 @@ function SecondStepForm() {
 						)}
 					/>
 				) : null}
-
-				{recipientContactWay === "phone" ? (
-					<FormField
-						control={form.control}
-						name="recipientPhoneNumber"
-						render={({ field }) => (
-							<FormControl>
-								<Input
-									label="Phone Number"
-									placeholder="+1 (555) 555-5555"
-									labelPlacement="outside"
-									startContent={
-										<div className="pointer-events-none flex items-center">
-											<PhoneIcon className="text-base" />
-										</div>
-									}
-									description="Enter the recipient's phone number with country code."
-									{...field}
-								/>
-							</FormControl>
-						)}
-					/>
-				) : null}
-
 				{recipientContactWay === "social" ? (
 					<>
 						<FormField
@@ -335,14 +312,14 @@ function SecondStepForm() {
 										</SelectItem>
 										<SelectItem
 											key="x"
-											startContent={<XIcon className="text-xl" />}
+											startContent={<XIcon className="text-xl fill-foreground" />}
 										>
 											X (Twitter)
 										</SelectItem>
 										<SelectItem
 											key="instagram"
 											startContent={
-												<InstagramIcon className="text-xl text-black" />
+												<InstagramIcon className="text-xl fill-foreground" />
 											}
 										>
 											Instagram
@@ -385,7 +362,7 @@ function SecondStepForm() {
 										</SelectItem>
 										<SelectItem
 											key="github"
-											startContent={<GithubIcon className="text-xl" />}
+											startContent={<GithubIcon className="text-xl fill-foreground" />}
 										>
 											Github
 										</SelectItem>
@@ -397,7 +374,7 @@ function SecondStepForm() {
 										</SelectItem>
 										<SelectItem
 											key="threads"
-											startContent={<ThreadsIcon className="text-xl" />}
+											startContent={<ThreadsIcon className="text-xl fill-foreground" />}
 										>
 											Threads
 										</SelectItem>
@@ -428,6 +405,30 @@ function SecondStepForm() {
 						/>
 					</>
 				) : null}
+
+				{recipientContactWay === "phone" ? (
+					<FormField
+						control={form.control}
+						name="recipientPhoneNumber"
+						render={({ field }) => (
+							<FormControl>
+								<Input
+									label="Phone Number"
+									placeholder="+1 (555) 555-5555"
+									labelPlacement="outside"
+									startContent={
+										<div className="pointer-events-none flex items-center">
+											<PhoneIcon className="text-base" />
+										</div>
+									}
+									description="Enter the recipient's phone number with country code."
+									{...field}
+								/>
+							</FormControl>
+						)}
+					/>
+				) : null}
+
 				<StepperFormActions />
 			</form>
 		</Form>
@@ -540,7 +541,7 @@ const CustomRadio = ({
 				base: cn(
 					"inline-flex m-0 bg-content1 hover:bg-content2 items-center justify-between",
 					"flex-row-reverse max-w-fit cursor-pointer rounded-lg gap-4 p-4 border-2 border-transparent",
-					"data-[selected=true]:border-primary",
+					"data-[selected=true]:border-foreground",
 				),
 			}}
 		>
@@ -670,7 +671,7 @@ const XIcon = (props: SVGProps<SVGSVGElement>) => (
 	>
 		<title>X</title>
 		<path
-			fill="#000"
+			//fill="#000"
 			d="M714.163 519.284 1160.89 0h-105.86L667.137 450.887 357.328 0H0l468.492 681.821L0 1226.37h105.866l409.625-476.152 327.181 476.152H1200L714.137 519.284h.026ZM569.165 687.828l-47.468-67.894-377.686-540.24h162.604l304.797 435.991 47.468 67.894 396.2 566.721H892.476L569.165 687.854v-.026Z"
 		/>
 	</svg>
@@ -729,7 +730,7 @@ const InstagramIcon = (props: SVGProps<SVGSVGElement>) => (
 	>
 		<title>Instagram</title>
 		<path
-			fill="#000"
+			// fill="#000"
 			d="M128 23.064c34.177 0 38.225.13 51.722.745 12.48.57 19.258 2.655 23.769 4.408 5.974 2.322 10.238 5.096 14.717 9.575 4.48 4.479 7.253 8.743 9.575 14.717 1.753 4.511 3.838 11.289 4.408 23.768.615 13.498.745 17.546.745 51.723 0 34.178-.13 38.226-.745 51.723-.57 12.48-2.655 19.257-4.408 23.768-2.322 5.974-5.096 10.239-9.575 14.718-4.479 4.479-8.743 7.253-14.717 9.574-4.511 1.753-11.289 3.839-23.769 4.408-13.495.616-17.543.746-51.722.746-34.18 0-38.228-.13-51.723-.746-12.48-.57-19.257-2.655-23.768-4.408-5.974-2.321-10.239-5.095-14.718-9.574-4.479-4.48-7.253-8.744-9.574-14.718-1.753-4.51-3.839-11.288-4.408-23.768-.616-13.497-.746-17.545-.746-51.723 0-34.177.13-38.225.746-51.722.57-12.48 2.655-19.258 4.408-23.769 2.321-5.974 5.095-10.238 9.574-14.717 4.48-4.48 8.744-7.253 14.718-9.575 4.51-1.753 11.288-3.838 23.768-4.408 13.497-.615 17.545-.745 51.723-.745M128 0C93.237 0 88.878.147 75.226.77c-13.625.622-22.93 2.786-31.071 5.95-8.418 3.271-15.556 7.648-22.672 14.764C14.367 28.6 9.991 35.738 6.72 44.155 3.555 52.297 1.392 61.602.77 75.226.147 88.878 0 93.237 0 128c0 34.763.147 39.122.77 52.774.622 13.625 2.785 22.93 5.95 31.071 3.27 8.417 7.647 15.556 14.763 22.672 7.116 7.116 14.254 11.492 22.672 14.763 8.142 3.165 17.446 5.328 31.07 5.95 13.653.623 18.012.77 52.775.77s39.122-.147 52.774-.77c13.624-.622 22.929-2.785 31.07-5.95 8.418-3.27 15.556-7.647 22.672-14.763 7.116-7.116 11.493-14.254 14.764-22.672 3.164-8.142 5.328-17.446 5.95-31.07.623-13.653.77-18.012.77-52.775s-.147-39.122-.77-52.774c-.622-13.624-2.786-22.929-5.95-31.07-3.271-8.418-7.648-15.556-14.764-22.672C227.4 14.368 220.262 9.99 211.845 6.72c-8.142-3.164-17.447-5.328-31.071-5.95C167.122.147 162.763 0 128 0Zm0 62.27C91.698 62.27 62.27 91.7 62.27 128c0 36.302 29.428 65.73 65.73 65.73 36.301 0 65.73-29.428 65.73-65.73 0-36.301-29.429-65.73-65.73-65.73Zm0 108.397c-23.564 0-42.667-19.103-42.667-42.667S104.436 85.333 128 85.333s42.667 19.103 42.667 42.667-19.103 42.667-42.667 42.667Zm83.686-110.994c0 8.484-6.876 15.36-15.36 15.36-8.483 0-15.36-6.876-15.36-15.36 0-8.483 6.877-15.36 15.36-15.36 8.484 0 15.36 6.877 15.36 15.36Z"
 		/>
 	</svg>
@@ -949,7 +950,7 @@ const KickIcon = (props: SVGProps<SVGSVGElement>) => (
 					fillRule="evenodd"
 					clipRule="evenodd"
 					d="M0 0H100V66.6667H133.333V33.3333H166.667V0H266.667V100H233.333V133.333H200V166.667H233.333V200H266.667V300H166.667V266.667H133.333V233.333H100V300H0V0ZM666.667 0H766.667V66.6667H800V33.3333H833.333V0H933.333V100H900V133.333H866.667V166.667H900V200H933.333V300H833.333V266.667H800V233.333H766.667V300H666.667V0ZM300 0H400V300H300V0ZM533.333 0H466.667V33.3333H433.333V266.667H466.667V300H533.333H633.333V200H533.333V100H633.333V0H533.333Z"
-					fill="#000"
+					fill="#00e701"
 				/>
 			</g>
 		</g>
@@ -969,7 +970,7 @@ const GithubIcon = (props: SVGProps<SVGSVGElement>) => (
 		viewBox="0 0 256 250"
 		width="1em"
 		height="1em"
-		fill="#000"
+		//fill="#000"
 		xmlns="http://www.w3.org/2000/svg"
 		preserveAspectRatio="xMidYMid"
 		{...props}
@@ -1090,7 +1091,7 @@ const ThreadsIcon = (props: SVGProps<SVGSVGElement>) => (
 	>
 		<title>Threads</title>
 		<path
-			fill="#000"
+			//fill="#000"
 			d="M141.537 88.988a66.667 66.667 0 0 0-2.518-1.143c-1.482-27.307-16.403-42.94-41.457-43.1h-.34c-14.986 0-27.449 6.396-35.12 18.036l13.779 9.452c5.73-8.695 14.724-10.548 21.348-10.548h.229c8.249.053 14.474 2.452 18.503 7.129 2.932 3.405 4.893 8.111 5.864 14.05-7.314-1.243-15.224-1.626-23.68-1.14-23.82 1.371-39.134 15.264-38.105 34.568.522 9.792 5.4 18.216 13.735 23.719 7.047 4.652 16.124 6.927 25.557 6.412 12.458-.683 22.231-5.436 29.049-14.127 5.178-6.6 8.453-15.153 9.899-25.93 5.937 3.583 10.337 8.298 12.767 13.966 4.132 9.635 4.373 25.468-8.546 38.376-11.319 11.308-24.925 16.2-45.488 16.351-22.809-.169-40.06-7.484-51.275-21.742C35.236 139.966 29.808 120.682 29.605 96c.203-24.682 5.63-43.966 16.133-57.317C56.954 24.425 74.204 17.11 97.013 16.94c22.975.17 40.526 7.52 52.171 21.847 5.71 7.026 10.015 15.86 12.853 26.162l16.147-4.308c-3.44-12.68-8.853-23.606-16.219-32.668C147.036 9.607 125.202.195 97.07 0h-.113C68.882.194 47.292 9.642 32.788 28.08 19.882 44.485 13.224 67.315 13.001 95.932L13 96v.067c.224 28.617 6.882 51.447 19.788 67.854C47.292 182.358 68.882 191.806 96.957 192h.113c24.96-.173 42.554-6.708 57.048-21.189 18.963-18.945 18.392-42.692 12.142-57.27-4.484-10.454-13.033-18.945-24.723-24.553ZM98.44 129.507c-10.44.588-21.286-4.098-21.82-14.135-.397-7.442 5.296-15.746 22.461-16.735 1.966-.114 3.895-.169 5.79-.169 6.235 0 12.068.606 17.371 1.765-1.978 24.702-13.58 28.713-23.802 29.274Z"
 			className="x19hqcy"
 		/>

@@ -10,6 +10,7 @@ interface StepperContextValue extends StepperProps {
 	expandVerticalSteps?: boolean;
 	activeStep: number;
 	initialStep: number;
+	hidden?: boolean;
 }
 
 type StepperContextProviderProps = {

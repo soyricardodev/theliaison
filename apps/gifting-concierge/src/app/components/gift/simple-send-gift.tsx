@@ -18,16 +18,16 @@ export function SimpleSendGift() {
 	const [contactInfo, setContactInfo] = useState("");
 
 	return (
-		<Card className="mx-auto max-w-md">
+		<Card className="mx-auto max-w-md bg-background">
 			<CardHeader>
-				<CardTitle className="text-lg">Send a custom Gift</CardTitle>
+				<CardTitle className="text-lg text-foreground">Send a custom Gift</CardTitle>
 				<CardDescription className="text-base">
 					Fill out the form below to send an anonymous gift to someone special.
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
 				<form className="space-y-4">
-					<div className="grid gap-2">
+					<div className="grid gap-2 text-foreground">
 						<Label htmlFor="recipient-name">Recipient's Name</Label>
 						<Input
 							id="recipient-name"
@@ -37,7 +37,7 @@ export function SimpleSendGift() {
 							onChange={(e) => setRecipientName(e.target.value)}
 						/>
 					</div>
-					<div className="grid gap-2">
+					<div className="grid gap-2 text-foreground">
 						<Label htmlFor="contact-method">Contact Method</Label>
 						<RadioGroup defaultValue="email" className="grid grid-cols-3 gap-4">
 							<div>
@@ -48,7 +48,7 @@ export function SimpleSendGift() {
 								/>
 								<Label
 									htmlFor="email"
-									className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+									className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
 								>
 									<MailIcon className="mb-3 h-6 w-6" />
 									Email
@@ -62,7 +62,7 @@ export function SimpleSendGift() {
 								/>
 								<Label
 									htmlFor="phone"
-									className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+									className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
 								>
 									<PhoneIcon className="mb-3 h-6 w-6" />
 									Phone
@@ -76,7 +76,7 @@ export function SimpleSendGift() {
 								/>
 								<Label
 									htmlFor="social"
-									className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+									className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-background p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
 								>
 									<FacebookIcon className="mb-3 h-6 w-6" />
 									Social
