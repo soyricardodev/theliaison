@@ -22,7 +22,7 @@ export default function DashboardPage() {
 	return (
 		<Tabs defaultValue="all">
 			<div className="flex items-center">
-				<TabsList>
+				<TabsList className="bg-background ">
 					<TabsTrigger value="all">All</TabsTrigger>
 					<TabsTrigger value="active">Active</TabsTrigger>
 					<TabsTrigger value="draft">Draft</TabsTrigger>
@@ -33,7 +33,7 @@ export default function DashboardPage() {
 				<div className="ml-auto flex items-center gap-2">
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
-							<Button variant="outline" size="sm" className="h-8 gap-1 border-none">
+							<Button variant="outline" size="sm" className="h-8 gap-1 border-none bg-foreground text-background">
 								<ListFilter className="h-3.5 w-3.5" />
 								<span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
 									Filter
@@ -50,7 +50,7 @@ export default function DashboardPage() {
 							<DropdownMenuCheckboxItem className="cursor-pointer">Archived</DropdownMenuCheckboxItem>
 						</DropdownMenuContent>
 					</DropdownMenu>
-					<Button size="sm" variant="outline" className="h-8 gap-1 border-none">
+					<Button size="sm" variant="outline" className="h-8 gap-1 border-none bg-foreground text-background">
 						<File className="h-3.5 w-3.5" />
 						<span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
 							Export

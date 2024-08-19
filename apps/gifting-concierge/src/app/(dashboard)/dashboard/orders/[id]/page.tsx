@@ -31,7 +31,7 @@ export default async function Component({
 
 	return (
 		<div>
-			<Card className="w-4/5 h-96">
+			<Card className="w-4/5 h-96 bg-background text-foreground border-none">
 			<CardHeader className="flex items-center">
 				<CardTitle className="text-xl">Order</CardTitle>
 			</CardHeader>
