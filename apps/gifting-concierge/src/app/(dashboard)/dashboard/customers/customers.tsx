@@ -20,7 +20,7 @@ export function Customers({ customers }: { customers: Stripe.Customer[] }) {
 			</TableHeader>
 			<TableBody>
 				{customers.map(({ id, email, name, balance }, index) => (
-					<TableRow key={id} className={`${index % 2 === 0 ? "bg-muted" : ""}`}>
+					<TableRow key={id} className={`${index % 2 === 0 ? "bg-background" : "bg-foreground/40"}`}>
 						<TableCell className="hidden sm:block">{name}</TableCell>
 						<TableCell>{email}</TableCell>
 						<TableCell className="text-right">

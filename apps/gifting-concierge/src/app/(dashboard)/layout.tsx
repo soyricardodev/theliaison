@@ -33,7 +33,7 @@ export default function DashboardLayout({
 }>) {
 	return (
 		<Providers>
-			<div className="flex min-h-screen w-full flex-col bg-muted/40">
+			<div className="flex min-h-screen w-full flex-col bg-background/90">
 				<DesktopNav />
 
 				<div className="flex flex-col sm:gap-4 sm:py-4 sm:pl-14">
@@ -41,7 +41,7 @@ export default function DashboardLayout({
 						<MobileNav />
 						<DashboardBreadcrumb />
 					</header>
-					<main className="grid flex-1 items-start gap-2 p-4 sm:p-6 md:gap-4 bg-muted/40">
+					<main className="grid flex-1 items-start gap-2 p-4 sm:p-6 md:gap-4 bg-transparent">
 						{children}
 					</main>
 				</div>

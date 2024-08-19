@@ -32,7 +32,7 @@ const Step = React.forwardRef<HTMLLIElement, StepProps>(
 			onClickStep,
 		} = props as FullStepProps;
 
-		const { isVertical, isError, isLoading, clickable } = useStepper();
+		const { isVertical, isError, isLoading, clickable, hidden } = useStepper();
 
 		const hasVisited = isCurrentStep || isCompletedStep;
 
@@ -64,8 +64,17 @@ const Step = React.forwardRef<HTMLLIElement, StepProps>(
 						</VerticalStep>
 					);
 				default:
-					return <span className="h-6"/>
-					// return <HorizontalStep ref={ref} {...sharedProps} />;
+					return (
+						<>
+						{
+							!hidden ? <HorizontalStep ref={ref} {...sharedProps} />
+							:
+							<span className="h-6"/>
+						}
+						</>
+					)
+					//return <span className="h-6"/>
+					//return <HorizontalStep ref={ref} {...sharedProps} />;
 			}
 		};
 

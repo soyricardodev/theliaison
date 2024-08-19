@@ -12,7 +12,7 @@ export default async function CustomersPage() {
 	const { customers } = await getCustomers();
 
 	return (
-		<Card>
+		<Card className="bg-background text-foreground">
 			<CardHeader>
 				<CardTitle>Customers</CardTitle>
 				<CardDescription>View all customers and their orders.</CardDescription>

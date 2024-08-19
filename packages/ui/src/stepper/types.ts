@@ -55,6 +55,7 @@ interface StepperProps extends StepOptions {
 	className?: string;
 	initialStep: number;
 	steps: StepItem[];
+	hidden?: boolean
 }
 
 interface StepProps extends React.HTMLAttributes<HTMLLIElement> {

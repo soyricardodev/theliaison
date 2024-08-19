@@ -13,14 +13,14 @@ import { StoreOrders } from "./store-orders";
 
 export default function OrdersPage() {
 	return (
-		<Card>
+		<Card className="bg-background text-foreground border-none">
 			<CardHeader className="px-7">
 				<CardTitle>Orders</CardTitle>
 				<CardDescription>Recent orders from your store.</CardDescription>
 			</CardHeader>
 			<CardContent>
 				<Tabs defaultValue="all">
-					<TabsList>
+					<TabsList className="bg-background border">
 						<TabsTrigger value="all">All</TabsTrigger>
 						<TabsTrigger value="link">Link</TabsTrigger>
 						<TabsTrigger value="custom">Custom</TabsTrigger>
