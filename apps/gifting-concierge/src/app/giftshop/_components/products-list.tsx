@@ -37,7 +37,7 @@ export async function ProductsList() {
             </div>
             <div className="flex flex-col gap-3 px-1">
               <div className="flex items-center justify-between">
-                <h3 className="text-medium text-default-700 font-medium">
+                <h3 className="text-medium text-default-700 font-medium whitespace-nowrap overflow-hidden text-ellipsis">
                   {product.name}
                 </h3>
                 <p className="text-medium text-foreground/60 font-medium">

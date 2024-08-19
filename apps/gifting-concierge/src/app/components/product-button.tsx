@@ -21,9 +21,8 @@ export const ProductButton = ({
 	return (
 		<Button
 			fullWidth
-			color="primary"
 			radius="lg"
-			className="font-medium"
+			className="font-medium bg-foreground text-background"
 			onClick={() => {
 				addToCart({
 					id: productId,
