@@ -28,7 +28,7 @@ export default async function ProductsPage({
 	return (
 		<Tabs defaultValue="all">
 			<div className="flex items-center">
-				<TabsList>
+				<TabsList className="bg-background">
 					<TabsTrigger value="all">All</TabsTrigger>
 					<TabsTrigger value="active">Active</TabsTrigger>
 					<TabsTrigger value="draft">Draft</TabsTrigger>
@@ -39,7 +39,7 @@ export default async function ProductsPage({
 				<div className="ml-auto flex items-center gap-2">
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
-							<Button variant="outline" size="sm" className="h-8 gap-1">
+							<Button variant="outline" size="sm" className="h-8 gap-1 bg-foreground text-background border-none">
 								<ListFilter className="h-3.5 w-3.5" />
 								<span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
 									Filter
@@ -56,7 +56,7 @@ export default async function ProductsPage({
 							<DropdownMenuCheckboxItem>Archived</DropdownMenuCheckboxItem>
 						</DropdownMenuContent>
 					</DropdownMenu>
-					<Button size="sm" variant="outline" className="h-8 gap-1">
+					<Button size="sm" variant="outline" className="h-8 gap-1 bg-foreground text-background border-none">
 						<File className="h-3.5 w-3.5" />
 						<span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
 							Export
