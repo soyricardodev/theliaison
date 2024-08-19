@@ -24,11 +24,11 @@ export async function ProductsList() {
         return (
           <article
             key={`${product.id}-${i}`}
-            className="relative flex w-64 max-w-full flex-none snap-start scroll-ml-6 flex-col gap-3 rounded-md bg-white/70 backdrop-blur-2xl p-4 shadow-none h-auto"
+            className="relative flex w-64 max-w-full flex-none snap-start scroll-ml-6 flex-col gap-3 rounded-md  p-4 h-auto"
           >
             <div className="rounded-medium bg-content2 relative flex h-52 max-h-full w-full flex-col items-center justify-center overflow-visible">
               <Image
-                className="w-[300px] h-full object-contain object-center"
+                className="w-[300px] h-full object-contain object-center bg-white rounded-sm"
                 src={product.image ?? ""}
                 width={300}
                 height={300}
