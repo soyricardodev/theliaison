@@ -15,7 +15,7 @@ export const getAllOrdersQuery = supabase.from("gifts").select(`
   gifts_orders_links(id),
   status,
   type
-`);
+`).range(0, 9);
 
 export type Orders = QueryData<typeof getAllOrdersQuery>;
 
