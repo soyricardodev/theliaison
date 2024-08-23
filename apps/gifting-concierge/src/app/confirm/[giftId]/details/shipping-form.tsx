@@ -139,6 +139,7 @@ const ShippingForm = ({
 
 				{
 					fedexLocationData && 
+					//// Cambiar por un mapa //////////////////////////////
 					<Select>
 					<SelectTrigger>
 						<SelectValue placeholder="Select a location"/>
@@ -168,6 +169,7 @@ const ShippingForm = ({
 						</SelectGroup>
 					</SelectContent>
 				</Select> 
+				///////-------------------------////////////////////////////////////
 				}
 
 				<Button 
