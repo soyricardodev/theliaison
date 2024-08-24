@@ -25,6 +25,8 @@ export const env = createEnv({
 		NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string(),
 		NEXT_PUBLIC_PROJECT_ID: z.string(),
 		NEXT_PUBLIC_GOOGLE_API_KEY: z.string(),
+		NEXT_PUBLIC_COUNTRY_TOKEN: z.string(),
+		NEXT_PUBLIC_COUNTRY_EMAIL: z.string(),
 	},
 	skipValidation: true,
 
@@ -37,5 +39,7 @@ export const env = createEnv({
 			process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
 		NEXT_PUBLIC_PROJECT_ID: process.env.NEXT_PUBLIC_PROJECT_ID,
 		NEXT_PUBLIC_GOOGLE_API_KEY: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
+		NEXT_PUBLIC_COUNTRY_TOKEN: process.env.NEXT_PUBLIC_COUNTRY_TOKEN,
+		NEXT_PUBLIC_COUNTRY_EMAIL: process.env.NEXT_PUBLIC_COUNTRY_EMAIL,
 	},
 });

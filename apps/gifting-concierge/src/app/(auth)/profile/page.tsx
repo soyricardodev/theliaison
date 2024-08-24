@@ -1,3 +1,5 @@
+//'use client'
+import { useState, useEffect } from "react";
 import { Avatar, Button } from "@nextui-org/react";
 import {
 	Select,
@@ -12,10 +14,58 @@ import { Input } from "@theliaison/ui/input";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { env } from "~/env";
+//import { createClient } from "~/supabase/client";
 import { createClient } from "~/supabase/server";
 import { UploadAvatar } from "./upload-avatar";
 
 export default async function ProfilePage() {
+
+	// const [token, setToken] = useState<string>()
+
+	// useEffect(() => {
+	// 	try {
+	// 		fetch('https://www.universal-tutorial.com/api/getaccesstoken', {
+	// 			headers: {
+	// 				"user-email": env.NEXT_PUBLIC_COUNTRY_EMAIL,
+	// 				"api-token": env.NEXT_PUBLIC_COUNTRY_TOKEN
+	// 			}
+	// 		})
+	// 		.then(res => res.json())
+	// 		.then(data => setToken(data))
+	// 	} catch (error) {
+	// 		console.error(error)
+	// 	}
+	// },[])
+
+	// useEffect(() => {
+	// 	async function getCountries() {
+	// 		try {
+	// 			const response = await fetch('https://www.universal-tutorial.com/api/countries/', {
+	// 				headers: {
+	// 					"Authorization": `Bearer ${token}`
+	// 				}
+	// 			})
+	// 			const data = await response.json()
+	// 			setCountryResp(data)
+	// 		} catch (error) {
+	// 			console.error(error)
+	// 		}
+	// 	}
+	// 	getCountries()
+	// },[token])
+
+	// const [countryRes, setCountryResp] = useState()
+	// const [stateRes, setStateResp] = useState()
+	// const [cityRes, setCityResp] = useState()
+
+	// const [country, setCountry] = useState<string>()
+	// const [state, setState] = useState<string>()
+	// const [city, setCity] = useState<string>()
+
+	// console.log(token)
+	// console.log(countryRes)
+
+
 	const supabase = createClient();
 	const {
 		data: { user },
@@ -69,6 +119,8 @@ export default async function ProfilePage() {
 		revalidatePath("/", "layout");
 	};
 
+	console.log(`${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${profileData.avatar_url}`)
+
 	return (
 		<div className="flex flex-col items-center min-h-screen h-full justify-center p-4">
 			<div className="flex flex-col relative overflow-hidden h-auto text-black box-border bg-white/30 backdrop-blur-2xl outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none max-w-xl p-2">
@@ -82,7 +134,7 @@ export default async function ProfilePage() {
 										profileData.avatar_url != null
 											? profileData.avatar_url.startsWith("avatars/")
 												? `${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${profileData.avatar_url}`
-												: profileData.avatar_url
+												: ""
 											: ""
 									}
 									className="flex object-cover w-full h-full"
