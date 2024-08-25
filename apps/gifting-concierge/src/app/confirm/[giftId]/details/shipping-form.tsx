@@ -7,7 +7,7 @@ import type React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 // biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
-import {APIProvider, Map, Marker, InfoWindow} from '@vis.gl/react-google-maps';
+import {APIProvider, Map, Marker, AdvancedMarker} from '@vis.gl/react-google-maps';
 
 import { cn } from "@theliaison/ui";
 import { SearchIcon } from "lucide-react";
@@ -116,7 +116,8 @@ const ShippingForm = ({
 	}
 
 	const googleApiKey = env.NEXT_PUBLIC_GOOGLE_API_KEY
-	console.log(googleApiKey)
+	//console.log(fedexLocationData[0].geoPositionalCoordinates);
+	
 
 	return (
 		<Form {...form}>
@@ -149,16 +150,30 @@ const ShippingForm = ({
 					<Map
 					  mapId={'73f3af2aabafae58'}
 					  style={{width: '450px', height: '600px'}}
-					  defaultCenter={{lat: 35.0278019, lng: -90.0093266}}
+					  defaultCenter={
+						{
+							lat: fedexLocationData[0].geoPositionalCoordinates.latitude || 35.0278019, 
+							lng: fedexLocationData[0].geoPositionalCoordinates.latitude || -90.0093266
+						}
+					}
 					  defaultZoom={10}
 					  gestureHandling={'greedy'}
 					  disableDefaultUI={false}
 					  streetViewControl
 					>
-						<InfoWindow position={{lat: 35.0278019, lng: -90.0093266}}>
-							Mi ubicacion
-						</InfoWindow>
-						<Marker position={{lat: 35.0278019, lng: -90.0093266}}/>
+						{
+							fedexLocationData.map((location) => (
+								<AdvancedMarker key={location.contactAndAddress.address.streetLines[0]} position={
+									{
+										lat: location.geoPositionalCoordinates.latitude, 
+										lng: location.geoPositionalCoordinates.longitude,
+									}
+								}
+								>
+									📍 
+								</AdvancedMarker>
+							))
+						}
 					</Map>
 				  </APIProvider>
 				// 	<Select>
@@ -202,7 +217,6 @@ const ShippingForm = ({
 					Search
 					<SearchIcon/>
 				</Button>
-
 				{/* <Button
 					type="submit"
 					className="w-full bg-white text-black hover:bg-[#DBD0C5]"
