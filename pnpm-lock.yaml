@@ -83,6 +83,9 @@ importers:
       '@vercel/kv':
         specifier: 2.0.0
         version: 2.0.0
+      '@vis.gl/react-google-maps':
+        specifier: ^1.1.0
+        version: 1.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       ai:
         specifier: 3.1.23
         version: 3.1.23(openai@4.47.3)(react@18.3.1)(solid-js@1.8.17)(svelte@4.2.18)(vue@3.4.27(typescript@5.4.5))(zod@3.23.8)
@@ -4687,6 +4690,9 @@ packages:
   '@types/glob@7.2.0':
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
 
+  '@types/google.maps@3.55.12':
+    resolution: {integrity: sha512-Q8MsLE+YYIrE1H8wdN69YHHAF8h7ApvF5MiMXh/zeCpP9Ut745mV9M0F4X4eobZ2WJe9k8tW2ryYjLa87IO2Sg==}
+
   '@types/hast@2.3.10':
     resolution: {integrity: sha512-McWspRw8xx8J9HurkVBfYj0xKoE25tOFlHGdx4MJ5xORQrMGZNqJhVQWaIbm6Oyla5kYOXtDiopzKRJzEOkwJw==}
 
@@ -4858,6 +4864,12 @@ packages:
         optional: true
       vue-router:
         optional: true
+
+  '@vis.gl/react-google-maps@1.1.0':
+    resolution: {integrity: sha512-MxDIhCfPRzTQY1c6sS0GFg8Ukl40o13fkIKEaCN0cR1BIrV4LPo+EuCov9WElbe0bOo8MApx5qAbqBKOmLQyKg==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
 
   '@vue/compiler-core@3.4.27':
     resolution: {integrity: sha512-E+RyqY24KnyDXsCuQrI+mlcdW3ALND6U7Gqa/+bVwbcpcR3BRRIckFoz7Qyd4TTlnugtwuI7YgjbvsLmxb+yvg==}
@@ -14930,6 +14942,8 @@ snapshots:
       '@types/minimatch': 5.1.2
       '@types/node': 20.12.14
 
+  '@types/google.maps@3.55.12': {}
+
   '@types/hast@2.3.10':
     dependencies:
       '@types/unist': 2.0.10
@@ -15106,6 +15120,13 @@ snapshots:
       react: 18.3.1
       svelte: 4.2.18
       vue: 3.4.27(typescript@5.4.5)
+
+  '@vis.gl/react-google-maps@1.1.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@types/google.maps': 3.55.12
+      fast-deep-equal: 3.1.3
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   '@vue/compiler-core@3.4.27':
     dependencies:
