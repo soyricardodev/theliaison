@@ -1,11 +1,13 @@
 "use client";
-
+import { env } from "~/env";
 import { zodResolver } from "@hookform/resolvers/zod";
 //import { Button } from "@theliaison/ui/button";
 import { Input } from "@theliaison/ui/input";
 import type React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+// biome-ignore lint/suspicious/noShadowRestrictedNames: <explanation>
+import {APIProvider, Map, Marker, AdvancedMarker} from '@vis.gl/react-google-maps';
 
 import { cn } from "@theliaison/ui";
 import { SearchIcon } from "lucide-react";
@@ -113,6 +115,10 @@ const ShippingForm = ({
 		// );
 	}
 
+	const googleApiKey = env.NEXT_PUBLIC_GOOGLE_API_KEY
+	//console.log(fedexLocationData[0].geoPositionalCoordinates);
+	
+
 	return (
 		<Form {...form}>
 			<form
@@ -139,35 +145,67 @@ const ShippingForm = ({
 
 				{
 					fedexLocationData && 
-					<Select>
-					<SelectTrigger>
-						<SelectValue placeholder="Select a location"/>
-						<ChevronDownIcon className="ml-2 h-4 w-4" />
-					</SelectTrigger>
-					<SelectContent>
-						<SelectGroup>
-						{fedexLocationData?.map((location) => (
-							<SelectItem
-								value={location.distance.value}
-								key={location.contactAndAddress.address.streetLines[0]}
-								className="grid grid-cols-2 gap-1 grid-flow-col"
-								// onClick={() => console.log(location.contactAndAddress)}
-							>
-								<div>
-									<p className="font-semibold">
-										{location.contactAndAddress.address.streetLines[0]}
-									</p>
-									<p>{location.contactAndAddress.address.city}</p>
-								</div>
-								<div className="flex gap-2">
-									<p className="font-semibold">{location.distance.value}</p>
-									<p>{location.distance.units}</p>
-								</div>
-							</SelectItem>
-						))}
-						</SelectGroup>
-					</SelectContent>
-				</Select> 
+					//// Cambiar por un mapa //////////////////////////////
+					<APIProvider apiKey={googleApiKey.toString()} region="US">
+					<Map
+					  mapId={'73f3af2aabafae58'}
+					  style={{width: '450px', height: '600px'}}
+					  defaultCenter={
+						{
+							lat: fedexLocationData[0].geoPositionalCoordinates.latitude || 35.0278019, 
+							lng: fedexLocationData[0].geoPositionalCoordinates.latitude || -90.0093266
+						}
+					}
+					  defaultZoom={10}
+					  gestureHandling={'greedy'}
+					  disableDefaultUI={false}
+					  streetViewControl
+					>
+						{
+							fedexLocationData.map((location) => (
+								<AdvancedMarker key={location.contactAndAddress.address.streetLines[0]} position={
+									{
+										lat: location.geoPositionalCoordinates.latitude, 
+										lng: location.geoPositionalCoordinates.longitude,
+									}
+								}
+								>
+									📍 
+								</AdvancedMarker>
+							))
+						}
+					</Map>
+				  </APIProvider>
+				// 	<Select>
+				// 	<SelectTrigger>
+				// 		<SelectValue placeholder="Select a location"/>
+				// 		<ChevronDownIcon className="ml-2 h-4 w-4" />
+				// 	</SelectTrigger>
+				// 	<SelectContent>
+				// 		<SelectGroup>
+				// 		{fedexLocationData?.map((location) => (
+				// 			<SelectItem
+				// 				value={location.distance.value}
+				// 				key={location.contactAndAddress.address.streetLines[0]}
+				// 				className="grid grid-cols-2 gap-1 grid-flow-col"
+				// 				// onClick={() => console.log(location.contactAndAddress)}
+				// 			>
+				// 				<div>
+				// 					<p className="font-semibold">
+				// 						{location.contactAndAddress.address.streetLines[0]}
+				// 					</p>
+				// 					<p>{location.contactAndAddress.address.city}</p>
+				// 				</div>
+				// 				<div className="flex gap-2">
+				// 					<p className="font-semibold">{location.distance.value}</p>
+				// 					<p>{location.distance.units}</p>
+				// 				</div>
+				// 			</SelectItem>
+				// 		))}
+				// 		</SelectGroup>
+				// 	</SelectContent>
+				// </Select> 
+				///////-------------------------////////////////////////////////////
 				}
 
 				<Button 
@@ -179,7 +217,6 @@ const ShippingForm = ({
 					Search
 					<SearchIcon/>
 				</Button>
-
 				{/* <Button
 					type="submit"
 					className="w-full bg-white text-black hover:bg-[#DBD0C5]"

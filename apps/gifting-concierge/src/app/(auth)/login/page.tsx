@@ -1,4 +1,5 @@
-import { Button, Input } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
+import { Input } from "@theliaison/ui/input";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { toast } from "sonner";
@@ -45,27 +46,29 @@ export default async function LoginForm() {
 	return (
 		<div className="flex flex-col items-center justify-center w-full h-[calc(100vh-100px)] mx-auto">
 			<div className="flex w-full max-w-sm flex-col gap-4 rounded-lg bg-white/30 backdrop-blur-3xl px-8 pb-10 pt-6 shadow-sm">
-				<p className="pb-2 text xl font-medium">Log In</p>
+				<p className="pb-2 text-xl text-black font-medium">Log In</p>
 
 				<form action={signInWithEmailAction} className="flex flex-col gap-3">
+					<div className="flex flex-col gap-2 text-black">
+						<label htmlFor="email">Email</label>
 					<Input
 						type="email"
 						name="email"
-						label="Email"
-						variant="bordered"
 						placeholder="Enter your email"
+						className="h-14 placeholder-slate-800 border-slate-900"
 					/>
+					</div>
 					<Button type="submit" color="primary" startContent={<MailIcon />}>
 						Continue with Email
 					</Button>
 				</form>
 
 				<div className="flex items-center gap-4 py-2">
-					<hr className="bg-divider border-none w-full h-divider flex-1" />
+					<hr className="bg-slate-400 border-none w-full h-divider flex-1" />
 
 					<p className="shrink-0 text-tiny text-black">OR</p>
 
-					<hr className="bg-divider border-none w-full h-divider flex-1" />
+					<hr className="bg-400 border-none w-full h-divider flex-1" />
 				</div>
 
 				<div className="flex flex-col gap-2">
@@ -73,8 +76,8 @@ export default async function LoginForm() {
 						<input type="hidden" />
 						<Button
 							type="submit"
-							className="w-full"
-							variant="bordered"
+							className="w-full text-black bg-white"
+							variant="solid"
 							startContent={<GoogleIcon />}
 						>
 							Sign in with Google

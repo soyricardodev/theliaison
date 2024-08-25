@@ -41,9 +41,9 @@ export function ProductsTable({
 	}
 
 	return (
-		<Card>
+		<Card className="bg-background text-foreground">
 			<CardHeader>
-				<CardTitle>Products</CardTitle>
+				<CardTitle >Products</CardTitle>
 				<CardDescription>
 					Manage your products and view their sales performance.
 				</CardDescription>

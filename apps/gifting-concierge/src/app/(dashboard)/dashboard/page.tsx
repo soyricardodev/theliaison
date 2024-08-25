@@ -22,7 +22,7 @@ export default function DashboardPage() {
 	return (
 		<Tabs defaultValue="all">
 			<div className="flex items-center">
-				<TabsList>
+				<TabsList className="bg-background ">
 					<TabsTrigger value="all">All</TabsTrigger>
 					<TabsTrigger value="active">Active</TabsTrigger>
 					<TabsTrigger value="draft">Draft</TabsTrigger>
@@ -33,24 +33,24 @@ export default function DashboardPage() {
 				<div className="ml-auto flex items-center gap-2">
 					<DropdownMenu>
 						<DropdownMenuTrigger asChild>
-							<Button variant="outline" size="sm" className="h-8 gap-1">
+							<Button variant="outline" size="sm" className="h-8 gap-1 border-none bg-foreground text-background">
 								<ListFilter className="h-3.5 w-3.5" />
 								<span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
 									Filter
 								</span>
 							</Button>
 						</DropdownMenuTrigger>
-						<DropdownMenuContent align="end">
+						<DropdownMenuContent align="end" className="bg-background text-foreground">
 							<DropdownMenuLabel>Filter by</DropdownMenuLabel>
 							<DropdownMenuSeparator />
-							<DropdownMenuCheckboxItem checked>
+							<DropdownMenuCheckboxItem checked className="cursor-pointer">
 								Active
 							</DropdownMenuCheckboxItem>
-							<DropdownMenuCheckboxItem>Draft</DropdownMenuCheckboxItem>
-							<DropdownMenuCheckboxItem>Archived</DropdownMenuCheckboxItem>
+							<DropdownMenuCheckboxItem className="cursor-pointer">Draft</DropdownMenuCheckboxItem>
+							<DropdownMenuCheckboxItem className="cursor-pointer">Archived</DropdownMenuCheckboxItem>
 						</DropdownMenuContent>
 					</DropdownMenu>
-					<Button size="sm" variant="outline" className="h-8 gap-1">
+					<Button size="sm" variant="outline" className="h-8 gap-1 border-none bg-foreground text-background">
 						<File className="h-3.5 w-3.5" />
 						<span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
 							Export
@@ -65,14 +65,14 @@ export default function DashboardPage() {
 				</div>
 			</div>
 			<TabsContent value="all">
-				<Card>
+				<Card className="bg-background border-none">
 					<CardHeader>
-						<CardTitle>Products</CardTitle>
+						<CardTitle className="text-foreground">Products</CardTitle>
 						<CardDescription>
 							Manage your products and view their sales performance.
 						</CardDescription>
 					</CardHeader>
-					<CardContent>content</CardContent>
+					<CardContent className="text-foreground">content</CardContent>
 					<CardFooter>
 						<div className="text-xs text-muted-foreground">
 							Showing <strong>1-10</strong> of <strong>32</strong> products
