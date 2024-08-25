@@ -14,7 +14,7 @@ export function Providers({ children, ...props }: ThemeProviderProps) {
 		<NextUIProvider>
 			<QueryClientProvider client={queryClient}>
 				<NextThemesProvider {...props}>
-					<Toaster />
+					<Toaster position="bottom-center"/>
 					{children}
 				</NextThemesProvider>
 			</QueryClientProvider>

@@ -114,7 +114,7 @@ export function SimpleSendGift() {
 							onChange={(e) => setContactInfo(e.target.value)}
 						/>
 					</div>
-					<Button type="submit" className="w-full">
+					<Button type="submit" className="w-full bg-foreground text-background">
 						Send Gift
 					</Button>
 				</form>

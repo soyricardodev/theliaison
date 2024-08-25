@@ -1,4 +1,6 @@
-import { Avatar, Button, Input } from "@nextui-org/react";
+//'use client'
+import { useState, useEffect } from "react";
+import { Avatar, Button } from "@nextui-org/react";
 import {
 	Select,
 	SelectContent,
@@ -8,13 +10,62 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@theliaison/ui/select";
+import { Input } from "@theliaison/ui/input";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { env } from "~/env";
+//import { createClient } from "~/supabase/client";
 import { createClient } from "~/supabase/server";
 import { UploadAvatar } from "./upload-avatar";
 
 export default async function ProfilePage() {
+
+	// const [token, setToken] = useState<string>()
+
+	// useEffect(() => {
+	// 	try {
+	// 		fetch('https://www.universal-tutorial.com/api/getaccesstoken', {
+	// 			headers: {
+	// 				"user-email": env.NEXT_PUBLIC_COUNTRY_EMAIL,
+	// 				"api-token": env.NEXT_PUBLIC_COUNTRY_TOKEN
+	// 			}
+	// 		})
+	// 		.then(res => res.json())
+	// 		.then(data => setToken(data))
+	// 	} catch (error) {
+	// 		console.error(error)
+	// 	}
+	// },[])
+
+	// useEffect(() => {
+	// 	async function getCountries() {
+	// 		try {
+	// 			const response = await fetch('https://www.universal-tutorial.com/api/countries/', {
+	// 				headers: {
+	// 					"Authorization": `Bearer ${token}`
+	// 				}
+	// 			})
+	// 			const data = await response.json()
+	// 			setCountryResp(data)
+	// 		} catch (error) {
+	// 			console.error(error)
+	// 		}
+	// 	}
+	// 	getCountries()
+	// },[token])
+
+	// const [countryRes, setCountryResp] = useState()
+	// const [stateRes, setStateResp] = useState()
+	// const [cityRes, setCityResp] = useState()
+
+	// const [country, setCountry] = useState<string>()
+	// const [state, setState] = useState<string>()
+	// const [city, setCity] = useState<string>()
+
+	// console.log(token)
+	// console.log(countryRes)
+
+
 	const supabase = createClient();
 	const {
 		data: { user },
@@ -68,9 +119,11 @@ export default async function ProfilePage() {
 		revalidatePath("/", "layout");
 	};
 
+	console.log(`${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${profileData.avatar_url}`)
+
 	return (
 		<div className="flex flex-col items-center min-h-screen h-full justify-center p-4">
-			<div className="flex flex-col relative overflow-hidden h-auto text-foreground box-border bg-white/30 backdrop-blur-2xl outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none max-w-xl p-2">
+			<div className="flex flex-col relative overflow-hidden h-auto text-black box-border bg-white/30 backdrop-blur-2xl outline-none data-[focus-visible=true]:z-10 data-[focus-visible=true]:outline-2 data-[focus-visible=true]:outline-focus data-[focus-visible=true]:outline-offset-2 shadow-medium rounded-large transition-transform-background motion-reduce:transition-none max-w-xl p-2">
 				<div className="p-3 z-10 w-full justify-start shrink-0 overflow-inherit color-inherit subpixel-antialiased rounded-t-large flex flex-col items-start px-4 pb-0 pt-4">
 					<p className="text-lg font-medium">Account Details</p>
 					<div className="flex gap-4 py-4">
@@ -81,7 +134,7 @@ export default async function ProfilePage() {
 										profileData.avatar_url != null
 											? profileData.avatar_url.startsWith("avatars/")
 												? `${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/${profileData.avatar_url}`
-												: profileData.avatar_url
+												: ""
 											: ""
 									}
 									className="flex object-cover w-full h-full"
@@ -94,12 +147,12 @@ export default async function ProfilePage() {
 							<p className="font-medium">
 								{profileData.full_name ? profileData.full_name : "Your name"}
 							</p>
-							<span className="text-sm text-default-800">
+							<span className="text-sm text-black">
 								{profileData.email}
 							</span>
 						</div>
 					</div>
-					<p className="text-sm text-default-800">
+					<p className="text-sm text-black">
 						The photo will be used for your profile, and will be visible to
 						other users of the platform.
 					</p>
@@ -108,68 +161,80 @@ export default async function ProfilePage() {
 				<form
 					id="profile-form"
 					name="profile-form"
-					className="relative w-full p-3 flex-auto flex-col [place-content:inherit] [align-items:inherit] h-auto break-words text-left overflow-y-auto subpixel-antialiased grid grid-cols-1 gap-4 md:grid-cols-2"
+					className="relative w-full p-3 flex-auto flex-col [place-content:inherit] [align-items:inherit] h-auto break-words text-left text-black overflow-y-auto subpixel-antialiased grid grid-cols-1 gap-4 md:grid-cols-2"
 					action={updateProfileAction}
 				>
-					<Input
-						label="Your Name"
-						placeholder={
-							profileData.full_name?.trim() === ""
-								? "Your Name"
-								: profileData.full_name ?? "Your Name"
-						}
-						className="w-full"
-						name="full_name"
-						labelPlacement="outside"
-						defaultValue={profileData.full_name ?? undefined}
-					/>
-					<Input
-						label="Country"
-						placeholder={
-							profileData.country?.trim() === ""
-								? "Select country"
-								: profileData.country ?? "Select country"
-						}
-						className="w-full"
-						name="country"
-						labelPlacement="outside"
-						defaultValue={profileData.country ?? undefined}
-					/>
-					<Input
-						label="State"
-						placeholder={
-							profileData.state?.trim() === ""
-								? "Enter state"
-								: profileData.state ?? "Enter state"
-						}
-						className="w-full"
-						name="state"
-						labelPlacement="outside"
-						defaultValue={profileData.state ?? undefined}
-					/>
+					<div className="flex flex-col">
+						<label htmlFor="name" className="text-sm block mb-[5px]">
+							Your Name
+						</label>
+						<Input
+							placeholder={
+								profileData.full_name?.trim() === ""
+									? "Your Name"
+									: profileData.full_name ?? "Your Name"
+							}
+							className="bg-white rounded-medium h-10"
+							name="full_name"
+							defaultValue={profileData.full_name ?? undefined}
+						/>
+					</div>
+					<div className="flex flex-col">
+						<label htmlFor="country" className="text-sm block mb-[5px]">
+							Country
+						</label>
+						<Input
+							placeholder={
+								profileData.country?.trim() === ""
+									? "Country"
+									: profileData.country ?? "Enter Country"
+							}
+							className="bg-white rounded-medium h-10"
+							name="country"
+							defaultValue={profileData.country ?? undefined}
+						/>
+					</div>
+					<div className="flex flex-col">
+						<label htmlFor="state" className="text-sm block mb-[5px]">
+							State
+						</label>
+						<Input
+							placeholder={
+								profileData.state?.trim() === ""
+									? "Enter State"
+									: profileData.state ?? "Enter State"
+							}
+							className="bg-white rounded-medium h-10"
+							name="state"
+							defaultValue={profileData.state ?? undefined}
+						/>
+					</div>
 
-					<Input
-						label="City"
-						placeholder={
-							profileData.city?.trim() === ""
-								? "Enter City"
-								: profileData.city ?? "Enter City"
-						}
-						className="w-full"
-						name="city"
-						labelPlacement="outside"
-						defaultValue={profileData.city ?? undefined}
-					/>
+					<div className="flex flex-col">
+						<label htmlFor="city" className="text-sm block mb-[5px]">
+							City
+						</label>
+						<Input
+							placeholder={
+								profileData.city?.trim() === ""
+									? "Enter City"
+									: profileData.city ?? "Enter City"
+							}
+							className="bg-white rounded-medium h-10"
+							name="city"
+							defaultValue={profileData.city ?? undefined}
+						/>
+					</div>
 
 					<div className="group flex flex-col group relative justify-end data-[has-label=true]:mt-[calc(theme(fontSize.small)_+_10px)] w-full">
 						<div className="h-full flex flex-col">
 							<label htmlFor="gender" className="text-sm block mb-[5px]">
 								Select your gender
 							</label>
-							<div className="relative w-full inline-flex tap-highlight-transparent flex-row items-center shadow-sm px-3 gap-3 bg-default-100 data-[hover=true]:bg-default-200 group-data-[focus=true]:bg-default-100 h-10 min-h-10 rounded-medium transition-background motion-reduce:transition-none !duration-150 outline-none group-data-[focus-visible=true]:z-10 group-data-[focus-visible=true]:ring-2 group-data-[focus-visible=true]:ring-focus group-data-[focus-visible=true]:ring-offset-2 group-data-[focus-visible=true]:ring-offset-background">
+							<div className="relative w-full inline-flex tap-highlight-transparent flex-row items-center shadow-sm px-3 gap-3 bg-white data-[hover=true]:bg-default-200 group-data-[focus=true]:bg-default-100 h-10 min-h-10 rounded-medium transition-background motion-reduce:transition-none !duration-150 outline-none group-data-[focus-visible=true]:z-10 group-data-[focus-visible=true]:ring-2 group-data-[focus-visible=true]:ring-focus group-data-[focus-visible=true]:ring-offset-2 group-data-[focus-visible=true]:ring-offset-background">
 								<div className="inline-flex w-full items-center h-full box-border">
 									<Select defaultValue={profileData.gender ?? "female"}>
-										<SelectTrigger className="w-full font-normal bg-transparent !outline-none placeholder:text-foreground-500 focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 text-small group-data-[has-value=true]:text-default-foreground h-full border-none">
+										<SelectTrigger className="w-full font-normal bg-transparent !outline-none placeholder:text-black focus-visible:outline-none data-[has-start-content=true]:ps-1.5 data-[has-end-content=true]:pe-1.5 text-small group-data-[has-value=true]:text-default-foreground h-full border-none">
 											<SelectValue placeholder="Select a gender" />
 										</SelectTrigger>
 										<SelectContent>
@@ -186,18 +251,22 @@ export default async function ProfilePage() {
 						</div>
 					</div>
 
-					<Input
-						label="Zip Code"
-						placeholder={profileData.zip_code?.toString() ?? "Enter Zip Code"}
-						className="w-full"
-						name="zip_code"
-						labelPlacement="outside"
-						defaultValue={
-							profileData.zip_code != null
-								? profileData.zip_code.toString()
-								: undefined
-						}
-					/>
+					<div className="flex flex-col">
+						<label htmlFor="zip_code" className="text-sm block mb-[5px]">
+							Zip Code
+						</label>
+						<Input
+							placeholder={
+								profileData.zip_code?.toString() === ""
+									? "Enter Zip Code"
+									: profileData.zip_code?.toString() ?? "Enter Zip Code"
+							}
+							className="bg-white rounded-medium h-10"
+							name="zip_code"
+							defaultValue={profileData.zip_code ?? undefined}
+						/>
+					</div>
+				
 				</form>
 
 				<div className="p-3 h-auto flex w-full items-center overflow-hidden color-inherit subpixel-antialiased rounded-b-large mt-4 justify-end gap-2">

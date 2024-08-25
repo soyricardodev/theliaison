@@ -22,7 +22,7 @@ export default async function Confirm({
 
 	if (error) {
 		return (
-			<div className="flex flex-col items-center justify-center">
+			<div className="flex flex-col items-center justify-center gap-3 my-40">
 				<h1>This gift does not exist anymore.</h1>
 				<Link
 					href="/gifts"
